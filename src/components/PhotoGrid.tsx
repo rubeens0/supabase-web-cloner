@@ -8,7 +8,7 @@ import image4 from '@/assets/figma/placeholder.svg';
 import image5 from '@/assets/figma/placeholder.svg';
 import image6 from '@/assets/figma/placeholder.svg';
 
-const photos = [
+const defaultPhotos = [
   {
     id: 1,
     src: image1,
