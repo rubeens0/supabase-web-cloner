@@ -1,8 +1,8 @@
-import { Link, useLocation, useNavigate } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { useState, useEffect, useMemo, useCallback } from 'react';
-import logoWhite from 'figma:asset/5278e2eb6d57f1c8314def623982de21b62fd88d.png';
-import navBackground from 'figma:asset/7a8afed3556ae6f07bd37e84df0a3cc161b001f1.png';
+import logoWhite from '@/assets/figma/placeholder.svg';
+import navBackground from '@/assets/figma/placeholder.svg';
 import { useLanguage } from '../contexts/LanguageContext';
 import { Globe, Menu, X } from 'lucide-react';
 import { getPerformanceSettings, PREMIUM_ANIMATIONS } from '../utils/performanceDetector';

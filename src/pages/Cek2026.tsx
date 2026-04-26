@@ -1,13 +1,13 @@
 import { motion } from 'motion/react';
 import { MapPin, Calendar, Flag } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
-import campillosImage from 'figma:asset/52a76a88c2a96553e4025ba09dbd6688d321cbb0.png';
-import motorlandImage from 'figma:asset/be5e8554e1618fa1e0ef5ed887ec23c8012e492e.png';
-import lucasGuerreroImage from 'figma:asset/29418ab2b27f22d368a28550b4ed3118c368ffd3.png';
-import asparImage from 'figma:asset/416a481c1461aa7735d21ae014ac4093575065c3.png';
-import dbMotorsportLogo from 'figma:asset/a1c30cd6c9a75d46cf6b14411b65985e66853614.png';
-import parolinLogo from 'figma:asset/d72e5e1c5b16719ed6d852514b9e7f314834d721.png';
-import sponsorsImage from 'figma:asset/4a873091c749e242607ee2334c54a6efbfb18bc4.png';
+import campillosImage from '@/assets/figma/placeholder.svg';
+import motorlandImage from '@/assets/figma/placeholder.svg';
+import lucasGuerreroImage from '@/assets/figma/placeholder.svg';
+import asparImage from '@/assets/figma/placeholder.svg';
+import dbMotorsportLogo from '@/assets/figma/placeholder.svg';
+import parolinLogo from '@/assets/figma/placeholder.svg';
+import sponsorsImage from '@/assets/figma/placeholder.svg';
 
 // Placeholder data for the 4 circuits
 const circuits = [

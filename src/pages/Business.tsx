@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import { Button } from '../components/ui/button';
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
 import { ArrowRight, Globe, TrendingUp, Users, Palette, Target, Rocket, ExternalLink, Check, Quote } from 'lucide-react';
 import { motion } from 'motion/react';
 import { useLanguage } from '../contexts/LanguageContext';
-import netproLogo from 'figma:asset/0f2ee7d13d7a9e660b9073b3e3bd31a8f0c8982a.png';
-import netspyImg from 'figma:asset/5adb926763ec87656f3e0e1b6a90f74d3b7399bd.png';
+import netproLogo from '@/assets/figma/placeholder.svg';
+import netspyImg from '@/assets/figma/placeholder.svg';
 
 export function Business() {
   const { t } = useLanguage();

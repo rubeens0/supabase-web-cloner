@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Lock, FileText, MapPin, Globe } from 'lucide-react';
 import { Button } from './ui/button';
 import { useLanguage } from '../contexts/LanguageContext';
-import logoImage from 'figma:asset/3be9a204157df37664e3d56ca922b6cc448f1552.png';
+import logoImage from '@/assets/figma/placeholder.svg';
 
 interface DossierAccessProps {
   onAccess: (version: 'regional' | 'nacional' | 'internacional') => void;

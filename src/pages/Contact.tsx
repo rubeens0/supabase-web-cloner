@@ -3,7 +3,7 @@ import { Mail, MapPin, Instagram } from 'lucide-react';
 import { motion } from 'motion/react';
 import { AnimatedLogo } from '../components/AnimatedLogo';
 import { useLanguage } from '../contexts/LanguageContext';
-import backgroundImage from 'figma:asset/0426a6d7e63179c8d1c84954c2b86e602965f70c.png';
+import backgroundImage from '@/assets/figma/placeholder.svg';
 
 export function Contact() {
   const { t } = useLanguage();

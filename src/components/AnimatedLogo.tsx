@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 import { useState, useMemo } from 'react';
-import logoWhite from 'figma:asset/5278e2eb6d57f1c8314def623982de21b62fd88d.png';
+import logoWhite from '@/assets/figma/placeholder.svg';
 import { getPerformanceSettings } from '../utils/performanceDetector';
 
 interface AnimatedLogoProps {

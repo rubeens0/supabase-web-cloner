@@ -3,12 +3,12 @@ import { AnimatedLogo } from '../components/AnimatedLogo';
 import { useLanguage } from '../contexts/LanguageContext';
 import { Trophy, Users, Sparkles, Mail, X } from 'lucide-react';
 import { Button } from '../components/ui/button';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import { SEO } from '../components/SEO';
 import { useState } from 'react';
-import heroImage from 'figma:asset/2b2fc15a042ce4a5cf5390eea017821f2b7bad55.png';
-import tiktokLogo from 'figma:asset/7dae8a6950e4ee6125f216104700a934c6b6c73c.png';
-import sponsorsImage from 'figma:asset/4a873091c749e242607ee2334c54a6efbfb18bc4.png';
+import heroImage from '@/assets/figma/placeholder.svg';
+import tiktokLogo from '@/assets/figma/placeholder.svg';
+import sponsorsImage from '@/assets/figma/placeholder.svg';
 
 export function Sponsors() {
   const { t, language, getRoute } = useLanguage();

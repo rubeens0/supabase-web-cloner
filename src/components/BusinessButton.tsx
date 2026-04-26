@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 import { useLanguage } from '../contexts/LanguageContext';
-import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 import { Mail, Calendar } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { getPerformanceSettings, PREMIUM_ANIMATIONS } from '../utils/performanceDetector';

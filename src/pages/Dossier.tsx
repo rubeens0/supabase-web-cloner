@@ -21,12 +21,12 @@ import {
 } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { AnimatedLogo } from '../components/AnimatedLogo';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
-import kartImage1 from 'figma:asset/c5a165ac823c2aa5983219572aee271883e05d78.png';
-import kartImage2 from 'figma:asset/d40b9db78146dee1ac3fb69e5247a620a19a54fb.png';
-import kartImage3 from 'figma:asset/ea07fbe5012baed213fd4ea6c149f8f17b7256a3.png';
-import helmetExample from 'figma:asset/71406af02a1f8e6325b6cadfe31a6dcdba0c4dcb.png';
+import kartImage1 from '@/assets/figma/placeholder.svg';
+import kartImage2 from '@/assets/figma/placeholder.svg';
+import kartImage3 from '@/assets/figma/placeholder.svg';
+import helmetExample from '@/assets/figma/placeholder.svg';
 
 type DossierVersion = 'regional' | 'nacional' | 'internacional' | null;
 

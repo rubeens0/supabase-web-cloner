@@ -1,15 +1,15 @@
-import cekZaragozaImg from 'figma:asset/947825a9517d05993adaa6f6bb6a94dd09c76693.png';
-import netspyImg from 'figma:asset/5adb926763ec87656f3e0e1b6a90f74d3b7399bd.png';
-import netproImg from 'figma:asset/408c44da58a4525fb87afaaffc2301fe46c81295.png';
-import albroksaImg from 'figma:asset/eec22772c0b28aac4e96e339c8faaab504eb7277.png';
-import testRecasImg from 'figma:asset/dbc0b2bd0a86ed22c5284823ed398869e2696f12.png';
-import portadaExtremaduraImg from 'figma:asset/048d37643a592bdad6347cd349333e3cafd876a6.png';
+import cekZaragozaImg from '@/assets/figma/placeholder.svg';
+import netspyImg from '@/assets/figma/placeholder.svg';
+import netproImg from '@/assets/figma/placeholder.svg';
+import albroksaImg from '@/assets/figma/placeholder.svg';
+import testRecasImg from '@/assets/figma/placeholder.svg';
+import portadaExtremaduraImg from '@/assets/figma/placeholder.svg';
 import cajaRuralImg from '../../imports/unnamed-5.jpg.png';
-import { useParams, Link, Navigate } from 'react-router';
+import { useParams, Link, Navigate } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
 import { motion } from 'motion/react';
 import { Calendar, Clock, ArrowLeft, Share2, ExternalLink } from 'lucide-react';
-import { toast } from 'sonner@2.0.3';
+import { toast } from 'sonner';
 import { getPerformanceSettings } from '../utils/performanceDetector';
 import { SEO } from '../components/SEO';
 

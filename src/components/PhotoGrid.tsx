@@ -1,12 +1,12 @@
 import { motion } from 'motion/react';
 import { useState } from 'react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
-import image1 from 'figma:asset/d40b9db78146dee1ac3fb69e5247a620a19a54fb.png';
-import image2 from 'figma:asset/0d610ad64c40507e746274eb78b329f70a89ef20.png';
-import image3 from 'figma:asset/7281cfc5fc02d2c37ceb4f66b43e631304006402.png';
-import image4 from 'figma:asset/460dfdd6fa7e55b833cdedf0e25d1436ea7dc780.png';
-import image5 from 'figma:asset/9f62063fc47bed8a6156fa0c6abb462fa50edb64.png';
-import image6 from 'figma:asset/edcf87371a1949576332892c1bd5e8bfaea7e15b.png';
+import image1 from '@/assets/figma/placeholder.svg';
+import image2 from '@/assets/figma/placeholder.svg';
+import image3 from '@/assets/figma/placeholder.svg';
+import image4 from '@/assets/figma/placeholder.svg';
+import image5 from '@/assets/figma/placeholder.svg';
+import image6 from '@/assets/figma/placeholder.svg';
 
 const photos = [
   {

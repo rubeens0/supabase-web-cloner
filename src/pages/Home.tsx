@@ -1,16 +1,16 @@
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import { Button } from '../components/ui/button';
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
 import { ArrowRight, Flag, Trophy, ArrowDown, TrendingUp, Search, Radio } from 'lucide-react';
 import { motion } from 'motion/react';
-import logoWhite from 'figma:asset/5278e2eb6d57f1c8314def623982de21b62fd88d.png';
+import logoWhite from '@/assets/figma/placeholder.svg';
 import { AnimatedLogo } from '../components/AnimatedLogo';
 import { useLanguage } from '../contexts/LanguageContext';
 import { SEO } from '../components/SEO';
-import heroImage from 'figma:asset/ef8d1a09d874b972297c80373bc03ffeb75edb31.png';
-import aboutImage from 'figma:asset/7281cfc5fc02d2c37ceb4f66b43e631304006402.png';
-import kartingImage from 'figma:asset/d40b9db78146dee1ac3fb69e5247a620a19a54fb.png';
-import marketingImage from 'figma:asset/cacb5e1b56c1cd6293cc92257abd883ab8cc8df0.png';
+import heroImage from '@/assets/figma/placeholder.svg';
+import aboutImage from '@/assets/figma/placeholder.svg';
+import kartingImage from '@/assets/figma/placeholder.svg';
+import marketingImage from '@/assets/figma/placeholder.svg';
 import { getPerformanceSettings, PREMIUM_ANIMATIONS } from '../utils/performanceDetector';
 
 export function Home() {
