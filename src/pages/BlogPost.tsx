@@ -66,7 +66,7 @@ export function BlogPost() {
   // Simplified animation config
   const fadeIn = perfSettings.simplifyAnimations
     ? { initial: { opacity: 0 }, animate: { opacity: 1 }, transition: { duration: 0.2 } }
-    : { initial: { opacity: 0, y: 30 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } };
+    : { initial: { opacity: 0, y: 30 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] as const } };
 
   // Blog posts data completos
   const blogPosts: BlogPostData[] = [
