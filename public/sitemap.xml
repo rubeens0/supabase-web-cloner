@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <!-- Home Page (Highest Priority) -->
+  <url>
+    <loc>https://rubenmunoz.com/</loc>
+    <lastmod>2026-02-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://rubenmunoz.com/inicio" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://rubenmunoz.com/home" />
+  </url>
+  
+  <url>
+    <loc>https://rubenmunoz.com/inicio</loc>
+    <lastmod>2026-02-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://rubenmunoz.com/inicio" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://rubenmunoz.com/home" />
+  </url>
+  
+  <url>
+    <loc>https://rubenmunoz.com/home</loc>
+    <lastmod>2026-02-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://rubenmunoz.com/inicio" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://rubenmunoz.com/home" />
+  </url>
+
+  <!-- Gallery Pages -->
+  <url>
+    <loc>https://rubenmunoz.com/galeria</loc>
+    <lastmod>2026-02-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://rubenmunoz.com/galeria" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://rubenmunoz.com/gallery" />
+  </url>
+  
+  <url>
+    <loc>https://rubenmunoz.com/gallery</loc>
+    <lastmod>2026-02-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://rubenmunoz.com/galeria" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://rubenmunoz.com/gallery" />
+  </url>
+
+  <!-- Business Pages (Recently Updated) -->
+  <url>
+    <loc>https://rubenmunoz.com/business</loc>
+    <lastmod>2026-02-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://rubenmunoz.com/marketing</loc>
+    <lastmod>2026-02-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Blog (High Priority - Updated Regularly) -->
+  <url>
+    <loc>https://rubenmunoz.com/blog</loc>
+    <lastmod>2026-02-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Blog Posts -->
+  <url>
+    <loc>https://rubenmunoz.com/blog/test-recas-2026</loc>
+    <lastmod>2026-03-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rubenmunoz.com/blog/albroksa-patrocinio</loc>
+    <lastmod>2026-02-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rubenmunoz.com/blog/netpro-agency</loc>
+    <lastmod>2026-01-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://rubenmunoz.com/blog/netspy-emprendedores</loc>
+    <lastmod>2025-11-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rubenmunoz.com/blog/cek-zaragoza</loc>
+    <lastmod>2025-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Sponsors Pages -->
+  <url>
+    <loc>https://rubenmunoz.com/patrocinios</loc>
+    <lastmod>2026-02-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://rubenmunoz.com/patrocinios" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://rubenmunoz.com/sponsors" />
+  </url>
+  
+  <url>
+    <loc>https://rubenmunoz.com/sponsors</loc>
+    <lastmod>2026-02-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://rubenmunoz.com/patrocinios" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://rubenmunoz.com/sponsors" />
+  </url>
+
+  <!-- Contact Pages -->
+  <url>
+    <loc>https://rubenmunoz.com/contacto</loc>
+    <lastmod>2026-02-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://rubenmunoz.com/contacto" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://rubenmunoz.com/contact" />
+  </url>
+  
+  <url>
+    <loc>https://rubenmunoz.com/contact</loc>
+    <lastmod>2026-02-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://rubenmunoz.com/contacto" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://rubenmunoz.com/contact" />
+  </url>
+
+  <!-- Dossier Page -->
+  <url>
+    <loc>https://rubenmunoz.com/dossier</loc>
+    <lastmod>2026-02-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- CEK 2026 Pages -->
+  <url>
+    <loc>https://rubenmunoz.com/2026</loc>
+    <lastmod>2026-02-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://rubenmunoz.com/cek2026</loc>
+    <lastmod>2026-02-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+</urlset>
