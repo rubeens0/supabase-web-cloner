@@ -193,9 +193,10 @@ export function SEO({
     // Update or create JSON-LD script
     let jsonLdScript = document.querySelector('script[type="application/ld+json"]');
     if (!jsonLdScript) {
-      jsonLdScript = document.createElement('script');
-      jsonLdScript.type = 'application/ld+json';
-      document.head.appendChild(jsonLdScript);
+      const newScript = document.createElement('script');
+      newScript.type = 'application/ld+json';
+      document.head.appendChild(newScript);
+      jsonLdScript = newScript;
     }
     jsonLdScript.textContent = JSON.stringify(finalStructuredData);
 

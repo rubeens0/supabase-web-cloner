@@ -47,7 +47,10 @@ const photos = [
   },
 ];
 
-export function PhotoGrid({ photos }: { photos: typeof photos }) {
+type Photo = { id: number; src: string; alt: string; tall: boolean };
+
+export function PhotoGrid({ photos: photosProp }: { photos?: Photo[] } = {}) {
+  const photos: Photo[] = photosProp ?? defaultPhotos;
   const [selectedPhoto, setSelectedPhoto] = useState<number | null>(null);
 
   return (
