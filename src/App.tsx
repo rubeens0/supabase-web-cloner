@@ -22,7 +22,7 @@ import { Cek2026 } from "@/pages/Cek2026";
 import { Blog } from "@/pages/Blog";
 import { BlogPost } from "@/pages/BlogPost";
 import { Dossier } from "@/pages/Dossier";
-import LiveTimingStreaming from "@/pages/LiveTimingStreaming";
+import { LiveTimingStreaming } from "@/pages/LiveTimingStreaming";
 
 const queryClient = new QueryClient();
 
