@@ -1,20 +1,9 @@
 /// <reference types="npm:@types/react@18.3.1" />
 
 import * as React from 'npm:react@18.3.1'
-
 import {
-  Body,
-  Button,
-  Container,
-  Head,
-  Heading,
-  Hr,
-  Html,
-  Link,
-  Preview,
-  Text,
+  Body, Button, Container, Head, Heading, Hr, Html, Link, Preview, Section, Text,
 } from 'npm:@react-email/components@0.0.22'
-
 import { brand, styles } from './_brand.ts'
 
 interface EmailChangeEmailProps {
@@ -24,59 +13,40 @@ interface EmailChangeEmailProps {
   confirmationUrl: string
 }
 
-export const EmailChangeEmail = ({
-  siteName,
-  email,
-  newEmail,
-  confirmationUrl,
-}: EmailChangeEmailProps) => (
+export const EmailChangeEmail = ({ email, newEmail, confirmationUrl }: EmailChangeEmailProps) => (
   <Html lang="es" dir="ltr">
     <Head />
-    <Preview>Confirma el cambio de correo en {siteName}</Preview>
+    <Preview>Confirma tu nuevo correo</Preview>
     <Body style={styles.main}>
       <Container style={styles.container}>
-        <div style={styles.header}>
+        <Section style={styles.header}>
           <Text style={styles.wordmark}>{brand.wordmark}</Text>
-        </div>
+        </Section>
 
         <Text style={styles.sectionTag}>N° 05 — Cambio de correo</Text>
-
         <Heading style={styles.h1}>
-          Confirma tu <span style={styles.italic}>nuevo correo</span>.
+          Confirma tu nuevo <span style={styles.italic}>correo</span>.
         </Heading>
 
         <Text style={styles.text}>
-          Has solicitado cambiar la dirección de tu cuenta en{' '}
-          <strong style={{ color: '#0a0a0a' }}>{siteName}</strong> de{' '}
-          <Link href={`mailto:${email}`} style={styles.link}>
-            {email}
-          </Link>{' '}
-          a{' '}
-          <Link href={`mailto:${newEmail}`} style={styles.link}>
-            {newEmail}
-          </Link>
-          .
+          Has solicitado cambiar tu correo de <strong>{email}</strong> a{' '}
+          <strong>{newEmail}</strong>. Confirma para completar el cambio.
         </Text>
 
-        <Button style={styles.button} href={confirmationUrl}>
+        <Button href={confirmationUrl} style={styles.button}>
           Confirmar cambio
         </Button>
 
-        <Text style={{ ...styles.text, marginTop: '28px', fontSize: '13px', color: '#737373' }}>
-          Si no funciona el botón, copia y pega este enlace en tu navegador:
+        <Text style={{ ...styles.text, fontSize: '13px', color: '#737373', margin: '28px 0 0' }}>
+          O abre este enlace:
           <br />
-          <Link href={confirmationUrl} style={styles.link}>
-            {confirmationUrl}
-          </Link>
+          <Link href={confirmationUrl} style={styles.link}>{confirmationUrl}</Link>
         </Text>
 
         <Hr style={styles.divider} />
-
+        <Text style={styles.footer}>{brand.wordmark} · {brand.tagline}</Text>
         <Text style={styles.footer}>
-          Si no solicitaste este cambio, asegura tu cuenta cuanto antes.
-        </Text>
-        <Text style={styles.footer}>
-          © {new Date().getFullYear()} Rubén Muñoz · <Link href={brand.siteUrl} style={styles.footerLink}>rubenmunoz.com</Link>
+          Si no solicitaste este cambio, puedes ignorar este correo.
         </Text>
       </Container>
     </Body>

@@ -1,20 +1,9 @@
 /// <reference types="npm:@types/react@18.3.1" />
 
 import * as React from 'npm:react@18.3.1'
-
 import {
-  Body,
-  Button,
-  Container,
-  Head,
-  Heading,
-  Hr,
-  Html,
-  Link,
-  Preview,
-  Text,
+  Body, Button, Container, Head, Heading, Hr, Html, Link, Preview, Section, Text,
 } from 'npm:@react-email/components@0.0.22'
-
 import { brand, styles } from './_brand.ts'
 
 interface MagicLinkEmailProps {
@@ -22,50 +11,40 @@ interface MagicLinkEmailProps {
   confirmationUrl: string
 }
 
-export const MagicLinkEmail = ({
-  siteName,
-  confirmationUrl,
-}: MagicLinkEmailProps) => (
+export const MagicLinkEmail = ({ confirmationUrl }: MagicLinkEmailProps) => (
   <Html lang="es" dir="ltr">
     <Head />
-    <Preview>Tu enlace de acceso a {siteName}</Preview>
+    <Preview>Tu enlace de acceso a rubenmunoz.com</Preview>
     <Body style={styles.main}>
       <Container style={styles.container}>
-        <div style={styles.header}>
+        <Section style={styles.header}>
           <Text style={styles.wordmark}>{brand.wordmark}</Text>
-        </div>
+        </Section>
 
-        <Text style={styles.sectionTag}>N° 03 — Acceso</Text>
-
+        <Text style={styles.sectionTag}>N° 02 — Acceso directo</Text>
         <Heading style={styles.h1}>
           Tu enlace de <span style={styles.italic}>acceso</span>.
         </Heading>
 
         <Text style={styles.text}>
-          Pulsa el botón para iniciar sesión en{' '}
-          <strong style={{ color: '#0a0a0a' }}>{siteName}</strong>. El enlace
-          caduca en pocos minutos.
+          Haz clic en el botón para iniciar sesión sin contraseña. El enlace
+          expira en breve por seguridad.
         </Text>
 
-        <Button style={styles.button} href={confirmationUrl}>
+        <Button href={confirmationUrl} style={styles.button}>
           Iniciar sesión
         </Button>
 
-        <Text style={{ ...styles.text, marginTop: '28px', fontSize: '13px', color: '#737373' }}>
-          Si no funciona el botón, copia y pega este enlace en tu navegador:
+        <Text style={{ ...styles.text, fontSize: '13px', color: '#737373', margin: '28px 0 0' }}>
+          ¿El botón no funciona?
           <br />
-          <Link href={confirmationUrl} style={styles.link}>
-            {confirmationUrl}
-          </Link>
+          <Link href={confirmationUrl} style={styles.link}>{confirmationUrl}</Link>
         </Text>
 
         <Hr style={styles.divider} />
-
+        <Text style={styles.footer}>{brand.wordmark} · {brand.tagline}</Text>
         <Text style={styles.footer}>
-          Si no solicitaste este enlace, puedes ignorar este correo.
-        </Text>
-        <Text style={styles.footer}>
-          © {new Date().getFullYear()} Rubén Muñoz · <Link href={brand.siteUrl} style={styles.footerLink}>rubenmunoz.com</Link>
+          Si no solicitaste este enlace, ignora este correo.
         </Text>
       </Container>
     </Body>
