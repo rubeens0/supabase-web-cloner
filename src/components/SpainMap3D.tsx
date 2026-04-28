@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
+import { Move } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 
 // Detailed mainland Spain outline (lon, lat) — higher fidelity coastline
@@ -36,10 +37,42 @@ const SPAIN_OUTLINE: [number, number][] = [
 ];
 
 const CIRCUITS = [
-  { name: 'Circuito de Campillos', location: 'Málaga, Andalucía', lat: 37.0612, lon: -4.8659, labelOffset: { x: 28, y: 6 } },
-  { name: 'MotorLand Aragón', location: 'Alcañiz, Teruel', lat: 41.1067, lon: -0.2517, labelOffset: { x: 22, y: -4 } },
-  { name: 'Circuito de Chiva', location: 'Chiva, Valencia', lat: 39.4697, lon: -0.7183, labelOffset: { x: 22, y: 0 } },
-  { name: 'Aspar Circuit', location: 'Alicante, Valencia', lat: 38.3924, lon: -0.4172, labelOffset: { x: 22, y: 18 } },
+  {
+    num: 1,
+    name: 'Circuito de Campillos',
+    location: 'Málaga, Andalucía',
+    date: '20 — 22 MAR 2026',
+    lat: 37.0612, lon: -4.8659,
+    labelOffset: { x: 28, y: 6 },
+    side: 'left' as const,
+  },
+  {
+    num: 2,
+    name: 'MotorLand Aragón',
+    location: 'Alcañiz, Teruel',
+    date: '15 — 17 MAY 2026',
+    lat: 41.1067, lon: -0.2517,
+    labelOffset: { x: 22, y: -4 },
+    side: 'right' as const,
+  },
+  {
+    num: 3,
+    name: 'Kartódromo Lucas Guerrero',
+    location: 'Chiva, Valencia',
+    date: '19 — 21 JUN 2026',
+    lat: 39.4697, lon: -0.7183,
+    labelOffset: { x: 22, y: 0 },
+    side: 'right' as const,
+  },
+  {
+    num: 4,
+    name: 'Aspar Circuit',
+    location: 'Guadassuar, Valencia',
+    date: '25 — 27 SEP 2026',
+    lat: 38.3924, lon: -0.4172,
+    labelOffset: { x: 22, y: 18 },
+    side: 'right' as const,
+  },
 ];
 
 const LON_MIN = -9.8;
