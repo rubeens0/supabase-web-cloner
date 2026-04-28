@@ -1,10 +1,8 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Lock, FileText, MapPin, Globe } from 'lucide-react';
-import { Button } from './ui/button';
+import { Lock, FileText, MapPin, Globe, Flag, ArrowRight, ShieldCheck } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { supabase } from '@/integrations/supabase/client';
-import logoImage from '@/assets/figma/placeholder.svg';
 
 interface DossierAccessProps {
   onAccess: (version: 'regional' | 'nacional' | 'internacional') => void;
@@ -14,10 +12,12 @@ export function DossierAccess({ onAccess }: DossierAccessProps) {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [unlockedVersion, setUnlockedVersion] = useState<null | 'regional' | 'nacional' | 'internacional'>(null);
   const { language } = useLanguage();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!password || isLoading) return;
     setError('');
     setIsLoading(true);
 
@@ -26,184 +26,234 @@ export function DossierAccess({ onAccess }: DossierAccessProps) {
         body: { password },
       });
 
-      if (fnError || !data?.success) {
-        setError(language === 'es' ? 'Contraseña incorrecta' : 'Incorrect password');
-        setIsLoading(false);
+      // Edge function returns 401 (treated as fnError by SDK) for wrong password.
+      // We rely on data?.success when present; otherwise fall back to error message.
+      if (data?.success && data?.version) {
+        const v = data.version as 'regional' | 'nacional' | 'internacional';
+        setUnlockedVersion(v);
+        // Brief celebratory pause before transitioning
+        setTimeout(() => onAccess(v), 700);
         return;
       }
 
-      onAccess(data.version as 'regional' | 'nacional' | 'internacional');
+      setError(language === 'es' ? 'Contraseña incorrecta' : 'Incorrect password');
+      setIsLoading(false);
     } catch {
       setError(language === 'es' ? 'Error de conexión' : 'Connection error');
       setIsLoading(false);
     }
   };
 
+  const tiers = [
+    {
+      key: 'regional',
+      icon: MapPin,
+      label: language === 'es' ? 'Regional' : 'Regional',
+      desc: language === 'es' ? 'Patrocinadores locales' : 'Local sponsors',
+    },
+    {
+      key: 'nacional',
+      icon: Flag,
+      label: language === 'es' ? 'Nacional' : 'National',
+      desc: language === 'es' ? 'Patrocinadores nacionales' : 'National sponsors',
+    },
+    {
+      key: 'internacional',
+      icon: Globe,
+      label: language === 'es' ? 'Internacional' : 'International',
+      desc: language === 'es' ? 'Patrocinadores internacionales' : 'International sponsors',
+    },
+  ] as const;
+
   return (
-    <div className="min-h-screen bg-black pt-20 flex items-center justify-center px-4 relative overflow-hidden">
-      {/* Logo Background */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-        className="absolute inset-0 flex items-center justify-center pointer-events-none"
-      >
-        <img 
-          src={logoImage} 
-          alt="Logo" 
-          className="w-[600px] h-auto opacity-5"
-        />
-      </motion.div>
+    <div className="min-h-screen bg-black text-white pt-28 sm:pt-32 pb-20 px-5 sm:px-10 md:px-16 relative overflow-hidden">
+      {/* Editorial grid background */}
+      <div
+        className="absolute inset-0 opacity-[0.07] pointer-events-none"
+        style={{
+          backgroundImage:
+            'linear-gradient(to right, rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.5) 1px, transparent 1px)',
+          backgroundSize: '64px 64px',
+        }}
+      />
+      <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-white/[0.04] blur-3xl pointer-events-none" />
 
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        className="w-full max-w-md relative z-10"
-      >
-        {/* Glass Card */}
-        <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 sm:p-10">
-          {/* Icon */}
-          <motion.div
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.2, type: 'spring', stiffness: 200 }}
-            className="flex items-center justify-center mb-8"
-          >
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-white/10 via-white/5 to-black/20 blur-2xl" />
-              <div className="relative p-4 bg-white/10 rounded-2xl border border-white/20">
-                <FileText className="w-12 h-12 text-white" />
-              </div>
-            </div>
-          </motion.div>
+      <div className="relative z-10 max-w-6xl mx-auto">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          className="flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-white/40 mb-8"
+        >
+          <span className="font-mono text-white">N° 00</span>
+          <span className="h-px w-10 bg-white/20" />
+          <span>{language === 'es' ? 'Acceso restringido' : 'Restricted access'}</span>
+        </motion.div>
 
-          {/* Title */}
+        <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-20 items-start">
+          {/* Left — Title + tiers */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="text-center mb-8"
+            transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
           >
-            <h2 className="text-white mb-2">
-              {language === 'es' ? 'Acceso al Dossier' : 'Dossier Access'}
-            </h2>
-            <p className="text-white/60">
-              {language === 'es' 
-                ? 'Introduce la contraseña para acceder al dossier de patrocinio. Para obtener la contraseña, contacta directamente por correo electrónico.'
-                : 'Enter the password to access the sponsorship dossier. To obtain the password, contact directly via email.'}
+            <h1 className="font-display text-5xl sm:text-6xl md:text-7xl leading-[1] tracking-tight mb-6">
+              {language === 'es' ? (
+                <>
+                  Dossier <span className="font-display-italic text-gradient-mono-italic">privado</span>.
+                </>
+              ) : (
+                <>
+                  Private <span className="font-display-italic text-gradient-mono-italic">dossier</span>.
+                </>
+              )}
+            </h1>
+            <p className="text-white/60 text-base sm:text-lg leading-relaxed max-w-xl mb-12">
+              {language === 'es'
+                ? 'Documento confidencial con información de patrocinio. Introduce la contraseña que has recibido por correo para desbloquear la versión correspondiente.'
+                : 'Confidential document with sponsorship information. Enter the password sent to you via email to unlock the matching version.'}
+            </p>
+
+            {/* Versions list */}
+            <div className="border-t border-white/10">
+              {tiers.map((tier, idx) => {
+                const Icon = tier.icon;
+                const active = unlockedVersion === tier.key;
+                return (
+                  <div
+                    key={tier.key}
+                    className={`flex items-center justify-between gap-4 py-5 border-b border-white/10 transition-colors ${
+                      active ? 'bg-white/[0.03]' : ''
+                    }`}
+                  >
+                    <div className="flex items-center gap-4 min-w-0">
+                      <span className="font-mono text-[11px] text-white/40 w-8">
+                        0{idx + 1}
+                      </span>
+                      <div className="p-2 rounded-full border border-white/15 bg-white/[0.04]">
+                        <Icon className="w-4 h-4 text-white/80" />
+                      </div>
+                      <div className="min-w-0">
+                        <p className="text-white text-sm font-medium tracking-tight">
+                          {tier.label}
+                        </p>
+                        <p className="text-white/45 text-xs">{tier.desc}</p>
+                      </div>
+                    </div>
+                    <span
+                      className={`text-[10px] font-mono uppercase tracking-[0.2em] px-2.5 py-1 rounded-full border ${
+                        active
+                          ? 'border-white/60 text-white bg-white/10'
+                          : 'border-white/15 text-white/40'
+                      }`}
+                    >
+                      {active
+                        ? language === 'es' ? 'Desbloqueado' : 'Unlocked'
+                        : language === 'es' ? 'Bloqueado' : 'Locked'}
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
+          </motion.div>
+
+          {/* Right — Access card */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            className="lg:sticky lg:top-32"
+          >
+            <div className="relative rounded-3xl border border-white/10 bg-gradient-to-br from-white/[0.06] via-white/[0.02] to-transparent backdrop-blur-xl p-7 sm:p-9 overflow-hidden">
+              <div className="absolute -top-20 -right-20 w-60 h-60 rounded-full bg-white/[0.06] blur-3xl pointer-events-none" />
+
+              <div className="relative flex items-center gap-3 mb-7">
+                <div className="p-2.5 rounded-xl border border-white/15 bg-white/[0.05]">
+                  <FileText className="w-5 h-5 text-white" />
+                </div>
+                <div>
+                  <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-white/40">
+                    {language === 'es' ? 'Acceso seguro' : 'Secure access'}
+                  </p>
+                  <p className="text-white text-sm font-medium">
+                    {language === 'es' ? 'Introduce tu contraseña' : 'Enter your password'}
+                  </p>
+                </div>
+              </div>
+
+              <form onSubmit={handleSubmit} className="space-y-4 relative">
+                <div className="relative">
+                  <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/40 pointer-events-none" />
+                  <input
+                    type="password"
+                    value={password}
+                    onChange={(e) => {
+                      setPassword(e.target.value);
+                      setError('');
+                    }}
+                    placeholder={language === 'es' ? 'Contraseña' : 'Password'}
+                    autoFocus
+                    disabled={isLoading || !!unlockedVersion}
+                    className="w-full pl-11 pr-4 py-3.5 bg-black/40 border border-white/15 rounded-full text-white placeholder:text-white/35 text-sm focus:outline-none focus:border-white/40 focus:bg-black/60 transition-all disabled:opacity-60"
+                  />
+                </div>
+
+                <AnimatePresence>
+                  {error && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -4 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -4 }}
+                      transition={{ duration: 0.2 }}
+                      className="text-center text-[12px] uppercase tracking-[0.18em] text-white/70 font-mono"
+                    >
+                      — {error} —
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+
+                <button
+                  type="submit"
+                  disabled={!password || isLoading || !!unlockedVersion}
+                  className="group w-full flex items-center justify-center gap-2 py-3.5 bg-white text-black rounded-full font-medium text-sm hover:bg-white/90 transition-all disabled:opacity-40 disabled:cursor-not-allowed"
+                >
+                  {isLoading ? (
+                    <motion.div
+                      animate={{ rotate: 360 }}
+                      transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
+                      className="w-4 h-4 border-2 border-black/30 border-t-black rounded-full"
+                    />
+                  ) : unlockedVersion ? (
+                    <>
+                      <ShieldCheck className="w-4 h-4" />
+                      {language === 'es' ? 'Acceso concedido' : 'Access granted'}
+                    </>
+                  ) : (
+                    <>
+                      {language === 'es' ? 'Acceder al dossier' : 'Access dossier'}
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                    </>
+                  )}
+                </button>
+              </form>
+
+              <div className="mt-6 pt-5 border-t border-white/10 flex items-center gap-2 text-[11px] text-white/40">
+                <ShieldCheck className="w-3.5 h-3.5" />
+                <span>
+                  {language === 'es'
+                    ? 'Verificación cifrada · 10 intentos / minuto'
+                    : 'Encrypted verification · 10 attempts / minute'}
+                </span>
+              </div>
+            </div>
+
+            <p className="text-center text-white/35 text-[11px] mt-5 uppercase tracking-[0.18em] font-mono">
+              {language === 'es' ? '¿No tienes contraseña? Escríbeme' : 'No password? Email me'}
             </p>
           </motion.div>
-
-          {/* Form */}
-          <motion.form
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            onSubmit={handleSubmit}
-            className="space-y-6"
-          >
-            {/* Password Input */}
-            <div className="relative">
-              <div className="absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none">
-                <Lock className="w-5 h-5 text-white/40" />
-              </div>
-              <input
-                type="password"
-                value={password}
-                onChange={(e) => {
-                  setPassword(e.target.value);
-                  setError('');
-                }}
-                placeholder={language === 'es' ? 'Contraseña' : 'Password'}
-                className="w-full pl-12 pr-4 py-4 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-white/40 focus:outline-none focus:border-white/30 focus:bg-white/10 transition-all duration-300"
-                disabled={isLoading}
-              />
-            </div>
-
-            {/* Error Message */}
-            <AnimatePresence>
-              {error && (
-                <motion.div
-                  initial={{ opacity: 0, height: 0 }}
-                  animate={{ opacity: 1, height: 'auto' }}
-                  exit={{ opacity: 0, height: 0 }}
-                  transition={{ duration: 0.3 }}
-                  className="overflow-hidden"
-                >
-                  <div className="px-4 py-3 bg-white/10 border border-white/20 rounded-xl">
-                    <p className="text-white/80 text-sm text-center">{error}</p>
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-
-            {/* Submit Button */}
-            <Button
-              type="submit"
-              disabled={!password || isLoading}
-              className="w-full py-6 bg-white/10 border border-white/20 text-white hover:bg-white hover:text-black transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-white/10 disabled:hover:text-white"
-            >
-              {isLoading ? (
-                <motion.div
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
-                  className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full"
-                />
-              ) : (
-                language === 'es' ? 'Acceder al Dossier' : 'Access Dossier'
-              )}
-            </Button>
-          </motion.form>
-
-          {/* Info */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.5 }}
-            className="mt-8 pt-6 border-t border-white/10"
-          >
-            <div className="space-y-3">
-              <div className="flex items-start gap-3 text-white/50 text-sm">
-                <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                <p>
-                  {language === 'es' 
-                    ? 'Versión Regional: Información específica para patrocinadores regionales'
-                    : 'Regional Version: Specific information for regional sponsors'}
-                </p>
-              </div>
-              <div className="flex items-start gap-3 text-white/50 text-sm">
-                <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                <p>
-                  {language === 'es' 
-                    ? 'Versión Nacional: Información para patrocinadores a nivel nacional'
-                    : 'National Version: Information for national sponsors'}
-                </p>
-              </div>
-              <div className="flex items-start gap-3 text-white/50 text-sm">
-                <Globe className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                <p>
-                  {language === 'es' 
-                    ? 'Versión Internacional: Información para patrocinadores a nivel internacional'
-                    : 'International Version: Information for international sponsors'}
-                </p>
-              </div>
-            </div>
-          </motion.div>
         </div>
-
-        {/* Privacy Notice */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.6 }}
-          className="text-center text-white/40 text-sm mt-6"
-        >
-          {language === 'es' 
-            ? 'Contenido confidencial con acceso limitado'
-            : 'Confidential content with limited access'}
-        </motion.p>
-      </motion.div>
+      </div>
     </div>
   );
 }
