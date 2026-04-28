@@ -7,7 +7,7 @@ import lucasGuerreroImage from '@/assets/figma/placeholder.svg';
 import asparImage from '@/assets/figma/placeholder.svg';
 import dbMotorsportLogo from '@/assets/figma/placeholder.svg';
 import parolinLogo from '@/assets/figma/placeholder.svg';
-import sponsorsImage from '@/assets/sponsors-2026.png';
+
 
 // Placeholder data for the 4 circuits
 const circuits = [
