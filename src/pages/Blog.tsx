@@ -147,17 +147,17 @@ export function Blog() {
           <div className="max-w-7xl mx-auto">
             <SectionLabel index="02">Featured</SectionLabel>
             <Link to={`/blog/${feature.id}`} className="block mt-8 group">
-              <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
-                <div className="lg:col-span-7 relative overflow-hidden rounded-2xl border border-white/10 aspect-[16/10]">
+              <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-stretch">
+                <div className="w-full lg:w-7/12 shrink-0 relative overflow-hidden rounded-2xl border border-white/10 aspect-[16/10]">
                   <img
                     src={feature.image}
                     alt={feature.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
                 </div>
-                <div className="lg:col-span-5 flex flex-col justify-center">
-                  <div className="flex items-center gap-3 mb-5">
+                <div className="w-full lg:w-5/12 min-w-0 flex flex-col justify-center">
+                  <div className="flex flex-wrap items-center gap-3 mb-5">
                     <span className="inline-block font-mono text-[10px] uppercase tracking-[0.22em] text-white border border-white/30 rounded-full px-2.5 py-1">
                       {feature.category}
                     </span>
@@ -171,7 +171,7 @@ export function Blog() {
                     </span>
                     <span className="font-mono text-[10px] text-white/40">· {feature.readTime}</span>
                   </div>
-                  <h2 className="font-display text-4xl sm:text-5xl md:text-6xl text-white leading-[1.05] tracking-tight mb-5">
+                  <h2 className="font-display text-4xl sm:text-5xl lg:text-5xl xl:text-6xl text-white leading-[1.05] tracking-tight mb-5 break-words">
                     {feature.title}
                   </h2>
                   <p className="text-white/60 leading-relaxed mb-6">{feature.excerpt}</p>
