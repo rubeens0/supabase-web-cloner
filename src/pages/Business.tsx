@@ -56,7 +56,7 @@ export function Business() {
             title="RDE Operators"
             subtitle="Funnels & Lead Generation"
             description="Optimización de embudos de venta y generación de leads para info-empresarios hispanohablantes que quieren convertir su audiencia en ingresos predecibles."
-            extendedDescription="Somos Rubén, Diego y Edu — tres operadores que nos convertimos en el equipo de crecimiento de un número limitado de clientes, con implicación real en estrategia y ejecución."
+            extendedDescription="Somos Rubén, Diego y Erik — Nos convertimos en el equipo de crecimiento de un número limitado de clientes, con implicación real en estrategia y ejecución."
             image={rdeLogo}
             imageAlt="RDE Operators"
             href="/rde"
