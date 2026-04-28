@@ -203,7 +203,7 @@ export function Home() {
         <div className="max-w-7xl mx-auto px-5 sm:px-10 md:px-16 py-14 sm:py-20">
           <div className="mb-10">
             <p className="font-display text-4xl sm:text-5xl md:text-6xl text-white tracking-tight leading-tight max-w-3xl">
-              <span className="font-display-italic text-gradient-mono-italic">2 frentes,</span> una misma disciplina.
+              <span className="font-display-italic text-gradient-mono-italic">3 líneas</span> de emprendimiento activas.
             </p>
           </div>
 
