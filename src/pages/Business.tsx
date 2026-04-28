@@ -6,6 +6,7 @@ import { motion } from 'motion/react';
 import { useLanguage } from '../contexts/LanguageContext';
 import netproLogo from '@/assets/netpro-branding.jpg';
 import netspyImg from '@/assets/netspy-branding.png';
+import rdeLogo from '@/assets/rde-logo.png';
 
 function SectionLabel({ index, children }: { index: string; children: React.ReactNode }) {
   return (
@@ -47,11 +48,30 @@ export function Business() {
         </div>
       </section>
 
-      {/* ============== 02 · NETPRO ============== */}
+      {/* ============== 02 · RDE OPERATORS ============== */}
       <section className="border-b border-white/[0.08] px-5 sm:px-10 md:px-16 py-20 sm:py-32">
         <div className="max-w-7xl mx-auto">
           <BusinessSection
             index="02"
+            title="RDE Operators"
+            subtitle="Funnels & Lead Generation"
+            description="Optimización de embudos de venta y generación de leads para info-empresarios hispanohablantes que quieren convertir su audiencia en ingresos predecibles."
+            extendedDescription="Somos Rubén, Diego y Edu — tres operadores que nos convertimos en el equipo de crecimiento de un número limitado de clientes, con implicación real en estrategia y ejecución."
+            image={rdeLogo}
+            imageAlt="RDE Operators"
+            href="/rde"
+            internal
+            linkText="Conocer RDE"
+            features={['Diagnóstico', 'Estrategia', 'Ejecución', 'Optimización']}
+          />
+        </div>
+      </section>
+
+      {/* ============== 03 · NETPRO ============== */}
+      <section className="border-b border-white/[0.08] px-5 sm:px-10 md:px-16 py-20 sm:py-32">
+        <div className="max-w-7xl mx-auto">
+          <BusinessSection
+            index="03"
             title="Netpro Agency"
             subtitle="Digital & Growth"
             description={t('business.hero.description')}
@@ -66,15 +86,16 @@ export function Business() {
               t('business.services.growth'),
               t('business.services.social'),
             ]}
+            reverse
           />
         </div>
       </section>
 
-      {/* ============== 03 · NETSPY ============== */}
+      {/* ============== 04 · NETSPY ============== */}
       <section className="border-b border-white/[0.08] px-5 sm:px-10 md:px-16 py-20 sm:py-32">
         <div className="max-w-7xl mx-auto">
           <BusinessSection
-            index="03"
+            index="04"
             title={t('business.netspy.title')}
             subtitle="Community & Networking"
             description={t('business.netspy.description')}
@@ -88,7 +109,6 @@ export function Business() {
               href: 'https://www.instagram.com/netpro.agency/',
               text: t('business.netspy.cta') || 'Follow on Instagram',
             }}
-            reverse
           />
         </div>
       </section>
