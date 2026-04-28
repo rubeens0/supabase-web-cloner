@@ -38,8 +38,8 @@ export function Business() {
           subtitle="Digital & Growth"
           description={t('business.hero.description')}
           extendedDescription={t('business.about.p1')}
-          logo={netproLogo}
-          logoAlt="Netpro Agency Logo"
+          image={netproLogo}
+          imageAlt="Netpro Agency Branding"
           href="https://netpro.agency"
           linkText="netpro.agency"
           features={[
