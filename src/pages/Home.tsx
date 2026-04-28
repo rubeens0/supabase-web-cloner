@@ -284,7 +284,7 @@ export function Home() {
           <div className="mb-14 max-w-3xl">
             <SectionLabel index="04">{t("home.areas.title")}</SectionLabel>
             <h2 className="mt-6 font-display text-5xl sm:text-6xl md:text-7xl text-white leading-[1] tracking-tight">
-              Dos <span className="font-display-italic text-gradient-mono-italic">mundos</span> que demandan excelencia.
+              {t("home.areas.headlineA")} <span className="font-display-italic text-gradient-mono-italic">{t("home.areas.headlineB")}</span> {t("home.areas.headlineC")}
             </h2>
             <p className="mt-5 text-white/55 text-[15px] leading-relaxed">{t("home.areas.subtitle")}</p>
           </div>
