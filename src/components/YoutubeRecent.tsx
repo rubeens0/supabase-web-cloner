@@ -59,7 +59,7 @@ export function YoutubeRecent() {
 
   return (
     <section className="border-b border-white/[0.08]">
-      <div className="max-w-7xl mx-auto px-5 sm:px-10 md:px-16 py-20 sm:py-32">
+      <div className="max-w-7xl mx-auto px-5 sm:px-10 md:px-16 py-14 sm:py-20">
         <div className="flex items-end justify-between mb-14 gap-6 flex-wrap">
           <div>
             <SectionLabel index="06">YouTube</SectionLabel>
