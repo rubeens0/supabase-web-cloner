@@ -148,18 +148,18 @@ export function Home() {
             <motion.div {...fadeIn(0.1)} className="mb-8 flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-white/50">
               <span className="font-mono text-secondary">N° 01</span>
               <span className="h-px w-10 bg-white/20" />
-              <span>Piloto · Emprendedor · 2026</span>
+              <span>{t("home.hero.kicker")}</span>
             </motion.div>
 
             <motion.h1
               {...fadeIn(0.2)}
               className="font-display leading-[0.95] sm:text-7xl md:text-8xl lg:text-[140px] text-white mb-10 max-w-5xl tracking-[-0.02em] text-5xl"
             >
-              Construyendo la{" "}
-              <span className="font-display-italic text-gradient-mono-italic">mejor</span>
+              {t("home.hero.titleA")}{" "}
+              <span className="font-display-italic text-gradient-mono-italic">{t("home.hero.titleB")}</span>
               <br />
-              versión de mí{" "}
-              <span className="font-display-italic">mismo</span>
+              {t("home.hero.titleC")}{" "}
+              <span className="font-display-italic">{t("home.hero.titleD")}</span>
               <span className="text-secondary">.</span>
             </motion.h1>
 
@@ -176,7 +176,7 @@ export function Home() {
                 onClick={() => document.getElementById("about-section")?.scrollIntoView({ behavior: "smooth" })}
                 className="w-full flex items-center justify-between gap-3 bg-white/[0.04] border border-white/15 rounded-full p-1.5 pl-6 hover:border-white/30 transition-colors group"
               >
-                <span className="text-white/55 text-[14px] sm:text-[15px]">¿Quieres conocer mi historia?</span>
+                <span className="text-white/55 text-[14px] sm:text-[15px]">{t("home.hero.placeholder")}</span>
                 <span className="bg-white text-black font-medium rounded-full px-5 sm:px-6 py-3 text-sm flex items-center gap-2 group-hover:bg-black group-hover:text-white transition-colors whitespace-nowrap border border-transparent group-hover:border-white/30">
                   {t("home.hero.cta")} <ArrowDown className="w-3.5 h-3.5" />
                 </span>
@@ -187,11 +187,11 @@ export function Home() {
               <Link to={getRoute("business")} className="hover:text-white transition-colors inline-flex items-center gap-1">
                 {t("nav.business")} <ArrowUpRight className="w-3 h-3" />
               </Link>
-              <Link to="/patrocinadores" className="hover:text-white transition-colors inline-flex items-center gap-1">
+              <Link to={getRoute("sponsors")} className="hover:text-white transition-colors inline-flex items-center gap-1">
                 {t("footer.sponsors")} <ArrowUpRight className="w-3 h-3" />
               </Link>
               <Link to="/2026" className="hover:text-white transition-colors inline-flex items-center gap-1">
-                Temporada 2026 <ArrowUpRight className="w-3 h-3" />
+                {t("home.hero.season")} <ArrowUpRight className="w-3 h-3" />
               </Link>
             </motion.div>
           </div>
@@ -203,7 +203,7 @@ export function Home() {
         <div className="max-w-7xl mx-auto px-5 sm:px-10 md:px-16 py-14 sm:py-20">
           <div className="mb-10">
             <p className="font-display text-4xl sm:text-5xl md:text-6xl text-white tracking-tight leading-tight max-w-3xl">
-              <span className="font-display-italic text-gradient-mono-italic">3 líneas</span> de emprendimiento activas.
+              <span className="font-display-italic text-gradient-mono-italic">{t("home.proof.headlineA")}</span> {t("home.proof.headlineB")}
             </p>
           </div>
 
@@ -212,19 +212,19 @@ export function Home() {
               <div className="font-display text-5xl sm:text-6xl text-white mb-2 tracking-tight">
                 2024<span className="text-secondary">.</span>
               </div>
-              <p className="text-sm text-white/50">Año de inicio — built from scratch</p>
+              <p className="text-sm text-white/50">{t("home.proof.stat1.label")}</p>
             </div>
             <div>
               <div className="font-display text-5xl sm:text-6xl text-white mb-2 tracking-tight">
                 CEK<span className="text-secondary">.</span>
               </div>
-              <p className="text-sm text-white/50">Campeonato de España de Karting</p>
+              <p className="text-sm text-white/50">{t("home.proof.stat2.label")}</p>
             </div>
             <div>
               <div className="font-display text-5xl sm:text-6xl text-white mb-2 tracking-tight">
-                2<span className="text-secondary">.</span>
+                {t("home.proof.stat3.value")}<span className="text-secondary">.</span>
               </div>
-              <p className="text-sm text-white/50">Líneas de negocio activas — Netpro & Netspy</p>
+              <p className="text-sm text-white/50">{t("home.proof.stat3.label")}</p>
             </div>
           </div>
         </div>
