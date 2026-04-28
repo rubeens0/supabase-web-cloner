@@ -102,7 +102,7 @@ export function Home() {
             <motion.div {...fadeIn(0.1)} className="mb-8 flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-white/50">
               <span className="font-mono text-secondary">N° 01</span>
               <span className="h-px w-10 bg-white/20" />
-              <span>Piloto · Fundador · 2026</span>
+              <span>Piloto · Emprendedor · 2026</span>
             </motion.div>
 
             <motion.h1
@@ -276,14 +276,14 @@ export function Home() {
                 <div className="aspect-[16/10] overflow-hidden border-b border-white/10">
                   <ImageWithFallback
                     src={marketingImage}
-                    alt="Marketing Digital"
+                    alt="Emprendimiento"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                     style={{ objectPosition: "center 55%" }}
                   />
                 </div>
                 <div className="p-7">
                   <div className="flex items-center justify-between mb-4">
-                    <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-secondary">02 / Digital</span>
+                    <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-secondary">02 / Emprendimiento</span>
                     <ArrowUpRight className="w-4 h-4 text-white/30 group-hover:text-white transition-colors" />
                   </div>
                   <h3 className="font-display text-3xl mb-3 text-white">{t("home.areas.marketing.title")}</h3>

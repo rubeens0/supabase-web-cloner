@@ -66,7 +66,7 @@ const translations = {
     
     // Home - Hero
     'home.hero.title': 'Construyendo la mejor<br />versión de mí mismo',
-    'home.hero.description': 'Piloto de karting y emprendedor digital. Desde 2024, comprometido con el crecimiento personal y la excelencia en cada curva de la vida.',
+    'home.hero.description': 'Piloto de karting y emprendedor. Desde 2024, comprometido con el crecimiento personal y la excelencia en cada curva de la vida.',
     'home.hero.cta': 'Ver más',
     'home.hero.scroll': '¡Desliza!',
     
@@ -74,7 +74,7 @@ const translations = {
     'home.about.title': 'Sobre mí',
     'home.about.p1': 'Soy Rubén Muñoz, nacido el 27 de febrero de 2009 en Cáceres, Extremadura (España). Desde 2024, estoy comprometido con un camino de crecimiento personal y excelencia, construyendo la mejor versión de mí mismo tanto a nivel deportivo como emprendedor.',
     'home.about.p2': 'En el ámbito deportivo, me dedico al karting, una de las disciplinas más exigentes que existen. Actualmente compito en el Campeonato de España de Karting, enfrentando cada curva con pasión y determinación.',
-    'home.about.p3': 'Paralelamente, también he desarrollado proyectos en el mundo del marketing digital. Mi historia apenas comienza, pero estoy decidido a dejar huella.',
+    'home.about.p3': 'Paralelamente, también he desarrollado proyectos en el mundo del emprendimiento. Mi historia apenas comienza, pero estoy decidido a dejar huella.',
     'home.about.cta': 'Conecta conmigo',
     
     // Home - Areas
@@ -83,8 +83,8 @@ const translations = {
     'home.areas.karting.title': 'Karting',
     'home.areas.karting.p1': 'Competidor en el Campeonato de España de Karting. A pesar de llevar poco tiempo, he logrado un progreso notable gracias a mi constancia y disciplina.',
     'home.areas.karting.p2': 'Cada carrera es una oportunidad para superarme y demostrar que con enfoque y sacrificio, no hay límites.',
-    'home.areas.marketing.title': 'Marketing Digital',
-    'home.areas.marketing.p1': 'Emprendedor digital desde 2024. He desarrollado proyectos en redes sociales y marketing, consiguiendo escalar con esfuerzo.',
+    'home.areas.marketing.title': 'Emprendimiento',
+    'home.areas.marketing.p1': 'Emprendedor desde 2024. He desarrollado proyectos en redes sociales y marketing, consiguiendo escalar con esfuerzo.',
     'home.areas.marketing.p2': 'Aprendo de cada paso y convierto mis ideas en acciones reales, aplicando la misma disciplina que en la pista.',
     
     // Home - Stats
@@ -278,7 +278,7 @@ const translations = {
     
     // Home - Hero
     'home.hero.title': 'Building the best<br />version of myself',
-    'home.hero.description': 'Karting driver and digital entrepreneur. Since 2024, committed to personal growth and excellence at every turn of life.',
+    'home.hero.description': 'Karting driver and entrepreneur. Since 2024, committed to personal growth and excellence at every turn of life.',
     'home.hero.cta': 'View my journey',
     'home.hero.scroll': 'Scroll!',
     
@@ -286,7 +286,7 @@ const translations = {
     'home.about.title': 'About me',
     'home.about.p1': 'I am Rubén Muñoz, born on February 27, 2009 in Cáceres, Extremadura (Spain). Since 2024, I have been committed to a path of personal growth and excellence, building the best version of myself both athletically and entrepreneurially.',
     'home.about.p2': 'In the sports field, I dedicate myself to karting, one of the most demanding disciplines that exist. I currently compete in the Spanish Karting Championship, facing every turn with passion and determination.',
-    'home.about.p3': 'In parallel, I have also developed projects in the world of digital marketing. My story is just beginning, but I am determined to leave my mark.',
+    'home.about.p3': 'In parallel, I have also developed projects in the world of entrepreneurship. My story is just beginning, but I am determined to leave my mark.',
     'home.about.cta': 'Connect with me',
     
     // Home - Areas
@@ -295,8 +295,8 @@ const translations = {
     'home.areas.karting.title': 'Karting',
     'home.areas.karting.p1': 'Competitor in the Spanish Karting Championship. Despite my short time, I have made remarkable progress thanks to my perseverance and discipline.',
     'home.areas.karting.p2': 'Every race is an opportunity to improve myself and prove that with focus and sacrifice, there are no limits.',
-    'home.areas.marketing.title': 'Digital Marketing',
-    'home.areas.marketing.p1': 'Digital entrepreneur since 2024. I have developed projects in social media and marketing, managing to scale with effort.',
+    'home.areas.marketing.title': 'Entrepreneurship',
+    'home.areas.marketing.p1': 'Entrepreneur since 2024. I have developed projects in social media and marketing, managing to scale with effort.',
     'home.areas.marketing.p2': 'I learn from every step and turn my ideas into real actions, applying the same discipline as on the track.',
     
     // Home - Stats
