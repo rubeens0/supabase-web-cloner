@@ -1,217 +1,161 @@
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
-import { useState, useEffect, useMemo, useCallback } from 'react';
-import logoWhite from '@/assets/logo-white-optimized.png';
-import navBackground from '@/assets/figma/placeholder.svg';
+import { useState, useEffect, useCallback } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
-import { Globe, Menu, X } from 'lucide-react';
-import { getPerformanceSettings, PREMIUM_ANIMATIONS } from '../utils/performanceDetector';
+import { Menu, X, ArrowRight } from 'lucide-react';
 
 export function Navigation() {
   const location = useLocation();
-  const navigate = useNavigate();
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [bannerVisible, setBannerVisible] = useState(true);
   const { language, setLanguage, t, getRoute } = useLanguage();
-  const perfSettings = getPerformanceSettings();
-  
+
   useEffect(() => {
-    const handleScroll = () => {
-      const isScrolled = window.scrollY > 20;
-      setScrolled(isScrolled);
-    };
-    
+    const handleScroll = () => setScrolled(window.scrollY > 8);
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-  
+
   useEffect(() => {
-    // Close mobile menu on route change
     setMobileMenuOpen(false);
   }, [location.pathname]);
 
   useEffect(() => {
-    // Prevent scroll when mobile menu is open
-    if (mobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
+    document.body.style.overflow = mobileMenuOpen ? 'hidden' : 'unset';
+    return () => { document.body.style.overflow = 'unset'; };
   }, [mobileMenuOpen]);
-  
-  const isActive = useCallback((path: string) => {
-    return location.pathname === path;
-  }, [location.pathname]);
 
+  const isActive = useCallback((path: string) => location.pathname === path, [location.pathname]);
   const toggleLanguage = useCallback(() => {
     setLanguage(language === 'es' ? 'en' : 'es');
   }, [language, setLanguage]);
 
-  const navClass = useMemo(() => 
-    `fixed top-4 left-4 right-4 z-50 transition-all duration-300 rounded-2xl ${
-      scrolled 
-        ? 'backdrop-blur-xl bg-black/20 border border-white/10' 
-        : 'backdrop-blur-md bg-black/10 border border-white/5'
-    }`, [scrolled]
-  );
-  
-  // Optimized backdrop styles
-  const backdropStyle = useMemo(() => {
-    if (perfSettings.disableBlur) {
-      return {
-        backgroundColor: scrolled ? 'rgba(0, 0, 0, 0.9)' : 'rgba(0, 0, 0, 0.8)',
-      };
-    }
-    return {
-      backdropFilter: `blur(var(--blur-amount, 20px)) saturate(var(--saturate-amount, 180%))`,
-      WebkitBackdropFilter: `blur(var(--blur-amount, 20px)) saturate(var(--saturate-amount, 180%))`,
-    };
-  }, [perfSettings.disableBlur, scrolled]);
+  const navItems = [
+    { to: getRoute('home'), label: t('nav.home'), match: [getRoute('home'), '/'] },
+    { to: getRoute('blog'), label: t('nav.blog'), match: [getRoute('blog')] },
+    { to: getRoute('business'), label: t('nav.business'), match: [getRoute('business')] },
+    { to: '/2026', label: '2026', match: ['/2026'] },
+    { to: getRoute('contact'), label: t('nav.contact'), match: [getRoute('contact')] },
+  ];
 
   return (
     <>
-      <motion.nav 
-        initial={{ y: -100, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-        className={navClass}
-        style={backdropStyle}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4">
-          <div className="flex items-center justify-between">
-            <Link to="/" className="flex items-center gap-2 sm:gap-3 group">
-              <motion.div
-                whileHover={{ scale: 1.1, rotate: 360 }}
-                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                className="relative w-5 h-5 sm:w-[26px] sm:h-[26px]"
-              >
-                <img 
-                  src={logoWhite} 
-                  alt="Rubén Muñoz Logo" 
-                  className="w-full h-full object-contain brightness-0 invert"
-                />
-              </motion.div>
-              <span className="text-white text-sm sm:text-base group-hover:text-white/80 transition-colors">
-                Rubén Muñoz
-              </span>
-            </Link>
-            
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-6 lg:gap-8">
-              <Link
-                to={getRoute('home')}
-                className={`relative text-white transition-colors hover:text-white/80 ${
-                  isActive(getRoute('home')) || isActive('/') ? 'text-white' : 'text-white/60'
-                }`}
-              >
-                {t('nav.home')}
-                {(isActive(getRoute('home')) || isActive('/')) && (
-                  <motion.div
-                    layoutId="nav-indicator"
-                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-red-600 to-black"
-                  />
-                )}
-              </Link>
-              <Link
-                to={getRoute('blog')}
-                className={`relative text-white transition-colors hover:text-white/80 ${
-                  isActive(getRoute('blog')) ? 'text-white' : 'text-white/60'
-                }`}
-              >
-                {t('nav.blog')}
-                {isActive(getRoute('blog')) && (
-                  <motion.div
-                    layoutId="nav-indicator"
-                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-red-600 to-black"
-                  />
-                )}
-              </Link>
-              <Link
-                to={getRoute('business')}
-                className={`relative text-white transition-colors hover:text-white/80 ${
-                  isActive(getRoute('business')) ? 'text-white' : 'text-white/60'
-                }`}
-              >
-                {t('nav.business')}
-                {isActive(getRoute('business')) && (
-                  <motion.div
-                    layoutId="nav-indicator"
-                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-red-600 to-black"
-                  />
-                )}
-              </Link>
+      {/* Top announcement bar (Slash style) */}
+      <AnimatePresence>
+        {bannerVisible && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed top-0 left-0 right-0 z-[60] bg-gradient-to-r from-neutral-900 via-neutral-800 to-neutral-900 border-b border-white/5 overflow-hidden"
+          >
+            <div className="max-w-7xl mx-auto px-4 sm:px-8 py-2.5 flex items-center justify-between gap-4 text-[12px] sm:text-[13px]">
+              <div className="flex items-center gap-3 min-w-0 flex-1">
+                <span className="hidden sm:inline-flex h-1.5 w-1.5 rounded-full bg-secondary animate-pulse shrink-0" />
+                <span className="text-white/80 truncate">
+                  CEK 2026 — <span className="text-white/50">Temporada en marcha</span>
+                </span>
+              </div>
               <Link
                 to="/2026"
-                className={`relative text-white transition-colors hover:text-white/80 ${
-                  isActive('/2026') ? 'text-white' : 'text-white/60'
-                }`}
+                className="hidden sm:inline-flex items-center gap-1.5 text-white hover:text-secondary transition-colors whitespace-nowrap shrink-0"
               >
-                2026
-                {isActive('/2026') && (
-                  <motion.div
-                    layoutId="nav-indicator"
-                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-white"
-                    transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                  />
-                )}
+                Learn more <ArrowRight className="w-3.5 h-3.5" />
               </Link>
-              <Link
-                to={getRoute('contact')}
-                className={`relative text-white transition-colors hover:text-white/80 ${
-                  isActive(getRoute('contact')) ? 'text-white' : 'text-white/60'
-                }`}
+              <button
+                onClick={() => setBannerVisible(false)}
+                aria-label="Close banner"
+                className="text-white/40 hover:text-white transition-colors shrink-0"
               >
-                {t('nav.contact')}
-                {isActive(getRoute('contact')) && (
-                  <motion.div
-                    layoutId="nav-indicator"
-                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-white"
-                    transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                  />
-                )}
-              </Link>
-              
-              {/* Language Toggle */}
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={toggleLanguage}
-                className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 border border-white/20 text-white hover:bg-white/20 transition-colors text-sm"
-              >
-                <span className="text-base">{language === 'es' ? '🇪🇸' : '🇬🇧'}</span>
-                <span className="uppercase">{language}</span>
-              </motion.button>
+                <X className="w-3.5 h-3.5" />
+              </button>
             </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
-            {/* Mobile Menu Button */}
-            <div className="flex md:hidden items-center gap-3">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={toggleLanguage}
-                className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-full bg-white/10 border border-white/20 text-white hover:bg-white/20 transition-colors text-xs"
-              >
-                <span className="text-sm">{language === 'es' ? '🇪🇸' : '🇬🇧'}</span>
-                <span className="uppercase">{language}</span>
-              </motion.button>
-              
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="p-2 text-white"
-              >
-                {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-              </motion.button>
-            </div>
+      {/* Main navigation */}
+      <motion.nav
+        initial={{ y: -20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+        className={`fixed left-0 right-0 z-50 transition-all duration-300 ${
+          bannerVisible ? 'top-[40px] sm:top-[42px]' : 'top-0'
+        } ${
+          scrolled
+            ? 'bg-black/85 backdrop-blur-xl border-b border-white/[0.06]'
+            : 'bg-transparent border-b border-transparent'
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-8 py-4 sm:py-5 flex items-center justify-between">
+          {/* Logo — serif wordmark */}
+          <Link to="/" className="group flex items-baseline gap-1.5">
+            <span className="font-display text-2xl sm:text-3xl text-white leading-none tracking-tight group-hover:text-white/80 transition-colors">
+              Rubén
+            </span>
+            <span className="font-display-italic text-2xl sm:text-3xl text-secondary leading-none">
+              Muñoz
+            </span>
+          </Link>
+
+          {/* Desktop nav links — minimal underline */}
+          <div className="hidden md:flex items-center gap-8">
+            {navItems.map((item) => {
+              const active = item.match.some((p) => isActive(p));
+              return (
+                <Link
+                  key={item.to}
+                  to={item.to}
+                  className={`relative text-[14px] transition-colors ${
+                    active ? 'text-white' : 'text-white/55 hover:text-white'
+                  }`}
+                >
+                  {item.label}
+                  {active && (
+                    <motion.span
+                      layoutId="nav-underline"
+                      className="absolute -bottom-1.5 left-0 right-0 h-px bg-secondary"
+                    />
+                  )}
+                </Link>
+              );
+            })}
+          </div>
+
+          {/* Right cluster */}
+          <div className="flex items-center gap-2 sm:gap-3">
+            <button
+              onClick={toggleLanguage}
+              className="hidden sm:inline-flex items-center gap-1.5 text-[12px] text-white/60 hover:text-white transition-colors uppercase tracking-wider px-2 py-1"
+            >
+              {language}
+              <span className="text-white/30">/</span>
+              <span className="text-white/30">{language === 'es' ? 'en' : 'es'}</span>
+            </button>
+
+            <Link
+              to={getRoute('contact')}
+              className="hidden md:inline-flex items-center gap-2 bg-white text-black text-[13px] font-medium rounded-full px-4 py-2 hover:bg-secondary hover:text-white transition-colors"
+            >
+              {t('nav.contact')}
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
+
+            {/* Mobile hamburger */}
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="md:hidden p-2 -mr-2 text-white"
+              aria-label="Menu"
+            >
+              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
           </div>
         </div>
       </motion.nav>
 
-      {/* Mobile Menu */}
+      {/* Mobile menu */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
@@ -221,65 +165,54 @@ export function Navigation() {
             transition={{ duration: 0.2 }}
             className="fixed inset-0 z-40 md:hidden bg-black"
           >
-            <div className="h-full flex items-center justify-center px-8">
-              {/* Menu content */}
-              <motion.div 
-                className="w-full max-w-md space-y-1"
+            <div className="h-full flex flex-col justify-between px-6 pt-28 pb-12">
+              <motion.div
+                className="flex flex-col gap-1"
                 initial="hidden"
                 animate="visible"
-                exit="hidden"
                 variants={{
-                  visible: {
-                    transition: {
-                      staggerChildren: 0.05,
-                      delayChildren: 0.1,
-                    }
-                  },
-                  hidden: {
-                    transition: {
-                      staggerChildren: 0.03,
-                      staggerDirection: -1,
-                    }
-                  }
+                  visible: { transition: { staggerChildren: 0.04, delayChildren: 0.1 } },
+                  hidden: {},
                 }}
               >
-                {[
-                  { to: getRoute('home'), label: t('nav.home'), active: isActive(getRoute('home')) || isActive('/') },
-                  { to: getRoute('blog'), label: t('nav.blog'), active: isActive(getRoute('blog')) },
-                  { to: getRoute('business'), label: t('nav.business'), active: isActive(getRoute('business')) },
-                  { to: '/2026', label: '2026', active: isActive('/2026') },
-                  { to: getRoute('contact'), label: t('nav.contact'), active: isActive(getRoute('contact')) },
-                ].map((item) => (
-                  <motion.div
-                    key={item.to}
-                    variants={{
-                      hidden: { 
-                        opacity: 0, 
-                        y: 20,
-                      },
-                      visible: { 
-                        opacity: 1, 
-                        y: 0,
-                        transition: {
-                          duration: 0.3,
-                          ease: [0.22, 1, 0.36, 1]
-                        }
-                      }
-                    }}
-                  >
-                    <Link
-                      to={item.to}
-                      className={`block py-4 text-center text-2xl transition-colors ${
-                        item.active
-                          ? 'text-white' 
-                          : 'text-white/40 hover:text-white/80'
-                      }`}
+                {navItems.map((item) => {
+                  const active = item.match.some((p) => isActive(p));
+                  return (
+                    <motion.div
+                      key={item.to}
+                      variants={{
+                        hidden: { opacity: 0, y: 16 },
+                        visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] } },
+                      }}
                     >
-                      {item.label}
-                    </Link>
-                  </motion.div>
-                ))}
+                      <Link
+                        to={item.to}
+                        className={`block py-4 border-b border-white/[0.06] font-display text-4xl tracking-tight transition-colors ${
+                          active ? 'text-white' : 'text-white/40'
+                        }`}
+                      >
+                        {item.label}
+                        {active && <span className="text-secondary">.</span>}
+                      </Link>
+                    </motion.div>
+                  );
+                })}
               </motion.div>
+
+              <div className="flex items-center justify-between pt-6 border-t border-white/10">
+                <button
+                  onClick={toggleLanguage}
+                  className="text-sm text-white/60 uppercase tracking-widest"
+                >
+                  {language === 'es' ? 'EN' : 'ES'}
+                </button>
+                <Link
+                  to={getRoute('contact')}
+                  className="inline-flex items-center gap-2 bg-white text-black text-sm font-medium rounded-full px-5 py-2.5"
+                >
+                  {t('nav.contact')} <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
             </div>
           </motion.div>
         )}
