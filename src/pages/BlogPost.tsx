@@ -520,81 +520,86 @@ Many thanks to all the people involved.`,
         ogType={seoConfig.ogType}
         structuredData={seoConfig.structuredData}
       />
-      <div className="min-h-screen bg-black pt-28 pb-16 px-4 sm:px-6">
-        <article className="max-w-4xl mx-auto">
-          {/* Back Button */}
+      <div className="min-h-screen bg-black text-white pt-32 sm:pt-40 pb-20">
+        <article className="max-w-4xl mx-auto px-5 sm:px-10 md:px-16">
+          {/* Back */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
+            initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            className="mb-8"
+            transition={{ duration: 0.5 }}
+            className="mb-10"
           >
             <Link
               to="/blog"
-              className="inline-flex items-center gap-2 text-white/60 hover:text-white transition-colors group"
+              className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] text-white/50 hover:text-white transition-colors group"
             >
-              <ArrowLeft className="w-5 h-5 transition-transform group-hover:-translate-x-1" />
+              <ArrowLeft className="w-3.5 h-3.5 transition-transform group-hover:-translate-x-1" />
               {t('blog.backToBlog')}
             </Link>
           </motion.div>
 
-          {/* Header */}
-          <motion.header
+          {/* Editorial label */}
+          <motion.div
             {...fadeIn}
-            className="mb-8"
+            className="flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-white/40 mb-6"
           >
-            {/* Category Badge */}
-            <div className="mb-4">
-              <span className="px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-sm">
-                {post.category}
-              </span>
-            </div>
+            <span className="font-mono text-white">N° {String(blogPosts.findIndex(p => p.id === post.id) + 1).padStart(2, '0')}</span>
+            <span className="h-px w-8 bg-white/15" />
+            <span>{post.category}</span>
+          </motion.div>
 
-            {/* Title */}
-            <h1 className="text-white mb-6">
-              {post.title}
-            </h1>
+          {/* Title */}
+          <motion.h1
+            {...fadeIn}
+            className="font-display text-4xl sm:text-6xl md:text-7xl text-white leading-[1.02] tracking-[-0.02em] mb-8"
+          >
+            {post.title}
+          </motion.h1>
 
-            {/* Meta Info & Share */}
-            <div className="flex flex-wrap items-center justify-between gap-6">
-              <div className="flex items-center gap-6 text-white/50">
-                <div className="flex items-center gap-2">
-                  <Calendar className="w-5 h-5" />
-                  <time dateTime={post.date}>
-                    {new Date(post.date).toLocaleDateString(
-                      t('blog.locale'),
-                      { year: 'numeric', month: 'long', day: 'numeric' }
-                    )}
-                  </time>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Clock className="w-5 h-5" />
-                  <span>{post.readTime}</span>
-                </div>
+          {/* Excerpt */}
+          <motion.p
+            {...fadeIn}
+            className="text-white/65 text-lg sm:text-xl leading-relaxed max-w-3xl mb-10 font-display-italic"
+          >
+            {post.excerpt}
+          </motion.p>
+
+          {/* Meta + share */}
+          <div className="flex flex-wrap items-center justify-between gap-4 pb-8 mb-10 border-b border-white/10">
+            <div className="flex items-center gap-6 text-white/50 text-sm">
+              <div className="flex items-center gap-2">
+                <Calendar className="w-4 h-4" />
+                <time dateTime={post.date}>
+                  {new Date(post.date).toLocaleDateString(t('blog.locale'), {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                  })}
+                </time>
               </div>
-
-              <button
-                onClick={handleShare}
-                className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 transition-all text-white/60 hover:text-white text-sm"
-              >
-                <Share2 className="w-4 h-4" />
-                <span>{language === 'es' ? 'Copiar enlace' : 'Copy link'}</span>
-              </button>
+              <div className="flex items-center gap-2">
+                <Clock className="w-4 h-4" />
+                <span>{post.readTime}</span>
+              </div>
             </div>
-          </motion.header>
+
+            <button
+              onClick={handleShare}
+              className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/25 transition-all text-white/65 hover:text-white text-sm"
+            >
+              <Share2 className="w-4 h-4" />
+              <span>{language === 'es' ? 'Copiar enlace' : 'Copy link'}</span>
+            </button>
+          </div>
 
           {/* Featured Image */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
+            initial={{ opacity: 0, scale: 0.97 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="mb-12 rounded-2xl overflow-hidden border border-white/10"
+            className="mb-14 rounded-2xl overflow-hidden border border-white/10"
           >
-            <img
-              src={post.image}
-              alt={post.title}
-              className="w-full h-auto object-cover"
-            />
+            <img src={post.image} alt={post.title} className="w-full h-auto object-cover" />
           </motion.div>
 
           {/* Content */}

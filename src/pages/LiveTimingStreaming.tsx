@@ -37,7 +37,7 @@ export function LiveTimingStreaming() {
   }, [expandedView]);
 
   return (
-    <div className="min-h-screen bg-black text-white pt-28 md:pt-32 pb-12 px-4 md:px-6">
+    <div className="min-h-screen bg-black text-white pt-32 md:pt-40 pb-12 px-5 md:px-10">
       <SEO 
         title={language === 'es' 
           ? 'Directo CEK - Live Timing y Streaming | Rubén Muñoz' 
@@ -51,17 +51,23 @@ export function LiveTimingStreaming() {
       />
       
       <div className="max-w-7xl mx-auto">
-        {/* Header */}
+        {/* Editorial Header */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-8 md:mb-12"
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          className="mb-10 md:mb-14"
         >
-          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-3 md:mb-4 bg-gradient-to-b from-white to-white/50 bg-clip-text text-transparent px-4">
-            {language === 'es' ? 'Directo CEK 2026' : 'CEK 2026 Live'}
+          <div className="flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-white/40 mb-6">
+            <span className="font-mono text-white">N° 01</span>
+            <span className="h-px w-8 bg-white/15" />
+            <span>{language === 'es' ? 'Directo' : 'Live'}</span>
+          </div>
+          <h1 className="font-display leading-[0.95] text-5xl sm:text-7xl md:text-8xl lg:text-[120px] text-white tracking-[-0.02em]">
+            {language === 'es' ? 'Directo' : 'Live'} <span className="font-display-italic text-gradient-mono-italic">CEK 2026</span>
+            <span className="text-white/40">.</span>
           </h1>
-          <p className="text-white/60 max-w-2xl mx-auto text-base md:text-lg px-4">
+          <p className="mt-8 text-white/60 max-w-2xl text-base md:text-lg leading-relaxed">
             {language === 'es' 
               ? 'Sigue en tiempo real las sesiones del Campeonato de España de Karting • Domingo, Carreras Finales • Categoría Senior'
               : 'Follow the Spanish Karting Championship sessions in real time • Sunday, Final Races • Senior Category'}
