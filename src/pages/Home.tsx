@@ -4,6 +4,7 @@ import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 import { ArrowRight, ArrowDown, ArrowUpRight, Flag, Calendar } from "lucide-react";
 import { motion } from "motion/react";
 import { AnimatedLogo } from "../components/AnimatedLogo";
+import { YoutubeRecent } from "../components/YoutubeRecent";
 import { useLanguage } from "../contexts/LanguageContext";
 import heroImage from "@/assets/hero-bg.webp";
 import aboutImage from "@/assets/about-image.png";
