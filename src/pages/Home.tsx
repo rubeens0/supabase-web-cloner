@@ -67,6 +67,8 @@ export function Home() {
                 alt="Rubén Muñoz Logo"
                 className="w-full h-full object-contain drop-shadow-2xl brightness-0 invert"
                 loading="eager"
+                fetchPriority="high"
+                decoding="async"
               />
             ) : (
               <motion.img
@@ -77,6 +79,8 @@ export function Home() {
                 className="w-full h-full object-contain drop-shadow-2xl brightness-0 invert"
                 style={{ willChange: "transform" }}
                 loading="eager"
+                fetchPriority="high"
+                decoding="async"
               />
             )}
           </motion.div>
