@@ -5,7 +5,7 @@ import { ArrowRight, ArrowDown, ArrowUpRight, Flag, Calendar } from "lucide-reac
 import { motion } from "motion/react";
 import { AnimatedLogo } from "../components/AnimatedLogo";
 import { useLanguage } from "../contexts/LanguageContext";
-import heroImage from "@/assets/hero-bg.jpg";
+import heroImage from "@/assets/hero-bg.webp";
 import aboutImage from "@/assets/about-image.png";
 import kartingImage from "@/assets/karting-image.webp";
 import marketingImage from "@/assets/marketing-image.webp";
