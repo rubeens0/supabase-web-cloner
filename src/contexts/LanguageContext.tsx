@@ -162,7 +162,7 @@ const translations = {
     'business.services.social': 'Redes Sociales',
     'business.services.social.desc':
       'Gestión estratégica de comunidades y creación de contenido de alto impacto.',
-    'business.services.growth': 'Publicidad & Growth',
+    'business.services.growth': 'MOTORSPORT & GROWTH',
     'business.services.growth.desc':
       'Campañas en Meta Ads (Facebook e Instagram) orientadas a resultados.',
     'business.services.web': 'Desarrollo Web',
