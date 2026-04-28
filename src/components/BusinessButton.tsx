@@ -70,7 +70,7 @@ export function BusinessButton() {
         pointerEvents: isNearFooter ? 'none' : 'auto'
       }}
       transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-      className="fixed bottom-4 sm:bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 z-50 flex flex-col sm:flex-row gap-2 sm:gap-3 md:gap-4 items-center w-max max-w-[calc(100vw-2rem)]"
+      className="fixed bottom-4 sm:bottom-6 md:bottom-8 left-0 right-0 z-50 flex flex-col sm:flex-row gap-2 sm:gap-3 md:gap-4 items-center justify-center w-full px-4"
     >
       {/* Contact Button */}
       <motion.button
