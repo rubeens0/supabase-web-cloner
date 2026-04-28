@@ -68,89 +68,83 @@ export function Dossier() {
   const versionInfo = getVersionInfo();
 
   return (
-    <div className="min-h-screen bg-black pt-20">
-      {/* Header with Version Badge */}
-      <section className="py-12 sm:py-16 px-4 sm:px-6 border-b border-white/10 relative overflow-hidden">
-        {/* Background Image */}
+    <div className="min-h-screen bg-black text-white">
+      {/* ============== 01 · HEADER ============== */}
+      <section className="relative pt-32 sm:pt-40 pb-16 sm:pb-24 border-b border-white/[0.08] overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <img 
-            src={kartImage2} 
-            alt="Karting background" 
-            className="w-full h-full object-cover opacity-50"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/60 to-black" />
+          <img src={kartImage2} alt="Karting background" className="w-full h-full object-cover opacity-30" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black" />
         </div>
-        
-        <div className="max-w-6xl mx-auto relative z-10">
+
+        <div className="max-w-6xl mx-auto px-5 sm:px-10 md:px-16 relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="text-center"
+            transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+            className="flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-white/40"
           >
-            <AnimatedLogo size={80} className="mx-auto mb-6" />
-            
-            {/* Version Badge */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="inline-flex items-center gap-2 px-6 py-3 mb-6 bg-white/5 backdrop-blur-xl border border-white/20 rounded-full"
-            >
-              <versionInfo.icon className="w-4 h-4 text-white" />
-              <span className="text-white/90 text-sm font-medium">
-                {versionInfo.label}
-              </span>
-            </motion.div>
+            <span className="font-mono text-white">N° 01</span>
+            <span className="h-px w-8 bg-white/15" />
+            <versionInfo.icon className="w-3.5 h-3.5" />
+            <span>{versionInfo.label}</span>
+          </motion.div>
 
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-white mb-4"
-            >
-              {language === 'es' ? 'Dossier de Patrocinio' : 'Sponsorship Dossier'}
-            </motion.h1>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="text-white/60 max-w-2xl mx-auto"
-            >
-              {language === 'es' 
-                ? 'Rubén Muñoz - Piloto de Karting & Especialista en Marketing Digital'
-                : 'Rubén Muñoz - Karting Driver & Digital Marketing Specialist'}
-            </motion.p>
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            className="mt-8 font-display leading-[0.95] text-5xl sm:text-7xl md:text-8xl lg:text-[120px] text-white tracking-[-0.02em] max-w-5xl"
+          >
+            {language === 'es' ? (
+              <>
+                Dossier de <span className="font-display-italic text-gradient-mono-italic">Patrocinio</span>
+                <span className="text-white/40">.</span>
+              </>
+            ) : (
+              <>
+                Sponsorship <span className="font-display-italic text-gradient-mono-italic">Dossier</span>
+                <span className="text-white/40">.</span>
+              </>
+            )}
+          </motion.h1>
 
-            {/* Botón para acceder a la web principal */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-              className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4"
-            >
-              <Link to={getRoute('/')}>
-                <Button
-                  className="group relative px-8 py-6 bg-gradient-to-r from-white/90 to-white/90 hover:from-white hover:to-white text-white hover:text-black border-none shadow-lg shadow-black/20 hover:shadow-black/40 transition-all duration-300"
-                >
-                  <Globe className="w-5 h-5 mr-2 group-hover:rotate-12 group-hover:text-black transition-all duration-300" />
-                  {language === 'es' ? 'Visitar Página Web' : 'Visit Website'}
-                  <ChevronRight className="w-5 h-5 ml-2 group-hover:translate-x-1 group-hover:text-black transition-all duration-300" />
-                </Button>
-              </Link>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            className="mt-8 text-white/60 text-base sm:text-lg max-w-2xl leading-relaxed"
+          >
+            {language === 'es'
+              ? 'Rubén Muñoz - Piloto de Karting & Especialista en Marketing Digital'
+              : 'Rubén Muñoz - Karting Driver & Digital Marketing Specialist'}
+          </motion.p>
 
-              <Button
-                onClick={() => {
-                  const aboutSection = document.querySelector('section.py-12');
-                  aboutSection?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }}
-                className="group relative px-8 py-6 bg-white/10 backdrop-blur-xl border border-white/20 hover:bg-white hover:border-white text-white hover:text-black shadow-lg shadow-black/10 hover:shadow-black/30 transition-all duration-300"
-              >
-                <FileText className="w-5 h-5 mr-2 group-hover:scale-110 group-hover:text-black transition-all duration-300" />
-                {language === 'es' ? 'Seguir Viendo el Dossier' : 'Continue Viewing Dossier'}
-                <ChevronRight className="w-5 h-5 ml-2 group-hover:translate-x-1 group-hover:text-black transition-all duration-300" />
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            className="mt-10 flex flex-col sm:flex-row gap-3"
+          >
+            <Link to={getRoute('/')}>
+              <Button className="rounded-full h-12 px-7 bg-white text-black hover:bg-white/90 gap-2">
+                <Globe className="w-4 h-4" />
+                {language === 'es' ? 'Visitar Página Web' : 'Visit Website'}
+                <ChevronRight className="w-4 h-4" />
               </Button>
-            </motion.div>
+            </Link>
+
+            <Button
+              variant="outline"
+              onClick={() => {
+                const aboutSection = document.querySelector('section.py-12');
+                aboutSection?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }}
+              className="rounded-full h-12 px-7 border-white/20 bg-transparent text-white hover:bg-white hover:text-black hover:border-white gap-2"
+            >
+              <FileText className="w-4 h-4" />
+              {language === 'es' ? 'Seguir Viendo el Dossier' : 'Continue Viewing Dossier'}
+              <ChevronRight className="w-4 h-4" />
+            </Button>
           </motion.div>
         </div>
       </section>
