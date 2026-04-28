@@ -70,7 +70,7 @@ export function Business() {
           ]}
           color="purple"
           secondaryLink={{
-            href: "https://www.netspy.es/?utm_source=rubenweb",
+            href: "https://www.instagram.com/netpro.agency/",
             text: t('business.netspy.cta') || "Follow on Instagram"
           }}
         />
