@@ -1,5 +1,5 @@
 import testRecasImg from '@/assets/test-recas-2026.jpg';
-import albroksaImg from '@/assets/figma/placeholder.svg';
+import albroksaImg from '@/assets/albroksa-patrocinio.jpeg';
 import netproImg from '@/assets/figma/placeholder.svg';
 import netspyImg from '@/assets/figma/placeholder.svg';
 import cekZaragozaImg from '@/assets/figma/placeholder.svg';
