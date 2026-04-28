@@ -1,10 +1,11 @@
 import { motion } from 'motion/react';
 import { useLanguage } from '../contexts/LanguageContext';
-import { Trophy, Users, Sparkles, Mail, X, ArrowUpRight, ArrowRight } from 'lucide-react';
+import { Trophy, Users, Sparkles, Mail, X, ArrowUpRight, ArrowRight, ZoomIn, ZoomOut, RotateCcw, Download, Maximize2 } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Link } from 'react-router-dom';
 import { SEO } from '../components/SEO';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import { AnimatePresence } from 'motion/react';
 import heroImage from '@/assets/sponsors-event.png';
 
 import sponsorsImage from '@/assets/banner-patrocinadores-2026.png';
@@ -22,6 +23,54 @@ function SectionLabel({ index, children }: { index: string; children: React.Reac
 export function Sponsors() {
   const { t, language, getRoute } = useLanguage();
   const [showSponsorsLightbox, setShowSponsorsLightbox] = useState(false);
+  const [zoom, setZoom] = useState(1);
+  const [offset, setOffset] = useState({ x: 0, y: 0 });
+  const dragRef = useRef<{ x: number; y: number } | null>(null);
+
+  const resetView = () => {
+    setZoom(1);
+    setOffset({ x: 0, y: 0 });
+  };
+
+  const closeLightbox = () => {
+    setShowSponsorsLightbox(false);
+    resetView();
+  };
+
+  useEffect(() => {
+    if (!showSponsorsLightbox) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === '+' || e.key === '=') setZoom((z) => Math.min(z + 0.25, 4));
+      if (e.key === '-') setZoom((z) => Math.max(z - 0.25, 1));
+      if (e.key === '0') resetView();
+    };
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', onKey);
+    return () => {
+      document.body.style.overflow = '';
+      window.removeEventListener('keydown', onKey);
+    };
+  }, [showSponsorsLightbox]);
+
+  const handleWheel = (e: React.WheelEvent) => {
+    e.preventDefault();
+    const delta = e.deltaY > 0 ? -0.15 : 0.15;
+    setZoom((z) => Math.min(Math.max(z + delta, 1), 4));
+  };
+
+  const handlePointerDown = (e: React.PointerEvent) => {
+    if (zoom <= 1) return;
+    (e.target as HTMLElement).setPointerCapture(e.pointerId);
+    dragRef.current = { x: e.clientX - offset.x, y: e.clientY - offset.y };
+  };
+  const handlePointerMove = (e: React.PointerEvent) => {
+    if (!dragRef.current) return;
+    setOffset({ x: e.clientX - dragRef.current.x, y: e.clientY - dragRef.current.y });
+  };
+  const handlePointerUp = () => {
+    dragRef.current = null;
+  };
 
   const fadeIn = (delay = 0) => ({
     initial: { opacity: 0, y: 16 },
@@ -284,29 +333,124 @@ export function Sponsors() {
         </div>
       </section>
 
-      {/* Lightbox */}
-      {showSponsorsLightbox && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          onClick={() => setShowSponsorsLightbox(false)}
-          className="fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex items-center justify-center p-4"
-        >
-          <button
-            onClick={() => setShowSponsorsLightbox(false)}
-            className="absolute top-4 right-4 p-2 bg-white/10 hover:bg-white/20 border border-white/20 rounded-full transition-all"
+      {/* Lightbox — Editorial viewer */}
+      <AnimatePresence>
+        {showSponsorsLightbox && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-xl flex flex-col"
+            style={{
+              backgroundImage:
+                'radial-gradient(circle at 1px 1px, rgba(255,255,255,0.06) 1px, transparent 0)',
+              backgroundSize: '24px 24px',
+            }}
           >
-            <X className="w-6 h-6 text-white" />
-          </button>
-          <img
-            src={sponsorsImage}
-            alt={language === 'es' ? 'Patrocinadores 2026 - Rubén Muñoz' : 'Sponsors 2026 - Rubén Muñoz'}
-            className="max-w-full max-h-[90vh] object-contain rounded-2xl"
-            onClick={(e) => e.stopPropagation()}
-          />
-        </motion.div>
-      )}
+            {/* Top bar */}
+            <div className="relative z-10 flex items-center justify-between px-4 sm:px-8 py-4 border-b border-white/10 bg-black/40 backdrop-blur-md">
+              <div className="flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-white/50">
+                <span className="font-mono text-white">N° 05</span>
+                <span className="h-px w-8 bg-white/20" />
+                <span className="hidden sm:inline">{language === 'es' ? 'Patrocinadores · 2026' : 'Sponsors · 2026'}</span>
+              </div>
+              <button
+                onClick={closeLightbox}
+                aria-label="Close"
+                className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/15 hover:border-white/40 hover:bg-white/5 transition-colors text-white/80 text-xs"
+              >
+                <span className="hidden sm:inline">ESC</span>
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+
+            {/* Image stage */}
+            <div
+              className="relative flex-1 overflow-hidden flex items-center justify-center select-none"
+              onClick={closeLightbox}
+              onWheel={handleWheel}
+            >
+              <motion.img
+                key="sponsors-img"
+                src={sponsorsImage}
+                alt={language === 'es' ? 'Patrocinadores 2026 - Rubén Muñoz' : 'Sponsors 2026 - Rubén Muñoz'}
+                draggable={false}
+                onClick={(e) => e.stopPropagation()}
+                onPointerDown={handlePointerDown}
+                onPointerMove={handlePointerMove}
+                onPointerUp={handlePointerUp}
+                onPointerCancel={handlePointerUp}
+                initial={{ scale: 0.96, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.96, opacity: 0 }}
+                transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                style={{
+                  transform: `translate(${offset.x}px, ${offset.y}px) scale(${zoom})`,
+                  transition: dragRef.current ? 'none' : 'transform 0.2s ease-out',
+                  cursor: zoom > 1 ? (dragRef.current ? 'grabbing' : 'grab') : 'zoom-in',
+                  maxWidth: '92vw',
+                  maxHeight: 'calc(100vh - 180px)',
+                }}
+                className="object-contain rounded-xl shadow-[0_30px_120px_-20px_rgba(0,0,0,0.9)]"
+              />
+            </div>
+
+            {/* Bottom toolbar */}
+            <div className="relative z-10 flex items-center justify-center gap-2 px-4 py-4 border-t border-white/10 bg-black/40 backdrop-blur-md">
+              <div className="flex items-center gap-1 p-1 bg-white/5 border border-white/10 rounded-full">
+                <button
+                  onClick={() => setZoom((z) => Math.max(z - 0.25, 1))}
+                  disabled={zoom <= 1}
+                  className="p-2.5 rounded-full hover:bg-white/10 text-white/80 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+                  aria-label="Zoom out"
+                >
+                  <ZoomOut className="w-4 h-4" />
+                </button>
+                <div className="px-3 font-mono text-[11px] text-white/70 tabular-nums min-w-[52px] text-center">
+                  {Math.round(zoom * 100)}%
+                </div>
+                <button
+                  onClick={() => setZoom((z) => Math.min(z + 0.25, 4))}
+                  disabled={zoom >= 4}
+                  className="p-2.5 rounded-full hover:bg-white/10 text-white/80 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+                  aria-label="Zoom in"
+                >
+                  <ZoomIn className="w-4 h-4" />
+                </button>
+              </div>
+
+              <button
+                onClick={resetView}
+                className="p-2.5 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 text-white/80 transition-colors"
+                aria-label="Reset"
+                title={language === 'es' ? 'Restablecer' : 'Reset'}
+              >
+                <RotateCcw className="w-4 h-4" />
+              </button>
+
+              <button
+                onClick={() => setZoom((z) => (z >= 2 ? 1 : 2))}
+                className="p-2.5 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 text-white/80 transition-colors"
+                aria-label="Fit"
+                title={language === 'es' ? 'Ajustar' : 'Fit'}
+              >
+                <Maximize2 className="w-4 h-4" />
+              </button>
+
+              <a
+                href={sponsorsImage}
+                download="patrocinadores-2026.png"
+                className="p-2.5 rounded-full bg-white text-black hover:brightness-110 transition-all border border-white/20"
+                aria-label="Download"
+                title={language === 'es' ? 'Descargar' : 'Download'}
+              >
+                <Download className="w-4 h-4" />
+              </a>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
