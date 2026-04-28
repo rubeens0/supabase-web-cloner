@@ -104,4 +104,24 @@
     font-weight: 400;
     letter-spacing: -0.01em;
   }
+  /* Monochrome white→gray gradient for editorial accents */
+  .text-gradient-mono {
+    background-image: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(0 0% 55%) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .text-gradient-mono-italic {
+    background-image: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(0 0% 45%) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-style: italic;
+  }
+  .bg-gradient-mono {
+    background-image: linear-gradient(135deg, hsl(0 0% 100%) 0%, hsl(0 0% 35%) 100%);
+  }
+  .bg-gradient-mono-dark {
+    background-image: linear-gradient(135deg, hsl(0 0% 18%) 0%, hsl(0 0% 0%) 100%);
+  }
 }
