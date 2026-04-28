@@ -3,7 +3,7 @@ import { Button } from '../components/ui/button';
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
 import { ArrowRight, Flag, Trophy, ArrowDown, TrendingUp, Search, Radio } from 'lucide-react';
 import { motion } from 'motion/react';
-import logoWhite from '@/assets/figma/placeholder.svg';
+import logoWhite from '@/assets/logo-white.png';
 import { AnimatedLogo } from '../components/AnimatedLogo';
 import { useLanguage } from '../contexts/LanguageContext';
 import { SEO } from '../components/SEO';

@@ -1,7 +1,7 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { useState, useEffect, useMemo, useCallback } from 'react';
-import logoWhite from '@/assets/figma/placeholder.svg';
+import logoWhite from '@/assets/logo-white.png';
 import navBackground from '@/assets/figma/placeholder.svg';
 import { useLanguage } from '../contexts/LanguageContext';
 import { Globe, Menu, X } from 'lucide-react';
