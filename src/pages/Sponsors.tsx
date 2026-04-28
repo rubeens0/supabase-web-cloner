@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { SEO } from '../components/SEO';
 import { useState } from 'react';
 import heroImage from '@/assets/sponsors-event.png';
+import bannerPatrocinadores from '@/assets/banner-patrocinadores-2026.png';
 import sponsorsImage from '@/assets/figma/placeholder.svg';
 
 function SectionLabel({ index, children }: { index: string; children: React.ReactNode }) {
@@ -128,6 +129,26 @@ export function Sponsors() {
                 {language === 'es' ? 'Ver Patrocinadores' : 'View Sponsors'} <ArrowRight className="w-4 h-4" />
               </Button>
             </a>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ============== Banner Patrocinadores 2026 ============== */}
+      <section className="border-b border-white/[0.08] px-5 sm:px-10 md:px-16 py-16 sm:py-24 bg-black">
+        <div className="max-w-5xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-100px' }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            className="overflow-hidden rounded-2xl border border-white/10 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.8)]"
+          >
+            <img
+              src={bannerPatrocinadores}
+              alt={language === 'es' ? 'Patrocinadores temporada 2026' : 'Sponsors 2026 season'}
+              className="w-full h-auto block"
+              loading="lazy"
+            />
           </motion.div>
         </div>
       </section>
