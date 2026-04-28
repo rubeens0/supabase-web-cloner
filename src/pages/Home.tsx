@@ -57,7 +57,7 @@ export function Home() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: perfSettings.simplifyAnimations ? 0.2 : 0.7, delay: perfSettings.simplifyAnimations ? 0 : 0.1 }}
-            className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 mx-auto mb-6 sm:mb-8"
+            className="w-[42px] h-[42px] sm:w-[52px] sm:h-[52px] md:w-[62px] md:h-[62px] mx-auto mb-6 sm:mb-8"
           >
             {perfSettings.simplifyAnimations ? (
               <img
