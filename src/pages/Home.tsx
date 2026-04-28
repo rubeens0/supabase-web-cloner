@@ -203,7 +203,7 @@ export function Home() {
         <div className="max-w-7xl mx-auto px-5 sm:px-10 md:px-16 py-14 sm:py-20">
           <div className="mb-10">
             <p className="font-display text-4xl sm:text-5xl md:text-6xl text-white tracking-tight leading-tight max-w-3xl">
-              <span className="font-display-italic text-gradient-mono-italic">3 líneas</span> de emprendimiento activas.
+              <span className="font-display-italic text-gradient-mono-italic">{t("home.proof.headlineA")}</span> {t("home.proof.headlineB")}
             </p>
           </div>
 
@@ -212,19 +212,19 @@ export function Home() {
               <div className="font-display text-5xl sm:text-6xl text-white mb-2 tracking-tight">
                 2024<span className="text-secondary">.</span>
               </div>
-              <p className="text-sm text-white/50">Año de inicio — built from scratch</p>
+              <p className="text-sm text-white/50">{t("home.proof.stat1.label")}</p>
             </div>
             <div>
               <div className="font-display text-5xl sm:text-6xl text-white mb-2 tracking-tight">
                 CEK<span className="text-secondary">.</span>
               </div>
-              <p className="text-sm text-white/50">Campeonato de España de Karting</p>
+              <p className="text-sm text-white/50">{t("home.proof.stat2.label")}</p>
             </div>
             <div>
               <div className="font-display text-5xl sm:text-6xl text-white mb-2 tracking-tight">
-                2<span className="text-secondary">.</span>
+                {t("home.proof.stat3.value")}<span className="text-secondary">.</span>
               </div>
-              <p className="text-sm text-white/50">Líneas de negocio activas — Netpro & Netspy</p>
+              <p className="text-sm text-white/50">{t("home.proof.stat3.label")}</p>
             </div>
           </div>
         </div>
