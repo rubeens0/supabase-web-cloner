@@ -14,8 +14,11 @@ export function Auth() {
   const { language } = useLanguage();
   const isES = language === 'es';
   const [mode, setMode] = useState<Mode>('signin');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [googleLoading, setGoogleLoading] = useState(false);
 
