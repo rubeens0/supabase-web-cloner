@@ -308,59 +308,6 @@ export function RDE() {
         </div>
       </section>
 
-      {/* ============== 05 · CASOS ============== */}
-      <section className="border-b border-white/10 px-5 sm:px-10 md:px-16 py-20 sm:py-32">
-        <div className="max-w-6xl mx-auto">
-          <motion.div {...fadeIn(0.05)}>
-            <SectionLabel index="05">Casos</SectionLabel>
-          </motion.div>
-
-          <motion.h2
-            {...fadeIn(0.1)}
-            className="mt-6 font-display text-4xl sm:text-5xl md:text-6xl text-white leading-[1.05] tracking-tight max-w-3xl mb-4"
-          >
-            Resultados que <span className="font-display-italic text-gradient-mono-italic">hablan</span>
-          </motion.h2>
-          <motion.p {...fadeIn(0.15)} className="text-white/55 text-base sm:text-lg mb-14">
-            Negocios de conocimiento que escalaron con RDE Operators
-          </motion.p>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
-            {[1, 2].map((i) => (
-              <motion.div
-                key={i}
-                {...fadeIn(0.15 + i * 0.05)}
-                className="border border-white/10 rounded-2xl p-7 sm:p-9 bg-white/[0.02]"
-              >
-                <div className="flex items-start justify-between mb-6">
-                  <Quote className="w-6 h-6 text-white/30" />
-                  <span className="text-[10px] uppercase tracking-[0.22em] text-white/50 border border-white/15 rounded-full px-3 py-1">
-                    Resultado real
-                  </span>
-                </div>
-                <p className="text-white/70 text-base sm:text-lg leading-relaxed italic mb-8">
-                  [Testimonio de cliente — próximamente]
-                </p>
-                <div className="flex items-center gap-3 pt-5 border-t border-white/10">
-                  <div className="w-10 h-10 rounded-full bg-white/10 border border-white/15" />
-                  <div>
-                    <p className="text-white text-sm font-medium">Nombre</p>
-                    <p className="text-white/45 text-xs">Nicho</p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          <motion.p
-            {...fadeIn(0.3)}
-            className="text-center text-white/45 text-sm italic mt-10"
-          >
-            Actualmente incorporando los primeros casos documentados. ¿Quieres ser uno de ellos?
-          </motion.p>
-        </div>
-      </section>
-
       {/* ============== 06 · GARANTÍA ============== */}
       <section className="border-b border-white/10 px-5 sm:px-10 md:px-16 py-20 sm:py-32">
         <div className="max-w-4xl mx-auto">
