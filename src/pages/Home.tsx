@@ -9,8 +9,8 @@ import { useLanguage } from '../contexts/LanguageContext';
 import { SEO } from '../components/SEO';
 import heroImage from '@/assets/home-hero-bg.jpg';
 import aboutImage from '@/assets/about-image.png';
-import kartingImage from '@/assets/figma/placeholder.svg';
-import marketingImage from '@/assets/figma/placeholder.svg';
+import kartingImage from '@/assets/karting-image.jpg';
+import marketingImage from '@/assets/marketing-image.jpg';
 import { getPerformanceSettings, PREMIUM_ANIMATIONS } from '../utils/performanceDetector';
 
 export function Home() {
