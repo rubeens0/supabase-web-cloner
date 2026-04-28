@@ -6,7 +6,7 @@ import { Button } from '../components/ui/button';
 import { Link } from 'react-router-dom';
 import { SEO } from '../components/SEO';
 import { useState } from 'react';
-import heroImage from '@/assets/figma/placeholder.svg';
+import heroImage from '@/assets/sponsors-event.png';
 import tiktokLogo from '@/assets/figma/placeholder.svg';
 import sponsorsImage from '@/assets/figma/placeholder.svg';
 
