@@ -174,6 +174,81 @@ export function Navigation() {
               <span className="text-white/30">{language === 'es' ? 'en' : 'es'}</span>
             </button>
 
+            {/* User / Auth */}
+            <div className="relative" ref={userMenuRef}>
+              {user ? (
+                <button
+                  onClick={() => setUserMenuOpen((v) => !v)}
+                  aria-label={isEs ? 'Cuenta' : 'Account'}
+                  className="h-9 w-9 rounded-full bg-white text-black text-[13px] font-medium flex items-center justify-center hover:bg-secondary hover:text-white transition-colors"
+                >
+                  {userInitial || <User className="w-4 h-4" />}
+                </button>
+              ) : (
+                <button
+                  onClick={() => setUserMenuOpen((v) => !v)}
+                  aria-label={isEs ? 'Iniciar sesión' : 'Sign in'}
+                  className="h-9 w-9 rounded-full border border-white/15 text-white/80 flex items-center justify-center hover:border-white hover:text-white transition-colors"
+                >
+                  <User className="w-4 h-4" />
+                </button>
+              )}
+
+              <AnimatePresence>
+                {userMenuOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -6, scale: 0.98 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: -6, scale: 0.98 }}
+                    transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
+                    className="absolute right-0 mt-3 w-72 rounded-2xl bg-black/95 backdrop-blur-xl border border-white/[0.08] shadow-2xl overflow-hidden"
+                  >
+                    {user ? (
+                      <div className="p-4">
+                        <div className="text-[10px] uppercase tracking-[0.18em] text-white/40 mb-1">
+                          {isEs ? 'Sesión iniciada' : 'Signed in'}
+                        </div>
+                        <div className="text-[13px] text-white truncate mb-4">{user.email}</div>
+                        <button
+                          onClick={handleSignOut}
+                          className="w-full inline-flex items-center justify-between gap-2 text-[13px] text-white/80 hover:text-white border border-white/10 hover:border-white/30 rounded-full px-4 py-2.5 transition-colors"
+                        >
+                          {isEs ? 'Cerrar sesión' : 'Sign out'}
+                          <LogOut className="w-3.5 h-3.5" />
+                        </button>
+                      </div>
+                    ) : (
+                      <div className="p-5">
+                        <div className="text-[10px] uppercase tracking-[0.18em] text-white/40 mb-2">
+                          N° 01 — {isEs ? 'Acceso' : 'Access'}
+                        </div>
+                        <h3 className="font-display text-2xl text-white leading-tight mb-2">
+                          {isEs ? 'Únete al paddock.' : 'Join the paddock.'}
+                        </h3>
+                        <p className="text-[12.5px] text-white/55 leading-relaxed mb-4">
+                          {isEs
+                            ? 'Recibe novedades de carrera, contenido exclusivo y oportunidades para sponsors directamente en tu bandeja.'
+                            : 'Get race updates, exclusive content and sponsor opportunities straight to your inbox.'}
+                        </p>
+                        <Link
+                          to="/auth"
+                          onClick={() => setUserMenuOpen(false)}
+                          className="w-full inline-flex items-center justify-between gap-2 bg-white text-black text-[13px] font-medium rounded-full px-4 py-2.5 hover:bg-secondary hover:text-white transition-colors"
+                        >
+                          {isEs ? 'Iniciar sesión / Registrarse' : 'Sign in / Sign up'}
+                          <ArrowRight className="w-3.5 h-3.5" />
+                        </Link>
+                        <div className="mt-3 flex items-center gap-2 text-[11px] text-white/35">
+                          <Mail className="w-3 h-3" />
+                          {isEs ? 'Sin spam. Cancela cuando quieras.' : 'No spam. Unsubscribe anytime.'}
+                        </div>
+                      </div>
+                    )}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+
             <Link
               to={getRoute('contact')}
               className="hidden md:inline-flex items-center gap-2 bg-white text-black text-[13px] font-medium rounded-full px-4 py-2 hover:bg-secondary hover:text-white transition-colors"
