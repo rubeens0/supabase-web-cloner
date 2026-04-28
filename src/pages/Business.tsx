@@ -5,7 +5,7 @@ import { ImageWithFallback } from '../components/figma/ImageWithFallback';
 import { ArrowRight, Globe, TrendingUp, Users, Palette, Target, Rocket, ExternalLink, Check, Quote } from 'lucide-react';
 import { motion } from 'motion/react';
 import { useLanguage } from '../contexts/LanguageContext';
-import netproLogo from '@/assets/figma/placeholder.svg';
+import netproLogo from '@/assets/netpro-branding.png';
 import netspyImg from '@/assets/figma/placeholder.svg';
 
 export function Business() {
