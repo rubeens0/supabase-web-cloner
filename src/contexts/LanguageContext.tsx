@@ -506,12 +506,12 @@ const translations = {
     'home.hero.season': '2026 Season',
 
     /* ===== Home – Social proof (sec. 02) ===== */
-    'home.proof.headlineA': '3 ventures',
-    'home.proof.headlineB': 'currently in motion.',
+    'home.proof.headlineA': 'About',
+    'home.proof.headlineB': 'my projects.',
     'home.proof.stat1.label': 'Starting year — built from scratch',
     'home.proof.stat2.label': 'Spanish Karting Championship',
     'home.proof.stat3.value': '3',
-    'home.proof.stat3.label': 'Active business lines — RDE, Netpro & Netspy',
+    'home.proof.stat3.label': 'Active entrepreneurship lines.',
 
     /* ===== Home – About (sec. 03) ===== */
     'home.about.title': 'About me',
