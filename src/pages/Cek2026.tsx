@@ -3,7 +3,7 @@ import { MapPin, Calendar, Flag } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import campillosImage from '@/assets/circuito-campillos.jpg';
 import motorlandImage from '@/assets/motorland-aragon.png';
-import lucasGuerreroImage from '@/assets/figma/placeholder.svg';
+import lucasGuerreroImage from '@/assets/lucas-guerrero.jpg';
 import asparImage from '@/assets/figma/placeholder.svg';
 import dbMotorsportLogo from '@/assets/db-motorsport-logo.png';
 import parolinLogo from '@/assets/parolin-logo.png';
