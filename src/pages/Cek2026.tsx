@@ -4,7 +4,7 @@ import { useLanguage } from '../contexts/LanguageContext';
 import campillosImage from '@/assets/circuito-campillos.jpg';
 import motorlandImage from '@/assets/motorland-aragon.png';
 import lucasGuerreroImage from '@/assets/lucas-guerrero.jpg';
-import asparImage from '@/assets/figma/placeholder.svg';
+import asparImage from '@/assets/aspar-circuit.jpg';
 import dbMotorsportLogo from '@/assets/db-motorsport-logo.png';
 import parolinLogo from '@/assets/parolin-logo.png';
 import sponsorsImage from '@/assets/sponsors-2026.png';
