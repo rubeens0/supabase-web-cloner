@@ -185,7 +185,7 @@ function BusinessSection({
             ))}
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 sm:justify-center">
             <a 
               href={href} 
               target="_blank" 
