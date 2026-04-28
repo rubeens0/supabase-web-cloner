@@ -248,11 +248,11 @@ export function Dossier() {
               transition={{ duration: 0.6 }}
               className="space-y-6"
             >
-              <div className="group relative p-6 sm:p-8 bg-gradient-to-br from-yellow-500/5 via-black to-yellow-500/5 backdrop-blur-xl border border-yellow-400/20 rounded-3xl hover:border-yellow-400/40 transition-all duration-500 hover:shadow-[0_0_40px_rgba(250,204,21,0.15)]">
-                <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/0 via-transparent to-yellow-500/0 group-hover:from-yellow-500/10 group-hover:to-yellow-500/10 rounded-3xl transition-all duration-500" />
+              <div className="group relative p-6 sm:p-8 bg-gradient-to-br from-white/5 via-black to-white/5 backdrop-blur-xl border border-white/20 rounded-3xl hover:border-white/40 transition-all duration-500 hover:shadow-[0_0_40px_rgba(250,204,21,0.15)]">
+                <div className="absolute inset-0 bg-gradient-to-br from-white/0 via-transparent to-white/0 group-hover:from-white/10 group-hover:to-white/10 rounded-3xl transition-all duration-500" />
                 <div className="relative">
-                  <div className="w-14 h-14 mb-4 bg-gradient-to-br from-yellow-500/20 to-yellow-600/20 rounded-2xl flex items-center justify-center border border-yellow-400/30 group-hover:scale-110 transition-transform duration-300">
-                    <Star className="w-7 h-7 text-yellow-400" />
+                  <div className="w-14 h-14 mb-4 bg-gradient-to-br from-white/20 to-white/20 rounded-2xl flex items-center justify-center border border-white/30 group-hover:scale-110 transition-transform duration-300">
+                    <Star className="w-7 h-7 text-white" />
                   </div>
                   <h3 className="text-white mb-4 flex items-center gap-2">
                     {language === 'es' ? 'Valor Diferencial' : 'Unique Value'}
@@ -265,11 +265,11 @@ export function Dossier() {
                 </div>
               </div>
 
-              <div className="group relative p-6 sm:p-8 bg-gradient-to-br from-green-500/5 via-black to-green-500/5 backdrop-blur-xl border border-green-400/20 rounded-3xl hover:border-green-400/40 transition-all duration-500 hover:shadow-[0_0_40px_rgba(34,197,94,0.15)]">
-                <div className="absolute inset-0 bg-gradient-to-br from-green-500/0 via-transparent to-green-500/0 group-hover:from-green-500/10 group-hover:to-green-500/10 rounded-3xl transition-all duration-500" />
+              <div className="group relative p-6 sm:p-8 bg-gradient-to-br from-white/5 via-black to-white/5 backdrop-blur-xl border border-white/20 rounded-3xl hover:border-white/40 transition-all duration-500 hover:shadow-[0_0_40px_rgba(34,197,94,0.15)]">
+                <div className="absolute inset-0 bg-gradient-to-br from-white/0 via-transparent to-white/0 group-hover:from-white/10 group-hover:to-white/10 rounded-3xl transition-all duration-500" />
                 <div className="relative">
-                  <div className="w-14 h-14 mb-4 bg-gradient-to-br from-green-500/20 to-green-600/20 rounded-2xl flex items-center justify-center border border-green-400/30 group-hover:scale-110 transition-transform duration-300">
-                    <TrendingUp className="w-7 h-7 text-green-400" />
+                  <div className="w-14 h-14 mb-4 bg-gradient-to-br from-white/20 to-white/20 rounded-2xl flex items-center justify-center border border-white/30 group-hover:scale-110 transition-transform duration-300">
+                    <TrendingUp className="w-7 h-7 text-white" />
                   </div>
                   <h3 className="text-white mb-4 flex items-center gap-2">
                     {language === 'es' ? 'Alcance Digital' : 'Digital Reach'}
@@ -343,7 +343,7 @@ export function Dossier() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="p-8 bg-gradient-to-br from-white/10 to-yellow-500/10 backdrop-blur-xl border border-white/20 rounded-3xl"
+              className="p-8 bg-gradient-to-br from-white/10 to-white/10 backdrop-blur-xl border border-white/20 rounded-3xl"
             >
               <div className="flex items-start gap-4 mb-6">
                 <MapPin className="w-6 h-6 text-white flex-shrink-0 mt-1" />
@@ -370,15 +370,15 @@ export function Dossier() {
                     {language === 'es' ? 'Campeonato de España 2025-2026' : 'Spanish Championship 2025-2026'}
                   </span>
                 </div>
-                <div className="inline-flex items-center gap-2 px-4 py-2 bg-yellow-500/10 border border-yellow-400/20 rounded-full">
-                  <MapPin className="w-4 h-4 text-yellow-400" />
-                  <span className="text-yellow-300 text-sm font-medium">
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 border border-white/20 rounded-full">
+                  <MapPin className="w-4 h-4 text-white" />
+                  <span className="text-white text-sm font-medium">
                     {language === 'es' ? 'Visibilidad en Toda España' : 'Visibility Across Spain'}
                   </span>
                 </div>
-                <div className="inline-flex items-center gap-2 px-4 py-2 bg-orange-500/10 border border-orange-400/20 rounded-full">
-                  <Star className="w-4 h-4 text-orange-400" />
-                  <span className="text-orange-300 text-sm font-medium">
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 border border-white/20 rounded-full">
+                  <Star className="w-4 h-4 text-white" />
+                  <span className="text-white text-sm font-medium">
                     {language === 'es' ? 'Piloto Nacional Emergente' : 'Emerging National Driver'}
                   </span>
                 </div>
@@ -426,17 +426,17 @@ export function Dossier() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
-                className="relative p-6 sm:p-8 bg-gradient-to-r from-green-500/10 to-emerald-500/10 backdrop-blur-xl border border-green-400/20 rounded-3xl hover:border-green-400/40 transition-all duration-300"
+                className="relative p-6 sm:p-8 bg-gradient-to-r from-white/10 to-white/10 backdrop-blur-xl border border-white/20 rounded-3xl hover:border-white/40 transition-all duration-300"
               >
                 <div className="flex flex-col sm:flex-row items-start gap-6">
                   <div className="flex-shrink-0">
-                    <div className="w-20 h-20 bg-green-500/20 rounded-2xl flex items-center justify-center border border-green-400/30">
+                    <div className="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center border border-white/30">
                       <span className="text-white text-2xl font-bold">2023</span>
                     </div>
                   </div>
                   <div className="flex-1">
                     <h3 className="text-white mb-2 flex items-center gap-2">
-                      <Trophy className="w-5 h-5 text-green-400" />
+                      <Trophy className="w-5 h-5 text-white" />
                       {language === 'es' ? 'Primer Año - Victoria en Resistencia' : 'First Year - Endurance Victory'}
                     </h3>
                     <p className="text-white/70 mb-3">
@@ -444,9 +444,9 @@ export function Dossier() {
                         ? 'Inicio como piloto de karting. Victoria en la carrera de resistencia de las Karting Series de Extremadura en mi temporada debut.'
                         : 'Started as a karting driver. Victory in the endurance race at the Karting Series of Extremadura in my debut season.'}
                     </p>
-                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-500/10 border border-green-400/20 rounded-full">
-                      <Star className="w-4 h-4 text-green-400" />
-                      <span className="text-green-300 text-sm font-medium">
+                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 border border-white/20 rounded-full">
+                      <Star className="w-4 h-4 text-white" />
+                      <span className="text-white text-sm font-medium">
                         {language === 'es' ? '1ª Victoria' : '1st Victory'}
                       </span>
                     </div>
@@ -460,17 +460,17 @@ export function Dossier() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.1 }}
-                className="relative p-6 sm:p-8 bg-gradient-to-r from-yellow-500/10 to-amber-500/10 backdrop-blur-xl border border-yellow-400/30 rounded-3xl hover:border-yellow-400/50 transition-all duration-300"
+                className="relative p-6 sm:p-8 bg-gradient-to-r from-white/10 to-white/10 backdrop-blur-xl border border-white/30 rounded-3xl hover:border-white/50 transition-all duration-300"
               >
                 <div className="flex flex-col sm:flex-row items-start gap-6">
                   <div className="flex-shrink-0">
-                    <div className="w-20 h-20 bg-yellow-500/20 rounded-2xl flex items-center justify-center border border-yellow-400/30">
+                    <div className="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center border border-white/30">
                       <span className="text-white text-2xl font-bold">2024</span>
                     </div>
                   </div>
                   <div className="flex-1">
                     <h3 className="text-white mb-2 flex items-center gap-2">
-                      <Trophy className="w-5 h-5 text-yellow-400" />
+                      <Trophy className="w-5 h-5 text-white" />
                       {language === 'es' ? 'Campeón de Extremadura' : 'Extremadura Champion'}
                     </h3>
                     <p className="text-white/70 mb-3">
@@ -478,9 +478,9 @@ export function Dossier() {
                         ? 'Proclamado Campeón de Extremadura de Karting sin necesidad de correr todas las pruebas puntuables, demostrando dominio absoluto en la categoría regional.'
                         : 'Crowned Extremadura Karting Champion without needing to race all scoring rounds, demonstrating absolute dominance in the regional category.'}
                     </p>
-                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-yellow-500/10 border border-yellow-400/20 rounded-full">
-                      <Trophy className="w-4 h-4 text-yellow-400" />
-                      <span className="text-yellow-300 text-sm font-medium">
+                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 border border-white/20 rounded-full">
+                      <Trophy className="w-4 h-4 text-white" />
+                      <span className="text-white text-sm font-medium">
                         {language === 'es' ? 'Campeón Regional' : 'Regional Champion'}
                       </span>
                     </div>
@@ -592,8 +592,8 @@ export function Dossier() {
             {[
               {
                 name: language === 'es' ? 'Colaborador' : 'Collaborator',
-                color: 'from-orange-400/20 to-amber-600/20',
-                borderColor: 'border-orange-400/30',
+                color: 'from-white/20 to-white/20',
+                borderColor: 'border-white/30',
                 features: [
                   language === 'es' ? 'Mención en la página web' : 'Mention on website',
                   language === 'es' ? 'Contenido en redes sociales para resubir' : 'Social media content to repost',
@@ -613,8 +613,8 @@ export function Dossier() {
               },
               {
                 name: language === 'es' ? 'Patrocinador Principal' : 'Main Sponsor',
-                color: 'from-yellow-400/20 to-yellow-600/20',
-                borderColor: 'border-yellow-400/30',
+                color: 'from-white/20 to-white/20',
+                borderColor: 'border-white/30',
                 features: [
                   language === 'es' ? 'Todo lo incluido en Sponsor' : 'Everything in Sponsor',
                   language === 'es' ? 'Logo en el kart y Mono' : 'Logo on kart and Suit',
@@ -689,7 +689,7 @@ export function Dossier() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="relative max-w-2xl mx-auto"
           >
-            <div className="relative p-8 bg-gradient-to-br from-yellow-500/10 to-orange-500/10 backdrop-blur-xl border border-yellow-400/30 rounded-3xl overflow-hidden">
+            <div className="relative p-8 bg-gradient-to-br from-white/10 to-white/10 backdrop-blur-xl border border-white/30 rounded-3xl overflow-hidden">
               <img 
                 src={helmetExample} 
                 alt="Custom helmet design example" 
