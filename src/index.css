@@ -18,14 +18,14 @@
     --primary: 0 0% 100%;
     --primary-foreground: 0 0% 0%;
 
-    /* Secondary = brand red */
-    --secondary: 12 100% 40%;
+    /* Secondary = brand red FF0000 */
+    --secondary: 0 100% 50%;
     --secondary-foreground: 0 0% 100%;
 
     --muted: 0 0% 8%;
     --muted-foreground: 0 0% 63%;
 
-    --accent: 12 100% 40%;
+    --accent: 0 100% 50%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 72% 51%;
@@ -47,8 +47,8 @@
     --sidebar-ring: 0 0% 100%;
 
     /* Editorial redesign tokens */
-    --accent-red: 12 100% 40%;        /* #CC2200 */
-    --accent-red-soft: 12 100% 60%;
+    --accent-red: 0 100% 50%;          /* #FF0000 */
+    --accent-red-soft: 0 100% 65%;
     --rule: 0 0% 100% / 0.08;
 
     /* Typography families */
@@ -65,11 +65,11 @@
     --popover-foreground: 0 0% 100%;
     --primary: 0 0% 100%;
     --primary-foreground: 0 0% 0%;
-    --secondary: 12 100% 40%;
+    --secondary: 0 100% 50%;
     --secondary-foreground: 0 0% 100%;
     --muted: 0 0% 8%;
     --muted-foreground: 0 0% 63%;
-    --accent: 12 100% 40%;
+    --accent: 0 100% 50%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
