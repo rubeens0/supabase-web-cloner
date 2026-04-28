@@ -227,7 +227,7 @@ export function Navigation() {
                         </h3>
                         <p className="text-[12.5px] text-white/55 leading-relaxed mb-4">
                           {isEs
-                            ? 'Recibe novedades de carrera, contenido exclusivo y oportunidades para sponsors directamente en tu bandeja.'
+                            ? 'Recibe novedades, contenido exclusivo, contenido de alto valor y oportunidades directamente en tu correo.'
                             : 'Get race updates, exclusive content and sponsor opportunities straight to your inbox.'}
                         </p>
                         <Link
