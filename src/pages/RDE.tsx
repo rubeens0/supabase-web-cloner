@@ -9,7 +9,6 @@ import {
   TrendingUp,
   ShieldCheck,
   Quote,
-  PlayCircle,
   Users,
 } from "lucide-react";
 import rdeLogo from "@/assets/rde-logo.png";
