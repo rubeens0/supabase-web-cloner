@@ -131,8 +131,8 @@ export function DossierAccess({ onAccess }: DossierAccessProps) {
                   transition={{ duration: 0.3 }}
                   className="overflow-hidden"
                 >
-                  <div className="px-4 py-3 bg-red-500/10 border border-red-500/20 rounded-xl">
-                    <p className="text-red-400 text-sm text-center">{error}</p>
+                  <div className="px-4 py-3 bg-white/10 border border-white/20 rounded-xl">
+                    <p className="text-white/80 text-sm text-center">{error}</p>
                   </div>
                 </motion.div>
               )}
