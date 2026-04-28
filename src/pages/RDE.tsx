@@ -9,7 +9,7 @@ import {
   TrendingUp,
   ShieldCheck,
   Quote,
-  Users,
+  
 } from "lucide-react";
 import rdeLogo from "@/assets/rde-logo.png";
 import rdeTeam from "@/assets/rde-team.jpg";
