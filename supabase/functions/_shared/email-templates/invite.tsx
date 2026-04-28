@@ -8,11 +8,14 @@ import {
   Container,
   Head,
   Heading,
+  Hr,
   Html,
   Link,
   Preview,
   Text,
 } from 'npm:@react-email/components@0.0.22'
+
+import { brand, styles } from './_brand.ts'
 
 interface InviteEmailProps {
   siteName: string
@@ -25,26 +28,48 @@ export const InviteEmail = ({
   siteUrl,
   confirmationUrl,
 }: InviteEmailProps) => (
-  <Html lang="en" dir="ltr">
+  <Html lang="es" dir="ltr">
     <Head />
-    <Preview>You've been invited to join {siteName}</Preview>
-    <Body style={main}>
-      <Container style={container}>
-        <Heading style={h1}>You've been invited</Heading>
-        <Text style={text}>
-          You've been invited to join{' '}
-          <Link href={siteUrl} style={link}>
+    <Preview>Invitación para unirte a {siteName}</Preview>
+    <Body style={styles.main}>
+      <Container style={styles.container}>
+        <div style={styles.header}>
+          <Text style={styles.wordmark}>{brand.wordmark}</Text>
+        </div>
+
+        <Text style={styles.sectionTag}>N° 04 — Invitación</Text>
+
+        <Heading style={styles.h1}>
+          Tienes una <span style={styles.italic}>invitación</span>.
+        </Heading>
+
+        <Text style={styles.text}>
+          Te han invitado a unirte a{' '}
+          <Link href={siteUrl} style={styles.link}>
             <strong>{siteName}</strong>
           </Link>
-          . Click the button below to accept the invitation and create your
-          account.
+          . Acepta la invitación para crear tu cuenta y empezar.
         </Text>
-        <Button style={button} href={confirmationUrl}>
-          Accept Invitation
+
+        <Button style={styles.button} href={confirmationUrl}>
+          Aceptar invitación
         </Button>
-        <Text style={footer}>
-          If you weren't expecting this invitation, you can safely ignore this
-          email.
+
+        <Text style={{ ...styles.text, marginTop: '28px', fontSize: '13px', color: '#737373' }}>
+          Si no funciona el botón, copia y pega este enlace en tu navegador:
+          <br />
+          <Link href={confirmationUrl} style={styles.link}>
+            {confirmationUrl}
+          </Link>
+        </Text>
+
+        <Hr style={styles.divider} />
+
+        <Text style={styles.footer}>
+          Si no esperabas esta invitación, puedes ignorar este correo.
+        </Text>
+        <Text style={styles.footer}>
+          © {new Date().getFullYear()} Rubén Muñoz · <Link href={brand.siteUrl} style={styles.footerLink}>rubenmunoz.com</Link>
         </Text>
       </Container>
     </Body>
@@ -52,28 +77,3 @@ export const InviteEmail = ({
 )
 
 export default InviteEmail
-
-const main = { backgroundColor: '#ffffff', fontFamily: '"Inter", "Helvetica Neue", Arial, sans-serif' }
-const container = { padding: '20px 25px' }
-const h1 = {
-  fontSize: '22px',
-  fontWeight: 'bold' as const,
-  color: '#000000',
-  margin: '0 0 20px',
-}
-const text = {
-  fontSize: '14px',
-  color: '#55575d',
-  lineHeight: '1.5',
-  margin: '0 0 25px',
-}
-const link = { color: 'inherit', textDecoration: 'underline' }
-const button = {
-  backgroundColor: '#000000',
-  color: '#ffffff',
-  fontSize: '14px',
-  borderRadius: '12px',
-  padding: '12px 20px',
-  textDecoration: 'none',
-}
-const footer = { fontSize: '12px', color: '#999999', margin: '30px 0 0' }

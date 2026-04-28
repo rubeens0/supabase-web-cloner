@@ -8,11 +8,14 @@ import {
   Container,
   Head,
   Heading,
+  Hr,
   Html,
   Link,
   Preview,
   Text,
 } from 'npm:@react-email/components@0.0.22'
+
+import { brand, styles } from './_brand.ts'
 
 interface EmailChangeEmailProps {
   siteName: string
@@ -27,32 +30,53 @@ export const EmailChangeEmail = ({
   newEmail,
   confirmationUrl,
 }: EmailChangeEmailProps) => (
-  <Html lang="en" dir="ltr">
+  <Html lang="es" dir="ltr">
     <Head />
-    <Preview>Confirm your email change for {siteName}</Preview>
-    <Body style={main}>
-      <Container style={container}>
-        <Heading style={h1}>Confirm your email change</Heading>
-        <Text style={text}>
-          You requested to change your email address for {siteName} from{' '}
-          <Link href={`mailto:${email}`} style={link}>
+    <Preview>Confirma el cambio de correo en {siteName}</Preview>
+    <Body style={styles.main}>
+      <Container style={styles.container}>
+        <div style={styles.header}>
+          <Text style={styles.wordmark}>{brand.wordmark}</Text>
+        </div>
+
+        <Text style={styles.sectionTag}>N° 05 — Cambio de correo</Text>
+
+        <Heading style={styles.h1}>
+          Confirma tu <span style={styles.italic}>nuevo correo</span>.
+        </Heading>
+
+        <Text style={styles.text}>
+          Has solicitado cambiar la dirección de tu cuenta en{' '}
+          <strong style={{ color: '#0a0a0a' }}>{siteName}</strong> de{' '}
+          <Link href={`mailto:${email}`} style={styles.link}>
             {email}
           </Link>{' '}
-          to{' '}
-          <Link href={`mailto:${newEmail}`} style={link}>
+          a{' '}
+          <Link href={`mailto:${newEmail}`} style={styles.link}>
             {newEmail}
           </Link>
           .
         </Text>
-        <Text style={text}>
-          Click the button below to confirm this change:
-        </Text>
-        <Button style={button} href={confirmationUrl}>
-          Confirm Email Change
+
+        <Button style={styles.button} href={confirmationUrl}>
+          Confirmar cambio
         </Button>
-        <Text style={footer}>
-          If you didn't request this change, please secure your account
-          immediately.
+
+        <Text style={{ ...styles.text, marginTop: '28px', fontSize: '13px', color: '#737373' }}>
+          Si no funciona el botón, copia y pega este enlace en tu navegador:
+          <br />
+          <Link href={confirmationUrl} style={styles.link}>
+            {confirmationUrl}
+          </Link>
+        </Text>
+
+        <Hr style={styles.divider} />
+
+        <Text style={styles.footer}>
+          Si no solicitaste este cambio, asegura tu cuenta cuanto antes.
+        </Text>
+        <Text style={styles.footer}>
+          © {new Date().getFullYear()} Rubén Muñoz · <Link href={brand.siteUrl} style={styles.footerLink}>rubenmunoz.com</Link>
         </Text>
       </Container>
     </Body>
@@ -60,28 +84,3 @@ export const EmailChangeEmail = ({
 )
 
 export default EmailChangeEmail
-
-const main = { backgroundColor: '#ffffff', fontFamily: '"Inter", "Helvetica Neue", Arial, sans-serif' }
-const container = { padding: '20px 25px' }
-const h1 = {
-  fontSize: '22px',
-  fontWeight: 'bold' as const,
-  color: '#000000',
-  margin: '0 0 20px',
-}
-const text = {
-  fontSize: '14px',
-  color: '#55575d',
-  lineHeight: '1.5',
-  margin: '0 0 25px',
-}
-const link = { color: 'inherit', textDecoration: 'underline' }
-const button = {
-  backgroundColor: '#000000',
-  color: '#ffffff',
-  fontSize: '14px',
-  borderRadius: '12px',
-  padding: '12px 20px',
-  textDecoration: 'none',
-}
-const footer = { fontSize: '12px', color: '#999999', margin: '30px 0 0' }
