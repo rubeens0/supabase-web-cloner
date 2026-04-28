@@ -5,7 +5,7 @@ import { ImageWithFallback } from '../components/figma/ImageWithFallback';
 import { ArrowRight, Globe, TrendingUp, Users, Palette, Target, Rocket, ExternalLink, Check, Quote } from 'lucide-react';
 import { motion } from 'motion/react';
 import { useLanguage } from '../contexts/LanguageContext';
-import netproLogo from '@/assets/figma/placeholder.svg';
+import netproLogo from '@/assets/netpro-branding.png';
 import netspyImg from '@/assets/figma/placeholder.svg';
 
 export function Business() {
@@ -38,8 +38,8 @@ export function Business() {
           subtitle="Digital & Growth"
           description={t('business.hero.description')}
           extendedDescription={t('business.about.p1')}
-          logo={netproLogo}
-          logoAlt="Netpro Agency Logo"
+          image={netproLogo}
+          imageAlt="Netpro Agency Branding"
           href="https://netpro.agency"
           linkText="netpro.agency"
           features={[
