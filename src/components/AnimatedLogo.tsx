@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 import { useState, useMemo } from 'react';
-import logoWhite from '@/assets/logo-white.png';
+import logoWhite from '@/assets/logo-white-optimized.png';
 import { getPerformanceSettings } from '../utils/performanceDetector';
 
 interface AnimatedLogoProps {
