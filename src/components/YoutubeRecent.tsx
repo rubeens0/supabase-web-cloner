@@ -67,7 +67,7 @@ export function YoutubeRecent() {
               Vídeos <span className="font-display-italic text-gradient-mono-italic">recientes</span>.
             </h2>
             <p className="mt-5 text-white/55 text-[15px] leading-relaxed max-w-xl">
-              Onboards, análisis y momentos clave desde dentro del kart.
+              Onboards desde dentro del kart. Y quizás, próximamente, vlogs.
             </p>
           </div>
           <a
