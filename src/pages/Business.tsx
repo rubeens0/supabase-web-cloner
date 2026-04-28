@@ -63,6 +63,7 @@ export function Business() {
             internal
             linkText="Conocer RDE"
             features={['Diagnóstico', 'Estrategia', 'Ejecución', 'Optimización']}
+            imageContain
           />
         </div>
       </section>
@@ -159,6 +160,7 @@ function BusinessSection({
   secondaryLink,
   reverse = false,
   internal = false,
+  imageContain = false,
 }: {
   index: string;
   title: string;
@@ -173,6 +175,7 @@ function BusinessSection({
   secondaryLink?: { href: string; text: string };
   reverse?: boolean;
   internal?: boolean;
+  imageContain?: boolean;
 }) {
   const LinkWrapper = ({ children, className }: { children: React.ReactNode; className?: string }) =>
     internal ? (
@@ -255,17 +258,30 @@ function BusinessSection({
         {/* Visual */}
         <div className="w-full lg:w-[440px] shrink-0 order-1 lg:order-none">
           <LinkWrapper className="block">
-            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-white/10 bg-white/[0.02] group-hover:border-white/25 transition-colors duration-500">
-              <ImageWithFallback
-                src={image}
-                alt={imageAlt}
-                className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
-              <div className="absolute top-4 left-4 font-mono text-[10px] uppercase tracking-[0.22em] text-white/60">
-                N° {index}
+            {imageContain ? (
+              <div className="relative aspect-[4/3] flex items-center justify-center">
+                <ImageWithFallback
+                  src={image}
+                  alt={imageAlt}
+                  className="max-w-[70%] max-h-[70%] object-contain group-hover:scale-[1.04] transition-transform duration-700"
+                />
+                <div className="absolute top-0 left-0 font-mono text-[10px] uppercase tracking-[0.22em] text-white/60">
+                  N° {index}
+                </div>
               </div>
-            </div>
+            ) : (
+              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-white/10 bg-white/[0.02] group-hover:border-white/25 transition-colors duration-500">
+                <ImageWithFallback
+                  src={image}
+                  alt={imageAlt}
+                  className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute top-4 left-4 font-mono text-[10px] uppercase tracking-[0.22em] text-white/60">
+                  N° {index}
+                </div>
+              </div>
+            )}
           </LinkWrapper>
         </div>
       </div>
