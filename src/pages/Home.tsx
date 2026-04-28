@@ -396,7 +396,7 @@ export function Home() {
                 variant="outline"
                 className="w-full rounded-full h-11 border-white/20 bg-transparent text-white hover:bg-white hover:text-black gap-2"
               >
-                Ver todas <ArrowRight className="w-4 h-4" />
+                {t("home.blog.viewAll")} <ArrowRight className="w-4 h-4" />
               </Button>
             </Link>
           </div>
