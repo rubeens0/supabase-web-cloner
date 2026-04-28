@@ -1,4 +1,3 @@
-import { ContactForm } from '../components/ContactForm';
 import { Mail, MapPin, Instagram } from 'lucide-react';
 import { motion } from 'motion/react';
 import { AnimatedLogo } from '../components/AnimatedLogo';
