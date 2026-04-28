@@ -31,8 +31,6 @@ export function ContactForm() {
     setIsSubmitting(true);
     
     try {
-      console.log('Sending contact form...', { name: formData.name, email: formData.email });
-      
       const response = await fetch(
         `https://${projectId}.supabase.co/functions/v1/make-server-012a3b25/send-email`,
         {
@@ -45,31 +43,27 @@ export function ContactForm() {
         }
       );
 
-      const data = await response.json();
-      console.log('Server response:', data);
+      const data = await response.json().catch(() => ({}));
 
       if (!response.ok) {
-        console.error('Server error:', data);
-        throw new Error(data.error || 'Error al enviar el mensaje');
+        throw new Error(data?.error || 'Error al enviar el mensaje');
       }
 
       // Limpiar el formulario
       setFormData({ name: '', email: '', message: '' });
-      
+
       // Mostrar mensaje de éxito
       if (data.emailSent) {
         toast.success(t('contact.form.success'), {
           description: t('contact.form.successDesc'),
         });
       } else {
-        console.warn('Email not sent:', data);
         toast.success('Mensaje guardado', {
           description: data.message || 'El mensaje fue guardado pero el email no se envió',
         });
       }
 
     } catch (error) {
-      console.error('Error sending message:', error);
       toast.error(t('contact.form.error') || 'Error', {
         description: error instanceof Error ? error.message : 'Error al enviar el mensaje',
       });
