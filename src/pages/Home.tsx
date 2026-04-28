@@ -344,7 +344,7 @@ export function Home() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-16 sm:py-24 md:py-32 px-4 sm:px-6 bg-black">
+      <section className="py-16 sm:py-24 md:py-32 px-4 sm:px-6 bg-destructive">
         <div className="max-w-6xl mx-auto">
           <div className="grid sm:grid-cols-3 gap-6 sm:gap-8">
             {[
