@@ -1,4 +1,4 @@
-import testRecasImg from '@/assets/figma/placeholder.svg';
+import testRecasImg from '@/assets/test-recas-2026.jpg';
 import albroksaImg from '@/assets/figma/placeholder.svg';
 import netproImg from '@/assets/figma/placeholder.svg';
 import netspyImg from '@/assets/figma/placeholder.svg';
