@@ -26,7 +26,7 @@ import { ImageWithFallback } from '../components/figma/ImageWithFallback';
 import kartImage1 from '@/assets/figma/placeholder.svg';
 import kartImage2 from '@/assets/figma/placeholder.svg';
 import kartImage3 from '@/assets/figma/placeholder.svg';
-import helmetExample from '@/assets/figma/placeholder.svg';
+import helmetExample from '@/assets/custom-helmet.jpg';
 
 type DossierVersion = 'regional' | 'nacional' | 'internacional' | null;
 
