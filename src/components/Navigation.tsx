@@ -57,14 +57,14 @@ export function Navigation() {
               <div className="flex items-center gap-3 min-w-0 flex-1">
                 <span className="hidden sm:inline-flex h-1.5 w-1.5 rounded-full bg-secondary animate-pulse shrink-0" />
                 <span className="text-white/80 truncate">
-                  CEK 2026 — <span className="text-white/50">Temporada en marcha</span>
+                  {t('banner.season')} — <span className="text-white/50">{t('banner.seasonNote')}</span>
                 </span>
               </div>
               <Link
                 to="/2026"
                 className="hidden sm:inline-flex items-center gap-1.5 text-white hover:text-secondary transition-colors whitespace-nowrap shrink-0"
               >
-                Learn more <ArrowRight className="w-3.5 h-3.5" />
+                {t('banner.learnMore')} <ArrowRight className="w-3.5 h-3.5" />
               </Link>
               <button
                 onClick={() => setBannerVisible(false)}
