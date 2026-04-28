@@ -75,7 +75,7 @@ export function BusinessButton() {
       {/* Contact Button */}
       <motion.button
         onClick={handleClick}
-        className="group relative w-full sm:w-auto px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 bg-white/5 backdrop-blur-xl border border-white/10 rounded-full overflow-hidden touch-manipulation"
+        className="group relative w-auto px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 bg-white/5 backdrop-blur-xl border border-white/10 rounded-full overflow-hidden touch-manipulation"
         whileHover={{ scale: perfSettings.simplifyAnimations ? 1 : 1.05 }}
         whileTap={{ scale: perfSettings.simplifyAnimations ? 0.98 : 0.95 }}
         transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
@@ -140,7 +140,7 @@ export function BusinessButton() {
       {/* Calendly Button */}
       <motion.button
         onClick={openCalendly}
-        className="group relative w-full sm:w-auto px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 bg-white/5 backdrop-blur-xl border border-white/10 rounded-full overflow-hidden touch-manipulation"
+        className="group relative w-auto px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 bg-white/5 backdrop-blur-xl border border-white/10 rounded-full overflow-hidden touch-manipulation"
         whileHover={{ scale: perfSettings.simplifyAnimations ? 1 : 1.05 }}
         whileTap={{ scale: perfSettings.simplifyAnimations ? 0.98 : 0.95 }}
         transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
