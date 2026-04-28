@@ -1,7 +1,7 @@
 import { motion } from 'motion/react';
 import { MapPin, Calendar, Flag } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
-import campillosImage from '@/assets/figma/placeholder.svg';
+import campillosImage from '@/assets/circuito-campillos.jpg';
 import motorlandImage from '@/assets/figma/placeholder.svg';
 import lucasGuerreroImage from '@/assets/figma/placeholder.svg';
 import asparImage from '@/assets/figma/placeholder.svg';
