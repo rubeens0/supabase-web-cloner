@@ -174,7 +174,7 @@ const translations = {
     'business.rde.description':
       'Optimización de embudos de venta y generación de leads para info-empresarios hispanohablantes que quieren convertir su audiencia en ingresos predecibles.',
     'business.rde.extended':
-      'Somos Rubén, Diego y Erik — tres operadores que nos convertimos en el equipo de crecimiento de un número limitado de clientes, con implicación real en estrategia y ejecución.',
+      'Somos Rubén, Diego y Erik — Nos convertimos en el equipo de crecimiento de un número limitado de clientes, con implicación real en estrategia y ejecución.',
     'business.rde.cta': 'Conocer RDE',
     'business.rde.feat1': 'Diagnóstico',
     'business.rde.feat2': 'Estrategia',
