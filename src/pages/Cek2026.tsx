@@ -7,7 +7,7 @@ import lucasGuerreroImage from '@/assets/figma/placeholder.svg';
 import asparImage from '@/assets/figma/placeholder.svg';
 import dbMotorsportLogo from '@/assets/figma/placeholder.svg';
 import parolinLogo from '@/assets/figma/placeholder.svg';
-import sponsorsImage from '@/assets/sponsors-2026.png';
+
 
 // Placeholder data for the 4 circuits
 const circuits = [
@@ -174,33 +174,7 @@ export function Cek2026() {
           </div>
         </motion.div>
 
-        {/* Sponsors Section */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.3, duration: 0.6 }}
-          className="mt-20"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 bg-gradient-to-r from-red-500 via-red-600 to-black bg-clip-text text-transparent">
-            {language === 'es' ? 'Patrocinadores 2026' : 'Sponsors 2026'}
-          </h2>
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            whileHover={{ scale: 1.02 }}
-            transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="relative rounded-3xl overflow-hidden border border-white/10 hover:border-red-500/30 transition-all duration-300"
-          >
-            <img 
-              src={sponsorsImage} 
-              alt={language === 'es' ? 'Patrocinadores 2026 - Rubén Muñoz' : 'Sponsors 2026 - Rubén Muñoz'} 
-              className="w-full h-auto"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
-          </motion.div>
-        </motion.div>
+
 
         <motion.div 
           initial={{ opacity: 0 }}
