@@ -80,7 +80,15 @@ export function YoutubeRecent() {
           </a>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-5">
+        <div
+          className={`grid gap-5 ${
+            !loading && videos.length === 1
+              ? "md:grid-cols-1 md:max-w-xl"
+              : !loading && videos.length === 2
+              ? "md:grid-cols-2"
+              : "md:grid-cols-3"
+          }`}
+        >
           {loading &&
             Array.from({ length: 3 }).map((_, i) => (
               <div
