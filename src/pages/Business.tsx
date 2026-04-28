@@ -159,6 +159,7 @@ function BusinessSection({
   secondaryLink,
   reverse = false,
   internal = false,
+  imageContain = false,
 }: {
   index: string;
   title: string;
@@ -173,6 +174,7 @@ function BusinessSection({
   secondaryLink?: { href: string; text: string };
   reverse?: boolean;
   internal?: boolean;
+  imageContain?: boolean;
 }) {
   const LinkWrapper = ({ children, className }: { children: React.ReactNode; className?: string }) =>
     internal ? (
