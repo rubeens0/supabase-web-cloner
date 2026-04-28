@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { useState, useEffect, useCallback } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { Menu, X, ArrowRight } from 'lucide-react';
+import logoX from '@/assets/logo-x-white.png';
 
 export function Navigation() {
   const location = useLocation();
@@ -90,14 +91,14 @@ export function Navigation() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-8 py-4 sm:py-5 flex items-center justify-between">
-          {/* Logo — serif wordmark */}
-          <Link to="/" className="group flex items-baseline gap-1.5">
-            <span className="font-display text-2xl sm:text-3xl text-white leading-none tracking-tight group-hover:text-white/80 transition-colors">
-              Rubén
-            </span>
-            <span className="font-display-italic text-2xl sm:text-3xl text-secondary leading-none">
-              Muñoz
-            </span>
+          {/* Logo — X mark */}
+          <Link to="/" className="group flex items-center" aria-label="Rubén Muñoz">
+            <img
+              src={logoX}
+              alt="Rubén Muñoz"
+              className="h-8 sm:h-9 w-auto object-contain group-hover:opacity-80 transition-opacity"
+              loading="eager"
+            />
           </Link>
 
           {/* Desktop nav links — minimal underline */}
