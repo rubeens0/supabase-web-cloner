@@ -12,6 +12,10 @@ import marketingImage from "@/assets/marketing-image.webp";
 import portadaExtremaduraImg from "@/assets/cek-2026-campillos-18.jpg";
 import testRecasImg from "@/assets/test-recas-2026.jpg";
 import albroksaImg from "@/assets/albroksa-patrocinio.jpeg";
+import netproImg from "@/assets/netpro-new-logo.jpg";
+import netspyImg from "@/assets/netspy-branding-new.jpg";
+import cekZaragozaImg from "@/assets/cek-zaragoza.jpg";
+import cajaRuralImg from "@/assets/caja-rural-extremadura.png";
 import { getPerformanceSettings, PREMIUM_ANIMATIONS } from "../utils/performanceDetector";
 
 /* ---------- Editorial primitives ---------- */
@@ -50,14 +54,22 @@ export function Home() {
     },
   });
 
-  const latestPosts = [
+  const allPosts = [
+    {
+      id: "caja-rural-extremadura-patrocinio",
+      title: t("blog.cajarural.title"),
+      excerpt: t("blog.cajarural.excerpt"),
+      tag: t("blog.category.karting"),
+      image: cajaRuralImg,
+      date: "2026-04-23",
+    },
     {
       id: "portada-extremadura-cek-r1",
       title: t("blog.portadaextremadura.title"),
       excerpt: t("blog.portadaextremadura.excerpt"),
       tag: t("blog.category.karting"),
       image: portadaExtremaduraImg,
-      date: "23.03.2026",
+      date: "2026-03-23",
     },
     {
       id: "test-recas-2026",
@@ -65,7 +77,7 @@ export function Home() {
       excerpt: t("blog.testrecas.excerpt"),
       tag: t("blog.category.karting"),
       image: testRecasImg,
-      date: "22.02.2026",
+      date: "2026-02-22",
     },
     {
       id: "albroksa-patrocinio",
@@ -73,9 +85,43 @@ export function Home() {
       excerpt: t("blog.albroksa.excerpt"),
       tag: t("blog.category.karting"),
       image: albroksaImg,
-      date: "17.02.2026",
+      date: "2026-02-17",
+    },
+    {
+      id: "netpro-agency",
+      title: t("blog.netpro.title"),
+      excerpt: t("blog.netpro.excerpt"),
+      tag: t("blog.category.marketing"),
+      image: netproImg,
+      date: "2026-01-16",
+    },
+    {
+      id: "netspy-emprendedores",
+      title: t("blog.netspy.title"),
+      excerpt: t("blog.netspy.excerpt"),
+      tag: t("blog.category.marketing"),
+      image: netspyImg,
+      date: "2025-11-05",
+    },
+    {
+      id: "cek-zaragoza",
+      title: t("blog.cek.title"),
+      excerpt: t("blog.cek.excerpt"),
+      tag: t("blog.category.karting"),
+      image: cekZaragozaImg,
+      date: "2025-09-20",
     },
   ];
+
+  const formatDate = (iso: string) => {
+    const [y, m, d] = iso.split("-");
+    return `${d}.${m}.${y}`;
+  };
+
+  const latestPosts = [...allPosts]
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .slice(0, 3)
+    .map((p) => ({ ...p, date: formatDate(p.date) }));
 
   return (
     <div className="min-h-screen bg-black text-white">
