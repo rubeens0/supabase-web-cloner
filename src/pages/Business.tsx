@@ -1,254 +1,241 @@
-import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '../components/ui/button';
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
-import { ArrowRight, Globe, TrendingUp, Users, Palette, Target, Rocket, ExternalLink, Check, Quote } from 'lucide-react';
+import { ArrowRight, ExternalLink, Quote, ArrowUpRight } from 'lucide-react';
 import { motion } from 'motion/react';
 import { useLanguage } from '../contexts/LanguageContext';
 import netproLogo from '@/assets/netpro-branding.jpg';
 import netspyImg from '@/assets/netspy-branding.png';
 
-export function Business() {
-  const { t } = useLanguage();
-
+function SectionLabel({ index, children }: { index: string; children: React.ReactNode }) {
   return (
-    <div className="min-h-screen bg-black pt-24 sm:pt-32 pb-20 px-4 sm:px-12 md:px-20 lg:px-32">
-      
-      {/* Header */}
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className="max-w-4xl mb-16 sm:mb-32"
-      >
-        <h1 className="text-4xl sm:text-5xl md:text-7xl font-light text-white tracking-tight mb-6 sm:mb-8">
-          Business <span className="text-white/40">Lines</span>
-        </h1>
-        <div className="h-px w-24 sm:w-32 bg-white/20" />
-      </motion.div>
-
-      <div className="flex flex-col gap-20 sm:gap-32 border-l border-white/10 pl-5 sm:pl-8 md:pl-16 relative">
-        {/* Decorative line that spans the height */}
-        <div className="absolute left-0 top-0 bottom-0 w-px bg-gradient-to-b from-white/20 via-white/5 to-transparent" />
-
-        {/* 01: Netpro Agency */}
-        <BusinessSection 
-          index="01"
-          title="Netpro Agency"
-          subtitle="Digital & Growth"
-          description={t('business.hero.description')}
-          extendedDescription={t('business.about.p1')}
-          image={netproLogo}
-          imageAlt="Netpro Agency Branding"
-          href="https://netpro.agency"
-          linkText="netpro.agency"
-          features={[
-            t('business.services.branding'),
-            t('business.services.web'),
-            t('business.services.growth'),
-            t('business.services.social')
-          ]}
-          color="blue"
-        />
-
-        {/* 02: Netspy */}
-        <BusinessSection 
-          index="02"
-          title={t('business.netspy.title')}
-          subtitle="Community & Networking"
-          description={t('business.netspy.description')}
-          extendedDescription={t('business.netspy.p1')}
-          image={netspyImg}
-          imageAlt="Netspy Community"
-          href="https://www.netspy.es/?utm_source=rubenweb"
-          linkText="netspy.es"
-          features={[
-            "Community Building",
-            "Exclusive Events",
-            "Founder Networking",
-            "Strategic Partnerships"
-          ]}
-          color="purple"
-          secondaryLink={{
-            href: "https://www.instagram.com/netpro.agency/",
-            text: t('business.netspy.cta') || "Follow on Instagram"
-          }}
-        />
-
-      </div>
-
-      {/* Mission / Goal Section - Enhanced */}
-      <motion.div 
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-        className="mt-24 sm:mt-40 border-t border-white/10 pt-16 sm:pt-24 relative"
-      >
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-black px-4">
-           <Quote className="w-6 h-6 sm:w-8 sm:h-8 text-white/20" />
-        </div>
-
-        <div className="max-w-4xl mx-auto text-center space-y-8 sm:space-y-12">
-          <div>
-            <span className="text-xs sm:text-sm uppercase tracking-[0.2em] text-white/40 mb-4 sm:mb-6 block">{t('business.goal.title')}</span>
-            <h3 className="text-xl sm:text-2xl md:text-4xl font-light text-white leading-relaxed md:leading-normal px-2">
-              "{t('business.goal.description')}"
-            </h3>
-          </div>
-
-          <div className="flex justify-center w-full sm:w-auto">
-            <Link to="/contact" className="w-full sm:w-auto">
-              <Button size="lg" className="w-full sm:w-auto rounded-full px-10 h-14 bg-white text-black hover:bg-white/90 transition-all duration-300 text-lg">
-                {t('business.contact')} <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </motion.div>
-
+    <div className="flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-white/40">
+      <span className="font-mono text-white">{index}</span>
+      <span className="h-px w-8 bg-white/15" />
+      <span>{children}</span>
     </div>
   );
 }
 
-function BusinessSection({ 
-  index, 
-  title, 
-  subtitle, 
-  description, 
+export function Business() {
+  const { t } = useLanguage();
+
+  const fadeIn = (delay = 0) => ({
+    initial: { opacity: 0, y: 16 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true, margin: '-10%' },
+    transition: { duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] },
+  });
+
+  return (
+    <div className="min-h-screen bg-black text-white">
+      {/* ============== 01 · HERO ============== */}
+      <section className="relative pt-32 sm:pt-40 pb-16 sm:pb-24 px-5 sm:px-10 md:px-16 border-b border-white/[0.08]">
+        <div className="max-w-7xl mx-auto">
+          <motion.div {...fadeIn(0.1)}>
+            <SectionLabel index="N° 01">Business · Lines</SectionLabel>
+          </motion.div>
+
+          <motion.h1
+            {...fadeIn(0.2)}
+            className="mt-8 font-display leading-[0.95] text-5xl sm:text-7xl md:text-8xl lg:text-[120px] text-white tracking-[-0.02em] max-w-5xl"
+          >
+            Business{' '}
+            <span className="font-display-italic text-gradient-mono-italic">Lines</span>
+            <span className="text-white/40">.</span>
+          </motion.h1>
+        </div>
+      </section>
+
+      {/* ============== 02 · NETPRO ============== */}
+      <section className="border-b border-white/[0.08] px-5 sm:px-10 md:px-16 py-20 sm:py-32">
+        <div className="max-w-7xl mx-auto">
+          <BusinessSection
+            index="02"
+            title="Netpro Agency"
+            subtitle="Digital & Growth"
+            description={t('business.hero.description')}
+            extendedDescription={t('business.about.p1')}
+            image={netproLogo}
+            imageAlt="Netpro Agency Branding"
+            href="https://netpro.agency"
+            linkText="netpro.agency"
+            features={[
+              t('business.services.branding'),
+              t('business.services.web'),
+              t('business.services.growth'),
+              t('business.services.social'),
+            ]}
+          />
+        </div>
+      </section>
+
+      {/* ============== 03 · NETSPY ============== */}
+      <section className="border-b border-white/[0.08] px-5 sm:px-10 md:px-16 py-20 sm:py-32">
+        <div className="max-w-7xl mx-auto">
+          <BusinessSection
+            index="03"
+            title={t('business.netspy.title')}
+            subtitle="Community & Networking"
+            description={t('business.netspy.description')}
+            extendedDescription={t('business.netspy.p1')}
+            image={netspyImg}
+            imageAlt="Netspy Community"
+            href="https://www.netspy.es/?utm_source=rubenweb"
+            linkText="netspy.es"
+            features={['Community Building', 'Exclusive Events', 'Founder Networking', 'Strategic Partnerships']}
+            secondaryLink={{
+              href: 'https://www.instagram.com/netpro.agency/',
+              text: t('business.netspy.cta') || 'Follow on Instagram',
+            }}
+            reverse
+          />
+        </div>
+      </section>
+
+      {/* ============== 04 · MISSION / GOAL ============== */}
+      <section className="px-5 sm:px-10 md:px-16 py-24 sm:py-40">
+        <div className="max-w-4xl mx-auto text-center relative">
+          <SectionLabel index="04">{t('business.goal.title')}</SectionLabel>
+          <div className="mt-10 mb-10 flex justify-center">
+            <Quote className="w-7 h-7 text-white/25" />
+          </div>
+          <motion.blockquote
+            {...fadeIn(0.1)}
+            className="font-display text-3xl sm:text-5xl md:text-6xl text-white leading-[1.1] tracking-tight"
+          >
+            <span className="font-display-italic text-gradient-mono-italic">"</span>
+            {t('business.goal.description')}
+            <span className="font-display-italic text-gradient-mono-italic">"</span>
+          </motion.blockquote>
+
+          <div className="mt-12 flex justify-center">
+            <Link to="/contact" className="w-full sm:w-auto">
+              <Button
+                size="lg"
+                className="w-full sm:w-auto rounded-full px-8 h-12 bg-white text-black hover:bg-white/90 transition-all gap-2"
+              >
+                {t('business.contact')} <ArrowRight className="w-4 h-4" />
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+function BusinessSection({
+  index,
+  title,
+  subtitle,
+  description,
   extendedDescription,
-  logo,
   image,
-  logoAlt,
   imageAlt,
-  href, 
+  href,
   linkText,
   features,
-  color,
-  secondaryLink
-}: { 
-  index: string, 
-  title: string, 
-  subtitle: string, 
-  description: string,
-  extendedDescription?: string,
-  logo?: string,
-  image?: string,
-  logoAlt?: string,
-  imageAlt?: string,
-  href: string, 
-  linkText: string,
-  features: string[],
-  color: 'blue' | 'purple',
-  secondaryLink?: { href: string, text: string }
+  secondaryLink,
+  reverse = false,
+}: {
+  index: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  extendedDescription?: string;
+  image: string;
+  imageAlt: string;
+  href: string;
+  linkText: string;
+  features: string[];
+  secondaryLink?: { href: string; text: string };
+  reverse?: boolean;
 }) {
   return (
-    <motion.div 
-      initial={{ opacity: 0, y: 40 }}
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-10%" }}
+      viewport={{ once: true, margin: '-10%' }}
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       className="group"
     >
-      <div className="flex flex-col lg:flex-row gap-8 lg:gap-20">
-        
-        {/* Content Side */}
-        <div className="flex-1 order-2 lg:order-1">
-          <div className="flex items-baseline gap-3 mb-4 sm:mb-6">
-            <span className="text-sm font-mono tracking-wider text-white">{index}</span>
-            <span className="h-px flex-1 bg-white/10 max-w-[60px] sm:max-w-[100px]" />
-            <span className="text-xs sm:text-sm uppercase tracking-widest text-white/40">{subtitle}</span>
-          </div>
+      <div className={`flex flex-col ${reverse ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-10 lg:gap-20 items-start`}>
+        {/* Content */}
+        <div className="flex-1 order-2 lg:order-none">
+          <SectionLabel index={index}>{subtitle}</SectionLabel>
 
-          <a href={href} target="_blank" rel="noopener noreferrer" className="block group-hover:opacity-100 transition-opacity">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 sm:mb-6 group-hover:translate-x-2 transition-transform duration-500 ease-out">
-              {title}
+          <a href={href} target="_blank" rel="noopener noreferrer" className="block mt-6">
+            <h2 className="font-display text-5xl sm:text-6xl md:text-7xl text-white leading-[1] tracking-tight group-hover:translate-x-1 transition-transform duration-500">
+              {title.split(' ').map((word, i, arr) =>
+                i === arr.length - 1 ? (
+                  <span key={i} className="font-display-italic text-gradient-mono-italic">
+                    {word}
+                  </span>
+                ) : (
+                  <span key={i}>{word} </span>
+                )
+              )}
             </h2>
           </a>
 
-          <p className="text-lg sm:text-xl text-white/80 leading-relaxed mb-6 sm:mb-8 max-w-xl">
-            {description}
-          </p>
-          
+          <p className="mt-8 text-lg sm:text-xl text-white/80 leading-relaxed max-w-xl">{description}</p>
+
           {extendedDescription && (
-            <p className="text-sm sm:text-base text-white/50 leading-relaxed mb-8 max-w-xl border-l-2 border-white/5 pl-4 sm:pl-6 hidden sm:block">
+            <p className="mt-5 text-sm sm:text-base text-white/50 leading-relaxed max-w-xl border-l-2 border-white/10 pl-4 sm:pl-6">
               {extendedDescription}
             </p>
           )}
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8 sm:mb-10">
+          <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-xl">
             {features.map((feature, i) => (
-              <div key={i} className="flex items-center gap-3">
-                <div className="w-1.5 h-1.5 rounded-full bg-white" />
-                <span className="text-white/60 text-sm">{feature}</span>
+              <div key={i} className="flex items-center gap-3 border-t border-white/[0.06] pt-3">
+                <span className="font-mono text-[10px] text-white/40">0{i + 1}</span>
+                <span className="text-white/70 text-sm">{feature}</span>
               </div>
             ))}
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 sm:justify-center">
-            <a 
-              href={href} 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="w-full sm:w-auto"
-            >
-              <Button 
-                variant="ghost" 
-                className="group relative w-full sm:w-auto h-12 px-8 rounded-full border border-white/10 bg-white/5 backdrop-blur-xl hover:bg-white/10 hover:border-white/20 text-white justify-between sm:justify-start gap-3 transition-all duration-300 overflow-hidden"
+          <div className="mt-10 flex flex-col sm:flex-row gap-3">
+            <a href={href} target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
+              <Button
+                variant="outline"
+                className="w-full sm:w-auto h-12 px-7 rounded-full border-white/20 bg-transparent text-white hover:bg-white hover:text-black hover:border-white gap-3 transition-all"
               >
-                {/* Liquid glass effect */}
-                <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent pointer-events-none" />
-                <div className="absolute inset-0 bg-gradient-to-tl from-white/5 via-transparent to-white/10 pointer-events-none" />
-                
-                {/* Hover shine effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
-
-                <span className="relative z-10">{linkText}</span>
-                <ExternalLink className="relative z-10 w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" />
+                <span>{linkText}</span>
+                <ExternalLink className="w-3.5 h-3.5" />
               </Button>
             </a>
-            
+
             {secondaryLink && (
-              <a 
-                href={secondaryLink.href}
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="w-full sm:w-auto"
-              >
-                <Button variant="ghost" className="w-full sm:w-auto h-12 px-6 text-white/60 hover:text-white hover:bg-transparent gap-2 justify-between sm:justify-start">
-                  {secondaryLink.text} <ArrowRight className="w-4 h-4" />
+              <a href={secondaryLink.href} target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
+                <Button
+                  variant="ghost"
+                  className="w-full sm:w-auto h-12 px-6 text-white/70 hover:text-white hover:bg-white/5 gap-2"
+                >
+                  {secondaryLink.text} <ArrowUpRight className="w-4 h-4" />
                 </Button>
               </a>
             )}
           </div>
         </div>
 
-        {/* Visual Side */}
-        <div className="w-full lg:w-[420px] shrink-0 order-1 lg:order-2 mb-4 lg:mb-0">
-          <a href={href} target="_blank" rel="noopener noreferrer" className="block cursor-pointer">
-            <div className="relative aspect-video sm:aspect-[4/3] bg-white/5 rounded-sm overflow-hidden border border-white/5 group-hover:border-white/10 transition-colors duration-500">
-              {logo ? (
-                <div className="absolute inset-0 flex items-center justify-center p-10 sm:p-16">
-                   <ImageWithFallback
-                    src={logo}
-                    alt={logoAlt || title}
-                    className="w-full h-full object-contain drop-shadow-2xl opacity-90 group-hover:scale-105 transition-transform duration-700 ease-out"
-                  />
-                </div>
-              ) : image ? (
-                <ImageWithFallback
-                  src={image}
-                  alt={imageAlt || title}
-                  className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-out"
-                />
-              ) : null}
-              
-              {/* Overlay Gradient */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none" />
+        {/* Visual */}
+        <div className="w-full lg:w-[440px] shrink-0 order-1 lg:order-none">
+          <a href={href} target="_blank" rel="noopener noreferrer" className="block">
+            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-white/10 bg-white/[0.02] group-hover:border-white/25 transition-colors duration-500">
+              <ImageWithFallback
+                src={image}
+                alt={imageAlt}
+                className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+              <div className="absolute top-4 left-4 font-mono text-[10px] uppercase tracking-[0.22em] text-white/60">
+                N° {index}
+              </div>
             </div>
           </a>
         </div>
-
       </div>
     </motion.div>
   );
