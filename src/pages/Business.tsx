@@ -6,6 +6,7 @@ import { motion } from 'motion/react';
 import { useLanguage } from '../contexts/LanguageContext';
 import netproLogo from '@/assets/netpro-branding.jpg';
 import netspyImg from '@/assets/netspy-branding.png';
+import rdeLogo from '@/assets/rde-logo.png';
 
 function SectionLabel({ index, children }: { index: string; children: React.ReactNode }) {
   return (
@@ -47,11 +48,30 @@ export function Business() {
         </div>
       </section>
 
-      {/* ============== 02 · NETPRO ============== */}
+      {/* ============== 02 · RDE OPERATORS ============== */}
       <section className="border-b border-white/[0.08] px-5 sm:px-10 md:px-16 py-20 sm:py-32">
         <div className="max-w-7xl mx-auto">
           <BusinessSection
             index="02"
+            title="RDE Operators"
+            subtitle="Funnels & Lead Generation"
+            description="Optimización de embudos de venta y generación de leads para info-empresarios hispanohablantes que quieren convertir su audiencia en ingresos predecibles."
+            extendedDescription="Somos Rubén, Diego y Edu — tres operadores que nos convertimos en el equipo de crecimiento de un número limitado de clientes, con implicación real en estrategia y ejecución."
+            image={rdeLogo}
+            imageAlt="RDE Operators"
+            href="/rde"
+            internal
+            linkText="Conocer RDE"
+            features={['Diagnóstico', 'Estrategia', 'Ejecución', 'Optimización']}
+          />
+        </div>
+      </section>
+
+      {/* ============== 03 · NETPRO ============== */}
+      <section className="border-b border-white/[0.08] px-5 sm:px-10 md:px-16 py-20 sm:py-32">
+        <div className="max-w-7xl mx-auto">
+          <BusinessSection
+            index="03"
             title="Netpro Agency"
             subtitle="Digital & Growth"
             description={t('business.hero.description')}
@@ -66,15 +86,16 @@ export function Business() {
               t('business.services.growth'),
               t('business.services.social'),
             ]}
+            reverse
           />
         </div>
       </section>
 
-      {/* ============== 03 · NETSPY ============== */}
+      {/* ============== 04 · NETSPY ============== */}
       <section className="border-b border-white/[0.08] px-5 sm:px-10 md:px-16 py-20 sm:py-32">
         <div className="max-w-7xl mx-auto">
           <BusinessSection
-            index="03"
+            index="04"
             title={t('business.netspy.title')}
             subtitle="Community & Networking"
             description={t('business.netspy.description')}
@@ -88,15 +109,14 @@ export function Business() {
               href: 'https://www.instagram.com/netpro.agency/',
               text: t('business.netspy.cta') || 'Follow on Instagram',
             }}
-            reverse
           />
         </div>
       </section>
 
-      {/* ============== 04 · MISSION / GOAL ============== */}
+      {/* ============== 05 · MISSION / GOAL ============== */}
       <section className="px-5 sm:px-10 md:px-16 py-24 sm:py-40">
         <div className="max-w-4xl mx-auto text-center relative">
-          <SectionLabel index="04">{t('business.goal.title')}</SectionLabel>
+          <SectionLabel index="05">{t('business.goal.title')}</SectionLabel>
           <div className="mt-10 mb-10 flex justify-center">
             <Quote className="w-7 h-7 text-white/25" />
           </div>
@@ -138,6 +158,7 @@ function BusinessSection({
   features,
   secondaryLink,
   reverse = false,
+  internal = false,
 }: {
   index: string;
   title: string;
@@ -151,7 +172,18 @@ function BusinessSection({
   features: string[];
   secondaryLink?: { href: string; text: string };
   reverse?: boolean;
+  internal?: boolean;
 }) {
+  const LinkWrapper = ({ children, className }: { children: React.ReactNode; className?: string }) =>
+    internal ? (
+      <Link to={href} className={className}>
+        {children}
+      </Link>
+    ) : (
+      <a href={href} target="_blank" rel="noopener noreferrer" className={className}>
+        {children}
+      </a>
+    );
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -165,7 +197,7 @@ function BusinessSection({
         <div className="flex-1 order-2 lg:order-none">
           <SectionLabel index={index}>{subtitle}</SectionLabel>
 
-          <a href={href} target="_blank" rel="noopener noreferrer" className="block mt-6">
+          <LinkWrapper className="block mt-6">
             <h2 className="font-display text-5xl sm:text-6xl md:text-7xl text-white leading-[1] tracking-tight group-hover:translate-x-1 transition-transform duration-500">
               {title.split(' ').map((word, i, arr) =>
                 i === arr.length - 1 ? (
@@ -177,7 +209,7 @@ function BusinessSection({
                 )
               )}
             </h2>
-          </a>
+          </LinkWrapper>
 
           <p className="mt-8 text-lg sm:text-xl text-white/80 leading-relaxed max-w-xl">{description}</p>
 
@@ -197,15 +229,15 @@ function BusinessSection({
           </div>
 
           <div className="mt-10 flex flex-col sm:flex-row gap-3">
-            <a href={href} target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
+            <LinkWrapper className="w-full sm:w-auto">
               <Button
                 variant="outline"
                 className="w-full sm:w-auto h-12 px-7 rounded-full border-white/20 bg-transparent text-white hover:bg-white hover:text-black hover:border-white gap-3 transition-all"
               >
                 <span>{linkText}</span>
-                <ExternalLink className="w-3.5 h-3.5" />
+                {internal ? <ArrowRight className="w-3.5 h-3.5" /> : <ExternalLink className="w-3.5 h-3.5" />}
               </Button>
-            </a>
+            </LinkWrapper>
 
             {secondaryLink && (
               <a href={secondaryLink.href} target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
@@ -222,7 +254,7 @@ function BusinessSection({
 
         {/* Visual */}
         <div className="w-full lg:w-[440px] shrink-0 order-1 lg:order-none">
-          <a href={href} target="_blank" rel="noopener noreferrer" className="block">
+          <LinkWrapper className="block">
             <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-white/10 bg-white/[0.02] group-hover:border-white/25 transition-colors duration-500">
               <ImageWithFallback
                 src={image}
@@ -234,7 +266,7 @@ function BusinessSection({
                 N° {index}
               </div>
             </div>
-          </a>
+          </LinkWrapper>
         </div>
       </div>
     </motion.div>
