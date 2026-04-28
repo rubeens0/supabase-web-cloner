@@ -1,429 +1,304 @@
 import { motion } from 'motion/react';
-import { AnimatedLogo } from '../components/AnimatedLogo';
 import { useLanguage } from '../contexts/LanguageContext';
-import { Trophy, Users, Sparkles, Mail, X } from 'lucide-react';
+import { Trophy, Users, Sparkles, Mail, X, ArrowUpRight, ArrowRight } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Link } from 'react-router-dom';
 import { SEO } from '../components/SEO';
 import { useState } from 'react';
 import heroImage from '@/assets/sponsors-event.png';
-import tiktokLogo from '@/assets/figma/placeholder.svg';
 import sponsorsImage from '@/assets/figma/placeholder.svg';
+
+function SectionLabel({ index, children }: { index: string; children: React.ReactNode }) {
+  return (
+    <div className="flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-white/40">
+      <span className="font-mono text-white">{index}</span>
+      <span className="h-px w-8 bg-white/15" />
+      <span>{children}</span>
+    </div>
+  );
+}
 
 export function Sponsors() {
   const { t, language, getRoute } = useLanguage();
   const [showSponsorsLightbox, setShowSponsorsLightbox] = useState(false);
 
-  const scrollToValueAdd = () => {
-    const element = document.getElementById('value-add-section');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
-  };
-
-  const scrollToSponsors = () => {
-    const element = document.getElementById('sponsors-section');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
-  };
+  const fadeIn = (delay = 0) => ({
+    initial: { opacity: 0, y: 16 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true, margin: '-10%' },
+    transition: { duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] },
+  });
 
   const whyCards = [
-    {
-      icon: Trophy,
-      title: t('sponsors.why.card1.title'),
-      description: t('sponsors.why.card1.desc'),
-    },
-    {
-      icon: Sparkles,
-      title: t('sponsors.why.card2.title'),
-      description: t('sponsors.why.card2.desc'),
-    },
-    {
-      icon: Users,
-      title: t('sponsors.why.card3.title'),
-      description: t('sponsors.why.card3.desc'),
-    },
+    { icon: Trophy, title: t('sponsors.why.card1.title'), description: t('sponsors.why.card1.desc') },
+    { icon: Sparkles, title: t('sponsors.why.card2.title'), description: t('sponsors.why.card2.desc') },
+    { icon: Users, title: t('sponsors.why.card3.title'), description: t('sponsors.why.card3.desc') },
   ];
 
   return (
-    <div className="min-h-screen bg-black pt-20">
-      <SEO 
-        title={language === 'es' 
-          ? 'Patrocinar Piloto de Karting | Rubén Muñoz - Extremadura' 
-          : 'Sponsor Karting Driver | Rubén Muñoz - Spain'}
-        description={language === 'es' 
-          ? 'Patrocinar a Rubén Muñoz, piloto de karting extremeño de Cáceres. Compitiendo en el Campeonato de España de Karting 2025. Oportunidades de patrocinio deportivo con valor añadido en marketing digital. Piloto joven con experiencia en Meta Ads y TikTok Ads.'
-          : 'Sponsor Rubén Muñoz, karting driver from Extremadura, Cáceres. Competing in the 2025 Spanish Karting Championship. Sports sponsorship opportunities with added value in digital marketing. Young driver with expertise in Meta Ads and TikTok Ads.'}
-        keywords={language === 'es'
-          ? 'patrocinar piloto karting, piloto karting extremeño, piloto karting Cáceres, Rubén Muñoz, patrocinio deportivo, karting España, Campeonato España Karting, piloto karting español, patrocinio karting, sponsor karting, piloto joven Extremadura, karting Extremadura 2025'
-          : 'sponsor karting driver, karting driver Extremadura, Spanish karting driver, Rubén Muñoz, sports sponsorship, karting Spain, Spanish Karting Championship, Spanish karting pilot, karting sponsorship, young driver Spain, Extremadura karting 2025'}
+    <div className="min-h-screen bg-black text-white">
+      <SEO
+        title={
+          language === 'es'
+            ? 'Patrocinar Piloto de Karting | Rubén Muñoz - Extremadura'
+            : 'Sponsor Karting Driver | Rubén Muñoz - Spain'
+        }
+        description={
+          language === 'es'
+            ? 'Patrocinar a Rubén Muñoz, piloto de karting extremeño de Cáceres. Compitiendo en el Campeonato de España de Karting 2025. Oportunidades de patrocinio deportivo con valor añadido en marketing digital. Piloto joven con experiencia en Meta Ads y TikTok Ads.'
+            : 'Sponsor Rubén Muñoz, karting driver from Extremadura, Cáceres. Competing in the 2025 Spanish Karting Championship. Sports sponsorship opportunities with added value in digital marketing. Young driver with expertise in Meta Ads and TikTok Ads.'
+        }
+        keywords={
+          language === 'es'
+            ? 'patrocinar piloto karting, piloto karting extremeño, piloto karting Cáceres, Rubén Muñoz, patrocinio deportivo, karting España, Campeonato España Karting, piloto karting español, patrocinio karting, sponsor karting, piloto joven Extremadura, karting Extremadura 2025'
+            : 'sponsor karting driver, karting driver Extremadura, Spanish karting driver, Rubén Muñoz, sports sponsorship, karting Spain, Spanish Karting Championship, Spanish karting pilot, karting sponsorship, young driver Spain, Extremadura karting 2025'
+        }
       />
-      {/* Hero Section */}
-      <section className="relative py-12 sm:py-20 px-4 sm:px-6 overflow-hidden">
-        {/* Background Image */}
+
+      {/* ============== 01 · HERO ============== */}
+      <section className="relative pt-32 sm:pt-40 pb-16 sm:pb-24 overflow-hidden border-b border-white/[0.08]">
         <div className="absolute inset-0">
-          <img 
-            src={heroImage} 
-            alt="Karting" 
-            className="w-full h-full object-cover opacity-30"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black" />
+          <img src={heroImage} alt="Karting" className="w-full h-full object-cover opacity-25" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black" />
         </div>
 
-        <div className="max-w-5xl mx-auto text-center relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <AnimatedLogo size={80} className="mx-auto mb-6" />
+        <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-10 md:px-16">
+          <motion.div {...fadeIn(0.1)}>
+            <SectionLabel index="N° 01">Sponsorship</SectionLabel>
           </motion.div>
 
           <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-            className="mb-6 text-white"
+            {...fadeIn(0.2)}
+            className="mt-8 font-display leading-[0.95] text-5xl sm:text-7xl md:text-8xl lg:text-[120px] text-white tracking-[-0.02em] max-w-5xl"
           >
-            {t('sponsors.hero.title')}
+            {t('sponsors.hero.title').split(' ').map((word, i, arr) =>
+              i === arr.length - 1 ? (
+                <span key={i} className="font-display-italic text-gradient-mono-italic">
+                  {word}
+                </span>
+              ) : (
+                <span key={i}>{word} </span>
+              )
+            )}
+            <span className="text-white/40">.</span>
           </motion.h1>
 
-          {/* Main Tagline - DESTACADA */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            whileHover={{ scale: 1.02 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="relative mb-6 cursor-default"
+          {/* Tagline pill */}
+          <motion.p
+            {...fadeIn(0.3)}
+            className="mt-10 font-display-italic text-2xl sm:text-3xl md:text-4xl text-white/85 leading-snug max-w-3xl"
           >
-            <motion.div 
-              className="absolute inset-0 bg-gradient-to-r from-white/20 via-white/20 to-black/20 blur-3xl"
-              animate={{ 
-                scale: [1, 1.1, 1],
-                opacity: [0.5, 0.8, 0.5]
-              }}
-              transition={{ 
-                duration: 3, 
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-            />
-            <h2 className="relative text-white px-6 py-6 border border-white/20 rounded-3xl bg-white/5 backdrop-blur-xl shadow-2xl">
-              {t('sponsors.tagline')}
-            </h2>
-          </motion.div>
+            {t('sponsors.tagline')}
+          </motion.p>
 
           <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="text-white/70 max-w-3xl mx-auto mb-8"
+            {...fadeIn(0.4)}
+            className="mt-8 text-white/60 text-base sm:text-lg max-w-2xl leading-relaxed"
           >
             {t('sponsors.hero.description')}
           </motion.p>
 
-          {/* Buttons */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            className="flex items-center justify-center gap-4 flex-wrap"
-          >
+          {/* CTAs */}
+          <motion.div {...fadeIn(0.5)} className="mt-10 flex flex-wrap gap-3">
             <Link to={getRoute('contact')}>
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Button
-                  size="lg"
-                  className="group/btn gap-2 bg-white/10 backdrop-blur-xl border border-white/20 text-white hover:bg-white hover:border-white transition-all duration-300 px-8"
-                >
-                  <Mail className="w-4 h-4 group-hover/btn:text-black transition-colors duration-300" />
-                  <span className="group-hover/btn:text-black transition-colors duration-300">
-                    {language === 'es' ? 'Contáctame' : 'Contact Me'}
-                  </span>
-                </Button>
-              </motion.div>
+              <Button className="rounded-full h-12 px-7 bg-white text-black hover:bg-white/90 gap-2">
+                <Mail className="w-4 h-4" />
+                {language === 'es' ? 'Contáctame' : 'Contact Me'}
+              </Button>
             </Link>
-            
             <Link to="/dossier">
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Button
-                  size="lg"
-                  className="group/btn gap-2 bg-gradient-to-r from-white/20 to-white/20 backdrop-blur-xl border border-white/30 text-white hover:bg-gradient-to-r hover:from-white hover:to-white hover:border-white transition-all duration-300 px-8"
-                >
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                  </svg>
-                  <span>
-                    {language === 'es' ? 'Ver Dossier' : 'View Dossier'}
-                  </span>
-                </Button>
-              </motion.div>
-            </Link>
-            
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
               <Button
-                onClick={scrollToSponsors}
-                size="lg"
-                className="group/btn gap-2 bg-gradient-to-r from-white/20 to-white/20 backdrop-blur-xl border border-white/30 text-white hover:bg-gradient-to-r hover:from-white hover:to-white hover:border-white transition-all duration-300 px-8"
-              >
-                <Users className="w-4 h-4" />
-                <span>
-                  {language === 'es' ? 'Ver Patrocinadores' : 'View Sponsors'}
-                </span>
-              </Button>
-            </motion.div>
-
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Button
-                onClick={scrollToValueAdd}
-                size="lg"
                 variant="outline"
-                className="group/btn gap-2 bg-transparent backdrop-blur-xl border border-white/20 text-white hover:bg-white hover:border-white transition-all duration-300 px-8"
+                className="rounded-full h-12 px-7 border-white/20 bg-transparent text-white hover:bg-white hover:text-black hover:border-white gap-2"
               >
-                <Sparkles className="w-4 h-4 group-hover/btn:text-black transition-colors duration-300" />
-                <span className="group-hover/btn:text-black transition-colors duration-300">
-                  {language === 'es' ? 'Saber más' : 'Learn More'}
-                </span>
+                {language === 'es' ? 'Ver Dossier' : 'View Dossier'} <ArrowUpRight className="w-4 h-4" />
               </Button>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Intro Section */}
-      <section className="py-16 sm:py-20 px-4 sm:px-6 bg-black border-t border-white/5">
-        <div className="max-w-4xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="text-center mb-12"
-          >
-            <h2 className="mb-4 text-white">{t('sponsors.intro.title')}</h2>
-          </motion.div>
-
-          <div className="space-y-6">
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-              className="text-white/70 leading-relaxed p-6 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300"
+            </Link>
+            <a
+              href="#sponsors-section"
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById('sponsors-section')?.scrollIntoView({ behavior: 'smooth' });
+              }}
             >
-              {t('sponsors.intro.p1')}
-            </motion.p>
-
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-              className="text-white/70 leading-relaxed p-6 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300"
-            >
-              {t('sponsors.intro.p2')}
-            </motion.p>
-
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-              className="text-white/70 leading-relaxed p-6 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300"
-            >
-              {t('sponsors.intro.p3')}
-            </motion.p>
-          </div>
-        </div>
-      </section>
-
-      {/* Value Add Section - Marketing Skills */}
-      <section className="py-16 sm:py-20 px-4 sm:px-6 bg-black border-t border-white/5" id="value-add-section">
-        <div className="max-w-4xl mx-auto relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="text-center mb-12"
-          >
-            <h2 className="mb-4 text-white">{t('sponsors.valueAdd.title')}</h2>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            whileHover={{ scale: 1.02 }}
-            transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 sm:p-12 hover:bg-white/10 hover:border-white/20 transition-all duration-300"
-          >
-            <p className="text-white/80 leading-relaxed text-center">
-              {t('sponsors.valueAdd.description')}
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Why Sponsor Section */}
-      <section className="py-16 sm:py-20 px-4 sm:px-6 bg-black border-t border-white/5">
-        <div className="max-w-6xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="text-center mb-12"
-          >
-            <h2 className="mb-4 text-white">{t('sponsors.why.title')}</h2>
-          </motion.div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {whyCards.map((card, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
-                whileHover={{ y: -8, scale: 1.02 }}
-                className="group p-8 bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl hover:border-white/20 hover:bg-white/10 transition-all duration-300 cursor-pointer"
+              <Button
+                variant="ghost"
+                className="rounded-full h-12 px-6 text-white/70 hover:text-white hover:bg-white/5 gap-2"
               >
-                <motion.div 
-                  className="mb-6 p-4 bg-white/5 rounded-2xl w-fit"
-                  whileHover={{ scale: 1.1 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <card.icon className="w-8 h-8 text-white" />
-                </motion.div>
-                <h3 className="text-white mb-3">{card.title}</h3>
-                <p className="text-white/60 leading-relaxed">{card.description}</p>
+                {language === 'es' ? 'Ver Patrocinadores' : 'View Sponsors'} <ArrowRight className="w-4 h-4" />
+              </Button>
+            </a>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ============== 02 · INTRO ============== */}
+      <section className="border-b border-white/[0.08] px-5 sm:px-10 md:px-16 py-20 sm:py-28">
+        <div className="max-w-7xl mx-auto">
+          <SectionLabel index="02">{t('sponsors.intro.title')}</SectionLabel>
+
+          <h2 className="mt-6 font-display text-4xl sm:text-5xl md:text-6xl text-white leading-[1.05] tracking-tight max-w-4xl mb-12">
+            {t('sponsors.intro.title')}
+            <span className="text-white/40">.</span>
+          </h2>
+
+          <div className="grid md:grid-cols-3 gap-5">
+            {[t('sponsors.intro.p1'), t('sponsors.intro.p2'), t('sponsors.intro.p3')].map((p, i) => (
+              <motion.div
+                key={i}
+                {...fadeIn(i * 0.1)}
+                className="border-t border-white/[0.12] pt-6"
+              >
+                <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-white/40">
+                  0{i + 1}
+                </span>
+                <p className="mt-4 text-white/70 leading-relaxed text-[15px]">{p}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16 sm:py-20 px-4 sm:px-6 bg-black border-t border-white/5">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="max-w-4xl mx-auto text-center"
-        >
-          <motion.div
-            whileHover={{ scale: 1.1 }}
-            transition={{ duration: 0.4 }}
+      {/* ============== 03 · VALUE ADD ============== */}
+      <section id="value-add-section" className="border-b border-white/[0.08] px-5 sm:px-10 md:px-16 py-20 sm:py-28">
+        <div className="max-w-5xl mx-auto">
+          <SectionLabel index="03">{t('sponsors.valueAdd.title')}</SectionLabel>
+          <motion.p
+            {...fadeIn(0.1)}
+            className="mt-8 font-display text-3xl sm:text-4xl md:text-5xl text-white leading-[1.15] tracking-tight"
           >
-            <AnimatedLogo size={60} className="mx-auto mb-8" />
+            <span className="font-display-italic text-gradient-mono-italic">"</span>
+            {t('sponsors.valueAdd.description')}
+            <span className="font-display-italic text-gradient-mono-italic">"</span>
+          </motion.p>
+        </div>
+      </section>
+
+      {/* ============== 04 · WHY ============== */}
+      <section className="border-b border-white/[0.08] px-5 sm:px-10 md:px-16 py-20 sm:py-28">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-12 max-w-3xl">
+            <SectionLabel index="04">{t('sponsors.why.title')}</SectionLabel>
+            <h2 className="mt-6 font-display text-4xl sm:text-5xl md:text-6xl text-white leading-[1.05] tracking-tight">
+              {t('sponsors.why.title')}
+              <span className="text-white/40">.</span>
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-5">
+            {whyCards.map((card, i) => (
+              <motion.div
+                key={i}
+                {...fadeIn(i * 0.1)}
+                className="group border border-white/10 rounded-2xl p-7 bg-white/[0.02] hover:border-white/25 hover:bg-white/[0.04] transition-all"
+              >
+                <div className="flex items-center justify-between mb-6">
+                  <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-white">
+                    0{i + 1}
+                  </span>
+                  <card.icon className="w-5 h-5 text-white/40 group-hover:text-white transition-colors" />
+                </div>
+                <h3 className="font-display text-2xl sm:text-3xl text-white mb-3 leading-tight">
+                  {card.title}
+                </h3>
+                <p className="text-white/60 text-sm leading-relaxed">{card.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ============== 05 · SPONSORS IMAGE ============== */}
+      <section id="sponsors-section" className="border-b border-white/[0.08] px-5 sm:px-10 md:px-16 py-20 sm:py-28">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex items-end justify-between mb-10">
+            <div>
+              <SectionLabel index="05">{language === 'es' ? 'Patrocinadores' : 'Sponsors'}</SectionLabel>
+              <h2 className="mt-6 font-display text-4xl sm:text-5xl md:text-6xl text-white tracking-tight leading-tight">
+                {language === 'es' ? (
+                  <>
+                    Patrocinadores <span className="font-display-italic text-gradient-mono-italic">2026</span>
+                  </>
+                ) : (
+                  <>
+                    Sponsors <span className="font-display-italic text-gradient-mono-italic">2026</span>
+                  </>
+                )}
+              </h2>
+            </div>
+          </div>
+
+          <motion.div
+            {...fadeIn(0.1)}
+            onClick={() => setShowSponsorsLightbox(true)}
+            className="relative rounded-3xl overflow-hidden border border-white/10 hover:border-white/25 transition-colors cursor-pointer group"
+          >
+            <img
+              src={sponsorsImage}
+              alt={language === 'es' ? 'Patrocinadores 2026 - Rubén Muñoz' : 'Sponsors 2026 - Rubén Muñoz'}
+              className="w-full h-auto"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
+            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/40">
+              <div className="bg-white/95 px-4 py-2 rounded-full">
+                <p className="text-black text-sm font-medium">
+                  {language === 'es' ? 'Click para ampliar' : 'Click to enlarge'}
+                </p>
+              </div>
+            </div>
           </motion.div>
-          <h2 className="text-white mb-6">
-            {t('sponsors.cta.title')}
-          </h2>
+        </div>
+      </section>
+
+      {/* ============== 06 · CTA ============== */}
+      <section className="px-5 sm:px-10 md:px-16 py-24 sm:py-40">
+        <div className="max-w-4xl mx-auto text-center">
+          <SectionLabel index="06">{t('sponsors.cta.title')}</SectionLabel>
+          <motion.h2
+            {...fadeIn(0.1)}
+            className="mt-8 font-display text-4xl sm:text-6xl md:text-7xl text-white leading-[1.05] tracking-tight mb-8"
+          >
+            {t('sponsors.cta.title').split(' ').map((word, i, arr) =>
+              i === arr.length - 1 ? (
+                <span key={i} className="font-display-italic text-gradient-mono-italic">
+                  {word}
+                </span>
+              ) : (
+                <span key={i}>{word} </span>
+              )
+            )}
+          </motion.h2>
           <p className="text-white/60 mb-10 max-w-2xl mx-auto leading-relaxed">
             {t('sponsors.cta.description')}
           </p>
           <Link to={getRoute('contact')}>
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+            <Button
+              size="lg"
+              className="rounded-full h-12 px-8 bg-white text-black hover:bg-white/90 gap-2"
             >
-              <Button
-                size="lg"
-                className="gap-2 bg-white/10 backdrop-blur-xl border border-white/20 text-white hover:bg-white/20 hover:border-white/30 transition-all duration-300 px-8 py-6"
-              >
-                <Mail className="w-5 h-5" />
-                {t('sponsors.cta.button')}
-              </Button>
-            </motion.div>
+              <Mail className="w-5 h-5" />
+              {t('sponsors.cta.button')}
+            </Button>
           </Link>
-        </motion.div>
+        </div>
       </section>
 
-      {/* Sponsors Image Section */}
-      <section className="py-16 sm:py-20 px-4 sm:px-6 bg-black border-t border-white/5" id="sponsors-section">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="max-w-5xl mx-auto"
-        >
-          <motion.h2 
-            className="text-white text-center mb-12"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-          >
-            {language === 'es' ? 'Patrocinadores 2026' : 'Sponsors 2026'}
-          </motion.h2>
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            whileHover={{ scale: 1.02 }}
-            transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            onClick={() => setShowSponsorsLightbox(true)}
-            className="relative rounded-3xl overflow-hidden border border-white/10 hover:border-white/20 transition-all duration-300 cursor-pointer group"
-          >
-            <img 
-              src={sponsorsImage} 
-              alt={language === 'es' ? 'Patrocinadores 2026 - Rubén Muñoz' : 'Sponsors 2026 - Rubén Muñoz'} 
-              className="w-full h-auto"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
-            
-            {/* Zoom indicator */}
-            <motion.div 
-              className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/50 pointer-events-none"
-              initial={{ opacity: 0 }}
-              whileHover={{ opacity: 1 }}
-            >
-              <div className="bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full">
-                <p className="text-black font-medium">{language === 'es' ? 'Click para ampliar' : 'Click to enlarge'}</p>
-              </div>
-            </motion.div>
-          </motion.div>
-        </motion.div>
-      </section>
-
-      {/* Lightbox for Sponsors Image */}
+      {/* Lightbox */}
       {showSponsorsLightbox && (
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           onClick={() => setShowSponsorsLightbox(false)}
-          className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4"
+          className="fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex items-center justify-center p-4"
         >
-          <motion.button
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.8 }}
+          <button
             onClick={() => setShowSponsorsLightbox(false)}
-            className="absolute top-4 right-4 p-2 bg-white/10 hover:bg-white/20 border border-white/20 rounded-full transition-all duration-200"
+            className="absolute top-4 right-4 p-2 bg-white/10 hover:bg-white/20 border border-white/20 rounded-full transition-all"
           >
             <X className="w-6 h-6 text-white" />
-          </motion.button>
-          <motion.img
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.9 }}
+          </button>
+          <img
             src={sponsorsImage}
             alt={language === 'es' ? 'Patrocinadores 2026 - Rubén Muñoz' : 'Sponsors 2026 - Rubén Muñoz'}
             className="max-w-full max-h-[90vh] object-contain rounded-2xl"
