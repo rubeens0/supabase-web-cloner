@@ -1,6 +1,6 @@
 import cekZaragozaImg from '@/assets/cek-zaragoza.jpg';
 import netspyImg from '@/assets/netspy-branding-new.jpg';
-import netproImg from '@/assets/netpro-logo.png';
+import netproImg from '@/assets/netpro-new-logo.jpg';
 import albroksaImg from '@/assets/albroksa-patrocinio.jpeg';
 import testRecasImg from '@/assets/test-recas-2026.jpg';
 import portadaExtremaduraImg from '@/assets/cek-2026-campillos-18.jpg';
