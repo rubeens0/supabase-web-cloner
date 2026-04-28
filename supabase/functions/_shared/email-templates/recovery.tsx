@@ -8,14 +8,10 @@ import {
   Container,
   Head,
   Heading,
-  Hr,
   Html,
-  Link,
   Preview,
   Text,
 } from 'npm:@react-email/components@0.0.22'
-
-import { brand, styles } from './_brand.ts'
 
 interface RecoveryEmailProps {
   siteName: string
@@ -26,47 +22,22 @@ export const RecoveryEmail = ({
   siteName,
   confirmationUrl,
 }: RecoveryEmailProps) => (
-  <Html lang="es" dir="ltr">
+  <Html lang="en" dir="ltr">
     <Head />
-    <Preview>Restablece tu contraseña en {siteName}</Preview>
-    <Body style={styles.main}>
-      <Container style={styles.container}>
-        <div style={styles.header}>
-          <Text style={styles.wordmark}>{brand.wordmark}</Text>
-        </div>
-
-        <Text style={styles.sectionTag}>N° 02 — Seguridad</Text>
-
-        <Heading style={styles.h1}>
-          Restablece tu <span style={styles.italic}>contraseña</span>.
-        </Heading>
-
-        <Text style={styles.text}>
-          Hemos recibido una solicitud para cambiar la contraseña de tu cuenta en{' '}
-          <strong style={{ color: '#0a0a0a' }}>{siteName}</strong>. Pulsa el botón
-          de abajo para crear una nueva.
+    <Preview>Reset your password for {siteName}</Preview>
+    <Body style={main}>
+      <Container style={container}>
+        <Heading style={h1}>Reset your password</Heading>
+        <Text style={text}>
+          We received a request to reset your password for {siteName}. Click
+          the button below to choose a new password.
         </Text>
-
-        <Button style={styles.button} href={confirmationUrl}>
-          Cambiar contraseña
+        <Button style={button} href={confirmationUrl}>
+          Reset Password
         </Button>
-
-        <Text style={{ ...styles.text, marginTop: '28px', fontSize: '13px', color: '#737373' }}>
-          Si no funciona el botón, copia y pega este enlace en tu navegador:
-          <br />
-          <Link href={confirmationUrl} style={styles.link}>
-            {confirmationUrl}
-          </Link>
-        </Text>
-
-        <Hr style={styles.divider} />
-
-        <Text style={styles.footer}>
-          Si no solicitaste el cambio, ignora este correo. Tu contraseña actual
-          seguirá siendo válida.
-        </Text>
-        <Text style={styles.footer}>
-          © {new Date().getFullYear()} Rubén Muñoz · <Link href={brand.siteUrl} style={styles.footerLink}>rubenmunoz.com</Link>
+        <Text style={footer}>
+          If you didn't request a password reset, you can safely ignore this
+          email. Your password will not be changed.
         </Text>
       </Container>
     </Body>
@@ -74,3 +45,27 @@ export const RecoveryEmail = ({
 )
 
 export default RecoveryEmail
+
+const main = { backgroundColor: '#ffffff', fontFamily: 'Arial, sans-serif' }
+const container = { padding: '20px 25px' }
+const h1 = {
+  fontSize: '22px',
+  fontWeight: 'bold' as const,
+  color: '#000000',
+  margin: '0 0 20px',
+}
+const text = {
+  fontSize: '14px',
+  color: '#55575d',
+  lineHeight: '1.5',
+  margin: '0 0 25px',
+}
+const button = {
+  backgroundColor: '#000000',
+  color: '#ffffff',
+  fontSize: '14px',
+  borderRadius: '8px',
+  padding: '12px 20px',
+  textDecoration: 'none',
+}
+const footer = { fontSize: '12px', color: '#999999', margin: '30px 0 0' }

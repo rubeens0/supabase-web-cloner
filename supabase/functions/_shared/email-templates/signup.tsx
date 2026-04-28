@@ -8,14 +8,11 @@ import {
   Container,
   Head,
   Heading,
-  Hr,
   Html,
   Link,
   Preview,
   Text,
 } from 'npm:@react-email/components@0.0.22'
-
-import { brand, styles } from './_brand.ts'
 
 interface SignupEmailProps {
   siteName: string
@@ -26,52 +23,35 @@ interface SignupEmailProps {
 
 export const SignupEmail = ({
   siteName,
+  siteUrl,
   recipient,
   confirmationUrl,
 }: SignupEmailProps) => (
-  <Html lang="es" dir="ltr">
+  <Html lang="en" dir="ltr">
     <Head />
-    <Preview>Confirma tu correo para acceder a {siteName}</Preview>
-    <Body style={styles.main}>
-      <Container style={styles.container}>
-        <div style={styles.header}>
-          <Text style={styles.wordmark}>{brand.wordmark}</Text>
-        </div>
-
-        <Text style={styles.sectionTag}>N° 01 — Verificación</Text>
-
-        <Heading style={styles.h1}>
-          Confirma tu <span style={styles.italic}>correo</span>.
-        </Heading>
-
-        <Text style={styles.text}>
-          Gracias por registrarte. Para activar tu cuenta en{' '}
-          <strong style={{ color: '#0a0a0a' }}>{siteName}</strong>, confirma que{' '}
-          <Link href={`mailto:${recipient}`} style={styles.link}>
-            {recipient}
-          </Link>{' '}
-          es tu dirección.
-        </Text>
-
-        <Button style={styles.button} href={confirmationUrl}>
-          Confirmar correo
-        </Button>
-
-        <Text style={{ ...styles.text, marginTop: '28px', fontSize: '13px', color: '#737373' }}>
-          Si no funciona el botón, copia y pega este enlace en tu navegador:
-          <br />
-          <Link href={confirmationUrl} style={styles.link}>
-            {confirmationUrl}
+    <Preview>Confirm your email for {siteName}</Preview>
+    <Body style={main}>
+      <Container style={container}>
+        <Heading style={h1}>Confirm your email</Heading>
+        <Text style={text}>
+          Thanks for signing up for{' '}
+          <Link href={siteUrl} style={link}>
+            <strong>{siteName}</strong>
           </Link>
+          !
         </Text>
-
-        <Hr style={styles.divider} />
-
-        <Text style={styles.footer}>
-          Si no creaste esta cuenta, puedes ignorar este correo.
+        <Text style={text}>
+          Please confirm your email address (
+          <Link href={`mailto:${recipient}`} style={link}>
+            {recipient}
+          </Link>
+          ) by clicking the button below:
         </Text>
-        <Text style={styles.footer}>
-          © {new Date().getFullYear()} Rubén Muñoz · <Link href={brand.siteUrl} style={styles.footerLink}>rubenmunoz.com</Link>
+        <Button style={button} href={confirmationUrl}>
+          Verify Email
+        </Button>
+        <Text style={footer}>
+          If you didn't create an account, you can safely ignore this email.
         </Text>
       </Container>
     </Body>
@@ -79,3 +59,28 @@ export const SignupEmail = ({
 )
 
 export default SignupEmail
+
+const main = { backgroundColor: '#ffffff', fontFamily: 'Arial, sans-serif' }
+const container = { padding: '20px 25px' }
+const h1 = {
+  fontSize: '22px',
+  fontWeight: 'bold' as const,
+  color: '#000000',
+  margin: '0 0 20px',
+}
+const text = {
+  fontSize: '14px',
+  color: '#55575d',
+  lineHeight: '1.5',
+  margin: '0 0 25px',
+}
+const link = { color: 'inherit', textDecoration: 'underline' }
+const button = {
+  backgroundColor: '#000000',
+  color: '#ffffff',
+  fontSize: '14px',
+  borderRadius: '8px',
+  padding: '12px 20px',
+  textDecoration: 'none',
+}
+const footer = { fontSize: '12px', color: '#999999', margin: '30px 0 0' }
