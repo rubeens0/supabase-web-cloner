@@ -182,7 +182,7 @@ export function Cek2026() {
           transition={{ delay: 0.3, duration: 0.6 }}
           className="mt-20"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 bg-gradient-to-r from-red-500 via-red-600 to-black bg-clip-text text-transparent">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 bg-gradient-to-r from-red-500 via-red-600 to-black bg-clip-text text-primary">
             {language === 'es' ? 'Patrocinadores 2026' : 'Sponsors 2026'}
           </h2>
           <motion.div
