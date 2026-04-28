@@ -48,14 +48,38 @@ export function Auth() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email || !password || loading) return;
+    if (loading) return;
+    if (!email || !password) return;
+
+    if (mode === 'signup') {
+      if (!firstName.trim() || !lastName.trim()) {
+        toast.error(isES ? 'Introduce tu nombre y apellido' : 'Enter your first and last name');
+        return;
+      }
+      if (password.length < 6) {
+        toast.error(isES ? 'La contraseña debe tener al menos 6 caracteres' : 'Password must be at least 6 characters');
+        return;
+      }
+      if (password !== confirmPassword) {
+        toast.error(isES ? 'Las contraseñas no coinciden' : 'Passwords do not match');
+        return;
+      }
+    }
+
     setLoading(true);
     try {
       if (mode === 'signup') {
         const { error } = await supabase.auth.signUp({
           email,
           password,
-          options: { emailRedirectTo: `${window.location.origin}/` },
+          options: {
+            emailRedirectTo: `${window.location.origin}/`,
+            data: {
+              first_name: firstName.trim(),
+              last_name: lastName.trim(),
+              full_name: `${firstName.trim()} ${lastName.trim()}`,
+            },
+          },
         });
         if (error) throw error;
         toast.success(
