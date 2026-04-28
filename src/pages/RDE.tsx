@@ -408,10 +408,8 @@ export function RDE() {
             {...fadeIn(0.15)}
             className="text-white/65 text-base sm:text-lg leading-relaxed max-w-xl mx-auto mb-12"
           >
-            RDE Operators somos Rubén, Diego y Edu — tres operadores especializados en el crecimiento
-            de negocios de conocimiento en el mercado hispanohablante. No vendemos servicios sueltos.
-            Nos convertimos en el equipo de crecimiento de un número muy limitado de clientes, con
-            implicación real en su estrategia y ejecución.
+            Somos Rubén, Diego y Erik — Nos convertimos en el equipo de crecimiento de un número
+            limitado de clientes, con implicación real en estrategia y ejecución.
           </motion.p>
 
           <motion.div
