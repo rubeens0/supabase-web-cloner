@@ -1,4 +1,4 @@
-import cekZaragozaImg from '@/assets/figma/placeholder.svg';
+import cekZaragozaImg from '@/assets/cek-zaragoza.jpg';
 import netspyImg from '@/assets/netspy-branding.png';
 import netproImg from '@/assets/netpro-logo.png';
 import albroksaImg from '@/assets/albroksa-patrocinio.jpeg';
