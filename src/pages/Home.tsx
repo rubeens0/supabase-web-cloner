@@ -409,10 +409,13 @@ export function Home() {
         </div>
       </section>
 
-      {/* ============== 06 · MANIFIESTO ============== */}
+      {/* ============== 06 · YOUTUBE ============== */}
+      <YoutubeRecent />
+
+      {/* ============== 07 · MANIFIESTO ============== */}
       <section className="border-b border-white/[0.08]">
         <div className="max-w-4xl mx-auto px-5 sm:px-10 md:px-16 py-24 sm:py-40 text-center">
-          <SectionLabel index="06">Manifiesto</SectionLabel>
+          <SectionLabel index="07">Manifiesto</SectionLabel>
           <div className="mt-10 mb-10 flex justify-center">
             <AnimatedLogo size={56} />
           </div>
