@@ -238,9 +238,9 @@ export function Home() {
           <div className="mt-10 grid lg:grid-cols-12 gap-10 lg:gap-20 items-start">
             <div className="lg:col-span-7">
               <h2 className="font-display text-5xl sm:text-6xl md:text-7xl text-white leading-[1] tracking-tight mb-10">
-                Una <span className="font-display-italic text-gradient-mono-italic">historia</span>
+                {t("home.about.headlineA")} <span className="font-display-italic text-gradient-mono-italic">{t("home.about.headlineB")}</span>
                 <br />
-                en dos pistas.
+                {t("home.about.headlineC")}
               </h2>
 
               <div className="space-y-5 text-white/70 max-w-xl leading-relaxed text-[15px]">
