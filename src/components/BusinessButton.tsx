@@ -74,7 +74,7 @@ export function BusinessButton() {
     >
       <button
         onClick={openCalendly}
-        className="flex items-center gap-2 bg-gradient-mono text-black rounded-full pl-4 pr-5 py-3 text-[13px] font-medium hover:brightness-110 transition-all shadow-[0_8px_32px_-4px_rgba(0,0,0,0.6)] border border-white/20 whitespace-nowrap text-center"
+        className="flex items-center justify-center gap-2 bg-gradient-mono text-black rounded-full px-6 py-3 text-[13px] font-medium hover:brightness-110 transition-all shadow-[0_8px_32px_-4px_rgba(0,0,0,0.6)] border border-white/20 whitespace-nowrap text-center mx-auto"
       >
         <Calendar className="w-3.5 h-3.5" />
         <span>{t('business.schedule')}</span>
