@@ -5,8 +5,8 @@ import campillosImage from '@/assets/figma/placeholder.svg';
 import motorlandImage from '@/assets/figma/placeholder.svg';
 import lucasGuerreroImage from '@/assets/figma/placeholder.svg';
 import asparImage from '@/assets/figma/placeholder.svg';
-import dbMotorsportLogo from '@/assets/figma/placeholder.svg';
-import parolinLogo from '@/assets/figma/placeholder.svg';
+import dbMotorsportLogo from '@/assets/db-motorsport-logo.png';
+import parolinLogo from '@/assets/parolin-logo.png';
 import sponsorsImage from '@/assets/sponsors-2026.png';
 
 // Placeholder data for the 4 circuits
