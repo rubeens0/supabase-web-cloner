@@ -180,6 +180,39 @@ export function Auth() {
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-4 relative">
+            {mode === 'signup' && (
+              <div className="grid grid-cols-2 gap-3">
+                <div className="relative">
+                  <UserIcon className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/40 pointer-events-none" />
+                  <input
+                    type="text"
+                    value={firstName}
+                    onChange={(e) => setFirstName(e.target.value)}
+                    placeholder={isES ? 'Nombre' : 'First name'}
+                    required
+                    maxLength={50}
+                    autoComplete="given-name"
+                    disabled={loading}
+                    className="w-full pl-11 pr-3 py-3.5 bg-black/40 border border-white/15 rounded-full text-white placeholder:text-white/35 text-sm focus:outline-none focus:border-white/40 focus:bg-black/60 transition-all disabled:opacity-60"
+                  />
+                </div>
+                <div className="relative">
+                  <UserIcon className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/40 pointer-events-none" />
+                  <input
+                    type="text"
+                    value={lastName}
+                    onChange={(e) => setLastName(e.target.value)}
+                    placeholder={isES ? 'Apellido' : 'Last name'}
+                    required
+                    maxLength={50}
+                    autoComplete="family-name"
+                    disabled={loading}
+                    className="w-full pl-11 pr-3 py-3.5 bg-black/40 border border-white/15 rounded-full text-white placeholder:text-white/35 text-sm focus:outline-none focus:border-white/40 focus:bg-black/60 transition-all disabled:opacity-60"
+                  />
+                </div>
+              </div>
+            )}
+
             <div className="relative">
               <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/40 pointer-events-none" />
               <input
@@ -188,6 +221,8 @@ export function Auth() {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder={isES ? 'Correo electrónico' : 'Email'}
                 required
+                maxLength={255}
+                autoComplete="email"
                 disabled={loading}
                 className="w-full pl-11 pr-4 py-3.5 bg-black/40 border border-white/15 rounded-full text-white placeholder:text-white/35 text-sm focus:outline-none focus:border-white/40 focus:bg-black/60 transition-all disabled:opacity-60"
               />
@@ -202,10 +237,28 @@ export function Auth() {
                 placeholder={isES ? 'Contraseña' : 'Password'}
                 required
                 minLength={6}
+                autoComplete={mode === 'signin' ? 'current-password' : 'new-password'}
                 disabled={loading}
                 className="w-full pl-11 pr-4 py-3.5 bg-black/40 border border-white/15 rounded-full text-white placeholder:text-white/35 text-sm focus:outline-none focus:border-white/40 focus:bg-black/60 transition-all disabled:opacity-60"
               />
             </div>
+
+            {mode === 'signup' && (
+              <div className="relative">
+                <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/40 pointer-events-none" />
+                <input
+                  type="password"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  placeholder={isES ? 'Confirmar contraseña' : 'Confirm password'}
+                  required
+                  minLength={6}
+                  autoComplete="new-password"
+                  disabled={loading}
+                  className="w-full pl-11 pr-4 py-3.5 bg-black/40 border border-white/15 rounded-full text-white placeholder:text-white/35 text-sm focus:outline-none focus:border-white/40 focus:bg-black/60 transition-all disabled:opacity-60"
+                />
+              </div>
+            )}
 
             <button
               type="submit"
