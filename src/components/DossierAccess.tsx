@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Lock, FileText, MapPin, Globe } from 'lucide-react';
 import { Button } from './ui/button';
 import { useLanguage } from '../contexts/LanguageContext';
+import { supabase } from '@/integrations/supabase/client';
 import logoImage from '@/assets/figma/placeholder.svg';
 
 interface DossierAccessProps {
@@ -15,25 +16,27 @@ export function DossierAccess({ onAccess }: DossierAccessProps) {
   const [isLoading, setIsLoading] = useState(false);
   const { language } = useLanguage();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
     setIsLoading(true);
 
-    // Simulate loading for better UX
-    setTimeout(() => {
-      const p = password.trim().toLowerCase();
-      if (p === 'dossier2026ext') {
-        onAccess('regional');
-      } else if (p === 'dossier2026esp') {
-        onAccess('nacional');
-      } else if (p === 'dossier2026int') {
-        onAccess('internacional');
-      } else {
+    try {
+      const { data, error: fnError } = await supabase.functions.invoke('verify-dossier', {
+        body: { password },
+      });
+
+      if (fnError || !data?.success) {
         setError(language === 'es' ? 'Contraseña incorrecta' : 'Incorrect password');
         setIsLoading(false);
+        return;
       }
-    }, 500);
+
+      onAccess(data.version as 'regional' | 'nacional' | 'internacional');
+    } catch {
+      setError(language === 'es' ? 'Error de conexión' : 'Connection error');
+      setIsLoading(false);
+    }
   };
 
   return (
