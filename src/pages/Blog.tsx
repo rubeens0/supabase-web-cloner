@@ -8,8 +8,8 @@ import cajaRuralImg from '@/assets/caja-rural-extremadura.png';
 import { useLanguage } from '../contexts/LanguageContext';
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
-import { Calendar, Clock, ArrowRight } from 'lucide-react';
-import { getPerformanceSettings, PREMIUM_ANIMATIONS } from '../utils/performanceDetector';
+import { ArrowUpRight } from 'lucide-react';
+import { getPerformanceSettings } from '../utils/performanceDetector';
 
 interface BlogPost {
   id: string;
@@ -21,11 +21,20 @@ interface BlogPost {
   image: string;
 }
 
+function SectionLabel({ index, children }: { index: string; children: React.ReactNode }) {
+  return (
+    <div className="flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-white/40">
+      <span className="font-mono text-white">{index}</span>
+      <span className="h-px w-8 bg-white/15" />
+      <span>{children}</span>
+    </div>
+  );
+}
+
 export function Blog() {
-  const { t, language } = useLanguage();
+  const { t } = useLanguage();
   const perfSettings = getPerformanceSettings();
 
-  // Blog posts data - puedes añadir más posts aquí
   const blogPosts: BlogPost[] = [
     {
       id: 'portada-extremadura-cek-r1',
@@ -92,145 +101,141 @@ export function Blog() {
     },
   ];
 
-  const containerVariants = perfSettings.simplifyAnimations 
-    ? { hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.2 } } }
-    : {
-        hidden: { opacity: 0 },
-        visible: {
-          opacity: 1,
-          transition: {
-            staggerChildren: 0.1,
-          },
-        },
-      };
+  const sortedPosts = [...blogPosts].sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  );
 
-  const sortedPosts = [...blogPosts].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  const fadeIn = (delay = 0) => ({
+    initial: { opacity: 0, y: 16 },
+    animate: { opacity: 1, y: 0 },
+    transition: {
+      duration: perfSettings.simplifyAnimations ? 0.2 : 0.7,
+      delay: perfSettings.simplifyAnimations ? 0 : delay,
+      ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
+    },
+  });
 
-  const itemVariants = perfSettings.simplifyAnimations
-    ? { hidden: { opacity: 0 }, visible: { opacity: 1 } }
-    : {
-        hidden: { opacity: 0, y: 20 },
-        visible: {
-          opacity: 1,
-          y: 0,
-          transition: {
-            duration: 0.6,
-            ease: [0.22, 1, 0.36, 1] as const,
-          },
-        },
-      };
+  const [feature, ...rest] = sortedPosts;
 
   return (
-    <div className="min-h-screen bg-black pt-28 pb-16 px-4 sm:px-6">
-      <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] as const }}
-          className="text-center mb-12 sm:mb-16"
-        >
-          <h1 className="text-white mb-4">
+    <div className="min-h-screen bg-black text-white">
+      {/* ============== 01 · HERO ============== */}
+      <section className="pt-32 sm:pt-40 pb-16 sm:pb-20 px-5 sm:px-10 md:px-16 border-b border-white/[0.08]">
+        <div className="max-w-7xl mx-auto">
+          <motion.div {...fadeIn(0.1)}>
+            <SectionLabel index="N° 01">{t('nav.blog')}</SectionLabel>
+          </motion.div>
+          <motion.h1
+            {...fadeIn(0.2)}
+            className="mt-8 font-display leading-[0.95] text-5xl sm:text-7xl md:text-8xl lg:text-[120px] text-white tracking-[-0.02em] max-w-5xl"
+          >
             {t('blog.title')}
-          </h1>
-          <p className="text-white/60 max-w-2xl mx-auto">
+            <span className="font-display-italic text-gradient-mono-italic">.</span>
+          </motion.h1>
+          <motion.p
+            {...fadeIn(0.3)}
+            className="mt-8 text-white/60 text-base sm:text-lg max-w-2xl leading-relaxed"
+          >
             {t('blog.subtitle')}
-          </p>
-        </motion.div>
+          </motion.p>
+        </div>
+      </section>
 
-        {/* Blog Grid */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-        >
-          {sortedPosts.map((post) => (
-            <Link
-              key={post.id}
-              to={`/blog/${post.id}`}
-            >
-              <motion.article
-                variants={itemVariants}
-                whileHover={{ y: -8 }}
-                className="group relative rounded-2xl overflow-hidden bg-white/5 backdrop-blur-sm border border-white/10 hover:border-white/20 transition-all duration-500 h-full"
-              >
-                {/* Image */}
-                <div className="relative h-48 overflow-hidden">
+      {/* ============== 02 · FEATURED ============== */}
+      {feature && (
+        <section className="border-b border-white/[0.08] px-5 sm:px-10 md:px-16 py-16 sm:py-24">
+          <div className="max-w-7xl mx-auto">
+            <SectionLabel index="02">Featured</SectionLabel>
+            <Link to={`/blog/${feature.id}`} className="block mt-8 group">
+              <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
+                <div className="lg:col-span-7 relative overflow-hidden rounded-2xl border border-white/10 aspect-[16/10]">
                   <img
-                    src={post.image}
-                    alt={post.title}
-                    className={`w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110`}
+                    src={feature.image}
+                    alt={feature.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                  
-                  {/* Category Badge */}
-                  <div className="absolute top-4 left-4">
-                    <span className="px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-xs">
-                      {post.category}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                </div>
+                <div className="lg:col-span-5 flex flex-col justify-center">
+                  <div className="flex items-center gap-3 mb-5">
+                    <span className="inline-block font-mono text-[10px] uppercase tracking-[0.22em] text-white border border-white/30 rounded-full px-2.5 py-1">
+                      {feature.category}
                     </span>
+                    <span className="font-mono text-[10px] text-white/40">
+                      {new Date(feature.date)
+                        .toLocaleDateString(t('blog.locale'), {
+                          year: 'numeric',
+                          month: 'short',
+                          day: 'numeric',
+                        })}
+                    </span>
+                    <span className="font-mono text-[10px] text-white/40">· {feature.readTime}</span>
+                  </div>
+                  <h2 className="font-display text-4xl sm:text-5xl md:text-6xl text-white leading-[1.05] tracking-tight mb-5">
+                    {feature.title}
+                  </h2>
+                  <p className="text-white/60 leading-relaxed mb-6">{feature.excerpt}</p>
+                  <span className="inline-flex items-center gap-2 text-white text-sm group-hover:gap-3 transition-all">
+                    {t('blog.readMore')} <ArrowUpRight className="w-4 h-4" />
+                  </span>
+                </div>
+              </div>
+            </Link>
+          </div>
+        </section>
+      )}
+
+      {/* ============== 03 · ARCHIVE ============== */}
+      <section className="px-5 sm:px-10 md:px-16 py-20 sm:py-28">
+        <div className="max-w-7xl mx-auto">
+          <SectionLabel index="03">Archive</SectionLabel>
+
+          <div className="mt-10 divide-y divide-white/[0.08] border-y border-white/[0.08]">
+            {rest.map((post) => (
+              <Link
+                key={post.id}
+                to={`/blog/${post.id}`}
+                className="group grid grid-cols-12 gap-4 sm:gap-8 py-6 sm:py-8 items-center hover:bg-white/[0.02] transition-colors -mx-3 px-3 rounded-lg"
+              >
+                <div className="col-span-12 sm:col-span-2 hidden sm:block">
+                  <div className="aspect-[4/3] rounded-md overflow-hidden border border-white/10">
+                    <img
+                      src={post.image}
+                      alt={post.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    />
                   </div>
                 </div>
-
-                {/* Content */}
-                <div className="p-6">
-                  {/* Meta Info */}
-                  <div className="flex items-center gap-4 mb-3 text-white/50 text-sm">
-                    <div className="flex items-center gap-1.5">
-                      <Calendar className="w-4 h-4" />
-                      <time dateTime={post.date}>
-                        {new Date(post.date).toLocaleDateString(
-                          t('blog.locale'),
-                          { year: 'numeric', month: 'short', day: 'numeric' }
-                        )}
-                      </time>
-                    </div>
-                    <div className="flex items-center gap-1.5">
-                      <Clock className="w-4 h-4" />
-                      <span>{post.readTime}</span>
-                    </div>
-                  </div>
-
-                  {/* Title */}
-                  <h3 className="text-white mb-2 group-hover:text-white/90 transition-colors">
+                <div className="col-span-12 sm:col-span-2 font-mono text-[10px] sm:text-[11px] text-white/40 uppercase tracking-[0.18em]">
+                  {new Date(post.date).toLocaleDateString(t('blog.locale'), {
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric',
+                  })}
+                  <div className="mt-1">{post.category}</div>
+                </div>
+                <div className="col-span-10 sm:col-span-7">
+                  <h3 className="font-display text-2xl sm:text-3xl md:text-4xl text-white leading-tight tracking-tight group-hover:translate-x-1 transition-transform">
                     {post.title}
                   </h3>
-
-                  {/* Excerpt */}
-                  <p className="text-white/60 text-sm mb-4 line-clamp-3">
+                  <p className="hidden sm:block mt-2 text-sm text-white/55 line-clamp-2 max-w-2xl">
                     {post.excerpt}
                   </p>
-
-                  {/* Read More Link */}
-                  <div className="flex items-center gap-2 text-white/70 group-hover:text-white transition-colors text-sm">
-                    <span>{t('blog.readMore')}</span>
-                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                  </div>
                 </div>
-
-                {/* Hover Gradient Effect */}
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
-                  <div className="absolute inset-0 bg-gradient-to-tr from-white/5 via-transparent to-transparent" />
+                <div className="col-span-2 sm:col-span-1 flex justify-end">
+                  <ArrowUpRight className="w-5 h-5 text-white/40 group-hover:text-white transition-colors" />
                 </div>
-              </motion.article>
-            </Link>
-          ))}
-        </motion.div>
-
-        {/* Coming Soon Message */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="mt-16 text-center"
-        >
-          <div className="inline-block px-6 py-3 rounded-full bg-white/5 backdrop-blur-sm border border-white/10">
-            <p className="text-white/60 text-sm">
-              {t('blog.comingSoon')}
-            </p>
+              </Link>
+            ))}
           </div>
-        </motion.div>
-      </div>
+
+          <div className="mt-12 text-center">
+            <div className="inline-block px-6 py-3 rounded-full bg-white/5 border border-white/10">
+              <p className="text-white/60 text-sm">{t('blog.comingSoon')}</p>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
