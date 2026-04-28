@@ -625,7 +625,7 @@ const translations = {
     'business.rde.feat3': 'Execution',
     'business.rde.feat4': 'Optimization',
 
-    'business.netpro.subtitle': 'Design & Growth',
+    'business.netpro.subtitle': 'MOTORSPORT & GROWTH',
 
     'business.netspy.title': 'Netspy: Entrepreneurs Community',
     'business.netspy.subtitle': 'Community & Networking',
