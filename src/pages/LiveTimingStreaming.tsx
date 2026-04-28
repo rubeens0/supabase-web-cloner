@@ -249,7 +249,7 @@ export function LiveTimingStreaming() {
             href="https://www.apex-timing.com/goracing/results.php?path=/rgmmc/2026/cek_1_campillos/&group=6"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 md:gap-3 px-6 md:px-8 py-3 md:py-4 rounded-xl md:rounded-2xl bg-gradient-to-r from-white to-white hover:from-white hover:to-white border border-white/50 transition-all duration-300 hover:scale-105 active:scale-95 text-white font-bold text-base md:text-lg shadow-lg shadow-black/50"
+            className="inline-flex items-center gap-2 md:gap-3 px-6 md:px-8 py-3 md:py-4 rounded-xl md:rounded-2xl bg-gradient-mono border border-white/30 transition-all duration-300 hover:scale-105 active:scale-95 text-black font-bold text-base md:text-lg shadow-lg shadow-black/50"
           >
             <svg 
               className="w-5 h-5 md:w-6 md:h-6" 
