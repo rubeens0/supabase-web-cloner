@@ -97,7 +97,7 @@ export function Dossier() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="inline-flex items-center gap-2 px-6 py-3 mb-6 bg-white/5 backdrop-blur-xl border border-white/20 rounded-full"
             >
-              <versionInfo.icon className="w-4 h-4 text-red-400" />
+              <versionInfo.icon className="w-4 h-4 text-white" />
               <span className="text-white/90 text-sm font-medium">
                 {versionInfo.label}
               </span>
@@ -131,7 +131,7 @@ export function Dossier() {
             >
               <Link to={getRoute('/')}>
                 <Button
-                  className="group relative px-8 py-6 bg-gradient-to-r from-red-700/90 to-red-600/90 hover:from-red-700 hover:to-red-600 text-white hover:text-black border-none shadow-lg shadow-red-600/20 hover:shadow-red-600/40 transition-all duration-300"
+                  className="group relative px-8 py-6 bg-gradient-to-r from-white/90 to-white/90 hover:from-white hover:to-white text-white hover:text-black border-none shadow-lg shadow-black/20 hover:shadow-black/40 transition-all duration-300"
                 >
                   <Globe className="w-5 h-5 mr-2 group-hover:rotate-12 group-hover:text-black transition-all duration-300" />
                   {language === 'es' ? 'Visitar Página Web' : 'Visit Website'}
@@ -144,7 +144,7 @@ export function Dossier() {
                   const aboutSection = document.querySelector('section.py-12');
                   aboutSection?.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }}
-                className="group relative px-8 py-6 bg-white/10 backdrop-blur-xl border border-white/20 hover:bg-white hover:border-white text-white hover:text-black shadow-lg shadow-white/10 hover:shadow-white/30 transition-all duration-300"
+                className="group relative px-8 py-6 bg-white/10 backdrop-blur-xl border border-white/20 hover:bg-white hover:border-white text-white hover:text-black shadow-lg shadow-black/10 hover:shadow-black/30 transition-all duration-300"
               >
                 <FileText className="w-5 h-5 mr-2 group-hover:scale-110 group-hover:text-black transition-all duration-300" />
                 {language === 'es' ? 'Seguir Viendo el Dossier' : 'Continue Viewing Dossier'}
@@ -178,11 +178,11 @@ export function Dossier() {
               transition={{ duration: 0.6 }}
               className="space-y-6"
             >
-              <div className="group relative p-6 sm:p-8 bg-gradient-to-br from-red-600/5 via-black to-red-600/5 backdrop-blur-xl border border-red-500/20 rounded-3xl hover:border-red-500/40 transition-all duration-500 hover:shadow-[0_0_40px_rgba(220,38,38,0.15)]">
-                <div className="absolute inset-0 bg-gradient-to-br from-red-600/0 via-transparent to-red-600/0 group-hover:from-red-600/10 group-hover:to-red-600/10 rounded-3xl transition-all duration-500" />
+              <div className="group relative p-6 sm:p-8 bg-gradient-to-br from-white/5 via-black to-white/5 backdrop-blur-xl border border-white/20 rounded-3xl hover:border-white/40 transition-all duration-500 hover:shadow-[0_0_40px_rgba(220,38,38,0.15)]">
+                <div className="absolute inset-0 bg-gradient-to-br from-white/0 via-transparent to-white/0 group-hover:from-white/10 group-hover:to-white/10 rounded-3xl transition-all duration-500" />
                 <div className="relative">
-                  <div className="w-14 h-14 mb-4 bg-gradient-to-br from-red-600/20 to-red-700/20 rounded-2xl flex items-center justify-center border border-red-500/30 group-hover:scale-110 transition-transform duration-300">
-                    <Trophy className="w-7 h-7 text-red-400" />
+                  <div className="w-14 h-14 mb-4 bg-gradient-to-br from-white/20 to-white/20 rounded-2xl flex items-center justify-center border border-white/30 group-hover:scale-110 transition-transform duration-300">
+                    <Trophy className="w-7 h-7 text-white" />
                   </div>
                   <h3 className="text-white mb-4 flex items-center gap-2">
                     {language === 'es' ? 'Trayectoria Deportiva' : 'Sports Career'}
@@ -200,38 +200,38 @@ export function Dossier() {
                 </div>
               </div>
 
-              <div className="group relative p-6 sm:p-8 bg-gradient-to-br from-red-700/5 via-black to-red-700/5 backdrop-blur-xl border border-red-600/20 rounded-3xl hover:border-red-600/40 transition-all duration-500 hover:shadow-[0_0_40px_rgba(185,28,28,0.15)]">
-                <div className="absolute inset-0 bg-gradient-to-br from-red-700/0 via-transparent to-red-700/0 group-hover:from-red-700/10 group-hover:to-red-700/10 rounded-3xl transition-all duration-500" />
+              <div className="group relative p-6 sm:p-8 bg-gradient-to-br from-white/5 via-black to-white/5 backdrop-blur-xl border border-white/20 rounded-3xl hover:border-white/40 transition-all duration-500 hover:shadow-[0_0_40px_rgba(185,28,28,0.15)]">
+                <div className="absolute inset-0 bg-gradient-to-br from-white/0 via-transparent to-white/0 group-hover:from-white/10 group-hover:to-white/10 rounded-3xl transition-all duration-500" />
                 <div className="relative">
-                  <div className="w-14 h-14 mb-4 bg-gradient-to-br from-red-700/20 to-red-800/20 rounded-2xl flex items-center justify-center border border-red-600/30 group-hover:scale-110 transition-transform duration-300">
-                    <Target className="w-7 h-7 text-red-400" />
+                  <div className="w-14 h-14 mb-4 bg-gradient-to-br from-white/20 to-white/20 rounded-2xl flex items-center justify-center border border-white/30 group-hover:scale-110 transition-transform duration-300">
+                    <Target className="w-7 h-7 text-white" />
                   </div>
                   <h3 className="text-white mb-4 flex items-center gap-2">
                     {language === 'es' ? 'Objetivos 2026' : '2026 Goals'}
                   </h3>
                   <ul className="space-y-3 text-white/70">
                     <li className="flex items-start gap-3">
-                      <div className="w-6 h-6 rounded-full bg-red-600/10 border border-red-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <ChevronRight className="w-3.5 h-3.5 text-red-400" />
+                      <div className="w-6 h-6 rounded-full bg-white/10 border border-white/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <ChevronRight className="w-3.5 h-3.5 text-white" />
                       </div>
                       <span>{language === 'es' ? 'Consolidar mi posición en el Campeonato de España' : 'Consolidate my position in the Spanish Championship'}</span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <div className="w-6 h-6 rounded-full bg-red-600/10 border border-red-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <ChevronRight className="w-3.5 h-3.5 text-red-400" />
+                      <div className="w-6 h-6 rounded-full bg-white/10 border border-white/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <ChevronRight className="w-3.5 h-3.5 text-white" />
                       </div>
                       <span>{language === 'es' ? 'Conseguir mejores resultados y podios' : 'Achieve better results and podiums'}</span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <div className="w-6 h-6 rounded-full bg-red-600/10 border border-red-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <ChevronRight className="w-3.5 h-3.5 text-red-400" />
+                      <div className="w-6 h-6 rounded-full bg-white/10 border border-white/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <ChevronRight className="w-3.5 h-3.5 text-white" />
                       </div>
                       <span>{language === 'es' ? 'Rendimiento y presencia' : 'Performance and presence'}</span>
                     </li>
                     {isRegional && (
                       <li className="flex items-start gap-3">
-                        <div className="w-6 h-6 rounded-full bg-red-600/10 border border-red-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                          <ChevronRight className="w-3.5 h-3.5 text-red-400" />
+                        <div className="w-6 h-6 rounded-full bg-white/10 border border-white/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                          <ChevronRight className="w-3.5 h-3.5 text-white" />
                         </div>
                         <span>{language === 'es' ? 'Representar a Extremadura a nivel nacional' : 'Represent Extremadura at national level'}</span>
                       </li>
@@ -295,10 +295,10 @@ export function Dossier() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="p-8 bg-gradient-to-br from-red-600/10 to-red-800/10 backdrop-blur-xl border border-red-500/20 rounded-3xl"
+              className="p-8 bg-gradient-to-br from-white/10 to-white/10 backdrop-blur-xl border border-white/20 rounded-3xl"
             >
               <div className="flex items-start gap-4 mb-6">
-                <MapPin className="w-6 h-6 text-red-400 flex-shrink-0 mt-1" />
+                <MapPin className="w-6 h-6 text-white flex-shrink-0 mt-1" />
                 <div>
                   <h3 className="text-white mb-3">
                     {language === 'es' ? 'Referencia del Deporte del Motor en Extremadura' : 'Motorsport Reference in Extremadura'}
@@ -316,15 +316,15 @@ export function Dossier() {
                 </div>
               </div>
               <div className="flex flex-wrap gap-2 mt-4">
-                <div className="inline-flex items-center gap-2 px-4 py-2 bg-red-600/10 border border-red-500/20 rounded-full">
-                  <Trophy className="w-4 h-4 text-red-400" />
-                  <span className="text-red-300 text-sm font-medium">
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 border border-white/20 rounded-full">
+                  <Trophy className="w-4 h-4 text-white" />
+                  <span className="text-white text-sm font-medium">
                     {language === 'es' ? 'Campeón Regional 2024' : 'Regional Champion 2024'}
                   </span>
                 </div>
-                <div className="inline-flex items-center gap-2 px-4 py-2 bg-red-700/10 border border-red-600/20 rounded-full">
-                  <Star className="w-4 h-4 text-red-400" />
-                  <span className="text-red-300 text-sm font-medium">
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 border border-white/20 rounded-full">
+                  <Star className="w-4 h-4 text-white" />
+                  <span className="text-white text-sm font-medium">
                     {language === 'es' ? 'Piloto Extremeño #1' : 'Extremadura Driver #1'}
                   </span>
                 </div>
@@ -343,10 +343,10 @@ export function Dossier() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="p-8 bg-gradient-to-br from-red-500/10 to-yellow-500/10 backdrop-blur-xl border border-red-400/20 rounded-3xl"
+              className="p-8 bg-gradient-to-br from-white/10 to-yellow-500/10 backdrop-blur-xl border border-white/20 rounded-3xl"
             >
               <div className="flex items-start gap-4 mb-6">
-                <MapPin className="w-6 h-6 text-red-400 flex-shrink-0 mt-1" />
+                <MapPin className="w-6 h-6 text-white flex-shrink-0 mt-1" />
                 <div>
                   <h3 className="text-white mb-3">
                     {language === 'es' ? 'Proyecto de Representación Nacional' : 'National Representation Project'}
@@ -364,9 +364,9 @@ export function Dossier() {
                 </div>
               </div>
               <div className="flex flex-wrap gap-2 mt-4">
-                <div className="inline-flex items-center gap-2 px-4 py-2 bg-red-500/10 border border-red-400/20 rounded-full">
-                  <Trophy className="w-4 h-4 text-red-400" />
-                  <span className="text-red-300 text-sm font-medium">
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 border border-white/20 rounded-full">
+                  <Trophy className="w-4 h-4 text-white" />
+                  <span className="text-white text-sm font-medium">
                     {language === 'es' ? 'Campeonato de España 2025-2026' : 'Spanish Championship 2025-2026'}
                   </span>
                 </div>
@@ -494,17 +494,17 @@ export function Dossier() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="relative p-6 sm:p-8 bg-gradient-to-r from-red-600/10 to-red-800/10 backdrop-blur-xl border border-red-500/30 rounded-3xl hover:border-red-500/50 transition-all duration-300"
+                className="relative p-6 sm:p-8 bg-gradient-to-r from-white/10 to-white/10 backdrop-blur-xl border border-white/30 rounded-3xl hover:border-white/50 transition-all duration-300"
               >
                 <div className="flex flex-col sm:flex-row items-start gap-6">
                   <div className="flex-shrink-0">
-                    <div className="w-20 h-20 bg-red-600/20 rounded-2xl flex items-center justify-center border border-red-500/30">
+                    <div className="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center border border-white/30">
                       <span className="text-white text-2xl font-bold">2025</span>
                     </div>
                   </div>
                   <div className="flex-1">
                     <h3 className="text-white mb-2 flex items-center gap-2">
-                      <TrendingUp className="w-5 h-5 text-red-400" />
+                      <TrendingUp className="w-5 h-5 text-white" />
                       {language === 'es' ? 'Salto al Campeonato de España' : 'Jump to Spanish Championship'}
                     </h3>
                     <p className="text-white/70 mb-3">
@@ -512,9 +512,9 @@ export function Dossier() {
                         ? 'Debut en el Campeonato de España de Karting con muy buenas sensaciones y demostrando gran velocidad. Adaptación exitosa al nivel nacional con rendimiento competitivo.'
                         : 'Debut in the Spanish Karting Championship with very good feelings and showing great speed. Successful adaptation to national level with competitive performance.'}
                     </p>
-                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-red-600/10 border border-red-500/20 rounded-full">
-                      <TrendingUp className="w-4 h-4 text-red-400" />
-                      <span className="text-red-300 text-sm font-medium">
+                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 border border-white/20 rounded-full">
+                      <TrendingUp className="w-4 h-4 text-white" />
+                      <span className="text-white text-sm font-medium">
                         {language === 'es' ? 'Nivel Nacional' : 'National Level'}
                       </span>
                     </div>
@@ -528,17 +528,17 @@ export function Dossier() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.3 }}
-                className="relative p-6 sm:p-8 bg-gradient-to-r from-red-700/10 to-black/10 backdrop-blur-xl border border-red-600/30 rounded-3xl hover:border-red-600/50 transition-all duration-300"
+                className="relative p-6 sm:p-8 bg-gradient-to-r from-white/10 to-black/10 backdrop-blur-xl border border-white/30 rounded-3xl hover:border-white/50 transition-all duration-300"
               >
                 <div className="flex flex-col sm:flex-row items-start gap-6">
                   <div className="flex-shrink-0">
-                    <div className="w-20 h-20 bg-red-700/20 rounded-2xl flex items-center justify-center border border-red-600/30">
+                    <div className="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center border border-white/30">
                       <span className="text-white text-2xl font-bold">2026</span>
                     </div>
                   </div>
                   <div className="flex-1">
                     <h3 className="text-white mb-2 flex items-center gap-2">
-                      <Target className="w-5 h-5 text-red-400" />
+                      <Target className="w-5 h-5 text-white" />
                       {language === 'es' ? 'Temporada de Consolidación' : 'Consolidation Season'}
                     </h3>
                     <p className="text-white/70 mb-3">
@@ -547,15 +547,15 @@ export function Dossier() {
                         : 'We will aim for a season consolidating ourselves in the Spanish Championship and participating in some international race, in the most competitive discipline of motorsport: karting. With the learning from 2025 and the right support, we expect a season full of podiums and victories.'}
                     </p>
                     <div className="flex flex-wrap gap-2">
-                      <div className="inline-flex items-center gap-2 px-4 py-2 bg-red-600/10 border border-red-500/20 rounded-full">
-                        <Sparkles className="w-4 h-4 text-red-400" />
-                        <span className="text-red-300 text-sm font-medium">
+                      <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 border border-white/20 rounded-full">
+                        <Sparkles className="w-4 h-4 text-white" />
+                        <span className="text-white text-sm font-medium">
                           {language === 'es' ? 'Objetivo: Podios' : 'Goal: Podiums'}
                         </span>
                       </div>
-                      <div className="inline-flex items-center gap-2 px-4 py-2 bg-red-700/10 border border-red-600/20 rounded-full">
-                        <Globe className="w-4 h-4 text-red-400" />
-                        <span className="text-red-300 text-sm font-medium">
+                      <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 border border-white/20 rounded-full">
+                        <Globe className="w-4 h-4 text-white" />
+                        <span className="text-white text-sm font-medium">
                           {language === 'es' ? 'Prueba Internacional' : 'International Race'}
                         </span>
                       </div>
@@ -635,7 +635,7 @@ export function Dossier() {
                 className={`relative p-8 bg-white/5 backdrop-blur-xl border ${pkg.borderColor} rounded-3xl hover:bg-white/10 transition-all duration-300 ${pkg.featured ? 'md:scale-105' : ''}`}
               >
                 {pkg.featured && (
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-red-600 to-red-800 rounded-full">
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-white to-white rounded-full">
                     <p className="text-white text-sm font-medium">
                       {language === 'es' ? 'Más Popular' : 'Most Popular'}
                     </p>
@@ -651,7 +651,7 @@ export function Dossier() {
                 <ul className="space-y-3">
                   {pkg.features.map((feature, i) => (
                     <li key={i} className="flex items-start gap-2 text-white/70">
-                      <ChevronRight className="w-4 h-4 mt-1 text-red-400 flex-shrink-0" />
+                      <ChevronRight className="w-4 h-4 mt-1 text-white flex-shrink-0" />
                       <span>{feature}</span>
                     </li>
                   ))}

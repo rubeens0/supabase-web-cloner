@@ -98,7 +98,7 @@ export function Sponsors() {
             className="relative mb-6 cursor-default"
           >
             <motion.div 
-              className="absolute inset-0 bg-gradient-to-r from-red-600/20 via-red-800/20 to-black/20 blur-3xl"
+              className="absolute inset-0 bg-gradient-to-r from-white/20 via-white/20 to-black/20 blur-3xl"
               animate={{ 
                 scale: [1, 1.1, 1],
                 opacity: [0.5, 0.8, 0.5]
@@ -154,7 +154,7 @@ export function Sponsors() {
               >
                 <Button
                   size="lg"
-                  className="group/btn gap-2 bg-gradient-to-r from-red-600/20 to-red-900/20 backdrop-blur-xl border border-red-500/30 text-white hover:bg-gradient-to-r hover:from-red-600 hover:to-red-800 hover:border-red-500 transition-all duration-300 px-8"
+                  className="group/btn gap-2 bg-gradient-to-r from-white/20 to-white/20 backdrop-blur-xl border border-white/30 text-white hover:bg-gradient-to-r hover:from-white hover:to-white hover:border-white transition-all duration-300 px-8"
                 >
                   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
@@ -173,7 +173,7 @@ export function Sponsors() {
               <Button
                 onClick={scrollToSponsors}
                 size="lg"
-                className="group/btn gap-2 bg-gradient-to-r from-red-600/20 to-red-900/20 backdrop-blur-xl border border-red-500/30 text-white hover:bg-gradient-to-r hover:from-red-600 hover:to-red-800 hover:border-red-500 transition-all duration-300 px-8"
+                className="group/btn gap-2 bg-gradient-to-r from-white/20 to-white/20 backdrop-blur-xl border border-white/30 text-white hover:bg-gradient-to-r hover:from-white hover:to-white hover:border-white transition-all duration-300 px-8"
               >
                 <Users className="w-4 h-4" />
                 <span>

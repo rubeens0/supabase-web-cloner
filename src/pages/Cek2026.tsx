@@ -182,7 +182,7 @@ export function Cek2026() {
           transition={{ delay: 0.3, duration: 0.6 }}
           className="mt-20"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 bg-gradient-to-r from-red-500 via-red-600 to-black bg-clip-text text-primary">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 bg-gradient-to-r from-white via-white to-black bg-clip-text text-primary">
             {language === 'es' ? 'Patrocinadores 2026' : 'Sponsors 2026'}
           </h2>
           <motion.div
@@ -191,7 +191,7 @@ export function Cek2026() {
             viewport={{ once: true }}
             whileHover={{ scale: 1.02 }}
             transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="relative rounded-3xl overflow-hidden border border-white/10 hover:border-red-500/30 transition-all duration-300"
+            className="relative rounded-3xl overflow-hidden border border-white/10 hover:border-white/30 transition-all duration-300"
           >
             <img 
               src={sponsorsImage} 
