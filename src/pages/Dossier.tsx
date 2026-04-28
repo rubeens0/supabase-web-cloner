@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { DossierAccess } from '../components/DossierAccess';
 import { useLanguage } from '../contexts/LanguageContext';
@@ -33,6 +33,17 @@ type DossierVersion = 'regional' | 'nacional' | 'internacional' | null;
 export function Dossier() {
   const [version, setVersion] = useState<DossierVersion>(null);
   const { language, getRoute } = useLanguage();
+
+  useEffect(() => {
+    // Prevent search engine indexing of the dossier page
+    const meta = document.createElement('meta');
+    meta.name = 'robots';
+    meta.content = 'noindex, nofollow';
+    document.head.appendChild(meta);
+    return () => {
+      document.head.removeChild(meta);
+    };
+  }, []);
 
   if (!version) {
     return <DossierAccess onAccess={setVersion} />;

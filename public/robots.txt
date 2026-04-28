@@ -3,31 +3,12 @@
 
 User-agent: *
 Allow: /
-Allow: /inicio
-Allow: /home
-Allow: /galeria
-Allow: /gallery
-Allow: /contacto
-Allow: /contact
-Allow: /business
-Allow: /marketing
-Allow: /blog
-Allow: /patrocinios
-Allow: /sponsors
-Allow: /2026
-Allow: /cek2026
 
-# Dossier accesible para indexación
-Allow: /dossier
+# Bloquear indexación del dossier (contenido privado)
+Disallow: /dossier
 
 # Sitemap
 Sitemap: https://rubenmunoz.com/sitemap.xml
 
 # Crawl-delay para bots más agresivos
 Crawl-delay: 1
-
-# Permitir indexación de recursos
-Allow: /assets/
-Allow: /images/
-Allow: /*.css
-Allow: /*.js
