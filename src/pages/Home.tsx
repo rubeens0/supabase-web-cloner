@@ -4,6 +4,7 @@ import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 import { ArrowRight, ArrowDown, ArrowUpRight, Flag, Calendar } from "lucide-react";
 import { motion } from "motion/react";
 import { AnimatedLogo } from "../components/AnimatedLogo";
+import { YoutubeRecent } from "../components/YoutubeRecent";
 import { useLanguage } from "../contexts/LanguageContext";
 import heroImage from "@/assets/hero-bg.webp";
 import aboutImage from "@/assets/about-image.png";
@@ -409,10 +410,13 @@ export function Home() {
         </div>
       </section>
 
-      {/* ============== 06 · MANIFIESTO ============== */}
+      {/* ============== 06 · YOUTUBE ============== */}
+      <YoutubeRecent />
+
+      {/* ============== 07 · MANIFIESTO ============== */}
       <section className="border-b border-white/[0.08]">
         <div className="max-w-4xl mx-auto px-5 sm:px-10 md:px-16 py-24 sm:py-40 text-center">
-          <SectionLabel index="06">Manifiesto</SectionLabel>
+          <SectionLabel index="07">Manifiesto</SectionLabel>
           <div className="mt-10 mb-10 flex justify-center">
             <AnimatedLogo size={56} />
           </div>
@@ -427,17 +431,17 @@ export function Home() {
         </div>
       </section>
 
-      {/* ============== 07 · CTA FINAL ============== */}
+      {/* ============== 08 · CTA FINAL ============== */}
       <section>
         <div className="max-w-7xl mx-auto px-5 sm:px-10 md:px-16 py-20 sm:py-32">
           <div className="relative border border-white/10 rounded-3xl overflow-hidden bg-gradient-to-br from-secondary/15 via-black to-black p-8 sm:p-16">
             <div className="absolute top-6 right-6 font-mono text-[10px] uppercase tracking-[0.22em] text-white/30">
-              N° 07 — CONTACT
+              N° 08 — CONTACT
             </div>
             <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-secondary/15 blur-3xl pointer-events-none" />
 
             <div className="relative max-w-3xl">
-              <SectionLabel index="07">Hablemos</SectionLabel>
+              <SectionLabel index="08">Hablemos</SectionLabel>
               <h2 className="mt-6 font-display text-5xl sm:text-6xl md:text-7xl text-white leading-[1] tracking-tight mb-8">
                 ¿Tienes una <span className="font-display-italic text-gradient-mono-italic">propuesta</span>?
                 <br />
