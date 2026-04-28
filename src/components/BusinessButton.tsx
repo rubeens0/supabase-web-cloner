@@ -62,23 +62,21 @@ export function BusinessButton() {
   const hidden = isNearFooter || !isVisible;
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{
-        opacity: hidden ? 0 : 1,
-        y: hidden ? 20 : 0,
-        pointerEvents: hidden ? 'none' : 'auto',
-      }}
-      transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-      className="fixed bottom-5 sm:bottom-7 left-1/2 -translate-x-1/2 z-50"
-    >
-      <button
+    <div className="fixed bottom-5 sm:bottom-7 inset-x-0 z-50 flex justify-center pointer-events-none px-4">
+      <motion.button
         onClick={openCalendly}
-        className="flex items-center justify-center gap-2 bg-gradient-mono text-black rounded-full px-6 py-3 text-[13px] font-medium hover:brightness-110 transition-all shadow-[0_8px_32px_-4px_rgba(0,0,0,0.6)] border border-white/20 whitespace-nowrap text-center mx-auto"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{
+          opacity: hidden ? 0 : 1,
+          y: hidden ? 20 : 0,
+          pointerEvents: hidden ? 'none' : 'auto',
+        }}
+        transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+        className="flex items-center justify-center gap-2 bg-gradient-mono text-black rounded-full px-6 py-3 text-[13px] font-medium hover:brightness-110 transition-all shadow-[0_8px_32px_-4px_rgba(0,0,0,0.6)] border border-white/20 whitespace-nowrap"
       >
         <Calendar className="w-3.5 h-3.5" />
         <span>{t('business.schedule')}</span>
-      </button>
-    </motion.div>
+      </motion.button>
+    </div>
   );
 }
