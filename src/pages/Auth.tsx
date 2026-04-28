@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'motion/react';
-import { Lock, Mail, ArrowRight, Loader2 } from 'lucide-react';
+import { Lock, Mail, ArrowRight, Loader2, User as UserIcon } from 'lucide-react';
 import { toast } from 'sonner';
 import { supabase } from '@/integrations/supabase/client';
 import { lovable } from '@/integrations/lovable/index';
@@ -14,8 +14,11 @@ export function Auth() {
   const { language } = useLanguage();
   const isES = language === 'es';
   const [mode, setMode] = useState<Mode>('signin');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [googleLoading, setGoogleLoading] = useState(false);
 
@@ -45,14 +48,38 @@ export function Auth() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email || !password || loading) return;
+    if (loading) return;
+    if (!email || !password) return;
+
+    if (mode === 'signup') {
+      if (!firstName.trim() || !lastName.trim()) {
+        toast.error(isES ? 'Introduce tu nombre y apellido' : 'Enter your first and last name');
+        return;
+      }
+      if (password.length < 6) {
+        toast.error(isES ? 'La contraseña debe tener al menos 6 caracteres' : 'Password must be at least 6 characters');
+        return;
+      }
+      if (password !== confirmPassword) {
+        toast.error(isES ? 'Las contraseñas no coinciden' : 'Passwords do not match');
+        return;
+      }
+    }
+
     setLoading(true);
     try {
       if (mode === 'signup') {
         const { error } = await supabase.auth.signUp({
           email,
           password,
-          options: { emailRedirectTo: `${window.location.origin}/` },
+          options: {
+            emailRedirectTo: `${window.location.origin}/`,
+            data: {
+              first_name: firstName.trim(),
+              last_name: lastName.trim(),
+              full_name: `${firstName.trim()} ${lastName.trim()}`,
+            },
+          },
         });
         if (error) throw error;
         toast.success(
@@ -133,8 +160,11 @@ export function Auth() {
             {googleLoading ? (
               <Loader2 className="w-4 h-4 animate-spin" />
             ) : (
-              <svg className="w-4 h-4" viewBox="0 0 24 24" aria-hidden>
-                <path fill="#EA4335" d="M12 10.2v3.9h5.5c-.24 1.4-1.66 4.1-5.5 4.1-3.31 0-6.01-2.74-6.01-6.12S8.69 5.96 12 5.96c1.88 0 3.14.8 3.86 1.49l2.63-2.54C16.78 3.34 14.6 2.4 12 2.4 6.74 2.4 2.49 6.65 2.49 11.92S6.74 21.4 12 21.4c6.93 0 11.51-4.86 11.51-11.71 0-.79-.08-1.39-.18-1.99H12z"/>
+              <svg className="w-[18px] h-[18px]" viewBox="0 0 48 48" aria-hidden>
+                <path fill="#FFC107" d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 12.955 4 4 12.955 4 24s8.955 20 20 20 20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z"/>
+                <path fill="#FF3D00" d="M6.306 14.691l6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 16.318 4 9.656 8.337 6.306 14.691z"/>
+                <path fill="#4CAF50" d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238C29.211 35.091 26.715 36 24 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44z"/>
+                <path fill="#1976D2" d="M43.611 20.083H42V20H24v8h11.303c-.792 2.237-2.231 4.166-4.087 5.571.001-.001.002-.001.003-.002l6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917z"/>
               </svg>
             )}
             {isES ? 'Continuar con Google' : 'Continue with Google'}
@@ -150,6 +180,39 @@ export function Auth() {
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-4 relative">
+            {mode === 'signup' && (
+              <div className="grid grid-cols-2 gap-3">
+                <div className="relative">
+                  <UserIcon className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/40 pointer-events-none" />
+                  <input
+                    type="text"
+                    value={firstName}
+                    onChange={(e) => setFirstName(e.target.value)}
+                    placeholder={isES ? 'Nombre' : 'First name'}
+                    required
+                    maxLength={50}
+                    autoComplete="given-name"
+                    disabled={loading}
+                    className="w-full pl-11 pr-3 py-3.5 bg-black/40 border border-white/15 rounded-full text-white placeholder:text-white/35 text-sm focus:outline-none focus:border-white/40 focus:bg-black/60 transition-all disabled:opacity-60"
+                  />
+                </div>
+                <div className="relative">
+                  <UserIcon className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/40 pointer-events-none" />
+                  <input
+                    type="text"
+                    value={lastName}
+                    onChange={(e) => setLastName(e.target.value)}
+                    placeholder={isES ? 'Apellido' : 'Last name'}
+                    required
+                    maxLength={50}
+                    autoComplete="family-name"
+                    disabled={loading}
+                    className="w-full pl-11 pr-3 py-3.5 bg-black/40 border border-white/15 rounded-full text-white placeholder:text-white/35 text-sm focus:outline-none focus:border-white/40 focus:bg-black/60 transition-all disabled:opacity-60"
+                  />
+                </div>
+              </div>
+            )}
+
             <div className="relative">
               <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/40 pointer-events-none" />
               <input
@@ -158,6 +221,8 @@ export function Auth() {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder={isES ? 'Correo electrónico' : 'Email'}
                 required
+                maxLength={255}
+                autoComplete="email"
                 disabled={loading}
                 className="w-full pl-11 pr-4 py-3.5 bg-black/40 border border-white/15 rounded-full text-white placeholder:text-white/35 text-sm focus:outline-none focus:border-white/40 focus:bg-black/60 transition-all disabled:opacity-60"
               />
@@ -172,10 +237,28 @@ export function Auth() {
                 placeholder={isES ? 'Contraseña' : 'Password'}
                 required
                 minLength={6}
+                autoComplete={mode === 'signin' ? 'current-password' : 'new-password'}
                 disabled={loading}
                 className="w-full pl-11 pr-4 py-3.5 bg-black/40 border border-white/15 rounded-full text-white placeholder:text-white/35 text-sm focus:outline-none focus:border-white/40 focus:bg-black/60 transition-all disabled:opacity-60"
               />
             </div>
+
+            {mode === 'signup' && (
+              <div className="relative">
+                <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/40 pointer-events-none" />
+                <input
+                  type="password"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  placeholder={isES ? 'Confirmar contraseña' : 'Confirm password'}
+                  required
+                  minLength={6}
+                  autoComplete="new-password"
+                  disabled={loading}
+                  className="w-full pl-11 pr-4 py-3.5 bg-black/40 border border-white/15 rounded-full text-white placeholder:text-white/35 text-sm focus:outline-none focus:border-white/40 focus:bg-black/60 transition-all disabled:opacity-60"
+                />
+              </div>
+            )}
 
             <button
               type="submit"
