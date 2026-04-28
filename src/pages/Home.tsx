@@ -222,7 +222,7 @@ export function Home() {
             </div>
             <div>
               <div className="font-display text-5xl sm:text-6xl text-white mb-2 tracking-tight">
-                {t("home.proof.stat3.value")}<span className="text-secondary">.</span>
+                <span className="text-primary">{t("home.proof.stat3.value")}</span>
               </div>
               <p className="text-sm text-white/50">{t("home.proof.stat3.label")}</p>
             </div>

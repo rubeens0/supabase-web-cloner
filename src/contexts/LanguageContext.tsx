@@ -62,12 +62,12 @@ const translations = {
     'home.hero.season': 'Temporada 2026',
 
     /* ===== Home – Social proof (sec. 02) ===== */
-    'home.proof.headlineA': '3 líneas',
-    'home.proof.headlineB': 'de emprendimiento activas.',
+    'home.proof.headlineA': 'Sobre',
+    'home.proof.headlineB': 'mis proyectos.',
     'home.proof.stat1.label': 'Año de inicio — built from scratch',
     'home.proof.stat2.label': 'Campeonato de España de Karting',
     'home.proof.stat3.value': '3',
-    'home.proof.stat3.label': 'Líneas de negocio activas — RDE, Netpro & Netspy',
+    'home.proof.stat3.label': 'Lines de emprendimiento activas.',
 
     /* ===== Home – About (sec. 03) ===== */
     'home.about.title': 'Sobre mí',
@@ -506,12 +506,12 @@ const translations = {
     'home.hero.season': '2026 Season',
 
     /* ===== Home – Social proof (sec. 02) ===== */
-    'home.proof.headlineA': '3 ventures',
-    'home.proof.headlineB': 'currently in motion.',
+    'home.proof.headlineA': 'About',
+    'home.proof.headlineB': 'my projects.',
     'home.proof.stat1.label': 'Starting year — built from scratch',
     'home.proof.stat2.label': 'Spanish Karting Championship',
     'home.proof.stat3.value': '3',
-    'home.proof.stat3.label': 'Active business lines — RDE, Netpro & Netspy',
+    'home.proof.stat3.label': 'Active entrepreneurship lines.',
 
     /* ===== Home – About (sec. 03) ===== */
     'home.about.title': 'About me',
