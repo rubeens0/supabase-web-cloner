@@ -12,12 +12,12 @@ export function Contact() {
       {/* Background Image */}
       <div className="fixed inset-0 z-0">
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
           style={{ 
             backgroundImage: `url(${backgroundImage})`,
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/70 to-black" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black" />
       </div>
 
       {/* Content */}
