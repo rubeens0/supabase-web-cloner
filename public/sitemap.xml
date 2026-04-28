@@ -146,13 +146,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://rubenmunoz.com/contact" />
   </url>
 
-  <!-- Dossier Page -->
-  <url>
-    <loc>https://rubenmunoz.com/dossier</loc>
-    <lastmod>2026-02-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
+  <!-- /dossier excluido intencionadamente del sitemap (noindex) -->
 
   <!-- CEK 2026 Pages -->
   <url>
