@@ -35,7 +35,7 @@ export function RDE() {
   return (
     <div className="min-h-screen bg-black text-white">
       {/* ============== TOP BAR — Scarcity ============== */}
-      <div className="fixed top-0 inset-x-0 z-40 bg-black/90 backdrop-blur-md border-b border-white/10 text-center py-2 px-4 text-[11px] sm:text-xs text-white/70 tracking-wide">
+      <div className="hidden sm:block fixed top-0 inset-x-0 z-40 bg-black/90 backdrop-blur-md border-b border-white/10 text-center py-2 px-4 text-[11px] sm:text-xs text-white/70 tracking-wide">
         <span className="font-mono text-white">●</span>{" "}
         Solo trabajamos con 3 clientes nuevos por mes ·{" "}
         <span className="text-white font-medium">1 plaza disponible</span>
