@@ -4,7 +4,7 @@ import netproImg from '@/assets/figma/placeholder.svg';
 import netspyImg from '@/assets/figma/placeholder.svg';
 import cekZaragozaImg from '@/assets/figma/placeholder.svg';
 import portadaExtremaduraImg from '@/assets/figma/placeholder.svg';
-import cajaRuralImg from '@/assets/figma/placeholder.svg';
+import cajaRuralImg from '@/assets/caja-rural-extremadura.png';
 import { useLanguage } from '../contexts/LanguageContext';
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
