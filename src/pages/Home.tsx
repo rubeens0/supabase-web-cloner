@@ -239,7 +239,7 @@ export function Home() {
 
       {/* ============== 03 · QUIÉN SOY ============== */}
       <section id="about-section" className="border-b border-white/[0.08]">
-        <div className="max-w-7xl mx-auto px-5 sm:px-10 md:px-16 py-20 sm:py-32">
+        <div className="max-w-7xl mx-auto px-5 sm:px-10 md:px-16 py-14 sm:py-20">
           <SectionLabel index="03">{t("home.about.title")}</SectionLabel>
 
           <div className="mt-10 grid lg:grid-cols-12 gap-10 lg:gap-20 items-start">
@@ -287,7 +287,7 @@ export function Home() {
 
       {/* ============== 04 · ÁREAS ============== */}
       <section className="border-b border-white/[0.08]">
-        <div className="max-w-7xl mx-auto px-5 sm:px-10 md:px-16 py-20 sm:py-32">
+        <div className="max-w-7xl mx-auto px-5 sm:px-10 md:px-16 py-14 sm:py-20">
           <div className="mb-14 max-w-3xl">
             <SectionLabel index="04">{t("home.areas.title")}</SectionLabel>
             <h2 className="mt-6 font-display text-5xl sm:text-6xl md:text-7xl text-white leading-[1] tracking-tight">
@@ -351,7 +351,7 @@ export function Home() {
 
       {/* ============== 05 · BLOG ============== */}
       <section className="border-b border-white/[0.08]">
-        <div className="max-w-7xl mx-auto px-5 sm:px-10 md:px-16 py-20 sm:py-32">
+        <div className="max-w-7xl mx-auto px-5 sm:px-10 md:px-16 py-14 sm:py-20">
           <div className="flex items-end justify-between mb-14">
             <div>
               <SectionLabel index="05">{t("nav.blog")}</SectionLabel>
@@ -415,7 +415,7 @@ export function Home() {
 
       {/* ============== 07 · MANIFIESTO ============== */}
       <section className="border-b border-white/[0.08]">
-        <div className="max-w-4xl mx-auto px-5 sm:px-10 md:px-16 py-24 sm:py-40 text-center">
+        <div className="max-w-4xl mx-auto px-5 sm:px-10 md:px-16 py-16 sm:py-24 text-center">
           <SectionLabel index="07">Manifiesto</SectionLabel>
           <div className="mt-10 mb-10 flex justify-center">
             <AnimatedLogo size={56} />
@@ -433,7 +433,7 @@ export function Home() {
 
       {/* ============== 08 · CTA FINAL ============== */}
       <section>
-        <div className="max-w-7xl mx-auto px-5 sm:px-10 md:px-16 py-20 sm:py-32">
+        <div className="max-w-7xl mx-auto px-5 sm:px-10 md:px-16 py-14 sm:py-20">
           <div className="relative border border-white/10 rounded-3xl overflow-hidden bg-gradient-to-br from-secondary/15 via-black to-black p-8 sm:p-16">
             <div className="absolute top-6 right-6 font-mono text-[10px] uppercase tracking-[0.22em] text-white/30">
               N° 08 — CONTACT
