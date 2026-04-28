@@ -155,7 +155,7 @@ function BusinessSection({
         {/* Content Side */}
         <div className="flex-1 order-2 lg:order-1">
           <div className="flex items-baseline gap-3 mb-4 sm:mb-6">
-            <span className={`text-sm font-mono tracking-wider ${color === 'blue' ? 'text-red-500' : 'text-red-600'}`}>{index}</span>
+            <span className="text-sm font-mono tracking-wider text-white">{index}</span>
             <span className="h-px flex-1 bg-white/10 max-w-[60px] sm:max-w-[100px]" />
             <span className="text-xs sm:text-sm uppercase tracking-widest text-white/40">{subtitle}</span>
           </div>
@@ -179,7 +179,7 @@ function BusinessSection({
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8 sm:mb-10">
             {features.map((feature, i) => (
               <div key={i} className="flex items-center gap-3">
-                <div className={`w-1.5 h-1.5 rounded-full ${color === 'blue' ? 'bg-red-500' : 'bg-red-600'}`} />
+                <div className="w-1.5 h-1.5 rounded-full bg-white" />
                 <span className="text-white/60 text-sm">{feature}</span>
               </div>
             ))}

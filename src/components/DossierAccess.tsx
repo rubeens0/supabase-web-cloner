@@ -71,7 +71,7 @@ export function DossierAccess({ onAccess }: DossierAccessProps) {
             className="flex items-center justify-center mb-8"
           >
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-red-600/20 via-red-800/20 to-black/20 blur-2xl" />
+              <div className="absolute inset-0 bg-gradient-to-r from-white/10 via-white/5 to-black/20 blur-2xl" />
               <div className="relative p-4 bg-white/10 rounded-2xl border border-white/20">
                 <FileText className="w-12 h-12 text-white" />
               </div>
