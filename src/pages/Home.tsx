@@ -8,7 +8,7 @@ import { AnimatedLogo } from '../components/AnimatedLogo';
 import { useLanguage } from '../contexts/LanguageContext';
 import { SEO } from '../components/SEO';
 import heroImage from '@/assets/home-hero-bg.jpg';
-import aboutImage from '@/assets/figma/placeholder.svg';
+import aboutImage from '@/assets/about-image.png';
 import kartingImage from '@/assets/figma/placeholder.svg';
 import marketingImage from '@/assets/figma/placeholder.svg';
 import { getPerformanceSettings, PREMIUM_ANIMATIONS } from '../utils/performanceDetector';
