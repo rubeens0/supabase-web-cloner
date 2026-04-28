@@ -131,7 +131,7 @@ export function Home() {
                 className="w-full flex items-center justify-between gap-3 bg-white/[0.04] border border-white/15 rounded-full p-1.5 pl-6 hover:border-white/30 transition-colors group"
               >
                 <span className="text-white/55 text-[14px] sm:text-[15px]">¿Quieres conocer mi historia?</span>
-                <span className="bg-white text-black font-medium rounded-full px-5 sm:px-6 py-3 text-sm flex items-center gap-2 group-hover:bg-secondary group-hover:text-white transition-colors whitespace-nowrap">
+                <span className="bg-white text-black font-medium rounded-full px-5 sm:px-6 py-3 text-sm flex items-center gap-2 group-hover:bg-black group-hover:text-white transition-colors whitespace-nowrap border border-transparent group-hover:border-white/30">
                   {t("home.hero.cta")} <ArrowDown className="w-3.5 h-3.5" />
                 </span>
               </button>
@@ -399,7 +399,7 @@ export function Home() {
                 <Link to="/contacto">
                   <Button
                     size="lg"
-                    className="w-full sm:w-auto rounded-full h-12 px-7 bg-white text-black hover:bg-secondary hover:text-white gap-2"
+                    className="w-full sm:w-auto rounded-full h-12 px-7 bg-white text-black hover:bg-white/90 gap-2"
                   >
                     {t("home.about.cta")}
                     <ArrowRight className="w-4 h-4" />
