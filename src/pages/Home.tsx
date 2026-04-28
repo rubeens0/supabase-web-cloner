@@ -3,14 +3,14 @@ import { Button } from "../components/ui/button";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 import { ArrowRight, Flag, Trophy, ArrowDown, TrendingUp, Search, Radio } from "lucide-react";
 import { motion } from "motion/react";
-import logoWhite from "@/assets/logo-white.png";
+import logoWhite from "@/assets/logo-white-optimized.png";
 import { AnimatedLogo } from "../components/AnimatedLogo";
 import { useLanguage } from "../contexts/LanguageContext";
 import { SEO } from "../components/SEO";
-import heroImage from "@/assets/home-hero-bg.jpg";
+import heroImage from "@/assets/home-hero-bg.webp";
 import aboutImage from "@/assets/about-image.png";
-import kartingImage from "@/assets/karting-image.jpg";
-import marketingImage from "@/assets/marketing-image.jpg";
+import kartingImage from "@/assets/karting-image.webp";
+import marketingImage from "@/assets/marketing-image.webp";
 import { getPerformanceSettings, PREMIUM_ANIMATIONS } from "../utils/performanceDetector";
 
 export function Home() {
