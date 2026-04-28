@@ -37,6 +37,7 @@ export function Navigation() {
     { to: getRoute('blog'), label: t('nav.blog'), match: [getRoute('blog')] },
     { to: getRoute('business'), label: t('nav.business'), match: [getRoute('business')] },
     { to: '/2026', label: '2026', match: ['/2026'] },
+    { to: getRoute('sponsors'), label: t('nav.sponsors'), match: [getRoute('sponsors'), '/sponsors', '/patrocinadores'] },
     { to: getRoute('contact'), label: t('nav.contact'), match: [getRoute('contact')] },
   ];
 
