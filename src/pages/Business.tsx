@@ -158,6 +158,7 @@ function BusinessSection({
   features,
   secondaryLink,
   reverse = false,
+  internal = false,
 }: {
   index: string;
   title: string;
@@ -171,7 +172,18 @@ function BusinessSection({
   features: string[];
   secondaryLink?: { href: string; text: string };
   reverse?: boolean;
+  internal?: boolean;
 }) {
+  const LinkWrapper = ({ children, className }: { children: React.ReactNode; className?: string }) =>
+    internal ? (
+      <Link to={href} className={className}>
+        {children}
+      </Link>
+    ) : (
+      <a href={href} target="_blank" rel="noopener noreferrer" className={className}>
+        {children}
+      </a>
+    );
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -185,7 +197,7 @@ function BusinessSection({
         <div className="flex-1 order-2 lg:order-none">
           <SectionLabel index={index}>{subtitle}</SectionLabel>
 
-          <a href={href} target="_blank" rel="noopener noreferrer" className="block mt-6">
+          <LinkWrapper className="block mt-6">
             <h2 className="font-display text-5xl sm:text-6xl md:text-7xl text-white leading-[1] tracking-tight group-hover:translate-x-1 transition-transform duration-500">
               {title.split(' ').map((word, i, arr) =>
                 i === arr.length - 1 ? (
@@ -197,7 +209,7 @@ function BusinessSection({
                 )
               )}
             </h2>
-          </a>
+          </LinkWrapper>
 
           <p className="mt-8 text-lg sm:text-xl text-white/80 leading-relaxed max-w-xl">{description}</p>
 
@@ -217,15 +229,15 @@ function BusinessSection({
           </div>
 
           <div className="mt-10 flex flex-col sm:flex-row gap-3">
-            <a href={href} target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
+            <LinkWrapper className="w-full sm:w-auto">
               <Button
                 variant="outline"
                 className="w-full sm:w-auto h-12 px-7 rounded-full border-white/20 bg-transparent text-white hover:bg-white hover:text-black hover:border-white gap-3 transition-all"
               >
                 <span>{linkText}</span>
-                <ExternalLink className="w-3.5 h-3.5" />
+                {internal ? <ArrowRight className="w-3.5 h-3.5" /> : <ExternalLink className="w-3.5 h-3.5" />}
               </Button>
-            </a>
+            </LinkWrapper>
 
             {secondaryLink && (
               <a href={secondaryLink.href} target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
@@ -242,7 +254,7 @@ function BusinessSection({
 
         {/* Visual */}
         <div className="w-full lg:w-[440px] shrink-0 order-1 lg:order-none">
-          <a href={href} target="_blank" rel="noopener noreferrer" className="block">
+          <LinkWrapper className="block">
             <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-white/10 bg-white/[0.02] group-hover:border-white/25 transition-colors duration-500">
               <ImageWithFallback
                 src={image}
@@ -254,7 +266,7 @@ function BusinessSection({
                 N° {index}
               </div>
             </div>
-          </a>
+          </LinkWrapper>
         </div>
       </div>
     </motion.div>
