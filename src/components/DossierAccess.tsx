@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Lock, FileText, MapPin, Globe } from 'lucide-react';
 import { Button } from './ui/button';
 import { useLanguage } from '../contexts/LanguageContext';
+import { supabase } from '@/integrations/supabase/client';
 import logoImage from '@/assets/figma/placeholder.svg';
 
 interface DossierAccessProps {
