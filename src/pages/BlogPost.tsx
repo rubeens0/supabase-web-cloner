@@ -751,50 +751,71 @@ Many thanks to all the people involved.`,
                   </p>
                 ))}
                 
-                <div className="mt-12 pt-8 border-t border-white/10">
-                  <p className="text-white/80 font-medium mb-8">
-                    {language === 'es' ? 'Redactado por:' : 'Written by:'} <span className="text-white">Caja Rural de Extremadura</span>
-                  </p>
+                <div className="mt-16 pt-10 border-t border-white/10">
+                  {/* Author card */}
+                  <div className="flex items-center gap-4 p-5 rounded-2xl border border-white/10 bg-white/[0.02]">
+                    <div className="w-11 h-11 rounded-full bg-gradient-to-br from-white/15 to-white/5 border border-white/10 flex items-center justify-center font-mono text-[11px] tracking-wider text-white/80 shrink-0">
+                      CR
+                    </div>
+                    <div className="flex flex-col">
+                      <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-white/40">
+                        {language === 'es' ? 'Redactado por' : 'Written by'}
+                      </span>
+                      <span className="text-white text-sm mt-1">Caja Rural de Extremadura</span>
+                    </div>
+                  </div>
 
-                  <div className="mt-8 pt-6 border-t border-white/5">
-                    <h3 className="text-white text-lg font-medium mb-4">
-                      {language === 'es' ? 'Noticias relacionadas' : 'Related News'}
-                    </h3>
-                    <ul className="space-y-2">
-                      <li>
-                        <a 
-                          href="https://www.europapress.es/extremadura/noticia-caja-rural-extremadura-patrocinara-joven-piloto-cacereno-karting-ruben-munoz-20260423113309.html"
+                  {/* Related news */}
+                  <div className="mt-12">
+                    <div className="flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-white/40 mb-6">
+                      <span className="font-mono text-secondary">N°</span>
+                      <span className="h-px w-8 bg-white/15" />
+                      <span>{language === 'es' ? 'Noticias relacionadas' : 'Related news'}</span>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                      {[
+                        {
+                          source: 'Europa Press',
+                          title: language === 'es'
+                            ? 'Caja Rural de Extremadura patrocinará al joven piloto cacereño de karting'
+                            : 'Caja Rural de Extremadura to sponsor the young karting pilot from Cáceres',
+                          href: 'https://www.europapress.es/extremadura/noticia-caja-rural-extremadura-patrocinara-joven-piloto-cacereno-karting-ruben-munoz-20260423113309.html',
+                        },
+                        {
+                          source: 'La Gaceta Independiente',
+                          title: language === 'es'
+                            ? 'Caja Rural de Extremadura apoya el talento joven en el deporte'
+                            : 'Caja Rural de Extremadura supports young sports talent',
+                          href: 'https://lagacetaindependiente.com/2026/04/23/caja-rural-de-extremadura-apoya-el-talento-joven-en-el-deporte-promocionando-al-piloto-cacereno-ruben-munoz/',
+                        },
+                        {
+                          source: 'Región Digital',
+                          title: language === 'es'
+                            ? 'Caja Rural de Extremadura patrocinará al joven piloto cacereño de karting'
+                            : 'Caja Rural de Extremadura to sponsor the young karting pilot from Cáceres',
+                          href: 'https://www.regiondigital.com/noticias/deportes/428716-caja-rural-de-extremadura-patrocinara-al-joven-piloto-cacereno-de-karting-ruben-munoz.html',
+                        },
+                      ].map((item) => (
+                        <a
+                          key={item.source}
+                          href={item.href}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-white/70 hover:text-white text-sm transition-colors flex items-center gap-2"
+                          className="group flex flex-col justify-between p-5 rounded-2xl border border-white/10 bg-white/[0.02] hover:border-white/25 hover:bg-white/[0.04] transition-colors min-h-[160px]"
                         >
-                          <span className="w-1.5 h-1.5 rounded-full bg-white/40"></span>
-                          Europa Press: Caja Rural de Extremadura patrocinará al joven piloto cacereño de karting Rubén Muñoz
+                          <div className="flex items-center justify-between mb-4">
+                            <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-secondary">
+                              {item.source}
+                            </span>
+                            <ExternalLink className="w-3.5 h-3.5 text-white/30 group-hover:text-white transition-colors" />
+                          </div>
+                          <p className="text-white/85 text-sm leading-snug group-hover:text-white transition-colors">
+                            {item.title}
+                          </p>
                         </a>
-                      </li>
-                      <li>
-                        <a 
-                          href="https://lagacetaindependiente.com/2026/04/23/caja-rural-de-extremadura-apoya-el-talento-joven-en-el-deporte-promocionando-al-piloto-cacereno-ruben-munoz/"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-white/70 hover:text-white text-sm transition-colors flex items-center gap-2"
-                        >
-                          <span className="w-1.5 h-1.5 rounded-full bg-white/40"></span>
-                          La Gaceta Independiente: Caja Rural de Extremadura apoya el talento joven en el deporte
-                        </a>
-                      </li>
-                      <li>
-                        <a 
-                          href="https://www.regiondigital.com/noticias/deportes/428716-caja-rural-de-extremadura-patrocinara-al-joven-piloto-cacereno-de-karting-ruben-munoz.html"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-white/70 hover:text-white text-sm transition-colors flex items-center gap-2"
-                        >
-                          <span className="w-1.5 h-1.5 rounded-full bg-white/40"></span>
-                          Región Digital: Caja Rural de Extremadura patrocinará al joven piloto cacereño de karting Rubén Muñoz
-                        </a>
-                      </li>
-                    </ul>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </>
