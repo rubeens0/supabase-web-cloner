@@ -52,26 +52,6 @@ export function Home() {
         </motion.div>
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black" />
         
-        {/* Animated Logo Background - Skip on low-end devices */}
-        {!perfSettings.simplifyAnimations && (
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 0.03, scale: 1 }}
-            transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
-            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] md:w-[600px] md:h-[600px]"
-            style={{ willChange: 'transform, opacity' }}
-          >
-            <motion.img
-              animate={{ rotate: 360 }}
-              transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
-              src={logoWhite}
-              alt="Logo"
-              className="w-full h-full object-contain brightness-0 invert"
-              style={{ willChange: 'transform' }}
-            />
-          </motion.div>
-        )}
-        
         <div className="relative z-10 text-center text-white px-4 sm:px-6 max-w-4xl">
           <motion.div
             initial={{ opacity: 0 }}
