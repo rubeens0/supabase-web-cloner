@@ -1,18 +1,17 @@
-import { motion } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { useNavigate } from 'react-router-dom';
-import { Mail, Calendar } from 'lucide-react';
+import { Mail, Calendar, Sparkles } from 'lucide-react';
 import { useState, useEffect } from 'react';
-import { getPerformanceSettings, PREMIUM_ANIMATIONS } from '../utils/performanceDetector';
 
 export function BusinessButton() {
   const { t, getRoute } = useLanguage();
   const navigate = useNavigate();
   const [isNearFooter, setIsNearFooter] = useState(false);
-  const perfSettings = getPerformanceSettings();
+  const [expanded, setExpanded] = useState(false);
 
   useEffect(() => {
-    // Calendly Setup
+    // Calendly setup
     const linkHref = 'https://assets.calendly.com/assets/external/widget.css';
     const scriptSrc = 'https://assets.calendly.com/assets/external/widget.js';
 
@@ -22,7 +21,6 @@ export function BusinessButton() {
       link.rel = 'stylesheet';
       document.head.appendChild(link);
     }
-
     if (!document.querySelector(`script[src="${scriptSrc}"]`)) {
       const script = document.createElement('script');
       script.src = scriptSrc;
@@ -33,30 +31,29 @@ export function BusinessButton() {
     const handleScroll = () => {
       const scrollPosition = window.scrollY + window.innerHeight;
       const documentHeight = document.documentElement.scrollHeight;
-      
-      // Hide button when within 200px of the bottom
       setIsNearFooter(scrollPosition >= documentHeight - 200);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll(); // Check initial position
-    
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleClick = () => {
+  const handleContact = () => {
+    setExpanded(false);
     navigate(getRoute('contact'));
   };
 
   const openCalendly = () => {
+    setExpanded(false);
     // @ts-ignore
     if (window.Calendly) {
       // @ts-ignore
       window.Calendly.initPopupWidget({
         url: 'https://calendly.com/rubenmunooz/30min',
-        color: '#006bff',
+        color: '#ff0000',
         textColor: '#ffffff',
-        branding: true
+        branding: true,
       });
     }
   };
@@ -64,143 +61,56 @@ export function BusinessButton() {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
-      animate={{ 
-        opacity: isNearFooter ? 0 : 1, 
+      animate={{
+        opacity: isNearFooter ? 0 : 1,
         y: isNearFooter ? 20 : 0,
-        pointerEvents: isNearFooter ? 'none' : 'auto'
+        pointerEvents: isNearFooter ? 'none' : 'auto',
       }}
       transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-      className="fixed bottom-4 sm:bottom-6 md:bottom-8 left-0 right-0 z-50 flex flex-col sm:flex-row gap-2 sm:gap-3 md:gap-4 items-center justify-center w-full px-4"
+      className="fixed bottom-5 sm:bottom-7 left-1/2 -translate-x-1/2 z-50"
+      onMouseEnter={() => setExpanded(true)}
+      onMouseLeave={() => setExpanded(false)}
     >
-      {/* Contact Button */}
-      <motion.button
-        onClick={handleClick}
-        className="group relative w-auto px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 bg-white/5 backdrop-blur-xl border border-white/10 rounded-full overflow-hidden touch-manipulation"
-        whileHover={{ scale: perfSettings.simplifyAnimations ? 1 : 1.05 }}
-        whileTap={{ scale: perfSettings.simplifyAnimations ? 0.98 : 0.95 }}
-        transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+      <motion.div
+        layout
+        transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+        className="flex items-center gap-1 bg-black/80 backdrop-blur-xl border border-white/15 rounded-full p-1 shadow-[0_8px_32px_-4px_rgba(0,0,0,0.6)]"
       >
-        {/* Animated gradient pattern background - Skip on low-end devices */}
-        {!perfSettings.simplifyAnimations && (
-          <motion.div
-            className="absolute inset-0 opacity-0 group-hover:opacity-100"
-            style={{
-              background: 'repeating-linear-gradient(45deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 10px, rgba(255,255,255,0.08) 10px, rgba(255,255,255,0.08) 20px)',
-            }}
-            initial={{ x: 0 }}
-            animate={{ x: [0, 20] }}
-            transition={{
-              duration: 1,
-              repeat: Infinity,
-              ease: 'linear',
-            }}
-          />
-        )}
+        {/* Trigger / collapsed pill */}
+        <motion.button
+          layout
+          onClick={() => {
+            if (expanded) {
+              handleContact();
+            } else {
+              setExpanded(true);
+            }
+          }}
+          className="flex items-center gap-2 bg-secondary text-secondary-foreground rounded-full pl-3 pr-4 py-2.5 text-[13px] font-medium hover:bg-white hover:text-black transition-colors whitespace-nowrap"
+        >
+          <Sparkles className="w-3.5 h-3.5" />
+          <span>{t('footer.business')}</span>
+        </motion.button>
 
-        {/* Gradient background on hover */}
-        <motion.div
-          className="absolute inset-0 bg-gradient-to-r from-white/10 via-white/20 to-white/10 opacity-0 group-hover:opacity-100"
-          transition={{ duration: 0.4 }}
-        />
-
-        {/* Content wrapper with mix-blend-normal to prevent cursor inversion */}
-        <div className="relative flex items-center justify-center gap-2 sm:gap-3 mix-blend-normal">
-          <motion.div 
-            className="p-1 sm:p-1.5 md:p-2 bg-white/10 rounded-full group-hover:bg-white/30 transition-all duration-500"
-            whileHover={perfSettings.simplifyAnimations ? {} : { rotate: 360 }}
-            transition={{ duration: 0.6 }}
-          >
-            <Mail className="w-3 h-3 sm:w-3.5 sm:h-3.5 md:w-4 md:h-4 text-white group-hover:text-black transition-colors duration-500" />
-          </motion.div>
-          <span className="text-xs sm:text-sm md:text-base text-white/70 group-hover:text-black tracking-wide whitespace-nowrap transition-all duration-500 group-hover:tracking-wider">
-            {t('footer.business')}
-          </span>
-        </div>
-
-        {/* Animated border glow - Skip on low-end devices */}
-        {!perfSettings.simplifyAnimations && (
-          <motion.div
-            className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100"
-            style={{
-              background: 'linear-gradient(90deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0.1) 100%)',
-              filter: 'blur(12px)',
-            }}
-            animate={{
-              backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
-            }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              ease: 'linear',
-            }}
-          />
-        )}
-      </motion.button>
-
-      {/* Calendly Button */}
-      <motion.button
-        onClick={openCalendly}
-        className="group relative w-auto px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 bg-white/5 backdrop-blur-xl border border-white/10 rounded-full overflow-hidden touch-manipulation"
-        whileHover={{ scale: perfSettings.simplifyAnimations ? 1 : 1.05 }}
-        whileTap={{ scale: perfSettings.simplifyAnimations ? 0.98 : 0.95 }}
-        transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-      >
-        {/* Animated gradient pattern background - Skip on low-end devices */}
-        {!perfSettings.simplifyAnimations && (
-          <motion.div
-            className="absolute inset-0 opacity-0 group-hover:opacity-100"
-            style={{
-              background: 'repeating-linear-gradient(45deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 10px, rgba(255,255,255,0.08) 10px, rgba(255,255,255,0.08) 20px)',
-            }}
-            initial={{ x: 0 }}
-            animate={{ x: [0, 20] }}
-            transition={{
-              duration: 1,
-              repeat: Infinity,
-              ease: 'linear',
-            }}
-          />
-        )}
-
-        {/* Gradient background on hover */}
-        <motion.div
-          className="absolute inset-0 bg-gradient-to-r from-white/10 via-white/20 to-white/10 opacity-0 group-hover:opacity-100"
-          transition={{ duration: 0.4 }}
-        />
-
-        {/* Content wrapper with mix-blend-normal to prevent cursor inversion */}
-        <div className="relative flex items-center justify-center gap-2 sm:gap-3 mix-blend-normal">
-          <motion.div 
-            className="p-1 sm:p-1.5 md:p-2 bg-white/10 rounded-full group-hover:bg-white/30 transition-all duration-500"
-            whileHover={perfSettings.simplifyAnimations ? {} : { rotate: 360 }}
-            transition={{ duration: 0.6 }}
-          >
-            <Calendar className="w-3 h-3 sm:w-3.5 sm:h-3.5 md:w-4 md:h-4 text-white group-hover:text-black transition-colors duration-500" />
-          </motion.div>
-          <span className="text-xs sm:text-sm md:text-base text-white/70 group-hover:text-black tracking-wide whitespace-nowrap transition-all duration-500 group-hover:tracking-wider">
-            {t('business.schedule')}
-          </span>
-        </div>
-
-        {/* Animated border glow - Skip on low-end devices */}
-        {!perfSettings.simplifyAnimations && (
-          <motion.div
-            className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100"
-            style={{
-              background: 'linear-gradient(90deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0.1) 100%)',
-              filter: 'blur(12px)',
-            }}
-            animate={{
-              backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
-            }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              ease: 'linear',
-            }}
-          />
-        )}
-      </motion.button>
+        <AnimatePresence>
+          {expanded && (
+            <>
+              <motion.button
+                key="schedule"
+                initial={{ opacity: 0, width: 0 }}
+                animate={{ opacity: 1, width: 'auto' }}
+                exit={{ opacity: 0, width: 0 }}
+                transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                onClick={openCalendly}
+                className="flex items-center gap-2 text-white/80 hover:text-white rounded-full pl-3 pr-4 py-2.5 text-[13px] hover:bg-white/10 transition-colors whitespace-nowrap overflow-hidden"
+              >
+                <Calendar className="w-3.5 h-3.5 shrink-0" />
+                <span>{t('business.schedule')}</span>
+              </motion.button>
+            </>
+          )}
+        </AnimatePresence>
+      </motion.div>
     </motion.div>
   );
 }
