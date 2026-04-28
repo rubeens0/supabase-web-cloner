@@ -415,74 +415,177 @@ export function SpainMap3D() {
     };
   }, []);
 
+  const leftCircuits = CIRCUITS.filter((c) => c.side === 'left');
+  const rightCircuits = CIRCUITS.filter((c) => c.side === 'right');
+
+  const Annotation = ({
+    c,
+    align,
+  }: {
+    c: typeof CIRCUITS[number];
+    align: 'left' | 'right';
+  }) => (
+    <div
+      className={`flex items-start gap-3 ${align === 'right' ? 'flex-row-reverse text-right' : 'text-left'}`}
+    >
+      <div
+        className="flex-shrink-0 flex items-center justify-center rounded-full border border-white/40"
+        style={{ width: 26, height: 26, fontSize: 11, fontWeight: 600, color: '#fff' }}
+      >
+        {c.num.toString().padStart(2, '0')}
+      </div>
+      <div>
+        <div
+          style={{
+            color: '#fff',
+            fontSize: 12,
+            fontWeight: 500,
+            letterSpacing: '0.06em',
+            textTransform: 'uppercase',
+            lineHeight: 1.15,
+          }}
+        >
+          {c.name}
+        </div>
+        <div
+          style={{
+            color: 'rgba(255,255,255,0.5)',
+            fontSize: 10.5,
+            marginTop: 3,
+            letterSpacing: '0.02em',
+          }}
+        >
+          {c.location}
+        </div>
+        <div
+          className="font-mono"
+          style={{
+            color: 'rgba(255,255,255,0.7)',
+            fontSize: 10,
+            marginTop: 4,
+            letterSpacing: '0.12em',
+          }}
+        >
+          {c.date}
+        </div>
+      </div>
+    </div>
+  );
+
   return (
     <div className="w-full">
-      <div ref={wrapperRef} className="relative w-full">
-        <canvas ref={canvasRef} className="block w-full" />
-        {CIRCUITS.map((c, i) => {
-          const l = labels[i];
-          if (!l.visible) return null;
-          const lx = l.x + (c.labelOffset?.x ?? 22);
-          const ly = l.y + (c.labelOffset?.y ?? 0);
-          return (
-            <div
-              key={c.name}
-              className="absolute pointer-events-none select-none"
-              style={{
-                left: lx,
-                top: ly,
-                transform: 'translateY(-50%)',
-                whiteSpace: 'nowrap',
-              }}
-            >
-              {/* Connector line from dot to label */}
-              <svg
-                style={{
-                  position: 'absolute',
-                  left: -((c.labelOffset?.x ?? 22) - 4),
-                  top: '50%',
-                  width: (c.labelOffset?.x ?? 22) - 4,
-                  height: 1,
-                  overflow: 'visible',
-                }}
-                aria-hidden
-              >
-                <line
-                  x1="0"
-                  y1="0"
-                  x2={(c.labelOffset?.x ?? 22) - 6}
-                  y2="0"
-                  stroke="rgba(255,255,255,0.4)"
-                  strokeWidth="0.75"
-                />
-              </svg>
+      <div className="grid grid-cols-1 lg:grid-cols-[180px_1fr_180px] gap-6 lg:gap-8 items-center">
+        {/* Left annotations */}
+        <div className="hidden lg:flex flex-col gap-8 justify-center">
+          {leftCircuits.map((c) => (
+            <Annotation key={c.num} c={c} align="left" />
+          ))}
+        </div>
+
+        {/* Map */}
+        <div ref={wrapperRef} className="relative w-full">
+          <canvas ref={canvasRef} className="block w-full" />
+
+          {/* Drag indicator */}
+          <div
+            className="absolute top-3 right-3 flex items-center gap-1.5 pointer-events-none"
+            style={{
+              color: 'rgba(255,255,255,0.55)',
+              fontSize: 10,
+              letterSpacing: '0.14em',
+              textTransform: 'uppercase',
+              padding: '5px 9px',
+              border: '0.5px solid rgba(255,255,255,0.18)',
+              borderRadius: 999,
+              background: 'rgba(255,255,255,0.04)',
+              backdropFilter: 'blur(4px)',
+            }}
+          >
+            <Move size={12} strokeWidth={1.5} />
+            <span>{language === 'es' ? 'Arrastra' : 'Drag'}</span>
+          </div>
+
+          {/* Numbered marker badges */}
+          {CIRCUITS.map((c, i) => {
+            const l = labels[i];
+            if (!l.visible) return null;
+            return (
               <div
+                key={`badge-${c.num}`}
+                className="absolute pointer-events-none select-none flex items-center justify-center rounded-full"
                 style={{
-                  color: '#fff',
-                  fontSize: 11,
-                  fontWeight: 500,
-                  letterSpacing: '0.04em',
-                  textTransform: 'uppercase',
-                  lineHeight: 1.1,
-                }}
-              >
-                {c.name}
-              </div>
-              <div
-                style={{
-                  color: 'rgba(255,255,255,0.45)',
+                  left: l.x,
+                  top: l.y,
+                  width: 18,
+                  height: 18,
+                  transform: 'translate(-50%, -50%)',
+                  background: '#fff',
+                  color: '#000',
                   fontSize: 10,
-                  marginTop: 2,
-                  letterSpacing: '0.02em',
+                  fontWeight: 700,
+                  fontFamily: 'monospace',
+                  boxShadow: '0 0 10px rgba(255,255,255,0.6)',
                 }}
               >
-                {c.location}
+                {c.num}
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
+
+          {/* Inline labels next to marker (only on lg- where side panels are hidden) */}
+          <div className="lg:hidden">
+            {CIRCUITS.map((c, i) => {
+              const l = labels[i];
+              if (!l.visible) return null;
+              const lx = l.x + (c.labelOffset?.x ?? 22);
+              const ly = l.y + (c.labelOffset?.y ?? 0);
+              return (
+                <div
+                  key={c.name}
+                  className="absolute pointer-events-none select-none"
+                  style={{
+                    left: lx,
+                    top: ly,
+                    transform: 'translateY(-50%)',
+                    whiteSpace: 'nowrap',
+                  }}
+                >
+                  <div
+                    style={{
+                      color: '#fff',
+                      fontSize: 10,
+                      fontWeight: 500,
+                      letterSpacing: '0.04em',
+                      textTransform: 'uppercase',
+                      lineHeight: 1.1,
+                    }}
+                  >
+                    {c.num.toString().padStart(2, '0')} · {c.name}
+                  </div>
+                  <div
+                    style={{
+                      color: 'rgba(255,255,255,0.45)',
+                      fontSize: 9,
+                      marginTop: 1,
+                    }}
+                  >
+                    {c.location}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Right annotations */}
+        <div className="hidden lg:flex flex-col gap-8 justify-center">
+          {rightCircuits.map((c) => (
+            <Annotation key={c.num} c={c} align="right" />
+          ))}
+        </div>
       </div>
-      <div className="mt-4 flex items-center justify-center gap-6" style={{ color: 'rgba(255,255,255,0.5)', fontSize: 12 }}>
+
+      <div className="mt-6 flex items-center justify-center gap-6 flex-wrap" style={{ color: 'rgba(255,255,255,0.5)', fontSize: 12 }}>
         <div className="flex items-center gap-2">
           <span
             style={{
@@ -499,6 +602,10 @@ export function SpainMap3D() {
             <line x1="0" y1="1" x2="28" y2="1" stroke="#fff" strokeWidth="1.5" strokeDasharray="4 3" />
           </svg>
           <span>{language === 'es' ? 'Ruta' : 'Route'}</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <Move size={12} strokeWidth={1.5} />
+          <span>{language === 'es' ? 'Arrastra para rotar' : 'Drag to rotate'}</span>
         </div>
       </div>
     </div>
