@@ -85,30 +85,9 @@ export function RDE() {
             className="text-white/60 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed mb-12"
           >
             Si ya tienes conocimiento, audiencia o producto pero tus ventas dependen de que tú estés
-            activo cada día — ve el vídeo completo.
+            activo cada día — esto es para ti.
           </motion.p>
 
-          {/* VSL placeholder */}
-          <motion.div
-            {...fadeIn(0.3)}
-            className="relative mx-auto mb-5 max-w-3xl aspect-video rounded-2xl border border-white/15 bg-gradient-to-br from-white/[0.06] to-white/[0.02] overflow-hidden group cursor-pointer"
-          >
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.08),transparent_60%)]" />
-              <div className="relative flex flex-col items-center gap-3 z-10">
-                <div className="p-5 rounded-full bg-white/10 border border-white/20 group-hover:bg-white/20 transition-colors">
-                  <PlayCircle className="w-12 h-12 text-white" strokeWidth={1.2} />
-                </div>
-                <span className="text-white/60 text-xs font-mono uppercase tracking-[0.22em]">
-                  VSL · Reproducir vídeo
-                </span>
-              </div>
-            </div>
-          </motion.div>
-
-          <motion.p {...fadeIn(0.35)} className="text-white/45 text-xs sm:text-sm mb-6">
-            Ve el vídeo completo antes de aplicar
-          </motion.p>
 
           <motion.div {...fadeIn(0.4)}>
             <a
