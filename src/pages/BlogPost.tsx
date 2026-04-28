@@ -2,7 +2,7 @@ import cekZaragozaImg from '@/assets/figma/placeholder.svg';
 import netspyImg from '@/assets/figma/placeholder.svg';
 import netproImg from '@/assets/figma/placeholder.svg';
 import albroksaImg from '@/assets/figma/placeholder.svg';
-import testRecasImg from '@/assets/figma/placeholder.svg';
+import testRecasImg from '@/assets/test-recas-2026.jpg';
 import portadaExtremaduraImg from '@/assets/cek-2026-campillos-18.jpg';
 import cajaRuralImg from '@/assets/caja-rural-extremadura.png';
 import { useParams, Link, Navigate } from 'react-router-dom';
