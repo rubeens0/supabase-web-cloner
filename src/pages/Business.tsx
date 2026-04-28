@@ -6,7 +6,7 @@ import { ArrowRight, Globe, TrendingUp, Users, Palette, Target, Rocket, External
 import { motion } from 'motion/react';
 import { useLanguage } from '../contexts/LanguageContext';
 import netproLogo from '@/assets/netpro-branding.png';
-import netspyImg from '@/assets/figma/placeholder.svg';
+import netspyImg from '@/assets/netspy-branding.png';
 
 export function Business() {
   const { t } = useLanguage();
