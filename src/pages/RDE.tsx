@@ -339,14 +339,15 @@ export function RDE() {
 
           <motion.div
             {...fadeIn(0.2)}
-            className="relative aspect-[16/7] rounded-2xl border border-white/10 bg-white/[0.02] flex items-center justify-center"
+            className="relative mx-auto max-w-md aspect-[4/5] rounded-2xl overflow-hidden border border-white/10 bg-white/[0.02]"
           >
-            <div className="flex flex-col items-center gap-3 text-white/40">
-              <Users className="w-10 h-10" strokeWidth={1.2} />
-              <span className="text-xs font-mono uppercase tracking-[0.22em]">
-                [Foto del equipo]
-              </span>
-            </div>
+            <img
+              src={rdeTeam}
+              alt="Equipo RDE Operators — Rubén, Diego y Erik"
+              className="w-full h-full object-cover"
+              loading="lazy"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
           </motion.div>
         </div>
       </section>
