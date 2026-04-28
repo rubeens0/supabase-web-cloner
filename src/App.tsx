@@ -24,6 +24,7 @@ import { BlogPost } from "@/pages/BlogPost";
 import { Dossier } from "@/pages/Dossier";
 import { LiveTimingStreaming } from "@/pages/LiveTimingStreaming";
 import { RDE } from "@/pages/RDE";
+import { Auth } from "@/pages/Auth";
 
 const queryClient = new QueryClient();
 
@@ -70,6 +71,7 @@ function AppContent() {
             <Route path="/live-timing-streaming" element={<PageTransition><LiveTimingStreaming /></PageTransition>} />
             <Route path="/rde" element={<PageTransition><RDE /></PageTransition>} />
             <Route path="/rdeoperators" element={<PageTransition><RDE /></PageTransition>} />
+            <Route path="/auth" element={<PageTransition><Auth /></PageTransition>} />
             <Route path="*" element={<PageTransition><Home /></PageTransition>} />
           </Routes>
         </AnimatePresence>
