@@ -8,6 +8,7 @@ import asparImage from '@/assets/aspar-circuit.jpg';
 import dbMotorsportLogo from '@/assets/db-motorsport-logo.png';
 import parolinLogo from '@/assets/parolin-logo.png';
 import sponsorsImage from '@/assets/sponsors-2026.png';
+import { SpainMap3D } from '@/components/SpainMap3D';
 
 const circuits = [
   {
@@ -92,6 +93,10 @@ export function Cek2026() {
               ? 'Campeonato de España de Karting. Listos para comenzar nuestro segundo año...'
               : 'Spanish Karting Championship. Ready to start our second year...'}
           </motion.p>
+
+          <motion.div {...fadeIn(0.4)} className="mt-12">
+            <SpainMap3D />
+          </motion.div>
         </div>
       </section>
 
