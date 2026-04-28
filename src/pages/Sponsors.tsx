@@ -1,10 +1,11 @@
 import { motion } from 'motion/react';
 import { useLanguage } from '../contexts/LanguageContext';
-import { Trophy, Users, Sparkles, Mail, X, ArrowUpRight, ArrowRight } from 'lucide-react';
+import { Trophy, Users, Sparkles, Mail, X, ArrowUpRight, ArrowRight, ZoomIn, ZoomOut, RotateCcw, Download, Maximize2 } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Link } from 'react-router-dom';
 import { SEO } from '../components/SEO';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import { AnimatePresence } from 'motion/react';
 import heroImage from '@/assets/sponsors-event.png';
 
 import sponsorsImage from '@/assets/banner-patrocinadores-2026.png';
