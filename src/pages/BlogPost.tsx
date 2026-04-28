@@ -3,7 +3,7 @@ import netspyImg from '@/assets/figma/placeholder.svg';
 import netproImg from '@/assets/figma/placeholder.svg';
 import albroksaImg from '@/assets/figma/placeholder.svg';
 import testRecasImg from '@/assets/figma/placeholder.svg';
-import portadaExtremaduraImg from '@/assets/figma/placeholder.svg';
+import portadaExtremaduraImg from '@/assets/cek-2026-campillos-18.jpg';
 import cajaRuralImg from '@/assets/caja-rural-extremadura.png';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
