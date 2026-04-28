@@ -12,6 +12,7 @@ import {
   Users,
 } from "lucide-react";
 import rdeLogo from "@/assets/rde-logo.png";
+import rdeTeam from "@/assets/rde-team.jpg";
 
 function SectionLabel({ index, children }: { index: string; children: React.ReactNode }) {
   return (
