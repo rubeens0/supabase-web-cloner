@@ -44,6 +44,11 @@
     --sidebar-accent-foreground: 0 0% 100%;
     --sidebar-border: 0 0% 100%;
     --sidebar-ring: 0 0% 100%;
+
+    /* Editorial redesign tokens */
+    --accent-red: 12 100% 40%;        /* #CC2200 */
+    --accent-red-soft: 12 100% 60%;   /* hover/glow */
+    --rule: 0 0% 100% / 0.08;         /* hairline borders */
   }
 
   .dark {

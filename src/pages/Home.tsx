@@ -1,23 +1,47 @@
 import { Link } from "react-router-dom";
 import { Button } from "../components/ui/button";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
-import { ArrowRight, Flag, Trophy, ArrowDown, TrendingUp, Search, Radio } from "lucide-react";
+import { ArrowRight, ArrowDown, ArrowUpRight, Flag, TrendingUp } from "lucide-react";
 import { motion } from "motion/react";
 import logoWhite from "@/assets/logo-white-optimized.png";
 import { AnimatedLogo } from "../components/AnimatedLogo";
 import { useLanguage } from "../contexts/LanguageContext";
-import { SEO } from "../components/SEO";
 import heroImage from "@/assets/home-hero-bg.webp";
 import aboutImage from "@/assets/about-image.png";
 import kartingImage from "@/assets/karting-image.webp";
 import marketingImage from "@/assets/marketing-image.webp";
+import portadaExtremaduraImg from "@/assets/cek-2026-campillos-18.jpg";
+import testRecasImg from "@/assets/test-recas-2026.jpg";
+import albroksaImg from "@/assets/albroksa-patrocinio.jpeg";
 import { getPerformanceSettings, PREMIUM_ANIMATIONS } from "../utils/performanceDetector";
 
+/* ---------- Small editorial primitives ---------- */
+
+function SectionLabel({ index, children }: { index: string; children: React.ReactNode }) {
+  return (
+    <div className="flex items-center gap-3 text-[11px] uppercase tracking-[0.2em] text-white/40">
+      <span className="font-mono text-[hsl(var(--accent-red))]">{index}</span>
+      <span className="h-px w-8 bg-white/20" />
+      <span>{children}</span>
+    </div>
+  );
+}
+
+function Badge({ children }: { children: React.ReactNode }) {
+  return (
+    <span className="inline-flex items-center gap-2 rounded-full border border-[hsl(var(--accent-red))]/35 bg-[hsl(var(--accent-red))]/10 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.18em] text-[hsl(var(--accent-red-soft))]">
+      <span className="h-1.5 w-1.5 rounded-full bg-[hsl(var(--accent-red))]" />
+      {children}
+    </span>
+  );
+}
+
+/* ---------- Page ---------- */
+
 export function Home() {
-  const { t, getRoute, language } = useLanguage();
+  const { t, getRoute } = useLanguage();
   const perfSettings = getPerformanceSettings();
 
-  // Premium animation variants - smooth and consistent
   const heroImageVariant = perfSettings.simplifyAnimations
     ? { initial: { opacity: 0 }, animate: { opacity: 1 }, transition: { duration: PREMIUM_ANIMATIONS.duration.fast } }
     : {
@@ -26,302 +50,279 @@ export function Home() {
         transition: { duration: PREMIUM_ANIMATIONS.duration.verySlow, ease: PREMIUM_ANIMATIONS.ease.premium },
       };
 
-  const fadeInVariant = perfSettings.simplifyAnimations
-    ? {
-        initial: { opacity: 0 },
-        animate: { opacity: 1 },
-        transition: { duration: PREMIUM_ANIMATIONS.duration.instant },
-      }
-    : {
-        initial: { opacity: 0, y: 20 },
-        animate: { opacity: 1, y: 0 },
-        transition: { duration: PREMIUM_ANIMATIONS.duration.slow, ease: PREMIUM_ANIMATIONS.ease.premium },
-      };
+  const fadeIn = (delay = 0) => ({
+    initial: { opacity: 0, y: 16 },
+    animate: { opacity: 1, y: 0 },
+    transition: {
+      duration: perfSettings.simplifyAnimations ? 0.2 : 0.7,
+      delay: perfSettings.simplifyAnimations ? 0 : delay,
+      ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
+    },
+  });
+
+  const latestPosts = [
+    {
+      id: "portada-extremadura-cek-r1",
+      title: t("blog.portadaextremadura.title"),
+      excerpt: t("blog.portadaextremadura.excerpt"),
+      tag: t("blog.category.karting"),
+      image: portadaExtremaduraImg,
+      date: "23.03.2026",
+    },
+    {
+      id: "test-recas-2026",
+      title: t("blog.testrecas.title"),
+      excerpt: t("blog.testrecas.excerpt"),
+      tag: t("blog.category.karting"),
+      image: testRecasImg,
+      date: "22.02.2026",
+    },
+    {
+      id: "albroksa-patrocinio",
+      title: t("blog.albroksa.title"),
+      excerpt: t("blog.albroksa.excerpt"),
+      tag: t("blog.category.karting"),
+      image: albroksaImg,
+      date: "17.02.2026",
+    },
+  ];
 
   return (
-    <div className="min-h-screen bg-black">
-      {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
+    <div className="min-h-screen bg-black text-white">
+      {/* ============== 01 · HERO ============== */}
+      <section className="relative h-screen min-h-[640px] flex items-end overflow-hidden">
         <motion.div
           {...heroImageVariant}
           className="absolute inset-0"
           style={perfSettings.simplifyAnimations ? {} : { willChange: "transform, opacity" }}
         >
-          <ImageWithFallback src={heroImage} alt="Karting" className="w-full h-full object-cover" loading="eager" />
-        </motion.div>
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black" />
-
-        <div className="relative z-10 text-center text-white px-4 sm:px-6 max-w-4xl">
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{
-              duration: perfSettings.simplifyAnimations ? 0.2 : 0.7,
-              delay: perfSettings.simplifyAnimations ? 0 : 0.1,
-            }}
-            className="w-[42px] h-[42px] sm:w-[52px] sm:h-[52px] md:w-[62px] md:h-[62px] mx-auto mb-6 sm:mb-8"
-          >
-            {perfSettings.simplifyAnimations ? (
-              <img
-                src={logoWhite}
-                alt="Rubén Muñoz Logo"
-                className="w-full h-full object-contain drop-shadow-2xl brightness-0 invert"
-                loading="eager"
-                fetchPriority="high"
-                decoding="async"
-              />
-            ) : (
-              <motion.img
-                animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                src={logoWhite}
-                alt="Rubén Muñoz Logo"
-                className="w-full h-full object-contain drop-shadow-2xl brightness-0 invert"
-                style={{ willChange: "transform" }}
-                loading="eager"
-                fetchPriority="high"
-                decoding="async"
-              />
-            )}
-          </motion.div>
-          <motion.h1
-            {...fadeInVariant}
-            transition={{
-              duration: perfSettings.simplifyAnimations ? 0.2 : 0.7,
-              delay: perfSettings.simplifyAnimations ? 0 : 0.2,
-            }}
-            className="mb-4 sm:mb-6 text-white"
-            dangerouslySetInnerHTML={{ __html: t("home.hero.title") }}
+          <ImageWithFallback
+            src={heroImage}
+            alt="Karting"
+            className="w-full h-full object-cover"
+            loading="eager"
           />
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{
-              duration: perfSettings.simplifyAnimations ? 0.2 : 0.7,
-              delay: perfSettings.simplifyAnimations ? 0 : 0.3,
-            }}
-            className="mb-4 sm:mb-6"
-          >
-            <span className="text-white/90 tracking-[0.3em] uppercase text-xs sm:text-sm md:text-base inline-block px-4 py-2 border border-white/20 rounded-full backdrop-blur-sm bg-white/5">
-              Built from scratch
-            </span>
-          </motion.div>
-          <motion.p
-            {...fadeInVariant}
-            transition={{
-              duration: perfSettings.simplifyAnimations ? 0.2 : 0.7,
-              delay: perfSettings.simplifyAnimations ? 0 : 0.4,
-            }}
-            className="mb-6 sm:mb-8 max-w-2xl mx-auto text-white/80"
-          >
-            {t("home.hero.description")}
-          </motion.p>
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{
-              duration: perfSettings.simplifyAnimations ? 0.2 : 0.7,
-              delay: perfSettings.simplifyAnimations ? 0 : 0.5,
-            }}
-            className="flex flex-col sm:flex-row flex-wrap items-stretch justify-center gap-3 sm:gap-4"
-          >
-            <Button
-              size="lg"
-              className="gap-2 bg-white/10 backdrop-blur-xl border border-white/20 text-white hover:bg-white/20 hover:border-white/30 hover:scale-105 transition-all duration-300 h-11 sm:h-12"
-              onClick={() => {
-                const aboutSection = document.querySelector("section:nth-of-type(2)");
-                aboutSection?.scrollIntoView({ behavior: "smooth" });
-              }}
-            >
-              <span className="mix-blend-normal">{t("home.hero.cta")}</span>
-              <ArrowDown className="w-4 h-4 sm:w-5 sm:h-5 mix-blend-normal" />
-            </Button>
-            {/* DIRECTO CEK BUTTON REMOVED - Link to /live-timing-streaming disabled */}
-            <Link to={getRoute("business")} className="w-full sm:w-auto">
-              <Button
-                size="lg"
-                className="w-full gap-2 bg-white/10 backdrop-blur-xl border border-white/20 text-white hover:bg-white/20 hover:border-white/30 hover:scale-105 transition-all duration-300 h-11 sm:h-12"
-              >
-                <TrendingUp className="w-4 h-4 sm:w-5 sm:h-5 mix-blend-normal" />
-                <span className="mix-blend-normal">{t("nav.business")}</span>
-              </Button>
-            </Link>
-            <Link to="/patrocinadores" className="w-full sm:w-auto">
-              <Button
-                size="lg"
-                className="w-full gap-2 bg-white/10 backdrop-blur-xl border border-white/20 text-white hover:bg-white/20 hover:border-white/30 hover:scale-105 transition-all duration-300 h-11 sm:h-12"
-              >
-                <Search className="w-4 h-4 sm:w-5 sm:h-5 mix-blend-normal" />
-                <span className="mix-blend-normal">{t("footer.sponsors")}</span>
-              </Button>
-            </Link>
-          </motion.div>
+        </motion.div>
+        {/* Editorial overlay: vertical fade + side vignette */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/30" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-transparent" />
+
+        {/* Top meta bar */}
+        <div className="absolute top-28 left-0 right-0 px-4 sm:px-10 md:px-16 z-10">
+          <div className="max-w-7xl mx-auto flex items-center justify-between text-[11px] uppercase tracking-[0.2em] text-white/40">
+            <span className="font-mono">N° 01 — INDEX</span>
+            <span className="hidden sm:inline">CÁCERES · ESPAÑA</span>
+            <span className="font-mono">2026</span>
+          </div>
         </div>
 
-        {/* Scroll Indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.8 }}
-          className="absolute bottom-40 sm:bottom-32 left-1/2 transform -translate-x-1/2 sm:hidden"
-        >
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            className="flex flex-col items-center gap-3"
-            style={{ willChange: "transform" }}
-          >
-            <div className="hidden sm:flex w-6 h-10 border-2 border-white/30 rounded-full items-start justify-center p-2">
-              <motion.div className="w-1.5 h-1.5 bg-white rounded-full" />
-            </div>
-          </motion.div>
-        </motion.div>
-      </section>
+        <div className="relative z-10 w-full px-4 sm:px-10 md:px-16 pb-16 sm:pb-24">
+          <div className="max-w-7xl mx-auto">
+            <motion.div {...fadeIn(0.1)} className="mb-6">
+              <Badge>Piloto · Fundador · 2026</Badge>
+            </motion.div>
 
-      {/* About Section */}
-      <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-black">
-        <div className="max-w-4xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-8 sm:gap-12 md:gap-16 items-center">
+            <motion.h1
+              {...fadeIn(0.2)}
+              className="text-[44px] leading-[1.02] sm:text-6xl md:text-7xl lg:text-[88px] font-light tracking-[-0.02em] text-white mb-6 max-w-4xl"
+              dangerouslySetInnerHTML={{ __html: t("home.hero.title") }}
+            />
+
             <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+              {...fadeIn(0.3)}
+              className="flex items-center gap-4 mb-8 max-w-xl"
             >
-              <h2 className="mb-4 sm:mb-6 text-white">{t("home.about.title")}</h2>
-              <p className="text-white/60 mb-4">{t("home.about.p1")}</p>
-              <p className="text-white/60 mb-4">{t("home.about.p2")}</p>
-              <p className="text-white/60 mb-6 sm:mb-8">{t("home.about.p3")}</p>
-              <Link to="/contacto">
-                <Button variant="outline" className="border-white/20 text-white hover:bg-white/10">
-                  <span className="relative z-10">{t("home.about.cta")}</span>
+              <span className="h-px w-10 bg-[hsl(var(--accent-red))] shrink-0" />
+              <p className="text-sm sm:text-base text-white/70 leading-relaxed">
+                {t("home.hero.description")}
+              </p>
+            </motion.div>
+
+            <motion.div
+              {...fadeIn(0.4)}
+              className="flex flex-col sm:flex-row flex-wrap gap-3"
+            >
+              <Button
+                size="lg"
+                onClick={() => {
+                  document.getElementById("about-section")?.scrollIntoView({ behavior: "smooth" });
+                }}
+                className="rounded-full h-12 px-7 bg-[hsl(var(--accent-red))] text-white hover:bg-[hsl(var(--accent-red-soft))] transition-colors gap-2"
+              >
+                {t("home.hero.cta")}
+                <ArrowDown className="w-4 h-4" />
+              </Button>
+              <Link to={getRoute("business")}>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="w-full sm:w-auto rounded-full h-12 px-7 bg-transparent border-white/20 text-white hover:bg-white/5 hover:text-white hover:border-white/40 gap-2"
+                >
+                  <TrendingUp className="w-4 h-4" />
+                  {t("nav.business")}
+                </Button>
+              </Link>
+              <Link to="/patrocinadores">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="w-full sm:w-auto rounded-full h-12 px-7 bg-transparent border-white/20 text-white hover:bg-white/5 hover:text-white hover:border-white/40 gap-2"
+                >
+                  <Flag className="w-4 h-4" />
+                  {t("footer.sponsors")}
                 </Button>
               </Link>
             </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            >
-              <div className="aspect-square overflow-hidden bg-white/5 rounded-2xl mb-6 md:mb-0">
-                <ImageWithFallback src={aboutImage} alt="Racing" className="w-full h-full object-cover" />
-              </div>
-
-              {/* Tagline below image - Mobile only */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                className="text-center md:hidden"
-              >
-                {/* Gradient line */}
-                <motion.div
-                  initial={{ scaleX: 0, opacity: 0 }}
-                  whileInView={{ scaleX: 1, opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{
-                    duration: 1.2,
-                    delay: 0.4,
-                    ease: [0.22, 1, 0.36, 1],
-                  }}
-                  className="h-[2px] w-48 sm:w-64 mx-auto mb-4 origin-center bg-gradient-to-r from-red-600 via-red-700 to-black"
-                />
-
-                <p
-                  className="text-white/50 text-sm sm:text-base tracking-[0.25em] uppercase font-light"
-                  style={{
-                    fontFamily: "'Inter', 'SF Pro Display', -apple-system, sans-serif",
-                  }}
-                >
-                  Driver • Creator • Strategist
-                </p>
-              </motion.div>
-            </motion.div>
           </div>
+        </div>
 
-          {/* Tagline below section - Desktop only */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="text-center mt-12 md:mt-16 hidden md:block"
-          >
-            {/* Gradient line */}
-            <motion.div
-              initial={{ scaleX: 0, opacity: 0 }}
-              whileInView={{ scaleX: 1, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{
-                duration: 1.2,
-                delay: 0.4,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-              className="h-[2px] w-64 mx-auto mb-4 origin-center bg-gradient-to-r from-red-600 via-red-700 to-black"
-            />
+        {/* Hairline at bottom */}
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-white/10" />
+      </section>
 
-            <p
-              className="text-white/50 text-base tracking-[0.25em] uppercase font-light"
-              style={{
-                fontFamily: "'Inter', 'SF Pro Display', -apple-system, sans-serif",
-              }}
-            >
-              Driver • Creator • Strategist
-            </p>
-          </motion.div>
+      {/* ============== 02 · STATS / SOCIAL PROOF ============== */}
+      <section className="border-b border-white/10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-10 md:px-16 py-10 sm:py-14">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/10 border border-white/10 rounded-2xl overflow-hidden">
+            <div className="bg-black p-6 sm:p-8">
+              <div className="text-[10px] uppercase tracking-[0.2em] text-white/40 mb-3">Año de inicio</div>
+              <div className="text-4xl sm:text-5xl font-light tracking-tight">
+                2024<span className="text-[hsl(var(--accent-red))]">.</span>
+              </div>
+              <div className="text-xs text-white/50 mt-2">Built from scratch</div>
+            </div>
+            <div className="bg-black p-6 sm:p-8">
+              <div className="text-[10px] uppercase tracking-[0.2em] text-white/40 mb-3">Frentes activos</div>
+              <div className="text-4xl sm:text-5xl font-light tracking-tight">
+                2<span className="text-[hsl(var(--accent-red))]"> / </span>
+                <span className="text-white/40 text-2xl sm:text-3xl">karting · digital</span>
+              </div>
+              <div className="text-xs text-white/50 mt-2">Doble disciplina, mismo enfoque</div>
+            </div>
+            <div className="bg-black p-6 sm:p-8">
+              <div className="text-[10px] uppercase tracking-[0.2em] text-white/40 mb-3">Campeonato</div>
+              <div className="text-4xl sm:text-5xl font-light tracking-tight">
+                CEK<span className="text-[hsl(var(--accent-red))]">.</span>
+              </div>
+              <div className="text-xs text-white/50 mt-2">Campeonato de España de Karting</div>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Areas Section */}
-      <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-gradient-to-b from-black to-neutral-950">
-        <div className="max-w-6xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="text-center mb-12 sm:mb-16 md:mb-20"
-          >
-            <h2 className="mb-4 text-white">{t("home.areas.title")}</h2>
-            <p className="text-white/60">{t("home.areas.subtitle")}</p>
-          </motion.div>
+      {/* ============== 03 · QUIÉN SOY (Dualidad) ============== */}
+      <section id="about-section" className="border-b border-white/10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-10 md:px-16 py-20 sm:py-28">
+          <SectionLabel index="03">{t("home.about.title")}</SectionLabel>
 
-          <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
+          <div className="mt-8 grid lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+            {/* LEFT: split dualidad + texto */}
+            <div className="lg:col-span-7">
+              <div className="grid sm:grid-cols-2 gap-px bg-white/10 border border-white/10 rounded-xl overflow-hidden mb-10">
+                <div className="bg-black p-6">
+                  <div className="text-[10px] uppercase tracking-[0.2em] text-white/40 mb-2">En la pista</div>
+                  <div className="text-lg font-medium mb-2">{t("home.areas.karting.title")}</div>
+                  <p className="text-sm text-white/55 leading-relaxed">
+                    Competición, disciplina, cada curva entrenada.
+                  </p>
+                </div>
+                <div className="bg-black p-6">
+                  <div className="text-[10px] uppercase tracking-[0.2em] text-white/40 mb-2">Fuera de la pista</div>
+                  <div className="text-lg font-medium mb-2">{t("home.areas.marketing.title")}</div>
+                  <p className="text-sm text-white/55 leading-relaxed">
+                    Proyectos digitales, audiencia, crecimiento desde cero.
+                  </p>
+                </div>
+              </div>
+
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-light tracking-tight mb-8 leading-[1.1]">
+                {t("home.about.title")}
+              </h2>
+              <div className="space-y-5 text-white/70 max-w-xl leading-relaxed">
+                <p>{t("home.about.p1")}</p>
+                <p>{t("home.about.p2")}</p>
+                <p>{t("home.about.p3")}</p>
+              </div>
+
+              <Link to="/contacto" className="inline-block mt-10">
+                <Button
+                  variant="outline"
+                  className="rounded-full h-11 px-6 border-white/20 bg-transparent text-white hover:bg-white/5 hover:text-white hover:border-white/40 gap-2"
+                >
+                  {t("home.about.cta")}
+                  <ArrowRight className="w-4 h-4" />
+                </Button>
+              </Link>
+            </div>
+
+            {/* RIGHT: image */}
+            <div className="lg:col-span-5">
+              <div className="relative aspect-[4/5] rounded-xl overflow-hidden border border-white/10">
+                <ImageWithFallback
+                  src={aboutImage}
+                  alt="Rubén Muñoz"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-5 flex items-center justify-between">
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-white/70">
+                    Driver · Creator · Strategist
+                  </span>
+                  <span className="font-mono text-[10px] text-[hsl(var(--accent-red-soft))]">2009 →</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ============== 04 · ÁREAS ============== */}
+      <section className="border-b border-white/10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-10 md:px-16 py-20 sm:py-28">
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-12">
+            <div>
+              <SectionLabel index="04">{t("home.areas.title")}</SectionLabel>
+              <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-light tracking-tight max-w-2xl leading-[1.1]">
+                {t("home.areas.subtitle")}
+              </h2>
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            {/* Karting */}
             <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-              whileHover={{ y: -8 }}
-              className="group p-6 sm:p-8 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl hover:border-white/20 transition-all duration-300"
+              whileHover={{ y: -4 }}
+              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              className="group border border-white/10 rounded-2xl overflow-hidden bg-white/[0.02] hover:bg-white/[0.04] hover:border-white/20 transition-colors"
             >
-              <div className="aspect-video mb-4 sm:mb-6 overflow-hidden bg-white/5 rounded-xl">
+              <div className="aspect-[16/10] overflow-hidden border-b border-white/10">
                 <ImageWithFallback
                   src={kartingImage}
                   alt="Karting"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
               </div>
-              <div className="flex items-center gap-2 mb-4">
-                <Flag className="w-5 h-5 text-white" />
-                <h3 className="text-white">{t("home.areas.karting.title")}</h3>
+              <div className="p-7">
+                <div className="flex items-center justify-between mb-4">
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-[hsl(var(--accent-red-soft))]">
+                    01 / Pista
+                  </span>
+                  <Flag className="w-4 h-4 text-white/30" />
+                </div>
+                <h3 className="text-2xl font-light mb-3">{t("home.areas.karting.title")}</h3>
+                <p className="text-white/60 text-sm leading-relaxed mb-3">{t("home.areas.karting.p1")}</p>
+                <p className="text-white/45 text-sm leading-relaxed">{t("home.areas.karting.p2")}</p>
               </div>
-              <p className="text-white/60 mb-4">{t("home.areas.karting.p1")}</p>
-              <p className="text-white/50">{t("home.areas.karting.p2")}</p>
             </motion.div>
 
+            {/* Marketing */}
             <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-              whileHover={{ y: -8 }}
-              className="group p-6 sm:p-8 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl hover:border-white/20 transition-all duration-300 cursor-pointer"
+              whileHover={{ y: -4 }}
+              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              className="group border border-white/10 rounded-2xl overflow-hidden bg-white/[0.02] hover:bg-white/[0.04] hover:border-white/20 transition-colors"
             >
               <Link to="/marketing" className="block">
-                <div className="aspect-video mb-4 sm:mb-6 overflow-hidden bg-white/5 rounded-xl">
+                <div className="aspect-[16/10] overflow-hidden border-b border-white/10">
                   <ImageWithFallback
                     src={marketingImage}
                     alt="Marketing Digital"
@@ -329,31 +330,151 @@ export function Home() {
                     style={{ objectPosition: "center 55%" }}
                   />
                 </div>
-                <div className="flex items-center gap-2 mb-4">
-                  <Trophy className="w-5 h-5 text-white" />
-                  <h3 className="text-white">{t("home.areas.marketing.title")}</h3>
+                <div className="p-7">
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="text-[10px] uppercase tracking-[0.2em] text-[hsl(var(--accent-red-soft))]">
+                      02 / Digital
+                    </span>
+                    <ArrowUpRight className="w-4 h-4 text-white/30 group-hover:text-white transition-colors" />
+                  </div>
+                  <h3 className="text-2xl font-light mb-3">{t("home.areas.marketing.title")}</h3>
+                  <p className="text-white/60 text-sm leading-relaxed mb-3">{t("home.areas.marketing.p1")}</p>
+                  <p className="text-white/45 text-sm leading-relaxed">{t("home.areas.marketing.p2")}</p>
                 </div>
-                <p className="text-white/60 mb-4">{t("home.areas.marketing.p1")}</p>
-                <p className="text-white/50">{t("home.areas.marketing.p2")}</p>
               </Link>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Quote Section */}
-      <section className="py-16 sm:py-24 md:py-32 px-4 sm:px-6 bg-gradient-to-b from-black to-neutral-950">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="max-w-4xl mx-auto text-center"
-        >
-          <AnimatedLogo size={60} className="mx-auto mb-6 sm:mb-8 sm:w-20 sm:h-20" />
-          <blockquote className="mb-4 sm:mb-6 text-white italic">{t("home.quote")}</blockquote>
-          <p className="text-white/60">{t("home.quote.author")}</p>
-        </motion.div>
+      {/* ============== 05 · BLOG EN HOME ============== */}
+      <section className="border-b border-white/10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-10 md:px-16 py-20 sm:py-28">
+          <div className="flex items-end justify-between mb-12">
+            <div>
+              <SectionLabel index="05">{t("nav.blog")}</SectionLabel>
+              <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-light tracking-tight">
+                Últimas <span className="text-white/40">entradas</span>
+              </h2>
+            </div>
+            <Link
+              to="/blog"
+              className="hidden sm:inline-flex items-center gap-2 text-sm text-white/60 hover:text-white transition-colors"
+            >
+              Ver todas <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {latestPosts.map((post) => (
+              <Link
+                key={post.id}
+                to={`/blog/${post.id}`}
+                className="group border border-white/10 rounded-2xl overflow-hidden bg-white/[0.02] hover:bg-white/[0.04] hover:border-white/20 transition-colors"
+              >
+                <div className="aspect-[16/10] overflow-hidden border-b border-white/10">
+                  <ImageWithFallback
+                    src={post.image}
+                    alt={post.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  />
+                </div>
+                <div className="p-6">
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="inline-block text-[10px] uppercase tracking-[0.18em] text-[hsl(var(--accent-red-soft))] border border-[hsl(var(--accent-red))]/30 rounded-full px-2.5 py-1">
+                      {post.tag}
+                    </span>
+                    <span className="font-mono text-[10px] text-white/40">{post.date}</span>
+                  </div>
+                  <h3 className="text-base sm:text-lg font-medium leading-snug mb-2 group-hover:text-white">
+                    {post.title}
+                  </h3>
+                  <p className="text-sm text-white/50 leading-relaxed line-clamp-2">{post.excerpt}</p>
+                </div>
+              </Link>
+            ))}
+          </div>
+
+          <div className="mt-8 sm:hidden">
+            <Link to="/blog">
+              <Button
+                variant="outline"
+                className="w-full rounded-full h-11 border-white/20 bg-transparent text-white hover:bg-white/5 hover:text-white gap-2"
+              >
+                Ver todas <ArrowRight className="w-4 h-4" />
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ============== 06 · MANIFIESTO / QUOTE ============== */}
+      <section className="border-b border-white/10">
+        <div className="max-w-4xl mx-auto px-4 sm:px-10 md:px-16 py-24 sm:py-32 text-center">
+          <SectionLabel index="06">Manifiesto</SectionLabel>
+          <div className="mt-8 mb-8 flex justify-center">
+            <AnimatedLogo size={56} />
+          </div>
+          <blockquote className="text-2xl sm:text-3xl md:text-4xl font-light italic leading-[1.3] tracking-tight text-white">
+            {t("home.quote")}
+          </blockquote>
+          <p className="mt-6 text-sm uppercase tracking-[0.2em] text-white/40">{t("home.quote.author")}</p>
+        </div>
+      </section>
+
+      {/* ============== 07 · CTA FINAL ============== */}
+      <section>
+        <div className="max-w-7xl mx-auto px-4 sm:px-10 md:px-16 py-20 sm:py-28">
+          <div className="relative border border-white/10 rounded-3xl overflow-hidden bg-gradient-to-br from-[hsl(var(--accent-red))]/10 via-black to-black p-8 sm:p-14">
+            {/* Decorative corner mark */}
+            <div className="absolute top-6 right-6 font-mono text-[10px] uppercase tracking-[0.2em] text-white/30">
+              N° 07 — CONTACT
+            </div>
+            <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-[hsl(var(--accent-red))]/10 blur-3xl pointer-events-none" />
+
+            <div className="relative max-w-3xl">
+              <Badge>Hablemos</Badge>
+              <h2 className="mt-6 text-4xl sm:text-5xl md:text-6xl font-light tracking-tight leading-[1.05] mb-6">
+                ¿Tienes una <span className="text-[hsl(var(--accent-red-soft))]">propuesta</span>?
+                <br />
+                Siempre abierto a lo que tiene sentido.
+              </h2>
+              <p className="text-white/60 text-base sm:text-lg max-w-xl mb-10 leading-relaxed">
+                {t("home.about.p3")}
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-3">
+                <Link to="/contacto">
+                  <Button
+                    size="lg"
+                    className="w-full sm:w-auto rounded-full h-12 px-7 bg-[hsl(var(--accent-red))] text-white hover:bg-[hsl(var(--accent-red-soft))] gap-2"
+                  >
+                    {t("home.about.cta")}
+                    <ArrowRight className="w-4 h-4" />
+                  </Button>
+                </Link>
+                <Link to={getRoute("business")}>
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="w-full sm:w-auto rounded-full h-12 px-7 border-white/20 bg-transparent text-white hover:bg-white/5 hover:text-white hover:border-white/40"
+                  >
+                    {t("nav.business")}
+                  </Button>
+                </Link>
+                <Link to="/patrocinadores">
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="w-full sm:w-auto rounded-full h-12 px-7 border-white/20 bg-transparent text-white hover:bg-white/5 hover:text-white hover:border-white/40"
+                  >
+                    {t("footer.sponsors")}
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
     </div>
   );

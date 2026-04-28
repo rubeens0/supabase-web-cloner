@@ -1,56 +1,102 @@
-# Clonar Rubenweb a este proyecto Lovable
+## Rediseño general — Fase 1: Home
 
-## Resumen del repo analizado
-- **Stack**: React 18 + Vite + Tailwind + TypeScript → **100% compatible** con Lovable.
-- **Origen**: exportado desde Figma Make (`@figma/my-make-file`).
-- **Páginas**: Home, Contact, Business, Sponsors, Cek2026, Blog, BlogPost, Dossier, LiveTimingStreaming.
-- **Componentes propios**: Navigation, Footer, AnimatedLogo, BusinessButton, ContactForm, CustomCursor, DesignCarousel, DossierAccess, PageTransition, PhotoGrid, SEO, ScrollToTop + set completo de shadcn/ui.
-- **Idiomas**: contexto de i18n (`LanguageContext`) con rutas en español e inglés.
-- **Routing**: `react-router` v7 con rutas duplicadas ES/EN.
-- **Backend Supabase**: una edge function Hono con solo un endpoint `/health` y un módulo KV no utilizado por el frontend. **No hay tablas reales, ni auth, ni storage en uso.**
-- **Assets Figma**: el código usa imports tipo `figma:asset/...png` (ej. logo) que **no existen como archivos** en el repo. Habrá que sustituirlos por placeholders o tú me los subes.
+Mantenemos **toda la copia actual** (traducciones intactas en `LanguageContext.tsx`) y la **tipografía actual** (`Inter / SF Pro Display / system-ui`). Solo cambia la **estructura, composición y personalidad visual** de la Home, inspirada en tu propuesta HTML.
 
-## Pasos
+Si te gusta cómo queda, replicamos el lenguaje en Business, Blog, Contact, etc. en fases siguientes.
 
-1. **Configurar base del proyecto**
-   - Instalar dependencias extra que usa el repo: `motion`, `react-router` v7, `react-dnd` + backend HTML5, `react-responsive-masonry`, `react-slick`, `@mui/material` + `@mui/icons-material` + `@emotion/*`, `@popperjs/core`, `react-popper`, `tw-animate-css`.
-   - Mantener Tailwind v3 (Lovable estándar) y portar los estilos de `src/styles/globals.css` y `default_theme.css` al `src/index.css` con tokens HSL.
-   - Reemplazar imports `sonner@2.0.3` → `sonner` (sin versión inline).
+---
 
-2. **Copiar el código fuente**
-   - Copiar todas las páginas de `src/app/pages/` a `src/pages/`.
-   - Copiar `src/app/components/*` (excepto los `ui/` que ya existen) a `src/components/`.
-   - Copiar `src/app/contexts/LanguageContext.tsx` a `src/contexts/`.
-   - Copiar `src/app/utils/performanceDetector.ts` y `sitemapGenerator.ts` a `src/utils/`.
-   - Copiar `public/favicon.svg`, `robots.txt`, `sitemap.xml` a `/public`.
-   - Reemplazar `App.tsx` por la versión del repo, adaptado para usar `react-router-dom` (que ya está en Lovable) en vez de `react-router` v7 — son API compatibles.
-   - Eliminar `src/pages/Index.tsx` placeholder (Home pasa a ser la ruta `/`).
+### Lenguaje visual nuevo (sistema compartido)
 
-3. **Manejar assets `figma:asset/*`**
-   - Detectar todos los `import ... from 'figma:asset/...'` en el código.
-   - Sustituirlos por placeholders neutros o por imágenes que tú me proporciones después.
-   - Te pasaré la lista exacta de assets faltantes para que los subas en una segunda iteración.
+- **Acento**: rojo `#CC2200` (sustituye al rojo brillante actual; más editorial, menos "sport").
+- **Bordes**: `0.5px solid white/10` en todos los bloques (línea fina = personalidad editorial).
+- **Cards**: fondo `white/[0.02]`, radius medio (`rounded-xl`), sin sombras.
+- **Section labels**: pequeñas, en mayúsculas, `tracking-[0.12em]`, color `white/40` ("SECCIÓN 01", "PRUEBA SOCIAL"…).
+- **Badges**: pill rojo translúcido (`bg-red/12 border-red/35`) para tags como "Built from scratch".
+- **Headline hero**: corto, partido en líneas, palabra clave en rojo.
+- **Botones**: pill `rounded-full`, primario rojo sólido, secundarios outline fino.
+- **Sin** `backdrop-blur` pesado en cards (solo en nav).
 
-4. **Activar Lovable Cloud + recrear backend mínimo**
-   - Habilitar Lovable Cloud.
-   - Crear tabla `kv_store_012a3b25 (key text pk, value jsonb)` con RLS habilitado y políticas restrictivas (solo service role escribe, lectura cerrada por defecto), por compatibilidad con el código original aunque hoy no se use.
-   - Crear edge function `make-server-012a3b25` con Hono, endpoint `/health` y CORS, equivalente a la del repo.
-   - Generar `src/utils/supabase/info.tsx` apuntando al nuevo proyecto Cloud.
+---
 
-5. **Formulario de contacto (ContactForm)**
-   - Revisar si envía datos a algún sitio. Si lo hace por email/API externa, te lo señalaré y decidimos: guardar en una tabla `contact_messages` de Lovable Cloud (con RLS: insert público, select solo admin) o conectar Resend para enviar emails.
+### Nueva estructura de la Home
 
-6. **Verificación**
-   - Ejecutar el security scan sobre el backend.
-   - Probar navegación entre todas las rutas (ES e EN), idioma, animaciones, formulario y footer.
-   - Reportarte qué funciona y qué requiere assets/secrets pendientes.
+```text
+┌───────────────────────────────────────────────┐
+│ NAV (sin cambios estructurales, solo color)   │
+├───────────────────────────────────────────────┤
+│ 1. HERO                                       │
+│   [badge] Piloto · Fundador · 2026           │
+│   Headline corto en 3 líneas, "condiciones"  │
+│   en rojo. Sub corta. 3 CTAs en fila.        │
+│   Fondo: home-hero-bg.webp + overlay negro.  │
+├───────────────────────────────────────────────┤
+│ 2. PRUEBA SOCIAL — franja ~120px              │
+│   Dos stat-cards: "2024." año inicio /        │
+│   "2 frentes" karting + digital.              │
+├───────────────────────────────────────────────┤
+│ 3. QUIÉN SOY — split dualidad                 │
+│   Izq: "En la pista" — Piloto de karting.    │
+│   Der: "Fuera de la pista" — Emprendedor.    │
+│   Debajo: párrafos t('home.about.p1/2/3')    │
+│   y CTA "Conóceme" → /contacto.              │
+│   (Conserva imagen about-image.png a la dcha)│
+├───────────────────────────────────────────────┤
+│ 4. ÁREAS (Karting + Marketing)                │
+│   Mismas 2 cards actuales pero con el        │
+│   nuevo lenguaje (border 0.5px, label num.)  │
+├───────────────────────────────────────────────┤
+│ 5. BLOG EN HOME — 3 últimas entradas          │
+│   Grid 3 cards horizontales con tag + título │
+│   Link a /blog. Lee posts desde mismos       │
+│   datos que /blog (sin contenido nuevo).     │
+├───────────────────────────────────────────────┤
+│ 6. QUOTE — sección actual con AnimatedLogo   │
+│   Adaptada al nuevo border style.             │
+├───────────────────────────────────────────────┤
+│ 7. CTA FINAL — "Hablemos"                     │
+│   Bloque oscuro con borde rojo sutil.        │
+│   "¿Tienes una propuesta? Hablemos. Siempre  │
+│   abierto a lo que tiene sentido."           │
+│   3 botones: Contacto / Business /            │
+│   Patrocinadores. Reemplaza el CTA suelto.   │
+└───────────────────────────────────────────────┘
+```
 
-## Lo que NO incluye
-- Imágenes y logos `figma:asset/*` (los subes tú después).
-- Auth, storage o tablas de negocio: no existen en el repo.
-- Datos del Supabase original (proyecto `bdphuxspjodtljfiwfkg`): el KV está vacío en el código y no migramos.
+---
 
-## Notas técnicas
-- Convertimos `react-router` v7 → `react-router-dom` v6 (cambios mínimos: imports y nada más en este código).
-- Tailwind v4 del repo → Tailwind v3 de Lovable: portar tokens al sistema HSL en `index.css` para mantener coherencia con shadcn.
-- Eliminar `default_shadcn_theme.css` redundante; sus valores se integran en `index.css`.
+### Cambios concretos por sección (sin tocar copia)
+
+1. **Hero**: el headline largo (`t('home.hero.title')` con HTML) se renderiza tal cual pero envuelto en un layout más editorial: badge arriba, headline grande con line-height ajustado, sub más corta visualmente con `max-w-md`, los 3 botones existentes (Ver historia / Business / Patrocinadores) pasan a pills rojos+outline. **Cero cambios de texto.**
+2. **Stats**: nueva sección puramente visual (sin texto traducido nuevo — usamos "2024" y "2 frentes" como literales que ya están en la propuesta). Si prefieres que sean traducibles, añadimos 4 keys nuevas en `LanguageContext`.
+3. **Dualidad**: reorganización del actual "About". El texto `home.about.p1/p2/p3` y la imagen `aboutImage` se conservan; arriba se añade el split visual de las dos caras con sub-labels `t('home.areas.karting.title')` y `t('home.areas.marketing.title')` reusados.
+4. **Áreas**: mismas cards, restyle (border fino, número de sección, tag rojo).
+5. **Blog en home**: nuevo. Lee los mismos posts que `/blog` (importando del mismo origen). 3 más recientes. Si el blog no expone una API simple, lo dejamos como placeholders maquetados y cableamos en una mini-iteración.
+6. **Quote**: igual contenido, restyle de borde y label "06 · MANIFIESTO".
+7. **CTA final**: usa textos existentes (`home.about.cta`, `nav.business`, `footer.sponsors`).
+
+---
+
+### Detalles técnicos
+
+- Editamos solo `src/pages/Home.tsx` (reescritura completa de la composición).
+- Añadimos **una sola variable CSS** `--accent-red: 204 100% 40%` (HSL de #CC2200) en `src/index.css` y la usamos vía `text-[hsl(var(--accent-red))]` y `bg-[hsl(var(--accent-red))]`. No tocamos los tokens existentes para no romper otras páginas.
+- Reusamos `Button`, `ImageWithFallback`, `motion/react`, `AnimatedLogo` ya presentes.
+- Animaciones: respetamos `getPerformanceSettings()` igual que ahora (entradas suaves, sin nuevos efectos pesados).
+- Imágenes existentes reutilizadas: `home-hero-bg.webp`, `about-image.png`, `karting-image.webp`, `marketing-image.webp`. Sin assets nuevos.
+- Para el bloque "Blog en home": leeremos los posts del mismo módulo que usa `src/pages/Blog.tsx` (lo inspecciono al implementar). Si requiere fetch async, fallback a 3 cards estáticas con los títulos actuales para no romper el render.
+- **Nada** se modifica en: `Navigation`, `Footer`, `App.tsx`, rutas, traducciones, otras páginas.
+
+---
+
+### Fuera de alcance de esta fase
+
+- Business, Blog, Contact, Cek2026, Sponsors, Dossier — se rediseñan en fases posteriores **una vez apruebes la Home** para mantener consistencia.
+- Cambios de copia, idioma o rutas.
+- Cambios de fuente.
+
+---
+
+### Resultado esperado
+
+Una Home con la misma información pero con personalidad editorial clara: bloques numerados con bordes finos, headline más rotundo, dualidad piloto/emprendedor explícita, blog visible sin navegar, y un CTA final concreto en lugar de botones flotantes sueltos.
