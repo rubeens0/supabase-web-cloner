@@ -60,6 +60,15 @@ export function Navigation() {
     setLanguage(language === 'es' ? 'en' : 'es');
   }, [language, setLanguage]);
 
+  const handleSignOut = useCallback(async () => {
+    await supabase.auth.signOut();
+    setUserMenuOpen(false);
+    navigate('/');
+  }, [navigate]);
+
+  const userInitial = (user?.email?.[0] ?? user?.user_metadata?.name?.[0] ?? '').toUpperCase();
+  const isEs = language === 'es';
+
   const navItems = [
     { to: getRoute('home'), label: t('nav.home'), match: [getRoute('home'), '/'] },
     { to: getRoute('blog'), label: t('nav.blog'), match: [getRoute('blog')] },
