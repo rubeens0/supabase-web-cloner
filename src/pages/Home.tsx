@@ -349,14 +349,14 @@ export function Home() {
             <div>
               <SectionLabel index="05">{t("nav.blog")}</SectionLabel>
               <h2 className="mt-6 font-display text-5xl sm:text-6xl md:text-7xl text-white leading-[1] tracking-tight">
-                Últimas <span className="font-display-italic text-gradient-mono-italic">entradas</span>.
+                {t("home.blog.headlineA")} <span className="font-display-italic text-gradient-mono-italic">{t("home.blog.headlineB")}</span>.
               </h2>
             </div>
             <Link
               to="/blog"
               className="hidden sm:inline-flex items-center gap-2 text-sm text-white/60 hover:text-white transition-colors"
             >
-              Ver todas <ArrowRight className="w-4 h-4" />
+              {t("home.blog.viewAll")} <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
 
