@@ -63,6 +63,7 @@ export function Business() {
             internal
             linkText="Conocer RDE"
             features={['Diagnóstico', 'Estrategia', 'Ejecución', 'Optimización']}
+            imageContain
           />
         </div>
       </section>
