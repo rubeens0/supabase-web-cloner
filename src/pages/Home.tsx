@@ -107,7 +107,7 @@ export function Home() {
 
             <motion.h1
               {...fadeIn(0.2)}
-              className="font-display text-[56px] leading-[0.95] sm:text-7xl md:text-8xl lg:text-[140px] text-white mb-10 max-w-5xl tracking-[-0.02em]"
+              className="font-display leading-[0.95] sm:text-7xl md:text-8xl lg:text-[140px] text-white mb-10 max-w-5xl tracking-[-0.02em] text-5xl"
             >
               Construyendo la{" "}
               <span className="font-display-italic text-secondary">mejor</span>
