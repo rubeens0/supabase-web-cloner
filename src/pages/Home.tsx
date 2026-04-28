@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "../components/ui/button";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
-import { ArrowRight, ArrowDown, ArrowUpRight, Flag } from "lucide-react";
+import { ArrowRight, ArrowDown, ArrowUpRight, Flag, Calendar } from "lucide-react";
 import { motion } from "motion/react";
 import { AnimatedLogo } from "../components/AnimatedLogo";
 import { useLanguage } from "../contexts/LanguageContext";
@@ -442,6 +442,24 @@ export function Home() {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-3">
+                <button
+                  onClick={() => {
+                    // @ts-ignore
+                    if (window.Calendly) {
+                      // @ts-ignore
+                      window.Calendly.initPopupWidget({
+                        url: 'https://calendly.com/rubenmunooz/30min',
+                        color: '#ffffff',
+                        textColor: '#000000',
+                        branding: true,
+                      });
+                    }
+                  }}
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full h-12 px-7 bg-gradient-mono text-black font-medium text-sm hover:brightness-110 transition-all border border-white/20 shadow-[0_8px_32px_-4px_rgba(0,0,0,0.6)]"
+                >
+                  <Calendar className="w-4 h-4" />
+                  {t('business.schedule')}
+                </button>
                 <Link to="/contacto">
                   <Button
                     size="lg"
