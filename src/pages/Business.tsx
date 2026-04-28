@@ -113,10 +113,10 @@ export function Business() {
         </div>
       </section>
 
-      {/* ============== 04 · MISSION / GOAL ============== */}
+      {/* ============== 05 · MISSION / GOAL ============== */}
       <section className="px-5 sm:px-10 md:px-16 py-24 sm:py-40">
         <div className="max-w-4xl mx-auto text-center relative">
-          <SectionLabel index="04">{t('business.goal.title')}</SectionLabel>
+          <SectionLabel index="05">{t('business.goal.title')}</SectionLabel>
           <div className="mt-10 mb-10 flex justify-center">
             <Quote className="w-7 h-7 text-white/25" />
           </div>
