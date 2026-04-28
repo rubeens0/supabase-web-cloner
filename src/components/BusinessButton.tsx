@@ -9,6 +9,7 @@ export function BusinessButton() {
   const navigate = useNavigate();
   const [isNearFooter, setIsNearFooter] = useState(false);
   const [expanded, setExpanded] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     // Calendly setup
@@ -28,10 +29,20 @@ export function BusinessButton() {
       document.body.appendChild(script);
     }
 
+    let lastScrollY = window.scrollY;
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + window.innerHeight;
+      const currentScrollY = window.scrollY;
+      const scrollPosition = currentScrollY + window.innerHeight;
       const documentHeight = document.documentElement.scrollHeight;
       setIsNearFooter(scrollPosition >= documentHeight - 200);
+
+      // Show only when scrolling down and past a small threshold
+      if (currentScrollY > lastScrollY && currentScrollY > 120) {
+        setIsVisible(true);
+      } else if (currentScrollY < lastScrollY) {
+        setIsVisible(false);
+      }
+      lastScrollY = currentScrollY;
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -62,9 +73,9 @@ export function BusinessButton() {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{
-        opacity: isNearFooter ? 0 : 1,
-        y: isNearFooter ? 20 : 0,
-        pointerEvents: isNearFooter ? 'none' : 'auto',
+        opacity: isNearFooter || !isVisible ? 0 : 1,
+        y: isNearFooter || !isVisible ? 20 : 0,
+        pointerEvents: isNearFooter || !isVisible ? 'none' : 'auto',
       }}
       transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
       className="fixed bottom-5 sm:bottom-7 left-1/2 -translate-x-1/2 z-50"
