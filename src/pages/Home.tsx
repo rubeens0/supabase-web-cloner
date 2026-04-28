@@ -238,9 +238,9 @@ export function Home() {
           <div className="mt-10 grid lg:grid-cols-12 gap-10 lg:gap-20 items-start">
             <div className="lg:col-span-7">
               <h2 className="font-display text-5xl sm:text-6xl md:text-7xl text-white leading-[1] tracking-tight mb-10">
-                Una <span className="font-display-italic text-gradient-mono-italic">historia</span>
+                {t("home.about.headlineA")} <span className="font-display-italic text-gradient-mono-italic">{t("home.about.headlineB")}</span>
                 <br />
-                en dos pistas.
+                {t("home.about.headlineC")}
               </h2>
 
               <div className="space-y-5 text-white/70 max-w-xl leading-relaxed text-[15px]">
@@ -284,7 +284,7 @@ export function Home() {
           <div className="mb-14 max-w-3xl">
             <SectionLabel index="04">{t("home.areas.title")}</SectionLabel>
             <h2 className="mt-6 font-display text-5xl sm:text-6xl md:text-7xl text-white leading-[1] tracking-tight">
-              Dos <span className="font-display-italic text-gradient-mono-italic">mundos</span> que demandan excelencia.
+              {t("home.areas.headlineA")} <span className="font-display-italic text-gradient-mono-italic">{t("home.areas.headlineB")}</span> {t("home.areas.headlineC")}
             </h2>
             <p className="mt-5 text-white/55 text-[15px] leading-relaxed">{t("home.areas.subtitle")}</p>
           </div>
@@ -349,14 +349,14 @@ export function Home() {
             <div>
               <SectionLabel index="05">{t("nav.blog")}</SectionLabel>
               <h2 className="mt-6 font-display text-5xl sm:text-6xl md:text-7xl text-white leading-[1] tracking-tight">
-                Últimas <span className="font-display-italic text-gradient-mono-italic">entradas</span>.
+                {t("home.blog.headlineA")} <span className="font-display-italic text-gradient-mono-italic">{t("home.blog.headlineB")}</span>.
               </h2>
             </div>
             <Link
               to="/blog"
               className="hidden sm:inline-flex items-center gap-2 text-sm text-white/60 hover:text-white transition-colors"
             >
-              Ver todas <ArrowRight className="w-4 h-4" />
+              {t("home.blog.viewAll")} <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
 
@@ -396,7 +396,7 @@ export function Home() {
                 variant="outline"
                 className="w-full rounded-full h-11 border-white/20 bg-transparent text-white hover:bg-white hover:text-black gap-2"
               >
-                Ver todas <ArrowRight className="w-4 h-4" />
+                {t("home.blog.viewAll")} <ArrowRight className="w-4 h-4" />
               </Button>
             </Link>
           </div>
