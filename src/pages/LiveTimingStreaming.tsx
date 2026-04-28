@@ -76,10 +76,10 @@ export function LiveTimingStreaming() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="bg-white/5 border border-white/10 rounded-2xl md:rounded-3xl overflow-hidden"
           >
-            <div className="p-4 md:p-6 border-b border-white/10 bg-gradient-to-r from-red-600/10 to-red-900/10">
+            <div className="p-4 md:p-6 border-b border-white/10 bg-gradient-to-r from-white/10 to-white/10">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2 md:gap-3">
-                  <Clock className="w-5 h-5 md:w-6 md:h-6 text-red-500" />
+                  <Clock className="w-5 h-5 md:w-6 md:h-6 text-white" />
                   <div>
                     <h2 className="text-xl md:text-2xl font-bold">
                       {language === 'es' ? 'Live Timing' : 'Live Timing'}
@@ -94,7 +94,7 @@ export function LiveTimingStreaming() {
                 {liveTimingUrl && (
                   <button
                     onClick={() => setExpandedView('timing')}
-                    className="min-w-[44px] min-h-[44px] p-2 rounded-lg bg-black/40 border border-white/20 hover:border-red-500/50 hover:bg-red-600/20 active:scale-95 transition-all flex items-center justify-center"
+                    className="min-w-[44px] min-h-[44px] p-2 rounded-lg bg-black/40 border border-white/20 hover:border-white/50 hover:bg-white/20 active:scale-95 transition-all flex items-center justify-center"
                     title={language === 'es' ? 'Ampliar' : 'Expand'}
                     aria-label={language === 'es' ? 'Ampliar live timing' : 'Expand live timing'}
                   >
@@ -138,10 +138,10 @@ export function LiveTimingStreaming() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="bg-white/5 border border-white/10 rounded-2xl md:rounded-3xl overflow-hidden"
           >
-            <div className="p-4 md:p-6 border-b border-white/10 bg-gradient-to-r from-red-600/10 to-red-900/10">
+            <div className="p-4 md:p-6 border-b border-white/10 bg-gradient-to-r from-white/10 to-white/10">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2 md:gap-3">
-                  <Youtube className="w-5 h-5 md:w-6 md:h-6 text-red-500" />
+                  <Youtube className="w-5 h-5 md:w-6 md:h-6 text-white" />
                   <div>
                     <h2 className="text-xl md:text-2xl font-bold">
                       {language === 'es' ? 'Streaming en Vivo' : 'Live Streaming'}
@@ -156,7 +156,7 @@ export function LiveTimingStreaming() {
                 {youtubeStreamUrl && (
                   <button
                     onClick={() => setExpandedView('stream')}
-                    className="min-w-[44px] min-h-[44px] p-2 rounded-lg bg-black/40 border border-white/20 hover:border-red-500/50 hover:bg-red-600/20 active:scale-95 transition-all flex items-center justify-center"
+                    className="min-w-[44px] min-h-[44px] p-2 rounded-lg bg-black/40 border border-white/20 hover:border-white/50 hover:bg-white/20 active:scale-95 transition-all flex items-center justify-center"
                     title={language === 'es' ? 'Ampliar' : 'Expand'}
                     aria-label={language === 'es' ? 'Ampliar streaming' : 'Expand streaming'}
                   >
@@ -249,7 +249,7 @@ export function LiveTimingStreaming() {
             href="https://www.apex-timing.com/goracing/results.php?path=/rgmmc/2026/cek_1_campillos/&group=6"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 md:gap-3 px-6 md:px-8 py-3 md:py-4 rounded-xl md:rounded-2xl bg-gradient-to-r from-red-600 to-red-900 hover:from-red-500 hover:to-red-800 border border-red-500/50 transition-all duration-300 hover:scale-105 active:scale-95 text-white font-bold text-base md:text-lg shadow-lg shadow-red-900/50"
+            className="inline-flex items-center gap-2 md:gap-3 px-6 md:px-8 py-3 md:py-4 rounded-xl md:rounded-2xl bg-gradient-mono border border-white/30 transition-all duration-300 hover:scale-105 active:scale-95 text-black font-bold text-base md:text-lg shadow-lg shadow-black/50"
           >
             <svg 
               className="w-5 h-5 md:w-6 md:h-6" 
@@ -308,7 +308,7 @@ export function LiveTimingStreaming() {
               {/* Close Button */}
               <button
                 onClick={() => setExpandedView(null)}
-                className="absolute -top-2 right-0 md:-top-12 md:right-0 min-w-[44px] min-h-[44px] p-2 md:p-3 rounded-lg bg-red-600/20 border border-red-500/30 hover:bg-red-600/30 active:scale-95 transition-all z-10 flex items-center justify-center"
+                className="absolute -top-2 right-0 md:-top-12 md:right-0 min-w-[44px] min-h-[44px] p-2 md:p-3 rounded-lg bg-white/20 border border-white/30 hover:bg-white/30 active:scale-95 transition-all z-10 flex items-center justify-center"
                 title={language === 'es' ? 'Cerrar' : 'Close'}
                 aria-label={language === 'es' ? 'Cerrar pantalla completa' : 'Close fullscreen'}
               >
@@ -319,14 +319,14 @@ export function LiveTimingStreaming() {
               <div className="mb-2 md:mb-4 flex items-center gap-2 md:gap-3">
                 {expandedView === 'timing' ? (
                   <>
-                    <Clock className="w-5 h-5 md:w-6 md:h-6 text-red-500" />
+                    <Clock className="w-5 h-5 md:w-6 md:h-6 text-white" />
                     <h3 id="modal-title" className="text-lg md:text-2xl font-bold">
                       {language === 'es' ? 'Live Timing' : 'Live Timing'}
                     </h3>
                   </>
                 ) : (
                   <>
-                    <Youtube className="w-5 h-5 md:w-6 md:h-6 text-red-500" />
+                    <Youtube className="w-5 h-5 md:w-6 md:h-6 text-white" />
                     <h3 id="modal-title" className="text-lg md:text-2xl font-bold">
                       {language === 'es' ? 'Streaming en Vivo' : 'Live Streaming'}
                     </h3>

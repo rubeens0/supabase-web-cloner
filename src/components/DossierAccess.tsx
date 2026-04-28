@@ -71,7 +71,7 @@ export function DossierAccess({ onAccess }: DossierAccessProps) {
             className="flex items-center justify-center mb-8"
           >
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-red-600/20 via-red-800/20 to-black/20 blur-2xl" />
+              <div className="absolute inset-0 bg-gradient-to-r from-white/10 via-white/5 to-black/20 blur-2xl" />
               <div className="relative p-4 bg-white/10 rounded-2xl border border-white/20">
                 <FileText className="w-12 h-12 text-white" />
               </div>
@@ -131,8 +131,8 @@ export function DossierAccess({ onAccess }: DossierAccessProps) {
                   transition={{ duration: 0.3 }}
                   className="overflow-hidden"
                 >
-                  <div className="px-4 py-3 bg-red-500/10 border border-red-500/20 rounded-xl">
-                    <p className="text-red-400 text-sm text-center">{error}</p>
+                  <div className="px-4 py-3 bg-white/10 border border-white/20 rounded-xl">
+                    <p className="text-white/80 text-sm text-center">{error}</p>
                   </div>
                 </motion.div>
               )}

@@ -110,7 +110,7 @@ export function Home() {
               className="font-display leading-[0.95] sm:text-7xl md:text-8xl lg:text-[140px] text-white mb-10 max-w-5xl tracking-[-0.02em] text-5xl"
             >
               Construyendo la{" "}
-              <span className="font-display-italic text-secondary">mejor</span>
+              <span className="font-display-italic text-gradient-mono-italic">mejor</span>
               <br />
               versión de mí{" "}
               <span className="font-display-italic">mismo</span>
@@ -131,7 +131,7 @@ export function Home() {
                 className="w-full flex items-center justify-between gap-3 bg-white/[0.04] border border-white/15 rounded-full p-1.5 pl-6 hover:border-white/30 transition-colors group"
               >
                 <span className="text-white/55 text-[14px] sm:text-[15px]">¿Quieres conocer mi historia?</span>
-                <span className="bg-white text-black font-medium rounded-full px-5 sm:px-6 py-3 text-sm flex items-center gap-2 group-hover:bg-secondary group-hover:text-white transition-colors whitespace-nowrap">
+                <span className="bg-white text-black font-medium rounded-full px-5 sm:px-6 py-3 text-sm flex items-center gap-2 group-hover:bg-black group-hover:text-white transition-colors whitespace-nowrap border border-transparent group-hover:border-white/30">
                   {t("home.hero.cta")} <ArrowDown className="w-3.5 h-3.5" />
                 </span>
               </button>
@@ -157,7 +157,7 @@ export function Home() {
         <div className="max-w-7xl mx-auto px-5 sm:px-10 md:px-16 py-14 sm:py-20">
           <div className="mb-10">
             <p className="font-display text-4xl sm:text-5xl md:text-6xl text-white tracking-tight leading-tight max-w-3xl">
-              <span className="font-display-italic text-secondary">2 frentes,</span> una misma disciplina.
+              <span className="font-display-italic text-gradient-mono-italic">2 frentes,</span> una misma disciplina.
             </p>
           </div>
 
@@ -192,7 +192,7 @@ export function Home() {
           <div className="mt-10 grid lg:grid-cols-12 gap-10 lg:gap-20 items-start">
             <div className="lg:col-span-7">
               <h2 className="font-display text-5xl sm:text-6xl md:text-7xl text-white leading-[1] tracking-tight mb-10">
-                Una <span className="font-display-italic text-secondary">historia</span>
+                Una <span className="font-display-italic text-gradient-mono-italic">historia</span>
                 <br />
                 en dos pistas.
               </h2>
@@ -238,7 +238,7 @@ export function Home() {
           <div className="mb-14 max-w-3xl">
             <SectionLabel index="04">{t("home.areas.title")}</SectionLabel>
             <h2 className="mt-6 font-display text-5xl sm:text-6xl md:text-7xl text-white leading-[1] tracking-tight">
-              Dos <span className="font-display-italic text-secondary">mundos</span> que demandan excelencia.
+              Dos <span className="font-display-italic text-gradient-mono-italic">mundos</span> que demandan excelencia.
             </h2>
             <p className="mt-5 text-white/55 text-[15px] leading-relaxed">{t("home.areas.subtitle")}</p>
           </div>
@@ -303,7 +303,7 @@ export function Home() {
             <div>
               <SectionLabel index="05">{t("nav.blog")}</SectionLabel>
               <h2 className="mt-6 font-display text-5xl sm:text-6xl md:text-7xl text-white leading-[1] tracking-tight">
-                Últimas <span className="font-display-italic text-secondary">entradas</span>.
+                Últimas <span className="font-display-italic text-gradient-mono-italic">entradas</span>.
               </h2>
             </div>
             <Link
@@ -365,9 +365,9 @@ export function Home() {
             <AnimatedLogo size={56} />
           </div>
           <blockquote className="font-display text-3xl sm:text-5xl md:text-6xl text-white leading-[1.1] tracking-tight">
-            <span className="font-display-italic text-secondary">"</span>
+            <span className="font-display-italic text-gradient-mono-italic">"</span>
             {t("home.quote").replace(/^"|"$/g, "")}
-            <span className="font-display-italic text-secondary">"</span>
+            <span className="font-display-italic text-gradient-mono-italic">"</span>
           </blockquote>
           <p className="mt-8 font-mono text-[11px] uppercase tracking-[0.25em] text-white/40">
             {t("home.quote.author")}
@@ -387,7 +387,7 @@ export function Home() {
             <div className="relative max-w-3xl">
               <SectionLabel index="07">Hablemos</SectionLabel>
               <h2 className="mt-6 font-display text-5xl sm:text-6xl md:text-7xl text-white leading-[1] tracking-tight mb-8">
-                ¿Tienes una <span className="font-display-italic text-secondary">propuesta</span>?
+                ¿Tienes una <span className="font-display-italic text-gradient-mono-italic">propuesta</span>?
                 <br />
                 Hablemos.
               </h2>
@@ -399,7 +399,7 @@ export function Home() {
                 <Link to="/contacto">
                   <Button
                     size="lg"
-                    className="w-full sm:w-auto rounded-full h-12 px-7 bg-white text-black hover:bg-secondary hover:text-white gap-2"
+                    className="w-full sm:w-auto rounded-full h-12 px-7 bg-white text-black hover:bg-white/90 gap-2"
                   >
                     {t("home.about.cta")}
                     <ArrowRight className="w-4 h-4" />
