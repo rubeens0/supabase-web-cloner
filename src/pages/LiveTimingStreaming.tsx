@@ -70,8 +70,8 @@ export function LiveTimingStreaming() {
           </h1>
           <p className="mt-8 text-white/60 max-w-2xl text-base md:text-lg leading-relaxed">
             {language === 'es' 
-              ? 'Sigue en tiempo real las sesiones del Campeonato de España de Karting • Domingo, Carreras Finales • Categoría Senior'
-              : 'Follow the Spanish Karting Championship sessions in real time • Sunday, Final Races • Senior Category'}
+              ? 'Ronda 2 — Motorland Aragón • 8-10 Mayo 2026 • Domingo, Carreras Finales • Categoría Senior'
+              : 'Round 2 — Motorland Aragón • May 8-10, 2026 • Sunday, Final Races • Senior Category'}
           </p>
         </motion.div>
 
