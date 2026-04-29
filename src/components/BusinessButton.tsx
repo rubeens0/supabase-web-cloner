@@ -27,18 +27,24 @@ export function BusinessButton() {
     }
 
     let lastScrollY = window.scrollY;
+    let ticking = false;
     const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      const scrollPosition = currentScrollY + window.innerHeight;
-      const documentHeight = document.documentElement.scrollHeight;
-      setIsNearFooter(scrollPosition >= documentHeight - 200);
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        const currentScrollY = window.scrollY;
+        const scrollPosition = currentScrollY + window.innerHeight;
+        const documentHeight = document.documentElement.scrollHeight;
+        setIsNearFooter(scrollPosition >= documentHeight - 200);
 
-      if (currentScrollY > lastScrollY && currentScrollY > 120) {
-        setIsVisible(true);
-      } else if (currentScrollY < lastScrollY) {
-        setIsVisible(false);
-      }
-      lastScrollY = currentScrollY;
+        if (currentScrollY > lastScrollY && currentScrollY > 120) {
+          setIsVisible(true);
+        } else if (currentScrollY < lastScrollY) {
+          setIsVisible(false);
+        }
+        lastScrollY = currentScrollY;
+        ticking = false;
+      });
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
