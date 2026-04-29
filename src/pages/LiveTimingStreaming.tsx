@@ -1,8 +1,8 @@
 import { motion, AnimatePresence } from 'motion/react';
 import { useLanguage } from '../contexts/LanguageContext';
-import { Clock, Youtube, Maximize2, X } from 'lucide-react';
+import { Clock, Youtube, Maximize2, X, ExternalLink, RefreshCw } from 'lucide-react';
 import { SEO } from '../components/SEO';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 export function LiveTimingStreaming() {
   const { language } = useLanguage();
