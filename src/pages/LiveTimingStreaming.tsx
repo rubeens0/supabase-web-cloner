@@ -7,6 +7,8 @@ import { useState, useEffect, useRef } from 'react';
 export function LiveTimingStreaming() {
   const { language } = useLanguage();
   const [expandedView, setExpandedView] = useState<'timing' | 'stream' | null>(null);
+  const [timingOpen, setTimingOpen] = useState(true);
+  const [streamOpen, setStreamOpen] = useState(true);
   const timingIframeRef = useRef<HTMLIFrameElement>(null);
   const streamIframeRef = useRef<HTMLIFrameElement>(null);
   const [timingKey, setTimingKey] = useState(0);
