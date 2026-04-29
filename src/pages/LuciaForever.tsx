@@ -1,25 +1,64 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { motion } from 'motion/react';
 import { Heart } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import luciaCompromiso from '@/assets/lucia-compromiso.jpeg';
+
+const ACCESS_KEY = '__lr_unlock__';
+const ACCESS_VALUE = 'luz-infinita-7q4r';
 
 export function LuciaForever() {
+  const navigate = useNavigate();
+  const [authorized, setAuthorized] = useState(false);
+
   useEffect(() => {
-    const meta = document.createElement('meta');
-    meta.name = 'robots';
-    meta.content = 'noindex, nofollow, noarchive, nosnippet';
-    document.head.appendChild(meta);
+    // Block direct URL access — only allow if unlock token is present
+    let token: string | null = null;
+    try {
+      token = sessionStorage.getItem(ACCESS_KEY);
+    } catch {
+      token = null;
+    }
+
+    if (token !== ACCESS_VALUE) {
+      navigate('/dossier', { replace: true });
+      return;
+    }
+
+    setAuthorized(true);
+
+    // Strong noindex + privacy meta tags
+    const metas: HTMLMetaElement[] = [];
+    const addMeta = (name: string, content: string) => {
+      const m = document.createElement('meta');
+      m.name = name;
+      m.content = content;
+      document.head.appendChild(m);
+      metas.push(m);
+    };
+    addMeta('robots', 'noindex, nofollow, noarchive, nosnippet, noimageindex, nocache');
+    addMeta('googlebot', 'noindex, nofollow, noarchive, nosnippet, noimageindex');
+    addMeta('bingbot', 'noindex, nofollow, noarchive, nosnippet');
+    addMeta('referrer', 'no-referrer');
 
     const prevTitle = document.title;
     document.title = '·';
 
+    // Disable right-click & some shortcuts to discourage screenshots/sharing
+    const blockContext = (e: MouseEvent) => e.preventDefault();
+    document.addEventListener('contextmenu', blockContext);
+
     return () => {
-      document.head.removeChild(meta);
+      metas.forEach((m) => document.head.removeChild(m));
       document.title = prevTitle;
+      document.removeEventListener('contextmenu', blockContext);
     };
-  }, []);
+  }, [navigate]);
+
+  if (!authorized) return null;
 
   return (
-    <div className="min-h-screen bg-black text-white flex items-center justify-center px-6 py-24 relative overflow-hidden">
+    <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center px-6 py-24 relative overflow-hidden select-none">
       {/* Soft glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-white/[0.04] blur-3xl pointer-events-none" />
       <div className="absolute -top-20 -right-20 w-80 h-80 rounded-full bg-rose-500/10 blur-3xl pointer-events-none" />
@@ -95,11 +134,31 @@ export function LuciaForever() {
           className="mt-14 mx-auto h-px w-32 bg-gradient-to-r from-transparent via-white/40 to-transparent origin-center"
         />
 
+        {/* Compromiso — image */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 1.2, ease: [0.22, 1, 0.36, 1] }}
+          className="mt-12 mx-auto max-w-2xl"
+        >
+          <div className="rounded-2xl bg-white p-6 sm:p-10 shadow-2xl shadow-rose-500/10 border border-white/10">
+            <img
+              src={luciaCompromiso}
+              alt="Compromiso de Lucía Roncero con Rubén Muñoz"
+              draggable={false}
+              className="w-full h-auto pointer-events-none"
+            />
+          </div>
+          <p className="mt-4 font-mono text-[10px] uppercase tracking-[0.28em] text-white/35">
+            — Documento privado · Solo para nosotros —
+          </p>
+        </motion.div>
+
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1.4 }}
-          className="mt-8 font-mono text-[10px] uppercase tracking-[0.4em] text-white/30"
+          transition={{ duration: 1, delay: 1.6 }}
+          className="mt-10 font-mono text-[10px] uppercase tracking-[0.4em] text-white/30"
         >
           R · &nbsp;∞&nbsp; · L
         </motion.p>

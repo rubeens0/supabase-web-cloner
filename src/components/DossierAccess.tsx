@@ -28,6 +28,11 @@ export function DossierAccess({ onAccess }: DossierAccessProps) {
 
       // Easter egg: hidden page for Lucía
       if (data?.success && data?.version === 'secret') {
+        try {
+          sessionStorage.setItem('__lr_unlock__', 'luz-infinita-7q4r');
+        } catch {
+          // ignore storage errors
+        }
         window.location.href = '/x/9k2m-luz-infinita-7q4r';
         return;
       }
