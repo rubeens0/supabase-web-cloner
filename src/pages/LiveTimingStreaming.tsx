@@ -1,12 +1,16 @@
 import { motion, AnimatePresence } from 'motion/react';
 import { useLanguage } from '../contexts/LanguageContext';
-import { Clock, Youtube, Maximize2, X } from 'lucide-react';
+import { Clock, Youtube, Maximize2, X, ExternalLink, RefreshCw } from 'lucide-react';
 import { SEO } from '../components/SEO';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 export function LiveTimingStreaming() {
   const { language } = useLanguage();
   const [expandedView, setExpandedView] = useState<'timing' | 'stream' | null>(null);
+  const timingIframeRef = useRef<HTMLIFrameElement>(null);
+  const streamIframeRef = useRef<HTMLIFrameElement>(null);
+  const [timingKey, setTimingKey] = useState(0);
+  const [streamKey, setStreamKey] = useState(0);
 
   // URLs configurables - actualizar cuando estén disponibles
   const liveTimingUrl = 'https://www.apex-timing.com/live-timing/rgmmc/index.html'; // URL del live timing a integrar
@@ -83,30 +87,54 @@ export function LiveTimingStreaming() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="bg-white/5 border border-white/10 rounded-2xl md:rounded-3xl overflow-hidden"
           >
-            <div className="p-4 md:p-6 border-b border-white/10 bg-gradient-to-r from-white/10 to-white/10">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2 md:gap-3">
-                  <Clock className="w-5 h-5 md:w-6 md:h-6 text-white" />
-                  <div>
-                    <h2 className="text-xl md:text-2xl font-bold">
-                      {language === 'es' ? 'Live Timing' : 'Live Timing'}
-                    </h2>
-                    <p className="text-white/60 text-xs md:text-sm mt-0.5">
-                      {language === 'es' 
-                        ? 'Tiempos en directo de la sesión'
-                        : 'Live session times'}
+            <div className="p-4 md:p-5 border-b border-white/10 bg-gradient-to-r from-white/[0.07] to-transparent">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 md:w-11 md:h-11 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center shrink-0">
+                    <Clock className="w-5 h-5 text-white" />
+                  </div>
+                  <div className="min-w-0">
+                    <div className="flex items-center gap-2">
+                      <h2 className="text-lg md:text-xl font-bold leading-tight">Live Timing</h2>
+                      <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-red-500/15 border border-red-500/40 text-red-300 text-[10px] font-bold tracking-wider uppercase">
+                        <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
+                        Live
+                      </span>
+                    </div>
+                    <p className="text-white/50 text-xs mt-0.5 truncate">
+                      {language === 'es' ? 'Tiempos en directo de la sesión' : 'Live session times'}
                     </p>
                   </div>
                 </div>
                 {liveTimingUrl && (
-                  <button
-                    onClick={() => setExpandedView('timing')}
-                    className="min-w-[44px] min-h-[44px] p-2 rounded-lg bg-black/40 border border-white/20 hover:border-white/50 hover:bg-white/20 active:scale-95 transition-all flex items-center justify-center"
-                    title={language === 'es' ? 'Ampliar' : 'Expand'}
-                    aria-label={language === 'es' ? 'Ampliar live timing' : 'Expand live timing'}
-                  >
-                    <Maximize2 className="w-4 h-4 md:w-5 md:h-5" />
-                  </button>
+                  <div className="flex items-center gap-2 shrink-0">
+                    <button
+                      onClick={() => setTimingKey((k) => k + 1)}
+                      className="inline-flex items-center gap-1.5 h-9 px-3 rounded-lg bg-white/5 border border-white/15 hover:bg-white/10 hover:border-white/30 active:scale-95 transition-all text-xs font-medium"
+                      aria-label={language === 'es' ? 'Recargar live timing' : 'Reload live timing'}
+                    >
+                      <RefreshCw className="w-3.5 h-3.5" />
+                      <span className="hidden sm:inline">{language === 'es' ? 'Recargar' : 'Reload'}</span>
+                    </button>
+                    <a
+                      href={liveTimingUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 h-9 px-3 rounded-lg bg-white/5 border border-white/15 hover:bg-white/10 hover:border-white/30 active:scale-95 transition-all text-xs font-medium"
+                      aria-label={language === 'es' ? 'Abrir en nueva pestaña' : 'Open in new tab'}
+                    >
+                      <ExternalLink className="w-3.5 h-3.5" />
+                      <span className="hidden sm:inline">{language === 'es' ? 'Abrir' : 'Open'}</span>
+                    </a>
+                    <button
+                      onClick={() => setExpandedView('timing')}
+                      className="inline-flex items-center gap-1.5 h-9 px-3 rounded-lg bg-white text-black hover:bg-white/90 active:scale-95 transition-all text-xs font-bold"
+                      aria-label={language === 'es' ? 'Ampliar live timing' : 'Expand live timing'}
+                    >
+                      <Maximize2 className="w-3.5 h-3.5" />
+                      <span className="hidden sm:inline">{language === 'es' ? 'Ampliar' : 'Expand'}</span>
+                    </button>
+                  </div>
                 )}
               </div>
             </div>
@@ -114,6 +142,8 @@ export function LiveTimingStreaming() {
             <div className="h-[500px] md:h-[600px] lg:h-[680px] bg-black/50 flex items-center justify-center relative">
               {liveTimingUrl ? (
                 <iframe
+                  key={timingKey}
+                  ref={timingIframeRef}
                   src={liveTimingUrl}
                   className="w-full h-full"
                   title={language === 'es' ? 'Live Timing CEK' : 'CEK Live Timing'}
@@ -145,30 +175,56 @@ export function LiveTimingStreaming() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="bg-white/5 border border-white/10 rounded-2xl md:rounded-3xl overflow-hidden"
           >
-            <div className="p-4 md:p-6 border-b border-white/10 bg-gradient-to-r from-white/10 to-white/10">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2 md:gap-3">
-                  <Youtube className="w-5 h-5 md:w-6 md:h-6 text-white" />
-                  <div>
-                    <h2 className="text-xl md:text-2xl font-bold">
-                      {language === 'es' ? 'Streaming en Vivo' : 'Live Streaming'}
-                    </h2>
-                    <p className="text-white/60 text-xs md:text-sm mt-0.5">
-                      {language === 'es' 
-                        ? 'Directo de la carrera en YouTube'
-                        : 'Race live stream on YouTube'}
+            <div className="p-4 md:p-5 border-b border-white/10 bg-gradient-to-r from-white/[0.07] to-transparent">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 md:w-11 md:h-11 rounded-xl bg-red-500/15 border border-red-500/30 flex items-center justify-center shrink-0">
+                    <Youtube className="w-5 h-5 text-red-400" />
+                  </div>
+                  <div className="min-w-0">
+                    <div className="flex items-center gap-2">
+                      <h2 className="text-lg md:text-xl font-bold leading-tight">
+                        {language === 'es' ? 'Streaming' : 'Streaming'}
+                      </h2>
+                      <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-red-500/15 border border-red-500/40 text-red-300 text-[10px] font-bold tracking-wider uppercase">
+                        <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
+                        Live
+                      </span>
+                    </div>
+                    <p className="text-white/50 text-xs mt-0.5 truncate">
+                      {language === 'es' ? 'Directo de la carrera en YouTube' : 'Race live stream on YouTube'}
                     </p>
                   </div>
                 </div>
                 {youtubeStreamUrl && (
-                  <button
-                    onClick={() => setExpandedView('stream')}
-                    className="min-w-[44px] min-h-[44px] p-2 rounded-lg bg-black/40 border border-white/20 hover:border-white/50 hover:bg-white/20 active:scale-95 transition-all flex items-center justify-center"
-                    title={language === 'es' ? 'Ampliar' : 'Expand'}
-                    aria-label={language === 'es' ? 'Ampliar streaming' : 'Expand streaming'}
-                  >
-                    <Maximize2 className="w-4 h-4 md:w-5 md:h-5" />
-                  </button>
+                  <div className="flex items-center gap-2 shrink-0">
+                    <button
+                      onClick={() => setStreamKey((k) => k + 1)}
+                      className="inline-flex items-center gap-1.5 h-9 px-3 rounded-lg bg-white/5 border border-white/15 hover:bg-white/10 hover:border-white/30 active:scale-95 transition-all text-xs font-medium"
+                      aria-label={language === 'es' ? 'Recargar streaming' : 'Reload streaming'}
+                    >
+                      <RefreshCw className="w-3.5 h-3.5" />
+                      <span className="hidden sm:inline">{language === 'es' ? 'Recargar' : 'Reload'}</span>
+                    </button>
+                    <a
+                      href="https://www.youtube.com/watch?v=BNJhYu5rplc"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 h-9 px-3 rounded-lg bg-white/5 border border-white/15 hover:bg-white/10 hover:border-white/30 active:scale-95 transition-all text-xs font-medium"
+                      aria-label={language === 'es' ? 'Ver en YouTube' : 'Watch on YouTube'}
+                    >
+                      <ExternalLink className="w-3.5 h-3.5" />
+                      <span className="hidden sm:inline">YouTube</span>
+                    </a>
+                    <button
+                      onClick={() => setExpandedView('stream')}
+                      className="inline-flex items-center gap-1.5 h-9 px-3 rounded-lg bg-white text-black hover:bg-white/90 active:scale-95 transition-all text-xs font-bold"
+                      aria-label={language === 'es' ? 'Ampliar streaming' : 'Expand streaming'}
+                    >
+                      <Maximize2 className="w-3.5 h-3.5" />
+                      <span className="hidden sm:inline">{language === 'es' ? 'Ampliar' : 'Expand'}</span>
+                    </button>
+                  </div>
                 )}
               </div>
             </div>
@@ -177,6 +233,8 @@ export function LiveTimingStreaming() {
               {youtubeStreamUrl ? (
                 <>
                   <iframe
+                    key={streamKey}
+                    ref={streamIframeRef}
                     src={youtubeStreamUrl}
                     className="w-full h-full"
                     title={language === 'es' ? 'Stream CEK en YouTube' : 'CEK YouTube Stream'}
