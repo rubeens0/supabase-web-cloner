@@ -25,6 +25,7 @@ import { Dossier } from "@/pages/Dossier";
 import { LiveTimingStreaming } from "@/pages/LiveTimingStreaming";
 import { RDE } from "@/pages/RDE";
 import { Auth } from "@/pages/Auth";
+import { LuciaForever } from "@/pages/LuciaForever";
 
 const queryClient = new QueryClient();
 
@@ -72,6 +73,7 @@ function AppContent() {
             <Route path="/rde" element={<PageTransition><RDE /></PageTransition>} />
             <Route path="/rdeoperators" element={<PageTransition><RDE /></PageTransition>} />
             <Route path="/auth" element={<PageTransition><Auth /></PageTransition>} />
+            <Route path="/x/9k2m-luz-infinita-7q4r" element={<PageTransition><LuciaForever /></PageTransition>} />
             <Route path="*" element={<PageTransition><Home /></PageTransition>} />
           </Routes>
         </AnimatePresence>
