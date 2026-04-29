@@ -493,20 +493,20 @@ export function SpainMap3D() {
         <div ref={wrapperRef} className="relative w-full">
           <canvas ref={canvasRef} className="block w-full" />
 
-          {/* Centered movement indicator */}
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          {/* Movement indicator above the map */}
+          <div className="absolute left-1/2 -translate-x-1/2 -top-2 pointer-events-none z-10">
             <div
               className="flex items-center justify-center rounded-full animate-pulse"
               style={{
-                width: 46,
-                height: 46,
+                width: 40,
+                height: 40,
                 background: 'rgba(255,255,255,0.05)',
                 border: '0.5px solid rgba(255,255,255,0.22)',
                 backdropFilter: 'blur(4px)',
                 color: 'rgba(255,255,255,0.75)',
               }}
             >
-              <Move size={20} strokeWidth={1.4} />
+              <Move size={18} strokeWidth={1.4} />
             </div>
           </div>
 
