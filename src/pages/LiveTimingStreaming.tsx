@@ -11,6 +11,7 @@ export function LiveTimingStreaming() {
   // URLs configurables - actualizar cuando estén disponibles
   const liveTimingUrl = 'https://www.apex-timing.com/live-timing/rgmmc/index.html'; // URL del live timing a integrar
   const youtubeStreamUrl = 'https://www.youtube.com/embed/BNJhYu5rplc'; // Stream disponible desde el sábado
+  const officialResultsUrl = 'https://www.apex-timing.com/goracing/results.php?path=/rgmmc/2026/cek_2_motorland/&group=6';
 
   // Cerrar modal con tecla ESC
   useEffect(() => {
