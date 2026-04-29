@@ -208,14 +208,20 @@ export function LiveTimingStreaming() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="bg-white/5 border border-white/10 rounded-2xl md:rounded-3xl overflow-hidden"
           >
-            <div className="p-4 md:p-5 border-b border-white/10 bg-gradient-to-r from-white/[0.07] to-transparent">
+            <button
+              type="button"
+              onClick={() => setStreamOpen((o) => !o)}
+              aria-expanded={streamOpen}
+              aria-controls="stream-panel"
+              className="w-full p-4 md:p-5 border-b border-white/10 bg-gradient-to-r from-white/[0.07] to-transparent hover:from-white/[0.1] active:bg-white/[0.05] transition-colors text-left"
+            >
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-3 min-w-0">
                   <div className="w-10 h-10 md:w-11 md:h-11 rounded-xl bg-red-500/15 border border-red-500/30 flex items-center justify-center shrink-0">
                     <Youtube className="w-5 h-5 text-red-400" />
                   </div>
-                  <div className="min-w-0">
-                    <div className="flex items-center gap-2">
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-center gap-2 flex-wrap">
                       <h2 className="text-lg md:text-xl font-bold leading-tight">
                         {language === 'es' ? 'Streaming' : 'Streaming'}
                       </h2>
@@ -229,68 +235,91 @@ export function LiveTimingStreaming() {
                     </p>
                   </div>
                 </div>
-                {youtubeStreamUrl && (
-                  <div className="flex items-center gap-2 shrink-0">
-                    <button
-                      onClick={() => setStreamKey((k) => k + 1)}
-                      className="inline-flex items-center gap-1.5 h-9 px-3 rounded-lg bg-white/5 border border-white/15 hover:bg-white/10 hover:border-white/30 active:scale-95 transition-all text-xs font-medium"
-                      aria-label={language === 'es' ? 'Recargar streaming' : 'Reload streaming'}
-                    >
-                      <RefreshCw className="w-3.5 h-3.5" />
-                      <span className="hidden sm:inline">{language === 'es' ? 'Recargar' : 'Reload'}</span>
-                    </button>
-                    <a
-                      href="https://www.youtube.com/watch?v=BNJhYu5rplc"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 h-9 px-3 rounded-lg bg-white/5 border border-white/15 hover:bg-white/10 hover:border-white/30 active:scale-95 transition-all text-xs font-medium"
-                      aria-label={language === 'es' ? 'Ver en YouTube' : 'Watch on YouTube'}
-                    >
-                      <ExternalLink className="w-3.5 h-3.5" />
-                      <span className="hidden sm:inline">YouTube</span>
-                    </a>
-                    <button
-                      onClick={() => setExpandedView('stream')}
-                      className="inline-flex items-center gap-1.5 h-9 px-3 rounded-lg bg-white text-black hover:bg-white/90 active:scale-95 transition-all text-xs font-bold"
-                      aria-label={language === 'es' ? 'Ampliar streaming' : 'Expand streaming'}
-                    >
-                      <Maximize2 className="w-3.5 h-3.5" />
-                      <span className="hidden sm:inline">{language === 'es' ? 'Ampliar' : 'Expand'}</span>
-                    </button>
-                  </div>
-                )}
-              </div>
-            </div>
-
-            <div className="h-[500px] md:h-[600px] lg:h-[680px] bg-black/50 flex items-center justify-center relative">
-              {youtubeStreamUrl ? (
-                <>
-                  <iframe
-                    key={streamKey}
-                    ref={streamIframeRef}
-                    src={youtubeStreamUrl}
-                    className="w-full h-full"
-                    title={language === 'es' ? 'Stream CEK en YouTube' : 'CEK YouTube Stream'}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  />
-                </>
-              ) : (
-                <div className="text-center p-6 md:p-8">
-                  <Youtube className="w-12 h-12 md:w-16 md:h-16 text-white/20 mx-auto mb-3 md:mb-4" />
-                  <p className="text-white/40 text-sm md:text-base">
-                    {language === 'es' 
-                      ? 'Streaming disponible durante las carreras'
-                      : 'Streaming available during races'}
-                  </p>
-                  <p className="text-white/30 text-xs md:text-sm mt-2">
-                    {language === 'es' 
-                      ? 'El directo comenzará cuando inicie la sesión'
-                      : 'Stream will start when the session begins'}
-                  </p>
+                <div className="flex items-center gap-2 shrink-0 self-end sm:self-auto" onClick={(e) => e.stopPropagation()}>
+                  {youtubeStreamUrl && streamOpen && (
+                    <>
+                      <button
+                        type="button"
+                        onClick={() => setStreamKey((k) => k + 1)}
+                        className="inline-flex items-center gap-1.5 h-9 px-3 rounded-lg bg-white/5 border border-white/15 hover:bg-white/10 hover:border-white/30 active:scale-95 transition-all text-xs font-medium"
+                        aria-label={language === 'es' ? 'Recargar streaming' : 'Reload streaming'}
+                      >
+                        <RefreshCw className="w-3.5 h-3.5" />
+                        <span className="hidden md:inline">{language === 'es' ? 'Recargar' : 'Reload'}</span>
+                      </button>
+                      <a
+                        href="https://www.youtube.com/watch?v=BNJhYu5rplc"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 h-9 px-3 rounded-lg bg-white/5 border border-white/15 hover:bg-white/10 hover:border-white/30 active:scale-95 transition-all text-xs font-medium"
+                        aria-label={language === 'es' ? 'Ver en YouTube' : 'Watch on YouTube'}
+                      >
+                        <ExternalLink className="w-3.5 h-3.5" />
+                        <span className="hidden md:inline">YouTube</span>
+                      </a>
+                      <button
+                        type="button"
+                        onClick={() => setExpandedView('stream')}
+                        className="inline-flex items-center gap-1.5 h-9 px-3 rounded-lg bg-white text-black hover:bg-white/90 active:scale-95 transition-all text-xs font-bold"
+                        aria-label={language === 'es' ? 'Ampliar streaming' : 'Expand streaming'}
+                      >
+                        <Maximize2 className="w-3.5 h-3.5" />
+                        <span className="hidden md:inline">{language === 'es' ? 'Ampliar' : 'Expand'}</span>
+                      </button>
+                    </>
+                  )}
+                  <button
+                    type="button"
+                    onClick={() => setStreamOpen((o) => !o)}
+                    className="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-white/10 border border-white/20 hover:bg-white/20 hover:border-white/40 active:scale-95 transition-all"
+                    aria-label={streamOpen ? (language === 'es' ? 'Cerrar' : 'Close') : (language === 'es' ? 'Abrir' : 'Open')}
+                  >
+                    <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${streamOpen ? 'rotate-180' : ''}`} />
+                  </button>
                 </div>
+              </div>
+            </button>
+
+            <AnimatePresence initial={false}>
+              {streamOpen && (
+                <motion.div
+                  id="stream-panel"
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: 'auto', opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                  className="overflow-hidden"
+                >
+                  <div className="h-[500px] md:h-[600px] lg:h-[680px] bg-black/50 flex items-center justify-center relative">
+                    {youtubeStreamUrl ? (
+                      <iframe
+                        key={streamKey}
+                        ref={streamIframeRef}
+                        src={youtubeStreamUrl}
+                        className="w-full h-full"
+                        title={language === 'es' ? 'Stream CEK en YouTube' : 'CEK YouTube Stream'}
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                      />
+                    ) : (
+                      <div className="text-center p-6 md:p-8">
+                        <Youtube className="w-12 h-12 md:w-16 md:h-16 text-white/20 mx-auto mb-3 md:mb-4" />
+                        <p className="text-white/40 text-sm md:text-base">
+                          {language === 'es' 
+                            ? 'Streaming disponible durante las carreras'
+                            : 'Streaming available during races'}
+                        </p>
+                        <p className="text-white/30 text-xs md:text-sm mt-2">
+                          {language === 'es' 
+                            ? 'El directo comenzará cuando inicie la sesión'
+                            : 'Stream will start when the session begins'}
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                </motion.div>
               )}
-            </div>
+            </AnimatePresence>
           </motion.div>
         </div>
 
