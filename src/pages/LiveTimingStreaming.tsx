@@ -339,7 +339,7 @@ export function LiveTimingStreaming() {
                 {language === 'es' ? 'Carrera' : 'Race'}
               </p>
               <p className="font-bold text-sm md:text-base">Motorland R2</p>
-              <p className="text-white/60 text-xs md:text-sm">8-10 May</p>
+              <p className="text-white/60 text-xs md:text-sm">15-17 May</p>
             </div>
             <div className="p-3 md:p-4 rounded-xl bg-white/5 border border-white/10">
               <p className="text-white/50 text-xs md:text-sm mb-1">
