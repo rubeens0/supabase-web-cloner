@@ -7,6 +7,10 @@ import { useState, useEffect, useRef } from 'react';
 export function LiveTimingStreaming() {
   const { language } = useLanguage();
   const [expandedView, setExpandedView] = useState<'timing' | 'stream' | null>(null);
+  const timingIframeRef = useRef<HTMLIFrameElement>(null);
+  const streamIframeRef = useRef<HTMLIFrameElement>(null);
+  const [timingKey, setTimingKey] = useState(0);
+  const [streamKey, setStreamKey] = useState(0);
 
   // URLs configurables - actualizar cuando estén disponibles
   const liveTimingUrl = 'https://www.apex-timing.com/live-timing/rgmmc/index.html'; // URL del live timing a integrar
