@@ -111,8 +111,7 @@ export function LiveTimingStreaming() {
               </div>
             </div>
 
-            <div className="aspect-[16/9] md:aspect-[16/10] bg-black/50 flex items-center justify-center relative">
-              {liveTimingUrl ? (
+            <div className="h-[500px] md:h-[600px] lg:h-[680px] bg-black/50 flex items-center justify-center relative">
                 <iframe
                   src={liveTimingUrl}
                   className="w-full h-full"
