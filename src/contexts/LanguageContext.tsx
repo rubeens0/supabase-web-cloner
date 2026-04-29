@@ -405,7 +405,7 @@ const translations = {
       'Caja Rural de Extremadura apoya el talento joven en el deporte y patrocina al piloto cacereño Rubén Muñoz',
     'blog.cajarural.excerpt':
       'La entidad apuesta por el deporte base y el talento emergente extremeño. Caja Rural de Extremadura ha formalizado un acuerdo de colaboración deportiva con el joven piloto cacereño de karting Rubén Muñoz.',
-    'blog.webredesign.title': 'Nueva era digital: rediseño completo de la web y acceso al paddock',
+    'blog.webredesign.title': 'Rediseño completo de la web y acceso al "paddock".',
     'blog.webredesign.excerpt':
       'Estrenamos un rediseño íntegro de rubenmunoz.com con una identidad más editorial, una nueva sección 2026 con mapa interactivo del calendario CEK, acceso privado al paddock y nuevos proyectos en marcha.',
 
