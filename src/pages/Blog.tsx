@@ -5,6 +5,7 @@ import netspyImg from '@/assets/netspy-branding-new.jpg';
 import cekZaragozaImg from '@/assets/cek-zaragoza.jpg';
 import portadaExtremaduraImg from '@/assets/cek-2026-campillos-18.jpg';
 import cajaRuralImg from '@/assets/caja-rural-extremadura.png';
+import webRedesignImg from '@/assets/website-redesign-2026.png';
 import { useLanguage } from '../contexts/LanguageContext';
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
@@ -98,6 +99,15 @@ export function Blog() {
       readTime: '3 min',
       category: t('blog.category.karting'),
       image: cajaRuralImg,
+    },
+    {
+      id: 'website-redesign-2026',
+      title: t('blog.webredesign.title'),
+      excerpt: t('blog.webredesign.excerpt'),
+      date: '2026-04-29',
+      readTime: '4 min',
+      category: t('blog.category.marketing'),
+      image: webRedesignImg,
     },
   ];
 

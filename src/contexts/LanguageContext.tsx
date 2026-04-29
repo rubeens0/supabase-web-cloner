@@ -405,6 +405,9 @@ const translations = {
       'Caja Rural de Extremadura apoya el talento joven en el deporte y patrocina al piloto cacereño Rubén Muñoz',
     'blog.cajarural.excerpt':
       'La entidad apuesta por el deporte base y el talento emergente extremeño. Caja Rural de Extremadura ha formalizado un acuerdo de colaboración deportiva con el joven piloto cacereño de karting Rubén Muñoz.',
+    'blog.webredesign.title': 'Nueva era digital: rediseño completo de la web y acceso al paddock',
+    'blog.webredesign.excerpt':
+      'Estrenamos un rediseño íntegro de rubenmunoz.com con una identidad más editorial, una nueva sección 2026 con mapa interactivo del calendario CEK, acceso privado al paddock y nuevos proyectos en marcha.',
 
     /* ===== Sponsors ===== */
     'sponsors.hero.title': 'Patrocinio',
@@ -852,6 +855,9 @@ const translations = {
       'Caja Rural de Extremadura backs young sporting talent and sponsors Cáceres karting driver Rubén Muñoz',
     'blog.cajarural.excerpt':
       'The institution doubles down on grassroots sport and emerging Extremaduran talent. Caja Rural de Extremadura has signed a sports collaboration agreement with young karting driver Rubén Muñoz from Cáceres.',
+    'blog.webredesign.title': 'A new digital era: full website redesign and paddock access',
+    'blog.webredesign.excerpt':
+      'We are launching a complete redesign of rubenmunoz.com with a more editorial identity, a new 2026 section with an interactive CEK calendar map, private paddock access and several new projects under way.',
 
     /* ===== Sponsors ===== */
     'sponsors.hero.title': 'Sponsorship',
