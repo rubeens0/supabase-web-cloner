@@ -58,6 +58,14 @@ export function Home() {
 
   const allPosts = [
     {
+      id: "website-redesign-2026",
+      title: t("blog.webredesign.title"),
+      excerpt: t("blog.webredesign.excerpt"),
+      tag: t("blog.category.marketing"),
+      image: webRedesignImg,
+      date: "2026-04-29",
+    },
+    {
       id: "caja-rural-extremadura-patrocinio",
       title: t("blog.cajarural.title"),
       excerpt: t("blog.cajarural.excerpt"),
