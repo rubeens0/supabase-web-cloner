@@ -76,8 +76,8 @@ export function LiveTimingStreaming() {
           </h1>
           <p className="mt-8 text-white/60 max-w-2xl text-base md:text-lg leading-relaxed">
             {language === 'es' 
-              ? 'Ronda 2 — Motorland Aragón • 8-10 Mayo 2026'
-              : 'Round 2 — Motorland Aragón • May 8-10, 2026'}
+              ? 'Ronda 2 — Motorland Aragón • 15-17 Mayo 2026'
+              : 'Round 2 — Motorland Aragón • May 15-17, 2026'}
           </p>
         </motion.div>
 
