@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "motion/react";
 import { Play, ArrowUpRight, ArrowRight } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
