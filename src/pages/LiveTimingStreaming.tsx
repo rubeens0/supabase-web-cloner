@@ -11,6 +11,7 @@ export function LiveTimingStreaming() {
   // URLs configurables - actualizar cuando estén disponibles
   const liveTimingUrl = 'https://www.apex-timing.com/live-timing/rgmmc/index.html'; // URL del live timing a integrar
   const youtubeStreamUrl = 'https://www.youtube.com/embed/BNJhYu5rplc'; // Stream disponible desde el sábado
+  const officialResultsUrl = 'https://www.apex-timing.com/goracing/results.php?path=/rgmmc/2026/cek_2_motorland/&group=6';
 
   // Cerrar modal con tecla ESC
   useEffect(() => {
@@ -69,8 +70,8 @@ export function LiveTimingStreaming() {
           </h1>
           <p className="mt-8 text-white/60 max-w-2xl text-base md:text-lg leading-relaxed">
             {language === 'es' 
-              ? 'Sigue en tiempo real las sesiones del Campeonato de España de Karting • Domingo, Carreras Finales • Categoría Senior'
-              : 'Follow the Spanish Karting Championship sessions in real time • Sunday, Final Races • Senior Category'}
+              ? 'Ronda 2 — Motorland Aragón • 8-10 Mayo 2026 • Domingo, Carreras Finales • Categoría Senior'
+              : 'Round 2 — Motorland Aragón • May 8-10, 2026 • Sunday, Final Races • Senior Category'}
           </p>
         </motion.div>
 
@@ -110,7 +111,7 @@ export function LiveTimingStreaming() {
               </div>
             </div>
 
-            <div className="aspect-[16/9] md:aspect-[16/10] bg-black/50 flex items-center justify-center relative">
+            <div className="h-[500px] md:h-[600px] lg:h-[680px] bg-black/50 flex items-center justify-center relative">
               {liveTimingUrl ? (
                 <iframe
                   src={liveTimingUrl}
@@ -172,7 +173,7 @@ export function LiveTimingStreaming() {
               </div>
             </div>
 
-            <div className="aspect-[16/9] md:aspect-[16/10] bg-black/50 flex items-center justify-center relative">
+            <div className="h-[500px] md:h-[600px] lg:h-[680px] bg-black/50 flex items-center justify-center relative">
               {youtubeStreamUrl ? (
                 <>
                   <iframe
@@ -217,15 +218,15 @@ export function LiveTimingStreaming() {
               <p className="text-white/50 text-xs md:text-sm mb-1">
                 {language === 'es' ? 'Carrera' : 'Race'}
               </p>
-              <p className="font-bold text-sm md:text-base">Campillos R1</p>
-              <p className="text-white/60 text-xs md:text-sm">20-22 Mar</p>
+              <p className="font-bold text-sm md:text-base">Motorland R2</p>
+              <p className="text-white/60 text-xs md:text-sm">8-10 May</p>
             </div>
             <div className="p-3 md:p-4 rounded-xl bg-white/5 border border-white/10">
               <p className="text-white/50 text-xs md:text-sm mb-1">
                 {language === 'es' ? 'Circuito' : 'Circuit'}
               </p>
-              <p className="font-bold text-sm md:text-base">Kartcenter Campillos</p>
-              <p className="text-white/60 text-xs md:text-sm">1.580m</p>
+              <p className="font-bold text-sm md:text-base">Motorland Aragón</p>
+              <p className="text-white/60 text-xs md:text-sm">1.699m</p>
             </div>
             <div className="p-3 md:p-4 rounded-xl bg-white/5 border border-white/10">
               <p className="text-white/50 text-xs md:text-sm mb-1">
@@ -252,7 +253,7 @@ export function LiveTimingStreaming() {
           className="mt-6 md:mt-8 text-center"
         >
           <a
-            href="https://www.apex-timing.com/goracing/results.php?path=/rgmmc/2026/cek_1_campillos/&group=6"
+            href={officialResultsUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 md:gap-3 px-6 md:px-8 py-3 md:py-4 rounded-xl md:rounded-2xl bg-gradient-mono border border-white/30 transition-all duration-300 hover:scale-105 active:scale-95 text-black font-bold text-base md:text-lg shadow-lg shadow-black/50"
