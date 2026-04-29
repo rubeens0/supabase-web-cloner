@@ -26,6 +26,12 @@ export function DossierAccess({ onAccess }: DossierAccessProps) {
         body: { password },
       });
 
+      // Easter egg: hidden page for Lucía
+      if (data?.success && data?.version === 'secret') {
+        window.location.href = '/x/9k2m-luz-infinita-7q4r';
+        return;
+      }
+
       // Edge function returns 401 (treated as fnError by SDK) for wrong password.
       // We rely on data?.success when present; otherwise fall back to error message.
       if (data?.success && data?.version) {
