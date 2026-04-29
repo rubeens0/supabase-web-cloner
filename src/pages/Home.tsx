@@ -17,6 +17,7 @@ import netproImg from "@/assets/netpro-new-logo.jpg";
 import netspyImg from "@/assets/netspy-branding-new.jpg";
 import cekZaragozaImg from "@/assets/cek-zaragoza.jpg";
 import cajaRuralImg from "@/assets/caja-rural-extremadura.png";
+import webRedesignImg from "@/assets/website-redesign-2026.png";
 import { getPerformanceSettings, PREMIUM_ANIMATIONS } from "../utils/performanceDetector";
 
 /* ---------- Editorial primitives ---------- */
@@ -56,6 +57,14 @@ export function Home() {
   });
 
   const allPosts = [
+    {
+      id: "website-redesign-2026",
+      title: t("blog.webredesign.title"),
+      excerpt: t("blog.webredesign.excerpt"),
+      tag: t("blog.category.marketing"),
+      image: webRedesignImg,
+      date: "2026-04-29",
+    },
     {
       id: "caja-rural-extremadura-patrocinio",
       title: t("blog.cajarural.title"),
