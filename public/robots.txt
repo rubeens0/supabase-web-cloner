@@ -1,14 +1,13 @@
-# robots.txt para rubenmunoz.com
-# Optimizado para SEO de piloto de karting y emprendedor
+# robots.txt — rubenmunoz.com
 
 User-agent: *
 Allow: /
 
-# Bloquear indexación del dossier (contenido privado)
+# Áreas privadas
 Disallow: /dossier
+Disallow: /auth
 
 # Sitemap
 Sitemap: https://rubenmunoz.com/sitemap.xml
 
-# Crawl-delay para bots más agresivos
 Crawl-delay: 1
