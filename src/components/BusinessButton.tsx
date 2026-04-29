@@ -9,22 +9,31 @@ export function BusinessButton() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // Calendly setup
+    // Defer Calendly setup until the browser is idle to keep it off the critical path
     const linkHref = 'https://assets.calendly.com/assets/external/widget.css';
     const scriptSrc = 'https://assets.calendly.com/assets/external/widget.js';
 
-    if (!document.querySelector(`link[href="${linkHref}"]`)) {
-      const link = document.createElement('link');
-      link.href = linkHref;
-      link.rel = 'stylesheet';
-      document.head.appendChild(link);
-    }
-    if (!document.querySelector(`script[src="${scriptSrc}"]`)) {
-      const script = document.createElement('script');
-      script.src = scriptSrc;
-      script.async = true;
-      document.body.appendChild(script);
-    }
+    const loadCalendly = () => {
+      if (!document.querySelector(`link[href="${linkHref}"]`)) {
+        const link = document.createElement('link');
+        link.href = linkHref;
+        link.rel = 'stylesheet';
+        document.head.appendChild(link);
+      }
+      if (!document.querySelector(`script[src="${scriptSrc}"]`)) {
+        const script = document.createElement('script');
+        script.src = scriptSrc;
+        script.async = true;
+        document.body.appendChild(script);
+      }
+    };
+
+    const idle = (window as any).requestIdleCallback as
+      | ((cb: () => void, opts?: { timeout: number }) => number)
+      | undefined;
+    const idleId = idle
+      ? idle(loadCalendly, { timeout: 4000 })
+      : (window.setTimeout(loadCalendly, 2500) as unknown as number);
 
     let lastScrollY = window.scrollY;
     let ticking = false;

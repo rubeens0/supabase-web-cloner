@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "motion/react";
 import { Play, ArrowUpRight, ArrowRight } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
@@ -36,8 +36,32 @@ function formatDate(iso: string) {
 export function YoutubeRecent() {
   const [videos, setVideos] = useState<Video[]>([]);
   const [loading, setLoading] = useState(true);
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const [shouldFetch, setShouldFetch] = useState(false);
+
+  // Defer fetch until section is near viewport to keep it off the critical path
+  useEffect(() => {
+    if (shouldFetch) return;
+    const el = sectionRef.current;
+    if (!el || typeof IntersectionObserver === "undefined") {
+      setShouldFetch(true);
+      return;
+    }
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          setShouldFetch(true);
+          io.disconnect();
+        }
+      },
+      { rootMargin: "600px 0px" }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [shouldFetch]);
 
   useEffect(() => {
+    if (!shouldFetch) return;
     let cancelled = false;
     (async () => {
       try {
@@ -55,10 +79,10 @@ export function YoutubeRecent() {
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [shouldFetch]);
 
   return (
-    <section className="border-b border-white/[0.08]">
+    <section ref={sectionRef} className="border-b border-white/[0.08]">
       <div className="max-w-7xl mx-auto px-5 sm:px-10 md:px-16 py-14 sm:py-20">
         <div className="flex items-end justify-between mb-14 gap-6 flex-wrap">
           <div>
