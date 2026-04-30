@@ -107,14 +107,10 @@ Deno.serve(async (req) => {
     const pwRegional = (Deno.env.get("DOSSIER_PW_REGIONAL") || "").trim().toLowerCase();
     const pwNacional = (Deno.env.get("DOSSIER_PW_NACIONAL") || "").trim().toLowerCase();
     const pwInternacional = (Deno.env.get("DOSSIER_PW_INTERNACIONAL") || "").trim().toLowerCase();
-    // Easter egg — hidden page for Lucía 💌
-    const pwSecret = "luciarubenjeje";
-
-    let version: "regional" | "nacional" | "internacional" | "secret" | null = null;
+    let version: "regional" | "nacional" | "internacional" | null = null;
     if (pwRegional && password === pwRegional) version = "regional";
     else if (pwNacional && password === pwNacional) version = "nacional";
     else if (pwInternacional && password === pwInternacional) version = "internacional";
-    else if (password === pwSecret) version = "secret";
 
     if (!version) {
       // Add a small artificial delay on failure to slow down brute-force

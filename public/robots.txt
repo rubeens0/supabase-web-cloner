@@ -6,7 +6,7 @@ Allow: /
 # Áreas privadas
 Disallow: /dossier
 Disallow: /auth
-Disallow: /x/
+
 
 # Sitemap
 Sitemap: https://rubenmunoz.com/sitemap.xml
