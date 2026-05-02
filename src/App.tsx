@@ -43,7 +43,8 @@ function AppContent() {
     location.pathname.includes("/dossier") ||
     location.pathname.includes("/2026") ||
     location.pathname.includes("/cek2026") ||
-    location.pathname.includes("live-timing-streaming");
+    location.pathname.includes("live-timing-streaming") ||
+    location.pathname.includes("/booking");
 
   return (
     <>
