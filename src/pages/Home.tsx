@@ -19,6 +19,7 @@ import netspyImg from "@/assets/netspy-branding-new.jpg";
 import cekZaragozaImg from "@/assets/cek-zaragoza.jpg";
 import cajaRuralImg from "@/assets/caja-rural-extremadura.png";
 import webRedesignImg from "@/assets/website-redesign-2026.png";
+import ecomscrapeImg from "@/assets/ecomscrape-post.jpg";
 import { getPerformanceSettings, PREMIUM_ANIMATIONS } from "../utils/performanceDetector";
 
 /* ---------- Editorial primitives ---------- */
@@ -213,6 +214,14 @@ export function Home() {
   });
 
   const allPosts = [
+    {
+      id: "ecomscrape-launch",
+      title: t("blog.ecomscrape.title"),
+      excerpt: t("blog.ecomscrape.excerpt"),
+      tag: t("blog.category.marketing"),
+      image: ecomscrapeImg,
+      date: "2026-05-01",
+    },
     {
       id: "website-redesign-2026",
       title: t("blog.webredesign.title"),

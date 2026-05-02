@@ -849,9 +849,35 @@ Many thanks to all the people involved.`,
               // Contenido normal para otros posts
               post.content.split('\n\n').map((paragraph, index) => (
                 <p key={index} className="text-white/80 mb-6 leading-relaxed">
-                  {paragraph}
+                  {paragraph.split(/(https?:\/\/[^\s]+)/g).map((part, j) =>
+                    /^https?:\/\//.test(part) ? (
+                      <a key={j} href={part} target="_blank" rel="noopener noreferrer" className="text-white underline underline-offset-4 hover:text-white/70 transition-colors">
+                        {part.replace(/^https?:\/\/(www\.)?/, '')}
+                      </a>
+                    ) : (
+                      <span key={j}>{part}</span>
+                    )
+                  )}
                 </p>
               ))
+            )}
+
+            {/* Links section for EcomScrape post */}
+            {post.id === 'ecomscrape-launch' && (
+              <div className="mt-8 pt-8 border-t border-white/10 space-y-3">
+                <p className="text-white/50 text-sm uppercase tracking-widest font-mono mb-4">Links</p>
+                <div className="flex flex-wrap gap-3">
+                  <a href="https://ecomscrape.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/15 text-white/80 text-sm hover:bg-white/5 hover:border-white/30 transition-all">
+                    🌐 ecomscrape.com
+                  </a>
+                  <a href="https://www.instagram.com/anaswalton/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/15 text-white/80 text-sm hover:bg-white/5 hover:border-white/30 transition-all">
+                    📸 @anaswalton
+                  </a>
+                  <a href="https://soyrage.es" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/15 text-white/80 text-sm hover:bg-white/5 hover:border-white/30 transition-all">
+                    🔗 soyrage.es
+                  </a>
+                </div>
+              </div>
             )}
           </motion.div>
 
