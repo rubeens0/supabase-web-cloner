@@ -430,7 +430,7 @@ export function Home() {
             <div className="lg:col-span-7">
               <motion.h2
                 {...slideIn("left")}
-                className="font-display text-5xl sm:text-6xl md:text-7xl text-white leading-[1] tracking-tight mb-10 lg:sticky lg:top-28"
+                className="font-display text-5xl sm:text-6xl md:text-7xl text-white leading-[1] tracking-tight mb-10"
               >
                 {t("home.about.headlineA")} <span className="font-display-italic text-gradient-mono-italic">{t("home.about.headlineB")}</span>
                 <br />
