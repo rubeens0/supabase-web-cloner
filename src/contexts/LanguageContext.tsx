@@ -663,7 +663,7 @@ const translations = {
     'business.ecomscrape.description':
       'Extract full catalogs from any e-commerce store in seconds. Professional extractors for Shopify, WooCommerce and PrestaShop with anti-bot bypass, CSV/JSON export and built-in traffic analytics.',
     'business.ecomscrape.extended':
-      'Co-founded with Anas Walton (@anaswalton / soyrage.es). Real competitive intelligence: pricing, bestsellers, tech stack, demographics and ad spend from any online store in a single click.',
+      'A collaboration between Rubén Muñoz, Anas Walton (@anaswalton) and soyrage.es. Real competitive intelligence: pricing, bestsellers, tech stack, demographics and ad spend from any online store in a single click.',
     'business.ecomscrape.cta': 'ecomscrape.com',
     'business.ecomscrape.feat1': 'Catalog Extraction',
     'business.ecomscrape.feat2': 'Store Intelligence',

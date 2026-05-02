@@ -135,6 +135,10 @@ export function Business() {
               t('business.ecomscrape.feat4'),
             ]}
             reverse
+            secondaryLink={{
+              href: 'https://www.instagram.com/anaswalton/',
+              text: 'Anas Walton · Instagram',
+            }}
           />
         </div>
       </section>
