@@ -863,10 +863,6 @@ Many thanks to all the people involved.`,
                     }
                     return <span key={j}>{part}</span>;
                   })}
-                    ) : (
-                      <span key={j}>{part}</span>
-                    )
-                  )}
                 </p>
               ))
             )}
