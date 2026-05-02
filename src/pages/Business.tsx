@@ -7,6 +7,7 @@ import { useLanguage } from '../contexts/LanguageContext';
 import netproLogo from '@/assets/netpro-branding.jpg';
 import netspyImg from '@/assets/netspy-branding.png';
 import rdeLogo from '@/assets/rde-logo.png';
+import ecomscrapeImg from '@/assets/ecomscrape-post.jpg';
 
 function SectionLabel({ index, children }: { index: string; children: React.ReactNode }) {
   return (
@@ -114,10 +115,34 @@ export function Business() {
         </div>
       </section>
 
-      {/* ============== 05 · MISSION / GOAL ============== */}
+      {/* ============== 05 · ECOMSCRAPE ============== */}
+      <section className="border-b border-white/[0.08] px-5 sm:px-10 md:px-16 py-20 sm:py-32">
+        <div className="max-w-7xl mx-auto">
+          <BusinessSection
+            index="05"
+            title={t('business.ecomscrape.title')}
+            subtitle={t('business.ecomscrape.subtitle')}
+            description={t('business.ecomscrape.description')}
+            extendedDescription={t('business.ecomscrape.extended')}
+            image={ecomscrapeImg}
+            imageAlt="EcomScrape E-commerce Intelligence"
+            href="https://ecomscrape.com"
+            linkText={t('business.ecomscrape.cta')}
+            features={[
+              t('business.ecomscrape.feat1'),
+              t('business.ecomscrape.feat2'),
+              t('business.ecomscrape.feat3'),
+              t('business.ecomscrape.feat4'),
+            ]}
+            reverse
+          />
+        </div>
+      </section>
+
+      {/* ============== 06 · MISSION / GOAL ============== */}
       <section className="px-5 sm:px-10 md:px-16 py-24 sm:py-40">
         <div className="max-w-4xl mx-auto text-center relative">
-          <SectionLabel index="05">{t('business.goal.title')}</SectionLabel>
+          <SectionLabel index="06">{t('business.goal.title')}</SectionLabel>
           <div className="mt-10 mb-10 flex justify-center">
             <Quote className="w-7 h-7 text-white/25" />
           </div>

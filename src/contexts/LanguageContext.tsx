@@ -196,6 +196,18 @@ const translations = {
     'business.netspy.feat3': 'Networking entre fundadores',
     'business.netspy.feat4': 'Alianzas estratégicas',
 
+    'business.ecomscrape.title': 'EcomScrape',
+    'business.ecomscrape.subtitle': 'E-commerce Intelligence',
+    'business.ecomscrape.description':
+      'Extrae catálogos completos de cualquier e-commerce en segundos. Extractores profesionales para Shopify, WooCommerce y PrestaShop con bypass anti-bot, exportación CSV/JSON y analítica de tráfico integrada.',
+    'business.ecomscrape.extended':
+      'Proyecto cofundado con Anas Walton (@anaswalton / soyrage.es). Inteligencia competitiva real: precios, bestsellers, tech stack, demografía y gasto en ads de cualquier tienda online en un solo clic.',
+    'business.ecomscrape.cta': 'ecomscrape.com',
+    'business.ecomscrape.feat1': 'Extracción de catálogos',
+    'business.ecomscrape.feat2': 'Inteligencia de tienda',
+    'business.ecomscrape.feat3': 'API REST',
+    'business.ecomscrape.feat4': 'Analítica de tráfico',
+
     /* ===== RDE landing ===== */
     'rde.bar.note': 'Solo trabajamos con 3 clientes nuevos por mes',
     'rde.bar.slots': '1 plaza disponible',
@@ -408,6 +420,9 @@ const translations = {
     'blog.webredesign.title': 'Rediseño completo de la web y acceso al "paddock".',
     'blog.webredesign.excerpt':
       'Estrenamos un rediseño íntegro de rubenmunoz.com con una identidad más editorial, una nueva sección 2026 con mapa interactivo del calendario CEK, acceso privado al paddock y nuevos proyectos en marcha.',
+    'blog.ecomscrape.title': 'EcomScrape: inteligencia e-commerce al alcance de un clic',
+    'blog.ecomscrape.excerpt':
+      'Rubén Muñoz y Anas Walton lanzan EcomScrape, una herramienta profesional de extracción de catálogos e inteligencia competitiva para Shopify, WooCommerce y PrestaShop.',
 
     /* ===== Sponsors ===== */
     'sponsors.hero.title': 'Patrocinio',
@@ -643,6 +658,18 @@ const translations = {
     'business.netspy.feat3': 'Founder Networking',
     'business.netspy.feat4': 'Strategic Partnerships',
 
+    'business.ecomscrape.title': 'EcomScrape',
+    'business.ecomscrape.subtitle': 'E-commerce Intelligence',
+    'business.ecomscrape.description':
+      'Extract full catalogs from any e-commerce store in seconds. Professional extractors for Shopify, WooCommerce and PrestaShop with anti-bot bypass, CSV/JSON export and built-in traffic analytics.',
+    'business.ecomscrape.extended':
+      'Co-founded with Anas Walton (@anaswalton / soyrage.es). Real competitive intelligence: pricing, bestsellers, tech stack, demographics and ad spend from any online store in a single click.',
+    'business.ecomscrape.cta': 'ecomscrape.com',
+    'business.ecomscrape.feat1': 'Catalog Extraction',
+    'business.ecomscrape.feat2': 'Store Intelligence',
+    'business.ecomscrape.feat3': 'REST API',
+    'business.ecomscrape.feat4': 'Traffic Analytics',
+
     /* ===== RDE landing ===== */
     'rde.bar.note': 'We only take on 3 new clients per month',
     'rde.bar.slots': '1 spot available',
@@ -858,6 +885,9 @@ const translations = {
     'blog.webredesign.title': 'A new digital era: full website redesign and paddock access',
     'blog.webredesign.excerpt':
       'We are launching a complete redesign of rubenmunoz.com with a more editorial identity, a new 2026 section with an interactive CEK calendar map, private paddock access and several new projects under way.',
+    'blog.ecomscrape.title': 'EcomScrape: e-commerce intelligence at the click of a button',
+    'blog.ecomscrape.excerpt':
+      'Rubén Muñoz and Anas Walton launch EcomScrape, a professional catalog extraction and competitive intelligence tool for Shopify, WooCommerce and PrestaShop.',
 
     /* ===== Sponsors ===== */
     'sponsors.hero.title': 'Sponsorship',

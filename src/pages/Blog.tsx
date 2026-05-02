@@ -6,6 +6,7 @@ import cekZaragozaImg from '@/assets/cek-zaragoza.jpg';
 import portadaExtremaduraImg from '@/assets/cek-2026-campillos-18.jpg';
 import cajaRuralImg from '@/assets/caja-rural-extremadura.png';
 import webRedesignImg from '@/assets/website-redesign-2026.png';
+import ecomscrapeImg from '@/assets/ecomscrape-post.jpg';
 import { useLanguage } from '../contexts/LanguageContext';
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
@@ -108,6 +109,15 @@ export function Blog() {
       readTime: '4 min',
       category: t('blog.category.marketing'),
       image: webRedesignImg,
+    },
+    {
+      id: 'ecomscrape-launch',
+      title: t('blog.ecomscrape.title'),
+      excerpt: t('blog.ecomscrape.excerpt'),
+      date: '2026-05-01',
+      readTime: '4 min',
+      category: t('blog.category.marketing'),
+      image: ecomscrapeImg,
     },
   ];
 

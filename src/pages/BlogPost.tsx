@@ -6,6 +6,7 @@ import testRecasImg from '@/assets/test-recas-2026.jpg';
 import portadaExtremaduraImg from '@/assets/cek-2026-campillos-18.jpg';
 import cajaRuralImg from '@/assets/caja-rural-extremadura.png';
 import webRedesignImg from '@/assets/website-redesign-2026.png';
+import ecomscrapeImg from '@/assets/ecomscrape-post.jpg';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
 import { motion } from 'motion/react';
@@ -182,6 +183,18 @@ Many thanks to all the people involved.`,
       readTime: '4 min',
       category: t('blog.category.marketing'),
       image: webRedesignImg,
+    },
+    {
+      id: 'ecomscrape-launch',
+      title: t('blog.ecomscrape.title'),
+      excerpt: t('blog.ecomscrape.excerpt'),
+      content: language === 'es'
+        ? `EcomScrape es una herramienta profesional de extracción de catálogos e inteligencia competitiva para e-commerce. Permite obtener el catálogo completo de cualquier tienda Shopify, WooCommerce o PrestaShop en cuestión de segundos, con bypass anti-bot integrado, exportación a CSV/JSON y analítica de tráfico.\n\nEl proyecto nace de la colaboración entre Rubén Muñoz y Anas Walton (@anaswalton), fundador de soyrage.es, uniendo experiencia en marketing digital, desarrollo de producto y análisis competitivo de e-commerce.\n\n¿Qué hace EcomScrape?\n\n• Extracción instantánea de catálogos completos (productos, precios, variantes, stock).\n• Store DNA: perfil completo de cualquier tienda — antigüedad del dominio, gasto en ads, ingresos estimados, tech stack, tema, pasarelas de pago, presencia en redes y señal de dropshipping.\n• Inteligencia de producto: bestsellers, productos nuevos, eliminados y cambios de precio en tiempo real.\n• Analítica de tráfico: visitas mensuales, países top, distribución por edad/género, dispositivo y tasa de rebote.\n• API REST lista para desarrolladores con endpoints limpios en JSON.\n• Extensión de navegador: instala, visita cualquier tienda y extrae con un clic.\n\nEcomScrape sustituye horas de investigación manual, scripts frágiles y herramientas caras por una solución todo-en-uno con créditos de pago por uso y sin compromisos mensuales.\n\nMás información en ecomscrape.com`
+        : `EcomScrape is a professional catalog extraction and competitive intelligence tool for e-commerce. It lets you pull the full catalog from any Shopify, WooCommerce or PrestaShop store in seconds, with built-in anti-bot bypass, CSV/JSON export and traffic analytics.\n\nThe project is a collaboration between Rubén Muñoz and Anas Walton (@anaswalton), founder of soyrage.es, combining experience in digital marketing, product development and competitive e-commerce analysis.\n\nWhat does EcomScrape do?\n\n• Instant extraction of full catalogs (products, prices, variants, stock).\n• Store DNA: complete profile of any store — domain age, ad spend, estimated revenue, tech stack, theme, payment processors, social presence and dropshipper signal.\n• Product Intelligence: bestsellers, new items, deleted products and real-time price changes.\n• Traffic Analytics: monthly visits, top countries, age/gender distribution, device and bounce rate.\n• Developer-ready REST API with clean JSON endpoints.\n• Browser extension: install, visit any store and extract with one click.\n\nEcomScrape replaces hours of manual research, brittle scripts and expensive tools with an all-in-one solution featuring pay-as-you-go credits and no monthly commitment.\n\nLearn more at ecomscrape.com`,
+      date: '2026-05-01',
+      readTime: '4 min',
+      category: t('blog.category.marketing'),
+      image: ecomscrapeImg,
     },
   ];
 
