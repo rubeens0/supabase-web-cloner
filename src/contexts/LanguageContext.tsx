@@ -887,7 +887,7 @@ const translations = {
       'We are launching a complete redesign of rubenmunoz.com with a more editorial identity, a new 2026 section with an interactive CEK calendar map, private paddock access and several new projects under way.',
     'blog.ecomscrape.title': 'EcomScrape: e-commerce intelligence at the click of a button',
     'blog.ecomscrape.excerpt':
-      'Rubén Muñoz and Anas Walton launch EcomScrape, a professional catalog extraction and competitive intelligence tool for Shopify, WooCommerce and PrestaShop.',
+      'Rubén Muñoz, Anas Walton and soyrage.es launch EcomScrape, a professional catalog extraction and competitive intelligence tool for Shopify, WooCommerce and PrestaShop.',
 
     /* ===== Sponsors ===== */
     'sponsors.hero.title': 'Sponsorship',
