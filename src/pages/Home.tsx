@@ -215,6 +215,14 @@ export function Home() {
 
   const allPosts = [
     {
+      id: "ecomscrape-launch",
+      title: t("blog.ecomscrape.title"),
+      excerpt: t("blog.ecomscrape.excerpt"),
+      tag: t("blog.category.marketing"),
+      image: ecomscrapeImg,
+      date: "2026-05-01",
+    },
+    {
       id: "website-redesign-2026",
       title: t("blog.webredesign.title"),
       excerpt: t("blog.webredesign.excerpt"),
