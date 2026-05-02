@@ -201,7 +201,7 @@ const translations = {
     'business.ecomscrape.description':
       'Extrae catálogos completos de cualquier e-commerce en segundos. Extractores profesionales para Shopify, WooCommerce y PrestaShop con bypass anti-bot, exportación CSV/JSON y analítica de tráfico integrada.',
     'business.ecomscrape.extended':
-      'Proyecto cofundado con Anas Walton (@anaswalton / soyrage.es). Inteligencia competitiva real: precios, bestsellers, tech stack, demografía y gasto en ads de cualquier tienda online en un solo clic.',
+      'Colaboración de Rubén Muñoz con Anas Walton (@anaswalton) y soyrage.es. Inteligencia competitiva real: precios, bestsellers, tech stack, demografía y gasto en ads de cualquier tienda online en un solo clic.',
     'business.ecomscrape.cta': 'ecomscrape.com',
     'business.ecomscrape.feat1': 'Extracción de catálogos',
     'business.ecomscrape.feat2': 'Inteligencia de tienda',
