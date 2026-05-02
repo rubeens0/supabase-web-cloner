@@ -183,26 +183,26 @@ export function Sponsors() {
       </section>
 
       {/* ============== 02 · INTRO ============== */}
-      <section className="border-b border-white/[0.08] px-5 sm:px-10 md:px-16 py-20 sm:py-28">
+      <section className="border-b border-white/[0.08] px-5 sm:px-10 md:px-16 py-24 sm:py-32">
         <div className="max-w-7xl mx-auto">
           <SectionLabel index="02">{t('sponsors.intro.title')}</SectionLabel>
 
-          <h2 className="mt-6 font-display text-4xl sm:text-5xl md:text-6xl text-white leading-[1.05] tracking-tight max-w-4xl mb-12">
+          <h2 className="mt-6 font-display text-5xl sm:text-6xl md:text-7xl text-white leading-[1.05] tracking-tight max-w-4xl mb-14">
             {t('sponsors.intro.title')}
             <span className="text-white/40">.</span>
           </h2>
 
-          <div className="grid md:grid-cols-3 gap-5">
+          <div className="grid md:grid-cols-3 gap-8">
             {[t('sponsors.intro.p1'), t('sponsors.intro.p2'), t('sponsors.intro.p3')].map((p, i) => (
               <motion.div
                 key={i}
                 {...fadeIn(i * 0.1)}
-                className="border-t border-white/[0.12] pt-6"
+                className="border-t border-white/[0.12] pt-8"
               >
                 <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-white/40">
                   0{i + 1}
                 </span>
-                <p className="mt-4 text-white/70 leading-relaxed text-[15px]">{p}</p>
+                <p className="mt-5 text-white/70 leading-relaxed text-[15px]">{p}</p>
               </motion.div>
             ))}
           </div>
@@ -210,12 +210,12 @@ export function Sponsors() {
       </section>
 
       {/* ============== 03 · VALUE ADD ============== */}
-      <section id="value-add-section" className="border-b border-white/[0.08] px-5 sm:px-10 md:px-16 py-20 sm:py-28">
+      <section id="value-add-section" className="border-b border-white/[0.08] px-5 sm:px-10 md:px-16 py-24 sm:py-32">
         <div className="max-w-5xl mx-auto">
           <SectionLabel index="03">{t('sponsors.valueAdd.title')}</SectionLabel>
           <motion.p
             {...fadeIn(0.1)}
-            className="mt-8 font-display text-3xl sm:text-4xl md:text-5xl text-white leading-[1.15] tracking-tight"
+            className="mt-10 font-display text-3xl sm:text-4xl md:text-5xl text-white leading-[1.15] tracking-tight"
           >
             <span className="font-display-italic text-gradient-mono-italic">"</span>
             {t('sponsors.valueAdd.description')}
@@ -225,33 +225,33 @@ export function Sponsors() {
       </section>
 
       {/* ============== 04 · WHY ============== */}
-      <section className="border-b border-white/[0.08] px-5 sm:px-10 md:px-16 py-20 sm:py-28">
+      <section className="border-b border-white/[0.08] px-5 sm:px-10 md:px-16 py-24 sm:py-32">
         <div className="max-w-7xl mx-auto">
-          <div className="mb-12 max-w-3xl">
+          <div className="mb-14 max-w-3xl">
             <SectionLabel index="04">{t('sponsors.why.title')}</SectionLabel>
-            <h2 className="mt-6 font-display text-4xl sm:text-5xl md:text-6xl text-white leading-[1.05] tracking-tight">
+            <h2 className="mt-6 font-display text-5xl sm:text-6xl md:text-7xl text-white leading-[1.05] tracking-tight">
               {t('sponsors.why.title')}
               <span className="text-white/40">.</span>
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-5">
+          <div className="grid md:grid-cols-3 gap-8">
             {whyCards.map((card, i) => (
               <motion.div
                 key={i}
                 {...fadeIn(i * 0.1)}
-                className="group border border-white/10 rounded-2xl p-7 bg-white/[0.02] hover:border-white/25 hover:bg-white/[0.04] transition-all"
+                className="group border border-white/10 rounded-2xl p-8 sm:p-10 bg-white/[0.02] hover:border-white/25 hover:bg-white/[0.04] transition-all"
               >
-                <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center justify-between mb-7">
                   <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-white">
                     0{i + 1}
                   </span>
                   <card.icon className="w-5 h-5 text-white/40 group-hover:text-white transition-colors" />
                 </div>
-                <h3 className="font-display text-2xl sm:text-3xl text-white mb-3 leading-tight">
+                <h3 className="font-display text-3xl sm:text-4xl text-white mb-4 leading-tight">
                   {card.title}
                 </h3>
-                <p className="text-white/60 text-sm leading-relaxed">{card.description}</p>
+                <p className="text-white/60 text-[15px] leading-relaxed">{card.description}</p>
               </motion.div>
             ))}
           </div>
