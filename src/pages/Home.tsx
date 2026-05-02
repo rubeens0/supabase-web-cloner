@@ -2,10 +2,11 @@ import { Link } from "react-router-dom";
 import { Button } from "../components/ui/button";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 import { ArrowRight, ArrowDown, ArrowUpRight, Flag, Calendar } from "lucide-react";
-import { motion } from "motion/react";
+import { motion, useScroll, useTransform, useInView } from "motion/react";
 import { AnimatedLogo } from "../components/AnimatedLogo";
 import { YoutubeRecent } from "../components/YoutubeRecent";
 import { useLanguage } from "../contexts/LanguageContext";
+import { useRef } from "react";
 import heroImage from "@/assets/hero-bg.webp";
 import aboutImage from "@/assets/about-image.png";
 import kartingImage from "@/assets/karting-image.webp";
@@ -32,6 +33,145 @@ function SectionLabel({ index, children }: { index: string; children: React.Reac
   );
 }
 
+/* ---------- Cinematic Blog Card with Parallax ---------- */
+
+function CinematicBlogCard({
+  post,
+  index,
+}: {
+  post: { id: string; title: string; excerpt: string; tag: string; image: string; date: string };
+  index: number;
+}) {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: cardRef,
+    offset: ["start end", "end start"],
+  });
+  const imageY = useTransform(scrollYProgress, [0, 1], ["-8%", "8%"]);
+
+  return (
+    <motion.div
+      ref={cardRef}
+      initial={{ opacity: 0, y: 80 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-10%" }}
+      transition={{ duration: 0.8, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
+    >
+      <Link
+        to={`/blog/${post.id}`}
+        className="group relative block w-full h-[55vh] sm:h-[65vh] rounded-2xl overflow-hidden border border-white/10 hover:border-white/25 transition-colors"
+      >
+        {/* Parallax background image */}
+        <motion.div
+          className="absolute inset-[-10%] w-[120%] h-[120%]"
+          style={{ y: imageY }}
+        >
+          <img
+            src={post.image}
+            alt={post.title}
+            className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-1000"
+          />
+        </motion.div>
+
+        {/* Dark overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-black/20" />
+
+        {/* Tag badge top-left */}
+        <div className="absolute top-5 left-5 sm:top-7 sm:left-7">
+          <span className="inline-block font-mono text-[10px] uppercase tracking-[0.22em] text-white bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-3 py-1.5">
+            {post.tag}
+          </span>
+        </div>
+
+        {/* Content bottom */}
+        <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-10 md:p-14">
+          <h3 className="font-display text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-white leading-[0.95] tracking-tight mb-4 max-w-4xl">
+            {post.title}
+          </h3>
+          <p className="text-white/60 text-sm sm:text-base leading-relaxed max-w-2xl line-clamp-2 mb-4">
+            {post.excerpt}
+          </p>
+          <div className="flex items-center gap-4">
+            <span className="font-mono text-[11px] text-white/40">{post.date}</span>
+            <span className="inline-flex items-center gap-1.5 text-white/70 text-sm group-hover:text-white group-hover:gap-2.5 transition-all">
+              Leer más <ArrowUpRight className="w-4 h-4" />
+            </span>
+          </div>
+        </div>
+      </Link>
+    </motion.div>
+  );
+}
+
+/* ---------- Word-by-word scroll reveal ---------- */
+
+function ScrollRevealQuote({ text, author }: { text: string; author: string }) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start 0.8", "end 0.3"],
+  });
+  const words = text.replace(/^"|"$/g, "").split(" ");
+
+  return (
+    <div ref={containerRef}>
+      <blockquote className="font-display text-3xl sm:text-5xl md:text-6xl text-white leading-[1.1] tracking-tight">
+        <span className="font-display-italic text-gradient-mono-italic">"</span>
+        {words.map((word, i) => {
+          const start = i / words.length;
+          const end = (i + 1) / words.length;
+          return <ScrollWord key={i} word={word} range={[start, end]} progress={scrollYProgress} />;
+        })}
+        <span className="font-display-italic text-gradient-mono-italic">"</span>
+      </blockquote>
+      <p className="mt-8 font-mono text-[11px] uppercase tracking-[0.25em] text-white/40">
+        {author}
+      </p>
+    </div>
+  );
+}
+
+function ScrollWord({
+  word,
+  range,
+  progress,
+}: {
+  word: string;
+  range: [number, number];
+  progress: ReturnType<typeof useScroll>["scrollYProgress"];
+}) {
+  const opacity = useTransform(progress, [range[0], range[1]], [0.15, 1]);
+  return (
+    <motion.span style={{ opacity }} className="inline-block mr-[0.3em]">
+      {word}
+    </motion.span>
+  );
+}
+
+/* ---------- SVG line draw between sections ---------- */
+
+function SectionDividerLine() {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+  const pathLength = useTransform(scrollYProgress, [0, 0.6], [0, 1]);
+
+  return (
+    <div ref={ref} className="flex justify-center py-4 overflow-hidden">
+      <svg width="2" height="80" viewBox="0 0 2 80" className="text-white/20">
+        <motion.line
+          x1="1" y1="0" x2="1" y2="80"
+          stroke="currentColor"
+          strokeWidth="1"
+          style={{ pathLength }}
+        />
+      </svg>
+    </div>
+  );
+}
+
 /* ---------- Page ---------- */
 
 export function Home() {
@@ -52,6 +192,22 @@ export function Home() {
     transition: {
       duration: perfSettings.simplifyAnimations ? 0.2 : 0.7,
       delay: perfSettings.simplifyAnimations ? 0 : delay,
+      ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
+    },
+  });
+
+  /* Multidirectional reveal helper */
+  const slideIn = (direction: "left" | "right" | "up", delay = 0) => ({
+    initial: {
+      opacity: 0,
+      x: direction === "left" ? -60 : direction === "right" ? 60 : 0,
+      y: direction === "up" ? 40 : 0,
+    },
+    whileInView: { opacity: 1, x: 0, y: 0 },
+    viewport: { once: true, margin: "-10%" },
+    transition: {
+      duration: 0.8,
+      delay,
       ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
     },
   });
@@ -214,69 +370,87 @@ export function Home() {
         </div>
       </section>
 
+      {/* SVG line draw transition */}
+      <SectionDividerLine />
+
       {/* ============== 02 · SOCIAL PROOF ============== */}
       <section className="border-y border-white/[0.08]">
         <div className="max-w-7xl mx-auto px-5 sm:px-10 md:px-16 py-14 sm:py-20">
-          <div className="mb-10">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-10%" }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            className="mb-10"
+          >
             <p className="font-display text-4xl sm:text-5xl md:text-6xl text-white tracking-tight leading-tight max-w-3xl">
               <span className="font-display-italic text-gradient-mono-italic">{t("home.proof.headlineA")}</span> {t("home.proof.headlineB")}
             </p>
-          </div>
+          </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-10 pt-6 border-t border-white/[0.08]">
-            <div>
+            {/* Stats enter from different directions */}
+            <motion.div {...slideIn("left", 0)}>
               <div className="font-display text-5xl sm:text-6xl text-white mb-2 tracking-tight">
                 2024<span className="text-secondary">.</span>
               </div>
               <p className="text-sm text-white/50">{t("home.proof.stat1.label")}</p>
-            </div>
-            <div>
+            </motion.div>
+            <motion.div {...slideIn("up", 0.1)}>
               <div className="font-display text-5xl sm:text-6xl text-white mb-2 tracking-tight">
                 CEK<span className="text-secondary">.</span>
               </div>
               <p className="text-sm text-white/50">{t("home.proof.stat2.label")}</p>
-            </div>
-            <div>
+            </motion.div>
+            <motion.div {...slideIn("right", 0.2)}>
               <div className="font-display text-5xl sm:text-6xl text-white mb-2 tracking-tight">
                 <span className="text-primary">{t("home.proof.stat3.value")}</span>
               </div>
               <p className="text-sm text-white/50">{t("home.proof.stat3.label")}</p>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* ============== 03 · QUIÉN SOY ============== */}
+      {/* ============== 03 · QUIÉN SOY — Sticky headline ============== */}
       <section id="about-section" className="border-b border-white/[0.08]">
         <div className="max-w-7xl mx-auto px-5 sm:px-10 md:px-16 py-14 sm:py-20">
           <SectionLabel index="03">{t("home.about.title")}</SectionLabel>
 
           <div className="mt-10 grid lg:grid-cols-12 gap-10 lg:gap-20 items-start">
             <div className="lg:col-span-7">
-              <h2 className="font-display text-5xl sm:text-6xl md:text-7xl text-white leading-[1] tracking-tight mb-10">
+              <motion.h2
+                {...slideIn("left")}
+                className="font-display text-5xl sm:text-6xl md:text-7xl text-white leading-[1] tracking-tight mb-10 lg:sticky lg:top-28"
+              >
                 {t("home.about.headlineA")} <span className="font-display-italic text-gradient-mono-italic">{t("home.about.headlineB")}</span>
                 <br />
                 {t("home.about.headlineC")}
-              </h2>
+              </motion.h2>
 
               <div className="space-y-5 text-white/70 max-w-xl leading-relaxed text-[15px]">
-                <p>{t("home.about.p1")}</p>
-                <p>{t("home.about.p2")}</p>
-                <p>{t("home.about.p3")}</p>
+                <motion.p {...slideIn("left", 0.1)}>{t("home.about.p1")}</motion.p>
+                <motion.p {...slideIn("left", 0.15)}>{t("home.about.p2")}</motion.p>
+                <motion.p {...slideIn("left", 0.2)}>{t("home.about.p3")}</motion.p>
               </div>
 
-              <Link to="/contacto" className="inline-block mt-10">
-                <Button
-                  variant="outline"
-                  className="rounded-full h-11 px-6 border-white/20 bg-transparent text-white hover:bg-white hover:text-black hover:border-white gap-2"
-                >
-                  {t("home.about.cta")}
-                  <ArrowRight className="w-4 h-4" />
-                </Button>
-              </Link>
+              <motion.div {...slideIn("left", 0.25)}>
+                <Link to="/contacto" className="inline-block mt-10">
+                  <Button
+                    variant="outline"
+                    className="rounded-full h-11 px-6 border-white/20 bg-transparent text-white hover:bg-white hover:text-black hover:border-white gap-2"
+                  >
+                    {t("home.about.cta")}
+                    <ArrowRight className="w-4 h-4" />
+                  </Button>
+                </Link>
+              </motion.div>
             </div>
 
-            <div className="lg:col-span-5">
+            <motion.div
+              {...slideIn("right", 0.1)}
+              className="lg:col-span-5"
+            >
               <div className="relative aspect-[4/5] rounded-2xl overflow-hidden border border-white/10">
                 <ImageWithFallback src={aboutImage} alt="Rubén Muñoz" className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
@@ -289,24 +463,30 @@ export function Home() {
                   </p>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* ============== 04 · ÁREAS ============== */}
+      {/* ============== 04 · ÁREAS — Alternating slide in ============== */}
       <section className="border-b border-white/[0.08]">
         <div className="max-w-7xl mx-auto px-5 sm:px-10 md:px-16 py-14 sm:py-20">
           <div className="mb-14 max-w-3xl">
             <SectionLabel index="04">{t("home.areas.title")}</SectionLabel>
-            <h2 className="mt-6 font-display text-5xl sm:text-6xl md:text-7xl text-white leading-[1] tracking-tight">
+            <motion.h2
+              {...slideIn("up")}
+              className="mt-6 font-display text-5xl sm:text-6xl md:text-7xl text-white leading-[1] tracking-tight"
+            >
               {t("home.areas.headlineA")} <span className="font-display-italic text-gradient-mono-italic">{t("home.areas.headlineB")}</span> {t("home.areas.headlineC")}
-            </h2>
-            <p className="mt-5 text-white/55 text-[15px] leading-relaxed">{t("home.areas.subtitle")}</p>
+            </motion.h2>
+            <motion.p {...slideIn("up", 0.1)} className="mt-5 text-white/55 text-[15px] leading-relaxed">
+              {t("home.areas.subtitle")}
+            </motion.p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-5">
             <motion.div
+              {...slideIn("left", 0)}
               whileHover={{ y: -4 }}
               transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
               className="group border border-white/10 rounded-2xl overflow-hidden bg-white/[0.02] hover:border-white/25 transition-colors"
@@ -330,6 +510,7 @@ export function Home() {
             </motion.div>
 
             <motion.div
+              {...slideIn("right", 0.1)}
               whileHover={{ y: -4 }}
               transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
               className="group border border-white/10 rounded-2xl overflow-hidden bg-white/[0.02] hover:border-white/25 transition-colors"
@@ -358,15 +539,18 @@ export function Home() {
         </div>
       </section>
 
-      {/* ============== 05 · BLOG ============== */}
+      {/* ============== 05 · BLOG — Cinematic Full-Width ============== */}
       <section className="border-b border-white/[0.08]">
         <div className="max-w-7xl mx-auto px-5 sm:px-10 md:px-16 py-14 sm:py-20">
           <div className="flex items-end justify-between mb-14">
             <div>
               <SectionLabel index="05">{t("nav.blog")}</SectionLabel>
-              <h2 className="mt-6 font-display text-5xl sm:text-6xl md:text-7xl text-white leading-[1] tracking-tight">
+              <motion.h2
+                {...slideIn("up")}
+                className="mt-6 font-display text-5xl sm:text-6xl md:text-7xl text-white leading-[1] tracking-tight"
+              >
                 {t("home.blog.headlineA")} <span className="font-display-italic text-gradient-mono-italic">{t("home.blog.headlineB")}</span>.
-              </h2>
+              </motion.h2>
             </div>
             <Link
               to="/blog"
@@ -376,33 +560,10 @@ export function Home() {
             </Link>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-5">
-            {latestPosts.map((post) => (
-              <Link
-                key={post.id}
-                to={`/blog/${post.id}`}
-                className="group border border-white/10 rounded-2xl overflow-hidden bg-white/[0.02] hover:border-white/25 transition-colors"
-              >
-                <div className="aspect-[16/10] overflow-hidden border-b border-white/10">
-                  <ImageWithFallback
-                    src={post.image}
-                    alt={post.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                  />
-                </div>
-                <div className="p-6">
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="inline-block font-mono text-[10px] uppercase tracking-[0.22em] text-secondary border border-secondary/30 rounded-full px-2.5 py-1">
-                      {post.tag}
-                    </span>
-                    <span className="font-mono text-[10px] text-white/40">{post.date}</span>
-                  </div>
-                  <h3 className="font-display text-xl leading-tight mb-3 text-white group-hover:text-white">
-                    {post.title}
-                  </h3>
-                  <p className="text-sm text-white/50 leading-relaxed line-clamp-2">{post.excerpt}</p>
-                </div>
-              </Link>
+          {/* Cinematic cards */}
+          <div className="space-y-6">
+            {latestPosts.map((post, i) => (
+              <CinematicBlogCard key={post.id} post={post} index={i} />
             ))}
           </div>
 
@@ -419,31 +580,39 @@ export function Home() {
         </div>
       </section>
 
+      {/* SVG line draw transition */}
+      <SectionDividerLine />
+
       {/* ============== 06 · YOUTUBE ============== */}
       <YoutubeRecent />
 
-      {/* ============== 07 · MANIFIESTO ============== */}
+      {/* SVG line draw transition */}
+      <SectionDividerLine />
+
+      {/* ============== 07 · MANIFIESTO — Word-by-word reveal ============== */}
       <section className="border-b border-white/[0.08]">
         <div className="max-w-4xl mx-auto px-5 sm:px-10 md:px-16 py-16 sm:py-24 text-center">
           <SectionLabel index="07">Manifiesto</SectionLabel>
           <div className="mt-10 mb-10 flex justify-center">
             <AnimatedLogo size={56} />
           </div>
-          <blockquote className="font-display text-3xl sm:text-5xl md:text-6xl text-white leading-[1.1] tracking-tight">
-            <span className="font-display-italic text-gradient-mono-italic">"</span>
-            {t("home.quote").replace(/^"|"$/g, "")}
-            <span className="font-display-italic text-gradient-mono-italic">"</span>
-          </blockquote>
-          <p className="mt-8 font-mono text-[11px] uppercase tracking-[0.25em] text-white/40">
-            {t("home.quote.author")}
-          </p>
+          <ScrollRevealQuote
+            text={t("home.quote")}
+            author={t("home.quote.author")}
+          />
         </div>
       </section>
 
       {/* ============== 08 · CTA FINAL ============== */}
       <section>
         <div className="max-w-7xl mx-auto px-5 sm:px-10 md:px-16 py-14 sm:py-20">
-          <div className="relative border border-white/10 rounded-3xl overflow-hidden bg-gradient-to-br from-secondary/15 via-black to-black p-8 sm:p-16">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-10%" }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            className="relative border border-white/10 rounded-3xl overflow-hidden bg-gradient-to-br from-secondary/15 via-black to-black p-8 sm:p-16"
+          >
             <div className="absolute top-6 right-6 font-mono text-[10px] uppercase tracking-[0.22em] text-white/30">
               N° 08 — CONTACT
             </div>
@@ -508,7 +677,7 @@ export function Home() {
                 </Link>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
     </div>

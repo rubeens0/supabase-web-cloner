@@ -9,7 +9,6 @@ export function BusinessButton() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // Defer Calendly setup until the browser is idle to keep it off the critical path
     const linkHref = 'https://assets.calendly.com/assets/external/widget.css';
     const scriptSrc = 'https://assets.calendly.com/assets/external/widget.js';
 
@@ -77,21 +76,31 @@ export function BusinessButton() {
   const hidden = isNearFooter || !isVisible;
 
   return (
-    <div className="fixed bottom-5 sm:bottom-7 inset-x-0 z-50 flex justify-center pointer-events-none px-4">
+    <div className="fixed bottom-6 sm:bottom-8 inset-x-0 z-50 flex justify-center pointer-events-none px-6">
       <motion.button
         onClick={openCalendly}
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, scale: 0.85, y: 24 }}
         animate={{
           opacity: hidden ? 0 : 1,
-          y: hidden ? 20 : 0,
+          scale: hidden ? 0.85 : 1,
+          y: hidden ? 24 : 0,
           pointerEvents: hidden ? 'none' : 'auto',
         }}
-        transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-        className="flex items-center justify-center gap-2 bg-gradient-mono text-black rounded-full px-6 py-3 text-[13px] font-medium hover:brightness-110 transition-all shadow-[0_8px_32px_-4px_rgba(0,0,0,0.6)] border border-white/20 whitespace-nowrap"
+        transition={{ type: 'spring', stiffness: 260, damping: 22 }}
+        className="relative flex items-center justify-center gap-2.5 bg-white text-black rounded-full px-8 py-4 text-[15px] font-semibold hover:bg-white/95 transition-colors shadow-[0_8px_40px_-4px_rgba(255,255,255,0.25)] border border-white/30 whitespace-nowrap pointer-events-auto"
       >
-        <Calendar className="w-3.5 h-3.5" />
+        {/* Pulse glow ring */}
+        <span className="absolute inset-0 rounded-full animate-[cta-ping_2.5s_cubic-bezier(0,0,0.2,1)_infinite] border-2 border-white/40" />
+        <Calendar className="w-4 h-4" />
         <span>{t('business.schedule')}</span>
       </motion.button>
+
+      <style>{`
+        @keyframes cta-ping {
+          0% { transform: scale(1); opacity: 0.5; }
+          75%, 100% { transform: scale(1.35); opacity: 0; }
+        }
+      `}</style>
     </div>
   );
 }

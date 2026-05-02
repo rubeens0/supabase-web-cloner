@@ -3,7 +3,13 @@ import { motion } from 'motion/react';
 
 export function Footer() {
   return (
-    <footer className="bg-black border-t border-white/10 py-6">
+    <motion.footer
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-5%' }}
+      transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+      className="bg-black border-t border-white/10 py-6"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 flex justify-center items-center">
         <motion.a
           href="https://www.instagram.com/rubenmunooz._"
@@ -19,6 +25,6 @@ export function Footer() {
           <span className="text-sm">@rubenmunooz._</span>
         </motion.a>
       </div>
-    </footer>
+    </motion.footer>
   );
 }
