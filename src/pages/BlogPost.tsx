@@ -849,11 +849,20 @@ Many thanks to all the people involved.`,
               // Contenido normal para otros posts
               post.content.split('\n\n').map((paragraph, index) => (
                 <p key={index} className="text-white/80 mb-6 leading-relaxed">
-                  {paragraph.split(/(https?:\/\/[^\s,;.!?)]+)/g).map((part, j) =>
-                    /^https?:\/\//.test(part) ? (
-                      <a key={j} href={part} target="_blank" rel="noopener noreferrer" className="text-white underline underline-offset-4 hover:text-white/70 transition-colors">
-                        {part.replace(/^https?:\/\/(www\.)?/, '')}
-                      </a>
+                  {paragraph.split(/(https?:\/\/[^\s]+)/g).map((part, j) => {
+                    if (/^https?:\/\//.test(part)) {
+                      const clean = part.replace(/[,;!?)]+$/, '');
+                      const trailing = part.slice(clean.length);
+                      return (
+                        <span key={j}>
+                          <a href={clean} target="_blank" rel="noopener noreferrer" className="text-white underline underline-offset-4 hover:text-white/70 transition-colors">
+                            {clean.replace(/^https?:\/\/(www\.)?/, '')}
+                          </a>{trailing}
+                        </span>
+                      );
+                    }
+                    return <span key={j}>{part}</span>;
+                  })}
                     ) : (
                       <span key={j}>{part}</span>
                     )
