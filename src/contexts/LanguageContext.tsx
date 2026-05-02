@@ -422,7 +422,7 @@ const translations = {
       'Estrenamos un rediseño íntegro de rubenmunoz.com con una identidad más editorial, una nueva sección 2026 con mapa interactivo del calendario CEK, acceso privado al paddock y nuevos proyectos en marcha.',
     'blog.ecomscrape.title': 'EcomScrape: inteligencia e-commerce al alcance de un clic',
     'blog.ecomscrape.excerpt':
-      'Rubén Muñoz y Anas Walton lanzan EcomScrape, una herramienta profesional de extracción de catálogos e inteligencia competitiva para Shopify, WooCommerce y PrestaShop.',
+      'Rubén Muñoz, Anas Walton y soyrage.es lanzan EcomScrape, una herramienta profesional de extracción de catálogos e inteligencia competitiva para Shopify, WooCommerce y PrestaShop.',
 
     /* ===== Sponsors ===== */
     'sponsors.hero.title': 'Patrocinio',
