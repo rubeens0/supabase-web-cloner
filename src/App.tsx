@@ -25,6 +25,7 @@ import { Dossier } from "@/pages/Dossier";
 import { LiveTimingStreaming } from "@/pages/LiveTimingStreaming";
 import { RDE } from "@/pages/RDE";
 import { Auth } from "@/pages/Auth";
+import { Booking } from "@/pages/Booking";
 
 
 const queryClient = new QueryClient();
@@ -42,7 +43,8 @@ function AppContent() {
     location.pathname.includes("/dossier") ||
     location.pathname.includes("/2026") ||
     location.pathname.includes("/cek2026") ||
-    location.pathname.includes("live-timing-streaming");
+    location.pathname.includes("live-timing-streaming") ||
+    location.pathname.includes("/booking");
 
   return (
     <>
@@ -73,6 +75,7 @@ function AppContent() {
             <Route path="/rde" element={<PageTransition><RDE /></PageTransition>} />
             <Route path="/rdeoperators" element={<PageTransition><RDE /></PageTransition>} />
             <Route path="/auth" element={<PageTransition><Auth /></PageTransition>} />
+            <Route path="/booking" element={<PageTransition><Booking /></PageTransition>} />
             
             <Route path="*" element={<PageTransition><Home /></PageTransition>} />
           </Routes>
