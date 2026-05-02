@@ -74,6 +74,7 @@ function AppContent() {
             <Route path="/rde" element={<PageTransition><RDE /></PageTransition>} />
             <Route path="/rdeoperators" element={<PageTransition><RDE /></PageTransition>} />
             <Route path="/auth" element={<PageTransition><Auth /></PageTransition>} />
+            <Route path="/booking" element={<PageTransition><Booking /></PageTransition>} />
             
             <Route path="*" element={<PageTransition><Home /></PageTransition>} />
           </Routes>
