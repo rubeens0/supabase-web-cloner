@@ -25,6 +25,7 @@ import { Dossier } from "@/pages/Dossier";
 import { LiveTimingStreaming } from "@/pages/LiveTimingStreaming";
 import { RDE } from "@/pages/RDE";
 import { Auth } from "@/pages/Auth";
+import { Booking } from "@/pages/Booking";
 
 
 const queryClient = new QueryClient();
