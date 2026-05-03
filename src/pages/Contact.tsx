@@ -1,4 +1,4 @@
-import { Mail, MapPin, Instagram, ArrowUpRight } from 'lucide-react';
+import { Mail, MapPin, Instagram, ArrowUpRight, CalendarCheck } from 'lucide-react';
 import { motion } from 'motion/react';
 import { useLanguage } from '../contexts/LanguageContext';
 import backgroundImage from '@/assets/contact-bg.jpg';
