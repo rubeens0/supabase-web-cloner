@@ -1,5 +1,6 @@
-import { Mail, MapPin, Instagram, ArrowUpRight } from 'lucide-react';
+import { Mail, MapPin, Instagram, ArrowUpRight, CalendarCheck } from 'lucide-react';
 import { motion } from 'motion/react';
+import { Link } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
 import backgroundImage from '@/assets/contact-bg.jpg';
 
@@ -14,7 +15,7 @@ function SectionLabel({ index, children }: { index: string; children: React.Reac
 }
 
 export function Contact() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   const fadeIn = (delay = 0) => ({
     initial: { opacity: 0, y: 16 },
@@ -40,6 +41,12 @@ export function Contact() {
       label: t('contact.info.instagram'),
       value: '@rubenmunooz._',
       href: 'https://www.instagram.com/rubenmunooz._',
+    },
+    {
+      icon: CalendarCheck,
+      label: language === 'es' ? 'Reserva' : 'Booking',
+      value: language === 'es' ? 'Agenda una llamada' : 'Book a call',
+      href: '/booking',
     },
   ];
 
@@ -113,15 +120,25 @@ export function Contact() {
                   </div>
                 );
                 return c.href ? (
-                  <a
-                    key={c.label}
-                    href={c.href}
-                    target={c.href.startsWith('http') ? '_blank' : undefined}
-                    rel={c.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                    className="block hover:bg-white/[0.02] -mx-3 px-3 rounded-lg transition-colors"
-                  >
-                    {inner}
-                  </a>
+                  c.href.startsWith('/') ? (
+                    <Link
+                      key={c.label}
+                      to={c.href}
+                      className="block hover:bg-white/[0.02] -mx-3 px-3 rounded-lg transition-colors"
+                    >
+                      {inner}
+                    </Link>
+                  ) : (
+                    <a
+                      key={c.label}
+                      href={c.href}
+                      target={c.href.startsWith('http') ? '_blank' : undefined}
+                      rel={c.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                      className="block hover:bg-white/[0.02] -mx-3 px-3 rounded-lg transition-colors"
+                    >
+                      {inner}
+                    </a>
+                  )
                 ) : (
                   <div key={c.label}>{inner}</div>
                 );
