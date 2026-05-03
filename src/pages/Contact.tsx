@@ -41,6 +41,12 @@ export function Contact() {
       value: '@rubenmunooz._',
       href: 'https://www.instagram.com/rubenmunooz._',
     },
+    {
+      icon: CalendarCheck,
+      label: language === 'es' ? 'Reserva' : 'Booking',
+      value: language === 'es' ? 'Agenda una llamada' : 'Book a call',
+      href: '/booking',
+    },
   ];
 
   return (
