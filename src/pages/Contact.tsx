@@ -120,15 +120,25 @@ export function Contact() {
                   </div>
                 );
                 return c.href ? (
-                  <a
-                    key={c.label}
-                    href={c.href}
-                    target={c.href.startsWith('http') ? '_blank' : undefined}
-                    rel={c.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                    className="block hover:bg-white/[0.02] -mx-3 px-3 rounded-lg transition-colors"
-                  >
-                    {inner}
-                  </a>
+                  c.href.startsWith('/') ? (
+                    <Link
+                      key={c.label}
+                      to={c.href}
+                      className="block hover:bg-white/[0.02] -mx-3 px-3 rounded-lg transition-colors"
+                    >
+                      {inner}
+                    </Link>
+                  ) : (
+                    <a
+                      key={c.label}
+                      href={c.href}
+                      target={c.href.startsWith('http') ? '_blank' : undefined}
+                      rel={c.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                      className="block hover:bg-white/[0.02] -mx-3 px-3 rounded-lg transition-colors"
+                    >
+                      {inner}
+                    </a>
+                  )
                 ) : (
                   <div key={c.label}>{inner}</div>
                 );
