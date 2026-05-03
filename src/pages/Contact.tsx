@@ -14,7 +14,7 @@ function SectionLabel({ index, children }: { index: string; children: React.Reac
 }
 
 export function Contact() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   const fadeIn = (delay = 0) => ({
     initial: { opacity: 0, y: 16 },
