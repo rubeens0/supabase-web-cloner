@@ -7,6 +7,7 @@ import portadaExtremaduraImg from '@/assets/cek-2026-campillos-18.jpg';
 import cajaRuralImg from '@/assets/caja-rural-extremadura.png';
 import webRedesignImg from '@/assets/website-redesign-2026.png';
 import ecomscrapeImg from '@/assets/ecomscrape-post.jpg';
+import motorlandImg from '@/assets/motorland-cek-r2.jpg';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
 import { motion } from 'motion/react';
@@ -195,6 +196,18 @@ Many thanks to all the people involved.`,
       readTime: '4 min',
       category: t('blog.category.marketing'),
       image: ecomscrapeImg,
+    },
+    {
+      id: 'motorland-cek-r2',
+      title: t('blog.motorland.title'),
+      excerpt: t('blog.motorland.excerpt'),
+      content: language === 'es'
+        ? `Rubén Muñoz se prepara para afrontar la segunda prueba del Campeonato de España de Karting 2026 en el circuito de MotorLand Aragón, en Alcañiz (Teruel), que se disputará del 15 al 17 de mayo.\n\nTras la experiencia acumulada en la primera ronda de Campillos, el piloto extremeño llega a esta cita con un plan de preparación ambicioso: tres días completos de entrenamientos en el mismo trazado durante el fin de semana del 8 al 10 de mayo. Tres jornadas intensivas que permitirán a Rubén y al equipo DB Motorsport conocer a fondo el circuito, ajustar la puesta a punto del kart y trabajar en la mejora del ritmo de cara a la competición.\n\nMotorLand Aragón es uno de los trazados más técnicos y exigentes del calendario, con cambios de altimetría, curvas de media y alta velocidad y una recta de salida/meta que pone a prueba la velocidad punta del kart. Es un circuito que premia la constancia y la precisión, y donde la preparación previa marca la diferencia.\n\nEl objetivo para esta segunda ronda es claro: aprovechar al máximo los días de test para llegar al fin de semana de competición con confianza, ritmo y un setup competitivo. Rubén buscará mejorar sus posiciones respecto a Campillos y seguir sumando experiencia en su primer año completo en la categoría Senior del CEK.\n\nLa página de seguimiento en directo se habilitará el 15 de mayo para que podáis seguir la evolución de Rubén durante todo el fin de semana de competición.\n\n¡Nos vemos en Motorland!`
+        : `Rubén Muñoz is getting ready to take on the second round of the 2026 Spanish Karting Championship at the MotorLand Aragón circuit in Alcañiz (Teruel), which will take place from May 15 to 17.\n\nAfter the experience gained in the first round at Campillos, the Extremaduran driver arrives at this event with an ambitious preparation plan: three full days of testing at the same track during the weekend of May 8 to 10. Three intensive sessions that will allow Rubén and DB Motorsport to get to know the circuit in depth, fine-tune the kart setup and work on improving pace ahead of the competition.\n\nMotorLand Aragón is one of the most technical and demanding layouts on the calendar, with elevation changes, medium and high-speed corners and a start/finish straight that tests the kart's top speed. It is a circuit that rewards consistency and precision, and where prior preparation makes the difference.\n\nThe goal for this second round is clear: make the most of the test days to arrive at the race weekend with confidence, rhythm and a competitive setup. Rubén will look to improve his positions from Campillos and continue gaining experience in his first full year in the CEK Senior category.\n\nThe live timing page will be enabled on May 15 so you can follow Rubén's progress throughout the race weekend.\n\nSee you at Motorland!`,
+      date: '2026-05-06',
+      readTime: '3 min',
+      category: t('blog.category.karting'),
+      image: motorlandImg,
     },
   ];
 
