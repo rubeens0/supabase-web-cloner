@@ -7,6 +7,7 @@ import portadaExtremaduraImg from '@/assets/cek-2026-campillos-18.jpg';
 import cajaRuralImg from '@/assets/caja-rural-extremadura.png';
 import webRedesignImg from '@/assets/website-redesign-2026.png';
 import ecomscrapeImg from '@/assets/ecomscrape-post.jpg';
+import motorlandImg from '@/assets/motorland-cek-r2.jpg';
 import { useLanguage } from '../contexts/LanguageContext';
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
@@ -118,6 +119,15 @@ export function Blog() {
       readTime: '4 min',
       category: t('blog.category.marketing'),
       image: ecomscrapeImg,
+    },
+    {
+      id: 'motorland-cek-r2',
+      title: t('blog.motorland.title'),
+      excerpt: t('blog.motorland.excerpt'),
+      date: '2026-05-06',
+      readTime: '3 min',
+      category: t('blog.category.karting'),
+      image: motorlandImg,
     },
   ];
 
