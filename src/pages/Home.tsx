@@ -20,6 +20,7 @@ import cekZaragozaImg from "@/assets/cek-zaragoza.jpg";
 import cajaRuralImg from "@/assets/caja-rural-extremadura.png";
 import webRedesignImg from "@/assets/website-redesign-2026.png";
 import ecomscrapeImg from "@/assets/ecomscrape-post.jpg";
+import motorlandImg from "@/assets/motorland-cek-r2.jpg";
 import { getPerformanceSettings, PREMIUM_ANIMATIONS } from "../utils/performanceDetector";
 
 /* ---------- Editorial primitives ---------- */
@@ -214,6 +215,14 @@ export function Home() {
   });
 
   const allPosts = [
+    {
+      id: "motorland-cek-r2",
+      title: t("blog.motorland.title"),
+      excerpt: t("blog.motorland.excerpt"),
+      tag: t("blog.category.karting"),
+      image: motorlandImg,
+      date: "2026-05-06",
+    },
     {
       id: "ecomscrape-launch",
       title: t("blog.ecomscrape.title"),
