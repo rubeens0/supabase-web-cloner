@@ -7,7 +7,7 @@ import { useLanguage } from '../contexts/LanguageContext';
 import netproLogo from '@/assets/netpro-branding.jpg';
 import netspyImg from '@/assets/netspy-branding.png';
 import rdeLogo from '@/assets/rde-logo.png';
-import ecomscrapeImg from '@/assets/ecomscrape-post.jpg';
+import ecomscrapeImg from '@/assets/ecomscrape-post.webp';
 
 function SectionLabel({ index, children }: { index: string; children: React.ReactNode }) {
   return (
