@@ -5,7 +5,7 @@ import netspyImg from '@/assets/netspy-branding-new.jpg';
 import cekZaragozaImg from '@/assets/cek-zaragoza.jpg';
 import portadaExtremaduraImg from '@/assets/cek-2026-campillos-18.jpg';
 import cajaRuralImg from '@/assets/caja-rural-extremadura.png';
-import webRedesignImg from '@/assets/website-redesign-2026.png';
+import webRedesignImg from '@/assets/website-redesign-2026.webp';
 import ecomscrapeImg from '@/assets/ecomscrape-post.webp';
 import motorlandImg from '@/assets/motorland-cek-r2.webp';
 import { useLanguage } from '../contexts/LanguageContext';

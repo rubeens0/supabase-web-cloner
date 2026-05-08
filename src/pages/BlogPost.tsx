@@ -5,7 +5,7 @@ import albroksaImg from '@/assets/albroksa-patrocinio.jpeg';
 import testRecasImg from '@/assets/test-recas-2026.jpg';
 import portadaExtremaduraImg from '@/assets/cek-2026-campillos-18.jpg';
 import cajaRuralImg from '@/assets/caja-rural-extremadura.png';
-import webRedesignImg from '@/assets/website-redesign-2026.png';
+import webRedesignImg from '@/assets/website-redesign-2026.webp';
 import ecomscrapeImg from '@/assets/ecomscrape-post.webp';
 import motorlandImg from '@/assets/motorland-cek-r2.webp';
 import { useParams, Link, Navigate } from 'react-router-dom';
