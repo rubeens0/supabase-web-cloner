@@ -335,14 +335,7 @@ export function Home() {
               <span>{t("home.hero.kicker")}</span>
             </motion.div>
 
-            <motion.h1
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{
-                duration: perfSettings.simplifyAnimations ? 0.2 : 0.7,
-                delay: perfSettings.simplifyAnimations ? 0 : 0.2,
-                ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
-              }}
+            <h1
               className="font-display leading-[0.95] sm:text-7xl md:text-8xl lg:text-[140px] text-white mb-10 max-w-5xl tracking-[-0.02em] text-5xl"
             >
               {t("home.hero.titleA")}{" "}
@@ -351,7 +344,7 @@ export function Home() {
               {t("home.hero.titleC")}{" "}
               <span className="font-display-italic">{t("home.hero.titleD")}</span>
               <span className="text-secondary">.</span>
-            </motion.h1>
+            </h1>
 
             <motion.p
               {...fadeIn(0.3)}
