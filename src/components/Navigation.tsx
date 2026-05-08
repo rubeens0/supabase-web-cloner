@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { Menu, X, ArrowRight, User, LogOut, Mail } from 'lucide-react';
-import logoX from '@/assets/logo-x-white.png';
+import logoX from '@/assets/logo-x-white.webp';
 import { supabase } from '@/integrations/supabase/client';
 import type { User as SupabaseUser } from '@supabase/supabase-js';
 

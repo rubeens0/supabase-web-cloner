@@ -8,7 +8,7 @@ import { YoutubeRecent } from "../components/YoutubeRecent";
 import { useLanguage } from "../contexts/LanguageContext";
 import { useRef } from "react";
 import heroImage from "@/assets/hero-bg.webp";
-import aboutImage from "@/assets/about-image.png";
+import aboutImage from "@/assets/about-image.webp";
 import kartingImage from "@/assets/karting-image.webp";
 import marketingImage from "@/assets/marketing-image.webp";
 import portadaExtremaduraImg from "@/assets/cek-2026-campillos-18.jpg";
@@ -19,8 +19,8 @@ import netspyImg from "@/assets/netspy-branding-new.jpg";
 import cekZaragozaImg from "@/assets/cek-zaragoza.jpg";
 import cajaRuralImg from "@/assets/caja-rural-extremadura.png";
 import webRedesignImg from "@/assets/website-redesign-2026.png";
-import ecomscrapeImg from "@/assets/ecomscrape-post.jpg";
-import motorlandImg from "@/assets/motorland-cek-r2.jpg";
+import ecomscrapeImg from "@/assets/ecomscrape-post.webp";
+import motorlandImg from "@/assets/motorland-cek-r2.webp";
 import { getPerformanceSettings, PREMIUM_ANIMATIONS } from "../utils/performanceDetector";
 
 /* ---------- Editorial primitives ---------- */
