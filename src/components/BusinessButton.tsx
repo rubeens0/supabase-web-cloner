@@ -17,6 +17,8 @@ export function BusinessButton() {
         const link = document.createElement('link');
         link.href = linkHref;
         link.rel = 'stylesheet';
+        link.media = 'print';
+        link.onload = () => { link.media = 'all'; };
         document.head.appendChild(link);
       }
       if (!document.querySelector(`script[src="${scriptSrc}"]`)) {
