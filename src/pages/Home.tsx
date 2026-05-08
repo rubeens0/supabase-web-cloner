@@ -344,7 +344,7 @@ export function Home() {
               {t("home.hero.titleC")}{" "}
               <span className="font-display-italic">{t("home.hero.titleD")}</span>
               <span className="text-secondary">.</span>
-            </motion.h1>
+            </h1>
 
             <motion.p
               {...fadeIn(0.3)}
