@@ -104,7 +104,7 @@ export function Business() {
             extendedDescription={t('business.netspy.p1')}
             image={netspyImg}
             imageAlt="Netspy Community"
-            href="https://www.netspy.es/?utm_source=rubenweb"
+            href="https://netspy.es/rrss-landing-1?utm_source=rubenweb&utm_medium=rubenmarca&utm_campaign=marca-personal"
             linkText="netspy.es"
             features={['Community Building', 'Exclusive Events', 'Founder Networking', 'Strategic Partnerships']}
             secondaryLink={{
