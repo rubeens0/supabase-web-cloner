@@ -183,12 +183,12 @@ export function LiveTimingStreaming() {
                     ) : (
                       <div className="text-center p-6 md:p-8">
                         <Clock className="w-12 h-12 md:w-16 md:h-16 text-white/20 mx-auto mb-3 md:mb-4" />
-                        <p className="text-white/40 text-sm md:text-base">
+                        <p className="text-white/70 text-sm md:text-base">
                           {language === 'es' 
                             ? 'Live timing disponible durante las sesiones'
                             : 'Live timing available during sessions'}
                         </p>
-                        <p className="text-white/30 text-xs md:text-sm mt-2">
+                        <p className="text-white/60 text-xs md:text-sm mt-2">
                           {language === 'es' 
                             ? 'Próxima sesión: Por confirmar'
                             : 'Next session: To be confirmed'}
@@ -304,12 +304,12 @@ export function LiveTimingStreaming() {
                     ) : (
                       <div className="text-center p-6 md:p-8">
                         <Youtube className="w-12 h-12 md:w-16 md:h-16 text-white/20 mx-auto mb-3 md:mb-4" />
-                        <p className="text-white/40 text-sm md:text-base">
+                        <p className="text-white/70 text-sm md:text-base">
                           {language === 'es' 
                             ? 'Streaming disponible durante las carreras'
                             : 'Streaming available during races'}
                         </p>
-                        <p className="text-white/30 text-xs md:text-sm mt-2">
+                        <p className="text-white/60 text-xs md:text-sm mt-2">
                           {language === 'es' 
                             ? 'El directo comenzará cuando inicie la sesión'
                             : 'Stream will start when the session begins'}

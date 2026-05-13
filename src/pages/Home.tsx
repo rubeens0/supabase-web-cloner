@@ -516,7 +516,7 @@ export function Home() {
                 </div>
                 <h3 className="font-display text-3xl mb-3 text-white">{t("home.areas.karting.title")}</h3>
                 <p className="text-white/60 text-sm leading-relaxed mb-3">{t("home.areas.karting.p1")}</p>
-                <p className="text-white/40 text-sm leading-relaxed">{t("home.areas.karting.p2")}</p>
+                <p className="text-white/70 text-sm leading-relaxed">{t("home.areas.karting.p2")}</p>
               </div>
             </motion.div>
 
@@ -542,7 +542,7 @@ export function Home() {
                   </div>
                   <h3 className="font-display text-3xl mb-3 text-white">{t("home.areas.marketing.title")}</h3>
                   <p className="text-white/60 text-sm leading-relaxed mb-3">{t("home.areas.marketing.p1")}</p>
-                  <p className="text-white/40 text-sm leading-relaxed">{t("home.areas.marketing.p2")}</p>
+                  <p className="text-white/70 text-sm leading-relaxed">{t("home.areas.marketing.p2")}</p>
                 </div>
               </Link>
             </motion.div>
