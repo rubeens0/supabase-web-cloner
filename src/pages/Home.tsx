@@ -322,6 +322,10 @@ export function Home() {
             alt="Karting"
             className="w-full h-full object-cover opacity-60"
             loading="eager"
+            fetchPriority="high"
+            decoding="sync"
+            width={1920}
+            height={1080}
           />
         </motion.div>
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/85 to-black/60" />
