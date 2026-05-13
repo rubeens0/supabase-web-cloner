@@ -549,11 +549,21 @@ Many thanks to all the people involved.`,
         }
       };
 
+  // Keep SEO title under ~60 chars and description under ~160 chars
+  const truncate = (s: string, max: number) => {
+    if (!s || s.length <= max) return s;
+    const cut = s.slice(0, max - 1);
+    const lastSpace = cut.lastIndexOf(' ');
+    return (lastSpace > max / 2 ? cut.slice(0, lastSpace) : cut) + '…';
+  };
+  const seoTitle = truncate(seoConfig.title || '', 60);
+  const seoDescription = truncate(seoConfig.description || '', 160);
+
   return (
     <>
       <SEO 
-        title={seoConfig.title}
-        description={seoConfig.description}
+        title={seoTitle}
+        description={seoDescription}
         keywords={seoConfig.keywords}
         ogImage={seoConfig.ogImage}
         ogType={seoConfig.ogType}

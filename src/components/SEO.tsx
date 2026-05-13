@@ -27,35 +27,74 @@ export function SEO({
   // SEO content based on language
   const defaultSEO = {
     es: {
-      title: 'Rubén Muñoz | Piloto de Karting Extremeño y Emprendedor Digital',
-      description: 'Rubén Muñoz - Piloto de karting de Cáceres, Extremadura. Compitiendo en el Campeonato de España de Karting. Emprendedor joven extremeño especializado en marketing digital. Busco patrocinadores para mi carrera deportiva.',
+      title: 'Rubén Muñoz | Piloto de Karting y Emprendedor',
+      description: 'Piloto de karting de Cáceres en el Campeonato de España (CEK) y emprendedor digital. Patrocinios, calendario y blog.',
       keywords: 'Rubén Muñoz, piloto karting, piloto karting Extremadura, piloto karting España, piloto karting Cáceres, emprendedor joven extremeño, marketing digital, patrocinar piloto karting, karting Extremadura, karting España, Rubén Muñoz Cáceres, piloto karting extremeño, patrocinio deportivo, Campeonato España Karting'
     },
     en: {
-      title: 'Rubén Muñoz | Spanish Karting Driver & Digital Entrepreneur',
-      description: 'Rubén Muñoz - Karting driver from Cáceres, Extremadura, Spain. Competing in the Spanish Karting Championship. Young entrepreneur specializing in digital marketing. Seeking sponsors for my racing career.',
+      title: 'Rubén Muñoz | Karting Driver & Entrepreneur',
+      description: 'Karting driver from Cáceres competing in the Spanish Karting Championship (CEK) and digital entrepreneur. Sponsors, schedule and blog.',
       keywords: 'Rubén Muñoz, karting driver Spain, karting driver Extremadura, Spanish karting, Cáceres karting, young entrepreneur Spain, digital marketing, sponsor karting driver, Spanish Karting Championship, motorsport sponsorship'
     }
   };
 
-  const pathTitles: Record<string, string> = {
-    '/': language === 'es' ? 'Inicio' : 'Home',
-    '/inicio': 'Inicio',
-    '/home': 'Home',
-    '/contacto': language === 'es' ? 'Contacto' : 'Contact',
-    '/contact': 'Contact',
-    '/business': 'Business',
-    '/marketing': 'Marketing Digital',
-    '/sponsors': language === 'es' ? 'Patrocinio' : 'Sponsorship',
-    '/patrocinadores': 'Patrocinio',
-    '/2026': language === 'es' ? 'Temporada 2026' : '2026 Season',
+  const pathMeta: Record<string, { title: string; description: { es: string; en: string } }> = {
+    '/': { title: language === 'es' ? 'Inicio' : 'Home', description: {
+      es: 'Web oficial de Rubén Muñoz: piloto del CEK y emprendedor digital. Calendario, patrocinios y blog.',
+      en: 'Official site of Rubén Muñoz: CEK karting driver and digital entrepreneur. Schedule, sponsors and blog.'
+    }},
+    '/contacto': { title: 'Contacto', description: {
+      es: 'Contacta con Rubén Muñoz: formulario, redes y reserva de reuniones para patrocinios y colaboraciones.',
+      en: 'Get in touch with Rubén Muñoz: contact form, social channels and meeting booking for sponsors and collaborations.'
+    }},
+    '/contact': { title: 'Contact', description: {
+      es: 'Contacta con Rubén Muñoz: formulario, redes y reserva de reuniones para patrocinios y colaboraciones.',
+      en: 'Get in touch with Rubén Muñoz: contact form, social channels and meeting booking for sponsors and collaborations.'
+    }},
+    '/business': { title: 'Business', description: {
+      es: 'Proyectos empresariales de Rubén Muñoz: marketing digital, agencia y colaboraciones con marcas.',
+      en: 'Business projects by Rubén Muñoz: digital marketing, agency and brand collaborations.'
+    }},
+    '/marketing': { title: 'Marketing Digital', description: {
+      es: 'Servicios de marketing digital de Rubén Muñoz: estrategia, redes y crecimiento para marcas.',
+      en: 'Digital marketing services by Rubén Muñoz: strategy, social media and growth for brands.'
+    }},
+    '/sponsors': { title: language === 'es' ? 'Patrocinio' : 'Sponsorship', description: {
+      es: 'Conviértete en patrocinador de Rubén Muñoz en el CEK 2026. Planes, beneficios y dossier.',
+      en: 'Become a sponsor of Rubén Muñoz in the 2026 CEK. Plans, benefits and dossier.'
+    }},
+    '/patrocinadores': { title: 'Patrocinio', description: {
+      es: 'Conviértete en patrocinador de Rubén Muñoz en el CEK 2026. Planes, beneficios y dossier.',
+      en: 'Become a sponsor of Rubén Muñoz in the 2026 CEK. Plans, benefits and dossier.'
+    }},
+    '/2026': { title: language === 'es' ? 'Temporada 2026' : '2026 Season', description: {
+      es: 'Temporada 2026 del CEK: calendario, circuitos y seguimiento de Rubén Muñoz en el campeonato.',
+      en: '2026 CEK season: calendar, circuits and live updates from Rubén Muñoz in the championship.'
+    }},
+    '/cek2026': { title: language === 'es' ? 'CEK 2026' : 'CEK 2026', description: {
+      es: 'Toda la información del CEK 2026 con Rubén Muñoz: calendario, equipo y resultados.',
+      en: 'Everything about CEK 2026 with Rubén Muñoz: calendar, team and results.'
+    }},
+    '/blog': { title: 'Blog', description: {
+      es: 'Blog de Rubén Muñoz: crónicas de carreras del CEK, anuncios de patrocinadores y novedades.',
+      en: 'Rubén Muñoz blog: CEK race reports, sponsor announcements and project updates.'
+    }},
+    '/live-timing-streaming': { title: language === 'es' ? 'Live Timing y Streaming' : 'Live Timing & Streaming', description: {
+      es: 'Cronometraje en vivo y retransmisiones de las pruebas del CEK con Rubén Muñoz.',
+      en: 'Live timing and streaming of CEK rounds featuring Rubén Muñoz.'
+    }},
+    '/booking': { title: 'Booking', description: {
+      es: 'Reserva una reunión con Rubén Muñoz para hablar de patrocinios o colaboraciones.',
+      en: 'Book a meeting with Rubén Muñoz to discuss sponsorships or collaborations.'
+    }},
   };
 
   const seoContent = defaultSEO[language];
-  const pageTitle = title || (pathTitles[location.pathname] 
-    ? `${pathTitles[location.pathname]} | Rubén Muñoz` 
+  const pageMeta = pathMeta[location.pathname];
+  const pageTitle = title || (pageMeta
+    ? `${pageMeta.title} | Rubén Muñoz`
     : seoContent.title);
-  const pageDescription = description || seoContent.description;
+  const pageDescription = description || (pageMeta ? pageMeta.description[language] : seoContent.description);
   const pageKeywords = keywords || seoContent.keywords;
   const pageUrl = canonical || `https://rubenmunoz.com${location.pathname}`;
 
