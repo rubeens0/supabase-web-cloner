@@ -1,0 +1,32 @@
+# Rubén Muñoz
+
+> Piloto de karting extremeño compitiendo en el Campeonato de España de Karting (CEK) y emprendedor digital. Cáceres, Extremadura, España.
+
+Rubén Muñoz es un piloto joven de karting nacido en Cáceres en 2009. Compite en el Campeonato de España de Karting y combina su carrera deportiva con proyectos de marketing digital y emprendimiento. Este sitio reúne su trayectoria, calendario, oportunidades de patrocinio, y un blog con novedades de cada prueba.
+
+## Pages
+
+- [Inicio](/): Presentación, áreas de actividad (karting y marketing) y últimas novedades.
+- [Temporada 2026 / CEK](/2026): Calendario y seguimiento del Campeonato de España de Karting 2026.
+- [Live Timing y Streaming](/live-timing-streaming): Cronometraje en vivo y retransmisiones de las pruebas.
+- [Patrocinio](/sponsors): Información para empresas interesadas en patrocinar la temporada.
+- [Business / Marketing Digital](/business): Servicios de marketing digital y proyectos empresariales de Rubén.
+- [Blog](/blog): Novedades, crónicas de carreras y anuncios de patrocinadores.
+- [Contacto](/contacto): Formulario y datos de contacto, incluido booking de reuniones.
+- [RDE](/rde): Programa RDE — Recursos Deportivos Extremeños.
+
+## Blog posts
+
+- [Segunda ronda del CEK – De vuelta en Motorland](/blog/motorland-cek-r2): Previa de la 2ª prueba del CEK 2026 en Motorland Aragón (15-17 mayo).
+- [Rediseño de la web 2026](/blog/website-redesign-2026): Detalles del rediseño completo del sitio.
+- [Caja Rural de Extremadura, nuevo patrocinador](/blog/caja-rural-extremadura-patrocinio): Anuncio del acuerdo de patrocinio.
+- [Portada en Extremadura tras el CEK R1](/blog/portada-extremadura-cek-r1): Repercusión mediática de la primera ronda del CEK.
+- [Test en Recas 2026](/blog/test-recas-2026): Crónica de los entrenamientos en el circuito de Recas.
+- [Albroksa, nuevo patrocinador](/blog/albroksa-patrocinio): Acuerdo con Albroksa.
+- [NetPro Agency](/blog/netpro-agency): Lanzamiento del proyecto de agencia.
+- [Netspy y emprendedores](/blog/netspy-emprendedores): Sobre el proyecto Netspy.
+- [CEK Zaragoza](/blog/cek-zaragoza): Crónica de la prueba del CEK en Zaragoza.
+
+## Optional
+
+- [Booking](/booking): Reserva de reuniones con Rubén.
