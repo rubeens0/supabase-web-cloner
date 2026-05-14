@@ -8,6 +8,7 @@ import cajaRuralImg from '@/assets/caja-rural-extremadura.png';
 import webRedesignImg from '@/assets/website-redesign-2026.webp';
 import ecomscrapeImg from '@/assets/ecomscrape-post.webp';
 import motorlandImg from '@/assets/motorland-cek-r2.webp';
+import vlog1Img from '@/assets/vlog-1-motorland.jpg';
 import { useLanguage } from '../contexts/LanguageContext';
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
@@ -128,6 +129,15 @@ export function Blog() {
       readTime: '3 min',
       category: t('blog.category.karting'),
       image: motorlandImg,
+    },
+    {
+      id: 'vlog-1-motorland',
+      title: t('blog.vlog1.title'),
+      excerpt: t('blog.vlog1.excerpt'),
+      date: '2026-05-14',
+      readTime: '2 min',
+      category: t('blog.category.karting'),
+      image: vlog1Img,
     },
   ];
 

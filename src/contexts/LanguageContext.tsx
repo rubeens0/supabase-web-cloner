@@ -426,6 +426,9 @@ const translations = {
     'blog.motorland.title': 'Segunda ronda del CEK: De vuelta en Motorland',
     'blog.motorland.excerpt':
       'Rubén Muñoz afronta la segunda prueba del Campeonato de España de Karting en MotorLand Aragón (15-17 mayo), precedida de tres días de entrenamientos completos en el mismo circuito.',
+    'blog.vlog1.title': 'Primer Vlog en YouTube: tests del CEK en Motorland',
+    'blog.vlog1.excerpt':
+      'Estreno mi primer vlog en YouTube grabado durante los tres días de tests previos al CEK R2 en MotorLand Aragón. Se vienen muchos más vlogs y contenido nuevo en el canal.',
 
     /* ===== Sponsors ===== */
     'sponsors.hero.title': 'Patrocinio',
@@ -894,6 +897,9 @@ const translations = {
     'blog.motorland.title': 'CEK Round 2: Back at Motorland',
     'blog.motorland.excerpt':
       'Rubén Muñoz takes on the second round of the Spanish Karting Championship at MotorLand Aragón (May 15-17), preceded by three full days of testing at the same circuit.',
+    'blog.vlog1.title': 'First YouTube Vlog: CEK tests at Motorland',
+    'blog.vlog1.excerpt':
+      'I am launching my first YouTube vlog, recorded during the three days of testing ahead of CEK R2 at MotorLand Aragón. Many more vlogs and new content coming to the channel.',
 
     /* ===== Sponsors ===== */
     'sponsors.hero.title': 'Sponsorship',

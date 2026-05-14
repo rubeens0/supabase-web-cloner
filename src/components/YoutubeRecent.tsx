@@ -3,6 +3,11 @@ import { motion } from "motion/react";
 import { Play, ArrowUpRight, ArrowRight } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "./ui/button";
+import vlog1Thumb from "@/assets/vlog-1-motorland.jpg";
+
+const THUMBNAIL_OVERRIDES: Record<string, string> = {
+  "nwomAlGMyHg": vlog1Thumb,
+};
 
 interface Video {
   id: string;
@@ -141,7 +146,7 @@ export function YoutubeRecent() {
               >
                 <div className="relative aspect-video overflow-hidden border-b border-white/10">
                   <img
-                    src={v.thumbnail}
+                    src={THUMBNAIL_OVERRIDES[v.id] ?? v.thumbnail}
                     alt={v.title}
                     loading="lazy"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
