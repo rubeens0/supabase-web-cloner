@@ -380,6 +380,10 @@ export function Home() {
             </motion.div>
 
             <motion.div {...fadeIn(0.5)} className="flex flex-wrap gap-x-6 gap-y-2 text-[13px] text-white/45">
+              <Link to="/live-timing-streaming" className="hover:text-white transition-colors inline-flex items-center gap-1.5 text-red-400">
+                <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
+                Directo CEK <ArrowUpRight className="w-3 h-3" />
+              </Link>
               <Link to={getRoute("business")} className="hover:text-white transition-colors inline-flex items-center gap-1">
                 {t("nav.business")} <ArrowUpRight className="w-3 h-3" />
               </Link>
