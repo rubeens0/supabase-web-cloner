@@ -401,6 +401,34 @@ export function Home() {
       {/* SVG line draw transition */}
       <SectionDividerLine />
 
+      {/* ============== LIVE CEK BANNER ============== */}
+      <section className="border-y border-red-500/30 bg-gradient-to-r from-red-500/10 via-red-500/5 to-transparent">
+        <Link
+          to="/live-timing-streaming"
+          className="block max-w-7xl mx-auto px-5 sm:px-10 md:px-16 py-5 sm:py-6 group"
+        >
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div className="flex items-center gap-4">
+              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-500/20 border border-red-500/50 text-red-300 text-[10px] font-bold tracking-[0.22em] uppercase">
+                <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
+                Live
+              </span>
+              <div>
+                <p className="font-display text-xl sm:text-2xl text-white leading-tight">
+                  Directo CEK R2 — <span className="font-display-italic text-gradient-mono-italic">Motorland Aragón</span>
+                </p>
+                <p className="text-white/55 text-xs sm:text-sm mt-1">
+                  Live timing & streaming · 15-17 Mayo 2026
+                </p>
+              </div>
+            </div>
+            <span className="inline-flex items-center gap-2 text-sm text-white group-hover:gap-3 transition-all whitespace-nowrap">
+              Acceder al directo <ArrowUpRight className="w-4 h-4" />
+            </span>
+          </div>
+        </Link>
+      </section>
+
       {/* ============== 02 · SOCIAL PROOF ============== */}
       <section className="border-y border-white/[0.08]">
         <div className="max-w-7xl mx-auto px-5 sm:px-10 md:px-16 py-14 sm:py-20">
