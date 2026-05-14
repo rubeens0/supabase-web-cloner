@@ -8,6 +8,7 @@ import cajaRuralImg from '@/assets/caja-rural-extremadura.png';
 import webRedesignImg from '@/assets/website-redesign-2026.webp';
 import ecomscrapeImg from '@/assets/ecomscrape-post.webp';
 import motorlandImg from '@/assets/motorland-cek-r2.webp';
+import vlog1Img from '@/assets/vlog-1-motorland.jpg';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
 import { motion } from 'motion/react';
@@ -208,6 +209,18 @@ Many thanks to all the people involved.`,
       readTime: '3 min',
       category: t('blog.category.karting'),
       image: motorlandImg,
+    },
+    {
+      id: 'vlog-1-motorland',
+      title: t('blog.vlog1.title'),
+      excerpt: t('blog.vlog1.excerpt'),
+      content: language === 'es'
+        ? `Ya está disponible mi primer vlog en YouTube. Lo grabé durante los tres días de tests previos a la segunda ronda del Campeonato de España de Karting en MotorLand Aragón (Alcañiz, Teruel), del 8 al 10 de mayo.\n\nEn el vídeo enseño cómo es un fin de semana de tests por dentro: la llegada al circuito, el trabajo con el equipo DB Motorsport para ajustar la puesta a punto del kart, las sensaciones vuelta a vuelta y todo lo que pasa entre tanda y tanda. MotorLand Aragón es un trazado exigente, con cambios de altimetría y curvas rápidas, y estos tres días han sido clave para llegar al fin de semana de carrera (15-17 de mayo) con ritmo y confianza.\n\nEste vlog es solo el principio. Se vienen muchos más vlogs, contenido detrás de cámaras y onboards desde dentro del kart en los próximos meses. La idea es abrir las puertas del paddock y mostrar el día a día real de un piloto en su primera temporada completa en CEK Senior.\n\nMira el vídeo aquí: https://youtu.be/nwomAlGMyHg\n\nGracias por estar ahí — y nos vemos en el siguiente vlog.`
+        : `My first vlog is now live on YouTube. I filmed it during the three days of testing ahead of the second round of the Spanish Karting Championship at MotorLand Aragón (Alcañiz, Teruel), from May 8 to 10.\n\nThe video takes you inside a full test weekend: arriving at the track, working with the DB Motorsport team to dial in the kart, lap-by-lap feelings and everything that happens between sessions. MotorLand Aragón is a demanding circuit with elevation changes and fast corners, and these three days have been key to arriving at the race weekend (May 15-17) with rhythm and confidence.\n\nThis vlog is just the beginning. Many more vlogs, behind-the-scenes content and in-kart onboards are coming over the next months. The idea is to open the paddock doors and show the real day-to-day of a driver in his first full season in CEK Senior.\n\nWatch the video here: https://youtu.be/nwomAlGMyHg\n\nThanks for being there — see you in the next vlog.`,
+      date: '2026-05-14',
+      readTime: '2 min',
+      category: t('blog.category.karting'),
+      image: vlog1Img,
     },
   ];
 
