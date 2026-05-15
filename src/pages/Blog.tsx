@@ -160,21 +160,21 @@ export function Blog() {
   return (
     <div className="min-h-screen bg-black text-white">
       {/* ============== 01 · HERO ============== */}
-      <section className="pt-32 sm:pt-40 pb-16 sm:pb-20 px-5 sm:px-10 md:px-16 border-b border-white/[0.08]">
+      <section className="pt-24 sm:pt-40 pb-12 sm:pb-20 px-4 sm:px-10 md:px-16 border-b border-white/[0.08]">
         <div className="max-w-7xl mx-auto">
           <motion.div {...fadeIn(0.1)}>
             <SectionLabel index="N° 01">{t('nav.blog')}</SectionLabel>
           </motion.div>
           <motion.h1
             {...fadeIn(0.2)}
-            className="mt-8 font-display leading-[0.95] text-5xl sm:text-7xl md:text-8xl lg:text-[120px] text-white tracking-[-0.02em] max-w-5xl"
+            className="mt-6 sm:mt-8 font-display leading-[0.92] text-[44px] sm:text-7xl md:text-8xl lg:text-[120px] text-white tracking-[-0.02em] max-w-5xl"
           >
             {t('blog.title')}
             <span className="font-display-italic text-gradient-mono-italic">.</span>
           </motion.h1>
           <motion.p
             {...fadeIn(0.3)}
-            className="mt-8 text-white/60 text-base sm:text-lg max-w-2xl leading-relaxed"
+            className="mt-5 sm:mt-8 text-white/60 text-sm sm:text-lg max-w-2xl leading-relaxed"
           >
             {t('blog.subtitle')}
           </motion.p>
