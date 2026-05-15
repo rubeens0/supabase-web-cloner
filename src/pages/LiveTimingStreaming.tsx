@@ -276,7 +276,7 @@ export function LiveTimingStreaming() {
                       <button
                         type="button"
                         onClick={() => setStreamKey((k) => k + 1)}
-                        className="inline-flex items-center gap-1.5 h-9 px-3 rounded-lg bg-white/5 border border-white/15 hover:bg-white/10 hover:border-white/30 active:scale-95 transition-all text-xs font-medium"
+                        className="hidden sm:inline-flex items-center gap-1.5 h-9 px-3 rounded-lg bg-white/5 border border-white/15 hover:bg-white/10 hover:border-white/30 active:scale-95 transition-all text-xs font-medium"
                         aria-label={language === 'es' ? 'Recargar streaming' : 'Reload streaming'}
                       >
                         <RefreshCw className="w-3.5 h-3.5" />
@@ -286,7 +286,7 @@ export function LiveTimingStreaming() {
                         href="https://www.youtube.com/live/moln-t94bwA"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 h-9 px-3 rounded-lg bg-white/5 border border-white/15 hover:bg-white/10 hover:border-white/30 active:scale-95 transition-all text-xs font-medium"
+                        className="hidden sm:inline-flex items-center gap-1.5 h-9 px-3 rounded-lg bg-white/5 border border-white/15 hover:bg-white/10 hover:border-white/30 active:scale-95 transition-all text-xs font-medium"
                         aria-label={language === 'es' ? 'Ver en YouTube' : 'Watch on YouTube'}
                       >
                         <ExternalLink className="w-3.5 h-3.5" />
