@@ -101,16 +101,16 @@ export function LiveTimingStreaming() {
               </p>
             </div>
           </div>
-          <div className="p-4 md:p-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
+          <div className="p-3 md:p-6 flex md:grid md:grid-cols-5 gap-2.5 md:gap-3 overflow-x-auto snap-x snap-mandatory scrollbar-none -mx-1 px-1 md:mx-0 md:px-6">
             {['9:30', '11:15', '13:00', '15:15', '17:00'].map((time, i) => (
               <div
                 key={time}
-                className="flex flex-col items-center justify-center rounded-xl bg-black/40 border border-white/10 py-4 px-3 hover:border-white/25 transition-colors"
+                className="snap-center shrink-0 w-[31%] md:w-auto flex flex-col items-center justify-center rounded-xl bg-black/40 border border-white/10 py-3.5 md:py-4 px-3 hover:border-white/25 transition-colors"
               >
-                <span className="text-[10px] uppercase tracking-[0.18em] text-white/40 mb-1">
-                  {language === 'es' ? `Sesión ${i + 1}` : `Session ${i + 1}`}
+                <span className="text-[9px] md:text-[10px] uppercase tracking-[0.18em] text-white/40 mb-1">
+                  {language === 'es' ? `S${i + 1}` : `S${i + 1}`}
                 </span>
-                <span className="font-mono text-2xl md:text-3xl font-bold text-white">{time}</span>
+                <span className="font-mono text-xl md:text-3xl font-bold text-white">{time}</span>
               </div>
             ))}
           </div>
