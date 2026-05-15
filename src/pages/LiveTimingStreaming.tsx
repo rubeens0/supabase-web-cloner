@@ -155,7 +155,7 @@ export function LiveTimingStreaming() {
                 </span>
               </div>
               <ol className="divide-y divide-white/5">
-                {['P14', 'P15', 'P4', 'P17', 'P14'].map((time, i) => (
+                {['P7', 'P15', 'P4', 'P17', 'P14'].map((time, i) => (
                   <li key={time} className="flex items-center gap-3 md:gap-4 px-4 md:px-5 py-3 md:py-3.5 hover:bg-white/[0.03] transition-colors">
                     <span className="font-mono text-[10px] text-white/30 w-5 shrink-0">0{i + 1}</span>
                     <span className="text-xs uppercase tracking-[0.16em] text-white/50 flex-1">
