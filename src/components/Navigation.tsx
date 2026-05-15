@@ -92,16 +92,16 @@ export function Navigation() {
           >
             <div className="max-w-7xl mx-auto px-4 sm:px-8 py-2.5 flex items-center justify-between gap-4 text-[12px] sm:text-[13px]">
               <div className="flex items-center gap-3 min-w-0 flex-1">
-                <span className="hidden sm:inline-flex h-1.5 w-1.5 rounded-full bg-secondary animate-pulse shrink-0" />
+                <span className="inline-flex h-1.5 w-1.5 rounded-full bg-red-500 animate-pulse shrink-0" />
                 <span className="text-white/80 truncate">
-                  {t('banner.season')} — <span className="text-white/50">{t('banner.seasonNote')}</span>
+                  {language === 'es' ? 'Directo CEK R2' : 'CEK R2 Live'} — <span className="text-white/50">{language === 'es' ? 'Motorland Aragón' : 'Motorland Aragón'}</span>
                 </span>
               </div>
               <Link
-                to="/2026"
+                to="/live-timing-streaming"
                 className="hidden sm:inline-flex items-center gap-1.5 text-white hover:text-secondary transition-colors whitespace-nowrap shrink-0"
               >
-                {t('banner.learnMore')} <ArrowRight className="w-3.5 h-3.5" />
+                {language === 'es' ? 'Ver directo' : 'Watch live'} <ArrowRight className="w-3.5 h-3.5" />
               </Link>
               <button
                 onClick={() => setBannerVisible(false)}

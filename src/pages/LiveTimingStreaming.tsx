@@ -81,6 +81,41 @@ export function LiveTimingStreaming() {
           </p>
         </motion.div>
 
+        {/* Friday training schedule */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.15 }}
+          className="mb-6 md:mb-8 bg-white/5 border border-white/10 rounded-2xl md:rounded-3xl overflow-hidden"
+        >
+          <div className="p-4 md:p-5 border-b border-white/10 bg-gradient-to-r from-white/[0.07] to-transparent flex items-center gap-3">
+            <div className="w-10 h-10 md:w-11 md:h-11 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center shrink-0">
+              <Clock className="w-5 h-5 text-white" />
+            </div>
+            <div className="min-w-0">
+              <h2 className="text-lg md:text-xl font-bold leading-tight">
+                {language === 'es' ? 'Entrenos del viernes' : 'Friday practice'}
+              </h2>
+              <p className="text-white/50 text-xs mt-0.5">
+                {language === 'es' ? 'Rubén Muñoz · Grupo Par' : 'Rubén Muñoz · Even Group'}
+              </p>
+            </div>
+          </div>
+          <div className="p-4 md:p-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
+            {['9:30', '11:15', '13:00', '15:15', '17:00'].map((time, i) => (
+              <div
+                key={time}
+                className="flex flex-col items-center justify-center rounded-xl bg-black/40 border border-white/10 py-4 px-3 hover:border-white/25 transition-colors"
+              >
+                <span className="text-[10px] uppercase tracking-[0.18em] text-white/40 mb-1">
+                  {language === 'es' ? `Sesión ${i + 1}` : `Session ${i + 1}`}
+                </span>
+                <span className="font-mono text-2xl md:text-3xl font-bold text-white">{time}</span>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+
         <div className="grid lg:grid-cols-2 gap-4 md:gap-6">
           {/* Live Timing Section */}
           <motion.div
