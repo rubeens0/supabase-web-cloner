@@ -204,7 +204,7 @@ export function LiveTimingStreaming() {
                   transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
                   className="overflow-hidden"
                 >
-                  <div className="h-[500px] md:h-[600px] lg:h-[680px] bg-black/50 flex items-center justify-center relative">
+                  <div className="h-[420px] sm:h-[500px] md:h-[600px] lg:h-[680px] bg-black/50 flex items-center justify-center relative">
                     {liveTimingUrl ? (
                       <iframe
                         key={timingKey}
@@ -325,7 +325,7 @@ export function LiveTimingStreaming() {
                   transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
                   className="overflow-hidden"
                 >
-                  <div className="h-[500px] md:h-[600px] lg:h-[680px] bg-black/50 flex items-center justify-center relative">
+                  <div className="h-[420px] sm:h-[500px] md:h-[600px] lg:h-[680px] bg-black/50 flex items-center justify-center relative">
                     {youtubeStreamUrl ? (
                       <iframe
                         key={streamKey}
