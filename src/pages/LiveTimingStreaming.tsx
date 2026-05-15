@@ -115,8 +115,8 @@ export function LiveTimingStreaming() {
                 </h2>
                 <p className="text-white/60 text-sm md:text-base mt-2 md:mt-3 max-w-md">
                   {language === 'es'
-                    ? 'La sesión que define la parrilla de salida.'
-                    : 'The session that defines the starting grid.'}
+                    ? 'La sesión que define la parrilla de salida durante las heats.'
+                    : 'The session that defines the starting grid during the heats.'}
                 </p>
               </div>
               <div className="flex md:flex-col md:items-end gap-3 md:gap-2 md:text-right">
@@ -126,7 +126,7 @@ export function LiveTimingStreaming() {
                   <span className="font-mono text-3xl md:text-5xl font-bold text-white">11:20</span>
                 </div>
                 <span className="text-[10px] md:text-xs uppercase tracking-[0.18em] text-white/50">
-                  {language === 'es' ? '15 min en pista' : '15 min on track'}
+                  {language === 'es' ? '​Comienzo de las sesiones ' : 'Session start '}
                 </span>
               </div>
             </div>
