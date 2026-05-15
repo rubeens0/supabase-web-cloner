@@ -44,7 +44,7 @@ export function LiveTimingStreaming() {
   }, [expandedView]);
 
   return (
-    <div className="min-h-screen bg-black text-white pt-32 md:pt-40 pb-12 px-5 md:px-10">
+    <div className="min-h-screen bg-black text-white pt-24 md:pt-40 pb-12 px-4 md:px-10">
       <SEO 
         title={language === 'es' 
           ? 'Directo CEK - Live Timing y Streaming | Rubén Muñoz' 
@@ -63,18 +63,18 @@ export function LiveTimingStreaming() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className="mb-10 md:mb-14"
+          className="mb-8 md:mb-14"
         >
-          <div className="flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-white/40 mb-6">
+          <div className="flex items-center gap-3 text-[10px] sm:text-[11px] uppercase tracking-[0.22em] text-white/40 mb-4 sm:mb-6">
             <span className="font-mono text-white">N° 01</span>
-            <span className="h-px w-8 bg-white/15" />
+            <span className="h-px w-6 sm:w-8 bg-white/15" />
             <span>{language === 'es' ? 'Directo' : 'Live'}</span>
           </div>
-          <h1 className="font-display leading-[0.95] text-5xl sm:text-7xl md:text-8xl lg:text-[120px] text-white tracking-[-0.02em]">
+          <h1 className="font-display leading-[0.92] text-[40px] xs:text-5xl sm:text-7xl md:text-8xl lg:text-[120px] text-white tracking-[-0.02em]">
             {language === 'es' ? 'Directo' : 'Live'} <span className="font-display-italic text-gradient-mono-italic">CEK 2026</span>
             <span className="text-white/40">.</span>
           </h1>
-          <p className="mt-8 text-white/60 max-w-2xl text-base md:text-lg leading-relaxed">
+          <p className="mt-5 sm:mt-8 text-white/60 max-w-2xl text-sm sm:text-base md:text-lg leading-relaxed">
             {language === 'es' 
               ? 'Ronda 2 — Motorland Aragón • 15-17 Mayo 2026'
               : 'Round 2 — Motorland Aragón • May 15-17, 2026'}
@@ -101,16 +101,16 @@ export function LiveTimingStreaming() {
               </p>
             </div>
           </div>
-          <div className="p-4 md:p-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
+          <div className="p-3 md:p-6 flex md:grid md:grid-cols-5 gap-2.5 md:gap-3 overflow-x-auto snap-x snap-mandatory scrollbar-none -mx-1 px-1 md:mx-0 md:px-6">
             {['9:30', '11:15', '13:00', '15:15', '17:00'].map((time, i) => (
               <div
                 key={time}
-                className="flex flex-col items-center justify-center rounded-xl bg-black/40 border border-white/10 py-4 px-3 hover:border-white/25 transition-colors"
+                className="snap-center shrink-0 w-[31%] md:w-auto flex flex-col items-center justify-center rounded-xl bg-black/40 border border-white/10 py-3.5 md:py-4 px-3 hover:border-white/25 transition-colors"
               >
-                <span className="text-[10px] uppercase tracking-[0.18em] text-white/40 mb-1">
-                  {language === 'es' ? `Sesión ${i + 1}` : `Session ${i + 1}`}
+                <span className="text-[9px] md:text-[10px] uppercase tracking-[0.18em] text-white/40 mb-1">
+                  {language === 'es' ? `S${i + 1}` : `S${i + 1}`}
                 </span>
-                <span className="font-mono text-2xl md:text-3xl font-bold text-white">{time}</span>
+                <span className="font-mono text-xl md:text-3xl font-bold text-white">{time}</span>
               </div>
             ))}
           </div>
@@ -155,7 +155,7 @@ export function LiveTimingStreaming() {
                       <button
                         type="button"
                         onClick={() => setTimingKey((k) => k + 1)}
-                        className="inline-flex items-center gap-1.5 h-9 px-3 rounded-lg bg-white/5 border border-white/15 hover:bg-white/10 hover:border-white/30 active:scale-95 transition-all text-xs font-medium"
+                        className="hidden sm:inline-flex items-center gap-1.5 h-9 px-3 rounded-lg bg-white/5 border border-white/15 hover:bg-white/10 hover:border-white/30 active:scale-95 transition-all text-xs font-medium"
                         aria-label={language === 'es' ? 'Recargar live timing' : 'Reload live timing'}
                       >
                         <RefreshCw className="w-3.5 h-3.5" />
@@ -165,7 +165,7 @@ export function LiveTimingStreaming() {
                         href={liveTimingUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 h-9 px-3 rounded-lg bg-white/5 border border-white/15 hover:bg-white/10 hover:border-white/30 active:scale-95 transition-all text-xs font-medium"
+                        className="hidden sm:inline-flex items-center gap-1.5 h-9 px-3 rounded-lg bg-white/5 border border-white/15 hover:bg-white/10 hover:border-white/30 active:scale-95 transition-all text-xs font-medium"
                         aria-label={language === 'es' ? 'Abrir en nueva pestaña' : 'Open in new tab'}
                       >
                         <ExternalLink className="w-3.5 h-3.5" />
@@ -204,7 +204,7 @@ export function LiveTimingStreaming() {
                   transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
                   className="overflow-hidden"
                 >
-                  <div className="h-[500px] md:h-[600px] lg:h-[680px] bg-black/50 flex items-center justify-center relative">
+                  <div className="h-[420px] sm:h-[500px] md:h-[600px] lg:h-[680px] bg-black/50 flex items-center justify-center relative">
                     {liveTimingUrl ? (
                       <iframe
                         key={timingKey}
@@ -276,7 +276,7 @@ export function LiveTimingStreaming() {
                       <button
                         type="button"
                         onClick={() => setStreamKey((k) => k + 1)}
-                        className="inline-flex items-center gap-1.5 h-9 px-3 rounded-lg bg-white/5 border border-white/15 hover:bg-white/10 hover:border-white/30 active:scale-95 transition-all text-xs font-medium"
+                        className="hidden sm:inline-flex items-center gap-1.5 h-9 px-3 rounded-lg bg-white/5 border border-white/15 hover:bg-white/10 hover:border-white/30 active:scale-95 transition-all text-xs font-medium"
                         aria-label={language === 'es' ? 'Recargar streaming' : 'Reload streaming'}
                       >
                         <RefreshCw className="w-3.5 h-3.5" />
@@ -286,7 +286,7 @@ export function LiveTimingStreaming() {
                         href="https://www.youtube.com/live/moln-t94bwA"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 h-9 px-3 rounded-lg bg-white/5 border border-white/15 hover:bg-white/10 hover:border-white/30 active:scale-95 transition-all text-xs font-medium"
+                        className="hidden sm:inline-flex items-center gap-1.5 h-9 px-3 rounded-lg bg-white/5 border border-white/15 hover:bg-white/10 hover:border-white/30 active:scale-95 transition-all text-xs font-medium"
                         aria-label={language === 'es' ? 'Ver en YouTube' : 'Watch on YouTube'}
                       >
                         <ExternalLink className="w-3.5 h-3.5" />
@@ -325,7 +325,7 @@ export function LiveTimingStreaming() {
                   transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
                   className="overflow-hidden"
                 >
-                  <div className="h-[500px] md:h-[600px] lg:h-[680px] bg-black/50 flex items-center justify-center relative">
+                  <div className="h-[420px] sm:h-[500px] md:h-[600px] lg:h-[680px] bg-black/50 flex items-center justify-center relative">
                     {youtubeStreamUrl ? (
                       <iframe
                         key={streamKey}
