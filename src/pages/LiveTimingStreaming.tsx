@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'motion/react';
 import { useLanguage } from '../contexts/LanguageContext';
-import { Clock, Youtube, Maximize2, X, ExternalLink, RefreshCw, ChevronDown } from 'lucide-react';
+import { Clock, Youtube, Maximize2, X, ExternalLink, RefreshCw, ChevronDown, Trophy, Flame, HelpCircle } from 'lucide-react';
 import { SEO } from '../components/SEO';
 import { useState, useEffect, useRef } from 'react';
 
@@ -81,38 +81,151 @@ export function LiveTimingStreaming() {
           </p>
         </motion.div>
 
-        {/* Friday training schedule */}
+        {/* Chronological weekend schedule */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.15 }}
-          className="mb-6 md:mb-8 bg-white/5 border border-white/10 rounded-2xl md:rounded-3xl overflow-hidden"
+          className="mb-6 md:mb-10"
         >
-          <div className="p-4 md:p-5 border-b border-white/10 bg-gradient-to-r from-white/[0.07] to-transparent flex items-center gap-3">
-            <div className="w-10 h-10 md:w-11 md:h-11 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center shrink-0">
-              <Clock className="w-5 h-5 text-white" />
-            </div>
-            <div className="min-w-0">
-              <h2 className="text-lg md:text-xl font-bold leading-tight">
-                {language === 'es' ? 'Entrenos del viernes' : 'Friday practice'}
-              </h2>
-              <p className="text-white/50 text-xs mt-0.5">
-                {language === 'es' ? 'Rubén Muñoz · Grupo Par' : 'Rubén Muñoz · Even Group'}
-              </p>
+          <div className="flex items-center gap-3 text-[10px] sm:text-[11px] uppercase tracking-[0.22em] text-white/40 mb-4 sm:mb-5">
+            <span className="font-mono text-white">N° 02</span>
+            <span className="h-px w-6 sm:w-8 bg-white/15" />
+            <span>{language === 'es' ? 'Programa del fin de semana' : 'Weekend programme'}</span>
+          </div>
+
+          {/* Featured: Qualifying */}
+          <div className="relative mb-5 md:mb-6 rounded-2xl md:rounded-3xl overflow-hidden border border-red-500/30 bg-gradient-to-br from-red-500/15 via-red-500/5 to-transparent">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(239,68,68,0.25),transparent_60%)] pointer-events-none" />
+            <div className="relative p-5 md:p-8 flex flex-col md:flex-row md:items-center gap-5 md:gap-8">
+              <div className="flex items-center gap-3 md:gap-4 md:flex-col md:items-start">
+                <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-red-500/20 border border-red-500/40 flex items-center justify-center shrink-0">
+                  <Trophy className="w-6 h-6 md:w-7 md:h-7 text-red-300" />
+                </div>
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-red-500/20 border border-red-500/40 text-red-200 text-[10px] font-bold tracking-wider uppercase w-fit">
+                  {language === 'es' ? 'Sesión clave' : 'Key session'}
+                </span>
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="text-[10px] md:text-[11px] uppercase tracking-[0.22em] text-red-300/80 mb-1.5">
+                  {language === 'es' ? 'Sábado · 17 Mayo' : 'Saturday · May 17'}
+                </p>
+                <h2 className="font-display text-3xl md:text-5xl lg:text-6xl text-white leading-[0.95] tracking-[-0.02em]">
+                  {language === 'es' ? 'Clasificación' : 'Qualifying'}
+                </h2>
+                <p className="text-white/60 text-sm md:text-base mt-2 md:mt-3 max-w-md">
+                  {language === 'es'
+                    ? 'La sesión que define la parrilla de salida.'
+                    : 'The session that defines the starting grid.'}
+                </p>
+              </div>
+              <div className="flex md:flex-col md:items-end gap-3 md:gap-2 md:text-right">
+                <div className="flex items-baseline gap-2">
+                  <span className="font-mono text-3xl md:text-5xl font-bold text-white">11:05</span>
+                  <span className="text-white/40 text-sm md:text-base">→</span>
+                  <span className="font-mono text-3xl md:text-5xl font-bold text-white">11:20</span>
+                </div>
+                <span className="text-[10px] md:text-xs uppercase tracking-[0.18em] text-white/50">
+                  {language === 'es' ? '15 min en pista' : '15 min on track'}
+                </span>
+              </div>
             </div>
           </div>
-          <div className="p-3 md:p-6 flex md:grid md:grid-cols-5 gap-2.5 md:gap-3 overflow-x-auto snap-x snap-mandatory scrollbar-none -mx-1 px-1 md:mx-0 md:px-6">
-            {['9:30', '11:15', '13:00', '15:15', '17:00'].map((time, i) => (
-              <div
-                key={time}
-                className="snap-center shrink-0 w-[31%] md:w-auto flex flex-col items-center justify-center rounded-xl bg-black/40 border border-white/10 py-3.5 md:py-4 px-3 hover:border-white/25 transition-colors"
-              >
-                <span className="text-[9px] md:text-[10px] uppercase tracking-[0.18em] text-white/40 mb-1">
-                  {language === 'es' ? `S${i + 1}` : `S${i + 1}`}
+
+          {/* Two-day timeline */}
+          <div className="grid md:grid-cols-2 gap-4 md:gap-5">
+            {/* Friday */}
+            <div className="rounded-2xl md:rounded-3xl border border-white/10 bg-white/[0.03] overflow-hidden">
+              <div className="p-4 md:p-5 border-b border-white/10 flex items-center justify-between gap-3">
+                <div className="flex items-center gap-3 min-w-0">
+                  <div className="w-10 h-10 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center shrink-0">
+                    <Clock className="w-5 h-5 text-white" />
+                  </div>
+                  <div className="min-w-0">
+                    <p className="text-[10px] uppercase tracking-[0.2em] text-white/40">
+                      {language === 'es' ? 'Día 1' : 'Day 1'}
+                    </p>
+                    <h3 className="text-base md:text-lg font-bold leading-tight">
+                      {language === 'es' ? 'Viernes · Entrenos' : 'Friday · Practice'}
+                    </h3>
+                  </div>
+                </div>
+                <span className="text-[10px] uppercase tracking-wider text-white/40 shrink-0">
+                  {language === 'es' ? 'Grupo Par' : 'Even Group'}
                 </span>
-                <span className="font-mono text-xl md:text-3xl font-bold text-white">{time}</span>
               </div>
-            ))}
+              <ol className="divide-y divide-white/5">
+                {['9:30', '11:15', '13:00', '15:15', '17:00'].map((time, i) => (
+                  <li key={time} className="flex items-center gap-3 md:gap-4 px-4 md:px-5 py-3 md:py-3.5 hover:bg-white/[0.03] transition-colors">
+                    <span className="font-mono text-[10px] text-white/30 w-5 shrink-0">0{i + 1}</span>
+                    <span className="text-xs uppercase tracking-[0.16em] text-white/50 flex-1">
+                      {language === 'es' ? `Sesión ${i + 1}` : `Session ${i + 1}`}
+                    </span>
+                    <span className="font-mono text-lg md:text-xl font-bold text-white">{time}</span>
+                  </li>
+                ))}
+              </ol>
+            </div>
+
+            {/* Saturday */}
+            <div className="rounded-2xl md:rounded-3xl border border-white/10 bg-white/[0.03] overflow-hidden">
+              <div className="p-4 md:p-5 border-b border-white/10 flex items-center justify-between gap-3">
+                <div className="flex items-center gap-3 min-w-0">
+                  <div className="w-10 h-10 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center shrink-0">
+                    <Flame className="w-5 h-5 text-white" />
+                  </div>
+                  <div className="min-w-0">
+                    <p className="text-[10px] uppercase tracking-[0.2em] text-white/40">
+                      {language === 'es' ? 'Día 2' : 'Day 2'}
+                    </p>
+                    <h3 className="text-base md:text-lg font-bold leading-tight">
+                      {language === 'es' ? 'Sábado · Carrera' : 'Saturday · Race day'}
+                    </h3>
+                  </div>
+                </div>
+              </div>
+              <ol className="divide-y divide-white/5">
+                <li className="flex items-center gap-3 md:gap-4 px-4 md:px-5 py-3 md:py-3.5">
+                  <span className="font-mono text-[10px] text-white/30 w-5 shrink-0">01</span>
+                  <span className="text-xs uppercase tracking-[0.16em] text-white/50 flex-1">
+                    Warm Up
+                  </span>
+                  <span className="font-mono text-lg md:text-xl font-bold text-white">9:22</span>
+                </li>
+                <li className="flex items-center gap-3 md:gap-4 px-4 md:px-5 py-3 md:py-3.5 bg-red-500/[0.06]">
+                  <span className="font-mono text-[10px] text-red-300/70 w-5 shrink-0">02</span>
+                  <span className="text-xs uppercase tracking-[0.16em] text-red-200 flex-1 font-semibold">
+                    {language === 'es' ? 'Clasificación' : 'Qualifying'}
+                  </span>
+                  <span className="font-mono text-base md:text-lg font-bold text-white">11:05–11:20</span>
+                </li>
+                <li className="flex items-center gap-3 md:gap-4 px-4 md:px-5 py-3 md:py-3.5">
+                  <span className="font-mono text-[10px] text-white/30 w-5 shrink-0">03</span>
+                  <span className="text-xs uppercase tracking-[0.16em] text-white/50 flex-1 flex items-center gap-2">
+                    <span>{language === 'es' ? 'Heat 1' : 'Heat 1'}</span>
+                    <HelpCircle className="w-3 h-3 text-white/30" />
+                  </span>
+                  <span className="font-mono text-xs md:text-sm text-white/40 italic">
+                    {language === 'es' ? 'Pendiente' : 'TBA'}
+                  </span>
+                </li>
+                <li className="flex items-center gap-3 md:gap-4 px-4 md:px-5 py-3 md:py-3.5">
+                  <span className="font-mono text-[10px] text-white/30 w-5 shrink-0">04</span>
+                  <span className="text-xs uppercase tracking-[0.16em] text-white/50 flex-1 flex items-center gap-2">
+                    <span>{language === 'es' ? 'Heat 2' : 'Heat 2'}</span>
+                    <HelpCircle className="w-3 h-3 text-white/30" />
+                  </span>
+                  <span className="font-mono text-xs md:text-sm text-white/40 italic">
+                    {language === 'es' ? 'Pendiente' : 'TBA'}
+                  </span>
+                </li>
+              </ol>
+              <p className="text-[11px] text-white/40 px-4 md:px-5 py-3 border-t border-white/5 leading-relaxed">
+                {language === 'es'
+                  ? 'Serán 2 heats. El horario se publicará cuando se confirme el grupo asignado.'
+                  : 'Two heats scheduled. Times will be published once the assigned group is confirmed.'}
+              </p>
+            </div>
           </div>
         </motion.div>
 
