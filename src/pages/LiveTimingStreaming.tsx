@@ -146,7 +146,7 @@ export function LiveTimingStreaming() {
                       {language === 'es' ? 'Día 1' : 'Day 1'}
                     </p>
                     <h3 className="text-base md:text-lg font-bold leading-tight">
-                      {language === 'es' ? 'Viernes · Entrenos' : 'Friday · Practice'}
+                      {language === 'es' ? 'Viernes · Entrenos ( P8 )' : 'Friday · Practice ( P8 )'}
                     </h3>
                   </div>
                 </div>
