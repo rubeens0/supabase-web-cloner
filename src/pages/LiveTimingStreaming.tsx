@@ -203,21 +203,17 @@ export function LiveTimingStreaming() {
                   <span className="font-mono text-[10px] text-white/30 w-5 shrink-0">03</span>
                   <span className="text-xs uppercase tracking-[0.16em] text-white/50 flex-1 flex items-center gap-2">
                     <span>{language === 'es' ? 'Heat 1' : 'Heat 1'}</span>
-                    <HelpCircle className="w-3 h-3 text-white/30" />
                   </span>
-                  <span className="font-mono text-xs md:text-sm text-white/40 italic">
-                    {language === 'es' ? 'Pendiente' : 'TBA'}
-                  </span>
+                  <span className="font-mono text-base md:text-lg font-bold text-white">14:10</span>
+                  <span className="text-[10px] text-white/40">(B-C)</span>
                 </li>
                 <li className="flex items-center gap-3 md:gap-4 px-4 md:px-5 py-3 md:py-3.5">
                   <span className="font-mono text-[10px] text-white/30 w-5 shrink-0">04</span>
                   <span className="text-xs uppercase tracking-[0.16em] text-white/50 flex-1 flex items-center gap-2">
                     <span>{language === 'es' ? 'Heat 2' : 'Heat 2'}</span>
-                    <HelpCircle className="w-3 h-3 text-white/30" />
                   </span>
-                  <span className="font-mono text-xs md:text-sm text-white/40 italic">
-                    {language === 'es' ? 'Pendiente' : 'TBA'}
-                  </span>
+                  <span className="font-mono text-base md:text-lg font-bold text-white">17:35</span>
+                  <span className="text-[10px] text-white/40">(A-B)</span>
                 </li>
               </ol>
               <p className="text-[11px] text-white/40 px-4 md:px-5 py-3 border-t border-white/5 leading-relaxed">
