@@ -151,7 +151,7 @@ export function LiveTimingStreaming() {
                   </div>
                 </div>
                 <span className="text-[10px] uppercase tracking-wider text-white/40 shrink-0">
-                  {language === 'es' ? 'Grupo Par' : 'Even Group'}
+                  {language === 'es' ? 'Grupo B' : 'Group B'}
                 </span>
               </div>
               <ol className="divide-y divide-white/5">
