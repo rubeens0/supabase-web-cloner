@@ -218,8 +218,8 @@ export function LiveTimingStreaming() {
               </ol>
               <p className="text-[11px] text-white/40 px-4 md:px-5 py-3 border-t border-white/5 leading-relaxed">
                 {language === 'es'
-                  ? 'Grupo B asignado. Dos heats programadas con salida en parrilla invertida del 10.'
-                  : 'Group B assigned. Two heats scheduled with reversed top-10 grid start.'}
+                  ? 'Grupo B asignado. Dos heats programadas para la clasificación de la superheat del domingo.'
+                  : 'Group B assigned. Two heats scheduled for Sunday\'s superheat qualification.'}
               </p>
             </div>
           </div>
