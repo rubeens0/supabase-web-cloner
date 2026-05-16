@@ -108,81 +108,49 @@ export function LiveTimingStreaming() {
               </div>
               <div className="flex-1 min-w-0">
                 <p className="text-[10px] md:text-[11px] uppercase tracking-[0.22em] text-red-300/80 mb-1.5">
-                  {language === 'es' ? 'Sábado · 17 Mayo' : 'Saturday · May 17'}
+                  {language === 'es' ? 'Domingo · 17 Mayo' : 'Sunday · May 17'}
                 </p>
                 <h2 className="font-display text-3xl md:text-5xl lg:text-6xl text-white leading-[0.95] tracking-[-0.02em]">
-                  {language === 'es' ? 'Clasificación' : 'Qualifying'}
+                  {language === 'es' ? 'Carrera final' : 'Final race'}
                 </h2>
                 <p className="text-white/60 text-sm md:text-base mt-2 md:mt-3 max-w-md">
                   {language === 'es'
-                    ? 'La sesión que define la parrilla de salida durante las heats.'
-                    : 'The session that defines the starting grid during the heats.'}
+                    ? 'La cita decisiva del fin de semana.'
+                    : 'The decisive race of the weekend.'}
                 </p>
               </div>
               <div className="flex md:flex-col md:items-end gap-3 md:gap-2 md:text-right">
                 <div className="flex items-baseline gap-2">
-                  <span className="font-mono text-3xl md:text-5xl font-bold text-white">11:05</span>
-                  <span className="text-white/40 text-sm md:text-base">→</span>
-                  <span className="font-mono text-3xl md:text-5xl font-bold text-white">11:20</span>
+                  <span className="font-mono text-3xl md:text-5xl font-bold text-white">14:05</span>
                 </div>
                 <span className="text-[10px] md:text-xs uppercase tracking-[0.18em] text-white/50">
-                  {language === 'es' ? '​Comienzo de las sesiones ' : 'Session start '}
+                  {language === 'es' ? 'Hora de salida' : 'Start time'}
                 </span>
               </div>
             </div>
           </div>
 
           {/* Two-day timeline */}
-          <div className="grid md:grid-cols-2 gap-4 md:gap-5">
-            {/* Friday */}
+          <div className="grid md:grid-cols-1 gap-4 md:gap-5">
+            {/* Sunday */}
             <div className="rounded-2xl md:rounded-3xl border border-white/10 bg-white/[0.03] overflow-hidden">
               <div className="p-4 md:p-5 border-b border-white/10 flex items-center justify-between gap-3">
                 <div className="flex items-center gap-3 min-w-0">
                   <div className="w-10 h-10 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center shrink-0">
-                    <Clock className="w-5 h-5 text-white" />
+                    <Trophy className="w-5 h-5 text-white" />
                   </div>
                   <div className="min-w-0">
                     <p className="text-[10px] uppercase tracking-[0.2em] text-white/40">
-                      {language === 'es' ? 'Día 1' : 'Day 1'}
+                      {language === 'es' ? 'Día 3' : 'Day 3'}
                     </p>
                     <h3 className="text-base md:text-lg font-bold leading-tight">
-                      {language === 'es' ? 'Viernes · Entrenos ( P8 )' : 'Friday · Practice ( P8 )'}
+                      {language === 'es' ? 'Domingo · Superheat + Final' : 'Sunday · Superheat + Final'}
                     </h3>
                   </div>
                 </div>
                 <span className="text-[10px] uppercase tracking-wider text-white/40 shrink-0">
-                  {language === 'es' ? 'Grupo B' : 'Group B'}
+                  {language === 'es' ? 'Superheat 1' : 'Superheat 1'}
                 </span>
-              </div>
-              <ol className="divide-y divide-white/5">
-                {['P7', 'P15', 'P4', 'P17', 'P14'].map((time, i) => (
-                  <li key={time} className="flex items-center gap-3 md:gap-4 px-4 md:px-5 py-3 md:py-3.5 hover:bg-white/[0.03] transition-colors">
-                    <span className="font-mono text-[10px] text-white/30 w-5 shrink-0">0{i + 1}</span>
-                    <span className="text-xs uppercase tracking-[0.16em] text-white/50 flex-1">
-                      {language === 'es' ? `Sesión ${i + 1}` : `Session ${i + 1}`}
-                    </span>
-                    <span className="font-mono text-lg md:text-xl font-bold text-white">{time}</span>
-                  </li>
-                ))}
-              </ol>
-            </div>
-
-            {/* Saturday */}
-            <div className="rounded-2xl md:rounded-3xl border border-white/10 bg-white/[0.03] overflow-hidden">
-              <div className="p-4 md:p-5 border-b border-white/10 flex items-center justify-between gap-3">
-                <div className="flex items-center gap-3 min-w-0">
-                  <div className="w-10 h-10 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center shrink-0">
-                    <Flame className="w-5 h-5 text-white" />
-                  </div>
-                  <div className="min-w-0">
-                    <p className="text-[10px] uppercase tracking-[0.2em] text-white/40">
-                      {language === 'es' ? 'Día 2' : 'Day 2'}
-                    </p>
-                    <h3 className="text-base md:text-lg font-bold leading-tight">
-                      {language === 'es' ? 'Sábado · Qualy + Heats' : 'Saturday · Qualy + Heats'}
-                    </h3>
-                  </div>
-                </div>
               </div>
               <ol className="divide-y divide-white/5">
                 <li className="flex items-center gap-3 md:gap-4 px-4 md:px-5 py-3 md:py-3.5">
@@ -190,36 +158,28 @@ export function LiveTimingStreaming() {
                   <span className="text-xs uppercase tracking-[0.16em] text-white/50 flex-1">
                     Warm Up
                   </span>
-                  <span className="font-mono text-lg md:text-xl font-bold text-white">9:22</span>
+                  <span className="font-mono text-lg md:text-xl font-bold text-white">8:30</span>
+                </li>
+                <li className="flex items-center gap-3 md:gap-4 px-4 md:px-5 py-3 md:py-3.5">
+                  <span className="font-mono text-[10px] text-white/30 w-5 shrink-0">02</span>
+                  <span className="text-xs uppercase tracking-[0.16em] text-white/50 flex-1 flex items-center gap-2">
+                    <span>Superheat</span>
+                  </span>
+                  <span className="font-mono text-lg md:text-xl font-bold text-white">10:30</span>
+                  <span className="text-[10px] text-white/40">(SH1)</span>
                 </li>
                 <li className="flex items-center gap-3 md:gap-4 px-4 md:px-5 py-3 md:py-3.5 bg-red-500/[0.06]">
-                  <span className="font-mono text-[10px] text-red-300/70 w-5 shrink-0">02</span>
+                  <span className="font-mono text-[10px] text-red-300/70 w-5 shrink-0">03</span>
                   <span className="text-xs uppercase tracking-[0.16em] text-red-200 flex-1 font-semibold">
-                    {language === 'es' ? 'Clasificación' : 'Qualifying'}
+                    {language === 'es' ? 'Carrera final' : 'Final race'}
                   </span>
-                  <span className="font-mono text-base md:text-lg font-bold text-white">11:05–11:20</span>
-                </li>
-                <li className="flex items-center gap-3 md:gap-4 px-4 md:px-5 py-3 md:py-3.5">
-                  <span className="font-mono text-[10px] text-white/30 w-5 shrink-0">03</span>
-                  <span className="text-xs uppercase tracking-[0.16em] text-white/50 flex-1 flex items-center gap-2">
-                    <span>{language === 'es' ? 'Heat 1' : 'Heat 1'}</span>
-                  </span>
-                  <span className="font-mono text-base md:text-lg font-bold text-white">14:10</span>
-                  <span className="text-[10px] text-white/40">(B-C)</span>
-                </li>
-                <li className="flex items-center gap-3 md:gap-4 px-4 md:px-5 py-3 md:py-3.5">
-                  <span className="font-mono text-[10px] text-white/30 w-5 shrink-0">04</span>
-                  <span className="text-xs uppercase tracking-[0.16em] text-white/50 flex-1 flex items-center gap-2">
-                    <span>{language === 'es' ? 'Heat 2' : 'Heat 2'}</span>
-                  </span>
-                  <span className="font-mono text-base md:text-lg font-bold text-white">17:35</span>
-                  <span className="text-[10px] text-white/40">(A-B)</span>
+                  <span className="font-mono text-lg md:text-xl font-bold text-white">14:05</span>
                 </li>
               </ol>
               <p className="text-[11px] text-white/40 px-4 md:px-5 py-3 border-t border-white/5 leading-relaxed">
                 {language === 'es'
-                  ? 'Grupo B asignado. Dos heats programadas para la clasificación de la superheat del domingo.'
-                  : 'Group B assigned. Two heats scheduled for Sunday\'s superheat qualification.'}
+                  ? 'Asignado a la Superheat 1. La final decide la clasificación de la ronda.'
+                  : 'Assigned to Superheat 1. The final decides the round standings.'}
               </p>
             </div>
           </div>
