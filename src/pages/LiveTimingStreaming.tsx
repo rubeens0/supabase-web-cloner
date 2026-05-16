@@ -115,8 +115,8 @@ export function LiveTimingStreaming() {
                 </h2>
                 <p className="text-white/60 text-sm md:text-base mt-2 md:mt-3 max-w-md">
                   {language === 'es'
-                    ? 'La cita decisiva del fin de semana.'
-                    : 'The decisive race of the weekend.'}
+                    ? 'El resultado final del fin de semana.'
+                    : 'The final result of the weekend.'}
                 </p>
               </div>
               <div className="flex md:flex-col md:items-end gap-3 md:gap-2 md:text-right">
