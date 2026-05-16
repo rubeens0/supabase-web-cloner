@@ -166,7 +166,7 @@ export function LiveTimingStreaming() {
                     <span>Superheat</span>
                   </span>
                   <span className="font-mono text-lg md:text-xl font-bold text-white">10:30</span>
-                  <span className="text-[10px] text-white/40">(SH1)</span>
+                  
                 </li>
                 <li className="flex items-center gap-3 md:gap-4 px-4 md:px-5 py-3 md:py-3.5 bg-red-500/[0.06]">
                   <span className="font-mono text-[10px] text-red-300/70 w-5 shrink-0">03</span>
