@@ -108,25 +108,23 @@ export function LiveTimingStreaming() {
               </div>
               <div className="flex-1 min-w-0">
                 <p className="text-[10px] md:text-[11px] uppercase tracking-[0.22em] text-red-300/80 mb-1.5">
-                  {language === 'es' ? 'Sábado · 17 Mayo' : 'Saturday · May 17'}
+                  {language === 'es' ? 'Domingo · 17 Mayo' : 'Sunday · May 17'}
                 </p>
                 <h2 className="font-display text-3xl md:text-5xl lg:text-6xl text-white leading-[0.95] tracking-[-0.02em]">
-                  {language === 'es' ? 'Clasificación' : 'Qualifying'}
+                  {language === 'es' ? 'Carrera final' : 'Final race'}
                 </h2>
                 <p className="text-white/60 text-sm md:text-base mt-2 md:mt-3 max-w-md">
                   {language === 'es'
-                    ? 'La sesión que define la parrilla de salida durante las heats.'
-                    : 'The session that defines the starting grid during the heats.'}
+                    ? 'La cita decisiva del fin de semana.'
+                    : 'The decisive race of the weekend.'}
                 </p>
               </div>
               <div className="flex md:flex-col md:items-end gap-3 md:gap-2 md:text-right">
                 <div className="flex items-baseline gap-2">
-                  <span className="font-mono text-3xl md:text-5xl font-bold text-white">11:05</span>
-                  <span className="text-white/40 text-sm md:text-base">→</span>
-                  <span className="font-mono text-3xl md:text-5xl font-bold text-white">11:20</span>
+                  <span className="font-mono text-3xl md:text-5xl font-bold text-white">14:05</span>
                 </div>
                 <span className="text-[10px] md:text-xs uppercase tracking-[0.18em] text-white/50">
-                  {language === 'es' ? '​Comienzo de las sesiones ' : 'Session start '}
+                  {language === 'es' ? 'Hora de salida' : 'Start time'}
                 </span>
               </div>
             </div>
