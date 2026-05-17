@@ -10,6 +10,8 @@ import { useRef } from "react";
 import { LIVE_RACE_ACTIVE } from "@/config/liveRace";
 import heroImage from "@/assets/hero-bg.webp";
 import aboutImage from "@/assets/about-image.webp";
+import aboutImageAlt from "@/assets/ruben-portrait-grid.jpg";
+import { ImageCompareSlider } from "@/components/ImageCompareSlider";
 import kartingImage from "@/assets/karting-image.webp";
 import marketingImage from "@/assets/marketing-image.webp";
 import portadaExtremaduraImg from "@/assets/cek-2026-campillos-18.jpg";
@@ -512,10 +514,16 @@ export function Home() {
               {...slideIn("right", 0.1)}
               className="lg:col-span-5"
             >
-              <div className="relative aspect-[4/5] rounded-2xl overflow-hidden border border-white/10">
-                <ImageWithFallback src={aboutImage} alt="Rubén Muñoz" className="w-full h-full object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-6">
+              <div className="relative aspect-[4/5] rounded-2xl overflow-hidden border border-white/10 group">
+                <ImageCompareSlider
+                  beforeSrc={aboutImage}
+                  afterSrc={aboutImageAlt}
+                  beforeAlt="Rubén Muñoz"
+                  afterAlt="Rubén Muñoz en parrilla"
+                  initial={55}
+                />
+                <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/80 via-black/30 to-transparent pointer-events-none" />
+                <div className="absolute bottom-0 left-0 right-0 p-6 pointer-events-none">
                   <p className="font-display-italic text-2xl text-white">
                     Driver, creator <span className="text-secondary">&</span> strategist.
                   </p>
