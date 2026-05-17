@@ -1,8 +1,10 @@
 import { motion, AnimatePresence } from 'motion/react';
+import { Link } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
-import { Clock, Youtube, Maximize2, X, ExternalLink, RefreshCw, ChevronDown, Trophy, Flame, HelpCircle } from 'lucide-react';
+import { Clock, Youtube, Maximize2, X, ExternalLink, RefreshCw, ChevronDown, Trophy, Flame, HelpCircle, CalendarClock, ArrowRight } from 'lucide-react';
 import { SEO } from '../components/SEO';
 import { useState, useEffect, useRef } from 'react';
+import { LIVE_RACE_ACTIVE, NEXT_RACE } from '@/config/liveRace';
 
 export function LiveTimingStreaming() {
   const { language } = useLanguage();
@@ -42,6 +44,55 @@ export function LiveTimingStreaming() {
       document.body.style.overflow = 'unset';
     };
   }, [expandedView]);
+
+  if (!LIVE_RACE_ACTIVE) {
+    return (
+      <div className="min-h-screen bg-black text-white pt-24 md:pt-40 pb-24 px-4 md:px-10">
+        <SEO
+          title={language === 'es'
+            ? 'Directo CEK — Próxima carrera | Rubén Muñoz'
+            : 'CEK Live — Next race | Rubén Muñoz'}
+          description={language === 'es'
+            ? 'La página de directo se activará durante el próximo fin de semana de carrera del CEK.'
+            : 'The live page will be enabled during the next CEK race weekend.'}
+        />
+        <div className="max-w-3xl mx-auto text-center">
+          <div className="inline-flex items-center gap-3 text-[10px] sm:text-[11px] uppercase tracking-[0.22em] text-white/40 mb-6">
+            <span className="font-mono text-white">N° 00</span>
+            <span className="h-px w-8 bg-white/15" />
+            <span>{language === 'es' ? 'Próxima carrera' : 'Next race'}</span>
+          </div>
+          <h1 className="font-display leading-[0.92] text-[40px] sm:text-7xl md:text-8xl text-white tracking-[-0.02em]">
+            {language === 'es' ? 'Volvemos en' : 'Back in'}{' '}
+            <span className="font-display-italic text-gradient-mono-italic">Valencia</span>
+            <span className="text-white/40">.</span>
+          </h1>
+          <p className="mt-6 text-white/60 max-w-xl mx-auto text-sm sm:text-base leading-relaxed">
+            {language === 'es'
+              ? 'El directo del CEK (live timing y streaming) se habilita solo durante el fin de semana de carrera. La próxima cita es la Ronda 3 en Valencia.'
+              : 'The CEK live page (live timing & streaming) is only enabled during the race weekend. Next stop: Round 3 in Valencia.'}
+          </p>
+          <div className="mt-10 inline-flex flex-col sm:flex-row items-center gap-3 px-6 py-5 rounded-2xl border border-white/10 bg-white/[0.03]">
+            <CalendarClock className="w-5 h-5 text-white/60" />
+            <div className="text-left">
+              <p className="text-white text-sm font-medium">{NEXT_RACE.round} — {NEXT_RACE.circuit}</p>
+              <p className="text-white/50 text-xs mt-0.5">
+                {language === 'es' ? NEXT_RACE.datesEs : NEXT_RACE.datesEn} · {NEXT_RACE.city}
+              </p>
+            </div>
+          </div>
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
+            <Link to="/" className="inline-flex items-center gap-2 bg-white text-black text-sm font-medium rounded-full px-5 py-2.5 hover:bg-secondary hover:text-white transition-colors">
+              {language === 'es' ? 'Volver al inicio' : 'Back to home'} <ArrowRight className="w-4 h-4" />
+            </Link>
+            <Link to="/blog" className="inline-flex items-center gap-2 border border-white/15 text-white/80 hover:text-white hover:border-white/40 text-sm rounded-full px-5 py-2.5 transition-colors">
+              {language === 'es' ? 'Leer el blog' : 'Read the blog'}
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-black text-white pt-24 md:pt-40 pb-12 px-4 md:px-10">

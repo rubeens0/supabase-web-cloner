@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { Menu, X, ArrowRight, User, LogOut, Mail } from 'lucide-react';
 import logoX from '@/assets/logo-x-white.webp';
+import { LIVE_RACE_ACTIVE } from '@/config/liveRace';
 import { supabase } from '@/integrations/supabase/client';
 import type { User as SupabaseUser } from '@supabase/supabase-js';
 
@@ -12,7 +13,7 @@ export function Navigation() {
   const navigate = useNavigate();
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [bannerVisible, setBannerVisible] = useState(true);
+  const [bannerVisible, setBannerVisible] = useState(LIVE_RACE_ACTIVE);
   const [user, setUser] = useState<SupabaseUser | null>(null);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
   const userMenuRef = useRef<HTMLDivElement>(null);
