@@ -40,8 +40,28 @@ export function SEO({
 
   const pathMeta: Record<string, { title: string; description: { es: string; en: string } }> = {
     '/': { title: language === 'es' ? 'Inicio' : 'Home', description: {
-      es: 'Web oficial de Rubén Muñoz: piloto del CEK y emprendedor digital. Calendario, patrocinios y blog.',
-      en: 'Official site of Rubén Muñoz: CEK karting driver and digital entrepreneur. Schedule, sponsors and blog.'
+      es: 'Web oficial de Rubén Muñoz: piloto del CEK y emprendedor digital.',
+      en: 'Official site of Rubén Muñoz: CEK karting driver and digital entrepreneur.'
+    }},
+    '/inicio': { title: 'Inicio', description: {
+      es: 'Piloto del CEK y emprendedor digital de Cáceres. Calendario, patrocinios y blog.',
+      en: 'CEK karting driver and digital entrepreneur from Cáceres. Schedule, sponsors and blog.'
+    }},
+    '/home': { title: 'Home', description: {
+      es: 'Piloto del CEK y emprendedor digital de Cáceres. Calendario, patrocinios y blog.',
+      en: 'CEK karting driver and digital entrepreneur from Cáceres. Schedule, sponsors and blog.'
+    }},
+    '/patrocinadores': { title: 'Patrocinadores', description: {
+      es: 'Únete como patrocinador en el CEK 2026: visibilidad nacional, dossier y planes.',
+      en: 'Join as a sponsor in the 2026 CEK: nationwide visibility, dossier and plans.'
+    }},
+    '/rde': { title: 'RDE', description: {
+      es: 'Programa RDE de Rubén Muñoz: desarrollo deportivo y oportunidades de colaboración.',
+      en: 'Rubén Muñoz RDE program: athletic development and partnership opportunities.'
+    }},
+    '/rdeoperators': { title: 'RDE Operators', description: {
+      es: 'Acceso para operadores RDE: gestión y herramientas internas del programa.',
+      en: 'RDE operators access: program management and internal tooling.'
     }},
     '/contacto': { title: 'Contacto', description: {
       es: 'Contacta con Rubén Muñoz: formulario, redes y reserva de reuniones para patrocinios y colaboraciones.',
