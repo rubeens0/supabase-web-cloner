@@ -83,10 +83,8 @@ export function SEO({
       es: 'Conviértete en patrocinador de Rubén Muñoz en el CEK 2026. Planes, beneficios y dossier.',
       en: 'Become a sponsor of Rubén Muñoz in the 2026 CEK. Plans, benefits and dossier.'
     }},
-    '/patrocinadores': { title: 'Patrocinio', description: {
-      es: 'Conviértete en patrocinador de Rubén Muñoz en el CEK 2026. Planes, beneficios y dossier.',
-      en: 'Become a sponsor of Rubén Muñoz in the 2026 CEK. Plans, benefits and dossier.'
-    }},
+
+
     '/2026': { title: language === 'es' ? 'Temporada 2026' : '2026 Season', description: {
       es: 'Temporada 2026 del CEK: calendario, circuitos y seguimiento de Rubén Muñoz en el campeonato.',
       en: '2026 CEK season: calendar, circuits and live updates from Rubén Muñoz in the championship.'
