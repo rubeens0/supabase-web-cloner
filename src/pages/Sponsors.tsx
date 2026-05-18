@@ -210,16 +210,75 @@ export function Sponsors() {
       </section>
 
       {/* ============== 03 · VALUE ADD ============== */}
-      <section id="value-add-section" className="border-b border-white/[0.08] px-5 sm:px-10 md:px-16 py-24 sm:py-32">
-        <div className="max-w-5xl mx-auto">
+      <section id="value-add-section" className="relative border-b border-white/[0.08] px-5 sm:px-10 md:px-16 py-24 sm:py-32 overflow-hidden">
+        {/* Ambient gradient glow */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -top-32 -left-32 w-[28rem] h-[28rem] rounded-full opacity-[0.18] blur-[120px]"
+          style={{ background: 'radial-gradient(circle, rgba(255,255,255,0.55), transparent 70%)' }}
+        />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute bottom-0 right-0 w-[24rem] h-[24rem] rounded-full opacity-[0.10] blur-[120px]"
+          style={{ background: 'radial-gradient(circle, rgba(255,255,255,0.4), transparent 70%)' }}
+        />
+
+        <div className="relative max-w-6xl mx-auto">
           <SectionLabel index="03">{t('sponsors.valueAdd.title')}</SectionLabel>
-          <motion.p
-            {...fadeIn(0.1)}
-            className="mt-10 font-display text-3xl sm:text-4xl md:text-5xl text-white leading-[1.15] tracking-tight"
+
+          {/* Lead pull-quote */}
+          <motion.h3
+            {...fadeIn(0.05)}
+            className="mt-10 font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white leading-[1.05] tracking-tight max-w-5xl"
           >
-            <span className="font-display-italic text-gradient-mono-italic">"</span>
-            {t('sponsors.valueAdd.description')}
-            <span className="font-display-italic text-gradient-mono-italic">"</span>
+            <span className="font-display-italic text-gradient-mono-italic align-top mr-2">“</span>
+            {t('sponsors.valueAdd.lead')}{' '}
+            <span className="font-display-italic text-gradient-mono-italic">
+              {t('sponsors.valueAdd.leadHi')}
+            </span>
+            <span className="font-display-italic text-gradient-mono-italic align-top ml-1">”</span>
+          </motion.h3>
+
+          {/* Animated divider */}
+          <motion.div
+            initial={{ scaleX: 0, opacity: 0 }}
+            whileInView={{ scaleX: 1, opacity: 1 }}
+            viewport={{ once: true, margin: '-10%' }}
+            transition={{ duration: 1, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
+            className="origin-left mt-14 sm:mt-20 h-px bg-gradient-to-r from-white/40 via-white/15 to-transparent"
+          />
+
+          {/* Three pillars */}
+          <div className="mt-12 sm:mt-14 grid md:grid-cols-3 gap-10 md:gap-8">
+            {[1, 2, 3].map((n, i) => (
+              <motion.div
+                key={n}
+                {...fadeIn(0.15 + i * 0.12)}
+                className="group relative"
+              >
+                <div className="flex items-baseline gap-3">
+                  <span className="font-mono text-[11px] uppercase tracking-[0.24em] text-white/35">
+                    0{n}
+                  </span>
+                  <span className="h-px flex-1 bg-white/10 group-hover:bg-white/25 transition-colors duration-500" />
+                </div>
+                <h4 className="mt-5 font-display text-2xl sm:text-3xl text-white leading-[1.1] tracking-tight">
+                  {t(`sponsors.valueAdd.pillar${n}.label`)}
+                </h4>
+                <p className="mt-3 text-white/65 leading-relaxed text-[15px]">
+                  {t(`sponsors.valueAdd.pillar${n}.body`)}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Sign-off */}
+          <motion.p
+            {...fadeIn(0.55)}
+            className="mt-16 sm:mt-20 font-display-italic text-xl sm:text-2xl md:text-3xl text-white/85 leading-snug"
+          >
+            <span className="text-gradient-mono-italic">→</span>{' '}
+            {t('sponsors.valueAdd.signoff')}
           </motion.p>
         </div>
       </section>

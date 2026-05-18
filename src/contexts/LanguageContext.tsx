@@ -453,6 +453,18 @@ const translations = {
     'sponsors.valueAdd.title': 'Más que un piloto: tu aliado en marketing digital',
     'sponsors.valueAdd.description':
       'A diferencia de otros pilotos, gestiono personalmente campañas de marketing en redes sociales. Combino la creatividad con el deporte, garantizando que tu marca sea representada con profesionalidad y una estrategia digital eficaz. Tu patrocinio tendrá el respaldo de contenido de calidad gestionado por mí.',
+    'sponsors.valueAdd.lead': 'A diferencia de otros pilotos,',
+    'sponsors.valueAdd.leadHi': 'no delego mi marca.',
+    'sponsors.valueAdd.pillar1.label': 'Marketing en primera persona',
+    'sponsors.valueAdd.pillar1.body':
+      'Gestiono personalmente cada campaña en redes sociales. Sin intermediarios, sin agencias intermedias.',
+    'sponsors.valueAdd.pillar2.label': 'Creatividad + deporte',
+    'sponsors.valueAdd.pillar2.body':
+      'Uno la narrativa visual con el rendimiento en pista para conectar con la audiencia adecuada.',
+    'sponsors.valueAdd.pillar3.label': 'Estrategia digital eficaz',
+    'sponsors.valueAdd.pillar3.body':
+      'Tu marca representada con profesionalidad, contenido de calidad y resultados medibles.',
+    'sponsors.valueAdd.signoff': 'Tu patrocinio, gestionado por mí.',
     'sponsors.why.title': '¿Por qué patrocinarme?',
     'sponsors.why.card1.title': 'Visibilidad nacional',
     'sponsors.why.card1.desc':
@@ -927,6 +939,18 @@ const translations = {
     'sponsors.valueAdd.title': 'More than a driver: your digital marketing partner',
     'sponsors.valueAdd.description':
       'Unlike most drivers, I personally run social media marketing campaigns. I combine creativity with sport to ensure your brand is represented with professionalism and an effective digital strategy. Your sponsorship is backed by quality content, managed by me.',
+    'sponsors.valueAdd.lead': 'Unlike most drivers,',
+    'sponsors.valueAdd.leadHi': 'I don\u2019t outsource my brand.',
+    'sponsors.valueAdd.pillar1.label': 'Marketing, first-hand',
+    'sponsors.valueAdd.pillar1.body':
+      'I personally run every social media campaign. No middlemen, no detached agencies.',
+    'sponsors.valueAdd.pillar2.label': 'Creativity + sport',
+    'sponsors.valueAdd.pillar2.body':
+      'I merge visual storytelling with on-track performance to reach the right audience.',
+    'sponsors.valueAdd.pillar3.label': 'Effective digital strategy',
+    'sponsors.valueAdd.pillar3.body':
+      'Your brand represented with professionalism, quality content and measurable results.',
+    'sponsors.valueAdd.signoff': 'Your sponsorship, managed by me.',
     'sponsors.why.title': 'Why sponsor me?',
     'sponsors.why.card1.title': 'National visibility',
     'sponsors.why.card1.desc':
