@@ -429,6 +429,9 @@ const translations = {
     'blog.vlog1.title': 'Primer Vlog en YouTube: tests del CEK en Motorland',
     'blog.vlog1.excerpt':
       'Estreno mi primer vlog en YouTube grabado durante los tres días de tests previos al CEK R2 en MotorLand Aragón. Se vienen muchos más vlogs y contenido nuevo en el canal.',
+    'blog.motorlandrace.title': 'CEK R2 Motorland: remontada hasta el top-20 en una carrera caótica',
+    'blog.motorlandrace.excerpt':
+      'Fin de semana exigente en MotorLand Aragón: 18 adelantamientos en la final remontando desde el P34, P18 final tras un contacto que nos costó el top-15. Mucho aprendizaje de cara a Valencia en junio.',
 
     /* ===== Sponsors ===== */
     'sponsors.hero.title': 'Patrocinio',
@@ -900,6 +903,9 @@ const translations = {
     'blog.vlog1.title': 'First YouTube Vlog: CEK tests at Motorland',
     'blog.vlog1.excerpt':
       'I am launching my first YouTube vlog, recorded during the three days of testing ahead of CEK R2 at MotorLand Aragón. Many more vlogs and new content coming to the channel.',
+    'blog.motorlandrace.title': 'CEK R2 Motorland: comeback into the top-20 in a chaotic race',
+    'blog.motorlandrace.excerpt':
+      'Demanding weekend at MotorLand Aragón: 18 overtakes in the final coming back from P34, finishing P18 after a contact that cost us the top-15. A lot of learning ahead of Valencia in June.',
 
     /* ===== Sponsors ===== */
     'sponsors.hero.title': 'Sponsorship',

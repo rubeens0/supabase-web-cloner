@@ -8,6 +8,7 @@ import cajaRuralImg from '@/assets/caja-rural-extremadura.png';
 import webRedesignImg from '@/assets/website-redesign-2026.webp';
 import ecomscrapeImg from '@/assets/ecomscrape-post.webp';
 import motorlandImg from '@/assets/motorland-cek-r2.webp';
+import motorlandRaceImg from '@/assets/motorland-cek-r2-race.jpeg';
 import vlog1Img from '@/assets/vlog-1-motorland.jpg';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
@@ -221,6 +222,18 @@ Many thanks to all the people involved.`,
       readTime: '2 min',
       category: t('blog.category.karting'),
       image: vlog1Img,
+    },
+    {
+      id: 'motorland-cek-r2-race',
+      title: t('blog.motorlandrace.title'),
+      excerpt: t('blog.motorlandrace.excerpt'),
+      content: language === 'es'
+        ? `Rubén Muñoz firma una gran remontada en la segunda prueba del Campeonato de España de Karting, disputada en MotorLand Aragón (Alcañiz, Teruel) del 15 al 17 de mayo, cerrando un fin de semana muy exigente con un meritorio P18 en la final tras 18 adelantamientos en pista.\n\nUn fin de semana complicadísimo\n\nEl viernes arrancaba de la mejor manera posible: dentro de los 8 pilotos más rápidos en los entrenamientos libres, con buenas sensaciones y un ritmo muy competitivo. Pero a partir del sábado todo se complicó.\n\nLa clasificación oficial del sábado fue totalmente caótica: más de la mitad de los pilotos de la sesión no logramos completar ni una sola vuelta cronometrada en condiciones, lo que obligaba a remontar desde muy atrás durante todo el fin de semana.\n\nHeats y superheat\n\nEn las mangas clasificatorias mantuvimos un ritmo aceptable, aunque no suficiente para escalar todas las posiciones que necesitábamos. En la superheat, saliendo desde el P15, terminamos P11, sumando posiciones y dejando una buena base de cara a la final.\n\nLa final: 18 adelantamientos desde el P34\n\nLa final empezaba con un mal arranque en el que perdíamos 6 posiciones en la primera vuelta, cayendo hasta el P34. A partir de ahí, carrera al ataque: 18 adelantamientos durante la final, recuperando ritmo vuelta a vuelta y peleando dentro del top-20.\n\nEl resultado podría haber sido aún mejor — estábamos en posición de terminar P15 — pero un contacto con otro piloto que nos sacó momentáneamente de pista nos hizo perder varias plazas. Aun así, cruzábamos la línea de meta en el P18.\n\nMucho aprendizaje para Valencia\n\nMás allá del resultado, este fin de semana en MotorLand deja muchas lecciones: gestión del fin de semana en condiciones caóticas, capacidad de remontada, ritmo de carrera y trabajo de equipo con DB Motorsport. Todo eso lo nos llevamos puesto rumbo a la tercera ronda del CEK, que se disputará en Valencia el próximo mes de junio.\n\nGracias a todo el equipo, a los patrocinadores y a quienes habéis seguido la carrera en directo.\n\n📰 Noticia completa en La Portada de Extremadura: https://www.laportadadeextremadura.com/deportes/deportes-extremadura/ruben-munoz-remonta-hasta-top-20-en-exigente-segunda-prueba-nacional-karting-en-motorland-aragon_5223_102.html`
+        : `Rubén Muñoz delivered a strong comeback at the second round of the Spanish Karting Championship, held at MotorLand Aragón (Alcañiz, Teruel) from May 15 to 17, closing out a very demanding weekend with a hard-earned P18 in the final after 18 on-track overtakes.\n\nA very tough weekend\n\nFriday started in the best possible way: inside the 8 fastest drivers in free practice, with great feelings and very competitive pace. But from Saturday onwards everything got complicated.\n\nSaturday's official qualifying was completely chaotic: more than half of the drivers in the session were unable to complete a single proper timed lap, which meant fighting back from very far down the order all weekend.\n\nHeats and superheat\n\nIn the heats we held an acceptable pace, although not enough to climb all the positions we needed. In the superheat, starting from P15, we finished P11 — gaining ground and setting up a solid base for the final.\n\nThe final: 18 overtakes from P34\n\nThe final began with a poor start in which we lost 6 positions on the opening lap, dropping back to P34. From there it was full attack: 18 overtakes during the final, finding pace lap after lap and fighting our way back into the top-20.\n\nThe result could have been even better — we were in position to finish P15 — but a contact with another driver that briefly sent us off track cost us several places. Even so, we crossed the line in P18.\n\nA lot of learning ahead of Valencia\n\nBeyond the result, this weekend at MotorLand leaves many lessons: managing a weekend in chaotic conditions, recovery ability, race pace and teamwork with DB Motorsport. All of that comes with us heading into the third round of the CEK, which will take place in Valencia next June.\n\nThanks to the whole team, to the sponsors and to everyone who followed the race live.\n\n📰 Full article in La Portada de Extremadura: https://www.laportadadeextremadura.com/deportes/deportes-extremadura/ruben-munoz-remonta-hasta-top-20-en-exigente-segunda-prueba-nacional-karting-en-motorland-aragon_5223_102.html`,
+      date: '2026-05-18',
+      readTime: '4 min',
+      category: t('blog.category.karting'),
+      image: motorlandRaceImg,
     },
   ];
 

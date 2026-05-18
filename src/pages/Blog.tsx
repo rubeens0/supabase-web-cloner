@@ -8,6 +8,7 @@ import cajaRuralImg from '@/assets/caja-rural-extremadura.png';
 import webRedesignImg from '@/assets/website-redesign-2026.webp';
 import ecomscrapeImg from '@/assets/ecomscrape-post.webp';
 import motorlandImg from '@/assets/motorland-cek-r2.webp';
+import motorlandRaceImg from '@/assets/motorland-cek-r2-race.jpeg';
 import vlog1Img from '@/assets/vlog-1-motorland.jpg';
 import { useLanguage } from '../contexts/LanguageContext';
 import { motion } from 'motion/react';
@@ -138,6 +139,15 @@ export function Blog() {
       readTime: '2 min',
       category: t('blog.category.karting'),
       image: vlog1Img,
+    },
+    {
+      id: 'motorland-cek-r2-race',
+      title: t('blog.motorlandrace.title'),
+      excerpt: t('blog.motorlandrace.excerpt'),
+      date: '2026-05-18',
+      readTime: '4 min',
+      category: t('blog.category.karting'),
+      image: motorlandRaceImg,
     },
   ];
 
