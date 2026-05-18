@@ -8,7 +8,7 @@ import { YoutubeRecent } from "../components/YoutubeRecent";
 import { useLanguage } from "../contexts/LanguageContext";
 import { useRef } from "react";
 import { LIVE_RACE_ACTIVE } from "@/config/liveRace";
-import heroImage from "@/assets/hero-bg.webp";
+import heroImage from "@/assets/ruben-motorland-sunday.jpg";
 import aboutImage from "@/assets/about-image.webp";
 import aboutImageAlt from "@/assets/ruben-portrait-grid.jpg";
 import { ImageCompareSlider } from "@/components/ImageCompareSlider";
@@ -332,7 +332,7 @@ export function Home() {
           <ImageWithFallback
             src={heroImage}
             alt="Karting"
-            className="w-full h-full object-cover opacity-60"
+            className="w-full h-full object-cover opacity-90"
             loading="eager"
             fetchPriority="high"
             decoding="sync"
