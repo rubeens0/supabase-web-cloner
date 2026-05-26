@@ -5,7 +5,7 @@ import { ArrowRight, ExternalLink, Quote, ArrowUpRight } from 'lucide-react';
 import { motion } from 'motion/react';
 import { useLanguage } from '../contexts/LanguageContext';
 import netproLogo from '@/assets/netpro-branding.jpg';
-import ecomscrapeImg from '@/assets/ecomscrape-post.webp';
+import ecomscrapeImg from '@/assets/ecomscrape-logo-new.png';
 
 function SectionLabel({ index, children }: { index: string; children: React.ReactNode }) {
   return (
@@ -91,6 +91,8 @@ export function Business() {
               t('business.ecomscrape.feat4'),
             ]}
             reverse
+            imageContain
+
             secondaryLink={{
               href: 'https://www.instagram.com/anaswalton/',
               text: 'Anas Walton · Instagram',
