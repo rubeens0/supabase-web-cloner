@@ -5,8 +5,6 @@ import { ArrowRight, ExternalLink, Quote, ArrowUpRight } from 'lucide-react';
 import { motion } from 'motion/react';
 import { useLanguage } from '../contexts/LanguageContext';
 import netproLogo from '@/assets/netpro-branding.jpg';
-import netspyImg from '@/assets/netspy-branding.png';
-import rdeLogo from '@/assets/rde-logo.png';
 import ecomscrapeImg from '@/assets/ecomscrape-post.webp';
 
 function SectionLabel({ index, children }: { index: string; children: React.ReactNode }) {
@@ -49,31 +47,11 @@ export function Business() {
         </div>
       </section>
 
-      {/* ============== 02 · RDE OPERATORS ============== */}
+{/* ============== 02 · NETPRO ============== */}
       <section className="border-b border-white/[0.08] px-5 sm:px-10 md:px-16 py-20 sm:py-32">
         <div className="max-w-7xl mx-auto">
           <BusinessSection
             index="02"
-            title="RDE Operators"
-            subtitle="Funnels & Lead Generation"
-            description="Optimización de embudos de venta y generación de leads para info-empresarios hispanohablantes que quieren convertir su audiencia en ingresos predecibles."
-            extendedDescription="Somos Rubén, Diego y Erik — Nos convertimos en el equipo de crecimiento de un número limitado de clientes, con implicación real en estrategia y ejecución."
-            image={rdeLogo}
-            imageAlt="RDE Operators"
-            href="/rde"
-            internal
-            linkText="Conocer RDE"
-            features={['Diagnóstico', 'Estrategia', 'Ejecución', 'Optimización']}
-            imageContain
-          />
-        </div>
-      </section>
-
-      {/* ============== 03 · NETPRO ============== */}
-      <section className="border-b border-white/[0.08] px-5 sm:px-10 md:px-16 py-20 sm:py-32">
-        <div className="max-w-7xl mx-auto">
-          <BusinessSection
-            index="03"
             title="Netpro Agency"
             subtitle="Digital & Growth"
             description={t('business.hero.description')}
@@ -93,33 +71,11 @@ export function Business() {
         </div>
       </section>
 
-      {/* ============== 04 · NETSPY ============== */}
+      {/* ============== 03 · ECOMSCRAPE ============== */}
       <section className="border-b border-white/[0.08] px-5 sm:px-10 md:px-16 py-20 sm:py-32">
         <div className="max-w-7xl mx-auto">
           <BusinessSection
-            index="04"
-            title={t('business.netspy.title')}
-            subtitle="Community & Networking"
-            description={t('business.netspy.description')}
-            extendedDescription={t('business.netspy.p1')}
-            image={netspyImg}
-            imageAlt="Netspy Community"
-            href="https://netspy.es/rrss-landing-1?utm_source=rubenweb&utm_medium=rubenmarca&utm_campaign=marca-personal"
-            linkText="netspy.es"
-            features={['Community Building', 'Exclusive Events', 'Founder Networking', 'Strategic Partnerships']}
-            secondaryLink={{
-              href: 'https://www.instagram.com/netpro.agency/',
-              text: t('business.netspy.cta') || 'Follow on Instagram',
-            }}
-          />
-        </div>
-      </section>
-
-      {/* ============== 05 · ECOMSCRAPE ============== */}
-      <section className="border-b border-white/[0.08] px-5 sm:px-10 md:px-16 py-20 sm:py-32">
-        <div className="max-w-7xl mx-auto">
-          <BusinessSection
-            index="05"
+            index="03"
             title={t('business.ecomscrape.title')}
             subtitle={t('business.ecomscrape.subtitle')}
             description={t('business.ecomscrape.description')}
@@ -143,10 +99,10 @@ export function Business() {
         </div>
       </section>
 
-      {/* ============== 06 · MISSION / GOAL ============== */}
+{/* ============== 04 · MISSION / GOAL ============== */}
       <section className="px-5 sm:px-10 md:px-16 py-24 sm:py-40">
         <div className="max-w-4xl mx-auto text-center relative">
-          <SectionLabel index="06">{t('business.goal.title')}</SectionLabel>
+          <SectionLabel index="04">{t('business.goal.title')}</SectionLabel>
           <div className="mt-10 mb-10 flex justify-center">
             <Quote className="w-7 h-7 text-white/25" />
           </div>
