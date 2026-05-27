@@ -162,7 +162,7 @@ const translations = {
     'business.services.social': 'Redes Sociales',
     'business.services.social.desc':
       'Gestión estratégica de comunidades y creación de contenido de alto impacto.',
-    'business.services.growth': 'MOTORSPORT & GROWTH',
+    'business.services.growth': 'Motorsport',
     'business.services.growth.desc':
       'Campañas en Meta Ads (Facebook e Instagram) orientadas a resultados.',
     'business.services.web': 'E-commerce',
@@ -181,7 +181,7 @@ const translations = {
     'business.rde.feat3': 'Ejecución',
     'business.rde.feat4': 'Optimización',
 
-    'business.netpro.subtitle': 'MOTORSPORT & GROWTH',
+    'business.netpro.subtitle': 'Motorsport',
 
     'business.netspy.title': 'Netspy: Comunidad de Emprendedores',
     'business.netspy.subtitle': 'Comunidad & Networking',
@@ -645,7 +645,7 @@ const translations = {
     'business.services.social': 'Social Media',
     'business.services.social.desc':
       'Strategic community management and high-impact content creation.',
-    'business.services.growth': 'MOTORSPORT & GROWTH',
+    'business.services.growth': 'Motorsport',
     'business.services.growth.desc':
       'Meta Ads campaigns (Facebook & Instagram) built around results.',
     'business.services.web': 'E-commerce',
@@ -664,7 +664,7 @@ const translations = {
     'business.rde.feat3': 'Execution',
     'business.rde.feat4': 'Optimization',
 
-    'business.netpro.subtitle': 'MOTORSPORT & GROWTH',
+    'business.netpro.subtitle': 'Motorsport',
 
     'business.netspy.title': 'Netspy: Entrepreneurs Community',
     'business.netspy.subtitle': 'Community & Networking',
