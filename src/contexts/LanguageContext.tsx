@@ -205,7 +205,7 @@ const translations = {
     'business.ecomscrape.cta': 'ecomscrape.com',
     'business.ecomscrape.feat1': 'Extracción de catálogos',
     'business.ecomscrape.feat2': 'Inteligencia de tienda',
-    'business.ecomscrape.feat3': 'API REST',
+    'business.ecomscrape.feat3': 'Software',
     'business.ecomscrape.feat4': 'Analítica de tráfico',
 
     /* ===== RDE landing ===== */
@@ -688,7 +688,7 @@ const translations = {
     'business.ecomscrape.cta': 'ecomscrape.com',
     'business.ecomscrape.feat1': 'Catalog Extraction',
     'business.ecomscrape.feat2': 'Store Intelligence',
-    'business.ecomscrape.feat3': 'REST API',
+    'business.ecomscrape.feat3': 'Software',
     'business.ecomscrape.feat4': 'Traffic Analytics',
 
     /* ===== RDE landing ===== */
