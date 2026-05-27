@@ -33,7 +33,7 @@ export function Business() {
       <section className="relative pt-32 sm:pt-40 pb-16 sm:pb-24 px-5 sm:px-10 md:px-16 border-b border-white/[0.08]">
         <div className="max-w-7xl mx-auto">
           <motion.div {...fadeIn(0.1)}>
-            <SectionLabel index="N° 01">Business · Lines</SectionLabel>
+            <SectionLabel index="">Business · Lines</SectionLabel>
           </motion.div>
 
           <motion.h1
@@ -47,11 +47,11 @@ export function Business() {
         </div>
       </section>
 
-{/* ============== 02 · NETPRO ============== */}
+{/* ============== 01 · NETPRO ============== */}
       <section className="border-b border-white/[0.08] px-5 sm:px-10 md:px-16 py-20 sm:py-32">
         <div className="max-w-7xl mx-auto">
           <BusinessSection
-            index="02"
+            index="01"
             title="Netpro Agency"
             subtitle="Digital & Growth"
             description={t('business.hero.description')}
@@ -71,11 +71,11 @@ export function Business() {
         </div>
       </section>
 
-      {/* ============== 03 · ECOMSCRAPE ============== */}
+      {/* ============== 02 · ECOMSCRAPE ============== */}
       <section className="border-b border-white/[0.08] px-5 sm:px-10 md:px-16 py-20 sm:py-32">
         <div className="max-w-7xl mx-auto">
           <BusinessSection
-            index="03"
+            index="02"
             title={t('business.ecomscrape.title')}
             subtitle={t('business.ecomscrape.subtitle')}
             description={t('business.ecomscrape.description')}
@@ -101,10 +101,10 @@ export function Business() {
         </div>
       </section>
 
-{/* ============== 04 · MISSION / GOAL ============== */}
+{/* ============== 03 · MISSION / GOAL ============== */}
       <section className="px-5 sm:px-10 md:px-16 py-24 sm:py-40">
         <div className="max-w-4xl mx-auto text-center relative">
-          <SectionLabel index="04">{t('business.goal.title')}</SectionLabel>
+          <SectionLabel index="03">{t('business.goal.title')}</SectionLabel>
           <div className="mt-10 mb-10 flex justify-center">
             <Quote className="w-7 h-7 text-white/25" />
           </div>
