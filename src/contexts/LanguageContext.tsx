@@ -165,7 +165,7 @@ const translations = {
     'business.services.growth': 'MOTORSPORT & GROWTH',
     'business.services.growth.desc':
       'Campañas en Meta Ads (Facebook e Instagram) orientadas a resultados.',
-    'business.services.web': 'Desarrollo Web',
+    'business.services.web': 'E-commerce',
     'business.services.web.desc':
       'Sitios web modernos, rápidos y optimizados para convertir visitantes en clientes.',
 
