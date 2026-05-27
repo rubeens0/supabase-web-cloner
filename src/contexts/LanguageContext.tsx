@@ -648,7 +648,7 @@ const translations = {
     'business.services.growth': 'MOTORSPORT & GROWTH',
     'business.services.growth.desc':
       'Meta Ads campaigns (Facebook & Instagram) built around results.',
-    'business.services.web': 'Web Development',
+    'business.services.web': 'E-commerce',
     'business.services.web.desc':
       'Modern, fast, optimized websites that turn visitors into customers.',
 
