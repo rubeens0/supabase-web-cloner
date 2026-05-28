@@ -1,120 +1,118 @@
 import { useEffect, useState, useCallback, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
-import { ArrowRight, ChevronLeft, ChevronRight, Pause, Play } from 'lucide-react';
+import { ArrowRight, ChevronLeft, ChevronRight, Pause, Play, Instagram } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 
 /**
  * /x — Personal storytelling presentation (no scroll, auto-advance).
- * Story arc: 2023 sim racing → 2024 first karts + first business →
- * 2025 European clients + first sponsored championship → 2026 scaling up.
- *
- * Photo slots use placeholders. Replace `image` URLs later with real photos.
+ * Narrative: not "I'll help you". It's "follow the journey".
+ * Arc: 2023 sims → 2024 first karts + first business → 2025 EU + CEK campaign → 2026 scaling.
  */
 
 type SlideBase = {
   kicker: string;
   era?: string;
+  /** Big year tag rendered as side marker */
+  year?: string;
   title: React.ReactNode;
   body?: React.ReactNode;
   pull?: string;
   stats?: { k: string; l: string }[];
   cta?: boolean;
-  /** Placeholder image url — swap later */
   image?: string;
-  /** Layout variant for visual rhythm */
   layout?: 'center' | 'split-left' | 'split-right' | 'overlay' | 'stats' | 'quote' | 'grid';
-  /** Accent color for the slide (uses design tokens) */
-  accent?: 'red' | 'white' | 'amber';
 };
 
-const SLIDE_DURATION = 9000;
+const SLIDE_DURATION = 9500;
 
-const PH = 'https://images.unsplash.com/photo-1517649763962-0c623066013b?w=1600&q=70&auto=format&fit=crop';
-const PH2 = 'https://images.unsplash.com/photo-1551522435-a13afa10f103?w=1600&q=70&auto=format&fit=crop';
-const PH3 = 'https://images.unsplash.com/photo-1486496572940-2bb2341fdbdf?w=1600&q=70&auto=format&fit=crop';
-const PH4 = 'https://images.unsplash.com/photo-1542744095-291d1f67b221?w=1600&q=70&auto=format&fit=crop';
-const PH5 = 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=1600&q=70&auto=format&fit=crop';
-const PH6 = 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=1600&q=70&auto=format&fit=crop';
+// Placeholder images — replace later
+const PH_SIM = 'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=1600&q=70&auto=format&fit=crop';
+const PH_KART = 'https://images.unsplash.com/photo-1551522435-a13afa10f103?w=1600&q=70&auto=format&fit=crop';
+const PH_DESK = 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=1600&q=70&auto=format&fit=crop';
+const PH_TEAM = 'https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=1600&q=70&auto=format&fit=crop';
+const PH_RACE = 'https://images.unsplash.com/photo-1504707748692-419802cf939d?w=1600&q=70&auto=format&fit=crop';
+const PH_NEXT = 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=1600&q=70&auto=format&fit=crop';
 
 function buildSlides(isEs: boolean): SlideBase[] {
   return [
-    // ───────────── 0 · INTRO
+    // ───────────── 0 · COVER
     {
-      kicker: isEs ? 'Capítulo X · La historia real' : 'Chapter X · The real story',
+      kicker: isEs ? 'Capítulo X · Un diario abierto' : 'Chapter X · An open diary',
+      year: '2023→26',
       title: (
         <>
-          {isEs ? 'De un simulador' : 'From a sim rig'}
+          {isEs ? 'No es un pitch.' : 'Not a pitch.'}
           <br />
           <span className="font-display-italic text-secondary">
-            {isEs ? 'a Europa.' : 'to Europe.'}
+            {isEs ? 'Es el diario.' : 'It\'s the diary.'}
           </span>
         </>
       ),
       body: isEs
-        ? 'Sin herencias, sin atajos. Solo obsesión, errores, y la decisión de no esperar a que nadie me abriese la puerta.'
-        : 'No inheritance. No shortcuts. Just obsession, mistakes, and the decision to stop waiting for permission.',
+        ? 'Esto no va de venderte nada. Va de enseñarte, sin filtros, cómo he pasado de un simulador en mi cuarto a correr en el Campeonato de España y a construir mis propias empresas. Si quieres, sígueme el proceso.'
+        : 'This isn\'t a sales page. It\'s the unfiltered story of how I went from a sim rig in my room to racing the Spanish Championship and building my own companies. If you\'re curious — follow along.',
       stats: [
-        { k: '2023', l: isEs ? 'El primer click' : 'First click' },
+        { k: '2023', l: isEs ? 'Primer click' : 'First click' },
         { k: '3', l: isEs ? 'Años · 3 vidas' : 'Years · 3 lives' },
-        { k: '0', l: isEs ? 'Excusas' : 'Excuses' },
+        { k: '∞', l: isEs ? 'Por delante' : 'Ahead' },
       ],
       layout: 'stats',
-      accent: 'red',
     },
 
-    // ───────────── 1 · 2023 SIMS
+    // ───────────── 1 · 2023 — SIMS
     {
       kicker: '01',
       era: isEs ? '2023 — La chispa digital' : '2023 — The digital spark',
+      year: '2023',
       title: (
         <>
-          {isEs ? 'Empezó' : 'It started'}
+          {isEs ? 'Todo empezó' : 'It all started'}
           <br />
-          <span className="font-display-italic">{isEs ? 'en un simulador.' : 'in a sim.'}</span>
+          <span className="font-display-italic">{isEs ? 'jugando.' : 'playing.'}</span>
         </>
       ),
       body: isEs
-        ? 'Días enteros corriendo online. Para fuera era "videojuegos". Para mí era abrir la cabeza: trazadas, frenadas, gestión de neumático, comunidad. Aprender a competir sin haber pisado un circuito.'
-        : 'Whole days racing online. People saw "video games". I saw something else: braking points, lines, tire management, community. Learning to race before ever sitting in a real seat.',
+        ? 'Pasaba días enteros en el simulador. Por fuera parecía un videojuego, por dentro era otra cosa: trazadas, frenadas, neumático, comunidad. Sin saberlo me estaba abriendo la cabeza a un mundo que no sabía que existía.'
+        : 'I spent entire days in the sim. From the outside it looked like a game; on the inside it was something else: lines, braking, tire management, community. Without knowing, I was opening my mind to a world I didn\'t know existed.',
       pull: isEs
         ? 'Lo llamaban perder el tiempo. Yo lo llamaba abrir la mente.'
         : 'They called it wasting time. I called it opening my mind.',
-      image: PH,
+      image: PH_SIM,
       layout: 'split-right',
-      accent: 'red',
     },
 
-    // ───────────── 2 · 2024 RENTAL → COMPETITION
+    // ───────────── 2 · 2024 — RENTAL → COMPETITION
     {
       kicker: '02',
       era: isEs ? '2024 — Del píxel al asfalto' : '2024 — From pixels to asphalt',
+      year: '2024',
       title: (
         <>
-          {isEs ? 'Salté al kart.' : 'I jumped in the kart.'}
+          {isEs ? 'Del mando' : 'From the controller'}
           <br />
           <span className="font-display-italic text-secondary">
-            {isEs ? 'Y no paré.' : 'Never stopped.'}
+            {isEs ? 'al volante real.' : 'to the real wheel.'}
           </span>
         </>
       ),
       body: isEs
-        ? 'Empecé en karting de alquiler. A los pocos meses me subí a un kart de competición y disputé mis 2 primeras carreras en Andalucía. Sin equipo grande, sin presupuesto. Solo ganas y una libreta llena de ideas.'
-        : 'Started in rental karts. Months later I climbed into a race kart and ran my first 2 races in Andalucía. No big team, no budget. Just hunger and a notebook full of ideas.',
+        ? 'Empecé en karting de alquiler. A los pocos meses ya estaba subido a un kart de competición disputando mis 2 primeras carreras en Andalucía. Sin equipo grande, sin presupuesto. Solo ganas, una libreta y la suerte de empezar a entender lo que se siente de verdad.'
+        : 'Started in rental karts. A few months later I was in a race kart running my first 2 rounds in Andalucía. No big team, no budget. Just hunger, a notebook, and finally feeling what it really is.',
       stats: [
         { k: '2', l: isEs ? 'Primeras carreras' : 'First races' },
         { k: '0€', l: isEs ? 'Padrinos' : 'Godfathers' },
         { k: '∞', l: isEs ? 'Aprendizaje' : 'Lessons' },
       ],
-      image: PH2,
+      image: PH_KART,
       layout: 'split-left',
-      accent: 'red',
     },
 
     // ───────────── 3 · 2024 JUN — FIRST BUSINESS
     {
       kicker: '03',
-      era: isEs ? '2024 · Junio — Netpro Agency' : '2024 · June — Netpro Agency',
+      era: isEs ? '2024 · Junio — Primer negocio' : '2024 · June — First business',
+      year: '2024',
       title: (
         <>
           {isEs ? 'Si quería correr,' : 'If I wanted to race,'}
@@ -123,33 +121,33 @@ function buildSlides(isEs: boolean): SlideBase[] {
         </>
       ),
       body: isEs
-        ? 'Monté mi primer negocio digital con una idea simple: aprender, generar ingresos y costearme la temporada. Gestionando redes sociales por mi cuenta. Acabé 2024 con una red de clientes mucho más grande de la que imaginé.'
-        : 'Started my first digital business with one goal: learn, earn, and fund the season. Managing social media myself. By the end of 2024 the client network was way bigger than I expected.',
+        ? 'En junio monté mi primer negocio digital: gestionar redes sociales. Sin saber casi nada al principio, con la idea simple de aprender, generar ingresos y financiar mi temporada. Acabé 2024 con una red de clientes mucho más grande de la que jamás imaginé.'
+        : 'In June I launched my first digital business: managing social media. Knowing almost nothing at the start, with one simple goal — learn, earn, and fund my season. By the end of 2024 the client network was way bigger than I ever imagined.',
       pull: isEs
         ? '"Si nadie te paga el sueño, monta la empresa que lo financie."'
         : '"If no one funds your dream, build the company that does."',
-      image: PH3,
+      image: PH_DESK,
       layout: 'overlay',
-      accent: 'amber',
     },
 
-    // ───────────── 4 · 2025 — REBRAND, TEAM, EUROPE
+    // ───────────── 4 · 2025 — REBRAND + TEAM + EUROPE
     {
       kicker: '04',
       era: isEs ? '2025 — Netpro escala' : '2025 — Netpro scales',
+      year: '2025',
       title: <>{isEs ? 'Rebranding. Equipo. Europa.' : 'Rebrand. Team. Europe.'}</>,
       body: (
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 mt-2">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-5 mt-2">
           {(isEs
             ? [
-                { n: '01', t: 'Rebranding', d: 'Reposicioné la agencia con identidad propia.' },
-                { n: '02', t: 'Equipo', d: 'Sumé talento para escalar la operación.' },
-                { n: '03', t: 'Europa', d: 'Clientes en varios países, no solo España.' },
+                { n: '01', t: 'Rebranding', d: 'Reposicioné Netpro con identidad y propósito propios.' },
+                { n: '02', t: 'Equipo', d: 'Sumé talento para escalar la operación más allá de mí.' },
+                { n: '03', t: 'Europa', d: 'Clientes en varios países. Ya no era solo España.' },
               ]
             : [
-                { n: '01', t: 'Rebrand', d: 'Repositioned the agency with its own identity.' },
-                { n: '02', t: 'Team', d: 'Hired talent to scale operations.' },
-                { n: '03', t: 'Europe', d: 'Clients across multiple countries, not just Spain.' },
+                { n: '01', t: 'Rebrand', d: 'Repositioned Netpro with its own identity and purpose.' },
+                { n: '02', t: 'Team', d: 'Brought in talent to scale beyond just me.' },
+                { n: '03', t: 'Europe', d: 'Clients across multiple countries. No longer just Spain.' },
               ]
           ).map((r) => (
             <div key={r.n} className="border border-white/10 bg-white/[0.02] p-5 backdrop-blur-sm">
@@ -161,37 +159,37 @@ function buildSlides(isEs: boolean): SlideBase[] {
         </div>
       ),
       layout: 'grid',
-      accent: 'white',
     },
 
-    // ───────────── 5 · 2025 — SPONSORSHIP / CEK
+    // ───────────── 5 · 2025 — CEK CAMPAIGN
     {
       kicker: '05',
       era: isEs ? '2025 — La campaña imposible' : '2025 — The impossible campaign',
+      year: '2025',
       title: (
         <>
           {isEs ? 'Sin medios.' : 'No means.'}
           <br />
           <span className="font-display-italic text-secondary">
-            {isEs ? 'Lo conseguimos.' : 'We did it anyway.'}
+            {isEs ? 'Lo conseguimos.' : 'We pulled it off.'}
           </span>
         </>
       ),
       body: isEs
-        ? 'Junto a mi padre montamos nuestra primera campaña de patrocinadores. Sin experiencia previa, sin tiempo de pista y sin equipo estructurado, conseguimos el presupuesto para disputar las 3 últimas pruebas del Campeonato de España. Esfuerzo puro, contactos y mucha dedicación.'
-        : 'With my dad we built our first sponsor campaign. No prior experience, no track time, no structured team — yet we raised the budget to race the final 3 rounds of the Spanish Championship. Pure grind, contacts and obsession.',
+        ? 'Junto a mi padre montamos nuestra primera campaña real de patrocinadores. Sin experiencia, sin tiempo de pista y sin equipo estructurado, levantamos el presupuesto para disputar las 3 últimas pruebas del Campeonato de España. Esfuerzo puro, contactos y obsesión.'
+        : 'With my dad we built our first real sponsor campaign. No experience, no track time, no structured team — and still raised the budget to race the final 3 rounds of the Spanish Championship. Pure grind, contacts and obsession.',
       pull: isEs
         ? '"Tres pruebas del CEK. Cero atajos."'
         : '"Three CEK rounds. Zero shortcuts."',
-      image: PH4,
+      image: PH_RACE,
       layout: 'split-right',
-      accent: 'red',
     },
 
     // ───────────── 6 · 2026 — SCALING / NEW VENTURES
     {
       kicker: '06',
-      era: isEs ? '2026 — Escalar de verdad' : '2026 — Scaling for real',
+      era: isEs ? '2026 — El siguiente nivel' : '2026 — Next level',
+      year: '2026',
       title: (
         <>
           {isEs ? 'Proyectos más grandes.' : 'Bigger bets.'}
@@ -200,16 +198,15 @@ function buildSlides(isEs: boolean): SlideBase[] {
         </>
       ),
       body: isEs
-        ? 'Arranqué con varios proyectos más escalables y sólidos. Detectar oportunidades, arriesgar con criterio y, sobre todo, rodearme de gente talentosa que inspira. La diferencia ya no es trabajar más — es construir con las personas correctas.'
-        : 'Kicked off several more scalable, more solid projects. Spotting opportunities, taking bets with judgment, and — above all — surrounding myself with talented, inspiring people. The edge isn\'t working more anymore; it\'s building with the right people.',
+        ? 'Arranco 2026 con varios proyectos más escalables y sólidos. Aprendí a detectar oportunidades, a arriesgar con criterio y, sobre todo, a rodearme de gente talentosa que inspira. La diferencia ya no es trabajar más horas — es construir con las personas correctas.'
+        : 'I\'m kicking off 2026 with several more scalable, more solid projects. I\'ve learned to spot opportunities, take bets with judgment, and — above all — surround myself with talented, inspiring people. The edge isn\'t more hours anymore; it\'s the right people.',
       stats: [
         { k: '3+', l: isEs ? 'Nuevos proyectos' : 'New projects' },
         { k: 'EU', l: isEs ? 'Alcance' : 'Reach' },
         { k: '+', l: isEs ? 'Equipo' : 'Team' },
       ],
-      image: PH5,
+      image: PH_TEAM,
       layout: 'split-left',
-      accent: 'white',
     },
 
     // ───────────── 7 · LESSONS
@@ -217,15 +214,15 @@ function buildSlides(isEs: boolean): SlideBase[] {
       kicker: isEs ? '07 — Lo que aprendí' : '07 — What I learned',
       title: (
         <>
-          {isEs ? 'Cuatro reglas' : 'Four rules'}
+          {isEs ? 'Cuatro cosas' : 'Four things'}
           <br />
           <span className="font-display-italic text-secondary">
-            {isEs ? 'que lo cambian todo.' : 'that change everything.'}
+            {isEs ? 'que me cambiaron.' : 'that changed me.'}
           </span>
         </>
       ),
       body: (
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mt-2">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 mt-2">
           {(isEs
             ? [
                 { n: '01', t: 'Nadie viene a salvarte', d: 'Si esperas a que te abran la puerta, te haces viejo esperando.' },
@@ -237,7 +234,7 @@ function buildSlides(isEs: boolean): SlideBase[] {
                 { n: '01', t: 'No one is coming', d: 'If you wait for permission, you grow old waiting.' },
                 { n: '02', t: 'Obsession > talent', d: 'Talent opens the door. Obsession keeps you in.' },
                 { n: '03', t: 'Build systems', d: 'A driver depends. A founder builds them.' },
-                { n: '04', t: 'Pick your circle', d: 'Your pace is set by the people around you.' },
+                { n: '04', t: 'Pick your circle', d: 'Your pace is set by the people next to you.' },
               ]
           ).map((r) => (
             <div key={r.n} className="border border-white/10 bg-white/[0.02] p-5 backdrop-blur-sm">
@@ -249,34 +246,32 @@ function buildSlides(isEs: boolean): SlideBase[] {
         </div>
       ),
       layout: 'grid',
-      accent: 'white',
     },
 
-    // ───────────── 8 · CTA
+    // ───────────── 8 · FOLLOW
     {
-      kicker: isEs ? 'Siguiente capítulo' : 'Next chapter',
+      kicker: isEs ? 'Continuará' : 'To be continued',
       title: (
         <>
-          {isEs ? 'Tu historia' : 'Your story'}
+          {isEs ? 'Esto sigue.' : 'This continues.'}
           <br />
           <span className="font-display-italic text-secondary">
-            {isEs ? 'puede empezar hoy.' : 'can start today.'}
+            {isEs ? 'Ven al siguiente capítulo.' : 'Come to the next chapter.'}
           </span>
         </>
       ),
       body: isEs
-        ? 'Si construí esto desde cero, puedo ayudarte a hacerlo. Sin humo. Solo el mismo método que uso yo.'
-        : 'If I built this from zero, I can help you do the same. No fluff. Just the method I use myself.',
+        ? 'No tengo recetas mágicas para ti. Lo único que tengo es el camino, y lo voy contando en directo. Si quieres ver cómo se construye desde 0 — y los hostiazos por el camino — sígueme el proceso.'
+        : 'I don\'t have magic recipes for you. I just have the road — and I\'m telling it live as it happens. If you want to watch how this gets built from zero (and the crashes along the way), follow the process.',
       cta: true,
-      image: PH6,
+      image: PH_NEXT,
       layout: 'overlay',
-      accent: 'red',
     },
   ];
 }
 
 // ────────────────────────────────────────────────────────────────────
-// Layouts
+// Slide bits
 // ────────────────────────────────────────────────────────────────────
 
 function SlideKicker({ slide }: { slide: SlideBase }) {
@@ -351,25 +346,29 @@ function SlideStats({ stats }: { stats: { k: string; l: string }[] }) {
   );
 }
 
-function SlideCTA({ isEs, getRoute }: { isEs: boolean; getRoute: (k: string) => string }) {
+function SlideCTA({ isEs }: { isEs: boolean }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7, delay: 0.55 }}
-      className="mt-10 flex flex-wrap gap-4"
+      className="mt-10 flex flex-wrap gap-3"
     >
-      <Link
-        to={getRoute('contact')}
+      <a
+        href="https://instagram.com/rubenmunoz"
+        target="_blank"
+        rel="noopener noreferrer"
         className="inline-flex items-center gap-2 bg-white text-black text-sm font-medium rounded-full px-6 py-3.5 hover:bg-secondary hover:text-white transition-colors"
       >
-        {isEs ? 'Hablemos' : "Let's talk"} <ArrowRight className="w-4 h-4" />
-      </Link>
+        <Instagram className="w-4 h-4" />
+        {isEs ? 'Seguir el proceso' : 'Follow the process'}
+      </a>
       <Link
-        to={getRoute('business')}
-        className="inline-flex items-center gap-2 border border-white/15 text-white text-sm font-medium rounded-full px-6 py-3.5 hover:border-white transition-colors"
+        to="/"
+        className="inline-flex items-center gap-2 border border-white/15 text-white/80 text-sm font-medium rounded-full px-6 py-3.5 hover:border-white hover:text-white transition-colors"
       >
-        {isEs ? 'Ver mis empresas' : 'See my companies'}
+        {isEs ? 'Volver al inicio' : 'Back home'}
+        <ArrowRight className="w-4 h-4" />
       </Link>
     </motion.div>
   );
@@ -394,14 +393,9 @@ function SlidePhoto({ src, side = 'right' }: { src: string; side?: 'left' | 'rig
   );
 }
 
-function renderSlide(
-  slide: SlideBase,
-  isEs: boolean,
-  getRoute: (k: string) => string,
-) {
+function renderSlide(slide: SlideBase, isEs: boolean) {
   const layout = slide.layout ?? 'center';
 
-  // Split layouts: text on one side, photo on the other
   if ((layout === 'split-left' || layout === 'split-right') && slide.image) {
     const photoSide = layout === 'split-left' ? 'left' : 'right';
     return (
@@ -417,7 +411,7 @@ function renderSlide(
           {slide.body && <SlideBody>{slide.body}</SlideBody>}
           {slide.pull && <SlidePull text={slide.pull} />}
           {slide.stats && <SlideStats stats={slide.stats} />}
-          {slide.cta && <SlideCTA isEs={isEs} getRoute={getRoute} />}
+          {slide.cta && <SlideCTA isEs={isEs} />}
         </div>
         {photoSide === 'right' && (
           <div className="hidden lg:block h-[70vh]">
@@ -428,7 +422,6 @@ function renderSlide(
     );
   }
 
-  // Overlay: photo as background, text over
   if (layout === 'overlay' && slide.image) {
     return (
       <>
@@ -448,13 +441,12 @@ function renderSlide(
           {slide.body && <SlideBody>{slide.body}</SlideBody>}
           {slide.pull && <SlidePull text={slide.pull} />}
           {slide.stats && <SlideStats stats={slide.stats} />}
-          {slide.cta && <SlideCTA isEs={isEs} getRoute={getRoute} />}
+          {slide.cta && <SlideCTA isEs={isEs} />}
         </div>
       </>
     );
   }
 
-  // Default / center / stats / quote / grid
   return (
     <div className="w-full max-w-6xl">
       <SlideKicker slide={slide} />
@@ -462,17 +454,17 @@ function renderSlide(
       {slide.body && <SlideBody>{slide.body}</SlideBody>}
       {slide.pull && <SlidePull text={slide.pull} />}
       {slide.stats && <SlideStats stats={slide.stats} />}
-      {slide.cta && <SlideCTA isEs={isEs} getRoute={getRoute} />}
+      {slide.cta && <SlideCTA isEs={isEs} />}
     </div>
   );
 }
 
 // ────────────────────────────────────────────────────────────────────
-// Main component
+// Main
 // ────────────────────────────────────────────────────────────────────
 
 export function X() {
-  const { language, getRoute } = useLanguage();
+  const { language } = useLanguage();
   const isEs = language === 'es';
   const slides = buildSlides(isEs);
   const [index, setIndex] = useState(0);
@@ -551,7 +543,24 @@ export function X() {
         }}
       />
 
-      {/* Animated accent corner mark */}
+      {/* Giant ghost year — left side marker */}
+      <AnimatePresence mode="wait">
+        {slide.year && (
+          <motion.div
+            key={`year-${index}`}
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 0.06, x: 0 }}
+            exit={{ opacity: 0, x: -20 }}
+            transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
+            className="pointer-events-none absolute left-[-2vw] bottom-[-4vh] font-display text-[28vw] sm:text-[22vw] leading-none tracking-[-0.05em] text-white select-none"
+            aria-hidden
+          >
+            {slide.year}
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* LIVE corner mark */}
       <motion.div
         key={`mark-${index}`}
         initial={{ opacity: 0, scale: 0.6 }}
@@ -560,7 +569,7 @@ export function X() {
         className="absolute top-20 sm:top-24 right-6 sm:right-12 z-10 flex items-center gap-2 text-[10px] uppercase tracking-[0.22em] text-white/40"
       >
         <span className="h-1 w-1 rounded-full bg-secondary animate-pulse" />
-        <span>{isEs ? 'EN VIVO' : 'LIVE'}</span>
+        <span>{isEs ? 'EN DIRECTO' : 'LIVE'}</span>
       </motion.div>
 
       {/* Slide content */}
@@ -574,7 +583,7 @@ export function X() {
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             className="relative w-full h-full flex items-center justify-center"
           >
-            {renderSlide(slide, isEs, getRoute)}
+            {renderSlide(slide, isEs)}
           </motion.div>
         </AnimatePresence>
       </div>
@@ -582,14 +591,19 @@ export function X() {
       {/* Top progress bars */}
       <div className="absolute top-20 sm:top-24 left-6 sm:left-12 right-32 sm:right-44 flex gap-1.5 z-10">
         {slides.map((_, i) => (
-          <div key={i} className="flex-1 h-[2px] bg-white/10 overflow-hidden">
+          <button
+            key={i}
+            onClick={() => go(i)}
+            className="flex-1 h-[2px] bg-white/10 overflow-hidden group"
+            aria-label={`Slide ${i + 1}`}
+          >
             <div
-              className="h-full bg-white transition-[width] duration-100 ease-linear"
+              className="h-full bg-white transition-[width] duration-100 ease-linear group-hover:bg-secondary"
               style={{
                 width: i < index ? '100%' : i === index ? `${progress * 100}%` : '0%',
               }}
             />
-          </div>
+          </button>
         ))}
       </div>
 
