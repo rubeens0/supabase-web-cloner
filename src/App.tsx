@@ -28,6 +28,7 @@ const LiveTimingStreaming = lazy(() => import("@/pages/LiveTimingStreaming").the
 const RDE = lazy(() => import("@/pages/RDE").then(m => ({ default: m.RDE })));
 const Auth = lazy(() => import("@/pages/Auth").then(m => ({ default: m.Auth })));
 const Booking = lazy(() => import("@/pages/Booking").then(m => ({ default: m.Booking })));
+const X = lazy(() => import("@/pages/X").then(m => ({ default: m.X })));
 
 
 const queryClient = new QueryClient();
