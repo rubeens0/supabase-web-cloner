@@ -432,6 +432,9 @@ const translations = {
     'blog.motorlandrace.title': 'CEK R2 Motorland: remontada hasta el top-20 en una carrera caótica',
     'blog.motorlandrace.excerpt':
       'Fin de semana exigente en MotorLand Aragón: 18 adelantamientos en la final remontando desde el P34, P18 final tras un contacto que nos costó el top-15. Mucho aprendizaje de cara a Valencia en junio.',
+    'blog.fuelextrem.title': 'Rubén Muñoz visita Fuel Extrem en el ecuador de su aventura en el karting nacional',
+    'blog.fuelextrem.excerpt':
+      'El piloto cacereño aprovecha el paréntesis entre la segunda y la tercera prueba del CEK Hyundai para visitar en persona a Fuel Extrem, uno de los patrocinadores que hacen posible su temporada nacional.',
 
     /* ===== Sponsors ===== */
     'sponsors.hero.title': 'Patrocinio',
