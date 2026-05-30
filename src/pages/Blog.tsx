@@ -150,6 +150,15 @@ export function Blog() {
       category: t('blog.category.karting'),
       image: motorlandRaceImg,
     },
+    {
+      id: 'fuel-extrem-visita-ecuador-cek',
+      title: t('blog.fuelextrem.title'),
+      excerpt: t('blog.fuelextrem.excerpt'),
+      date: '2026-05-25',
+      readTime: '3 min',
+      category: t('blog.category.karting'),
+      image: fuelExtremImg,
+    },
   ];
 
   const sortedPosts = [...blogPosts].sort(
