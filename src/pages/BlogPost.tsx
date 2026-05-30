@@ -10,6 +10,7 @@ import ecomscrapeImg from '@/assets/ecomscrape-post.webp';
 import motorlandImg from '@/assets/motorland-cek-r2.webp';
 import motorlandRaceImg from '@/assets/motorland-cek-r2-race.jpeg';
 import vlog1Img from '@/assets/vlog-1-motorland.jpg';
+import fuelExtremImg from '@/assets/fuel-extrem-visita.webp';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
 import { motion } from 'motion/react';
@@ -234,6 +235,18 @@ Many thanks to all the people involved.`,
       readTime: '4 min',
       category: t('blog.category.karting'),
       image: motorlandRaceImg,
+    },
+    {
+      id: 'fuel-extrem-visita-ecuador-cek',
+      title: t('blog.fuelextrem.title'),
+      excerpt: t('blog.fuelextrem.excerpt'),
+      content: language === 'es'
+        ? `El piloto cacereño aprovechó el paréntesis entre la segunda y la tercera prueba del Campeonato de España de Karting (CEK Hyundai) para rendir visita a uno de sus patrocinadores. El escenario: las instalaciones de una de las gasolineras de Fuel Extrem, firma que forma parte del engranaje de patrocinio que hace posible la temporada de Rubén en la competición nacional.\n\nRubén llega a este punto de la temporada ocupando la posición trigésimo segunda en el clasificatorio general, entre un total de cincuenta y dos pilotos inscritos. Un registro que refleja la dureza de una competición en la que el piloto de Cáceres mide sus fuerzas con los mejores especialistas del país, en una parrilla que no ofrece respiro.\n\nUn gesto de agradecimiento en plena lucha por el campeonato\n\nLa visita no fue solo protocolaria. Rubén quiso trasladar en persona su gratitud a Fuel Extrem por una colaboración que considera decisiva para completar el presupuesto que le permite competir en el máximo escalón del karting en España. Un gesto que dice mucho del carácter del piloto extremeño: saber reconocer el apoyo de quienes hacen posible sus sueños sobre la pista.\n\nLa agenda de Rubén ya apunta a la tercera y penúltima prueba del CEK Hyundai, que se disputará los próximos 20 y 21 de junio en el Karting Chiva de Valencia. Tras el aprendizaje acumulado en Campillos y Motorland Aragón, el piloto cacereño llega a la cita valenciana con más rodaje, más datos y la determinación de seguir escalando posiciones.\n\nImportancia del apoyo\n\nDetrás de cada vuelta en pista hay un tejido institucional y empresarial que hace posible que Extremadura tenga voz en el karting nacional. Rubén Muñoz afronta esta campaña con el apoyo de La Portada de Extremadura, Albroksa, el Ayuntamiento de Cáceres, la Diputación de Cáceres, Fuel Extremadura —gasolineras Galp de Malpartida, Olivenza, Torreorgaz y Casas de Don Gómez— y la Caja Rural de Extremadura. Un bloque sólido de respaldo regional que convierte cada carrera en algo más que una competición: en una bandera extremeña desplegada en los circuitos más exigentes del país.\n\nDesde La Portada de Extremadura continuaremos el seguimiento de la evolución de Rubén Muñoz en esta segunda mitad de temporada, donde cada punto sumado tiene un valor añadido en la lucha por el campeonato.`
+        : `The Cáceres driver took advantage of the break between the second and third rounds of the Spanish Karting Championship (CEK Hyundai) to visit one of his sponsors. The setting: the facilities of one of Fuel Extrem's service stations, a company that is part of the sponsorship network making Rubén's national season possible.\n\nRubén reaches this point of the season in 32nd place in the overall standings, out of fifty-two registered drivers. A figure that reflects the toughness of a competition where the Cáceres driver measures himself against the country's best specialists on a grid that offers no respite.\n\nA gesture of gratitude in the middle of the title fight\n\nThe visit was not just a formality. Rubén wanted to thank Fuel Extrem in person for a collaboration he considers decisive to complete the budget that allows him to compete at the top level of karting in Spain. A gesture that says a lot about the Extremaduran driver's character: knowing how to acknowledge the support of those who make his dreams on track possible.\n\nRubén's schedule now points to the third and penultimate round of the CEK Hyundai, which will take place on June 20-21 at Karting Chiva in Valencia. After the lessons learned in Campillos and Motorland Aragón, he arrives in Valencia with more track time, more data and the determination to keep climbing positions.\n\nThe importance of support\n\nBehind every lap on track there is an institutional and business network that allows Extremadura to have a voice in national karting. Rubén Muñoz tackles this season with the support of La Portada de Extremadura, Albroksa, the Cáceres City Council, the Cáceres Provincial Council, Fuel Extremadura —Galp service stations in Malpartida, Olivenza, Torreorgaz and Casas de Don Gómez— and Caja Rural de Extremadura. A solid block of regional support that turns every race into more than just a competition: an Extremaduran flag flying on the country's most demanding circuits.\n\nFrom La Portada de Extremadura we will continue to follow Rubén Muñoz's progress in this second half of the season, where every point earned carries added value in the fight for the championship.`,
+      date: '2026-05-25',
+      readTime: '3 min',
+      category: t('blog.category.karting'),
+      image: fuelExtremImg,
     },
   ];
 
@@ -534,6 +547,41 @@ Many thanks to all the people involved.`,
           mainEntityOfPage: {
             '@type': 'WebPage',
             '@id': 'https://rubenmunoz.com/blog/caja-rural-extremadura-patrocinio'
+          },
+          articleSection: language === 'es' ? 'Karting' : 'Karting',
+          inLanguage: language === 'es' ? 'es-ES' : 'en-US'
+        }
+      }
+    : post.id === 'fuel-extrem-visita-ecuador-cek'
+    ? {
+        title: post.title,
+        description: post.excerpt,
+        keywords: language === 'es'
+          ? 'Fuel Extrem, patrocinio, Rubén Muñoz, karting, CEK Hyundai, Cáceres, Extremadura, La Portada de Extremadura, gasolineras Galp'
+          : 'Fuel Extrem, sponsorship, Rubén Muñoz, karting, CEK Hyundai, Cáceres, Extremadura, La Portada de Extremadura, Galp service stations',
+        ogImage: post.image,
+        ogType: 'article',
+        structuredData: {
+          '@context': 'https://schema.org',
+          '@type': 'BlogPosting',
+          headline: post.title,
+          description: post.excerpt,
+          image: post.image,
+          datePublished: post.date,
+          dateModified: post.date,
+          author: {
+            '@type': 'Person',
+            name: 'Antonio Mayorgas',
+            jobTitle: language === 'es' ? 'Periodista' : 'Journalist'
+          },
+          publisher: {
+            '@type': 'Organization',
+            name: 'La Portada de Extremadura',
+            url: 'https://www.laportadadeextremadura.com'
+          },
+          mainEntityOfPage: {
+            '@type': 'WebPage',
+            '@id': `https://rubenmunoz.com/blog/${post.id}`
           },
           articleSection: language === 'es' ? 'Karting' : 'Karting',
           inLanguage: language === 'es' ? 'es-ES' : 'en-US'
@@ -891,6 +939,43 @@ Many thanks to all the people involved.`,
                         </a>
                       ))}
                     </div>
+                  </div>
+                </div>
+              </>
+            ) : post.id === 'fuel-extrem-visita-ecuador-cek' ? (
+              // Fuel Extrem — La Portada de Extremadura, por Antonio Mayorgas
+              <>
+                {post.content.split('\n\n').map((paragraph, index) => (
+                  <p key={index} className="text-white/80 mb-6 leading-relaxed">
+                    {paragraph}
+                  </p>
+                ))}
+
+                <div className="mt-12 pt-8 border-t border-white/10">
+                  <p className="text-white/80 font-medium mb-1">
+                    {language === 'es' ? 'Redactado por:' : 'Written by:'} <span className="text-white">Antonio Mayorgas</span>
+                  </p>
+                  <p className="text-white/60 text-sm mb-8">
+                    {language === 'es' ? 'Periodista — La Portada de Extremadura' : 'Journalist — La Portada de Extremadura'}
+                  </p>
+
+                  <div className="mt-8 pt-6 border-t border-white/5">
+                    <h3 className="text-white text-lg font-medium mb-4">
+                      {language === 'es' ? 'Fuente de la noticia' : 'News Source'}
+                    </h3>
+                    <ul className="space-y-2">
+                      <li>
+                        <a
+                          href="https://www.laportadadeextremadura.com/deportes/deportes-extremadura/ruben-munoz-visita-fuel-extrem-en-ecuador-su-aventura-en-karting-nacional_5421_102.html"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-white/70 hover:text-white text-sm transition-colors flex items-center gap-2"
+                        >
+                          <span className="w-1.5 h-1.5 rounded-full bg-white/40"></span>
+                          La Portada de Extremadura: Rubén Muñoz visita Fuel Extrem en el ecuador de su aventura en el karting nacional
+                        </a>
+                      </li>
+                    </ul>
                   </div>
                 </div>
               </>

@@ -10,6 +10,7 @@ import ecomscrapeImg from '@/assets/ecomscrape-post.webp';
 import motorlandImg from '@/assets/motorland-cek-r2.webp';
 import motorlandRaceImg from '@/assets/motorland-cek-r2-race.jpeg';
 import vlog1Img from '@/assets/vlog-1-motorland.jpg';
+import fuelExtremImg from '@/assets/fuel-extrem-visita.webp';
 import { useLanguage } from '../contexts/LanguageContext';
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
@@ -148,6 +149,15 @@ export function Blog() {
       readTime: '4 min',
       category: t('blog.category.karting'),
       image: motorlandRaceImg,
+    },
+    {
+      id: 'fuel-extrem-visita-ecuador-cek',
+      title: t('blog.fuelextrem.title'),
+      excerpt: t('blog.fuelextrem.excerpt'),
+      date: '2026-05-25',
+      readTime: '3 min',
+      category: t('blog.category.karting'),
+      image: fuelExtremImg,
     },
   ];
 
