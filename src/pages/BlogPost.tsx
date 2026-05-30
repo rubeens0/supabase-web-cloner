@@ -552,6 +552,41 @@ Many thanks to all the people involved.`,
           inLanguage: language === 'es' ? 'es-ES' : 'en-US'
         }
       }
+    : post.id === 'fuel-extrem-visita-ecuador-cek'
+    ? {
+        title: post.title,
+        description: post.excerpt,
+        keywords: language === 'es'
+          ? 'Fuel Extrem, patrocinio, Rubén Muñoz, karting, CEK Hyundai, Cáceres, Extremadura, La Portada de Extremadura, gasolineras Galp'
+          : 'Fuel Extrem, sponsorship, Rubén Muñoz, karting, CEK Hyundai, Cáceres, Extremadura, La Portada de Extremadura, Galp service stations',
+        ogImage: post.image,
+        ogType: 'article',
+        structuredData: {
+          '@context': 'https://schema.org',
+          '@type': 'BlogPosting',
+          headline: post.title,
+          description: post.excerpt,
+          image: post.image,
+          datePublished: post.date,
+          dateModified: post.date,
+          author: {
+            '@type': 'Person',
+            name: 'Antonio Mayorgas',
+            jobTitle: language === 'es' ? 'Periodista' : 'Journalist'
+          },
+          publisher: {
+            '@type': 'Organization',
+            name: 'La Portada de Extremadura',
+            url: 'https://www.laportadadeextremadura.com'
+          },
+          mainEntityOfPage: {
+            '@type': 'WebPage',
+            '@id': `https://rubenmunoz.com/blog/${post.id}`
+          },
+          articleSection: language === 'es' ? 'Karting' : 'Karting',
+          inLanguage: language === 'es' ? 'es-ES' : 'en-US'
+        }
+      }
     : {
         title: post.title,
         description: post.excerpt,
