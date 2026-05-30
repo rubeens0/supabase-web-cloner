@@ -942,6 +942,43 @@ Many thanks to all the people involved.`,
                   </div>
                 </div>
               </>
+            ) : post.id === 'fuel-extrem-visita-ecuador-cek' ? (
+              // Fuel Extrem — La Portada de Extremadura, por Antonio Mayorgas
+              <>
+                {post.content.split('\n\n').map((paragraph, index) => (
+                  <p key={index} className="text-white/80 mb-6 leading-relaxed">
+                    {paragraph}
+                  </p>
+                ))}
+
+                <div className="mt-12 pt-8 border-t border-white/10">
+                  <p className="text-white/80 font-medium mb-1">
+                    {language === 'es' ? 'Redactado por:' : 'Written by:'} <span className="text-white">Antonio Mayorgas</span>
+                  </p>
+                  <p className="text-white/60 text-sm mb-8">
+                    {language === 'es' ? 'Periodista — La Portada de Extremadura' : 'Journalist — La Portada de Extremadura'}
+                  </p>
+
+                  <div className="mt-8 pt-6 border-t border-white/5">
+                    <h3 className="text-white text-lg font-medium mb-4">
+                      {language === 'es' ? 'Fuente de la noticia' : 'News Source'}
+                    </h3>
+                    <ul className="space-y-2">
+                      <li>
+                        <a
+                          href="https://www.laportadadeextremadura.com/deportes/deportes-extremadura/ruben-munoz-visita-fuel-extrem-en-ecuador-su-aventura-en-karting-nacional_5421_102.html"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-white/70 hover:text-white text-sm transition-colors flex items-center gap-2"
+                        >
+                          <span className="w-1.5 h-1.5 rounded-full bg-white/40"></span>
+                          La Portada de Extremadura: Rubén Muñoz visita Fuel Extrem en el ecuador de su aventura en el karting nacional
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </>
             ) : (
               // Contenido normal para otros posts
               post.content.split('\n\n').map((paragraph, index) => (
