@@ -10,6 +10,7 @@ import ecomscrapeImg from '@/assets/ecomscrape-post.webp';
 import motorlandImg from '@/assets/motorland-cek-r2.webp';
 import motorlandRaceImg from '@/assets/motorland-cek-r2-race.jpeg';
 import vlog1Img from '@/assets/vlog-1-motorland.jpg';
+import fuelExtremImg from '@/assets/fuel-extrem-visita.webp';
 import { useLanguage } from '../contexts/LanguageContext';
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
