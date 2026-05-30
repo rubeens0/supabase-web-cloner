@@ -921,6 +921,9 @@ const translations = {
     'blog.motorlandrace.title': 'CEK R2 Motorland: comeback into the top-20 in a chaotic race',
     'blog.motorlandrace.excerpt':
       'Demanding weekend at MotorLand Aragón: 18 overtakes in the final coming back from P34, finishing P18 after a contact that cost us the top-15. A lot of learning ahead of Valencia in June.',
+    'blog.fuelextrem.title': 'Rubén Muñoz visits Fuel Extrem at the midpoint of his national karting season',
+    'blog.fuelextrem.excerpt':
+      'Between the second and third rounds of the CEK Hyundai, the Cáceres driver visits Fuel Extrem in person to thank one of the main sponsors making his national season possible.',
 
     /* ===== Sponsors ===== */
     'sponsors.hero.title': 'Sponsorship',
