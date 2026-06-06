@@ -19,8 +19,8 @@ function scrollToForm() {
 const benefits = [
   {
     icon: Zap,
-    title: 'Hasta 1 Gb simétrico',
-    desc: 'Velocidad real para teletrabajo, streaming 4K y gaming sin cortes.',
+    title: 'Hasta 2 Gb simétrico',
+    desc: 'Velocidad real de 1 y 2 Gb simétricos, sin cortes y con atención cercana. Así es conectarse de verdad.',
   },
   {
     icon: ShieldCheck,
@@ -132,7 +132,7 @@ export default function OesteLanding1() {
             </h1>
 
             <p className="mt-7 text-lg sm:text-xl text-white/85 max-w-xl leading-relaxed">
-              Conexión simétrica de alta velocidad, <span className="font-semibold text-white">soporte local</span> y precios honestos. Déjanos tus datos y te preparamos la mejor oferta para tu dirección.
+              Velocidad real de 1 y 2 Gb simétricos, sin cortes y con atención cercana. <span className="font-semibold text-white">La fibra X de Oeste</span> en Cáceres. Déjanos tus datos y te preparamos la mejor oferta para tu dirección.
             </p>
 
             <div className="mt-9 flex flex-col sm:flex-row gap-3 sm:items-center">
