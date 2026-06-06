@@ -21,7 +21,12 @@ const schema = z.object({
 
 type FormValues = z.infer<typeof schema>;
 
-export function OesteLeadForm() {
+type Props = {
+  selectedOffer?: { id: string; title: string; price: string; priceSuffix: string } | null;
+  onClearOffer?: () => void;
+};
+
+export function OesteLeadForm({ selectedOffer, onClearOffer }: Props = {}) {
   const [submitted, setSubmitted] = useState(false);
   const [serverError, setServerError] = useState<string | null>(null);
 
@@ -39,7 +44,12 @@ export function OesteLeadForm() {
     setServerError(null);
     try {
       const { data, error } = await supabase.functions.invoke('oeste-lead', {
-        body: values,
+        body: {
+          ...values,
+          offer: selectedOffer
+            ? `${selectedOffer.title} (${selectedOffer.price}${selectedOffer.priceSuffix})`
+            : undefined,
+        },
       });
       if (error) throw error;
       if (data?.ok) {
@@ -80,6 +90,27 @@ export function OesteLeadForm() {
       className="rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 p-6 sm:p-8 space-y-4 shadow-2xl"
       noValidate
     >
+      {selectedOffer && (
+        <div className="flex items-start justify-between gap-3 rounded-xl bg-white text-neutral-900 px-4 py-3 border border-white/40">
+          <div className="min-w-0">
+            <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-neutral-500">Oferta elegida</p>
+            <p className="mt-0.5 text-sm font-bold truncate">
+              {selectedOffer.title}{' '}
+              <span className="text-neutral-600 font-semibold">· {selectedOffer.price}{selectedOffer.priceSuffix}</span>
+            </p>
+          </div>
+          {onClearOffer && (
+            <button
+              type="button"
+              onClick={onClearOffer}
+              className="text-xs font-semibold text-neutral-600 hover:text-neutral-900 underline underline-offset-2 shrink-0"
+            >
+              Cambiar
+            </button>
+          )}
+        </div>
+      )}
+
       <div>
         <label className="block text-sm font-medium text-white mb-1.5">Nombre y apellidos</label>
         <input type="text" autoComplete="name" placeholder="Tu nombre" className={inputCls} {...register('name')} />

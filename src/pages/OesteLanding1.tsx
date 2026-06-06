@@ -1,7 +1,8 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { motion } from 'motion/react';
 import { Zap, Wifi, ShieldCheck, MapPin, ArrowRight } from 'lucide-react';
 import { OesteLeadForm } from '@/components/oeste/OesteLeadForm';
+import { OesteOffers, type Offer } from '@/components/oeste/OesteOffers';
 import rubenLogoAsset from '@/assets/ruben-x-white.png.asset.json';
 import oesteLogoAsset from '@/assets/oeste-white.png.asset.json';
 import kartBgAsset from '@/assets/kart-oeste.jpg.asset.json';
@@ -39,6 +40,13 @@ const benefits = [
 ];
 
 export default function OesteLanding1() {
+  const [selectedOffer, setSelectedOffer] = useState<Offer | null>(null);
+
+  const handleSelectOffer = (o: Offer) => {
+    setSelectedOffer(o);
+    setTimeout(() => scrollToForm(), 50);
+  };
+
   useEffect(() => {
     const prevTitle = document.title;
     document.title = 'Fibra Oeste en Cáceres · La más rápida del oeste';
@@ -147,7 +155,15 @@ export default function OesteLanding1() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
           >
-            <OesteLeadForm />
+            <OesteLeadForm
+              selectedOffer={selectedOffer ? {
+                id: selectedOffer.id,
+                title: selectedOffer.title,
+                price: selectedOffer.price,
+                priceSuffix: selectedOffer.priceSuffix,
+              } : null}
+              onClearOffer={() => setSelectedOffer(null)}
+            />
           </motion.div>
         </div>
       </section>
@@ -193,6 +209,9 @@ export default function OesteLanding1() {
           </div>
         </div>
       </section>
+
+      {/* Ofertas */}
+      <OesteOffers onSelect={handleSelectOffer} />
 
       {/* Co-brand statement */}
       <section className="relative py-20 sm:py-28 px-5 sm:px-10">
