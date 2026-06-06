@@ -225,22 +225,51 @@ export default function OesteLanding1() {
         </div>
       </section>
 
-      {/* Mini footer */}
-      <footer className="border-t border-white/15 py-8 px-5 sm:px-10">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-white/80">
-          <div className="flex items-center gap-3">
-            <img src={OESTE_LOGO} alt="Oeste" className="h-6 w-auto opacity-90" />
-            <span>×</span>
-            <img src={RUBEN_LOGO} alt="Rubén Muñoz" className="h-6 w-auto opacity-90" />
+      {/* Footer */}
+      <footer className="border-t border-white/15 py-10 px-5 sm:px-10">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8">
+            <div className="flex items-center gap-3">
+              <img src={OESTE_LOGO} alt="Oeste" className="h-6 w-auto opacity-90" />
+              <span>×</span>
+              <img src={RUBEN_LOGO} alt="Rubén Muñoz" className="h-6 w-auto opacity-90" />
+            </div>
+            <a
+              href="https://oeste.digital"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-white transition text-sm text-white/80"
+            >
+              oeste.digital ↗
+            </a>
           </div>
-          <a
-            href="https://oeste.digital"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-white transition"
-          >
-            oeste.digital ↗
-          </a>
+
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-6 gap-y-3 text-xs text-white/70">
+            <a href="https://oeste.digital/aviso-legal/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">
+              Aviso Legal
+            </a>
+            <a href="https://oeste.digital/PDF/Oeste-CondicionesGenerales.pdf?_t=1769595580" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">
+              Condiciones Generales
+            </a>
+            <a href="https://oeste.digital/condiciones-individuales/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">
+              Condiciones Individuales
+            </a>
+            <a href="https://oeste.digital/calidad-de-servicio/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">
+              Calidad del Servicio
+            </a>
+            <a href="https://oeste.digital/PDF/politica-de-uso.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">
+              Política de Uso
+            </a>
+            <a href="https://oeste.digital/politica-de-proteccion-de-datos/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">
+              Protección de Datos
+            </a>
+            <a href="https://oeste.digital/politica-de-proteccion-de-datos-oeste-soluciones-energeticas-s-l/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">
+              Protección de Datos Oeste Solar
+            </a>
+            <a href="https://oeste.digital/PDF/politica-de-cookies.pdf?_t=1769594865" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">
+              Política de Cookies
+            </a>
+          </div>
         </div>
       </footer>
       </div>
