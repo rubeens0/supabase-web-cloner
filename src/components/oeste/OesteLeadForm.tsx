@@ -115,7 +115,24 @@ export function OesteLeadForm() {
         <input type="checkbox" className="mt-1 w-4 h-4 accent-white" {...register('consent')} />
         <span>
           Acepto que mis datos sean tratados por <strong>Oeste</strong> para enviarme información sobre las ofertas de
-          fibra y telecomunicaciones disponibles en mi zona.
+          fibra y telecomunicaciones disponibles en mi zona, conforme a la{' '}
+          <a
+            href="https://oeste.digital/politica-de-proteccion-de-datos/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline hover:text-white"
+          >
+            Política de Protección de Datos
+          </a>{' '}
+          y la{' '}
+          <a
+            href="https://oeste.digital/PDF/politica-de-cookies.pdf?_t=1769594865"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline hover:text-white"
+          >
+            Política de Cookies
+          </a>.
         </span>
       </label>
       {errors.consent && <p className={errCls}>{errors.consent.message as string}</p>}
