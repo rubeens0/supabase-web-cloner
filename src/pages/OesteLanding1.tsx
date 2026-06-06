@@ -255,7 +255,9 @@ export default function OesteLanding1() {
             <div className="flex items-center justify-center gap-4 mb-8">
               <img src={OESTE_LOGO} alt="Oeste" className="h-9 w-auto" />
               <span className="text-white/60 text-xl">×</span>
-              <img src={RUBEN_LOGO} alt="Rubén Muñoz" className="h-9 w-auto" />
+              <a href="https://rubenmunoz.com" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition">
+                <img src={RUBEN_LOGO} alt="Rubén Muñoz" className="h-9 w-auto" />
+              </a>
             </div>
             <p className="font-display text-3xl sm:text-4xl leading-snug">
               “Apostar por lo de casa también está en cómo nos conectamos. Por eso confío en{' '}
@@ -263,13 +265,24 @@ export default function OesteLanding1() {
             </p>
             <p className="mt-6 text-white/75 text-sm uppercase tracking-[0.2em]">— Rubén Muñoz</p>
 
-            <button
-              onClick={scrollToForm}
-              className="mt-10 group inline-flex items-center justify-center gap-2 rounded-xl bg-white text-neutral-900 font-semibold px-7 py-4 hover:bg-white/90 transition"
-            >
-              Pedir mi oferta
-              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
-            </button>
+            <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3">
+              <button
+                onClick={scrollToForm}
+                className="group inline-flex items-center justify-center gap-2 rounded-xl bg-white text-neutral-900 font-semibold px-7 py-4 hover:bg-white/90 transition"
+              >
+                Pedir mi oferta
+                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+              </button>
+              <a
+                href="https://rubenmunoz.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center justify-center gap-2 rounded-xl border border-white/30 text-white font-semibold px-7 py-4 hover:bg-white/10 transition"
+              >
+                Conoce a Rubén Muñoz
+                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+              </a>
+            </div>
           </motion.div>
         </div>
       </section>
