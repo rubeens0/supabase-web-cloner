@@ -294,16 +294,28 @@ export default function OesteLanding1() {
             <div className="flex items-center gap-3">
               <img src={OESTE_LOGO} alt="Oeste" className="h-6 w-auto opacity-90" />
               <span>×</span>
-              <img src={RUBEN_LOGO} alt="Rubén Muñoz" className="h-6 w-auto opacity-90" />
+              <a href="https://rubenmunoz.com" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition">
+                <img src={RUBEN_LOGO} alt="Rubén Muñoz" className="h-6 w-auto opacity-90" />
+              </a>
             </div>
-            <a
-              href="https://oeste.digital"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-white transition text-sm text-white/80"
-            >
-              oeste.digital ↗
-            </a>
+            <div className="flex items-center gap-5 text-sm text-white/80">
+              <a
+                href="https://rubenmunoz.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-white transition"
+              >
+                rubenmunoz.com ↗
+              </a>
+              <a
+                href="https://oeste.digital"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-white transition"
+              >
+                oeste.digital ↗
+              </a>
+            </div>
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-6 gap-y-3 text-xs text-white/70">
