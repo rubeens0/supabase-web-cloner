@@ -111,29 +111,37 @@ export default function OesteLanding1() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           >
-            <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] bg-white/15 border border-white/25 rounded-full px-3 py-1.5">
+            <span className="inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.24em] bg-white/10 border border-white/25 rounded-full px-3.5 py-1.5 backdrop-blur-sm">
               <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
               Disponible en Cáceres
             </span>
 
-            <h1 className="mt-5 font-display text-5xl sm:text-6xl lg:text-7xl leading-[0.95] tracking-tight">
-              La fibra más rápida del <em className="font-display-italic">oeste</em> en Cáceres.
+            <h1 className="mt-6 leading-[0.9] tracking-tight">
+              <span className="block font-sans font-black uppercase tracking-[-0.02em] text-5xl sm:text-6xl lg:text-7xl">
+                La fibra
+              </span>
+              <span className="block font-display-italic text-6xl sm:text-7xl lg:text-8xl text-white/95 -mt-1 sm:-mt-2">
+                más rápida
+              </span>
+              <span className="block font-sans font-black uppercase tracking-[-0.02em] text-5xl sm:text-6xl lg:text-7xl mt-1">
+                del <span className="font-display-italic font-normal normal-case tracking-normal">oeste</span>
+                <span className="block sm:inline"> en Cáceres.</span>
+              </span>
             </h1>
 
-            <p className="mt-6 text-lg sm:text-xl text-white/85 max-w-xl">
-              Conexión simétrica de alta velocidad, soporte local y precios honestos. Déjanos tus datos y te
-              preparamos la mejor oferta para tu dirección.
+            <p className="mt-7 text-lg sm:text-xl text-white/85 max-w-xl leading-relaxed">
+              Conexión simétrica de alta velocidad, <span className="font-semibold text-white">soporte local</span> y precios honestos. Déjanos tus datos y te preparamos la mejor oferta para tu dirección.
             </p>
 
-            <div className="mt-8 flex flex-col sm:flex-row gap-3 sm:items-center">
+            <div className="mt-9 flex flex-col sm:flex-row gap-3 sm:items-center">
               <button
                 onClick={scrollToForm}
-                className="group inline-flex items-center justify-center gap-2 rounded-xl bg-white text-neutral-900 font-semibold px-6 py-3.5 hover:bg-white/90 transition"
+                className="group inline-flex items-center justify-center gap-2 rounded-xl bg-white text-neutral-900 font-bold uppercase tracking-wider text-sm px-7 py-4 hover:bg-white/90 shadow-[0_10px_40px_-10px_rgba(255,255,255,0.5)] transition"
               >
                 Quiero información
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
               </button>
-              <span className="text-sm text-white/75">Respuesta en 24h · Sin compromiso</span>
+              <span className="text-sm text-white/75">Respuesta en 24h · <span className="font-semibold text-white/95">Sin compromiso</span></span>
             </div>
           </motion.div>
 
@@ -158,9 +166,14 @@ export default function OesteLanding1() {
             transition={{ duration: 0.6 }}
             className="max-w-2xl"
           >
-            <p className="text-xs uppercase tracking-[0.2em] text-white/70">Por qué Oeste</p>
-            <h2 className="mt-3 font-display text-4xl sm:text-5xl leading-tight">
-              Una fibra hecha para <em className="font-display-italic">tu zona</em>.
+            <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-white/70">— Por qué Oeste</p>
+            <h2 className="mt-4 leading-[0.95]">
+              <span className="block font-sans font-black uppercase tracking-[-0.02em] text-4xl sm:text-5xl">
+                Una fibra hecha
+              </span>
+              <span className="block font-display-italic text-5xl sm:text-6xl text-white/95 -mt-1">
+                para tu zona.
+              </span>
             </h2>
           </motion.div>
 
@@ -177,7 +190,7 @@ export default function OesteLanding1() {
                 <div className="w-11 h-11 rounded-xl bg-white text-neutral-900 flex items-center justify-center">
                   <b.icon className="w-5 h-5" />
                 </div>
-                <h3 className="mt-5 text-lg font-semibold">{b.title}</h3>
+                <h3 className="mt-5 text-lg font-bold uppercase tracking-tight">{b.title}</h3>
                 <p className="mt-2 text-sm text-white/80 leading-relaxed">{b.desc}</p>
               </motion.div>
             ))}
