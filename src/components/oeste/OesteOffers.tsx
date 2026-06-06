@@ -157,7 +157,7 @@ export function OesteOffers({ selectedId, onSelect }: Props) {
                     </div>
 
                     <div className="text-right shrink-0 font-mono tabular-nums">
-                      <span className={`text-lg font-black tracking-tight ${isSel ? 'text-neutral-900' : 'text-white'}`}>
+                      <span className={`text-base sm:text-lg font-black tracking-tight ${isSel ? 'text-neutral-900' : 'text-white'}`}>
                         {o.price}
                       </span>
                       <span className={`text-[10px] font-semibold ml-0.5 ${isSel ? 'text-neutral-600' : 'text-white/70'}`}>
