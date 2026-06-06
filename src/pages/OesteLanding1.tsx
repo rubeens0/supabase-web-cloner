@@ -154,7 +154,12 @@ export default function OesteLanding1() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
+            className="space-y-4"
           >
+            <OesteOffers
+              selectedId={selectedOffer?.id ?? null}
+              onSelect={(o) => setSelectedOffer(o)}
+            />
             <OesteLeadForm
               selectedOffer={selectedOffer ? {
                 id: selectedOffer.id,
