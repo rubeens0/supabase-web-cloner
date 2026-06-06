@@ -78,7 +78,7 @@ export function OesteOffers({ selectedId, onSelect }: Props) {
           </div>
 
           {/* Fixed-height price display */}
-          <div className="mt-3 h-[68px] sm:h-[76px] flex items-baseline gap-1.5 font-mono tabular-nums">
+          <div className="mt-3 h-[52px] sm:h-[76px] flex items-baseline gap-1.5 font-mono tabular-nums">
             <AnimatePresence mode="popLayout" initial={false}>
               <motion.span
                 key={selected?.id ?? 'empty'}
@@ -86,12 +86,12 @@ export function OesteOffers({ selectedId, onSelect }: Props) {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -8, position: 'absolute' }}
                 transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
-                className="text-[56px] sm:text-[64px] leading-none font-black tracking-[-0.04em] text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.25)]"
+                className="text-[42px] sm:text-[64px] leading-none font-black tracking-[-0.04em] text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.25)]"
               >
                 {selected ? selected.price : '0,00'}
               </motion.span>
             </AnimatePresence>
-            <span className="text-base font-semibold text-white/85">€/mes</span>
+            <span className="text-sm sm:text-base font-semibold text-white/85">€/mes</span>
           </div>
 
           <p className="text-xs text-white/85 h-4 truncate">
@@ -157,7 +157,7 @@ export function OesteOffers({ selectedId, onSelect }: Props) {
                     </div>
 
                     <div className="text-right shrink-0 font-mono tabular-nums">
-                      <span className={`text-lg font-black tracking-tight ${isSel ? 'text-neutral-900' : 'text-white'}`}>
+                      <span className={`text-base sm:text-lg font-black tracking-tight ${isSel ? 'text-neutral-900' : 'text-white'}`}>
                         {o.price}
                       </span>
                       <span className={`text-[10px] font-semibold ml-0.5 ${isSel ? 'text-neutral-600' : 'text-white/70'}`}>
