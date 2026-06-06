@@ -98,11 +98,24 @@ export default function OesteLanding1() {
         <div className="flex items-center gap-3 sm:gap-4">
           <img src={OESTE_LOGO} alt="Oeste" className="h-8 sm:h-10 w-auto" />
           <span className="text-white/60 text-lg">×</span>
-          <img src={RUBEN_LOGO} alt="Rubén Muñoz" className="h-8 sm:h-10 w-auto" />
+          <a
+            href="https://rubenmunoz.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Ir a rubenmunoz.com"
+            className="inline-flex items-center hover:opacity-80 transition"
+          >
+            <img src={RUBEN_LOGO} alt="Rubén Muñoz" className="h-8 sm:h-10 w-auto" />
+          </a>
         </div>
-        <span className="hidden sm:inline-block text-xs uppercase tracking-[0.2em] text-white/80 border border-white/30 rounded-full px-3 py-1.5">
-          Colaboración oficial
-        </span>
+        <a
+          href="https://rubenmunoz.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hidden sm:inline-flex items-center gap-1.5 text-xs uppercase tracking-[0.2em] text-white/85 border border-white/30 rounded-full px-3 py-1.5 hover:bg-white hover:text-neutral-900 transition"
+        >
+          rubenmunoz.com <ArrowRight className="w-3 h-3" />
+        </a>
       </header>
 
       {/* Hero */}
