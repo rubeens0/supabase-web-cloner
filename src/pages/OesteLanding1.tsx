@@ -198,6 +198,30 @@ export default function OesteLanding1() {
               } : null}
               onClearOffer={() => setSelectedOffer(null)}
             />
+
+            {/* Video: Máxima velocidad */}
+            <div className="rounded-2xl overflow-hidden border border-white/15 bg-black/30 backdrop-blur-sm">
+              <div className="px-5 pt-4 pb-3">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-white/70">— En acción</p>
+                <h3 className="mt-1 font-display-italic text-2xl sm:text-3xl text-white leading-tight">
+                  Máxima velocidad
+                </h3>
+              </div>
+              <video
+                src={maximaVelocidadAsset.url}
+                className="w-full h-auto block"
+                controls
+                playsInline
+                preload="metadata"
+              />
+            </div>
+          </motion.div>
+                title: selectedOffer.title,
+                price: selectedOffer.price,
+                priceSuffix: selectedOffer.priceSuffix,
+              } : null}
+              onClearOffer={() => setSelectedOffer(null)}
+            />
           </motion.div>
         </div>
       </section>
