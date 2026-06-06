@@ -6,6 +6,7 @@ import { OesteOffers, type Offer } from '@/components/oeste/OesteOffers';
 import rubenLogoAsset from '@/assets/ruben-x-white.png.asset.json';
 import oesteLogoAsset from '@/assets/oeste-white.png.asset.json';
 import kartBgAsset from '@/assets/kart-oeste.jpg.asset.json';
+import maximaVelocidadAsset from '@/assets/maxima-velocidad.mp4.asset.json';
 
 const OESTE_LOGO = oesteLogoAsset.url;
 const RUBEN_LOGO = rubenLogoAsset.url;
