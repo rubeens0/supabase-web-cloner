@@ -1,4 +1,4 @@
-import { Helmet } from 'react-helmet-async';
+import { useEffect } from 'react';
 import { motion } from 'motion/react';
 import { Zap, Wifi, ShieldCheck, MapPin, ArrowRight } from 'lucide-react';
 import { OesteLeadForm } from '@/components/oeste/OesteLeadForm';
@@ -35,17 +35,22 @@ const benefits = [
 ];
 
 export default function OesteLanding1() {
+  useEffect(() => {
+    const prevTitle = document.title;
+    document.title = 'Fibra Oeste en Cáceres · La más rápida del oeste';
+    const meta = document.createElement('meta');
+    meta.name = 'robots';
+    meta.content = 'noindex, nofollow';
+    document.head.appendChild(meta);
+    return () => {
+      document.title = prevTitle;
+      meta.remove();
+    };
+  }, []);
+
   return (
     <div className="min-h-screen bg-oeste-gradient text-white antialiased oeste-landing">
-      <Helmet>
-        <title>Fibra Oeste en Cáceres · La más rápida del oeste</title>
-        <meta
-          name="description"
-          content="La fibra más rápida del oeste en Cáceres. Pide información sin compromiso a Oeste — colaboración con Rubén Muñoz."
-        />
-        <meta name="robots" content="noindex, nofollow" />
-        <link rel="canonical" href="https://rubenmunoz.com/oeste-landing1" />
-      </Helmet>
+
 
       {/* Top bar co-branding */}
       <header className="relative z-10 px-5 sm:px-10 pt-6 sm:pt-8 flex items-center justify-between">
