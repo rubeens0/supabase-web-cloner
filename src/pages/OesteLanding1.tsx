@@ -40,7 +40,13 @@ const benefits = [
 ];
 
 export default function OesteLanding1() {
-  useEffect(() => {
+  const [selectedOffer, setSelectedOffer] = useState<Offer | null>(null);
+
+  const handleSelectOffer = (o: Offer) => {
+    setSelectedOffer(o);
+    setTimeout(() => scrollToForm(), 50);
+  };
+
     const prevTitle = document.title;
     document.title = 'Fibra Oeste en Cáceres · La más rápida del oeste';
     const meta = document.createElement('meta');
