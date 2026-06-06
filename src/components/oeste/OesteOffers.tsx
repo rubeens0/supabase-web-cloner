@@ -77,27 +77,30 @@ export function OesteOffers({ selectedId, onSelect }: Props) {
             </span>
           </div>
 
-          {/* Fixed-height price display */}
+          {/* Fixed-size price display — width is reserved for the longest possible price */}
           <div className="mt-3 h-[52px] sm:h-[76px] flex items-baseline gap-1.5 font-mono tabular-nums">
-            <AnimatePresence mode="popLayout" initial={false}>
-              <motion.span
-                key={selected?.id ?? 'empty'}
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -8, position: 'absolute' }}
-                transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
-                className="text-[42px] sm:text-[64px] leading-none font-black tracking-[-0.04em] text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.25)]"
-              >
-                {selected ? selected.price : '0,00'}
-              </motion.span>
-            </AnimatePresence>
-            <span className="text-sm sm:text-base font-semibold text-white/85">€/mes</span>
+            <div className="relative w-[140px] sm:w-[210px] h-full">
+              <AnimatePresence mode="popLayout" initial={false}>
+                <motion.span
+                  key={selected?.id ?? 'empty'}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -8 }}
+                  transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
+                  className="absolute inset-0 flex items-baseline text-[38px] sm:text-[60px] leading-none font-black tracking-[-0.04em] text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.25)] whitespace-nowrap"
+                >
+                  {selected ? selected.price : '0,00'}
+                </motion.span>
+              </AnimatePresence>
+            </div>
+            <span className="text-sm sm:text-base font-semibold text-white/85 shrink-0">€/mes</span>
           </div>
 
           <p className="text-xs text-white/85 h-4 truncate">
             {selected ? selected.title : 'Desliza y elige tu tarifa'}
           </p>
         </div>
+
 
         {/* Category tabs */}
         <div className="px-3 sm:px-4 pt-3">
@@ -133,7 +136,8 @@ export function OesteOffers({ selectedId, onSelect }: Props) {
                   <button
                     key={o.id}
                     onClick={() => onSelect?.(o)}
-                    className={`snap-start w-full max-w-full overflow-hidden min-h-[78px] text-left grid grid-cols-[auto,minmax(0,1fr),4.75rem] sm:grid-cols-[auto,minmax(0,1fr),6rem] items-center gap-3 rounded-xl px-3 py-3 border transition ${
+                    style={{ contain: 'layout' }}
+                    className={`snap-start w-full max-w-full overflow-hidden h-[72px] text-left grid grid-cols-[20px_minmax(0,1fr)_88px] sm:grid-cols-[20px_minmax(0,1fr)_104px] items-center gap-3 rounded-xl px-3 border transition ${
                       isSel
                         ? 'bg-white text-neutral-900 border-white shadow-[0_8px_24px_-12px_rgba(0,0,0,0.45)]'
                         : 'bg-white/[0.08] border-white/15 hover:bg-white/[0.14] hover:border-white/25'
@@ -156,15 +160,16 @@ export function OesteOffers({ selectedId, onSelect }: Props) {
                       </p>
                     </div>
 
-                    <div className="w-[4.75rem] sm:w-[6rem] overflow-hidden text-right shrink-0 font-mono tabular-nums leading-none">
+                    <div className="w-full overflow-hidden text-right font-mono tabular-nums leading-none">
                       <span className={`block whitespace-nowrap text-[15px] sm:text-lg font-black tracking-tight ${isSel ? 'text-neutral-900' : 'text-white'}`}>
                         {o.price}
                       </span>
-                      <span className={`mt-1 block text-[10px] font-semibold ${isSel ? 'text-neutral-600' : 'text-white/70'}`}>
+                      <span className={`mt-1 block whitespace-nowrap text-[10px] font-semibold ${isSel ? 'text-neutral-600' : 'text-white/70'}`}>
                         {o.priceSuffix}
                       </span>
                     </div>
                   </button>
+
                 );
               })}
             </div>
