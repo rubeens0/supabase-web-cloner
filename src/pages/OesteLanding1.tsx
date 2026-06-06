@@ -166,9 +166,14 @@ export default function OesteLanding1() {
             transition={{ duration: 0.6 }}
             className="max-w-2xl"
           >
-            <p className="text-xs uppercase tracking-[0.2em] text-white/70">Por qué Oeste</p>
-            <h2 className="mt-3 font-display text-4xl sm:text-5xl leading-tight">
-              Una fibra hecha para <em className="font-display-italic">tu zona</em>.
+            <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-white/70">— Por qué Oeste</p>
+            <h2 className="mt-4 leading-[0.95]">
+              <span className="block font-sans font-black uppercase tracking-[-0.02em] text-4xl sm:text-5xl">
+                Una fibra hecha
+              </span>
+              <span className="block font-display-italic text-5xl sm:text-6xl text-white/95 -mt-1">
+                para tu zona.
+              </span>
             </h2>
           </motion.div>
 
