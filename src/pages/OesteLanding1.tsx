@@ -234,6 +234,7 @@ export default function OesteLanding1() {
           </a>
         </div>
       </footer>
+      </div>
     </div>
   );
 }
