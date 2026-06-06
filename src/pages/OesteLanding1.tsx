@@ -210,6 +210,9 @@ export default function OesteLanding1() {
         </div>
       </section>
 
+      {/* Ofertas */}
+      <OesteOffers onSelect={handleSelectOffer} />
+
       {/* Co-brand statement */}
       <section className="relative py-20 sm:py-28 px-5 sm:px-10">
         <div className="max-w-4xl mx-auto text-center">
