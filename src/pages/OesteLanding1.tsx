@@ -111,12 +111,12 @@ export default function OesteLanding1() {
         <div className="pointer-events-none absolute -top-32 -left-32 w-[480px] h-[480px] rounded-full bg-white/10 blur-3xl" />
         <div className="pointer-events-none absolute top-1/3 -right-40 w-[520px] h-[520px] rounded-full bg-black/20 blur-3xl" />
 
-        <div className="relative max-w-7xl mx-auto grid lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+        <div className="relative max-w-7xl mx-auto grid lg:grid-cols-12 gap-10 lg:gap-14 items-start min-w-0">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="lg:col-span-7 lg:pt-6"
+            className="lg:col-span-7 min-w-0 lg:pt-6"
           >
             <span className="inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/20 backdrop-blur px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-white/90">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-300 animate-pulse" />
@@ -169,7 +169,7 @@ export default function OesteLanding1() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
-            className="lg:col-span-5 space-y-4 lg:sticky lg:top-6"
+            className="lg:col-span-5 min-w-0 w-full space-y-4 lg:sticky lg:top-6"
           >
             <OesteOffers
               selectedId={selectedOffer?.id ?? null}
