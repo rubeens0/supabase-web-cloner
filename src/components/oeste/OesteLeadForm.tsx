@@ -1,0 +1,149 @@
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
+import { motion } from 'motion/react';
+import { Loader2, CheckCircle2, ArrowRight } from 'lucide-react';
+import { supabase } from '@/integrations/supabase/client';
+
+const schema = z.object({
+  name: z.string().trim().min(2, 'Mínimo 2 caracteres').max(100),
+  phone: z
+    .string()
+    .trim()
+    .regex(/^[+0-9\s]{9,20}$/, 'Teléfono no válido'),
+  email: z.string().trim().email('Email no válido').max(255),
+  address: z.string().trim().min(5, 'Indica tu dirección').max(255),
+  consent: z.literal(true, {
+    errorMap: () => ({ message: 'Debes aceptar la política' }),
+  }),
+});
+
+type FormValues = z.infer<typeof schema>;
+
+export function OesteLeadForm() {
+  const [submitted, setSubmitted] = useState(false);
+  const [serverError, setServerError] = useState<string | null>(null);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+    reset,
+  } = useForm<FormValues>({
+    resolver: zodResolver(schema),
+    defaultValues: { name: '', phone: '', email: '', address: '', consent: false as unknown as true },
+  });
+
+  const onSubmit = async (values: FormValues) => {
+    setServerError(null);
+    try {
+      const { data, error } = await supabase.functions.invoke('oeste-lead', {
+        body: values,
+      });
+      if (error) throw error;
+      if (data?.ok) {
+        setSubmitted(true);
+        reset();
+        // Meta Pixel hook (opcional): if (window.fbq) window.fbq('track','Lead');
+      } else {
+        throw new Error('Respuesta inesperada');
+      }
+    } catch (e) {
+      setServerError('No se pudo enviar. Inténtalo de nuevo en unos minutos.');
+    }
+  };
+
+  if (submitted) {
+    return (
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 p-8 text-center text-white"
+      >
+        <CheckCircle2 className="w-12 h-12 mx-auto mb-4 text-white" />
+        <h3 className="text-2xl font-semibold mb-2">¡Gracias!</h3>
+        <p className="text-white/80">
+          Hemos recibido tus datos. Un asesor de Oeste te contactará en breve con la mejor oferta para tu zona.
+        </p>
+      </motion.div>
+    );
+  }
+
+  const inputCls =
+    'w-full rounded-xl bg-white/95 text-neutral-900 placeholder:text-neutral-500 px-4 py-3 outline-none focus:ring-2 focus:ring-white/80 transition';
+  const errCls = 'mt-1 text-xs text-white/90 font-medium';
+
+  return (
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 p-6 sm:p-8 space-y-4 shadow-2xl"
+      noValidate
+    >
+      <div>
+        <label className="block text-sm font-medium text-white mb-1.5">Nombre y apellidos</label>
+        <input type="text" autoComplete="name" placeholder="Tu nombre" className={inputCls} {...register('name')} />
+        {errors.name && <p className={errCls}>{errors.name.message}</p>}
+      </div>
+
+      <div className="grid sm:grid-cols-2 gap-4">
+        <div>
+          <label className="block text-sm font-medium text-white mb-1.5">Teléfono</label>
+          <input type="tel" autoComplete="tel" placeholder="600 000 000" className={inputCls} {...register('phone')} />
+          {errors.phone && <p className={errCls}>{errors.phone.message}</p>}
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-white mb-1.5">Email</label>
+          <input type="email" autoComplete="email" placeholder="tu@email.com" className={inputCls} {...register('email')} />
+          {errors.email && <p className={errCls}>{errors.email.message}</p>}
+        </div>
+      </div>
+
+      <div>
+        <label className="block text-sm font-medium text-white mb-1.5">Dirección (Cáceres)</label>
+        <input
+          type="text"
+          autoComplete="street-address"
+          placeholder="Calle, número, localidad"
+          className={inputCls}
+          {...register('address')}
+        />
+        {errors.address && <p className={errCls}>{errors.address.message}</p>}
+      </div>
+
+      <label className="flex items-start gap-3 text-sm text-white/90 cursor-pointer">
+        <input type="checkbox" className="mt-1 w-4 h-4 accent-white" {...register('consent')} />
+        <span>
+          Acepto que mis datos sean tratados por <strong>Oeste</strong> para enviarme información sobre las ofertas de
+          fibra y telecomunicaciones disponibles en mi zona.
+        </span>
+      </label>
+      {errors.consent && <p className={errCls}>{errors.consent.message as string}</p>}
+
+      {serverError && (
+        <p className="text-sm text-white bg-black/30 border border-white/20 rounded-lg px-3 py-2">{serverError}</p>
+      )}
+
+      <button
+        type="submit"
+        disabled={isSubmitting}
+        className="group w-full inline-flex items-center justify-center gap-2 rounded-xl bg-white text-neutral-900 font-semibold px-6 py-3.5 hover:bg-white/90 transition disabled:opacity-60"
+      >
+        {isSubmitting ? (
+          <>
+            <Loader2 className="w-4 h-4 animate-spin" /> Enviando…
+          </>
+        ) : (
+          <>
+            Quiero información
+            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+          </>
+        )}
+      </button>
+
+      <p className="text-[11px] text-white/70 text-center">
+        Respuesta en menos de 24h. Sin compromiso.
+      </p>
+    </form>
+  );
+}

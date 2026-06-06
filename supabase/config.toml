@@ -9,3 +9,5 @@ project_id = "ayhwkwdshvpmxbooyiom"
     verify_jwt = true
   [functions.verify-dossier]
     verify_jwt = false
+  [functions.oeste-lead]
+    verify_jwt = false

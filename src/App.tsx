@@ -28,6 +28,7 @@ const LiveTimingStreaming = lazy(() => import("@/pages/LiveTimingStreaming").the
 const RDE = lazy(() => import("@/pages/RDE").then(m => ({ default: m.RDE })));
 const Auth = lazy(() => import("@/pages/Auth").then(m => ({ default: m.Auth })));
 const Booking = lazy(() => import("@/pages/Booking").then(m => ({ default: m.Booking })));
+const OesteLanding1 = lazy(() => import("@/pages/OesteLanding1"));
 
 
 
@@ -47,7 +48,10 @@ function AppContent() {
     location.pathname.includes("/2026") ||
     location.pathname.includes("/cek2026") ||
     location.pathname.includes("live-timing-streaming") ||
-    location.pathname.includes("/booking");
+    location.pathname.includes("/booking") ||
+    location.pathname.includes("/oeste-landing");
+
+  const hideChrome = location.pathname.includes("/oeste-landing");
 
   return (
     <>
@@ -57,7 +61,7 @@ function AppContent() {
       {!hideBusinessButton && <BusinessButton />}
       <div className="min-h-screen bg-background">
         <Toaster theme="dark" />
-        <Navigation />
+        {!hideChrome && <Navigation />}
         <Suspense fallback={<div className="min-h-screen bg-black" />}>
           <AnimatePresence mode="wait">
             <Routes location={location} key={location.pathname}>
@@ -80,13 +84,14 @@ function AppContent() {
               <Route path="/rdeoperators" element={<PageTransition><RDE /></PageTransition>} />
               <Route path="/auth" element={<PageTransition><Auth /></PageTransition>} />
               <Route path="/booking" element={<PageTransition><Booking /></PageTransition>} />
+              <Route path="/oeste-landing1" element={<PageTransition><OesteLanding1 /></PageTransition>} />
               
               
               <Route path="*" element={<PageTransition><Home /></PageTransition>} />
             </Routes>
           </AnimatePresence>
         </Suspense>
-        <Footer />
+        {!hideChrome && <Footer />}
       </div>
     </>
   );
