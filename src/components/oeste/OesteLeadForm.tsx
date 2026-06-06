@@ -26,7 +26,7 @@ type Props = {
   onClearOffer?: () => void;
 };
 
-export function OesteLeadForm() {
+export function OesteLeadForm({ selectedOffer, onClearOffer }: Props = {}) {
   const [submitted, setSubmitted] = useState(false);
   const [serverError, setServerError] = useState<string | null>(null);
 
@@ -44,7 +44,12 @@ export function OesteLeadForm() {
     setServerError(null);
     try {
       const { data, error } = await supabase.functions.invoke('oeste-lead', {
-        body: values,
+        body: {
+          ...values,
+          offer: selectedOffer
+            ? `${selectedOffer.title} (${selectedOffer.price}${selectedOffer.priceSuffix})`
+            : undefined,
+        },
       });
       if (error) throw error;
       if (data?.ok) {
