@@ -219,7 +219,7 @@ export default function OesteLanding1() {
                   onClick={scrollToForm}
                   className="group w-full inline-flex items-center justify-center gap-2 rounded-xl bg-white text-neutral-900 font-bold uppercase tracking-wider text-sm px-7 py-4 hover:bg-white/90 shadow-[0_10px_40px_-10px_rgba(255,255,255,0.5)] transition"
                 >
-                  Reservar mi oferta
+                  Ver ofertas!
                   <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
                 </button>
               </div>
