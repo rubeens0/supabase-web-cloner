@@ -47,6 +47,7 @@ export default function OesteLanding1() {
     setTimeout(() => scrollToForm(), 50);
   };
 
+  useEffect(() => {
     const prevTitle = document.title;
     document.title = 'Fibra Oeste en Cáceres · La más rápida del oeste';
     const meta = document.createElement('meta');
