@@ -6,6 +6,7 @@ import { OesteOffers, type Offer } from '@/components/oeste/OesteOffers';
 import rubenLogoAsset from '@/assets/ruben-x-white.png.asset.json';
 import oesteLogoAsset from '@/assets/oeste-white.png.asset.json';
 import kartBgAsset from '@/assets/kart-oeste.jpg.asset.json';
+import maximaVelocidadAsset from '@/assets/maxima-velocidad.mp4.asset.json';
 
 const OESTE_LOGO = oesteLogoAsset.url;
 const RUBEN_LOGO = rubenLogoAsset.url;
@@ -197,6 +198,23 @@ export default function OesteLanding1() {
               } : null}
               onClearOffer={() => setSelectedOffer(null)}
             />
+
+            {/* Video: Máxima velocidad */}
+            <div className="rounded-2xl overflow-hidden border border-white/15 bg-black/30 backdrop-blur-sm">
+              <div className="px-5 pt-4 pb-3">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-white/70">— En acción</p>
+                <h3 className="mt-1 font-display-italic text-2xl sm:text-3xl text-white leading-tight">
+                  Máxima velocidad
+                </h3>
+              </div>
+              <video
+                src={maximaVelocidadAsset.url}
+                className="w-full h-auto block"
+                controls
+                playsInline
+                preload="metadata"
+              />
+            </div>
           </motion.div>
         </div>
       </section>
