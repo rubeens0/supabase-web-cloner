@@ -216,13 +216,6 @@ export default function OesteLanding1() {
               />
             </div>
           </motion.div>
-                title: selectedOffer.title,
-                price: selectedOffer.price,
-                priceSuffix: selectedOffer.priceSuffix,
-              } : null}
-              onClearOffer={() => setSelectedOffer(null)}
-            />
-          </motion.div>
         </div>
       </section>
 
