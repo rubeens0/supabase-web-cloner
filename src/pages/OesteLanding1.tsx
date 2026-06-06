@@ -111,10 +111,6 @@ export default function OesteLanding1() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           >
-            <span className="inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.24em] bg-white/10 border border-white/25 rounded-full px-3.5 py-1.5 backdrop-blur-sm">
-              <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
-              Disponible en Cáceres
-            </span>
 
             <h1 className="mt-6 leading-[0.9] tracking-tight">
               <span className="block font-sans font-black uppercase tracking-[-0.02em] text-5xl sm:text-6xl lg:text-7xl">
