@@ -48,7 +48,7 @@ export function OesteOffers({ selectedId, onSelect }: Props) {
 
   return (
     <div
-      className="relative rounded-2xl overflow-hidden shadow-2xl text-white border border-white/15"
+      className="relative rounded-2xl overflow-x-hidden overflow-y-hidden shadow-2xl text-white border border-white/15"
       style={{
         background:
           'linear-gradient(160deg, hsl(28 80% 50% / 0.95) 0%, hsl(330 65% 46% / 0.95) 55%, hsl(289 55% 31% / 0.95) 100%)',
@@ -133,7 +133,7 @@ export function OesteOffers({ selectedId, onSelect }: Props) {
                   <button
                     key={o.id}
                     onClick={() => onSelect?.(o)}
-                    className={`snap-start w-full min-h-[78px] text-left grid grid-cols-[auto,minmax(0,1fr),5.25rem] sm:grid-cols-[auto,minmax(0,1fr),6rem] items-center gap-3 rounded-xl px-3.5 py-3 border transition ${
+                    className={`snap-start w-full max-w-full overflow-hidden min-h-[78px] text-left grid grid-cols-[auto,minmax(0,1fr),4.75rem] sm:grid-cols-[auto,minmax(0,1fr),6rem] items-center gap-3 rounded-xl px-3 py-3 border transition ${
                       isSel
                         ? 'bg-white text-neutral-900 border-white shadow-[0_8px_24px_-12px_rgba(0,0,0,0.45)]'
                         : 'bg-white/[0.08] border-white/15 hover:bg-white/[0.14] hover:border-white/25'
@@ -156,8 +156,8 @@ export function OesteOffers({ selectedId, onSelect }: Props) {
                       </p>
                     </div>
 
-                    <div className="w-[5.25rem] sm:w-[6rem] text-right shrink-0 font-mono tabular-nums leading-none">
-                      <span className={`block text-sm sm:text-lg font-black tracking-tight ${isSel ? 'text-neutral-900' : 'text-white'}`}>
+                    <div className="w-[4.75rem] sm:w-[6rem] overflow-hidden text-right shrink-0 font-mono tabular-nums leading-none">
+                      <span className={`block whitespace-nowrap text-[15px] sm:text-lg font-black tracking-tight ${isSel ? 'text-neutral-900' : 'text-white'}`}>
                         {o.price}
                       </span>
                       <span className={`mt-1 block text-[10px] font-semibold ${isSel ? 'text-neutral-600' : 'text-white/70'}`}>
