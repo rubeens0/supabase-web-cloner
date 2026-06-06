@@ -91,7 +91,7 @@ function AppContent() {
             </Routes>
           </AnimatePresence>
         </Suspense>
-        <Footer />
+        {!hideChrome && <Footer />}
       </div>
     </>
   );
