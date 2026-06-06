@@ -7,6 +7,7 @@ const LeadSchema = z.object({
   email: z.string().trim().email().max(255),
   address: z.string().trim().min(5).max(255),
   consent: z.boolean().refine((v) => v === true),
+  offer: z.string().trim().max(255).optional(),
 });
 
 Deno.serve(async (req) => {
