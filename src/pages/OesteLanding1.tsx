@@ -106,32 +106,37 @@ export default function OesteLanding1() {
       </header>
 
       {/* Hero */}
-      <section className="relative px-5 sm:px-10 pt-10 sm:pt-16 pb-16 sm:pb-24">
+      <section className="relative px-5 sm:px-10 pt-10 sm:pt-14 pb-16 sm:pb-24">
         {/* Decorative blobs */}
         <div className="pointer-events-none absolute -top-32 -left-32 w-[480px] h-[480px] rounded-full bg-white/10 blur-3xl" />
         <div className="pointer-events-none absolute top-1/3 -right-40 w-[520px] h-[520px] rounded-full bg-black/20 blur-3xl" />
 
-        <div className="relative max-w-7xl mx-auto grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+        <div className="relative max-w-7xl mx-auto grid lg:grid-cols-12 gap-10 lg:gap-14 items-start">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            className="lg:col-span-7 lg:pt-6"
           >
+            <span className="inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/20 backdrop-blur px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-white/90">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-300 animate-pulse" />
+              Disponible en Cáceres
+            </span>
 
-            <h1 className="mt-6 leading-[0.9] tracking-tight">
-              <span className="block font-sans font-black uppercase tracking-[-0.02em] text-5xl sm:text-6xl lg:text-7xl">
+            <h1 className="mt-6 leading-[0.88] tracking-tight">
+              <span className="block font-sans font-black uppercase tracking-[-0.02em] text-5xl sm:text-6xl lg:text-[6.5rem] xl:text-[7.5rem]">
                 La fibra
               </span>
-              <span className="block font-display-italic text-6xl sm:text-7xl lg:text-8xl text-white/95 -mt-1 sm:-mt-2">
+              <span className="block font-display-italic text-6xl sm:text-7xl lg:text-[7.5rem] xl:text-[8.5rem] text-white/95 -mt-1 sm:-mt-2">
                 más rápida
               </span>
-              <span className="block font-sans font-black uppercase tracking-[-0.02em] text-5xl sm:text-6xl lg:text-7xl mt-1">
+              <span className="block font-sans font-black uppercase tracking-[-0.02em] text-5xl sm:text-6xl lg:text-[6.5rem] xl:text-[7.5rem] mt-1">
                 del <span className="font-display-italic font-normal normal-case tracking-normal">oeste</span>
                 <span className="block sm:inline"> en Cáceres.</span>
               </span>
             </h1>
 
-            <p className="mt-7 text-lg sm:text-xl text-white/85 max-w-xl leading-relaxed">
+            <p className="mt-7 text-lg sm:text-xl lg:text-[1.35rem] text-white/85 max-w-2xl leading-relaxed">
               Velocidad real de 1 y 2 Gb simétricos, sin cortes y con atención cercana. <span className="font-semibold text-white">La fibra X de Oeste</span> en Cáceres.
             </p>
 
@@ -145,6 +150,18 @@ export default function OesteLanding1() {
               </button>
               <span className="text-sm text-white/75">Respuesta en 24h · <span className="font-semibold text-white/95">Sin compromiso</span></span>
             </div>
+
+            {/* Trust strip — only desktop */}
+            <div className="hidden lg:grid mt-12 grid-cols-4 gap-px rounded-2xl overflow-hidden border border-white/15 bg-white/10 backdrop-blur-sm">
+              {benefits.map((b) => (
+                <div key={b.title} className="bg-black/20 px-5 py-5 flex flex-col gap-2">
+                  <b.icon className="w-5 h-5 text-white/90" />
+                  <p className="text-[13px] font-bold uppercase tracking-tight leading-tight text-white">
+                    {b.title}
+                  </p>
+                </div>
+              ))}
+            </div>
           </motion.div>
 
           <motion.div
@@ -152,7 +169,7 @@ export default function OesteLanding1() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
-            className="space-y-4"
+            className="lg:col-span-5 space-y-4 lg:sticky lg:top-6"
           >
             <OesteOffers
               selectedId={selectedOffer?.id ?? null}
