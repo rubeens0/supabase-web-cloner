@@ -4,9 +4,11 @@ import { Zap, Wifi, ShieldCheck, MapPin, ArrowRight } from 'lucide-react';
 import { OesteLeadForm } from '@/components/oeste/OesteLeadForm';
 import rubenLogoAsset from '@/assets/ruben-x-white.png.asset.json';
 import oesteLogoAsset from '@/assets/oeste-white.png.asset.json';
+import kartBgAsset from '@/assets/kart-oeste.jpg.asset.json';
 
 const OESTE_LOGO = oesteLogoAsset.url;
 const RUBEN_LOGO = rubenLogoAsset.url;
+const KART_BG = kartBgAsset.url;
 
 function scrollToForm() {
   const el = document.getElementById('lead-form');
@@ -51,7 +53,38 @@ export default function OesteLanding1() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-oeste-gradient text-white antialiased oeste-landing">
+    <div className="relative min-h-screen bg-oeste-gradient text-white antialiased oeste-landing overflow-hidden">
+      {/* Stylized kart background with opacity fade */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 top-0 h-[110vh] z-0"
+        style={{
+          backgroundImage: `url(${KART_BG})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center top',
+          backgroundRepeat: 'no-repeat',
+          filter: 'grayscale(0.15) contrast(1.05) saturate(0.9)',
+          opacity: 0.45,
+          mixBlendMode: 'luminosity',
+          WebkitMaskImage:
+            'linear-gradient(180deg, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.75) 35%, rgba(0,0,0,0.35) 65%, rgba(0,0,0,0) 92%)',
+          maskImage:
+            'linear-gradient(180deg, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.75) 35%, rgba(0,0,0,0.35) 65%, rgba(0,0,0,0) 92%)',
+        }}
+      />
+      {/* Color wash to keep brand gradient dominant */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 top-0 h-[110vh] z-0"
+        style={{
+          background:
+            'linear-gradient(135deg, rgba(227,120,25,0.55) 0%, rgba(190,45,112,0.55) 50%, rgba(112,36,121,0.6) 100%)',
+          mixBlendMode: 'multiply',
+        }}
+      />
+      <div className="relative z-10">
+
+
 
 
       {/* Top bar co-branding */}
@@ -201,6 +234,7 @@ export default function OesteLanding1() {
           </a>
         </div>
       </footer>
+      </div>
     </div>
   );
 }
