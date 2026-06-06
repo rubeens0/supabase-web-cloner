@@ -1,7 +1,8 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { motion } from 'motion/react';
 import { Zap, Wifi, ShieldCheck, MapPin, ArrowRight } from 'lucide-react';
 import { OesteLeadForm } from '@/components/oeste/OesteLeadForm';
+import { OesteOffers, type Offer } from '@/components/oeste/OesteOffers';
 import rubenLogoAsset from '@/assets/ruben-x-white.png.asset.json';
 import oesteLogoAsset from '@/assets/oeste-white.png.asset.json';
 import kartBgAsset from '@/assets/kart-oeste.jpg.asset.json';
