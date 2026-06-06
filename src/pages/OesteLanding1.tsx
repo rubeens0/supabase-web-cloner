@@ -59,7 +59,7 @@ export default function OesteLanding1() {
         <div className="flex items-center gap-3 sm:gap-4">
           <img src={OESTE_LOGO} alt="Oeste" className="h-8 sm:h-10 w-auto" />
           <span className="text-white/60 text-lg">×</span>
-          <span className="font-display text-xl sm:text-2xl tracking-tight">Rubén Muñoz</span>
+          <img src={RUBEN_LOGO} alt="Rubén Muñoz" className="h-8 sm:h-10 w-auto" />
         </div>
         <span className="hidden sm:inline-block text-xs uppercase tracking-[0.2em] text-white/80 border border-white/30 rounded-full px-3 py-1.5">
           Colaboración oficial
@@ -164,7 +164,7 @@ export default function OesteLanding1() {
             <div className="flex items-center justify-center gap-4 mb-8">
               <img src={OESTE_LOGO} alt="Oeste" className="h-9 w-auto" />
               <span className="text-white/60 text-xl">×</span>
-              <span className="font-display text-2xl">Rubén Muñoz</span>
+              <img src={RUBEN_LOGO} alt="Rubén Muñoz" className="h-9 w-auto" />
             </div>
             <p className="font-display text-3xl sm:text-4xl leading-snug">
               “Apostar por lo de casa también está en cómo nos conectamos. Por eso confío en{' '}
@@ -189,7 +189,7 @@ export default function OesteLanding1() {
           <div className="flex items-center gap-3">
             <img src={OESTE_LOGO} alt="Oeste" className="h-6 w-auto opacity-90" />
             <span>×</span>
-            <span className="font-display">Rubén Muñoz</span>
+            <img src={RUBEN_LOGO} alt="Rubén Muñoz" className="h-6 w-auto opacity-90" />
           </div>
           <a
             href="https://oeste.digital"
