@@ -42,10 +42,8 @@ const benefits = [
 export default function OesteLanding1() {
   const [selectedOffer, setSelectedOffer] = useState<Offer | null>(null);
 
-  const handleSelectOffer = (o: Offer) => {
-    setSelectedOffer(o);
-    setTimeout(() => scrollToForm(), 50);
-  };
+
+
 
   useEffect(() => {
     const prevTitle = document.title;
