@@ -3,9 +3,9 @@ import { motion } from 'motion/react';
 import { Zap, Wifi, ShieldCheck, MapPin, ArrowRight } from 'lucide-react';
 import { OesteLeadForm } from '@/components/oeste/OesteLeadForm';
 import rubenLogoAsset from '@/assets/ruben-x-white.png.asset.json';
+import oesteLogoAsset from '@/assets/oeste-white.png.asset.json';
 
-const OESTE_LOGO =
-  'https://oeste.digital/wp-content/uploads/2026/04/oeste-energia-solar-telecomunicaciones.svg';
+const OESTE_LOGO = oesteLogoAsset.url;
 const RUBEN_LOGO = rubenLogoAsset.url;
 
 function scrollToForm() {
