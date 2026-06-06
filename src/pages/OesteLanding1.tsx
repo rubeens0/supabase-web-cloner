@@ -190,7 +190,7 @@ export default function OesteLanding1() {
                 <div className="w-11 h-11 rounded-xl bg-white text-neutral-900 flex items-center justify-center">
                   <b.icon className="w-5 h-5" />
                 </div>
-                <h3 className="mt-5 text-lg font-semibold">{b.title}</h3>
+                <h3 className="mt-5 text-lg font-bold uppercase tracking-tight">{b.title}</h3>
                 <p className="mt-2 text-sm text-white/80 leading-relaxed">{b.desc}</p>
               </motion.div>
             ))}
