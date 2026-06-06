@@ -21,6 +21,11 @@ const schema = z.object({
 
 type FormValues = z.infer<typeof schema>;
 
+type Props = {
+  selectedOffer?: { id: string; title: string; price: string; priceSuffix: string } | null;
+  onClearOffer?: () => void;
+};
+
 export function OesteLeadForm() {
   const [submitted, setSubmitted] = useState(false);
   const [serverError, setServerError] = useState<string | null>(null);
