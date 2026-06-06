@@ -155,7 +155,15 @@ export default function OesteLanding1() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
           >
-            <OesteLeadForm />
+            <OesteLeadForm
+              selectedOffer={selectedOffer ? {
+                id: selectedOffer.id,
+                title: selectedOffer.title,
+                price: selectedOffer.price,
+                priceSuffix: selectedOffer.priceSuffix,
+              } : null}
+              onClearOffer={() => setSelectedOffer(null)}
+            />
           </motion.div>
         </div>
       </section>
