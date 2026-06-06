@@ -40,22 +40,53 @@ Deno.serve(async (req) => {
       );
     }
 
-    const { name, phone, email, address } = parsed.data;
+    const { name, phone, email, address, offer } = parsed.data;
+
+    // Parse offer string "Title (price suffix)" into structured fields
+    let offerTitle: string | null = null;
+    let offerPrice: string | null = null;
+    if (offer) {
+      const match = offer.match(/^(.*)\s*\(([^)]+)\)\s*$/);
+      if (match) {
+        offerTitle = match[1].trim();
+        offerPrice = match[2].trim();
+      } else {
+        offerTitle = offer;
+      }
+    }
+
     const payload = {
-      name,
-      phone,
-      email,
-      address,
-      source: 'meta-ads',
-      landing: 'oeste-landing1',
-      submitted_at: new Date().toISOString(),
+      lead: {
+        name,
+        phone,
+        email,
+        address,
+      },
+      offer: offer
+        ? {
+            raw: offer,
+            title: offerTitle,
+            price: offerPrice,
+          }
+        : null,
+      meta: {
+        source: 'meta-ads',
+        landing: 'oeste-landing1',
+        submitted_at: new Date().toISOString(),
+        user_agent: req.headers.get('user-agent') ?? null,
+      },
     };
+
+    console.log('[oeste-lead] Sending to webhook:', JSON.stringify(payload, null, 2));
 
     const upstream = await fetch(webhookUrl, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
     });
+
+    const upstreamText = await upstream.text().catch(() => '');
+    console.log('[oeste-lead] Webhook response status:', upstream.status, 'body:', upstreamText);
 
     if (!upstream.ok) {
       console.error('Webhook upstream error', upstream.status);
