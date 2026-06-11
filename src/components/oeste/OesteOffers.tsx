@@ -14,11 +14,12 @@ export type Offer = {
 };
 
 const OFFERS: Offer[] = [
-  // Fibra + Móvil
-  { id: 'fm-1', category: 'fibra-movil', title: 'Fibra 1G + Móvil 15GB', subtitle: 'Llamadas ilimitadas', price: '27', priceSuffix: '€/mes' },
-  { id: 'fm-2', category: 'fibra-movil', title: 'Fibra 1G + Móvil 100GB', subtitle: 'Llamadas ilimitadas', price: '31', priceSuffix: '€/mes' },
-  { id: 'fm-3', category: 'fibra-movil', title: 'Fibra 1G + 2 líneas · 30GB', subtitle: 'Llamadas ilimitadas', price: '34,95', priceSuffix: '€/mes' },
-  { id: 'fm-4', category: 'fibra-movil', title: 'Fibra 1G + Móvil sin límites', subtitle: 'Datos y llamadas ilimitados', price: '35', priceSuffix: '€/mes' },
+  // Fibra + Móvil (Fibra 1Gb 21€ + línea móvil 5G)
+  { id: 'fm-1', category: 'fibra-movil', title: 'Fibra 1Gb + Móvil 25GB', subtitle: 'Llamadas ilimitadas', price: '27', priceSuffix: '€/mes' },
+  { id: 'fm-2', category: 'fibra-movil', title: 'Fibra 1Gb + Móvil 70GB', subtitle: 'Llamadas ilimitadas', price: '29', priceSuffix: '€/mes' },
+  { id: 'fm-3', category: 'fibra-movil', title: 'Fibra 1Gb + Móvil 120GB', subtitle: 'Llamadas ilimitadas', price: '31', priceSuffix: '€/mes' },
+  { id: 'fm-4', category: 'fibra-movil', title: 'Fibra 1Gb + Móvil 200GB', subtitle: 'Llamadas ilimitadas', price: '32', priceSuffix: '€/mes' },
+  { id: 'fm-5', category: 'fibra-movil', title: 'Fibra 1Gb + Móvil 400GB', subtitle: 'Llamadas ilimitadas · GB acumulables', price: '34', priceSuffix: '€/mes' },
   // Fibra
   { id: 'f-1', category: 'fibra', title: 'Fibra 1 Gb', subtitle: 'Simétrica · sin permanencia', price: '27', priceSuffix: '€/mes' },
   { id: 'f-2', category: 'fibra', title: 'Fibra 2 Gb', subtitle: 'Simétrica · sin permanencia', price: '35', priceSuffix: '€/mes' },
