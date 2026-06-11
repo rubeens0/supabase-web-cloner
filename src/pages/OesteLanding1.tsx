@@ -189,6 +189,13 @@ export default function OesteLanding1() {
               selectedId={selectedOffer?.id ?? null}
               onSelect={(o) => setSelectedOffer(o)}
             />
+            <div className="rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm p-4 text-xs text-white/70 leading-relaxed space-y-2">
+              <p>
+                <strong className="text-white/90">braX 1Gb</strong> tiene un coste de <strong className="text-white/90">27€/mes IVA incluido</strong> si no se añade una línea móvil.
+              </p>
+              <p>Disfruta de llamadas nacionales ilimitadas con una política de uso razonable de 6.000 minutos al mes.</p>
+              <p className="text-white/60">* Oferta válida hasta el 15 de septiembre de 2026.</p>
+            </div>
             <OesteLeadForm
               selectedOffer={selectedOffer ? {
                 id: selectedOffer.id,
