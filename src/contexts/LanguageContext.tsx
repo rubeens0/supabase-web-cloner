@@ -435,6 +435,9 @@ const translations = {
     'blog.fuelextrem.title': 'Rubén Muñoz visita Fuel Extrem en el ecuador de su aventura en el karting nacional',
     'blog.fuelextrem.excerpt':
       'El piloto cacereño aprovecha el paréntesis entre la segunda y la tercera prueba del CEK Hyundai para visitar en persona a Fuel Extrem, uno de los patrocinadores que hacen posible su temporada nacional.',
+    'blog.chiva.title': 'CEK R3 Valencia: tests previos complicados bajo un calor extremo en Chiva',
+    'blog.chiva.excerpt':
+      'Tres días de tests previos en el Kartódromo Lucas Guerrero de Chiva han supuesto un auténtico desafío: sin ritmo, problemas mecánicos y temperaturas brutales que han complicado poner todo a punto de cara a la carrera del 20-21 de junio.',
 
     /* ===== Sponsors ===== */
     'sponsors.hero.title': 'Patrocinio',
