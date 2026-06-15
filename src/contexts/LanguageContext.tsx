@@ -927,6 +927,9 @@ const translations = {
     'blog.fuelextrem.title': 'Rubén Muñoz visits Fuel Extrem at the midpoint of his national karting season',
     'blog.fuelextrem.excerpt':
       'Between the second and third rounds of the CEK Hyundai, the Cáceres driver visits Fuel Extrem in person to thank one of the main sponsors making his national season possible.',
+    'blog.chiva.title': 'CEK R3 Valencia: tough pre-race tests under extreme heat in Chiva',
+    'blog.chiva.excerpt':
+      'Three days of pre-race testing at the Kartódromo Lucas Guerrero in Chiva have been a real challenge: no pace, mechanical issues and brutal temperatures that made it difficult to get everything dialed in ahead of the race on June 20-21.',
 
     /* ===== Sponsors ===== */
     'sponsors.hero.title': 'Sponsorship',

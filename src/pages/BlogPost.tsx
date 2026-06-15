@@ -600,6 +600,42 @@ Many thanks to all the people involved.`,
           inLanguage: language === 'es' ? 'es-ES' : 'en-US'
         }
       }
+    : post.id === 'cek-chiva-valencia-r3'
+    ? {
+        title: post.title,
+        description: post.excerpt,
+        keywords: language === 'es'
+          ? 'CEK, Chiva, Valencia, Kartódromo Lucas Guerrero, Rubén Muñoz, karting, tests, calor, DB Motorsport, Campeonato España Karting, tercera ronda'
+          : 'CEK, Chiva, Valencia, Kartódromo Lucas Guerrero, Rubén Muñoz, karting, testing, heat, DB Motorsport, Spanish Karting Championship, third round',
+        ogImage: post.image,
+        ogType: 'article',
+        structuredData: {
+          '@context': 'https://schema.org',
+          '@type': 'BlogPosting',
+          headline: post.title,
+          description: post.excerpt,
+          image: post.image,
+          datePublished: post.date,
+          dateModified: post.date,
+          author: {
+            '@type': 'Person',
+            name: 'Rubén Muñoz',
+            url: 'https://rubenmunoz.com',
+            jobTitle: language === 'es' ? 'Piloto de Karting' : 'Karting Driver'
+          },
+          publisher: {
+            '@type': 'Person',
+            name: 'Rubén Muñoz',
+            url: 'https://rubenmunoz.com'
+          },
+          mainEntityOfPage: {
+            '@type': 'WebPage',
+            '@id': `https://rubenmunoz.com/blog/${post.id}`
+          },
+          articleSection: language === 'es' ? 'Karting' : 'Karting',
+          inLanguage: language === 'es' ? 'es-ES' : 'en-US'
+        }
+      }
     : {
         title: post.title,
         description: post.excerpt,
