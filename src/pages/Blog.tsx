@@ -11,6 +11,7 @@ import motorlandImg from '@/assets/motorland-cek-r2.webp';
 import motorlandRaceImg from '@/assets/motorland-cek-r2-race.jpeg';
 import vlog1Img from '@/assets/vlog-1-motorland.jpg';
 import fuelExtremImg from '@/assets/fuel-extrem-visita.webp';
+import chivaCekImg from '@/assets/chiva-cek-r3.png.asset.json';
 import { useLanguage } from '../contexts/LanguageContext';
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
@@ -158,6 +159,15 @@ export function Blog() {
       readTime: '3 min',
       category: t('blog.category.karting'),
       image: fuelExtremImg,
+    },
+    {
+      id: 'cek-chiva-valencia-r3',
+      title: t('blog.chiva.title'),
+      excerpt: t('blog.chiva.excerpt'),
+      date: '2026-06-16',
+      readTime: '4 min',
+      category: t('blog.category.karting'),
+      image: chivaCekImg.url,
     },
   ];
 
