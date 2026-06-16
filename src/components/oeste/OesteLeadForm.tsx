@@ -1,11 +1,11 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { motion } from 'motion/react';
 import { Loader2, CheckCircle2, ArrowRight } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
-import { trackMetaEvent, parsePrice } from '@/lib/metaPixel';
+import { trackMetaEvent, trackMetaEventOnce, parsePrice } from '@/lib/metaPixel';
 
 
 const schema = z.object({
@@ -31,7 +31,7 @@ type Props = {
 export function OesteLeadForm({ selectedOffer, onClearOffer }: Props = {}) {
   const [submitted, setSubmitted] = useState(false);
   const [serverError, setServerError] = useState<string | null>(null);
-  const [checkoutStarted, setCheckoutStarted] = useState(false);
+  const checkoutStartedRef = useRef(false);
 
   const {
     register,
@@ -44,9 +44,9 @@ export function OesteLeadForm({ selectedOffer, onClearOffer }: Props = {}) {
   });
 
   const handleFirstInteraction = () => {
-    if (checkoutStarted) return;
-    setCheckoutStarted(true);
-    trackMetaEvent('InitiateCheckout', {
+    if (checkoutStartedRef.current) return;
+    checkoutStartedRef.current = true;
+    trackMetaEventOnce(`oeste-initiateCheckout-${selectedOffer?.id ?? 'none'}`, 'InitiateCheckout', {
       content_name: selectedOffer?.title ?? 'Sin oferta',
       content_category: 'oeste-lead-form',
       value: parsePrice(selectedOffer?.price),

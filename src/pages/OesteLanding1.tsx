@@ -3,7 +3,7 @@ import { motion } from 'motion/react';
 import { Zap, Wifi, ShieldCheck, MapPin, ArrowRight } from 'lucide-react';
 import { OesteLeadForm } from '@/components/oeste/OesteLeadForm';
 import { OesteOffers, type Offer } from '@/components/oeste/OesteOffers';
-import { initMetaPixel, trackMetaEvent, trackMetaCustom, parsePrice } from '@/lib/metaPixel';
+import { initMetaPixel, trackMetaEvent, trackMetaEventOnce, trackMetaCustom, parsePrice } from '@/lib/metaPixel';
 import rubenLogoAsset from '@/assets/ruben-x-white.png.asset.json';
 import oesteLogoAsset from '@/assets/oeste-white.png.asset.json';
 import kartBgAsset from '@/assets/kart-oeste.jpg.asset.json';
@@ -72,7 +72,7 @@ export default function OesteLanding1() {
         for (const entry of entries) {
           if (entry.isIntersecting && !viewContentFiredRef.current) {
             viewContentFiredRef.current = true;
-            trackMetaEvent('ViewContent', {
+            trackMetaEventOnce('oeste-viewContent', 'ViewContent', {
               content_name: 'Oeste Fibra Offers',
               content_category: 'oeste-landing',
               content_type: 'product_group',

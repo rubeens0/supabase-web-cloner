@@ -85,3 +85,31 @@ export function parsePrice(price?: string): number | undefined {
   const n = parseFloat(price.replace(',', '.'));
   return Number.isFinite(n) ? n : undefined;
 }
+
+const onceKeys = new Set<string>();
+const throttleMap = new Map<string, number>();
+
+/** Fire a Meta event only once per key across the session. */
+export function trackMetaEventOnce(
+  key: string,
+  event: string,
+  params?: Record<string, unknown>
+): void {
+  if (onceKeys.has(key)) return;
+  onceKeys.add(key);
+  trackMetaEvent(event, params);
+}
+
+/** Fire a Meta event with a cooldown per key (default 5 s). */
+export function trackMetaEventThrottled(
+  key: string,
+  event: string,
+  params?: Record<string, unknown>,
+  cooldownMs = 5000
+): void {
+  const now = Date.now();
+  const last = throttleMap.get(key);
+  if (last && now - last < cooldownMs) return;
+  throttleMap.set(key, now);
+  trackMetaEvent(event, params);
+}
