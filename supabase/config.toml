@@ -11,3 +11,5 @@ project_id = "ayhwkwdshvpmxbooyiom"
     verify_jwt = false
   [functions.oeste-lead]
     verify_jwt = false
+  [functions.meta-capi]
+    verify_jwt = false

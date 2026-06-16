@@ -3,7 +3,8 @@ import { motion } from 'motion/react';
 import { Zap, Wifi, ShieldCheck, MapPin, ArrowRight } from 'lucide-react';
 import { OesteLeadForm } from '@/components/oeste/OesteLeadForm';
 import { OesteOffers, type Offer } from '@/components/oeste/OesteOffers';
-import { initMetaPixel, trackMetaEvent, trackMetaEventOnce, trackMetaCustom, parsePrice } from '@/lib/metaPixel';
+import { initMetaPixel, parsePrice } from '@/lib/metaPixel';
+import { sendMetaEvent } from '@/lib/metaCapi';
 import rubenLogoAsset from '@/assets/ruben-x-white.png.asset.json';
 import oesteLogoAsset from '@/assets/oeste-white.png.asset.json';
 import kartBgAsset from '@/assets/kart-oeste.jpg.asset.json';
@@ -15,7 +16,10 @@ const RUBEN_LOGO = rubenLogoAsset.url;
 const KART_BG = kartBgAsset.url;
 
 function scrollToForm(source: string) {
-  trackMetaCustom('ClickCTA', { source, destination: 'lead-form' });
+  void sendMetaEvent({
+    eventName: 'ClickCTA',
+    customData: { source, destination: 'lead-form' },
+  });
   const el = document.getElementById('lead-form');
   if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
@@ -50,6 +54,8 @@ export default function OesteLanding1() {
 
   useEffect(() => {
     initMetaPixel('877944112021448');
+    // Mirror PageView via CAPI (pixel already fired by initMetaPixel)
+    void sendMetaEvent({ eventName: 'PageView', capiOnly: true });
 
     const prevTitle = document.title;
     document.title = 'Fibra Oeste en Cáceres · La más rápida del oeste';
@@ -72,10 +78,14 @@ export default function OesteLanding1() {
         for (const entry of entries) {
           if (entry.isIntersecting && !viewContentFiredRef.current) {
             viewContentFiredRef.current = true;
-            trackMetaEventOnce('oeste-viewContent', 'ViewContent', {
-              content_name: 'Oeste Fibra Offers',
-              content_category: 'oeste-landing',
-              content_type: 'product_group',
+            void sendMetaEvent({
+              eventName: 'ViewContent',
+              eventId: 'oeste-viewContent',
+              customData: {
+                content_name: 'Oeste Fibra Offers',
+                content_category: 'oeste-landing',
+                content_type: 'product_group',
+              },
             });
             obs.disconnect();
             break;
@@ -90,13 +100,16 @@ export default function OesteLanding1() {
 
   const handleSelectOffer = (offer: Offer) => {
     setSelectedOffer(offer);
-    trackMetaEvent('AddToCart', {
-      content_ids: [offer.id],
-      content_name: offer.title,
-      content_category: offer.category,
-      content_type: 'product',
-      value: parsePrice(offer.price),
-      currency: 'EUR',
+    void sendMetaEvent({
+      eventName: 'AddToCart',
+      customData: {
+        content_ids: [offer.id],
+        content_name: offer.title,
+        content_category: offer.category,
+        content_type: 'product',
+        value: parsePrice(offer.price),
+        currency: 'EUR',
+      },
     });
   };
 
@@ -104,9 +117,13 @@ export default function OesteLanding1() {
   const handleVideoPlay = () => {
     if (videoPlayedRef.current) return;
     videoPlayedRef.current = true;
-    trackMetaCustom('VideoPlay', {
-      content_name: 'Máxima velocidad',
-      video_id: 'maxima-velocidad',
+    void sendMetaEvent({
+      eventName: 'VideoPlay',
+      eventId: 'oeste-videoPlay-maxima-velocidad',
+      customData: {
+        content_name: 'Máxima velocidad',
+        video_id: 'maxima-velocidad',
+      },
     });
   };
 
