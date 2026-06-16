@@ -127,7 +127,9 @@ Deno.serve(async (req) => {
     }),
   );
 
-  const testCode = topLevelTestCode ?? incoming.find((e) => e.test_event_code)?.test_event_code;
+  const envTestCode = Deno.env.get('META_TEST_EVENT_CODE')?.trim() || undefined;
+  const testCode =
+    topLevelTestCode ?? incoming.find((e) => e.test_event_code)?.test_event_code ?? envTestCode;
 
   const payload: Record<string, unknown> = { data };
   if (testCode) payload.test_event_code = testCode;
