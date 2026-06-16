@@ -95,6 +95,17 @@ export default function OesteLanding1() {
         }}
       />
       <div className="relative z-10">
+        {/* Meta Pixel noscript fallback */}
+        <noscript>
+          <img
+            height="1"
+            width="1"
+            style={{ display: 'none' }}
+            src="https://www.facebook.com/tr?id=877944112021448&ev=PageView&noscript=1"
+            alt=""
+          />
+        </noscript>
+
 
 
 
