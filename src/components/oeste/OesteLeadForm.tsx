@@ -5,7 +5,8 @@ import { z } from 'zod';
 import { motion } from 'motion/react';
 import { Loader2, CheckCircle2, ArrowRight } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
-import { trackMetaEvent, trackMetaEventOnce, parsePrice } from '@/lib/metaPixel';
+import { trackMetaEventOnce, parsePrice } from '@/lib/metaPixel';
+import { sendMetaEvent } from '@/lib/metaCapi';
 
 
 const schema = z.object({
@@ -46,11 +47,19 @@ export function OesteLeadForm({ selectedOffer, onClearOffer }: Props = {}) {
   const handleFirstInteraction = () => {
     if (checkoutStartedRef.current) return;
     checkoutStartedRef.current = true;
-    trackMetaEventOnce(`oeste-initiateCheckout-${selectedOffer?.id ?? 'none'}`, 'InitiateCheckout', {
-      content_name: selectedOffer?.title ?? 'Sin oferta',
-      content_category: 'oeste-lead-form',
-      value: parsePrice(selectedOffer?.price),
-      currency: 'EUR',
+    const key = `oeste-initiateCheckout-${selectedOffer?.id ?? 'none'}`;
+    // Keep the once-guard on pixel side, mirror via CAPI with same event_id
+    trackMetaEventOnce(key, 'InitiateCheckout', { eventID: key });
+    void sendMetaEvent({
+      eventName: 'InitiateCheckout',
+      eventId: key,
+      capiOnly: true, // pixel already fired above with eventID=key
+      customData: {
+        content_name: selectedOffer?.title ?? 'Sin oferta',
+        content_category: 'oeste-lead-form',
+        value: parsePrice(selectedOffer?.price),
+        currency: 'EUR',
+      },
     });
   };
 
@@ -68,13 +77,26 @@ export function OesteLeadForm({ selectedOffer, onClearOffer }: Props = {}) {
       if (error) throw error;
       if (data?.ok) {
         setSubmitted(true);
-        reset();
-        trackMetaEvent('Lead', {
-          content_name: selectedOffer?.title ?? 'Sin oferta',
-          content_category: selectedOffer?.id ?? 'no-offer',
-          value: parsePrice(selectedOffer?.price),
-          currency: 'EUR',
+        const [firstName, ...rest] = values.name.trim().split(/\s+/);
+        const lastName = rest.join(' ') || undefined;
+        void sendMetaEvent({
+          eventName: 'Lead',
+          customData: {
+            content_name: selectedOffer?.title ?? 'Sin oferta',
+            content_category: selectedOffer?.id ?? 'no-offer',
+            value: parsePrice(selectedOffer?.price),
+            currency: 'EUR',
+          },
+          userData: {
+            email: values.email,
+            phone: values.phone,
+            first_name: firstName,
+            last_name: lastName,
+            city: 'Cáceres',
+            country: 'ES',
+          },
         });
+        reset();
       } else {
 
         throw new Error('Respuesta inesperada');
