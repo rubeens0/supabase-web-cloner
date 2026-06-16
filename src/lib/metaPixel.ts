@@ -1,7 +1,16 @@
 declare global {
   interface Window {
-    fbq?: (...args: unknown[]) => void;
+    fbq?: FbqFunction;
   }
+}
+
+interface FbqFunction {
+  (...args: unknown[]): void;
+  push?: FbqFunction;
+  loaded?: boolean;
+  version?: string;
+  queue?: unknown[][];
+  callMethod?: (...args: unknown[]) => void;
 }
 
 export function initMetaPixel(pixelId: string): void {
@@ -13,15 +22,20 @@ export function initMetaPixel(pixelId: string): void {
   const e = 'script';
   const v = 'https://connect.facebook.net/en_US/fbevents.js';
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const n: any = (f.fbq = function () {
-    n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
-  });
-  if (!f._fbq) f._fbq = n;
-  n.push = n;
-  n.loaded = true;
-  n.version = '2.0';
-  n.queue = [];
+  const fbqFn: FbqFunction = (...args: unknown[]) => {
+    if (fbqFn.callMethod) {
+      fbqFn.callMethod(...args);
+    } else {
+      fbqFn.queue?.push(args);
+    }
+  };
+  fbqFn.push = fbqFn;
+  fbqFn.loaded = true;
+  fbqFn.version = '2.0';
+  fbqFn.queue = [];
+
+  f.fbq = fbqFn;
+  if (!f._fbq) f._fbq = fbqFn;
 
   const t = b.createElement(e) as HTMLScriptElement;
   t.async = true;
@@ -29,8 +43,8 @@ export function initMetaPixel(pixelId: string): void {
   const s = b.getElementsByTagName(e)[0];
   if (s && s.parentNode) s.parentNode.insertBefore(t, s);
 
-  n('init', pixelId);
-  n('track', 'PageView');
+  fbqFn('init', pixelId);
+  fbqFn('track', 'PageView');
 }
 
 export function trackMetaEvent(
