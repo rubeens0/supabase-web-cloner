@@ -45,9 +45,8 @@ const benefits = [
 
 export default function OesteLanding1() {
   const [selectedOffer, setSelectedOffer] = useState<Offer | null>(null);
-
-
-
+  const offersRef = useRef<HTMLDivElement | null>(null);
+  const viewContentFiredRef = useRef(false);
 
   useEffect(() => {
     initMetaPixel('877944112021448');
@@ -63,6 +62,54 @@ export default function OesteLanding1() {
       meta.remove();
     };
   }, []);
+
+  // Fire `ViewContent` once when the offers/form block becomes visible
+  useEffect(() => {
+    const node = offersRef.current;
+    if (!node || viewContentFiredRef.current) return;
+    const obs = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting && !viewContentFiredRef.current) {
+            viewContentFiredRef.current = true;
+            trackMetaEvent('ViewContent', {
+              content_name: 'Oeste Fibra Offers',
+              content_category: 'oeste-landing',
+              content_type: 'product_group',
+            });
+            obs.disconnect();
+            break;
+          }
+        }
+      },
+      { threshold: 0.4 }
+    );
+    obs.observe(node);
+    return () => obs.disconnect();
+  }, []);
+
+  const handleSelectOffer = (offer: Offer) => {
+    setSelectedOffer(offer);
+    trackMetaEvent('AddToCart', {
+      content_ids: [offer.id],
+      content_name: offer.title,
+      content_category: offer.category,
+      content_type: 'product',
+      value: parsePrice(offer.price),
+      currency: 'EUR',
+    });
+  };
+
+  const videoPlayedRef = useRef(false);
+  const handleVideoPlay = () => {
+    if (videoPlayedRef.current) return;
+    videoPlayedRef.current = true;
+    trackMetaCustom('VideoPlay', {
+      content_name: 'Máxima velocidad',
+      video_id: 'maxima-velocidad',
+    });
+  };
+
 
 
   return (
