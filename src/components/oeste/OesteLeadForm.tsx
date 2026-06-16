@@ -107,6 +107,7 @@ export function OesteLeadForm({ selectedOffer, onClearOffer }: Props = {}) {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
+      onFocus={handleFirstInteraction}
       className="rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 p-6 sm:p-8 space-y-4 shadow-2xl"
       noValidate
     >
