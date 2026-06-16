@@ -71,7 +71,8 @@ export function OesteLeadForm({ selectedOffer, onClearOffer }: Props = {}) {
         reset();
         trackMetaEvent('Lead', {
           content_name: selectedOffer?.title ?? 'Sin oferta',
-          value: selectedOffer?.price ? parseFloat(selectedOffer.price) : undefined,
+          content_category: selectedOffer?.id ?? 'no-offer',
+          value: parsePrice(selectedOffer?.price),
           currency: 'EUR',
         });
       } else {
