@@ -31,6 +31,7 @@ type Props = {
 export function OesteLeadForm({ selectedOffer, onClearOffer }: Props = {}) {
   const [submitted, setSubmitted] = useState(false);
   const [serverError, setServerError] = useState<string | null>(null);
+  const [checkoutStarted, setCheckoutStarted] = useState(false);
 
   const {
     register,
@@ -41,6 +42,17 @@ export function OesteLeadForm({ selectedOffer, onClearOffer }: Props = {}) {
     resolver: zodResolver(schema),
     defaultValues: { name: '', phone: '', email: '', address: '', consent: false as unknown as true },
   });
+
+  const handleFirstInteraction = () => {
+    if (checkoutStarted) return;
+    setCheckoutStarted(true);
+    trackMetaEvent('InitiateCheckout', {
+      content_name: selectedOffer?.title ?? 'Sin oferta',
+      content_category: 'oeste-lead-form',
+      value: parsePrice(selectedOffer?.price),
+      currency: 'EUR',
+    });
+  };
 
   const onSubmit = async (values: FormValues) => {
     setServerError(null);
