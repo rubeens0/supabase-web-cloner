@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { motion } from 'motion/react';
 import { Zap, Wifi, ShieldCheck, MapPin, ArrowRight } from 'lucide-react';
 import { OesteLeadForm } from '@/components/oeste/OesteLeadForm';
 import { OesteOffers, type Offer } from '@/components/oeste/OesteOffers';
-import { initMetaPixel } from '@/lib/metaPixel';
+import { initMetaPixel, trackMetaEvent, trackMetaCustom, parsePrice } from '@/lib/metaPixel';
 import rubenLogoAsset from '@/assets/ruben-x-white.png.asset.json';
 import oesteLogoAsset from '@/assets/oeste-white.png.asset.json';
 import kartBgAsset from '@/assets/kart-oeste.jpg.asset.json';
@@ -14,7 +14,8 @@ const OESTE_LOGO = oesteLogoAsset.url;
 const RUBEN_LOGO = rubenLogoAsset.url;
 const KART_BG = kartBgAsset.url;
 
-function scrollToForm() {
+function scrollToForm(source: string) {
+  trackMetaCustom('ClickCTA', { source, destination: 'lead-form' });
   const el = document.getElementById('lead-form');
   if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
