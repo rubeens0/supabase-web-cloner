@@ -318,7 +318,7 @@ export default function OesteLanding1() {
 
             <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3">
               <button
-                onClick={scrollToForm}
+                onClick={() => scrollToForm('cobrand-statement')}
                 className="group inline-flex items-center justify-center gap-2 rounded-xl bg-white text-neutral-900 font-semibold px-7 py-4 hover:bg-white/90 transition"
               >
                 Pedir mi oferta
