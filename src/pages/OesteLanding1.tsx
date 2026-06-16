@@ -240,7 +240,7 @@ export default function OesteLanding1() {
               />
               <div className="px-5 py-4 border-t border-white/10">
                 <button
-                  onClick={scrollToForm}
+                  onClick={() => scrollToForm('video-section')}
                   className="group w-full inline-flex items-center justify-center gap-2 rounded-xl bg-white text-neutral-900 font-bold uppercase tracking-wider text-sm px-7 py-4 hover:bg-white/90 shadow-[0_10px_40px_-10px_rgba(255,255,255,0.5)] transition"
                 >
                   Ver ofertas!
