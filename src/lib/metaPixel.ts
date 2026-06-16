@@ -60,3 +60,28 @@ export function trackMetaEvent(
     fbq('track', event);
   }
 }
+
+/**
+ * Custom (non-standard) event. Uses `trackCustom` per Meta Pixel API.
+ * https://developers.facebook.com/docs/meta-pixel/reference#events
+ */
+export function trackMetaCustom(
+  event: string,
+  params?: Record<string, unknown>
+): void {
+  if (typeof window === 'undefined') return;
+  const fbq = window.fbq;
+  if (!fbq) return;
+  if (params) {
+    fbq('trackCustom', event, params);
+  } else {
+    fbq('trackCustom', event);
+  }
+}
+
+/** Parses prices like "27" or "6,95" into a number. */
+export function parsePrice(price?: string): number | undefined {
+  if (!price) return undefined;
+  const n = parseFloat(price.replace(',', '.'));
+  return Number.isFinite(n) ? n : undefined;
+}
