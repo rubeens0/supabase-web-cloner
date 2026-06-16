@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { motion } from 'motion/react';
 import { Zap, Wifi, ShieldCheck, MapPin, ArrowRight } from 'lucide-react';
 import { OesteLeadForm } from '@/components/oeste/OesteLeadForm';
 import { OesteOffers, type Offer } from '@/components/oeste/OesteOffers';
-import { initMetaPixel } from '@/lib/metaPixel';
+import { initMetaPixel, trackMetaEvent, trackMetaCustom, parsePrice } from '@/lib/metaPixel';
 import rubenLogoAsset from '@/assets/ruben-x-white.png.asset.json';
 import oesteLogoAsset from '@/assets/oeste-white.png.asset.json';
 import kartBgAsset from '@/assets/kart-oeste.jpg.asset.json';
@@ -14,7 +14,8 @@ const OESTE_LOGO = oesteLogoAsset.url;
 const RUBEN_LOGO = rubenLogoAsset.url;
 const KART_BG = kartBgAsset.url;
 
-function scrollToForm() {
+function scrollToForm(source: string) {
+  trackMetaCustom('ClickCTA', { source, destination: 'lead-form' });
   const el = document.getElementById('lead-form');
   if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
@@ -44,9 +45,8 @@ const benefits = [
 
 export default function OesteLanding1() {
   const [selectedOffer, setSelectedOffer] = useState<Offer | null>(null);
-
-
-
+  const offersRef = useRef<HTMLDivElement | null>(null);
+  const viewContentFiredRef = useRef(false);
 
   useEffect(() => {
     initMetaPixel('877944112021448');
@@ -62,6 +62,54 @@ export default function OesteLanding1() {
       meta.remove();
     };
   }, []);
+
+  // Fire `ViewContent` once when the offers/form block becomes visible
+  useEffect(() => {
+    const node = offersRef.current;
+    if (!node || viewContentFiredRef.current) return;
+    const obs = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting && !viewContentFiredRef.current) {
+            viewContentFiredRef.current = true;
+            trackMetaEvent('ViewContent', {
+              content_name: 'Oeste Fibra Offers',
+              content_category: 'oeste-landing',
+              content_type: 'product_group',
+            });
+            obs.disconnect();
+            break;
+          }
+        }
+      },
+      { threshold: 0.4 }
+    );
+    obs.observe(node);
+    return () => obs.disconnect();
+  }, []);
+
+  const handleSelectOffer = (offer: Offer) => {
+    setSelectedOffer(offer);
+    trackMetaEvent('AddToCart', {
+      content_ids: [offer.id],
+      content_name: offer.title,
+      content_category: offer.category,
+      content_type: 'product',
+      value: parsePrice(offer.price),
+      currency: 'EUR',
+    });
+  };
+
+  const videoPlayedRef = useRef(false);
+  const handleVideoPlay = () => {
+    if (videoPlayedRef.current) return;
+    videoPlayedRef.current = true;
+    trackMetaCustom('VideoPlay', {
+      content_name: 'Máxima velocidad',
+      video_id: 'maxima-velocidad',
+    });
+  };
+
 
 
   return (
@@ -172,7 +220,7 @@ export default function OesteLanding1() {
 
             <div className="mt-9 flex flex-col sm:flex-row gap-3 sm:items-center">
               <button
-                onClick={scrollToForm}
+                onClick={() => scrollToForm('hero')}
                 className="group inline-flex items-center justify-center gap-2 rounded-xl bg-white text-neutral-900 font-bold uppercase tracking-wider text-sm px-7 py-4 hover:bg-white/90 shadow-[0_10px_40px_-10px_rgba(255,255,255,0.5)] transition"
               >
                 Quiero información
@@ -196,6 +244,7 @@ export default function OesteLanding1() {
 
           <motion.div
             id="lead-form"
+            ref={offersRef}
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
@@ -203,7 +252,7 @@ export default function OesteLanding1() {
           >
             <OesteOffers
               selectedId={selectedOffer?.id ?? null}
-              onSelect={(o) => setSelectedOffer(o)}
+              onSelect={handleSelectOffer}
             />
             <div className="rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm p-4 text-xs text-white/70 leading-relaxed space-y-2">
               <p>
@@ -236,10 +285,12 @@ export default function OesteLanding1() {
                 controls
                 playsInline
                 preload="metadata"
+                onPlay={handleVideoPlay}
               />
+
               <div className="px-5 py-4 border-t border-white/10">
                 <button
-                  onClick={scrollToForm}
+                  onClick={() => scrollToForm('video-section')}
                   className="group w-full inline-flex items-center justify-center gap-2 rounded-xl bg-white text-neutral-900 font-bold uppercase tracking-wider text-sm px-7 py-4 hover:bg-white/90 shadow-[0_10px_40px_-10px_rgba(255,255,255,0.5)] transition"
                 >
                   Ver ofertas!
@@ -317,7 +368,7 @@ export default function OesteLanding1() {
 
             <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3">
               <button
-                onClick={scrollToForm}
+                onClick={() => scrollToForm('cobrand-statement')}
                 className="group inline-flex items-center justify-center gap-2 rounded-xl bg-white text-neutral-900 font-semibold px-7 py-4 hover:bg-white/90 transition"
               >
                 Pedir mi oferta

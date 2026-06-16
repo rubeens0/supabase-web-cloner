@@ -5,7 +5,7 @@ import { z } from 'zod';
 import { motion } from 'motion/react';
 import { Loader2, CheckCircle2, ArrowRight } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
-import { trackMetaEvent } from '@/lib/metaPixel';
+import { trackMetaEvent, parsePrice } from '@/lib/metaPixel';
 
 
 const schema = z.object({
@@ -31,6 +31,7 @@ type Props = {
 export function OesteLeadForm({ selectedOffer, onClearOffer }: Props = {}) {
   const [submitted, setSubmitted] = useState(false);
   const [serverError, setServerError] = useState<string | null>(null);
+  const [checkoutStarted, setCheckoutStarted] = useState(false);
 
   const {
     register,
@@ -41,6 +42,17 @@ export function OesteLeadForm({ selectedOffer, onClearOffer }: Props = {}) {
     resolver: zodResolver(schema),
     defaultValues: { name: '', phone: '', email: '', address: '', consent: false as unknown as true },
   });
+
+  const handleFirstInteraction = () => {
+    if (checkoutStarted) return;
+    setCheckoutStarted(true);
+    trackMetaEvent('InitiateCheckout', {
+      content_name: selectedOffer?.title ?? 'Sin oferta',
+      content_category: 'oeste-lead-form',
+      value: parsePrice(selectedOffer?.price),
+      currency: 'EUR',
+    });
+  };
 
   const onSubmit = async (values: FormValues) => {
     setServerError(null);
@@ -59,7 +71,8 @@ export function OesteLeadForm({ selectedOffer, onClearOffer }: Props = {}) {
         reset();
         trackMetaEvent('Lead', {
           content_name: selectedOffer?.title ?? 'Sin oferta',
-          value: selectedOffer?.price ? parseFloat(selectedOffer.price) : undefined,
+          content_category: selectedOffer?.id ?? 'no-offer',
+          value: parsePrice(selectedOffer?.price),
           currency: 'EUR',
         });
       } else {
@@ -94,6 +107,7 @@ export function OesteLeadForm({ selectedOffer, onClearOffer }: Props = {}) {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
+      onFocus={handleFirstInteraction}
       className="rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 p-6 sm:p-8 space-y-4 shadow-2xl"
       noValidate
     >
