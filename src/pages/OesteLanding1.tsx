@@ -244,6 +244,7 @@ export default function OesteLanding1() {
 
           <motion.div
             id="lead-form"
+            ref={offersRef}
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
@@ -251,7 +252,7 @@ export default function OesteLanding1() {
           >
             <OesteOffers
               selectedId={selectedOffer?.id ?? null}
-              onSelect={(o) => setSelectedOffer(o)}
+              onSelect={handleSelectOffer}
             />
             <div className="rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm p-4 text-xs text-white/70 leading-relaxed space-y-2">
               <p>
@@ -284,7 +285,9 @@ export default function OesteLanding1() {
                 controls
                 playsInline
                 preload="metadata"
+                onPlay={handleVideoPlay}
               />
+
               <div className="px-5 py-4 border-t border-white/10">
                 <button
                   onClick={() => scrollToForm('video-section')}
