@@ -5,7 +5,7 @@ import { z } from 'zod';
 import { motion } from 'motion/react';
 import { Loader2, CheckCircle2, ArrowRight } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
-import { trackMetaEvent } from '@/lib/metaPixel';
+import { trackMetaEvent, parsePrice } from '@/lib/metaPixel';
 
 
 const schema = z.object({
