@@ -3,10 +3,12 @@ import { motion } from 'motion/react';
 import { Zap, Wifi, ShieldCheck, MapPin, ArrowRight } from 'lucide-react';
 import { OesteLeadForm } from '@/components/oeste/OesteLeadForm';
 import { OesteOffers, type Offer } from '@/components/oeste/OesteOffers';
+import { initMetaPixel } from '@/lib/metaPixel';
 import rubenLogoAsset from '@/assets/ruben-x-white.png.asset.json';
 import oesteLogoAsset from '@/assets/oeste-white.png.asset.json';
 import kartBgAsset from '@/assets/kart-oeste.jpg.asset.json';
 import maximaVelocidadAsset from '@/assets/maxima-velocidad.mp4.asset.json';
+
 
 const OESTE_LOGO = oesteLogoAsset.url;
 const RUBEN_LOGO = rubenLogoAsset.url;
@@ -47,6 +49,8 @@ export default function OesteLanding1() {
 
 
   useEffect(() => {
+    initMetaPixel('877944112021448');
+
     const prevTitle = document.title;
     document.title = 'Fibra Oeste en Cáceres · La más rápida del oeste';
     const meta = document.createElement('meta');
@@ -58,6 +62,7 @@ export default function OesteLanding1() {
       meta.remove();
     };
   }, []);
+
 
   return (
     <div className="relative min-h-screen bg-oeste-gradient text-white antialiased oeste-landing overflow-hidden">
