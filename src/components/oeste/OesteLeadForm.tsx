@@ -5,6 +5,8 @@ import { z } from 'zod';
 import { motion } from 'motion/react';
 import { Loader2, CheckCircle2, ArrowRight } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
+import { trackMetaEvent } from '@/lib/metaPixel';
+
 
 const schema = z.object({
   name: z.string().trim().min(2, 'Mínimo 2 caracteres').max(100),
@@ -55,8 +57,13 @@ export function OesteLeadForm({ selectedOffer, onClearOffer }: Props = {}) {
       if (data?.ok) {
         setSubmitted(true);
         reset();
-        // Meta Pixel hook (opcional): if (window.fbq) window.fbq('track','Lead');
+        trackMetaEvent('Lead', {
+          content_name: selectedOffer?.title ?? 'Sin oferta',
+          value: selectedOffer?.price ? parseFloat(selectedOffer.price) : undefined,
+          currency: 'EUR',
+        });
       } else {
+
         throw new Error('Respuesta inesperada');
       }
     } catch (e) {
