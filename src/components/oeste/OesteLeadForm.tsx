@@ -79,22 +79,30 @@ export function OesteLeadForm({ selectedOffer, onClearOffer }: Props = {}) {
         setSubmitted(true);
         const [firstName, ...rest] = values.name.trim().split(/\s+/);
         const lastName = rest.join(' ') || undefined;
+        const offerValue = parsePrice(selectedOffer?.price);
+        const sharedUserData = {
+          email: values.email,
+          phone: values.phone,
+          first_name: firstName,
+          last_name: lastName,
+          city: 'Cáceres',
+          country: 'ES',
+        };
+        const sharedCustom = {
+          content_name: selectedOffer?.title ?? 'Sin oferta',
+          content_category: selectedOffer?.id ?? 'no-offer',
+          value: offerValue,
+          currency: 'EUR',
+        };
         void sendMetaEvent({
           eventName: 'Lead',
-          customData: {
-            content_name: selectedOffer?.title ?? 'Sin oferta',
-            content_category: selectedOffer?.id ?? 'no-offer',
-            value: parsePrice(selectedOffer?.price),
-            currency: 'EUR',
-          },
-          userData: {
-            email: values.email,
-            phone: values.phone,
-            first_name: firstName,
-            last_name: lastName,
-            city: 'Cáceres',
-            country: 'ES',
-          },
+          customData: sharedCustom,
+          userData: sharedUserData,
+        });
+        void sendMetaEvent({
+          eventName: 'Purchase',
+          customData: { ...sharedCustom, contents: selectedOffer ? [{ id: selectedOffer.id, quantity: 1, item_price: offerValue }] : undefined },
+          userData: sharedUserData,
         });
         reset();
       } else {
