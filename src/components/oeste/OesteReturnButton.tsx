@@ -15,9 +15,16 @@ export const OesteReturnButton = () => {
     try {
       const params = new URLSearchParams(location.search);
       const from = params.get("from");
+
       if (from && VALID_RETURNS[from]) {
+        // Valid redirect from an Oeste landing: remember where to return.
         sessionStorage.setItem(STORAGE_KEY, VALID_RETURNS[from]);
+      } else if (from) {
+        // Invalid/unknown source: explicitly clear any stored return so the
+        // button does not leak through from a previous valid redirect.
+        sessionStorage.removeItem(STORAGE_KEY);
       }
+
       const stored = sessionStorage.getItem(STORAGE_KEY);
       // Hide if we're already on the landing
       if (stored && location.pathname !== stored) {
