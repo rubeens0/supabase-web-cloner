@@ -24,11 +24,11 @@ const OFFERS: Offer[] = [
   { id: 'f-1', category: 'fibra', title: 'FibraX 1 Gb', subtitle: 'Simétrica · sin permanencia', price: '21', priceSuffix: '€/mes' },
   { id: 'f-2', category: 'fibra', title: 'FibraX 2 Gb', subtitle: 'Simétrica · sin permanencia', price: '35', priceSuffix: '€/mes' },
   // Móvil
-  { id: 'm-1', category: 'movil', title: 'Móvil 30 GB', subtitle: 'Llamadas ilimitadas', price: '6,95', priceSuffix: '€/mes' },
-  { id: 'm-2', category: 'movil', title: 'Móvil 80 GB', subtitle: 'Llamadas ilimitadas', price: '8,95', priceSuffix: '€/mes' },
-  { id: 'm-3', category: 'movil', title: 'Móvil 100 GB', subtitle: 'Llamadas ilimitadas', price: '9,95', priceSuffix: '€/mes' },
-  { id: 'm-4', category: 'movil', title: 'Móvil 200 GB', subtitle: 'Llamadas ilimitadas', price: '10,95', priceSuffix: '€/mes' },
-];
+  { id: 'm-1', category: 'movil', title: 'Móvil 25 GB', subtitle: 'Llamadas ilimitadas', price: '6', priceSuffix: '€/mes' },
+  { id: 'm-2', category: 'movil', title: 'Móvil 70 GB', subtitle: 'Llamadas ilimitadas', price: '8', priceSuffix: '€/mes' },
+  { id: 'm-3', category: 'movil', title: 'Móvil 120 GB', subtitle: 'Llamadas ilimitadas', price: '10', priceSuffix: '€/mes' },
+  { id: 'm-4', category: 'movil', title: 'Móvil 200 GB', subtitle: 'Llamadas ilimitadas', price: '11', priceSuffix: '€/mes' },
+  { id: 'm-5', category: 'movil', title: 'Móvil 400 GB', subtitle: 'Llamadas ilimitadas · GB acumulables', price: '13', priceSuffix: '€/mes' },
 
 const CATEGORIES: { id: OfferCategory; label: string; icon: typeof Wifi }[] = [
   { id: 'fibra-movil', label: 'FibraX + Móvil', icon: Signal },
