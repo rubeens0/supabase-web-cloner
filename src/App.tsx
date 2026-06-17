@@ -1,6 +1,6 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
-import { useEffect, lazy, Suspense } from "react";
+import { useEffect, useState, lazy, Suspense } from "react";
 import { AnimatePresence } from "motion/react";
 import { Toaster } from "sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -11,7 +11,7 @@ import { Footer } from "@/components/Footer";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import { CustomCursor } from "@/components/CustomCursor";
 import { BusinessButton } from "@/components/BusinessButton";
-import { OesteReturnButton } from "@/components/oeste/OesteReturnButton";
+import { OesteReturnButton, hasOesteReturn } from "@/components/oeste/OesteReturnButton";
 import { PageTransition } from "@/components/PageTransition";
 import { setupPerformanceOptimizations } from "@/utils/performanceDetector";
 
@@ -37,12 +37,18 @@ const queryClient = new QueryClient();
 
 function AppContent() {
   const location = useLocation();
+  const [fromOeste, setFromOeste] = useState(false);
 
   useEffect(() => {
     setupPerformanceOptimizations();
   }, []);
 
+  useEffect(() => {
+    setFromOeste(hasOesteReturn());
+  }, [location.pathname, location.search]);
+
   const hideBusinessButton =
+    fromOeste ||
     location.pathname.includes("/sponsors") ||
     location.pathname.includes("/patrocinadores") ||
     location.pathname.includes("/dossier") ||
