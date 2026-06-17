@@ -11,6 +11,7 @@ import { Footer } from "@/components/Footer";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import { CustomCursor } from "@/components/CustomCursor";
 import { BusinessButton } from "@/components/BusinessButton";
+import { OesteReturnButton } from "@/components/oeste/OesteReturnButton";
 import { PageTransition } from "@/components/PageTransition";
 import { setupPerformanceOptimizations } from "@/utils/performanceDetector";
 
@@ -59,6 +60,7 @@ function AppContent() {
       <ScrollToTop />
       <CustomCursor />
       {!hideBusinessButton && <BusinessButton />}
+      <OesteReturnButton />
       <div className="min-h-screen bg-background">
         <Toaster theme="dark" />
         {!hideChrome && <Navigation />}

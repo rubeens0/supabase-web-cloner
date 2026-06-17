@@ -297,11 +297,12 @@ export default function OesteLanding1() {
                 </h3>
               </div>
               <video
-                src={maximaVelocidadAsset.url}
-                className="w-full h-auto block"
+                src={`${maximaVelocidadAsset.url}#t=0.5`}
+                className="w-full h-auto block bg-black"
                 controls
                 playsInline
-                preload="metadata"
+                preload="auto"
+                muted
                 onPlay={handleVideoPlay}
               />
 
