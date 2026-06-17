@@ -55,7 +55,7 @@ const translations = {
     'home.hero.titleC': 'versión de mí',
     'home.hero.titleD': 'mismo',
     'home.hero.description':
-      'Piloto de karting y emprendedor. Desde 2024, comprometido con el crecimiento personal y la excelencia en cada curva de la vida.',
+      'Piloto de karting y emprendedor. Desde 2024, comprometido con mi crecimiento personal y la excelencia.',
     'home.hero.placeholder': '¿Quieres conocer mi historia?',
     'home.hero.cta': 'Ver más',
     'home.hero.scroll': '¡Desliza!',
