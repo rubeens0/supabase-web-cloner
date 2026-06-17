@@ -181,7 +181,7 @@ export default function OesteLanding1() {
           <img src={OESTE_LOGO} alt="Oeste" className="h-8 sm:h-10 w-auto" />
           <span className="text-white/60 text-lg">×</span>
           <a
-            href="https://rubenmunoz.com"
+            href="https://rubenmunoz.com/inicio?from=oeste-landing1"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Ir a rubenmunoz.com"
@@ -191,7 +191,7 @@ export default function OesteLanding1() {
           </a>
         </div>
         <a
-          href="https://rubenmunoz.com"
+          href="https://rubenmunoz.com/inicio?from=oeste-landing1"
           target="_blank"
           rel="noopener noreferrer"
           className="hidden sm:inline-flex items-center gap-1.5 text-xs uppercase tracking-[0.2em] text-white/85 border border-white/30 rounded-full px-3 py-1.5 hover:bg-white hover:text-neutral-900 transition"
@@ -297,11 +297,12 @@ export default function OesteLanding1() {
                 </h3>
               </div>
               <video
-                src={maximaVelocidadAsset.url}
-                className="w-full h-auto block"
+                src={`${maximaVelocidadAsset.url}#t=0.5`}
+                className="w-full h-auto block bg-black"
                 controls
                 playsInline
-                preload="metadata"
+                preload="auto"
+                muted
                 onPlay={handleVideoPlay}
               />
 
@@ -373,7 +374,7 @@ export default function OesteLanding1() {
             <div className="flex items-center justify-center gap-4 mb-8">
               <img src={OESTE_LOGO} alt="Oeste" className="h-9 w-auto" />
               <span className="text-white/60 text-xl">×</span>
-              <a href="https://rubenmunoz.com" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition">
+              <a href="https://rubenmunoz.com/inicio?from=oeste-landing1" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition">
                 <img src={RUBEN_LOGO} alt="Rubén Muñoz" className="h-9 w-auto" />
               </a>
             </div>
@@ -392,7 +393,7 @@ export default function OesteLanding1() {
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
               </button>
               <a
-                href="https://rubenmunoz.com"
+                href="https://rubenmunoz.com/inicio?from=oeste-landing1"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group inline-flex items-center justify-center gap-2 rounded-xl border border-white/30 text-white font-semibold px-7 py-4 hover:bg-white/10 transition"
@@ -412,13 +413,13 @@ export default function OesteLanding1() {
             <div className="flex items-center gap-3">
               <img src={OESTE_LOGO} alt="Oeste" className="h-6 w-auto opacity-90" />
               <span>×</span>
-              <a href="https://rubenmunoz.com" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition">
+              <a href="https://rubenmunoz.com/inicio?from=oeste-landing1" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition">
                 <img src={RUBEN_LOGO} alt="Rubén Muñoz" className="h-6 w-auto opacity-90" />
               </a>
             </div>
             <div className="flex items-center gap-5 text-sm text-white/80">
               <a
-                href="https://rubenmunoz.com"
+                href="https://rubenmunoz.com/inicio?from=oeste-landing1"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-white transition"
