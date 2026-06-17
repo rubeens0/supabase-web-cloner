@@ -29,6 +29,7 @@ const OFFERS: Offer[] = [
   { id: 'm-3', category: 'movil', title: 'Móvil 120 GB', subtitle: 'Llamadas ilimitadas', price: '10', priceSuffix: '€/mes' },
   { id: 'm-4', category: 'movil', title: 'Móvil 200 GB', subtitle: 'Llamadas ilimitadas', price: '11', priceSuffix: '€/mes' },
   { id: 'm-5', category: 'movil', title: 'Móvil 400 GB', subtitle: 'Llamadas ilimitadas · GB acumulables', price: '13', priceSuffix: '€/mes' },
+];
 
 const CATEGORIES: { id: OfferCategory; label: string; icon: typeof Wifi }[] = [
   { id: 'fibra-movil', label: 'FibraX + Móvil', icon: Signal },
