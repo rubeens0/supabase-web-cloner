@@ -77,9 +77,9 @@ const translations = {
     'home.about.p1':
       'Soy Rubén Muñoz, nacido el 27 de febrero de 2009 en Cáceres, Extremadura (España). Desde 2024, estoy comprometido con un camino de crecimiento personal y excelencia, construyendo la mejor versión de mí mismo tanto a nivel deportivo como emprendedor.',
     'home.about.p2':
-      'En el ámbito deportivo, me dedico al karting, una de las disciplinas más exigentes que existen. Actualmente compito en el Campeonato de España de Karting, enfrentando cada curva con pasión y determinación.',
+      'En el ámbito deportivo, me dedico al karting, una de las disciplinas más exigentes que existen. Actualmente compito en el Campeonato de España de Karting, enfrentando cada prueba con pasión y determinación.',
     'home.about.p3':
-      'Paralelamente, también he desarrollado proyectos en el mundo del emprendimiento. Mi historia apenas comienza, pero estoy decidido a dejar huella.',
+      'Paralelamente, también he desarrollado proyectos en el mundo del emprendimiento, desarrollando múltiples proyectos con desde los 15 años.',
     'home.about.cta': 'Contacta conmigo',
     'home.about.tag': 'Driver, creator',
     'home.about.tagAnd': '&',
