@@ -212,56 +212,6 @@ export function LiveTimingStreaming() {
               </p>
             </div>
 
-            {/* Sunday */}
-            <div className="rounded-2xl md:rounded-3xl border border-white/10 bg-white/[0.03] overflow-hidden">
-              <div className="p-4 md:p-5 border-b border-white/10 flex items-center justify-between gap-3">
-                <div className="flex items-center gap-3 min-w-0">
-                  <div className="w-10 h-10 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center shrink-0">
-                    <Trophy className="w-5 h-5 text-white" />
-                  </div>
-                  <div className="min-w-0">
-                    <p className="text-[10px] uppercase tracking-[0.2em] text-white/40">
-                      {language === 'es' ? 'Día 3' : 'Day 3'}
-                    </p>
-                    <h3 className="text-base md:text-lg font-bold leading-tight">
-                      {language === 'es' ? 'Domingo · Superheat + Final' : 'Sunday · Superheat + Final'}
-                    </h3>
-                  </div>
-                </div>
-                <span className="text-[10px] uppercase tracking-wider text-white/40 shrink-0">
-                  {language === 'es' ? 'Superheat 1' : 'Superheat 1'}
-                </span>
-              </div>
-              <ol className="divide-y divide-white/5">
-                <li className="flex items-center gap-3 md:gap-4 px-4 md:px-5 py-3 md:py-3.5">
-                  <span className="font-mono text-[10px] text-white/30 w-5 shrink-0">01</span>
-                  <span className="text-xs uppercase tracking-[0.16em] text-white/50 flex-1">
-                    Warm Up
-                  </span>
-                  <span className="font-mono text-lg md:text-xl font-bold text-white">8:30</span>
-                </li>
-                <li className="flex items-center gap-3 md:gap-4 px-4 md:px-5 py-3 md:py-3.5">
-                  <span className="font-mono text-[10px] text-white/30 w-5 shrink-0">02</span>
-                  <span className="text-xs uppercase tracking-[0.16em] text-white/50 flex-1 flex items-center gap-2">
-                    <span>Superheat</span>
-                  </span>
-                  <span className="font-mono text-lg md:text-xl font-bold text-white">10:30</span>
-                  
-                </li>
-                <li className="flex items-center gap-3 md:gap-4 px-4 md:px-5 py-3 md:py-3.5 bg-red-500/[0.06]">
-                  <span className="font-mono text-[10px] text-red-300/70 w-5 shrink-0">03</span>
-                  <span className="text-xs uppercase tracking-[0.16em] text-red-200 flex-1 font-semibold">
-                    {language === 'es' ? 'Carrera final' : 'Final race'}
-                  </span>
-                  <span className="font-mono text-lg md:text-xl font-bold text-white">14:05</span>
-                </li>
-              </ol>
-              <p className="text-[11px] text-white/40 px-4 md:px-5 py-3 border-t border-white/5 leading-relaxed">
-                {language === 'es'
-                  ? 'Asignado a la Superheat 1. La final decide la clasificación de la ronda.'
-                  : 'Assigned to Superheat 1. The final decides the round standings.'}
-              </p>
-            </div>
           </div>
         </motion.div>
 
