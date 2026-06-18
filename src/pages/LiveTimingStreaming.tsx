@@ -183,6 +183,70 @@ export function LiveTimingStreaming() {
 
           {/* Two-day timeline */}
           <div className="grid md:grid-cols-1 gap-4 md:gap-5">
+            {/* Friday */}
+            <div className="rounded-2xl md:rounded-3xl border border-white/10 bg-white/[0.03] overflow-hidden">
+              <div className="p-4 md:p-5 border-b border-white/10 flex items-center justify-between gap-3">
+                <div className="flex items-center gap-3 min-w-0">
+                  <div className="w-10 h-10 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center shrink-0">
+                    <Clock className="w-5 h-5 text-white" />
+                  </div>
+                  <div className="min-w-0">
+                    <p className="text-[10px] uppercase tracking-[0.2em] text-white/40">
+                      {language === 'es' ? 'Día 1' : 'Day 1'}
+                    </p>
+                    <h3 className="text-base md:text-lg font-bold leading-tight">
+                      {language === 'es' ? 'Viernes · Entrenos libres' : 'Friday · Free practice'}
+                    </h3>
+                  </div>
+                </div>
+                <span className="text-[10px] uppercase tracking-wider text-white/40 shrink-0">
+                  {language === 'es' ? 'Tandas de entrenos' : 'Practice sessions'}
+                </span>
+              </div>
+              <ol className="divide-y divide-white/5">
+                <li className="flex items-center gap-3 md:gap-4 px-4 md:px-5 py-3 md:py-3.5">
+                  <span className="font-mono text-[10px] text-white/30 w-5 shrink-0">01</span>
+                  <span className="text-xs uppercase tracking-[0.16em] text-white/50 flex-1">
+                    {language === 'es' ? 'Tanda de entrenos' : 'Practice session'}
+                  </span>
+                  <span className="font-mono text-lg md:text-xl font-bold text-white">9:30</span>
+                </li>
+                <li className="flex items-center gap-3 md:gap-4 px-4 md:px-5 py-3 md:py-3.5">
+                  <span className="font-mono text-[10px] text-white/30 w-5 shrink-0">02</span>
+                  <span className="text-xs uppercase tracking-[0.16em] text-white/50 flex-1">
+                    {language === 'es' ? 'Tanda de entrenos' : 'Practice session'}
+                  </span>
+                  <span className="font-mono text-lg md:text-xl font-bold text-white">11:15</span>
+                </li>
+                <li className="flex items-center gap-3 md:gap-4 px-4 md:px-5 py-3 md:py-3.5">
+                  <span className="font-mono text-[10px] text-white/30 w-5 shrink-0">03</span>
+                  <span className="text-xs uppercase tracking-[0.16em] text-white/50 flex-1">
+                    {language === 'es' ? 'Tanda de entrenos' : 'Practice session'}
+                  </span>
+                  <span className="font-mono text-lg md:text-xl font-bold text-white">13:00</span>
+                </li>
+                <li className="flex items-center gap-3 md:gap-4 px-4 md:px-5 py-3 md:py-3.5">
+                  <span className="font-mono text-[10px] text-white/30 w-5 shrink-0">04</span>
+                  <span className="text-xs uppercase tracking-[0.16em] text-white/50 flex-1">
+                    {language === 'es' ? 'Tanda de entrenos' : 'Practice session'}
+                  </span>
+                  <span className="font-mono text-lg md:text-xl font-bold text-white">15:15</span>
+                </li>
+                <li className="flex items-center gap-3 md:gap-4 px-4 md:px-5 py-3 md:py-3.5">
+                  <span className="font-mono text-[10px] text-white/30 w-5 shrink-0">05</span>
+                  <span className="text-xs uppercase tracking-[0.16em] text-white/50 flex-1">
+                    {language === 'es' ? 'Tanda de entrenos' : 'Practice session'}
+                  </span>
+                  <span className="font-mono text-lg md:text-xl font-bold text-white">17:00</span>
+                </li>
+              </ol>
+              <p className="text-[11px] text-white/40 px-4 md:px-5 py-3 border-t border-white/5 leading-relaxed">
+                {language === 'es'
+                  ? 'Jornada de entrenos libres en el Kartódromo Lucas Guerrero.'
+                  : 'Free practice day at Kartódromo Lucas Guerrero.'}
+              </p>
+            </div>
+
             {/* Sunday */}
             <div className="rounded-2xl md:rounded-3xl border border-white/10 bg-white/[0.03] overflow-hidden">
               <div className="p-4 md:p-5 border-b border-white/10 flex items-center justify-between gap-3">
