@@ -4,7 +4,7 @@ import { useLanguage } from '../contexts/LanguageContext';
 import { Clock, Youtube, Maximize2, X, ExternalLink, RefreshCw, ChevronDown, Trophy, Flame, HelpCircle, CalendarClock, ArrowRight } from 'lucide-react';
 import { SEO } from '../components/SEO';
 import { useState, useEffect, useRef } from 'react';
-import { LIVE_RACE_ACTIVE, NEXT_RACE } from '@/config/liveRace';
+import { LIVE_RACE_ACTIVE, NEXT_RACE, CURRENT_RACE } from '@/config/liveRace';
 
 export function LiveTimingStreaming() {
   const { language } = useLanguage();
@@ -16,10 +16,10 @@ export function LiveTimingStreaming() {
   const [timingKey, setTimingKey] = useState(0);
   const [streamKey, setStreamKey] = useState(0);
 
-  // URLs configurables - actualizar cuando estén disponibles
-  const liveTimingUrl = 'https://www.apex-timing.com/live-timing/rgmmc2/index.html'; // URL del live timing a integrar
-  const youtubeStreamUrl = 'https://www.youtube.com/embed/NxQ09q278wo'; // Stream CEK R2 Motorland
-  const officialResultsUrl = 'https://www.apex-timing.com/goracing/results.php?path=/rgmmc/2026/cek_2_motorland/&group=6';
+  // URLs tomadas desde la configuración central de la carrera en curso
+  const liveTimingUrl = CURRENT_RACE.liveTimingUrl;
+  const youtubeStreamUrl = CURRENT_RACE.youtubeStreamUrl;
+  const officialResultsUrl = CURRENT_RACE.officialResultsUrl;
 
   // Cerrar modal con tecla ESC
   useEffect(() => {
