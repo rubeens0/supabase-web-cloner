@@ -430,10 +430,10 @@ export function Home() {
                 </span>
                 <div>
                   <p className="font-display text-xl sm:text-2xl text-white leading-tight">
-                    Directo CEK R2 — <span className="font-display-italic text-gradient-mono-italic">Motorland Aragón</span>
+                    Directo CEK {CURRENT_RACE.round} — <span className="font-display-italic text-gradient-mono-italic">{CURRENT_RACE.circuit}</span>
                   </p>
                   <p className="text-white/55 text-xs sm:text-sm mt-1">
-                    Live timing & streaming · 15-17 Mayo 2026
+                    Live timing & streaming · {CURRENT_RACE.datesEs}
                   </p>
                 </div>
               </div>
