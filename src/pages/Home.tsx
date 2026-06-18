@@ -430,7 +430,7 @@ export function Home() {
                 </span>
                 <div>
                   <p className="font-display text-xl sm:text-2xl text-white leading-tight">
-                    Directo CEK {CURRENT_RACE.round} — <span className="font-display-italic text-gradient-mono-italic">{CURRENT_RACE.circuit}</span>
+                    Directo CEK {CURRENT_RACE.round} — <span className="font-display-italic text-gradient-mono-italic"> Valencia</span>
                   </p>
                   <p className="text-white/55 text-xs sm:text-sm mt-1">
                     Live timing & streaming · {CURRENT_RACE.datesEs}

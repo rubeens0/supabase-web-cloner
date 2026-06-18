@@ -122,13 +122,13 @@ export function LiveTimingStreaming() {
             <span>{language === 'es' ? 'Directo' : 'Live'}</span>
           </div>
           <h1 className="font-display leading-[0.92] text-[40px] xs:text-5xl sm:text-7xl md:text-8xl lg:text-[120px] text-white tracking-[-0.02em]">
-            {language === 'es' ? 'Directo' : 'Live'} <span className="font-display-italic text-gradient-mono-italic">CEK 2026</span>
+            Directo CEK R3 — <span className="font-display-italic text-gradient-mono-italic"> Valencia</span>
             <span className="text-white/40">.</span>
           </h1>
           <p className="mt-5 sm:mt-8 text-white/60 max-w-2xl text-sm sm:text-base md:text-lg leading-relaxed">
             {language === 'es' 
-              ? `Ronda 3 — ${CURRENT_RACE.circuit} · ${CURRENT_RACE.city} • ${CURRENT_RACE.datesEs}`
-              : `Round 3 — ${CURRENT_RACE.circuit} · ${CURRENT_RACE.city} • ${CURRENT_RACE.datesEn}`}
+              ? `Ronda 3 — Valencia · ${CURRENT_RACE.city} • ${CURRENT_RACE.datesEs}`
+              : `Round 3 — Valencia · ${CURRENT_RACE.city} • ${CURRENT_RACE.datesEn}`}
           </p>
         </motion.div>
 
