@@ -40,7 +40,7 @@ export const NEXT_RACE: RaceConfig = {
   // Live timing oficial del CEK (Apex Timing / RGMMC)
   liveTimingUrl: 'https://www.apex-timing.com/live-timing/rgmmc2/index.html',
   youtubeStreamUrl: '',
-  officialResultsUrl: 'https://www.apex-timing.com/goracing/results.php?path=/rgmmc/2026/&group=6',
+  officialResultsUrl: 'https://www.apex-timing.com/goracing/results.php?path=/rgmmc/2026/cek_3_chiva/&group=6',
 };
 
 // La carrera "activa" que consumen los componentes. Mientras LIVE_RACE_ACTIVE
