@@ -225,7 +225,13 @@ export function LiveTimingStreaming() {
           >
             <button
               type="button"
-              onClick={() => setTimingOpen((o) => !o)}
+              onClick={() => {
+                if (window.innerWidth < 640 && liveTimingUrl) {
+                  window.open(liveTimingUrl, '_blank', 'noopener,noreferrer');
+                } else {
+                  setTimingOpen((o) => !o);
+                }
+              }}
               aria-expanded={timingOpen}
               aria-controls="timing-panel"
               className="w-full p-4 md:p-5 border-b border-white/10 bg-gradient-to-r from-white/[0.07] to-transparent hover:from-white/[0.1] active:bg-white/[0.05] transition-colors text-left"
@@ -283,7 +289,10 @@ export function LiveTimingStreaming() {
                   )}
                   <button
                     type="button"
-                    onClick={() => setTimingOpen((o) => !o)}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setTimingOpen((o) => !o);
+                    }}
                     className="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-white/10 border border-white/20 hover:bg-white/20 hover:border-white/40 active:scale-95 transition-all"
                     aria-label={timingOpen ? (language === 'es' ? 'Cerrar' : 'Close') : (language === 'es' ? 'Abrir' : 'Open')}
                   >
