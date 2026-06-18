@@ -493,15 +493,15 @@ export function LiveTimingStreaming() {
               <p className="text-white/50 text-xs md:text-sm mb-1">
                 {language === 'es' ? 'Carrera' : 'Race'}
               </p>
-              <p className="font-bold text-sm md:text-base">Motorland R2</p>
-              <p className="text-white/60 text-xs md:text-sm">15-17 May</p>
+              <p className="font-bold text-sm md:text-base">Chiva R3</p>
+              <p className="text-white/60 text-xs md:text-sm">19-21 Jun</p>
             </div>
             <div className="p-3 md:p-4 rounded-xl bg-white/5 border border-white/10">
               <p className="text-white/50 text-xs md:text-sm mb-1">
                 {language === 'es' ? 'Circuito' : 'Circuit'}
               </p>
-              <p className="font-bold text-sm md:text-base">Motorland Aragón</p>
-              <p className="text-white/60 text-xs md:text-sm">1.699m</p>
+              <p className="font-bold text-sm md:text-base">Lucas Guerrero</p>
+              <p className="text-white/60 text-xs md:text-sm">1.428m</p>
             </div>
             <div className="p-3 md:p-4 rounded-xl bg-white/5 border border-white/10">
               <p className="text-white/50 text-xs md:text-sm mb-1">
