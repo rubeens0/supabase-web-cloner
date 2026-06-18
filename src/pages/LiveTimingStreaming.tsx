@@ -159,7 +159,7 @@ export function LiveTimingStreaming() {
               </div>
               <div className="flex-1 min-w-0">
                 <p className="text-[10px] md:text-[11px] uppercase tracking-[0.22em] text-red-300/80 mb-1.5">
-                  {language === 'es' ? 'Domingo · 17 Mayo' : 'Sunday · May 17'}
+                  {language === 'es' ? 'Domingo · 21 Junio' : 'Sunday · June 21'}
                 </p>
                 <h2 className="font-display text-3xl md:text-5xl lg:text-6xl text-white leading-[0.95] tracking-[-0.02em]">
                   {language === 'es' ? 'Carrera final' : 'Final race'}
