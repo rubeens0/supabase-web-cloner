@@ -30,17 +30,17 @@ export type RaceConfig = {
 // ============================================================
 export const LIVE_RACE_ACTIVE = true;
 
-// Próxima carrera: Valencia (Chiva / Kotarr Karting Valencia)
+// Próxima carrera: Valencia (Chiva / Kartódromo Lucas Guerrero)
 export const NEXT_RACE: RaceConfig = {
   round: 'R3',
-  circuit: 'Circuito Internacional Lucas Guerrero',
+  circuit: 'Kartódromo Lucas Guerrero',
   city: 'Chiva, Valencia',
-  datesEs: 'Próximamente — Valencia 2026',
-  datesEn: 'Coming soon — Valencia 2026',
-  // Pendiente de confirmar por la organización (RGMMC / Apex Timing)
-  liveTimingUrl: '',
+  datesEs: '19-21 Junio 2026',
+  datesEn: 'June 19-21, 2026',
+  // Live timing oficial del CEK (Apex Timing / RGMMC)
+  liveTimingUrl: 'https://www.apex-timing.com/live-timing/rgmmc2/index.html',
   youtubeStreamUrl: '',
-  officialResultsUrl: '',
+  officialResultsUrl: 'https://www.apex-timing.com/goracing/results.php?path=/rgmmc/2026/&group=6',
 };
 
 // La carrera "activa" que consumen los componentes. Mientras LIVE_RACE_ACTIVE

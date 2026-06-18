@@ -4,7 +4,7 @@ import { useLanguage } from '../contexts/LanguageContext';
 import { Clock, Youtube, Maximize2, X, ExternalLink, RefreshCw, ChevronDown, Trophy, Flame, HelpCircle, CalendarClock, ArrowRight } from 'lucide-react';
 import { SEO } from '../components/SEO';
 import { useState, useEffect, useRef } from 'react';
-import { LIVE_RACE_ACTIVE, NEXT_RACE } from '@/config/liveRace';
+import { LIVE_RACE_ACTIVE, NEXT_RACE, CURRENT_RACE } from '@/config/liveRace';
 
 export function LiveTimingStreaming() {
   const { language } = useLanguage();
@@ -16,10 +16,10 @@ export function LiveTimingStreaming() {
   const [timingKey, setTimingKey] = useState(0);
   const [streamKey, setStreamKey] = useState(0);
 
-  // URLs configurables - actualizar cuando estén disponibles
-  const liveTimingUrl = 'https://www.apex-timing.com/live-timing/rgmmc2/index.html'; // URL del live timing a integrar
-  const youtubeStreamUrl = 'https://www.youtube.com/embed/NxQ09q278wo'; // Stream CEK R2 Motorland
-  const officialResultsUrl = 'https://www.apex-timing.com/goracing/results.php?path=/rgmmc/2026/cek_2_motorland/&group=6';
+  // URLs tomadas desde la configuración central de la carrera en curso
+  const liveTimingUrl = CURRENT_RACE.liveTimingUrl;
+  const youtubeStreamUrl = CURRENT_RACE.youtubeStreamUrl;
+  const officialResultsUrl = CURRENT_RACE.officialResultsUrl;
 
   // Cerrar modal con tecla ESC
   useEffect(() => {
@@ -127,8 +127,8 @@ export function LiveTimingStreaming() {
           </h1>
           <p className="mt-5 sm:mt-8 text-white/60 max-w-2xl text-sm sm:text-base md:text-lg leading-relaxed">
             {language === 'es' 
-              ? 'Ronda 2 — Motorland Aragón • 15-17 Mayo 2026'
-              : 'Round 2 — Motorland Aragón • May 15-17, 2026'}
+              ? `Ronda 3 — ${CURRENT_RACE.circuit} · ${CURRENT_RACE.city} • ${CURRENT_RACE.datesEs}`
+              : `Round 3 — ${CURRENT_RACE.circuit} · ${CURRENT_RACE.city} • ${CURRENT_RACE.datesEn}`}
           </p>
         </motion.div>
 
@@ -159,7 +159,7 @@ export function LiveTimingStreaming() {
               </div>
               <div className="flex-1 min-w-0">
                 <p className="text-[10px] md:text-[11px] uppercase tracking-[0.22em] text-red-300/80 mb-1.5">
-                  {language === 'es' ? 'Domingo · 17 Mayo' : 'Sunday · May 17'}
+                  {language === 'es' ? 'Domingo · 21 Junio' : 'Sunday · June 21'}
                 </p>
                 <h2 className="font-display text-3xl md:text-5xl lg:text-6xl text-white leading-[0.95] tracking-[-0.02em]">
                   {language === 'es' ? 'Carrera final' : 'Final race'}
@@ -493,15 +493,15 @@ export function LiveTimingStreaming() {
               <p className="text-white/50 text-xs md:text-sm mb-1">
                 {language === 'es' ? 'Carrera' : 'Race'}
               </p>
-              <p className="font-bold text-sm md:text-base">Motorland R2</p>
-              <p className="text-white/60 text-xs md:text-sm">15-17 May</p>
+              <p className="font-bold text-sm md:text-base">Chiva R3</p>
+              <p className="text-white/60 text-xs md:text-sm">19-21 Jun</p>
             </div>
             <div className="p-3 md:p-4 rounded-xl bg-white/5 border border-white/10">
               <p className="text-white/50 text-xs md:text-sm mb-1">
                 {language === 'es' ? 'Circuito' : 'Circuit'}
               </p>
-              <p className="font-bold text-sm md:text-base">Motorland Aragón</p>
-              <p className="text-white/60 text-xs md:text-sm">1.699m</p>
+              <p className="font-bold text-sm md:text-base">Lucas Guerrero</p>
+              <p className="text-white/60 text-xs md:text-sm">1.428m</p>
             </div>
             <div className="p-3 md:p-4 rounded-xl bg-white/5 border border-white/10">
               <p className="text-white/50 text-xs md:text-sm mb-1">
