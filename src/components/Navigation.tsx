@@ -95,7 +95,7 @@ export function Navigation() {
               <div className="flex items-center gap-3 min-w-0 flex-1">
                 <span className="inline-flex h-1.5 w-1.5 rounded-full bg-red-500 animate-pulse shrink-0" />
                 <span className="text-white/80 truncate">
-                  {language === 'es' ? 'Directo CEK R2' : 'CEK R2 Live'} — <span className="text-white/50">{language === 'es' ? 'Motorland Aragón' : 'Motorland Aragón'}</span>
+                  {language === 'es' ? 'Directo CEK R3' : 'CEK R3 Live'} — <span className="text-white/50">{language === 'es' ? 'Valencia' : 'Valencia'}</span>
                 </span>
               </div>
               <Link
