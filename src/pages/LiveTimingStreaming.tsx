@@ -145,41 +145,6 @@ export function LiveTimingStreaming() {
             <span>{language === 'es' ? 'Programa del fin de semana' : 'Weekend programme'}</span>
           </div>
 
-          {/* Featured: Qualifying */}
-          <div className="relative mb-5 md:mb-6 rounded-2xl md:rounded-3xl overflow-hidden border border-red-500/30 bg-gradient-to-br from-red-500/15 via-red-500/5 to-transparent">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(239,68,68,0.25),transparent_60%)] pointer-events-none" />
-            <div className="relative p-5 md:p-8 flex flex-col md:flex-row md:items-center gap-5 md:gap-8">
-              <div className="flex items-center gap-3 md:gap-4 md:flex-col md:items-start">
-                <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-red-500/20 border border-red-500/40 flex items-center justify-center shrink-0">
-                  <Trophy className="w-6 h-6 md:w-7 md:h-7 text-red-300" />
-                </div>
-                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-red-500/20 border border-red-500/40 text-red-200 text-[10px] font-bold tracking-wider uppercase w-fit">
-                  {language === 'es' ? 'Sesión clave' : 'Key session'}
-                </span>
-              </div>
-              <div className="flex-1 min-w-0">
-                <p className="text-[10px] md:text-[11px] uppercase tracking-[0.22em] text-red-300/80 mb-1.5">
-                  {language === 'es' ? 'Domingo · 21 Junio' : 'Sunday · June 21'}
-                </p>
-                <h2 className="font-display text-3xl md:text-5xl lg:text-6xl text-white leading-[0.95] tracking-[-0.02em]">
-                  {language === 'es' ? 'Carrera final' : 'Final race'}
-                </h2>
-                <p className="text-white/60 text-sm md:text-base mt-2 md:mt-3 max-w-md">
-                  {language === 'es'
-                    ? 'El resultado final del fin de semana.'
-                    : 'The final result of the weekend.'}
-                </p>
-              </div>
-              <div className="flex md:flex-col md:items-end gap-3 md:gap-2 md:text-right">
-                <div className="flex items-baseline gap-2">
-                  <span className="font-mono text-3xl md:text-5xl font-bold text-white">14:05</span>
-                </div>
-                <span className="text-[10px] md:text-xs uppercase tracking-[0.18em] text-white/50">
-                  {language === 'es' ? 'Hora de salida' : 'Start time'}
-                </span>
-              </div>
-            </div>
-          </div>
 
           {/* Two-day timeline */}
           <div className="grid md:grid-cols-1 gap-4 md:gap-5">
