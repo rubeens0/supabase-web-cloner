@@ -377,7 +377,7 @@ export function LiveTimingStreaming() {
                         <span className="hidden md:inline">{language === 'es' ? 'Recargar' : 'Reload'}</span>
                       </button>
                       <a
-                        href="https://www.youtube.com/live/qPpoJ7OK_NE?si=gOYb_u4gy1FHAlJy"
+                        href="https://www.youtube.com/live/qPpoJ7OK_NE"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="hidden sm:inline-flex items-center gap-1.5 h-9 px-3 rounded-lg bg-white/5 border border-white/15 hover:bg-white/10 hover:border-white/30 active:scale-95 transition-all text-xs font-medium"
