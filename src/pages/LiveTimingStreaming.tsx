@@ -148,7 +148,7 @@ export function LiveTimingStreaming() {
 
           {/* Two-day timeline */}
           <div className="grid md:grid-cols-1 gap-4 md:gap-5">
-            {/* Friday */}
+            {/* Saturday */}
             <div className="rounded-2xl md:rounded-3xl border border-white/10 bg-white/[0.03] overflow-hidden">
               <div className="p-4 md:p-5 border-b border-white/10 flex items-center justify-between gap-3">
                 <div className="flex items-center gap-3 min-w-0">
@@ -157,58 +157,44 @@ export function LiveTimingStreaming() {
                   </div>
                   <div className="min-w-0">
                     <p className="text-[10px] uppercase tracking-[0.2em] text-white/40">
-                      {language === 'es' ? 'Día 1' : 'Day 1'}
+                      {language === 'es' ? 'Día 2' : 'Day 2'}
                     </p>
                     <h3 className="text-base md:text-lg font-bold leading-tight">
-                      {language === 'es' ? 'Viernes · Entrenos libres' : 'Friday · Free practice'}
+                      {language === 'es' ? 'Sábado · Clasificación + Heats' : 'Saturday · Qualifying + Heats'}
                     </h3>
                   </div>
                 </div>
                 <span className="text-[10px] uppercase tracking-wider text-white/40 shrink-0">
-                  {language === 'es' ? 'Tandas de entrenos' : 'Practice sessions'}
+                  {language === 'es' ? 'Programa del sábado' : 'Saturday programme'}
                 </span>
               </div>
               <ol className="divide-y divide-white/5">
                 <li className="flex items-center gap-3 md:gap-4 px-4 md:px-5 py-3 md:py-3.5">
                   <span className="font-mono text-[10px] text-white/30 w-5 shrink-0">01</span>
                   <span className="text-xs uppercase tracking-[0.16em] text-white/50 flex-1">
-                    {language === 'es' ? 'Tanda de entrenos' : 'Practice session'}
+                    {language === 'es' ? 'Warm up (Grupo par)' : 'Warm up (Even group)'}
                   </span>
-                  <span className="font-mono text-lg md:text-xl font-bold text-white">9:30</span>
+                  <span className="font-mono text-lg md:text-xl font-bold text-white">9:22</span>
                 </li>
                 <li className="flex items-center gap-3 md:gap-4 px-4 md:px-5 py-3 md:py-3.5">
                   <span className="font-mono text-[10px] text-white/30 w-5 shrink-0">02</span>
                   <span className="text-xs uppercase tracking-[0.16em] text-white/50 flex-1">
-                    {language === 'es' ? 'Tanda de entrenos' : 'Practice session'}
+                    {language === 'es' ? 'Clasificación' : 'Qualifying'}
                   </span>
-                  <span className="font-mono text-lg md:text-xl font-bold text-white">11:15</span>
+                  <span className="font-mono text-lg md:text-xl font-bold text-white">11:05</span>
                 </li>
                 <li className="flex items-center gap-3 md:gap-4 px-4 md:px-5 py-3 md:py-3.5">
                   <span className="font-mono text-[10px] text-white/30 w-5 shrink-0">03</span>
                   <span className="text-xs uppercase tracking-[0.16em] text-white/50 flex-1">
-                    {language === 'es' ? 'Tanda de entrenos' : 'Practice session'}
+                    {language === 'es' ? 'Heats' : 'Heats'}
                   </span>
-                  <span className="font-mono text-lg md:text-xl font-bold text-white">13:00</span>
-                </li>
-                <li className="flex items-center gap-3 md:gap-4 px-4 md:px-5 py-3 md:py-3.5">
-                  <span className="font-mono text-[10px] text-white/30 w-5 shrink-0">04</span>
-                  <span className="text-xs uppercase tracking-[0.16em] text-white/50 flex-1">
-                    {language === 'es' ? 'Tanda de entrenos' : 'Practice session'}
-                  </span>
-                  <span className="font-mono text-lg md:text-xl font-bold text-white">15:15</span>
-                </li>
-                <li className="flex items-center gap-3 md:gap-4 px-4 md:px-5 py-3 md:py-3.5">
-                  <span className="font-mono text-[10px] text-white/30 w-5 shrink-0">05</span>
-                  <span className="text-xs uppercase tracking-[0.16em] text-white/50 flex-1">
-                    {language === 'es' ? 'Tanda de entrenos' : 'Practice session'}
-                  </span>
-                  <span className="font-mono text-lg md:text-xl font-bold text-white">17:00</span>
+                  <span className="font-mono text-lg md:text-xl font-bold text-white">14:10-17:35</span>
                 </li>
               </ol>
               <p className="text-[11px] text-white/40 px-4 md:px-5 py-3 border-t border-white/5 leading-relaxed">
                 {language === 'es'
-                  ? 'Jornada de entrenos libres en el Kartódromo Lucas Guerrero.'
-                  : 'Free practice day at Kartódromo Lucas Guerrero.'}
+                  ? 'Jornada de clasificación y heats en el Kartódromo Lucas Guerrero.'
+                  : 'Qualifying and heats day at Kartódromo Lucas Guerrero.'}
               </p>
             </div>
 
@@ -391,7 +377,7 @@ export function LiveTimingStreaming() {
                         <span className="hidden md:inline">{language === 'es' ? 'Recargar' : 'Reload'}</span>
                       </button>
                       <a
-                        href="https://www.youtube.com/live/moln-t94bwA"
+                        href="https://www.youtube.com/live/qPpoJ7OK_NE?si=gOYb_u4gy1FHAlJy"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="hidden sm:inline-flex items-center gap-1.5 h-9 px-3 rounded-lg bg-white/5 border border-white/15 hover:bg-white/10 hover:border-white/30 active:scale-95 transition-all text-xs font-medium"

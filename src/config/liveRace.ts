@@ -39,7 +39,7 @@ export const NEXT_RACE: RaceConfig = {
   datesEn: 'June 19-21, 2026',
   // Live timing oficial del CEK (Apex Timing / RGMMC)
   liveTimingUrl: 'https://www.apex-timing.com/live-timing/rgmmc2/index.html',
-  youtubeStreamUrl: '',
+  youtubeStreamUrl: 'https://www.youtube.com/live/qPpoJ7OK_NE?si=gOYb_u4gy1FHAlJy',
   officialResultsUrl: 'https://www.apex-timing.com/goracing/results.php?path=/rgmmc/2026/cek_3_chiva/&group=6',
 };
 
