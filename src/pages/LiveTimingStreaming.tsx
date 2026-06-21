@@ -64,13 +64,13 @@ export function LiveTimingStreaming() {
           </div>
           <h1 className="font-display leading-[0.92] text-[40px] sm:text-7xl md:text-8xl text-white tracking-[-0.02em]">
             {language === 'es' ? 'Volvemos en' : 'Back in'}{' '}
-            <span className="font-display-italic text-gradient-mono-italic">Valencia</span>
+            <span className="font-display-italic text-gradient-mono-italic">Aspar</span>
             <span className="text-white/40">.</span>
           </h1>
           <p className="mt-6 text-white/60 max-w-xl mx-auto text-sm sm:text-base leading-relaxed">
             {language === 'es'
-              ? 'El directo del CEK (live timing y streaming) se habilita solo durante el fin de semana de carrera. La próxima cita es la Ronda 3 en Valencia.'
-              : 'The CEK live page (live timing & streaming) is only enabled during the race weekend. Next stop: Round 3 in Valencia.'}
+              ? 'El directo del CEK (live timing y streaming) se habilita solo durante el fin de semana de carrera. La próxima cita es la Ronda 4 en el Aspar Circuit.'
+              : 'The CEK live page (live timing & streaming) is only enabled during the race weekend. Next stop: Round 4 at Aspar Circuit.'}
           </p>
           <div className="mt-10 inline-flex flex-col sm:flex-row items-center gap-3 px-6 py-5 rounded-2xl border border-white/10 bg-white/[0.03]">
             <CalendarClock className="w-5 h-5 text-white/60" />

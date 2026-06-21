@@ -30,17 +30,17 @@ export type RaceConfig = {
 // ============================================================
 export const LIVE_RACE_ACTIVE = false;
 
-// Próxima carrera: Valencia (Chiva / Kartódromo Lucas Guerrero)
+// Próxima carrera: Aspar Circuit (Guadassuar, Valencia)
 export const NEXT_RACE: RaceConfig = {
-  round: 'R3',
-  circuit: 'Kartódromo Lucas Guerrero',
-  city: 'Chiva, Valencia',
-  datesEs: '19-21 Junio 2026',
-  datesEn: 'June 19-21, 2026',
+  round: 'R4',
+  circuit: 'Aspar Circuit',
+  city: 'Guadassuar, Valencia',
+  datesEs: '25-27 Septiembre 2026',
+  datesEn: 'September 25-27, 2026',
   // Live timing oficial del CEK (Apex Timing / RGMMC)
   liveTimingUrl: 'https://www.apex-timing.com/live-timing/rgmmc2/index.html',
-  youtubeStreamUrl: 'https://www.youtube.com/embed/qPpoJ7OK_NE',
-  officialResultsUrl: 'https://www.apex-timing.com/goracing/results.php?path=/rgmmc/2026/cek_3_chiva/&group=6',
+  youtubeStreamUrl: '',
+  officialResultsUrl: 'https://www.apex-timing.com/goracing/results.php?path=/rgmmc/2026/cek_4_asper/&group=6',
 };
 
 // La carrera "activa" que consumen los componentes. Mientras LIVE_RACE_ACTIVE
