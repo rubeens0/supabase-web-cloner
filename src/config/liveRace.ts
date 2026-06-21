@@ -28,7 +28,7 @@ export type RaceConfig = {
 // ============================================================
 // ESTADO ACTUAL — cambiar isLive a true cuando arranque la carrera
 // ============================================================
-export const LIVE_RACE_ACTIVE = true;
+export const LIVE_RACE_ACTIVE = false;
 
 // Próxima carrera: Valencia (Chiva / Kartódromo Lucas Guerrero)
 export const NEXT_RACE: RaceConfig = {
