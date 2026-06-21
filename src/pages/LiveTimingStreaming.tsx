@@ -157,44 +157,44 @@ export function LiveTimingStreaming() {
                   </div>
                   <div className="min-w-0">
                     <p className="text-[10px] uppercase tracking-[0.2em] text-white/40">
-                      {language === 'es' ? 'Día 3' : 'Day 3'}
+                      {language === 'es' ? 'Fin de semana' : 'Weekend'}
                     </p>
                     <h3 className="text-base md:text-lg font-bold leading-tight">
-                      {language === 'es' ? 'Domingo · Superheat 2 + Final' : 'Sunday · Superheat 2 + Final'}
+                      {language === 'es' ? 'Programa por confirmar' : 'Schedule to be confirmed'}
                     </h3>
                   </div>
                 </div>
                 <span className="text-[10px] uppercase tracking-wider text-white/40 shrink-0">
-                  {language === 'es' ? 'Programa del domingo' : 'Sunday programme'}
+                  {language === 'es' ? 'Ronda 4' : 'Round 4'}
                 </span>
               </div>
               <ol className="divide-y divide-white/5">
                 <li className="flex items-center gap-3 md:gap-4 px-4 md:px-5 py-3 md:py-3.5">
                   <span className="font-mono text-[10px] text-white/30 w-5 shrink-0">01</span>
                   <span className="text-xs uppercase tracking-[0.16em] text-white/50 flex-1">
-                    {language === 'es' ? 'Warm up' : 'Warm up'}
+                    {language === 'es' ? 'Entrenamientos libres' : 'Free practice'}
                   </span>
-                  <span className="font-mono text-lg md:text-xl font-bold text-white">8:45</span>
+                  <span className="font-mono text-lg md:text-xl font-bold text-white/40">—</span>
                 </li>
                 <li className="flex items-center gap-3 md:gap-4 px-4 md:px-5 py-3 md:py-3.5">
                   <span className="font-mono text-[10px] text-white/30 w-5 shrink-0">02</span>
                   <span className="text-xs uppercase tracking-[0.16em] text-white/50 flex-1">
-                    {language === 'es' ? 'Superheat 2' : 'Superheat 2'}
+                    {language === 'es' ? 'Clasificación / Heats' : 'Qualifying / Heats'}
                   </span>
-                  <span className="font-mono text-lg md:text-xl font-bold text-white">10:50</span>
+                  <span className="font-mono text-lg md:text-xl font-bold text-white/40">—</span>
                 </li>
                 <li className="flex items-center gap-3 md:gap-4 px-4 md:px-5 py-3 md:py-3.5">
                   <span className="font-mono text-[10px] text-white/30 w-5 shrink-0">03</span>
                   <span className="text-xs uppercase tracking-[0.16em] text-white/50 flex-1">
-                    {language === 'es' ? 'Final' : 'Final'}
+                    {language === 'es' ? 'Finales' : 'Finals'}
                   </span>
-                  <span className="font-mono text-lg md:text-xl font-bold text-white">14:15</span>
+                  <span className="font-mono text-lg md:text-xl font-bold text-white/40">—</span>
                 </li>
               </ol>
               <p className="text-[11px] text-white/40 px-4 md:px-5 py-3 border-t border-white/5 leading-relaxed">
                 {language === 'es'
-                  ? 'Jornada de Superheat 2 y carrera final en el Kartódromo Lucas Guerrero.'
-                  : 'Superheat 2 and final race day at Kartódromo Lucas Guerrero.'}
+                  ? 'El horario detallado del fin de semana en el Aspar Circuit se publicará más cerca de la fecha.'
+                  : 'The detailed weekend schedule at Aspar Circuit will be published closer to the event.'}
               </p>
             </div>
 
