@@ -356,16 +356,16 @@ export function Dossier() {
                 tag: es ? 'Contenido' : 'Content',
                 title: es ? 'Redes & storytelling' : 'Social & storytelling',
                 text: es
-                  ? 'Producción y publicación constante en Instagram, TikTok y YouTube Shorts. Antes, durante y después de cada GP.'
-                  : 'Constant production and publishing on Instagram, TikTok and YouTube Shorts. Before, during and after each GP.',
+                  ? 'Producción y publicación constante en Instagram, TikTok y YouTube Shorts. Antes, durante y después de cada carrera.'
+                  : 'Constant production and publishing on Instagram, TikTok and YouTube Shorts. Before, during and after each race.',
               },
               {
                 icon: BarChart3,
                 tag: es ? 'Performance' : 'Performance',
-                title: es ? 'Meta & TikTok Ads' : 'Meta & TikTok Ads',
+                title: es ? 'Meta & TikTok Ads\u00A0' : 'Meta & TikTok Ads\u00A0',
                 text: es
-                  ? 'Campañas pagadas dirigidas al público de tu marca, no solo a la comunidad del motor. Reporting honesto.'
-                  : 'Paid campaigns targeted at your brand audience, not just the motorsport community. Honest reporting.',
+                  ? 'Campañas pagadas y organicas dirigidas al público de tu marca, no solo a la comunidad del motor.'
+                  : 'Paid and organic campaigns targeted at your brand audience, not just the motorsport community.',
               },
             ].map((s, i) => (
               <motion.div
@@ -482,7 +482,7 @@ export function Dossier() {
             { n: '01', t: es ? 'Consolidar la posición en el Campeonato de España' : 'Consolidate the position in the Spanish Championship' },
             { n: '02', t: es ? 'Pelear por podios y top-10 en cada cita' : 'Fight for podiums and top-10s at every round' },
             { n: '03', t: es ? 'Disputar al menos una prueba internacional' : 'Race at least one international event' },
-            { n: '04', t: es ? 'Crecer x3 la audiencia digital con Netpro' : 'Grow the digital audience 3x with Netpro' },
+            { n: '04', t: es ? 'Crecer la audencia y mejorar la presencia en redes sociales' : 'Grow the audience and improve social media presence' },
             ...(isRegional
               ? [{ n: '05', t: es ? 'Representar a Extremadura a nivel nacional' : 'Represent Extremadura nationally' }]
               : []),
@@ -519,8 +519,8 @@ export function Dossier() {
         }
         intro={
           es
-            ? 'Paquetes pensados para entrar a tu ritmo. Todos incluyen el trabajo de Netpro: diseño, contenido y campañas.'
-            : 'Packages designed to start at your own pace. All of them include Netpro work: design, content and campaigns.'
+            ? 'Paquetes pensados para entrar a tu ritmo.'
+            : 'Packages designed to start at your own pace.'
         }
       >
         <div className="grid md:grid-cols-3 gap-px bg-white/10">
@@ -649,8 +649,8 @@ export function Dossier() {
               </div>
               <p className="text-white/80 text-sm leading-relaxed">
                 {es
-                  ? 'Diseño 3D por Netpro: 2 rondas de ajuste hasta el “sí”.'
-                  : '3D design by Netpro: 2 rounds of tuning until the “yes”.'}
+                  ? 'Diseño 3D'
+                  : '3D Design'}
               </p>
             </div>
             <div className="border-l-2 border-white/20 pl-5">
@@ -659,8 +659,8 @@ export function Dossier() {
               </div>
               <p className="text-white/80 text-sm leading-relaxed">
                 {es
-                  ? 'Producción, reveal en RRSS y uso en cada GP de la temporada.'
-                  : 'Production, social reveal and use at every GP of the season.'}
+                  ? 'Producción, reveal en RRSS y uso en cada carrrera de la temporada.'
+                  : 'Production, social reveal and use at every race of the season.'}
               </p>
             </div>
             <p className="text-white/35 text-xs italic pt-2">
@@ -689,8 +689,8 @@ export function Dossier() {
               </h2>
               <p className="mt-6 max-w-xl text-white/60 leading-relaxed">
                 {es
-                  ? 'Si ya estás pensando dónde encajaría tu marca, mejor lo hablamos. Cuéntame qué quieres conseguir y Netpro y yo te preparamos una propuesta a medida.'
-                  : 'If you are already picturing where your brand would fit, let’s talk. Tell me what you want to achieve and Netpro and I will prepare a custom proposal.'}
+                  ? 'Si ya estás pensando dónde encajaría tu marca, mejor lo hablamos. Cuéntame qué quieres conseguir y nos ponemos a ello!'
+                  : 'If you are already picturing where your brand would fit, let’s talk. Tell me what you want to achieve and let’s get to it!'}
               </p>
             </div>
             <div className="lg:col-span-4 flex lg:flex-col gap-3">
