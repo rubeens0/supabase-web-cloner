@@ -1,11 +1,10 @@
 import { Link } from 'react-router-dom';
 import { Button } from '../components/ui/button';
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
-import { ArrowRight, ExternalLink, Quote, ArrowUpRight } from 'lucide-react';
+import { ArrowRight, ExternalLink, ArrowUpRight } from 'lucide-react';
 import { motion } from 'motion/react';
 import { useLanguage } from '../contexts/LanguageContext';
 import netproLogo from '@/assets/netpro-branding.jpg';
-import ecomscrapeImg from '@/assets/ecomscrape-logo-new.png';
 
 function SectionLabel({ index, children }: { index: string; children: React.ReactNode }) {
   return (
@@ -71,64 +70,6 @@ export function Business() {
         </div>
       </section>
 
-      {/* ============== 02 · ECOMSCRAPE ============== */}
-      <section className="border-b border-white/[0.08] px-5 sm:px-10 md:px-16 py-20 sm:py-32">
-        <div className="max-w-7xl mx-auto">
-          <BusinessSection
-            index="02"
-            title={t('business.ecomscrape.title')}
-            subtitle={t('business.ecomscrape.subtitle')}
-            description={t('business.ecomscrape.description')}
-            extendedDescription={t('business.ecomscrape.extended')}
-            image={ecomscrapeImg}
-            imageAlt="EcomScrape E-commerce Intelligence"
-            href="https://ecomscrape.com"
-            linkText={t('business.ecomscrape.cta')}
-            features={[
-              t('business.ecomscrape.feat1'),
-              t('business.ecomscrape.feat2'),
-              t('business.ecomscrape.feat3'),
-              t('business.ecomscrape.feat4'),
-            ]}
-            reverse
-            imageContain
-
-            secondaryLink={{
-              href: 'https://www.instagram.com/anaswalton/',
-              text: 'Anas Walton · Instagram',
-            }}
-          />
-        </div>
-      </section>
-
-{/* ============== 03 · MISSION / GOAL ============== */}
-      <section className="px-5 sm:px-10 md:px-16 py-24 sm:py-40">
-        <div className="max-w-4xl mx-auto text-center relative">
-          <SectionLabel index="03">{t('business.goal.title')}</SectionLabel>
-          <div className="mt-10 mb-10 flex justify-center">
-            <Quote className="w-7 h-7 text-white/25" />
-          </div>
-          <motion.blockquote
-            {...fadeIn(0.1)}
-            className="font-display text-3xl sm:text-5xl md:text-6xl text-white leading-[1.1] tracking-tight"
-          >
-            <span className="font-display-italic text-gradient-mono-italic">"</span>
-            {t('business.goal.description')}
-            <span className="font-display-italic text-gradient-mono-italic">"</span>
-          </motion.blockquote>
-
-          <div className="mt-12 flex justify-center">
-            <Link to="/contact" className="w-full sm:w-auto">
-              <Button
-                size="lg"
-                className="w-full sm:w-auto rounded-full px-8 h-12 bg-white text-black hover:bg-white/90 transition-all gap-2"
-              >
-                {t('business.contact')} <ArrowRight className="w-4 h-4" />
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </section>
     </div>
   );
 }
