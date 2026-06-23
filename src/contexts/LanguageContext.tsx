@@ -630,8 +630,9 @@ const translations = {
     'business.label': 'Business · Lines',
     'business.headlineA': 'Business',
     'business.headlineB': 'lines',
+    'business.hero.label': 'Digital Marketing',
     'business.hero.description':
-      'Professional design and digital marketing studio. Pushing brands and drivers to the next level.',
+      'Professional design and digital marketing agency. Pushing brands and drivers to the next level.',
     'business.contact': 'Get in touch',
     'business.schedule': 'Book a meeting',
 
