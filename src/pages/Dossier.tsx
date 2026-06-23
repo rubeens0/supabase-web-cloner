@@ -4,8 +4,6 @@ import { DossierAccess } from '../components/DossierAccess';
 import { useLanguage } from '../contexts/LanguageContext';
 import {
   Trophy,
-  TrendingUp,
-  Target,
   Star,
   MapPin,
   Mail,
