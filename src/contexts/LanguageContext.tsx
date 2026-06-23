@@ -140,8 +140,9 @@ const translations = {
     'business.label': 'Negocio · Líneas',
     'business.headlineA': 'Líneas de',
     'business.headlineB': 'negocio',
+    'business.hero.label': 'Marketing Digital',
     'business.hero.description':
-      'Estudio profesional de diseño y marketing digital. Impulsando marcas y pilotos hacia el siguiente nivel.',
+      'Agencia profesional de diseño y marketing digital. Impulsando marcas y pilotos hacia el siguiente nivel.',
     'business.contact': 'Contactar',
     'business.schedule': 'Agendar reunión',
 
