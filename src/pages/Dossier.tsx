@@ -738,7 +738,3 @@ export function Dossier() {
     </div>
   );
 }
-
-// Keep references used by previous build
-void Target;
-void TrendingUp;
