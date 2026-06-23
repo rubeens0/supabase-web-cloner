@@ -140,13 +140,14 @@ const translations = {
     'business.label': 'Negocio · Líneas',
     'business.headlineA': 'Líneas de',
     'business.headlineB': 'negocio',
+    'business.hero.label': 'Marketing Digital',
     'business.hero.description':
-      'Estudio profesional de diseño y marketing digital. Impulsando marcas y pilotos hacia el siguiente nivel.',
+      'Agencia profesional de diseño y marketing digital. Impulsando marcas y pilotos hacia el siguiente nivel.',
     'business.contact': 'Contactar',
     'business.schedule': 'Agendar reunión',
 
     'business.about.p1':
-      'Netpro Agency es un estudio profesional de diseño y marketing digital. Nacimos enfocados al motorsport —pilotos, equipos y proyectos de karting y automovilismo—, pero hoy también trabajamos con negocios digitales de distintos sectores que necesitan una imagen sólida y resultados reales en el entorno digital.',
+      'Netpro Agency es una agencia profesional de diseño y marketing digital. Nacimos enfocados al motorsport —pilotos, equipos y proyectos de karting y automovilismo—, pero hoy también trabajamos con negocios digitales de distintos sectores que necesitan una imagen sólida y resultados reales en el entorno digital.',
     'business.about.p2':
       'Construimos y gestionamos la imagen de marca: diseñamos la identidad visual, creamos todo el contenido gráfico (carteles, creatividades, anuncios, material corporativo), desarrollamos webs y gestionamos de forma profesional las redes sociales y la publicidad en Meta (Facebook e Instagram) para aumentar visibilidad, generar comunidad y atraer clientes o patrocinadores.',
     'business.about.p3':
@@ -629,13 +630,14 @@ const translations = {
     'business.label': 'Business · Lines',
     'business.headlineA': 'Business',
     'business.headlineB': 'lines',
+    'business.hero.label': 'Digital Marketing',
     'business.hero.description':
-      'Professional design and digital marketing studio. Pushing brands and drivers to the next level.',
+      'Professional design and digital marketing agency. Pushing brands and drivers to the next level.',
     'business.contact': 'Get in touch',
     'business.schedule': 'Book a meeting',
 
     'business.about.p1':
-      'Netpro Agency is a professional design and digital marketing studio. We were born inside motorsport — drivers, teams and karting projects — and today we also work with companies across sectors that need a sharper image and real results in the digital arena.',
+      'Netpro Agency is a professional design and digital marketing agency. We were born inside motorsport — drivers, teams and karting projects — and today we also work with companies across sectors that need a sharper image and real results in the digital arena.',
     'business.about.p2':
       'We build and run brand image: visual identity, full graphic content (posters, creatives, ads, corporate materials), websites, and end-to-end management of social channels and Meta advertising (Facebook & Instagram) — to grow visibility, build community and bring in customers or sponsors.',
     'business.about.p3':
