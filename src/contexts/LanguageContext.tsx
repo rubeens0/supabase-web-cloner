@@ -637,7 +637,7 @@ const translations = {
     'business.schedule': 'Book a meeting',
 
     'business.about.p1':
-      'Netpro Agency is a professional design and digital marketing studio. We were born inside motorsport — drivers, teams and karting projects — and today we also work with companies across sectors that need a sharper image and real results in the digital arena.',
+      'Netpro Agency is a professional design and digital marketing agency. We were born inside motorsport — drivers, teams and karting projects — and today we also work with companies across sectors that need a sharper image and real results in the digital arena.',
     'business.about.p2':
       'We build and run brand image: visual identity, full graphic content (posters, creatives, ads, corporate materials), websites, and end-to-end management of social channels and Meta advertising (Facebook & Instagram) — to grow visibility, build community and bring in customers or sponsors.',
     'business.about.p3':
