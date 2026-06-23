@@ -1,11 +1,10 @@
 import { Link } from 'react-router-dom';
 import { Button } from '../components/ui/button';
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
-import { ArrowRight, ExternalLink, Quote, ArrowUpRight } from 'lucide-react';
+import { ArrowRight, ExternalLink, ArrowUpRight } from 'lucide-react';
 import { motion } from 'motion/react';
 import { useLanguage } from '../contexts/LanguageContext';
 import netproLogo from '@/assets/netpro-branding.jpg';
-import ecomscrapeImg from '@/assets/ecomscrape-logo-new.png';
 
 function SectionLabel({ index, children }: { index: string; children: React.ReactNode }) {
   return (
