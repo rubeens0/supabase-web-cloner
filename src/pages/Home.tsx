@@ -597,10 +597,10 @@ export function Home() {
               <Link to="/marketing" className="block">
                 <div className="aspect-[16/10] overflow-hidden border-b border-white/10">
                   <ImageWithFallback
-                    src={marketingImage}
+                    src={torsoImage.url}
                     alt="Emprendimiento"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                    style={{ objectPosition: "center 55%" }}
+                    style={{ objectPosition: "center 30%" }}
                   />
                 </div>
                 <div className="p-7">
