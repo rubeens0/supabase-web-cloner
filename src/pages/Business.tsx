@@ -4,7 +4,7 @@ import { ImageWithFallback } from '../components/figma/ImageWithFallback';
 import { ArrowRight, ExternalLink, ArrowUpRight } from 'lucide-react';
 import { motion } from 'motion/react';
 import { useLanguage } from '../contexts/LanguageContext';
-import netproLogo from '@/assets/netpro-branding.jpg';
+import torsoImage from '@/assets/ruben-karting-torso.jpg.asset.json';
 
 function SectionLabel({ index, children }: { index: string; children: React.ReactNode }) {
   return (
