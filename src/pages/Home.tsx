@@ -12,7 +12,8 @@ import heroImage from "@/assets/ruben-motorland-sunday.jpg";
 import aboutImage from "@/assets/about-image.webp";
 import aboutImageAlt from "@/assets/ruben-portrait-grid.jpg";
 import { ImageCompareSlider } from "@/components/ImageCompareSlider";
-import kartingImage from "@/assets/ruben-karting-torso.jpg.asset.json";
+import kartingImage from "@/assets/karting-image.webp";
+import torsoImage from "@/assets/ruben-karting-torso.jpg.asset.json";
 import marketingImage from "@/assets/marketing-image.webp";
 import portadaExtremaduraImg from "@/assets/cek-2026-campillos-18.jpg";
 import testRecasImg from "@/assets/test-recas-2026.jpg";
@@ -571,10 +572,9 @@ export function Home() {
             >
               <div className="aspect-[16/10] overflow-hidden border-b border-white/10">
                 <ImageWithFallback
-                  src={kartingImage.url}
+                  src={kartingImage}
                   alt="Karting"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                  style={{ objectPosition: "center 30%" }}
                 />
               </div>
               <div className="p-7">
@@ -597,10 +597,10 @@ export function Home() {
               <Link to="/marketing" className="block">
                 <div className="aspect-[16/10] overflow-hidden border-b border-white/10">
                   <ImageWithFallback
-                    src={marketingImage}
+                    src={torsoImage.url}
                     alt="Emprendimiento"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                    style={{ objectPosition: "center 55%" }}
+                    style={{ objectPosition: "center 30%" }}
                   />
                 </div>
                 <div className="p-7">
