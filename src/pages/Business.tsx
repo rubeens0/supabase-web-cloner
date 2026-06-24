@@ -4,7 +4,7 @@ import { ImageWithFallback } from '../components/figma/ImageWithFallback';
 import { ArrowRight, ExternalLink, ArrowUpRight } from 'lucide-react';
 import { motion } from 'motion/react';
 import { useLanguage } from '../contexts/LanguageContext';
-import torsoImage from '@/assets/ruben-karting-torso.jpg.asset.json';
+import netproLogo from '@/assets/netpro-branding.jpg';
 
 function SectionLabel({ index, children }: { index: string; children: React.ReactNode }) {
   return (
@@ -55,7 +55,7 @@ export function Business() {
             subtitle="Digital & Growth"
             description={t('business.hero.description')}
             extendedDescription={t('business.about.p1')}
-            image={torsoImage.url}
+            image={netproLogo}
             imageAlt="Netpro Agency Branding"
             href="https://netpro.agency"
             linkText="netpro.agency"
