@@ -571,7 +571,7 @@ export function Home() {
             >
               <div className="aspect-[16/10] overflow-hidden border-b border-white/10">
                 <ImageWithFallback
-                  src={kartingImage.url}
+                  src={kartingImage}
                   alt="Karting"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   style={{ objectPosition: "center 30%" }}

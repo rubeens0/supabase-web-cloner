@@ -55,7 +55,7 @@ export function Business() {
             subtitle="Digital & Growth"
             description={t('business.hero.description')}
             extendedDescription={t('business.about.p1')}
-            image={netproLogo}
+            image={torsoImage.url}
             imageAlt="Netpro Agency Branding"
             href="https://netpro.agency"
             linkText="netpro.agency"
