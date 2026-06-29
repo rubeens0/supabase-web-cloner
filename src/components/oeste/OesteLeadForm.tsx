@@ -96,12 +96,19 @@ export function OesteLeadForm({ selectedOffer, onClearOffer }: Props = {}) {
         };
         void sendMetaEvent({
           eventName: 'Lead',
-          customData: sharedCustom,
+          customData: {
+            ...sharedCustom,
+            // Predicted lead value — útil para optimización por valor en campañas de Leads
+            predicted_ltv: offerValue,
+            lead_event_source: 'oeste-landing1',
+            status: 'submitted',
+          },
           userData: sharedUserData,
         });
+        // CompleteRegistration como señal complementaria para audiencias / lookalikes
         void sendMetaEvent({
-          eventName: 'Purchase',
-          customData: { ...sharedCustom, contents: selectedOffer ? [{ id: selectedOffer.id, quantity: 1, item_price: offerValue }] : undefined },
+          eventName: 'CompleteRegistration',
+          customData: { ...sharedCustom, registration_method: 'lead-form' },
           userData: sharedUserData,
         });
         reset();
