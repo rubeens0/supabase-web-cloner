@@ -234,7 +234,7 @@ export function OesteLeadForm({ selectedOffer, onClearOffer }: Props = {}) {
           </>
         ) : (
           <>
-            Quiero información
+            Enviar solicitud
             <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
           </>
         )}
