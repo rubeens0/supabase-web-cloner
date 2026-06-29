@@ -100,8 +100,10 @@ export default function OesteLanding1() {
 
   const handleSelectOffer = (offer: Offer) => {
     setSelectedOffer(offer);
+    // Evento personalizado (no estándar) — se usa para audiencias / lookalikes,
+    // sin interferir con la optimización por Lead de la campaña.
     void sendMetaEvent({
-      eventName: 'AddToCart',
+      eventName: 'SelectOffer',
       customData: {
         content_ids: [offer.id],
         content_name: offer.title,
