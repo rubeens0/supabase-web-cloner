@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion } from 'motion/react';
-import { Zap, Wifi, ShieldCheck, MapPin, ArrowRight } from 'lucide-react';
+import { Zap, Wifi, ShieldCheck, MapPin, ArrowRight, Star } from 'lucide-react';
 import { OesteLeadForm } from '@/components/oeste/OesteLeadForm';
 import { OesteOffers, type Offer } from '@/components/oeste/OesteOffers';
+import { OesteStickyCTA } from '@/components/oeste/OesteStickyCTA';
 import { initMetaPixel, parsePrice } from '@/lib/metaPixel';
 import { sendMetaEvent } from '@/lib/metaCapi';
 import rubenLogoAsset from '@/assets/ruben-x-white.png.asset.json';
