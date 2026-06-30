@@ -138,7 +138,7 @@ export function OesteLeadForm({ selectedOffer, onClearOffer }: Props = {}) {
   }
 
   const inputCls =
-    'w-full rounded-xl bg-white/95 text-neutral-900 placeholder:text-neutral-500 px-4 py-3 outline-none focus:ring-2 focus:ring-white/80 transition';
+    'w-full rounded-xl bg-white/95 text-neutral-900 placeholder:text-neutral-500 px-4 py-3.5 text-base outline-none focus:ring-2 focus:ring-white/80 transition';
   const errCls = 'mt-1 text-xs text-white/90 font-medium';
 
   return (
