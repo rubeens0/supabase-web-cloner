@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { ArrowRight, Phone } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { sendMetaEvent } from '@/lib/metaCapi';
 
 type Props = {
@@ -8,17 +8,13 @@ type Props = {
 
 /**
  * Sticky bottom CTA bar — mobile only.
- * Aparece tras hacer scroll fuera del hero para mantener la conversión
- * siempre a un toque de distancia.
+ * Aparece tras scroll para mantener la conversión a un toque.
  */
 export function OesteStickyCTA({ onCtaClick }: Props) {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => {
-      // Mostrar tras 320px de scroll (fuera del hero en móvil)
-      setVisible(window.scrollY > 320);
-    };
+    const onScroll = () => setVisible(window.scrollY > 320);
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
@@ -32,13 +28,6 @@ export function OesteStickyCTA({ onCtaClick }: Props) {
     onCtaClick();
   };
 
-  const handleCall = () => {
-    void sendMetaEvent({
-      eventName: 'ClickCTA',
-      customData: { source: 'sticky-mobile', destination: 'phone-call' },
-    });
-  };
-
   return (
     <div
       aria-hidden={!visible}
@@ -47,26 +36,22 @@ export function OesteStickyCTA({ onCtaClick }: Props) {
       }`}
       style={{
         background:
-          'linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.55) 35%, rgba(0,0,0,0.85) 100%)',
+          'linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.55) 35%, rgba(0,0,0,0.88) 100%)',
       }}
     >
-      <div className="mx-auto max-w-md flex items-center gap-2">
-        <a
-          href="tel:+34927000000"
-          onClick={handleCall}
-          aria-label="Llamar a Oeste"
-          className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-white/15 border border-white/25 backdrop-blur-md text-white shrink-0 active:scale-95 transition"
-        >
-          <Phone className="w-5 h-5" />
-        </a>
+      <div className="mx-auto max-w-md">
         <button
           onClick={handleCta}
-          className="group flex-1 inline-flex items-center justify-center gap-2 rounded-xl bg-white text-neutral-900 font-bold uppercase tracking-wider text-sm px-5 h-12 active:scale-[0.98] shadow-[0_10px_40px_-10px_rgba(255,255,255,0.5)] transition"
+          className="group w-full inline-flex items-center justify-center gap-2 rounded-xl bg-white text-neutral-900 font-bold uppercase tracking-wider text-sm px-5 h-13 py-3.5 active:scale-[0.98] shadow-[0_10px_40px_-10px_rgba(255,255,255,0.5)] transition"
         >
-          Ver ofertas
+          Ver ofertas · sin compromiso
           <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
         </button>
+        <p className="mt-1.5 text-center text-[10px] uppercase tracking-[0.2em] text-white/80">
+          Respuesta en 24h
+        </p>
       </div>
     </div>
   );
 }
+
