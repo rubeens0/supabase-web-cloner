@@ -178,12 +178,28 @@ export function OesteLeadForm({ selectedOffer, onClearOffer }: Props = {}) {
       <div className="grid sm:grid-cols-2 gap-4">
         <div>
           <label className="block text-sm font-medium text-white mb-1.5">Teléfono</label>
-          <input type="tel" autoComplete="tel" placeholder="600 000 000" className={inputCls} {...register('phone')} />
+          <input
+            type="tel"
+            inputMode="tel"
+            autoComplete="tel"
+            placeholder="600 000 000"
+            className={inputCls}
+            {...register('phone')}
+          />
           {errors.phone && <p className={errCls}>{errors.phone.message}</p>}
         </div>
         <div>
           <label className="block text-sm font-medium text-white mb-1.5">Email</label>
-          <input type="email" autoComplete="email" placeholder="tu@email.com" className={inputCls} {...register('email')} />
+          <input
+            type="email"
+            inputMode="email"
+            autoComplete="email"
+            autoCapitalize="off"
+            autoCorrect="off"
+            placeholder="tu@email.com"
+            className={inputCls}
+            {...register('email')}
+          />
           {errors.email && <p className={errCls}>{errors.email.message}</p>}
         </div>
       </div>
