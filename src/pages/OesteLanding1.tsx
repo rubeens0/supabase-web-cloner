@@ -491,6 +491,7 @@ export default function OesteLanding1() {
           </div>
         </div>
       </footer>
+      <OesteStickyCTA onCtaClick={() => scrollToForm('sticky-mobile')} />
       </div>
     </div>
   );
