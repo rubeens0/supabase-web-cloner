@@ -216,10 +216,15 @@ export default function OesteLanding1() {
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             className="lg:col-span-7 min-w-0 lg:pt-6"
           >
-            <span className="inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/20 backdrop-blur px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-white/90">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-300 animate-pulse" />
-              Disponible en Cáceres
-            </span>
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/20 backdrop-blur px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-white/90">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-300 animate-pulse" />
+                Disponible en Cáceres
+              </span>
+              <span className="inline-flex items-center gap-2 rounded-full bg-yellow-300/15 border border-yellow-200/40 px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.18em] text-yellow-100">
+                ⚡ Oferta hasta 15-sep · plazas limitadas
+              </span>
+            </div>
 
             <h1 className="mt-6 leading-[0.88] tracking-tight">
               <span className="block font-sans font-black uppercase tracking-[-0.02em] text-5xl sm:text-6xl lg:text-[6.5rem] xl:text-[7.5rem]">
