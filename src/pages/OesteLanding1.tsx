@@ -249,12 +249,35 @@ export default function OesteLanding1() {
               <span className="text-sm text-white/75">Respuesta en 24h · <span className="font-semibold text-white/95">Sin compromiso</span></span>
             </div>
 
-            {/* Trust strip — only desktop */}
-            <div className="hidden lg:grid mt-12 grid-cols-4 gap-px rounded-2xl overflow-hidden border border-white/15 bg-white/10 backdrop-blur-sm">
+            {/* Prueba social */}
+            <div className="mt-5 flex items-center gap-3 text-sm text-white/85">
+              <div className="flex -space-x-2">
+                {[0, 1, 2, 3].map((i) => (
+                  <span
+                    key={i}
+                    className="inline-block w-7 h-7 rounded-full border-2 border-white/80"
+                    style={{
+                      background: `linear-gradient(135deg, hsl(${20 + i * 35} 70% 55%), hsl(${320 - i * 20} 60% 45%))`,
+                    }}
+                  />
+                ))}
+              </div>
+              <div className="flex flex-col leading-tight">
+                <span className="flex items-center gap-1 text-white">
+                  {[0, 1, 2, 3, 4].map((i) => (
+                    <Star key={i} className="w-3.5 h-3.5 fill-yellow-300 text-yellow-300" />
+                  ))}
+                </span>
+                <span className="text-white/80 text-xs">+500 hogares ya conectados en Cáceres</span>
+              </div>
+            </div>
+
+            {/* Trust strip — visible en todos los breakpoints */}
+            <div className="mt-8 grid grid-cols-2 lg:grid-cols-4 gap-px rounded-2xl overflow-hidden border border-white/15 bg-white/10 backdrop-blur-sm">
               {benefits.map((b) => (
-                <div key={b.title} className="bg-black/20 px-5 py-5 flex flex-col gap-2">
+                <div key={b.title} className="bg-black/20 px-4 py-4 sm:px-5 sm:py-5 flex flex-col gap-2">
                   <b.icon className="w-5 h-5 text-white/90" />
-                  <p className="text-[13px] font-bold uppercase tracking-tight leading-tight text-white">
+                  <p className="text-[12px] sm:text-[13px] font-bold uppercase tracking-tight leading-tight text-white">
                     {b.title}
                   </p>
                 </div>
