@@ -249,7 +249,7 @@ export function OesteLeadForm({ selectedOffer, onClearOffer }: Props = {}) {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="group w-full inline-flex items-center justify-center gap-2 rounded-xl bg-white text-neutral-900 font-semibold px-6 py-3.5 hover:bg-white/90 transition disabled:opacity-60"
+        className="group w-full inline-flex items-center justify-center gap-2 rounded-xl bg-white text-neutral-900 font-bold uppercase tracking-wider text-base px-6 py-4 sm:py-3.5 hover:bg-white/90 active:scale-[0.99] transition disabled:opacity-60 shadow-[0_10px_40px_-10px_rgba(255,255,255,0.5)]"
       >
         {isSubmitting ? (
           <>
@@ -263,9 +263,11 @@ export function OesteLeadForm({ selectedOffer, onClearOffer }: Props = {}) {
         )}
       </button>
 
-      <p className="text-[11px] text-white/70 text-center">
-        Respuesta en menos de 24h. Sin compromiso.
-      </p>
+      <div className="flex items-center justify-center gap-4 text-[11px] text-white/75">
+        <span className="inline-flex items-center gap-1">✓ Sin permanencia</span>
+        <span className="inline-flex items-center gap-1">✓ Respuesta 24h</span>
+        <span className="inline-flex items-center gap-1">✓ 100% local</span>
+      </div>
     </form>
   );
 }
