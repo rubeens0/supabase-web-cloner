@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion } from 'motion/react';
-import { Zap, Wifi, ShieldCheck, MapPin, ArrowRight } from 'lucide-react';
+import { Zap, Wifi, ShieldCheck, MapPin, ArrowRight, Star } from 'lucide-react';
 import { OesteLeadForm } from '@/components/oeste/OesteLeadForm';
 import { OesteOffers, type Offer } from '@/components/oeste/OesteOffers';
+import { OesteStickyCTA } from '@/components/oeste/OesteStickyCTA';
 import { initMetaPixel, parsePrice } from '@/lib/metaPixel';
 import { sendMetaEvent } from '@/lib/metaCapi';
 import rubenLogoAsset from '@/assets/ruben-x-white.png.asset.json';
@@ -132,7 +133,7 @@ export default function OesteLanding1() {
 
 
   return (
-    <div className="relative min-h-screen bg-oeste-gradient text-white antialiased oeste-landing overflow-hidden">
+    <div className="relative min-h-screen bg-oeste-gradient text-white antialiased oeste-landing overflow-hidden pb-24 lg:pb-0">
       {/* Stylized kart background with opacity fade */}
       <div
         aria-hidden
@@ -215,10 +216,15 @@ export default function OesteLanding1() {
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             className="lg:col-span-7 min-w-0 lg:pt-6"
           >
-            <span className="inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/20 backdrop-blur px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-white/90">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-300 animate-pulse" />
-              Disponible en Cáceres
-            </span>
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/20 backdrop-blur px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-white/90">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-300 animate-pulse" />
+                Disponible en Cáceres
+              </span>
+              <span className="inline-flex items-center gap-2 rounded-full bg-yellow-300/15 border border-yellow-200/40 px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.18em] text-yellow-100">
+                ⚡ Oferta hasta 15-sep · plazas limitadas
+              </span>
+            </div>
 
             <h1 className="mt-6 leading-[0.88] tracking-tight">
               <span className="block font-sans font-black uppercase tracking-[-0.02em] text-5xl sm:text-6xl lg:text-[6.5rem] xl:text-[7.5rem]">
@@ -248,12 +254,35 @@ export default function OesteLanding1() {
               <span className="text-sm text-white/75">Respuesta en 24h · <span className="font-semibold text-white/95">Sin compromiso</span></span>
             </div>
 
-            {/* Trust strip — only desktop */}
-            <div className="hidden lg:grid mt-12 grid-cols-4 gap-px rounded-2xl overflow-hidden border border-white/15 bg-white/10 backdrop-blur-sm">
+            {/* Prueba social */}
+            <div className="mt-5 flex items-center gap-3 text-sm text-white/85">
+              <div className="flex -space-x-2">
+                {[0, 1, 2, 3].map((i) => (
+                  <span
+                    key={i}
+                    className="inline-block w-7 h-7 rounded-full border-2 border-white/80"
+                    style={{
+                      background: `linear-gradient(135deg, hsl(${20 + i * 35} 70% 55%), hsl(${320 - i * 20} 60% 45%))`,
+                    }}
+                  />
+                ))}
+              </div>
+              <div className="flex flex-col leading-tight">
+                <span className="flex items-center gap-1 text-white">
+                  {[0, 1, 2, 3, 4].map((i) => (
+                    <Star key={i} className="w-3.5 h-3.5 fill-yellow-300 text-yellow-300" />
+                  ))}
+                </span>
+                <span className="text-white/80 text-xs">+500 hogares ya conectados en Cáceres</span>
+              </div>
+            </div>
+
+            {/* Trust strip — visible en todos los breakpoints */}
+            <div className="mt-8 grid grid-cols-2 lg:grid-cols-4 gap-px rounded-2xl overflow-hidden border border-white/15 bg-white/10 backdrop-blur-sm">
               {benefits.map((b) => (
-                <div key={b.title} className="bg-black/20 px-5 py-5 flex flex-col gap-2">
+                <div key={b.title} className="bg-black/20 px-4 py-4 sm:px-5 sm:py-5 flex flex-col gap-2">
                   <b.icon className="w-5 h-5 text-white/90" />
-                  <p className="text-[13px] font-bold uppercase tracking-tight leading-tight text-white">
+                  <p className="text-[12px] sm:text-[13px] font-bold uppercase tracking-tight leading-tight text-white">
                     {b.title}
                   </p>
                 </div>
@@ -467,6 +496,7 @@ export default function OesteLanding1() {
           </div>
         </div>
       </footer>
+      <OesteStickyCTA onCtaClick={() => scrollToForm('sticky-mobile')} />
       </div>
     </div>
   );

@@ -138,7 +138,7 @@ export function OesteLeadForm({ selectedOffer, onClearOffer }: Props = {}) {
   }
 
   const inputCls =
-    'w-full rounded-xl bg-white/95 text-neutral-900 placeholder:text-neutral-500 px-4 py-3 outline-none focus:ring-2 focus:ring-white/80 transition';
+    'w-full rounded-xl bg-white/95 text-neutral-900 placeholder:text-neutral-500 px-4 py-3.5 text-base outline-none focus:ring-2 focus:ring-white/80 transition';
   const errCls = 'mt-1 text-xs text-white/90 font-medium';
 
   return (
@@ -178,12 +178,28 @@ export function OesteLeadForm({ selectedOffer, onClearOffer }: Props = {}) {
       <div className="grid sm:grid-cols-2 gap-4">
         <div>
           <label className="block text-sm font-medium text-white mb-1.5">Teléfono</label>
-          <input type="tel" autoComplete="tel" placeholder="600 000 000" className={inputCls} {...register('phone')} />
+          <input
+            type="tel"
+            inputMode="tel"
+            autoComplete="tel"
+            placeholder="600 000 000"
+            className={inputCls}
+            {...register('phone')}
+          />
           {errors.phone && <p className={errCls}>{errors.phone.message}</p>}
         </div>
         <div>
           <label className="block text-sm font-medium text-white mb-1.5">Email</label>
-          <input type="email" autoComplete="email" placeholder="tu@email.com" className={inputCls} {...register('email')} />
+          <input
+            type="email"
+            inputMode="email"
+            autoComplete="email"
+            autoCapitalize="off"
+            autoCorrect="off"
+            placeholder="tu@email.com"
+            className={inputCls}
+            {...register('email')}
+          />
           {errors.email && <p className={errCls}>{errors.email.message}</p>}
         </div>
       </div>
@@ -233,7 +249,7 @@ export function OesteLeadForm({ selectedOffer, onClearOffer }: Props = {}) {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="group w-full inline-flex items-center justify-center gap-2 rounded-xl bg-white text-neutral-900 font-semibold px-6 py-3.5 hover:bg-white/90 transition disabled:opacity-60"
+        className="group w-full inline-flex items-center justify-center gap-2 rounded-xl bg-white text-neutral-900 font-bold uppercase tracking-wider text-base px-6 py-4 sm:py-3.5 hover:bg-white/90 active:scale-[0.99] transition disabled:opacity-60 shadow-[0_10px_40px_-10px_rgba(255,255,255,0.5)]"
       >
         {isSubmitting ? (
           <>
@@ -247,9 +263,11 @@ export function OesteLeadForm({ selectedOffer, onClearOffer }: Props = {}) {
         )}
       </button>
 
-      <p className="text-[11px] text-white/70 text-center">
-        Respuesta en menos de 24h. Sin compromiso.
-      </p>
+      <div className="flex items-center justify-center gap-4 text-[11px] text-white/75">
+        <span className="inline-flex items-center gap-1">✓ Sin permanencia</span>
+        <span className="inline-flex items-center gap-1">✓ Respuesta 24h</span>
+        <span className="inline-flex items-center gap-1">✓ 100% local</span>
+      </div>
     </form>
   );
 }
