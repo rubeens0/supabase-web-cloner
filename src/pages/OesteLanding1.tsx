@@ -133,7 +133,7 @@ export default function OesteLanding1() {
 
 
   return (
-    <div className="relative min-h-screen bg-oeste-gradient text-white antialiased oeste-landing overflow-hidden">
+    <div className="relative min-h-screen bg-oeste-gradient text-white antialiased oeste-landing overflow-hidden pb-24 lg:pb-0">
       {/* Stylized kart background with opacity fade */}
       <div
         aria-hidden
