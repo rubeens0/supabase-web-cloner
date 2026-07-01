@@ -129,9 +129,9 @@ export function OesteLeadForm({ selectedOffer, onClearOffer }: Props = {}) {
         className="rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 p-8 text-center text-white"
       >
         <CheckCircle2 className="w-12 h-12 mx-auto mb-4 text-white" />
-        <h3 className="text-2xl font-semibold mb-2">¡Gracias!</h3>
+        <h3 className="text-2xl font-semibold mb-2">¡Muchas gracias!</h3>
         <p className="text-white/80">
-          Hemos recibido tus datos. Un asesor de Oeste te contactará en breve con la mejor oferta para tu zona.
+          Nos pondremos pronto en contacto contigo.
         </p>
       </motion.div>
     );
