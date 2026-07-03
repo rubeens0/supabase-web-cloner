@@ -11,8 +11,10 @@ import type { User as SupabaseUser } from '@supabase/supabase-js';
 export function Navigation() {
   const location = useLocation();
   const navigate = useNavigate();
+  const isHome = location.pathname === '/' || location.pathname === '/inicio';
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [introDone, setIntroDone] = useState(!isHome);
   const [bannerVisible, setBannerVisible] = useState(LIVE_RACE_ACTIVE);
   const [user, setUser] = useState<SupabaseUser | null>(null);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
@@ -46,6 +48,13 @@ export function Navigation() {
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  useEffect(() => {
+    if (!isHome) { setIntroDone(true); return; }
+    setIntroDone(false);
+    const t = window.setTimeout(() => setIntroDone(true), 3700);
+    return () => window.clearTimeout(t);
+  }, [isHome]);
 
   useEffect(() => {
     setMobileMenuOpen(false);
@@ -83,7 +92,7 @@ export function Navigation() {
     <>
       {/* Top announcement bar (Slash style) */}
       <AnimatePresence>
-        {bannerVisible && (
+        {bannerVisible && introDone && (
           <motion.div
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
@@ -118,13 +127,13 @@ export function Navigation() {
 
       {/* Main navigation */}
       <motion.nav
-        initial={{ y: -20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
+        initial={false}
+        animate={introDone ? { y: 0, opacity: 1 } : { y: -24, opacity: 0 }}
         transition={{
-          duration: location.pathname === '/' ? 1.4 : 0.4,
-          delay: location.pathname === '/' ? 2.2 : 0,
+          duration: 0.9,
           ease: [0.22, 1, 0.36, 1],
         }}
+        style={{ pointerEvents: introDone ? 'auto' : 'none' }}
         className={`fixed left-0 right-0 z-50 transition-all duration-300 ${
           bannerVisible ? 'top-[40px] sm:top-[42px]' : 'top-0'
         } ${
