@@ -50,6 +50,13 @@ export function Navigation() {
   }, []);
 
   useEffect(() => {
+    if (!isHome) { setIntroDone(true); return; }
+    setIntroDone(false);
+    const t = window.setTimeout(() => setIntroDone(true), 3700);
+    return () => window.clearTimeout(t);
+  }, [isHome]);
+
+  useEffect(() => {
     setMobileMenuOpen(false);
   }, [location.pathname]);
 
