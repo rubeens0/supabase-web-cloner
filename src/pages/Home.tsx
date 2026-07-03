@@ -541,7 +541,7 @@ export function Home() {
             {/* Stats enter from different directions */}
             <motion.div {...slideIn("left", 0)}>
               <div className="font-display text-5xl sm:text-6xl text-white mb-2 tracking-tight">
-                2024<span className="text-secondary">.</span>
+                Netpro Agency<span className="text-secondary">.</span>
               </div>
               <p className="text-sm text-white/50">{t("home.proof.stat1.label")}</p>
             </motion.div>

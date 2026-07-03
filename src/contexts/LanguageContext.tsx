@@ -64,8 +64,8 @@ const translations = {
     /* ===== Home – Social proof (sec. 02) ===== */
     'home.proof.headlineA': 'Sobre',
     'home.proof.headlineB': 'mis proyectos.',
-    'home.proof.stat1.label': 'Año de inicio — built from scratch',
-    'home.proof.stat2.label': 'Campeonato de España de Karting',
+    'home.proof.stat1.label': 'Mi agencia de marketing.',
+    'home.proof.stat2.label': 'Campeonato de España de Karting.',
     'home.proof.stat3.value': '3',
     'home.proof.stat3.label': 'Lines de emprendimiento activas.',
 
@@ -554,8 +554,8 @@ const translations = {
     /* ===== Home – Social proof (sec. 02) ===== */
     'home.proof.headlineA': 'About',
     'home.proof.headlineB': 'my projects.',
-    'home.proof.stat1.label': 'Starting year — built from scratch',
-    'home.proof.stat2.label': 'Spanish Karting Championship',
+    'home.proof.stat1.label': 'My marketing agency.',
+    'home.proof.stat2.label': 'Spanish Karting Championship.',
     'home.proof.stat3.value': '3',
     'home.proof.stat3.label': 'Active entrepreneurship lines.',
 
