@@ -331,18 +331,42 @@ export function Home() {
 
   return (
     <div className="min-h-screen bg-black text-white">
-      {/* ============== 01 · HERO — Editorial Slash style ============== */}
+      {/* ============== HOME INTRO OVERLAY — logo reveal ============== */}
+      <motion.div
+        initial={{ opacity: 1 }}
+        animate={{ opacity: 0 }}
+        transition={{ duration: 1.2, delay: 1.8, ease: [0.22, 1, 0.36, 1] }}
+        onAnimationComplete={() => {
+          const el = document.getElementById("home-intro-overlay");
+          if (el) el.style.display = "none";
+        }}
+        id="home-intro-overlay"
+        className="fixed inset-0 z-[80] bg-black flex items-center justify-center pointer-events-none"
+      >
+        <motion.img
+          src={logoWhiteMark}
+          alt="Rubén Muñoz"
+          initial={{ opacity: 0, scale: 0.92 }}
+          animate={{ opacity: [0, 1, 1], scale: [0.92, 1, 1] }}
+          transition={{ duration: 2.4, times: [0, 0.35, 1], ease: [0.22, 1, 0.36, 1] }}
+          className="w-40 sm:w-52 md:w-60 h-auto drop-shadow-2xl"
+        />
+      </motion.div>
+
+      {/* ============== 01 · HERO — Logo-forward editorial ============== */}
       <section className="relative min-h-screen flex items-end overflow-hidden pt-32 sm:pt-40 pb-12 sm:pb-20">
         {/* Background image with strong fade */}
         <motion.div
-          {...heroImageVariant}
+          initial={{ opacity: 0, scale: 1.06 }}
+          animate={{ opacity: 0.9, scale: 1 }}
+          transition={{ duration: 2.4, delay: 2.0, ease: [0.22, 1, 0.36, 1] }}
           className="absolute inset-0"
           style={perfSettings.simplifyAnimations ? {} : { willChange: "transform, opacity" }}
         >
           <ImageWithFallback
             src={heroImage}
             alt="Karting"
-            className="w-full h-full object-cover opacity-90"
+            className="w-full h-full object-cover"
             loading="eager"
             fetchPriority="high"
             decoding="sync"
@@ -350,37 +374,49 @@ export function Home() {
             height={1080}
           />
         </motion.div>
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/85 to-black/60" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-transparent to-black/40" />
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 2, delay: 2.0 }}
+          className="absolute inset-0 bg-gradient-to-t from-black via-black/85 to-black/60"
+        />
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 2, delay: 2.0 }}
+          className="absolute inset-0 bg-gradient-to-r from-black/70 via-transparent to-black/40"
+        />
 
         <div className="relative z-10 w-full px-5 sm:px-10 md:px-16">
           <div className="max-w-7xl mx-auto">
-            <motion.div {...fadeIn(0.1)} className="mb-8 flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-white/50">
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 2.4, ease: [0.22, 1, 0.36, 1] }}
+              className="mb-10 flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-white/50"
+            >
               <span className="font-mono text-secondary">N° 01</span>
               <span className="h-px w-10 bg-white/20" />
               <span>{t("home.hero.kicker")}</span>
             </motion.div>
 
-            <h1
-              className="font-display leading-[0.95] sm:text-7xl md:text-8xl lg:text-[140px] text-white mb-10 max-w-5xl tracking-[-0.02em] text-5xl"
-            >
-              {t("home.hero.titleA")}{" "}
-              <span className="font-display-italic text-gradient-mono-italic">{t("home.hero.titleB")}</span>
-              <br />
-              {t("home.hero.titleC")}{" "}
-              <span className="font-display-italic">{t("home.hero.titleD")}</span>
-              <span className="text-secondary">.</span>
-            </h1>
+            {/* Logo mark replaces the wordmark headline */}
+            <motion.img
+              src={logoWhiteMark}
+              alt="Rubén Muñoz"
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.1, delay: 2.6, ease: [0.22, 1, 0.36, 1] }}
+              className="w-32 sm:w-40 md:w-48 h-auto mb-10 drop-shadow-2xl"
+            />
 
-            <motion.p
-              {...fadeIn(0.3)}
-              className="text-[15px] sm:text-base md:text-lg text-white/65 leading-relaxed max-w-xl mb-10"
+            {/* Slash-style CTA bar */}
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 2.9, ease: [0.22, 1, 0.36, 1] }}
+              className="max-w-xl mb-6"
             >
-              {t("home.hero.description")}
-            </motion.p>
-
-            {/* Slash-style CTA bar (input + button) */}
-            <motion.div {...fadeIn(0.4)} className="max-w-xl mb-6">
               <button
                 onClick={() => document.getElementById("about-section")?.scrollIntoView({ behavior: "smooth" })}
                 className="w-full flex items-center justify-between gap-3 bg-white/[0.04] border border-white/15 rounded-full p-1.5 pl-6 hover:border-white/30 transition-colors group"
@@ -392,7 +428,12 @@ export function Home() {
               </button>
             </motion.div>
 
-            <motion.div {...fadeIn(0.5)} className="flex flex-wrap gap-x-6 gap-y-2 text-[13px] text-white/45">
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 3.1, ease: [0.22, 1, 0.36, 1] }}
+              className="flex flex-wrap gap-x-6 gap-y-2 text-[13px] text-white/45"
+            >
               {LIVE_RACE_ACTIVE && (
                 <Link to="/live-timing-streaming" className="hover:text-white transition-colors inline-flex items-center gap-1.5 text-red-400">
                   <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
@@ -412,6 +453,7 @@ export function Home() {
           </div>
         </div>
       </section>
+
 
       {/* SVG line draw transition */}
       <SectionDividerLine />
