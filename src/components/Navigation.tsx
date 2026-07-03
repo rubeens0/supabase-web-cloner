@@ -16,9 +16,6 @@ export function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [introDone, setIntroDone] = useState(!isHome);
   const [bannerVisible, setBannerVisible] = useState(LIVE_RACE_ACTIVE);
-  const [user, setUser] = useState<SupabaseUser | null>(null);
-  const [userMenuOpen, setUserMenuOpen] = useState(false);
-  const userMenuRef = useRef<HTMLDivElement>(null);
   const { language, setLanguage, t, getRoute } = useLanguage();
 
   useEffect(() => {
