@@ -336,21 +336,40 @@ export function Home() {
       <motion.div
         initial={{ opacity: 1 }}
         animate={{ opacity: 0 }}
-        transition={{ duration: 1.2, delay: 2.2, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 1.1, delay: 2.6, ease: [0.65, 0, 0.35, 1] }}
         onAnimationComplete={() => {
           const el = document.getElementById("home-intro-overlay");
           if (el) el.style.display = "none";
         }}
         id="home-intro-overlay"
-        className="fixed inset-0 z-[80] bg-black flex items-center justify-center pointer-events-none"
+        className="fixed inset-0 z-[100] bg-black flex items-center justify-center pointer-events-none overflow-hidden"
       >
+        {/* Subtle radial glow behind the mark */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.6 }}
+          animate={{ opacity: [0, 0.6, 0.35], scale: [0.6, 1.1, 1.2] }}
+          transition={{ duration: 3.2, times: [0, 0.5, 1], ease: [0.22, 1, 0.36, 1] }}
+          className="absolute w-[60vmin] h-[60vmin] rounded-full"
+          style={{ background: "radial-gradient(circle, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0) 65%)" }}
+        />
         <motion.img
           src={logoWhiteMark}
           alt="Rubén Muñoz"
-          initial={{ opacity: 0, scale: 0.85 }}
-          animate={{ opacity: [0, 1, 1], scale: [0.85, 1, 1.02] }}
-          transition={{ duration: 2.8, times: [0, 0.4, 1], ease: [0.22, 1, 0.36, 1] }}
-          className="w-44 sm:w-56 md:w-72 h-auto drop-shadow-2xl"
+          initial={{ opacity: 0, scale: 0.7, filter: "blur(14px)" }}
+          animate={{
+            opacity: [0, 1, 1, 1],
+            scale: [0.7, 1, 1, 1.04],
+            filter: ["blur(14px)", "blur(0px)", "blur(0px)", "blur(0px)"],
+          }}
+          transition={{ duration: 3.2, times: [0, 0.45, 0.85, 1], ease: [0.22, 1, 0.36, 1] }}
+          className="relative w-44 sm:w-56 md:w-72 h-auto drop-shadow-[0_0_60px_rgba(255,255,255,0.25)]"
+        />
+        {/* Thin line sweep under the mark */}
+        <motion.div
+          initial={{ scaleX: 0, opacity: 0 }}
+          animate={{ scaleX: [0, 1, 1], opacity: [0, 0.7, 0] }}
+          transition={{ duration: 2.6, delay: 0.8, times: [0, 0.5, 1], ease: [0.22, 1, 0.36, 1] }}
+          className="absolute bottom-[38%] h-px w-40 sm:w-56 bg-white/60 origin-center"
         />
       </motion.div>
 
