@@ -31,7 +31,7 @@ export function Business() {
       <section className="relative pt-32 sm:pt-40 pb-16 sm:pb-24 px-5 sm:px-10 md:px-16 border-b border-white/[0.08]">
         <div className="max-w-7xl mx-auto">
           <motion.div {...fadeIn(0.1)}>
-            <SectionLabel index="">{t('business.hero.label')}</SectionLabel>
+            <SectionLabel>{t('business.hero.label')}</SectionLabel>
           </motion.div>
 
           <motion.h1
