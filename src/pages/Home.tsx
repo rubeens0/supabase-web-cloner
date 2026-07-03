@@ -533,7 +533,7 @@ export function Home() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-10 pt-6 border-t border-white/[0.08]">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-10 pt-6 border-t border-white/[0.08]">
             {/* Stats enter from different directions */}
             <motion.div {...slideIn("left", 0)}>
               <div className="font-display text-5xl sm:text-6xl text-white mb-2 tracking-tight">
@@ -546,12 +546,6 @@ export function Home() {
                 CEK<span className="text-secondary">.</span>
               </div>
               <p className="text-sm text-white/50">{t("home.proof.stat2.label")}</p>
-            </motion.div>
-            <motion.div {...slideIn("right", 0.2)}>
-              <div className="font-display text-5xl sm:text-6xl text-white mb-2 tracking-tight">
-                <span className="text-primary">{t("home.proof.stat3.value")}</span>
-              </div>
-              <p className="text-sm text-white/50">{t("home.proof.stat3.label")}</p>
             </motion.div>
           </div>
         </div>
