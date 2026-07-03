@@ -409,18 +409,6 @@ export function Home() {
 
         {/* Centered content */}
         <div className="relative z-10 w-full px-6 sm:px-10 flex flex-col items-center justify-center text-center">
-          {/* Top kicker */}
-          <motion.div
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 4.0, ease: [0.22, 1, 0.36, 1] }}
-            className="mb-10 flex items-center gap-3 text-[11px] uppercase tracking-[0.28em] text-white/50"
-          >
-            <span className="h-px w-10 bg-white/25" />
-            <span className="font-mono text-secondary">N° 01</span>
-            <span>{t("home.hero.kicker")}</span>
-            <span className="h-px w-10 bg-white/25" />
-          </motion.div>
 
           {/* Centered logo mark */}
           <motion.img
