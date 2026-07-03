@@ -560,7 +560,7 @@ export function Home() {
       {/* ============== 03 · QUIÉN SOY — Sticky headline ============== */}
       <section id="about-section" className="border-b border-white/[0.08]">
         <div className="max-w-7xl mx-auto px-5 sm:px-10 md:px-16 py-14 sm:py-20">
-          <SectionLabel index="03">{t("home.about.title")}</SectionLabel>
+          <SectionLabel>{t("home.about.title")}</SectionLabel>
 
           <div className="mt-10 grid lg:grid-cols-12 gap-10 lg:gap-20 items-start">
             <div className="lg:col-span-7">
@@ -623,7 +623,7 @@ export function Home() {
       <section className="border-b border-white/[0.08]">
         <div className="max-w-7xl mx-auto px-5 sm:px-10 md:px-16 py-14 sm:py-20">
           <div className="mb-14 max-w-3xl">
-            <SectionLabel index="04">{t("home.areas.title")}</SectionLabel>
+            <SectionLabel>{t("home.areas.title")}</SectionLabel>
             <motion.h2
               {...slideIn("up")}
               className="mt-6 font-display text-5xl sm:text-6xl md:text-7xl text-white leading-[1] tracking-tight"
@@ -695,7 +695,7 @@ export function Home() {
         <div className="max-w-7xl mx-auto px-5 sm:px-10 md:px-16 py-14 sm:py-20">
           <div className="flex items-end justify-between mb-14">
             <div>
-              <SectionLabel index="05">{t("nav.blog")}</SectionLabel>
+              <SectionLabel>{t("nav.blog")}</SectionLabel>
               <motion.h2
                 {...slideIn("up")}
                 className="mt-6 font-display text-5xl sm:text-6xl md:text-7xl text-white leading-[1] tracking-tight"
@@ -743,7 +743,7 @@ export function Home() {
       {/* ============== 07 · MANIFIESTO — Word-by-word reveal ============== */}
       <section className="border-b border-white/[0.08]">
         <div className="max-w-4xl mx-auto px-5 sm:px-10 md:px-16 py-16 sm:py-24 text-center">
-          <SectionLabel index="07">Manifiesto</SectionLabel>
+          <SectionLabel>Manifiesto</SectionLabel>
           <div className="mt-10 mb-10 flex justify-center">
             <AnimatedLogo size={56} />
           </div>
@@ -764,13 +764,10 @@ export function Home() {
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             className="relative border border-white/10 rounded-3xl overflow-hidden bg-gradient-to-br from-secondary/15 via-black to-black p-8 sm:p-16"
           >
-            <div className="absolute top-6 right-6 font-mono text-[10px] uppercase tracking-[0.22em] text-white/30">
-              N° 08 — CONTACT
-            </div>
             <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-secondary/15 blur-3xl pointer-events-none" />
 
             <div className="relative max-w-3xl">
-              <SectionLabel index="08">Hablemos</SectionLabel>
+              <SectionLabel>Hablemos</SectionLabel>
               <h2 className="mt-6 font-display text-5xl sm:text-6xl md:text-7xl text-white leading-[1] tracking-tight mb-8">
                 ¿Tienes una <span className="font-display-italic text-gradient-mono-italic">propuesta</span>?
                 <br />
