@@ -90,7 +90,7 @@ export function YoutubeRecent() {
       <div className="max-w-7xl mx-auto px-5 sm:px-10 md:px-16 py-14 sm:py-20">
         <div className="flex items-end justify-between mb-14 gap-6 flex-wrap">
           <div>
-            <SectionLabel index="06">YouTube</SectionLabel>
+            <SectionLabel>YouTube</SectionLabel>
             <h2 className="mt-6 font-display text-5xl sm:text-6xl md:text-7xl text-white leading-[1] tracking-tight">
               Vídeos <span className="font-display-italic text-gradient-mono-italic">recientes</span>.
             </h2>
