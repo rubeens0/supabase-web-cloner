@@ -9,7 +9,7 @@ import { useLanguage } from "../contexts/LanguageContext";
 import { useRef } from "react";
 import { LIVE_RACE_ACTIVE, CURRENT_RACE } from "@/config/liveRace";
 import heroImage from "@/assets/ruben-motorland-sunday.jpg";
-import logoWhiteMark from "@/assets/logo-white-optimized.png";
+import logoWhiteMark from "@/assets/x-logo-white.png";
 import aboutImage from "@/assets/about-image.webp";
 import aboutImageAlt from "@/assets/ruben-portrait-grid.jpg";
 import { ImageCompareSlider } from "@/components/ImageCompareSlider";
@@ -336,7 +336,7 @@ export function Home() {
       <motion.div
         initial={{ opacity: 1 }}
         animate={{ opacity: 0 }}
-        transition={{ duration: 1.2, delay: 1.8, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 1.2, delay: 2.2, ease: [0.22, 1, 0.36, 1] }}
         onAnimationComplete={() => {
           const el = document.getElementById("home-intro-overlay");
           if (el) el.style.display = "none";
@@ -347,20 +347,20 @@ export function Home() {
         <motion.img
           src={logoWhiteMark}
           alt="Rubén Muñoz"
-          initial={{ opacity: 0, scale: 0.92 }}
-          animate={{ opacity: [0, 1, 1], scale: [0.92, 1, 1] }}
-          transition={{ duration: 2.4, times: [0, 0.35, 1], ease: [0.22, 1, 0.36, 1] }}
-          className="w-40 sm:w-52 md:w-60 h-auto drop-shadow-2xl"
+          initial={{ opacity: 0, scale: 0.85 }}
+          animate={{ opacity: [0, 1, 1], scale: [0.85, 1, 1.02] }}
+          transition={{ duration: 2.8, times: [0, 0.4, 1], ease: [0.22, 1, 0.36, 1] }}
+          className="w-44 sm:w-56 md:w-72 h-auto drop-shadow-2xl"
         />
       </motion.div>
 
-      {/* ============== 01 · HERO — Logo-forward editorial ============== */}
-      <section className="relative min-h-screen flex items-end overflow-hidden pt-32 sm:pt-40 pb-12 sm:pb-20">
-        {/* Background image with strong fade */}
+      {/* ============== 01 · HERO — Fully centered ============== */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        {/* Background image */}
         <motion.div
-          initial={{ opacity: 0, scale: 1.06 }}
-          animate={{ opacity: 0.9, scale: 1 }}
-          transition={{ duration: 2.4, delay: 2.0, ease: [0.22, 1, 0.36, 1] }}
+          initial={{ opacity: 0, scale: 1.08 }}
+          animate={{ opacity: 0.55, scale: 1 }}
+          transition={{ duration: 2.8, delay: 2.4, ease: [0.22, 1, 0.36, 1] }}
           className="absolute inset-0"
           style={perfSettings.simplifyAnimations ? {} : { willChange: "transform, opacity" }}
         >
@@ -375,85 +375,108 @@ export function Home() {
             height={1080}
           />
         </motion.div>
+
+        {/* Radial vignette centered */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 2, delay: 2.0 }}
-          className="absolute inset-0 bg-gradient-to-t from-black via-black/85 to-black/60"
-        />
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 2, delay: 2.0 }}
-          className="absolute inset-0 bg-gradient-to-r from-black/70 via-transparent to-black/40"
+          transition={{ duration: 2, delay: 2.4 }}
+          className="absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(ellipse at center, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.75) 55%, rgba(0,0,0,0.95) 100%)",
+          }}
         />
 
-        <div className="relative z-10 w-full px-5 sm:px-10 md:px-16">
-          <div className="max-w-7xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 2.4, ease: [0.22, 1, 0.36, 1] }}
-              className="mb-10 flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-white/50"
-            >
-              <span className="font-mono text-secondary">N° 01</span>
-              <span className="h-px w-10 bg-white/20" />
-              <span>{t("home.hero.kicker")}</span>
-            </motion.div>
+        {/* Centered content */}
+        <div className="relative z-10 w-full px-6 sm:px-10 flex flex-col items-center justify-center text-center">
+          {/* Top kicker */}
+          <motion.div
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 2.8, ease: [0.22, 1, 0.36, 1] }}
+            className="mb-10 flex items-center gap-3 text-[11px] uppercase tracking-[0.28em] text-white/50"
+          >
+            <span className="h-px w-10 bg-white/25" />
+            <span className="font-mono text-secondary">N° 01</span>
+            <span>{t("home.hero.kicker")}</span>
+            <span className="h-px w-10 bg-white/25" />
+          </motion.div>
 
-            {/* Logo mark replaces the wordmark headline */}
-            <motion.img
-              src={logoWhiteMark}
-              alt="Rubén Muñoz"
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1.1, delay: 2.6, ease: [0.22, 1, 0.36, 1] }}
-              className="w-32 sm:w-40 md:w-48 h-auto mb-10 drop-shadow-2xl"
-            />
+          {/* Centered logo mark */}
+          <motion.img
+            src={logoWhiteMark}
+            alt="Rubén Muñoz"
+            initial={{ opacity: 0, scale: 0.92 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.4, delay: 2.6, ease: [0.22, 1, 0.36, 1] }}
+            className="w-48 sm:w-64 md:w-80 lg:w-[22rem] h-auto drop-shadow-[0_10px_40px_rgba(0,0,0,0.6)]"
+          />
 
-            {/* Slash-style CTA bar */}
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 2.9, ease: [0.22, 1, 0.36, 1] }}
-              className="max-w-xl mb-6"
+          {/* CTA */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 3.1, ease: [0.22, 1, 0.36, 1] }}
+            className="mt-12 sm:mt-14"
+          >
+            <button
+              onClick={() =>
+                document.getElementById("about-section")?.scrollIntoView({ behavior: "smooth" })
+              }
+              className="inline-flex items-center gap-3 bg-white text-black font-medium rounded-full pl-6 pr-2 py-2 text-sm hover:bg-white/90 transition-colors group"
             >
-              <button
-                onClick={() => document.getElementById("about-section")?.scrollIntoView({ behavior: "smooth" })}
-                className="w-full flex items-center justify-between gap-3 bg-white/[0.04] border border-white/15 rounded-full p-1.5 pl-6 hover:border-white/30 transition-colors group"
+              <span>{t("home.hero.cta")}</span>
+              <span className="w-9 h-9 rounded-full bg-black text-white flex items-center justify-center group-hover:translate-y-0.5 transition-transform">
+                <ArrowDown className="w-4 h-4" />
+              </span>
+            </button>
+          </motion.div>
+
+          {/* Secondary links */}
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 3.4, ease: [0.22, 1, 0.36, 1] }}
+            className="mt-10 flex flex-wrap justify-center gap-x-6 gap-y-2 text-[13px] text-white/50"
+          >
+            {LIVE_RACE_ACTIVE && (
+              <Link
+                to="/live-timing-streaming"
+                className="hover:text-white transition-colors inline-flex items-center gap-1.5 text-red-400"
               >
-                <span className="text-white/55 text-[14px] sm:text-[15px]">{t("home.hero.placeholder")}</span>
-                <span className="bg-white text-black font-medium rounded-full px-5 sm:px-6 py-3 text-sm flex items-center gap-2 group-hover:bg-black group-hover:text-white transition-colors whitespace-nowrap border border-transparent group-hover:border-white/30">
-                  {t("home.hero.cta")} <ArrowDown className="w-3.5 h-3.5" />
-                </span>
-              </button>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 3.1, ease: [0.22, 1, 0.36, 1] }}
-              className="flex flex-wrap gap-x-6 gap-y-2 text-[13px] text-white/45"
-            >
-              {LIVE_RACE_ACTIVE && (
-                <Link to="/live-timing-streaming" className="hover:text-white transition-colors inline-flex items-center gap-1.5 text-red-400">
-                  <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
-                  Directo CEK <ArrowUpRight className="w-3 h-3" />
-                </Link>
-              )}
-              <Link to={getRoute("business")} className="hover:text-white transition-colors inline-flex items-center gap-1">
-                {t("nav.business")} <ArrowUpRight className="w-3 h-3" />
+                <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
+                Directo CEK <ArrowUpRight className="w-3 h-3" />
               </Link>
-              <Link to={getRoute("sponsors")} className="hover:text-white transition-colors inline-flex items-center gap-1">
-                {t("footer.sponsors")} <ArrowUpRight className="w-3 h-3" />
-              </Link>
-              <Link to="/2026" className="hover:text-white transition-colors inline-flex items-center gap-1">
-                {t("home.hero.season")} <ArrowUpRight className="w-3 h-3" />
-              </Link>
-            </motion.div>
-          </div>
+            )}
+            <Link to={getRoute("business")} className="hover:text-white transition-colors inline-flex items-center gap-1">
+              {t("nav.business")} <ArrowUpRight className="w-3 h-3" />
+            </Link>
+            <Link to={getRoute("sponsors")} className="hover:text-white transition-colors inline-flex items-center gap-1">
+              {t("footer.sponsors")} <ArrowUpRight className="w-3 h-3" />
+            </Link>
+            <Link to="/2026" className="hover:text-white transition-colors inline-flex items-center gap-1">
+              {t("home.hero.season")} <ArrowUpRight className="w-3 h-3" />
+            </Link>
+          </motion.div>
         </div>
+
+        {/* Subtle scroll indicator */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.5 }}
+          transition={{ duration: 1, delay: 3.8 }}
+          className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/40"
+        >
+          <motion.div
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <ArrowDown className="w-4 h-4" />
+          </motion.div>
+        </motion.div>
       </section>
+
 
 
       {/* SVG line draw transition */}
