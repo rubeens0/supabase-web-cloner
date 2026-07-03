@@ -11,8 +11,10 @@ import type { User as SupabaseUser } from '@supabase/supabase-js';
 export function Navigation() {
   const location = useLocation();
   const navigate = useNavigate();
+  const isHome = location.pathname === '/' || location.pathname === '/inicio';
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [introDone, setIntroDone] = useState(!isHome);
   const [bannerVisible, setBannerVisible] = useState(LIVE_RACE_ACTIVE);
   const [user, setUser] = useState<SupabaseUser | null>(null);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
