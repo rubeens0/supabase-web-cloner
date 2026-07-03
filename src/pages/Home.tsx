@@ -413,7 +413,7 @@ export function Home() {
           <motion.div
             initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 2.8, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.9, delay: 4.0, ease: [0.22, 1, 0.36, 1] }}
             className="mb-10 flex items-center gap-3 text-[11px] uppercase tracking-[0.28em] text-white/50"
           >
             <span className="h-px w-10 bg-white/25" />
@@ -426,9 +426,9 @@ export function Home() {
           <motion.img
             src={logoWhiteMark}
             alt="Rubén Muñoz"
-            initial={{ opacity: 0, scale: 0.92 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1.4, delay: 2.6, ease: [0.22, 1, 0.36, 1] }}
+            initial={{ opacity: 0, scale: 0.92, filter: "blur(6px)" }}
+            animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+            transition={{ duration: 1.4, delay: 3.8, ease: [0.22, 1, 0.36, 1] }}
             className="w-48 sm:w-64 md:w-80 lg:w-[22rem] h-auto drop-shadow-[0_10px_40px_rgba(0,0,0,0.6)]"
           />
 
@@ -436,7 +436,7 @@ export function Home() {
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 3.1, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.9, delay: 4.2, ease: [0.22, 1, 0.36, 1] }}
             className="mt-12 sm:mt-14"
           >
             <button
@@ -456,7 +456,7 @@ export function Home() {
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 3.4, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.9, delay: 4.5, ease: [0.22, 1, 0.36, 1] }}
             className="mt-10 flex flex-wrap justify-center gap-x-6 gap-y-2 text-[13px] text-white/50"
           >
             {LIVE_RACE_ACTIVE && (
@@ -484,7 +484,7 @@ export function Home() {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.5 }}
-          transition={{ duration: 1, delay: 3.8 }}
+          transition={{ duration: 1, delay: 4.9 }}
           className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/40"
         >
           <motion.div
