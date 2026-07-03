@@ -6,10 +6,9 @@ import { motion } from 'motion/react';
 import { useLanguage } from '../contexts/LanguageContext';
 import netproLogo from '@/assets/netpro-branding.jpg';
 
-function SectionLabel({ index, children }: { index: string; children: React.ReactNode }) {
+function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-white/40">
-      <span className="font-mono text-white">{index}</span>
       <span className="h-px w-8 bg-white/15" />
       <span>{children}</span>
     </div>
@@ -32,7 +31,7 @@ export function Business() {
       <section className="relative pt-32 sm:pt-40 pb-16 sm:pb-24 px-5 sm:px-10 md:px-16 border-b border-white/[0.08]">
         <div className="max-w-7xl mx-auto">
           <motion.div {...fadeIn(0.1)}>
-            <SectionLabel index="">{t('business.hero.label')}</SectionLabel>
+            <SectionLabel>{t('business.hero.label')}</SectionLabel>
           </motion.div>
 
           <motion.h1
@@ -126,7 +125,7 @@ function BusinessSection({
       <div className={`flex flex-col ${reverse ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-10 lg:gap-20 items-start`}>
         {/* Content */}
         <div className="flex-1 order-2 lg:order-none">
-          <SectionLabel index={index}>{subtitle}</SectionLabel>
+          <SectionLabel>{subtitle}</SectionLabel>
 
           <LinkWrapper className="block mt-6">
             <h2 className="font-display text-5xl sm:text-6xl md:text-7xl text-white leading-[1] tracking-tight group-hover:translate-x-1 transition-transform duration-500">
