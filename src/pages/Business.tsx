@@ -125,7 +125,7 @@ function BusinessSection({
       <div className={`flex flex-col ${reverse ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-10 lg:gap-20 items-start`}>
         {/* Content */}
         <div className="flex-1 order-2 lg:order-none">
-          <SectionLabel index={index}>{subtitle}</SectionLabel>
+          <SectionLabel>{subtitle}</SectionLabel>
 
           <LinkWrapper className="block mt-6">
             <h2 className="font-display text-5xl sm:text-6xl md:text-7xl text-white leading-[1] tracking-tight group-hover:translate-x-1 transition-transform duration-500">
