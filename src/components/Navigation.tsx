@@ -120,7 +120,11 @@ export function Navigation() {
       <motion.nav
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+        transition={{
+          duration: location.pathname === '/' ? 1.4 : 0.4,
+          delay: location.pathname === '/' ? 2.2 : 0,
+          ease: [0.22, 1, 0.36, 1],
+        }}
         className={`fixed left-0 right-0 z-50 transition-all duration-300 ${
           bannerVisible ? 'top-[40px] sm:top-[42px]' : 'top-0'
         } ${
