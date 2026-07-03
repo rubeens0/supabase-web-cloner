@@ -1,44 +1,18 @@
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
-import { Menu, X, ArrowRight, User, LogOut, Mail } from 'lucide-react';
-import logoX from '@/assets/logo-x-white.webp';
+import { Menu, X, ArrowRight } from 'lucide-react';
 import { LIVE_RACE_ACTIVE } from '@/config/liveRace';
-import { supabase } from '@/integrations/supabase/client';
-import type { User as SupabaseUser } from '@supabase/supabase-js';
 
 export function Navigation() {
   const location = useLocation();
-  const navigate = useNavigate();
   const isHome = location.pathname === '/' || location.pathname === '/inicio';
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [introDone, setIntroDone] = useState(!isHome);
   const [bannerVisible, setBannerVisible] = useState(LIVE_RACE_ACTIVE);
   const { language, setLanguage, t, getRoute } = useLanguage();
-
-  useEffect(() => {
-    supabase.auth.getSession().then(({ data }) => setUser(data.session?.user ?? null));
-    const { data: sub } = supabase.auth.onAuthStateChange((_evt, session) => {
-      setUser(session?.user ?? null);
-    });
-    return () => sub.subscription.unsubscribe();
-  }, []);
-
-  useEffect(() => {
-    const handleClick = (e: MouseEvent) => {
-      if (userMenuRef.current && !userMenuRef.current.contains(e.target as Node)) {
-        setUserMenuOpen(false);
-      }
-    };
-    if (userMenuOpen) document.addEventListener('mousedown', handleClick);
-    return () => document.removeEventListener('mousedown', handleClick);
-  }, [userMenuOpen]);
-
-  useEffect(() => {
-    setUserMenuOpen(false);
-  }, [location.pathname]);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 8);
@@ -66,15 +40,6 @@ export function Navigation() {
   const toggleLanguage = useCallback(() => {
     setLanguage(language === 'es' ? 'en' : 'es');
   }, [language, setLanguage]);
-
-  const handleSignOut = useCallback(async () => {
-    await supabase.auth.signOut();
-    setUserMenuOpen(false);
-    navigate('/');
-  }, [navigate]);
-
-  const userInitial = (user?.email?.[0] ?? user?.user_metadata?.name?.[0] ?? '').toUpperCase();
-  const isEs = language === 'es';
 
   const navItems = [
     { to: getRoute('home'), label: t('nav.home'), match: [getRoute('home'), '/'] },
@@ -140,16 +105,6 @@ export function Navigation() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-8 py-4 sm:py-5 flex items-center justify-between">
-          {/* Logo — X mark */}
-          <Link to="/" className="group flex items-center" aria-label="Rubén Muñoz">
-            <img
-              src={logoX}
-              alt="Rubén Muñoz"
-              className="h-8 sm:h-9 w-auto object-contain group-hover:opacity-80 transition-opacity"
-              loading="eager"
-            />
-          </Link>
-
           {/* Desktop nav links — minimal underline */}
           <div className="hidden md:flex items-center gap-8">
             {navItems.map((item) => {
@@ -184,81 +139,6 @@ export function Navigation() {
               <span className="text-white/30">/</span>
               <span className="text-white/30">{language === 'es' ? 'en' : 'es'}</span>
             </button>
-
-            {/* User / Auth */}
-            <div className="relative" ref={userMenuRef}>
-              {user ? (
-                <button
-                  onClick={() => setUserMenuOpen((v) => !v)}
-                  aria-label={isEs ? 'Cuenta' : 'Account'}
-                  className="h-9 w-9 rounded-full bg-white text-black text-[13px] font-medium flex items-center justify-center hover:bg-secondary hover:text-white transition-colors"
-                >
-                  {userInitial || <User className="w-4 h-4" />}
-                </button>
-              ) : (
-                <button
-                  onClick={() => setUserMenuOpen((v) => !v)}
-                  aria-label={isEs ? 'Iniciar sesión' : 'Sign in'}
-                  className="h-9 w-9 rounded-full border border-white/15 text-white/80 flex items-center justify-center hover:border-white hover:text-white transition-colors"
-                >
-                  <User className="w-4 h-4" />
-                </button>
-              )}
-
-              <AnimatePresence>
-                {userMenuOpen && (
-                  <motion.div
-                    initial={{ opacity: 0, y: -6, scale: 0.98 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: -6, scale: 0.98 }}
-                    transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
-                    className="absolute right-0 mt-3 w-72 rounded-2xl bg-black/95 backdrop-blur-xl border border-white/[0.08] shadow-2xl overflow-hidden"
-                  >
-                    {user ? (
-                      <div className="p-4">
-                        <div className="text-[10px] uppercase tracking-[0.18em] text-white/40 mb-1">
-                          {isEs ? 'Sesión iniciada' : 'Signed in'}
-                        </div>
-                        <div className="text-[13px] text-white truncate mb-4">{user.email}</div>
-                        <button
-                          onClick={handleSignOut}
-                          className="w-full inline-flex items-center justify-between gap-2 text-[13px] text-white/80 hover:text-white border border-white/10 hover:border-white/30 rounded-full px-4 py-2.5 transition-colors"
-                        >
-                          {isEs ? 'Cerrar sesión' : 'Sign out'}
-                          <LogOut className="w-3.5 h-3.5" />
-                        </button>
-                      </div>
-                    ) : (
-                      <div className="p-5">
-                        <div className="text-[10px] uppercase tracking-[0.18em] text-white/40 mb-2">
-                          N° 01 — {isEs ? 'Acceso' : 'Access'}
-                        </div>
-                        <h3 className="font-display text-2xl text-white leading-tight mb-2">
-                          {isEs ? 'Únete al paddock.' : 'Join the paddock.'}
-                        </h3>
-                        <p className="text-[12.5px] text-white/55 leading-relaxed mb-4">
-                          {isEs
-                            ? 'Recibe novedades, contenido exclusivo, contenido de alto valor y oportunidades directamente en tu correo.'
-                            : 'Get race updates, exclusive content and sponsor opportunities straight to your inbox.'}
-                        </p>
-                        <Link
-                          to="/auth"
-                          onClick={() => setUserMenuOpen(false)}
-                          className="w-full inline-flex items-center justify-between gap-2 bg-white text-black text-[13px] font-medium rounded-full px-4 py-2.5 hover:bg-secondary hover:text-white transition-colors"
-                        >
-                          {isEs ? 'Iniciar sesión / Registrarse' : 'Sign in / Sign up'}
-                          <ArrowRight className="w-3.5 h-3.5" />
-                        </Link>
-                        <div className="mt-3 flex items-center gap-2 text-[11px] text-white/35">
-                          <Mail className="w-3 h-3" />
-                          {isEs ? 'Sin spam. Cancela cuando quieras.' : 'No spam. Unsubscribe anytime.'}
-                        </div>
-                      </div>
-                    )}
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
 
             <Link
               to={getRoute('contact')}
