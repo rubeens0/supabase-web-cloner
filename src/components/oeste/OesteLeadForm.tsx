@@ -205,7 +205,7 @@ export function OesteLeadForm({ selectedOffer, onClearOffer }: Props = {}) {
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-white mb-1.5">Dirección (Cáceres)</label>
+        <label className="block text-sm font-medium text-white mb-1.5">Dirección</label>
         <input
           type="text"
           autoComplete="street-address"
