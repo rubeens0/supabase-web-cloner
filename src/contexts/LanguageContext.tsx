@@ -472,7 +472,7 @@ const translations = {
       'Diseño gráfico, fotografía, vídeo y copy pensados para destacar tu marca en cada carrera.',
     'sponsors.netpro.feat3': 'Resultados medibles',
     'sponsors.netpro.feat3desc':
-      'Campañas en Meta Ads con seguimiento, optimización y reporting claro para cada patrocinador.',
+      'Campañas de marketing con seguimiento, optimización y reporting claro para cada patrocinador.',
     'sponsors.netpro.cta': 'Conocer Netpro Agency',
     'sponsors.netpro.cardQuote': 'Tu marca no se suma a un piloto. Se integra en un proyecto de marketing deportivo.',
     'sponsors.netpro.statValue': '100%',
