@@ -457,21 +457,41 @@ const translations = {
       'Busco aliados que quieran formar parte de este viaje, que crean en el potencial de un piloto joven y comprometido, y que entiendan que un patrocinio no es solo visibilidad, sino una colaboración auténtica que genera valor para ambas partes.',
     'sponsors.intro.p3':
       'Si buscas algo diferente, un proyecto con proyección y un piloto que trabaja cada día para ser mejor, este es el momento de unirte.',
-    'sponsors.valueAdd.title': 'Más que un piloto: tu aliado en marketing digital',
+    'sponsors.netpro.badge': 'Gestionado por',
+    'sponsors.netpro.strip':
+      'Toda la estrategia de marketing, creación de contenido y gestión del patrocinio corre a cargo de Netpro Agency, mi propia agencia de marketing especializada en motorsport.',
+    'sponsors.netpro.label': 'Marketing profesional',
+    'sponsors.netpro.title': 'Motor de marketing Netpro Agency',
+    'sponsors.netpro.description':
+      'Detrás de cada campaña, pieza creativa y acción de patrocinio hay un equipo profesional: Netpro Agency. Mi propia agencia se encarga de diseñar la identidad de marca, producir contenido de calidad, gestionar redes sociales y ejecutar campañas publicitarias en Meta Ads para maximizar el retorno de cada patrocinador.',
+    'sponsors.netpro.feat1': 'Estrategia 360º',
+    'sponsors.netpro.feat1desc':
+      'Branding, contenido, redes y publicidad trabajando en conjunto bajo un mismo objetivo.',
+    'sponsors.netpro.feat2': 'Contenido de calidad',
+    'sponsors.netpro.feat2desc':
+      'Diseño gráfico, fotografía, vídeo y copy pensados para destacar tu marca en cada carrera.',
+    'sponsors.netpro.feat3': 'Resultados medibles',
+    'sponsors.netpro.feat3desc':
+      'Campañas en Meta Ads con seguimiento, optimización y reporting claro para cada patrocinador.',
+    'sponsors.netpro.cta': 'Conocer Netpro Agency',
+    'sponsors.netpro.cardQuote': 'Tu marca no se suma a un piloto. Se integra en un proyecto de marketing deportivo.',
+    'sponsors.netpro.statValue': '100%',
+    'sponsors.netpro.statLabel': 'Marketing gestionado por Netpro',
+    'sponsors.valueAdd.title': 'Más que un piloto: un proyecto con marketing profesional',
     'sponsors.valueAdd.description':
-      'A diferencia de otros pilotos, gestiono personalmente campañas de marketing en redes sociales. Combino la creatividad con el deporte, garantizando que tu marca sea representada con profesionalidad y una estrategia digital eficaz. Tu patrocinio tendrá el respaldo de contenido de calidad gestionado por mí.',
+      'A diferencia de otros pilotos, mi proyecto deportivo cuenta con el respaldo de Netpro Agency: mi propia agencia de marketing especializada en motorsport. Diseñamos campañas, contenido y estrategia digital para que tu patrocinio tenga visibilidad real, profesionalidad y resultados medibles.',
     'sponsors.valueAdd.lead': 'A diferencia de otros pilotos,',
-    'sponsors.valueAdd.leadHi': 'no delego mi marca.',
-    'sponsors.valueAdd.pillar1.label': 'Marketing en primera persona',
+    'sponsors.valueAdd.leadHi': 'mi proyecto tiene agencia propia.',
+    'sponsors.valueAdd.pillar1.label': 'Marketing profesional en motorsport',
     'sponsors.valueAdd.pillar1.body':
-      'Gestiono personalmente cada campaña en redes sociales. Sin intermediarios, sin agencias intermedias.',
+      'Netpro Agency gestiona cada campaña y pieza creativa con conocimiento real del mundo del karting y el automovilismo.',
     'sponsors.valueAdd.pillar2.label': 'Creatividad + deporte',
     'sponsors.valueAdd.pillar2.body':
-      'Uno la narrativa visual con el rendimiento en pista para conectar con la audiencia adecuada.',
+      'Unimos la narrativa visual con el rendimiento en pista para conectar con la audiencia adecuada.',
     'sponsors.valueAdd.pillar3.label': 'Estrategia digital eficaz',
     'sponsors.valueAdd.pillar3.body':
       'Tu marca representada con profesionalidad, contenido de calidad y resultados medibles.',
-    'sponsors.valueAdd.signoff': 'Tu patrocinio, gestionado por mí.',
+    'sponsors.valueAdd.signoff': 'Tu patrocinio, gestionado por Netpro Agency.',
     'sponsors.why.title': '¿Por qué patrocinarme?',
     'sponsors.why.card1.title': 'Visibilidad nacional',
     'sponsors.why.card1.desc':
@@ -950,21 +970,41 @@ const translations = {
       'I\u2019m looking for partners who want to be part of this journey, who believe in the potential of a young, committed driver, and who understand that sponsorship isn\u2019t just visibility — it\u2019s a real collaboration that creates value for both sides.',
     'sponsors.intro.p3':
       'If you\u2019re after something different — a project with momentum and a driver who works every day to get better — this is the moment to join.',
-    'sponsors.valueAdd.title': 'More than a driver: your digital marketing partner',
+    'sponsors.netpro.badge': 'Managed by',
+    'sponsors.netpro.strip':
+      'All marketing strategy, content creation and sponsorship management is handled by Netpro Agency, my own motorsport marketing agency.',
+    'sponsors.netpro.label': 'Professional marketing',
+    'sponsors.netpro.title': 'Netpro Agency marketing engine',
+    'sponsors.netpro.description':
+      'Behind every campaign, creative asset and sponsorship activation is a professional team: Netpro Agency. My own agency designs brand identity, produces quality content, manages social channels and runs Meta Ads campaigns to maximize return for every sponsor.',
+    'sponsors.netpro.feat1': '360º strategy',
+    'sponsors.netpro.feat1desc':
+      'Branding, content, social media and advertising working together toward one goal.',
+    'sponsors.netpro.feat2': 'Quality content',
+    'sponsors.netpro.feat2desc':
+      'Graphic design, photography, video and copy crafted to make your brand stand out at every race.',
+    'sponsors.netpro.feat3': 'Measurable results',
+    'sponsors.netpro.feat3desc':
+      'Meta Ads campaigns with tracking, optimization and clear reporting for every sponsor.',
+    'sponsors.netpro.cta': 'Discover Netpro Agency',
+    'sponsors.netpro.cardQuote': 'Your brand doesn\u2019t just join a driver. It becomes part of a sports marketing project.',
+    'sponsors.netpro.statValue': '100%',
+    'sponsors.netpro.statLabel': 'Marketing managed by Netpro',
+    'sponsors.valueAdd.title': 'More than a driver: a project with professional marketing',
     'sponsors.valueAdd.description':
-      'Unlike most drivers, I personally run social media marketing campaigns. I combine creativity with sport to ensure your brand is represented with professionalism and an effective digital strategy. Your sponsorship is backed by quality content, managed by me.',
+      'Unlike most drivers, my sporting project is backed by Netpro Agency: my own motorsport marketing agency. We design campaigns, content and digital strategy so your sponsorship gets real visibility, professionalism and measurable results.',
     'sponsors.valueAdd.lead': 'Unlike most drivers,',
-    'sponsors.valueAdd.leadHi': 'I don\u2019t outsource my brand.',
-    'sponsors.valueAdd.pillar1.label': 'Marketing, first-hand',
+    'sponsors.valueAdd.leadHi': 'my project has its own agency.',
+    'sponsors.valueAdd.pillar1.label': 'Professional motorsport marketing',
     'sponsors.valueAdd.pillar1.body':
-      'I personally run every social media campaign. No middlemen, no detached agencies.',
+      'Netpro Agency manages every campaign and creative asset with real knowledge of karting and motorsport.',
     'sponsors.valueAdd.pillar2.label': 'Creativity + sport',
     'sponsors.valueAdd.pillar2.body':
-      'I merge visual storytelling with on-track performance to reach the right audience.',
+      'We merge visual storytelling with on-track performance to reach the right audience.',
     'sponsors.valueAdd.pillar3.label': 'Effective digital strategy',
     'sponsors.valueAdd.pillar3.body':
       'Your brand represented with professionalism, quality content and measurable results.',
-    'sponsors.valueAdd.signoff': 'Your sponsorship, managed by me.',
+    'sponsors.valueAdd.signoff': 'Your sponsorship, managed by Netpro Agency.',
     'sponsors.why.title': 'Why sponsor me?',
     'sponsors.why.card1.title': 'National visibility',
     'sponsors.why.card1.desc':
