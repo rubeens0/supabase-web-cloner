@@ -306,14 +306,14 @@ export function Sponsors() {
                   alt="Netpro Agency"
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/20" />
                 <div className="absolute bottom-0 left-0 right-0 p-8 sm:p-10">
-                  <p className="font-display-italic text-2xl sm:text-3xl text-white leading-tight">
+                  <p className="font-display-italic text-2xl sm:text-3xl text-white leading-tight drop-shadow-[0_2px_12px_rgba(0,0,0,0.8)]">
                     {t('sponsors.netpro.cardQuote')}
                   </p>
                   <div className="mt-4 flex items-center gap-3">
                     <div className="h-px flex-1 bg-white/20" />
-                    <span className="text-[11px] uppercase tracking-[0.22em] text-white/50">Netpro Agency</span>
+                    <span className="text-[11px] uppercase tracking-[0.22em] text-white/70">Netpro Agency</span>
                   </div>
                 </div>
               </div>
