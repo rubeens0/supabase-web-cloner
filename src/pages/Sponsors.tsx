@@ -1,19 +1,18 @@
 import { motion } from 'motion/react';
 import { useLanguage } from '../contexts/LanguageContext';
-import { Trophy, Users, Sparkles, Mail, X, ArrowUpRight, ArrowRight, ZoomIn, ZoomOut, RotateCcw, Download, Maximize2 } from 'lucide-react';
+import { Trophy, Users, Sparkles, Mail, X, ArrowUpRight, ArrowRight, ZoomIn, ZoomOut, RotateCcw, Download, Maximize2, Rocket, Target, BarChart3 } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Link } from 'react-router-dom';
 import { SEO } from '../components/SEO';
 import { useState, useEffect, useRef } from 'react';
 import { AnimatePresence } from 'motion/react';
 import heroImage from '@/assets/sponsors-event.png';
-
 import sponsorsImage from '@/assets/banner-patrocinadores-2026.png';
+import netproLogo from '@/assets/netpro-branding.jpg';
 
-function SectionLabel({ index, children }: { index: string; children: React.ReactNode }) {
+function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-white/40">
-      <span className="font-mono text-white">{index}</span>
       <span className="h-px w-8 bg-white/15" />
       <span>{children}</span>
     </div>
@@ -85,6 +84,12 @@ export function Sponsors() {
     { icon: Users, title: t('sponsors.why.card3.title'), description: t('sponsors.why.card3.desc') },
   ];
 
+  const netproFeatures = [
+    { icon: Target, label: t('sponsors.netpro.feat1'), desc: t('sponsors.netpro.feat1desc') },
+    { icon: Rocket, label: t('sponsors.netpro.feat2'), desc: t('sponsors.netpro.feat2desc') },
+    { icon: BarChart3, label: t('sponsors.netpro.feat3'), desc: t('sponsors.netpro.feat3desc') },
+  ];
+
   return (
     <div className="min-h-screen bg-black text-white">
       <SEO
@@ -95,17 +100,17 @@ export function Sponsors() {
         }
         description={
           language === 'es'
-            ? 'Patrocinar a Rubén Muñoz, piloto de karting extremeño de Cáceres. Compitiendo en el Campeonato de España de Karting 2025. Oportunidades de patrocinio deportivo con valor añadido en marketing digital. Piloto joven con experiencia en Meta Ads y TikTok Ads.'
-            : 'Sponsor Rubén Muñoz, karting driver from Extremadura, Cáceres. Competing in the 2025 Spanish Karting Championship. Sports sponsorship opportunities with added value in digital marketing. Young driver with expertise in Meta Ads and TikTok Ads.'
+            ? 'Patrocinar a Rubén Muñoz, piloto de karting extremeño de Cáceres. Compitiendo en el Campeonato de España de Karting 2026. Oportunidades de patrocinio deportivo con valor añadido en marketing digital gestionado por Netpro Agency.'
+            : 'Sponsor Rubén Muñoz, karting driver from Extremadura, Cáceres. Competing in the 2026 Spanish Karting Championship. Sports sponsorship opportunities with added value in digital marketing managed by Netpro Agency.'
         }
         keywords={
           language === 'es'
-            ? 'patrocinar piloto karting, piloto karting extremeño, piloto karting Cáceres, Rubén Muñoz, patrocinio deportivo, karting España, Campeonato España Karting, piloto karting español, patrocinio karting, sponsor karting, piloto joven Extremadura, karting Extremadura 2025'
-            : 'sponsor karting driver, karting driver Extremadura, Spanish karting driver, Rubén Muñoz, sports sponsorship, karting Spain, Spanish Karting Championship, Spanish karting pilot, karting sponsorship, young driver Spain, Extremadura karting 2025'
+            ? 'patrocinar piloto karting, piloto karting extremeño, piloto karting Cáceres, Rubén Muñoz, patrocinio deportivo, karting España, Campeonato España Karting, piloto karting español, patrocinio karting, sponsor karting, piloto joven Extremadura, karting Extremadura 2026, Netpro Agency'
+            : 'sponsor karting driver, karting driver Extremadura, Spanish karting driver, Rubén Muñoz, sports sponsorship, karting Spain, Spanish Karting Championship, Spanish karting pilot, karting sponsorship, young driver Spain, Extremadura karting 2026, Netpro Agency'
         }
       />
 
-      {/* ============== 01 · HERO ============== */}
+      {/* ============== HERO ============== */}
       <section className="relative pt-32 sm:pt-40 pb-16 sm:pb-24 overflow-hidden border-b border-white/[0.08]">
         <div className="absolute inset-0">
           <img src={heroImage} alt="Karting" className="w-full h-full object-cover opacity-25" />
@@ -114,7 +119,7 @@ export function Sponsors() {
 
         <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-10 md:px-16">
           <motion.div {...fadeIn(0.1)}>
-            <SectionLabel index="N° 01">Sponsorship</SectionLabel>
+            <SectionLabel>Sponsorship</SectionLabel>
           </motion.div>
 
           <motion.h1
@@ -133,7 +138,6 @@ export function Sponsors() {
             <span className="text-white/40">.</span>
           </motion.h1>
 
-          {/* Tagline pill */}
           <motion.p
             {...fadeIn(0.3)}
             className="mt-10 font-display-italic text-2xl sm:text-3xl md:text-4xl text-white/85 leading-snug max-w-3xl"
@@ -148,7 +152,6 @@ export function Sponsors() {
             {t('sponsors.hero.description')}
           </motion.p>
 
-          {/* CTAs */}
           <motion.div {...fadeIn(0.5)} className="mt-10 flex flex-wrap gap-3">
             <Link to={getRoute('contact')}>
               <Button className="rounded-full h-12 px-7 bg-white text-black hover:bg-white/90 gap-2">
@@ -182,10 +185,33 @@ export function Sponsors() {
         </div>
       </section>
 
-      {/* ============== 02 · INTRO ============== */}
+      {/* ============== NETPRO AGENCY STRIP ============== */}
+      <section className="border-b border-white/[0.08] bg-gradient-to-b from-white/[0.03] to-transparent">
+        <div className="max-w-7xl mx-auto px-5 sm:px-10 md:px-16 py-10 sm:py-14">
+          <motion.div
+            {...fadeIn(0)}
+            className="flex flex-col md:flex-row items-center justify-between gap-6 md:gap-10"
+          >
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center overflow-hidden">
+                <img src={netproLogo} alt="Netpro Agency" className="w-8 h-8 object-contain" />
+              </div>
+              <div>
+                <p className="text-[11px] uppercase tracking-[0.22em] text-white/40">{t('sponsors.netpro.badge')}</p>
+                <p className="mt-1 font-display text-xl sm:text-2xl text-white">Netpro Agency</p>
+              </div>
+            </div>
+            <p className="text-white/60 text-sm sm:text-base max-w-xl text-center md:text-right leading-relaxed">
+              {t('sponsors.netpro.strip')}
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ============== INTRO ============== */}
       <section className="border-b border-white/[0.08] px-5 sm:px-10 md:px-16 py-24 sm:py-32">
         <div className="max-w-7xl mx-auto">
-          <SectionLabel index="02">{t('sponsors.intro.title')}</SectionLabel>
+          <SectionLabel>{t('sponsors.intro.title')}</SectionLabel>
 
           <h2 className="mt-6 font-display text-5xl sm:text-6xl md:text-7xl text-white leading-[1.05] tracking-tight max-w-4xl mb-14">
             {t('sponsors.intro.title')}
@@ -209,9 +235,107 @@ export function Sponsors() {
         </div>
       </section>
 
-      {/* ============== 03 · VALUE ADD ============== */}
+      {/* ============== NETPRO ENGINE ============== */}
+      <section className="relative border-b border-white/[0.08] px-5 sm:px-10 md:px-16 py-24 sm:py-32 overflow-hidden">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -top-32 -right-32 w-[28rem] h-[28rem] rounded-full opacity-[0.12] blur-[120px]"
+          style={{ background: 'radial-gradient(circle, rgba(255,255,255,0.5), transparent 70%)' }}
+        />
+
+        <div className="relative max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <motion.div {...fadeIn(0.1)}>
+              <SectionLabel>{t('sponsors.netpro.label')}</SectionLabel>
+              <h2 className="mt-6 font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white leading-[1.05] tracking-tight">
+                {t('sponsors.netpro.title').split(' ').map((word, i, arr) =>
+                  i === arr.length - 1 ? (
+                    <span key={i} className="font-display-italic text-gradient-mono-italic">
+                      {word}
+                    </span>
+                  ) : (
+                    <span key={i}>{word} </span>
+                  )
+                )}
+                <span className="text-white/40">.</span>
+              </h2>
+              <p className="mt-8 text-white/60 text-base sm:text-lg leading-relaxed max-w-xl">
+                {t('sponsors.netpro.description')}
+              </p>
+
+              <div className="mt-10 grid sm:grid-cols-1 gap-4">
+                {netproFeatures.map((feat, i) => (
+                  <motion.div
+                    key={i}
+                    {...fadeIn(0.2 + i * 0.1)}
+                    className="flex items-start gap-4 p-4 rounded-2xl border border-white/[0.08] bg-white/[0.02] hover:bg-white/[0.04] transition-colors"
+                  >
+                    <div className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
+                      <feat.icon className="w-4 h-4 text-white/70" />
+                    </div>
+                    <div>
+                      <p className="font-display text-lg text-white">{feat.label}</p>
+                      <p className="text-white/50 text-sm leading-relaxed mt-1">{feat.desc}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+
+              <a
+                href="https://netpro.agency"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block mt-10"
+              >
+                <Button
+                  variant="outline"
+                  className="rounded-full h-12 px-7 border-white/20 bg-transparent text-white hover:bg-white hover:text-black hover:border-white gap-2"
+                >
+                  {t('sponsors.netpro.cta')} <ArrowUpRight className="w-4 h-4" />
+                </Button>
+              </a>
+            </motion.div>
+
+            <motion.div
+              {...fadeIn(0.2)}
+              className="relative"
+            >
+              <div className="relative aspect-[4/3] rounded-3xl overflow-hidden border border-white/10 bg-white/[0.02]">
+                <img
+                  src={netproLogo}
+                  alt="Netpro Agency"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-8 sm:p-10">
+                  <p className="font-display-italic text-2xl sm:text-3xl text-white leading-tight">
+                    {t('sponsors.netpro.cardQuote')}
+                  </p>
+                  <div className="mt-4 flex items-center gap-3">
+                    <div className="h-px flex-1 bg-white/20" />
+                    <span className="text-[11px] uppercase tracking-[0.22em] text-white/50">Netpro Agency</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Floating stat */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                className="absolute -bottom-6 -left-6 sm:-bottom-8 sm:-left-8 bg-black border border-white/10 rounded-2xl p-5 shadow-2xl"
+              >
+                <p className="font-display text-3xl sm:text-4xl text-white">{t('sponsors.netpro.statValue')}</p>
+                <p className="text-white/50 text-xs uppercase tracking-[0.15em] mt-1">{t('sponsors.netpro.statLabel')}</p>
+              </motion.div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* ============== VALUE ADD ============== */}
       <section id="value-add-section" className="relative border-b border-white/[0.08] px-5 sm:px-10 md:px-16 py-24 sm:py-32 overflow-hidden">
-        {/* Ambient gradient glow */}
         <div
           aria-hidden
           className="pointer-events-none absolute -top-32 -left-32 w-[28rem] h-[28rem] rounded-full opacity-[0.18] blur-[120px]"
@@ -224,9 +348,8 @@ export function Sponsors() {
         />
 
         <div className="relative max-w-6xl mx-auto">
-          <SectionLabel index="03">{t('sponsors.valueAdd.title')}</SectionLabel>
+          <SectionLabel>{t('sponsors.valueAdd.title')}</SectionLabel>
 
-          {/* Lead pull-quote */}
           <motion.h3
             {...fadeIn(0.05)}
             className="mt-10 font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white leading-[1.05] tracking-tight max-w-5xl"
@@ -239,7 +362,6 @@ export function Sponsors() {
             <span className="font-display-italic text-gradient-mono-italic align-top ml-1">”</span>
           </motion.h3>
 
-          {/* Animated divider */}
           <motion.div
             initial={{ scaleX: 0, opacity: 0 }}
             whileInView={{ scaleX: 1, opacity: 1 }}
@@ -248,7 +370,6 @@ export function Sponsors() {
             className="origin-left mt-14 sm:mt-20 h-px bg-gradient-to-r from-white/40 via-white/15 to-transparent"
           />
 
-          {/* Three pillars */}
           <div className="mt-12 sm:mt-14 grid md:grid-cols-3 gap-10 md:gap-8">
             {[1, 2, 3].map((n, i) => (
               <motion.div
@@ -272,7 +393,6 @@ export function Sponsors() {
             ))}
           </div>
 
-          {/* Sign-off */}
           <motion.p
             {...fadeIn(0.55)}
             className="mt-16 sm:mt-20 font-display-italic text-xl sm:text-2xl md:text-3xl text-white/85 leading-snug"
@@ -283,11 +403,11 @@ export function Sponsors() {
         </div>
       </section>
 
-      {/* ============== 04 · WHY ============== */}
+      {/* ============== WHY ============== */}
       <section className="border-b border-white/[0.08] px-5 sm:px-10 md:px-16 py-24 sm:py-32">
         <div className="max-w-7xl mx-auto">
           <div className="mb-14 max-w-3xl">
-            <SectionLabel index="04">{t('sponsors.why.title')}</SectionLabel>
+            <SectionLabel>{t('sponsors.why.title')}</SectionLabel>
             <h2 className="mt-6 font-display text-5xl sm:text-6xl md:text-7xl text-white leading-[1.05] tracking-tight">
               {t('sponsors.why.title')}
               <span className="text-white/40">.</span>
@@ -317,12 +437,12 @@ export function Sponsors() {
         </div>
       </section>
 
-      {/* ============== 05 · SPONSORS IMAGE ============== */}
+      {/* ============== SPONSORS IMAGE ============== */}
       <section id="sponsors-section" className="border-b border-white/[0.08] px-5 sm:px-10 md:px-16 py-20 sm:py-28">
         <div className="max-w-7xl mx-auto">
           <div className="flex items-end justify-between mb-10">
             <div>
-              <SectionLabel index="05">{language === 'es' ? 'Patrocinadores' : 'Sponsors'}</SectionLabel>
+              <SectionLabel>{language === 'es' ? 'Patrocinadores' : 'Sponsors'}</SectionLabel>
               <h2 className="mt-6 font-display text-4xl sm:text-5xl md:text-6xl text-white tracking-tight leading-tight">
                 {language === 'es' ? (
                   <>
@@ -359,10 +479,10 @@ export function Sponsors() {
         </div>
       </section>
 
-      {/* ============== 06 · CTA ============== */}
+      {/* ============== CTA ============== */}
       <section className="px-5 sm:px-10 md:px-16 py-24 sm:py-40">
         <div className="max-w-4xl mx-auto text-center">
-          <SectionLabel index="06">{t('sponsors.cta.title')}</SectionLabel>
+          <SectionLabel>{t('sponsors.cta.title')}</SectionLabel>
           <motion.h2
             {...fadeIn(0.1)}
             className="mt-8 font-display text-4xl sm:text-6xl md:text-7xl text-white leading-[1.05] tracking-tight mb-8"
@@ -392,7 +512,7 @@ export function Sponsors() {
         </div>
       </section>
 
-      {/* Lightbox — Editorial viewer */}
+      {/* Lightbox */}
       <AnimatePresence>
         {showSponsorsLightbox && (
           <motion.div
@@ -407,10 +527,8 @@ export function Sponsors() {
               backgroundSize: '24px 24px',
             }}
           >
-            {/* Top bar */}
             <div className="relative z-10 flex items-center justify-between px-4 sm:px-8 py-4 border-b border-white/10 bg-black/40 backdrop-blur-md">
               <div className="flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-white/50">
-                <span className="font-mono text-white">N° 05</span>
                 <span className="h-px w-8 bg-white/20" />
                 <span className="hidden sm:inline">{language === 'es' ? 'Patrocinadores · 2026' : 'Sponsors · 2026'}</span>
               </div>
@@ -424,7 +542,6 @@ export function Sponsors() {
               </button>
             </div>
 
-            {/* Image stage */}
             <div
               className="relative flex-1 overflow-hidden flex items-center justify-center select-none"
               onClick={closeLightbox}
@@ -455,7 +572,6 @@ export function Sponsors() {
               />
             </div>
 
-            {/* Bottom toolbar */}
             <div className="relative z-10 flex items-center justify-center gap-2 px-4 py-4 border-t border-white/10 bg-black/40 backdrop-blur-md">
               <div className="flex items-center gap-1 p-1 bg-white/5 border border-white/10 rounded-full">
                 <button
