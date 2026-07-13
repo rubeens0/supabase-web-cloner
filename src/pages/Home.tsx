@@ -8,7 +8,6 @@ import { YoutubeRecent } from "../components/YoutubeRecent";
 import { useLanguage } from "../contexts/LanguageContext";
 import { useRef } from "react";
 import { LIVE_RACE_ACTIVE, CURRENT_RACE } from "@/config/liveRace";
-import heroImage from "@/assets/ruben-motorland-sunday.jpg";
 import logoWhiteMark from "@/assets/x-logo-white.png";
 import aboutImage from "@/assets/about-image.webp";
 import aboutImageAlt from "@/assets/ruben-portrait-grid.jpg";
