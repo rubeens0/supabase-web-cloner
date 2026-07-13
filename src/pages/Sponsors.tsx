@@ -4,8 +4,6 @@ import { Trophy, Users, Sparkles, Mail, ArrowUpRight, ArrowRight, Rocket, Target
 import { Button } from '../components/ui/button';
 import { Link } from 'react-router-dom';
 import { SEO } from '../components/SEO';
-import { useState, useEffect, useRef } from 'react';
-import { AnimatePresence } from 'motion/react';
 import heroImage from '@/assets/sponsors-event.png';
 import sponsorsImage from '@/assets/banner-patrocinadores-2026.png';
 import netproLogo from '@/assets/netpro-branding.jpg';
