@@ -423,7 +423,7 @@ export function Home() {
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 4.5, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.8, delay: 2.7, ease: [0.22, 1, 0.36, 1] }}
             className="mt-10 flex flex-wrap justify-center gap-x-6 gap-y-2 text-[13px] text-white/50"
           >
             {LIVE_RACE_ACTIVE && (
