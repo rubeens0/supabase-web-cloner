@@ -30,7 +30,7 @@ import { getPerformanceSettings, PREMIUM_ANIMATIONS } from "../utils/performance
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
-    <div className="flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-white/40">
+    <div className="flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-white/70">
       <span className="h-px w-8 bg-white/15" />
       <span>{children}</span>
     </div>
@@ -96,7 +96,7 @@ function CinematicBlogCard({
             {post.excerpt}
           </p>
           <div className="flex items-center gap-4">
-            <span className="font-mono text-[11px] text-white/40">{post.date}</span>
+            <span className="font-mono text-[11px] text-white/70">{post.date}</span>
             <span className="inline-flex items-center gap-1.5 text-white/70 text-sm group-hover:text-white group-hover:gap-2.5 transition-all">
               Leer más <ArrowUpRight className="w-4 h-4" />
             </span>
@@ -128,7 +128,7 @@ function ScrollRevealQuote({ text, author }: { text: string; author: string }) {
         })}
         <span className="font-display-italic text-gradient-mono-italic">"</span>
       </blockquote>
-      <p className="mt-8 font-mono text-[11px] uppercase tracking-[0.25em] text-white/40">
+      <p className="mt-8 font-mono text-[11px] uppercase tracking-[0.25em] text-white/70">
         {author}
       </p>
     </div>
@@ -452,7 +452,7 @@ export function Home() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.5 }}
           transition={{ duration: 1, delay: 4.9 }}
-          className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/40"
+          className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/70"
         >
           <motion.div
             animate={{ y: [0, 8, 0] }}
@@ -626,7 +626,7 @@ export function Home() {
               <div className="p-7">
                 <div className="flex items-center justify-between mb-4">
                   <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-secondary">01 / Pista</span>
-                  <Flag className="w-4 h-4 text-white/30" />
+                  <Flag className="w-4 h-4 text-white/70" />
                 </div>
                 <h3 className="font-display text-3xl mb-3 text-white">{t("home.areas.karting.title")}</h3>
                 <p className="text-white/60 text-sm leading-relaxed mb-3">{t("home.areas.karting.p1")}</p>
@@ -652,7 +652,7 @@ export function Home() {
                 <div className="p-7">
                   <div className="flex items-center justify-between mb-4">
                     <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-secondary">02 / Emprendimiento</span>
-                    <ArrowUpRight className="w-4 h-4 text-white/30 group-hover:text-white transition-colors" />
+                    <ArrowUpRight className="w-4 h-4 text-white/70 group-hover:text-white transition-colors" />
                   </div>
                   <h3 className="font-display text-3xl mb-3 text-white">{t("home.areas.marketing.title")}</h3>
                   <p className="text-white/60 text-sm leading-relaxed mb-3">{t("home.areas.marketing.p1")}</p>

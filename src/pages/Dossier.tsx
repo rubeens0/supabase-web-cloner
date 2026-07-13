@@ -75,7 +75,7 @@ export function Dossier() {
               transition={{ duration: 0.6 }}
               className="flex lg:flex-col items-start gap-3"
             >
-              <span className="font-mono text-[11px] tracking-[0.25em] text-white/40 uppercase">
+              <span className="font-mono text-[11px] tracking-[0.25em] text-white/70 uppercase">
                 {kicker}
               </span>
               <span className="font-display text-6xl sm:text-7xl text-white/15 leading-none">
@@ -132,7 +132,7 @@ export function Dossier() {
               <span className="h-px w-6 bg-white/20" />
               <span>{versionLabel}</span>
             </div>
-            <span className="text-white/30">Confidencial · v.2026.1</span>
+            <span className="text-white/70">Confidencial · v.2026.1</span>
           </motion.div>
 
           {/* monogram */}
@@ -142,7 +142,7 @@ export function Dossier() {
             transition={{ duration: 1, delay: 0.2 }}
             className="mt-16 sm:mt-24"
           >
-            <span className="font-mono text-[11px] tracking-[0.3em] text-white/40 uppercase">
+            <span className="font-mono text-[11px] tracking-[0.3em] text-white/70 uppercase">
               Rubén Muñoz · #82
             </span>
           </motion.div>
@@ -185,19 +185,19 @@ export function Dossier() {
             <div className="grid grid-cols-3 gap-8 sm:gap-12">
               <div>
                 <div className="font-display text-3xl sm:text-4xl text-white">2023</div>
-                <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/40 mt-1">
+                <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/70 mt-1">
                   {es ? 'Debut' : 'Debut'}
                 </div>
               </div>
               <div>
                 <div className="font-display text-3xl sm:text-4xl text-white">2024</div>
-                <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/40 mt-1">
+                <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/70 mt-1">
                   {es ? 'Campeón regional' : 'Regional champ'}
                 </div>
               </div>
               <div>
                 <div className="font-display text-3xl sm:text-4xl text-white">2026</div>
-                <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/40 mt-1">
+                <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/70 mt-1">
                   CEK
                 </div>
               </div>
@@ -286,7 +286,7 @@ export function Dossier() {
                 <span className="font-display text-5xl sm:text-6xl text-white tracking-tighter">
                   {row.year}
                 </span>
-                <ArrowUpRight className="w-5 h-5 text-white/30 group-hover:text-white group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all" />
+                <ArrowUpRight className="w-5 h-5 text-white/70 group-hover:text-white group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all" />
               </div>
               <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-white/45 mb-3">
                 {row.tag}
@@ -495,7 +495,7 @@ export function Dossier() {
               transition={{ duration: 0.4, delay: i * 0.05 }}
               className="flex items-center gap-6 py-6 group hover:bg-white/[0.03] px-2 -mx-2 transition-colors"
             >
-              <span className="font-mono text-xs text-white/40 w-8">{g.n}</span>
+              <span className="font-mono text-xs text-white/70 w-8">{g.n}</span>
               <span className="flex-1 font-display text-xl sm:text-2xl text-white leading-snug">
                 {g.t}
               </span>
@@ -572,7 +572,7 @@ export function Dossier() {
                 </span>
               )}
               <div className={`flex items-baseline justify-between ${pkg.featured ? 'mt-6' : ''}`}>
-                <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-white/40">
+                <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-white/70">
                   {es ? 'Nivel' : 'Tier'} {pkg.tier}
                 </span>
                 <span className="font-display text-5xl text-white/10">{pkg.tier}</span>
@@ -677,7 +677,7 @@ export function Dossier() {
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-12 gap-10 items-end">
             <div className="lg:col-span-8">
-              <span className="font-mono text-[11px] tracking-[0.25em] text-white/40 uppercase">
+              <span className="font-mono text-[11px] tracking-[0.25em] text-white/70 uppercase">
                 {isRegional || isNacional ? '07' : '06'} —{' '}
                 {es ? 'Hablemos' : 'Let’s talk'}
               </span>

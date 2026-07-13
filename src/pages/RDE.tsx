@@ -16,7 +16,7 @@ import rdeTeam from "@/assets/rde-team.jpg";
 
 function SectionLabel({ index, children }: { index: string; children: React.ReactNode }) {
   return (
-    <div className="flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-white/40">
+    <div className="flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-white/70">
       <span className="font-mono text-white">{index}</span>
       <span className="h-px w-8 bg-white/15" />
       <span>{children}</span>
@@ -211,7 +211,7 @@ export function RDE() {
                   "Buscas el precio más bajo del mercado",
                 ].map((item, i) => (
                   <li key={i} className="flex items-start gap-3 text-white/55 text-[15px] leading-relaxed">
-                    <X className="w-4 h-4 mt-1 flex-shrink-0 text-white/40" />
+                    <X className="w-4 h-4 mt-1 flex-shrink-0 text-white/70" />
                     <span>{item}</span>
                   </li>
                 ))}

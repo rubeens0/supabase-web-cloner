@@ -52,7 +52,7 @@ const circuits = [
 
 function SectionLabel({ index, children }: { index: string; children: React.ReactNode }) {
   return (
-    <div className="flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-white/40">
+    <div className="flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-white/70">
       <span className="font-mono text-white">{index}</span>
       <span className="h-px w-8 bg-white/15" />
       <span>{children}</span>
@@ -83,7 +83,7 @@ export function Cek2026() {
             className="mt-8 font-display leading-[0.95] text-6xl sm:text-8xl md:text-[140px] lg:text-[180px] text-white tracking-[-0.03em]"
           >
             CEK <span className="font-display-italic text-gradient-mono-italic">2026</span>
-            <span className="text-white/40">.</span>
+            <span className="text-white/70">.</span>
           </motion.h1>
           <motion.p
             {...fadeIn(0.3)}
@@ -145,13 +145,13 @@ export function Cek2026() {
 
                   <div className="flex items-center gap-8 pt-4 border-t border-white/[0.08]">
                     <div>
-                      <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-white/40 mb-1">
+                      <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-white/70 mb-1">
                         {language === 'es' ? 'Longitud' : 'Length'}
                       </div>
                       <div className="font-display text-2xl text-white">{circuit.length}</div>
                     </div>
                     <div>
-                      <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-white/40 mb-1">
+                      <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-white/70 mb-1">
                         {language === 'es' ? 'Curvas' : 'Turns'}
                       </div>
                       <div className="font-display text-2xl text-white">{circuit.turns}</div>

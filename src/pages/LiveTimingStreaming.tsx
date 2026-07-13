@@ -57,7 +57,7 @@ export function LiveTimingStreaming() {
             : 'The live page will be enabled during the next CEK race weekend.'}
         />
         <div className="max-w-3xl mx-auto text-center">
-          <div className="inline-flex items-center gap-3 text-[10px] sm:text-[11px] uppercase tracking-[0.22em] text-white/40 mb-6">
+          <div className="inline-flex items-center gap-3 text-[10px] sm:text-[11px] uppercase tracking-[0.22em] text-white/70 mb-6">
             <span className="font-mono text-white">N° 00</span>
             <span className="h-px w-8 bg-white/15" />
             <span>{language === 'es' ? 'Próxima carrera' : 'Next race'}</span>
@@ -65,7 +65,7 @@ export function LiveTimingStreaming() {
           <h1 className="font-display leading-[0.92] text-[40px] sm:text-7xl md:text-8xl text-white tracking-[-0.02em]">
             {language === 'es' ? 'Volvemos en' : 'Back in'}{' '}
             <span className="font-display-italic text-gradient-mono-italic">Aspar</span>
-            <span className="text-white/40">.</span>
+            <span className="text-white/70">.</span>
           </h1>
           <p className="mt-6 text-white/60 max-w-xl mx-auto text-sm sm:text-base leading-relaxed">
             {language === 'es'
@@ -116,14 +116,14 @@ export function LiveTimingStreaming() {
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           className="mb-8 md:mb-14"
         >
-          <div className="flex items-center gap-3 text-[10px] sm:text-[11px] uppercase tracking-[0.22em] text-white/40 mb-4 sm:mb-6">
+          <div className="flex items-center gap-3 text-[10px] sm:text-[11px] uppercase tracking-[0.22em] text-white/70 mb-4 sm:mb-6">
             <span className="font-mono text-white">N° 01</span>
             <span className="h-px w-6 sm:w-8 bg-white/15" />
             <span>{language === 'es' ? 'Directo' : 'Live'}</span>
           </div>
           <h1 className="font-display leading-[0.92] text-[40px] xs:text-5xl sm:text-7xl md:text-8xl lg:text-[120px] text-white tracking-[-0.02em]">
             Directo CEK R4 — <span className="font-display-italic text-gradient-mono-italic"> Aspar</span>
-            <span className="text-white/40">.</span>
+            <span className="text-white/70">.</span>
           </h1>
           <p className="mt-5 sm:mt-8 text-white/60 max-w-2xl text-sm sm:text-base md:text-lg leading-relaxed">
             {language === 'es' 
@@ -139,7 +139,7 @@ export function LiveTimingStreaming() {
           transition={{ duration: 0.6, delay: 0.15 }}
           className="mb-6 md:mb-10"
         >
-          <div className="flex items-center gap-3 text-[10px] sm:text-[11px] uppercase tracking-[0.22em] text-white/40 mb-4 sm:mb-5">
+          <div className="flex items-center gap-3 text-[10px] sm:text-[11px] uppercase tracking-[0.22em] text-white/70 mb-4 sm:mb-5">
             <span className="font-mono text-white">N° 02</span>
             <span className="h-px w-6 sm:w-8 bg-white/15" />
             <span>{language === 'es' ? 'Programa del fin de semana' : 'Weekend programme'}</span>
@@ -156,7 +156,7 @@ export function LiveTimingStreaming() {
                     <Clock className="w-5 h-5 text-white" />
                   </div>
                   <div className="min-w-0">
-                    <p className="text-[10px] uppercase tracking-[0.2em] text-white/40">
+                    <p className="text-[10px] uppercase tracking-[0.2em] text-white/70">
                       {language === 'es' ? 'Fin de semana' : 'Weekend'}
                     </p>
                     <h3 className="text-base md:text-lg font-bold leading-tight">
@@ -164,34 +164,34 @@ export function LiveTimingStreaming() {
                     </h3>
                   </div>
                 </div>
-                <span className="text-[10px] uppercase tracking-wider text-white/40 shrink-0">
+                <span className="text-[10px] uppercase tracking-wider text-white/70 shrink-0">
                   {language === 'es' ? 'Ronda 4' : 'Round 4'}
                 </span>
               </div>
               <ol className="divide-y divide-white/5">
                 <li className="flex items-center gap-3 md:gap-4 px-4 md:px-5 py-3 md:py-3.5">
-                  <span className="font-mono text-[10px] text-white/30 w-5 shrink-0">01</span>
+                  <span className="font-mono text-[10px] text-white/70 w-5 shrink-0">01</span>
                   <span className="text-xs uppercase tracking-[0.16em] text-white/50 flex-1">
                     {language === 'es' ? 'Entrenamientos libres' : 'Free practice'}
                   </span>
-                  <span className="font-mono text-lg md:text-xl font-bold text-white/40">—</span>
+                  <span className="font-mono text-lg md:text-xl font-bold text-white/70">—</span>
                 </li>
                 <li className="flex items-center gap-3 md:gap-4 px-4 md:px-5 py-3 md:py-3.5">
-                  <span className="font-mono text-[10px] text-white/30 w-5 shrink-0">02</span>
+                  <span className="font-mono text-[10px] text-white/70 w-5 shrink-0">02</span>
                   <span className="text-xs uppercase tracking-[0.16em] text-white/50 flex-1">
                     {language === 'es' ? 'Clasificación / Heats' : 'Qualifying / Heats'}
                   </span>
-                  <span className="font-mono text-lg md:text-xl font-bold text-white/40">—</span>
+                  <span className="font-mono text-lg md:text-xl font-bold text-white/70">—</span>
                 </li>
                 <li className="flex items-center gap-3 md:gap-4 px-4 md:px-5 py-3 md:py-3.5">
-                  <span className="font-mono text-[10px] text-white/30 w-5 shrink-0">03</span>
+                  <span className="font-mono text-[10px] text-white/70 w-5 shrink-0">03</span>
                   <span className="text-xs uppercase tracking-[0.16em] text-white/50 flex-1">
                     {language === 'es' ? 'Finales' : 'Finals'}
                   </span>
-                  <span className="font-mono text-lg md:text-xl font-bold text-white/40">—</span>
+                  <span className="font-mono text-lg md:text-xl font-bold text-white/70">—</span>
                 </li>
               </ol>
-              <p className="text-[11px] text-white/40 px-4 md:px-5 py-3 border-t border-white/5 leading-relaxed">
+              <p className="text-[11px] text-white/70 px-4 md:px-5 py-3 border-t border-white/5 leading-relaxed">
                 {language === 'es'
                   ? 'El horario detallado del fin de semana en el Aspar Circuit se publicará más cerca de la fecha.'
                   : 'The detailed weekend schedule at Aspar Circuit will be published closer to the event.'}

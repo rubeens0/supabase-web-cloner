@@ -626,7 +626,7 @@ Many thanks to all the people involved.`,
           {/* Editorial label */}
           <motion.div
             {...fadeIn}
-            className="flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-white/40 mb-6"
+            className="flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-white/70 mb-6"
           >
             <span className="font-mono text-white">N° {String(blogPosts.findIndex(p => p.id === post.id) + 1).padStart(2, '0')}</span>
             <span className="h-px w-8 bg-white/15" />
@@ -829,7 +829,7 @@ Many thanks to all the people involved.`,
                       CR
                     </div>
                     <div className="flex flex-col">
-                      <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-white/40">
+                      <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-white/70">
                         {language === 'es' ? 'Redactado por' : 'Written by'}
                       </span>
                       <span className="text-white text-sm mt-1">Caja Rural de Extremadura</span>
@@ -838,7 +838,7 @@ Many thanks to all the people involved.`,
 
                   {/* Related news */}
                   <div className="mt-12">
-                    <div className="flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-white/40 mb-6">
+                    <div className="flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-white/70 mb-6">
                       <span className="font-mono text-secondary">N°</span>
                       <span className="h-px w-8 bg-white/15" />
                       <span>{language === 'es' ? 'Noticias relacionadas' : 'Related news'}</span>
@@ -879,7 +879,7 @@ Many thanks to all the people involved.`,
                             <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-secondary">
                               {item.source}
                             </span>
-                            <ExternalLink className="w-3.5 h-3.5 text-white/30 group-hover:text-white transition-colors" />
+                            <ExternalLink className="w-3.5 h-3.5 text-white/70 group-hover:text-white transition-colors" />
                           </div>
                           <p className="text-white/85 text-sm leading-snug group-hover:text-white transition-colors">
                             {item.title}

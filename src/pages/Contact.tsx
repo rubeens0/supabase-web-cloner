@@ -6,7 +6,7 @@ import backgroundImage from '@/assets/contact-bg.jpg';
 
 function SectionLabel({ index, children }: { index: string; children: React.ReactNode }) {
   return (
-    <div className="flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-white/40">
+    <div className="flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-white/70">
       <span className="font-mono text-white">{index}</span>
       <span className="h-px w-8 bg-white/15" />
       <span>{children}</span>
@@ -81,7 +81,7 @@ export function Contact() {
                   <span key={i}>{word} </span>
                 )
               )}
-              <span className="text-white/40">.</span>
+              <span className="text-white/70">.</span>
             </motion.h1>
             <motion.p
               {...fadeIn(0.3)}
@@ -102,7 +102,7 @@ export function Contact() {
                 const idx = String(i + 1).padStart(2, '0');
                 const inner = (
                   <div className="grid grid-cols-12 gap-4 sm:gap-8 py-6 sm:py-8 items-center group">
-                    <div className="col-span-2 sm:col-span-1 font-mono text-[11px] text-white/40">
+                    <div className="col-span-2 sm:col-span-1 font-mono text-[11px] text-white/70">
                       {idx}
                     </div>
                     <div className="col-span-10 sm:col-span-3 flex items-center gap-3 text-white/60">
@@ -114,7 +114,7 @@ export function Contact() {
                     </div>
                     <div className="col-span-12 sm:col-span-1 flex justify-end">
                       {c.href && (
-                        <ArrowUpRight className="w-5 h-5 text-white/40 group-hover:text-white transition-colors" />
+                        <ArrowUpRight className="w-5 h-5 text-white/70 group-hover:text-white transition-colors" />
                       )}
                     </div>
                   </div>

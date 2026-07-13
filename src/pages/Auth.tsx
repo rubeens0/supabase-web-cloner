@@ -116,7 +116,7 @@ export function Auth() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          className="flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-white/40 mb-8"
+          className="flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-white/70 mb-8"
         >
           <span className="font-mono text-white">N° 00</span>
           <span className="h-px w-10 bg-white/20" />
@@ -173,7 +173,7 @@ export function Auth() {
           {/* Divider */}
           <div className="relative my-6 flex items-center gap-3">
             <span className="h-px flex-1 bg-white/10" />
-            <span className="text-[10px] font-mono uppercase tracking-[0.22em] text-white/40">
+            <span className="text-[10px] font-mono uppercase tracking-[0.22em] text-white/70">
               {isES ? 'o' : 'or'}
             </span>
             <span className="h-px flex-1 bg-white/10" />
@@ -183,7 +183,7 @@ export function Auth() {
             {mode === 'signup' && (
               <div className="grid grid-cols-2 gap-3">
                 <div className="relative">
-                  <UserIcon className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/40 pointer-events-none" />
+                  <UserIcon className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/70 pointer-events-none" />
                   <input
                     type="text"
                     value={firstName}
@@ -197,7 +197,7 @@ export function Auth() {
                   />
                 </div>
                 <div className="relative">
-                  <UserIcon className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/40 pointer-events-none" />
+                  <UserIcon className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/70 pointer-events-none" />
                   <input
                     type="text"
                     value={lastName}
@@ -214,7 +214,7 @@ export function Auth() {
             )}
 
             <div className="relative">
-              <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/40 pointer-events-none" />
+              <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/70 pointer-events-none" />
               <input
                 type="email"
                 value={email}
@@ -229,7 +229,7 @@ export function Auth() {
             </div>
 
             <div className="relative">
-              <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/40 pointer-events-none" />
+              <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/70 pointer-events-none" />
               <input
                 type="password"
                 value={password}
@@ -245,7 +245,7 @@ export function Auth() {
 
             {mode === 'signup' && (
               <div className="relative">
-                <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/40 pointer-events-none" />
+                <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/70 pointer-events-none" />
                 <input
                   type="password"
                   value={confirmPassword}

@@ -94,7 +94,7 @@ export function ContactForm() {
           onChange={handleChange}
           required
           placeholder={t('contact.form.namePlaceholder') || 'Tu nombre'}
-          className="mt-2 bg-white/5 border-white/10 text-white placeholder:text-white/40 focus:border-white/30"
+          className="mt-2 bg-white/5 border-white/10 text-white placeholder:text-white/70 focus:border-white/30"
         />
       </div>
       
@@ -110,7 +110,7 @@ export function ContactForm() {
           onChange={handleChange}
           required
           placeholder={t('contact.form.emailPlaceholder') || 'tu@email.com'}
-          className="mt-2 bg-white/5 border-white/10 text-white placeholder:text-white/40 focus:border-white/30"
+          className="mt-2 bg-white/5 border-white/10 text-white placeholder:text-white/70 focus:border-white/30"
         />
       </div>
       
@@ -126,7 +126,7 @@ export function ContactForm() {
           required
           rows={5}
           placeholder={t('contact.form.messagePlaceholder') || 'Escribe tu mensaje...'}
-          className="mt-2 bg-white/5 border-white/10 text-white placeholder:text-white/40 focus:border-white/30 resize-none"
+          className="mt-2 bg-white/5 border-white/10 text-white placeholder:text-white/70 focus:border-white/30 resize-none"
         />
       </div>
       
