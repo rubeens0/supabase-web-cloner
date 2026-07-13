@@ -352,15 +352,15 @@ export function Home() {
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         {/* Background image */}
         <motion.div
-          initial={{ opacity: 0, scale: 1.08 }}
+          initial={{ opacity: 0, scale: 1.04 }}
           animate={{ opacity: 0.55, scale: 1 }}
-          transition={{ duration: 2.8, delay: 2.4, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 1.6, delay: 1.2, ease: [0.22, 1, 0.36, 1] }}
           className="absolute inset-0"
           style={perfSettings.simplifyAnimations ? {} : { willChange: "transform, opacity" }}
         >
           <ImageWithFallback
-            src={heroImage}
-            alt="Karting"
+            src="/hero-home.webp"
+            alt="Rubén Muñoz en el karting"
             className="w-full h-full object-cover"
             loading="eager"
             fetchPriority="high"
