@@ -5,7 +5,7 @@ import { Button } from '../components/ui/button';
 import { Link } from 'react-router-dom';
 import { SEO } from '../components/SEO';
 import heroImage from '@/assets/sponsors-event.png';
-import sponsorsImage from '@/assets/banner-patrocinadores-2026.png';
+
 import netproLogo from '@/assets/netpro-branding.jpg';
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
