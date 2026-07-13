@@ -243,22 +243,6 @@ export function Home() {
       date: "2026-05-06",
     },
     {
-      id: "ecomscrape-launch",
-      title: t("blog.ecomscrape.title"),
-      excerpt: t("blog.ecomscrape.excerpt"),
-      tag: t("blog.category.marketing"),
-      image: ecomscrapeImg,
-      date: "2026-05-01",
-    },
-    {
-      id: "website-redesign-2026",
-      title: t("blog.webredesign.title"),
-      excerpt: t("blog.webredesign.excerpt"),
-      tag: t("blog.category.marketing"),
-      image: webRedesignImg,
-      date: "2026-04-29",
-    },
-    {
       id: "caja-rural-extremadura-patrocinio",
       title: t("blog.cajarural.title"),
       excerpt: t("blog.cajarural.excerpt"),
@@ -297,14 +281,6 @@ export function Home() {
       tag: t("blog.category.marketing"),
       image: netproImg,
       date: "2026-01-16",
-    },
-    {
-      id: "netspy-emprendedores",
-      title: t("blog.netspy.title"),
-      excerpt: t("blog.netspy.excerpt"),
-      tag: t("blog.category.marketing"),
-      image: netspyImg,
-      date: "2025-11-05",
     },
     {
       id: "cek-zaragoza",
