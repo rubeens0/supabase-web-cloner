@@ -390,51 +390,7 @@ Many thanks to all the people involved.`,
           inLanguage: language === 'es' ? 'es-ES' : 'en-US'
         }
       }
-    : post.id === 'netspy-emprendedores' 
-    ? {
-        title: language === 'es' 
-          ? 'Netspy: Grupo de Acceso Privado para Jóvenes Emprendedores'
-          : 'Netspy: Private Access Group for Young Entrepreneurs',
-        description: language === 'es'
-          ? 'Rubén Muñoz junto a Hugo Trébol han creado un grupo de acceso privado para jóvenes emprendedores; Si eres menor o un joven de menos de 25 años ya puedes rodearte de gente que te inspire y te ayude a crecer como emprendedor.'
-          : 'Rubén Muñoz and Hugo Trébol have created a private access group for young entrepreneurs; If you are a minor or a young person under 25 years old, you can already surround yourself with people who inspire you and help you grow as an entrepreneur.',
-        keywords: language === 'es'
-          ? 'Netspy, grupo de acceso privado, jóvenes emprendedores, inspiración, crecimiento'
-          : 'Netspy, private access group, young entrepreneurs, inspiration, growth',
-        ogImage: post.image,
-        ogType: 'article',
-        structuredData: {
-          '@context': 'https://schema.org',
-          '@type': 'BlogPosting',
-          headline: language === 'es' 
-            ? 'Netspy: Grupo de Acceso Privado para Jóvenes Emprendedores'
-            : 'Netspy: Private Access Group for Young Entrepreneurs',
-          description: language === 'es'
-            ? 'Rubén Muñoz junto a Hugo Trébol han creado un grupo de acceso privado para jóvenes emprendedores; Si eres menor o un joven de menos de 25 años ya puedes rodearte de gente que te inspire y te ayude a crecer como emprendedor.'
-            : 'Rubén Muñoz and Hugo Trébol have created a private access group for young entrepreneurs; If you are a minor or a young person under 25 years old, you can already surround yourself with people who inspire you and help you grow as an entrepreneur.',
-          image: post.image,
-          datePublished: '2025-11-05',
-          dateModified: '2025-11-05',
-          author: {
-            '@type': 'Person',
-            name: 'Rubén Muñoz',
-            url: 'https://rubenmunoz.com',
-            jobTitle: language === 'es' ? 'Piloto de Karting' : 'Karting Driver'
-          },
-          publisher: {
-            '@type': 'Person',
-            name: 'Rubén Muñoz',
-            url: 'https://rubenmunoz.com'
-          },
-          mainEntityOfPage: {
-            '@type': 'WebPage',
-            '@id': 'https://rubenmunoz.com/blog/netspy-emprendedores'
-          },
-          articleSection: language === 'es' ? 'Karting' : 'Karting',
-          inLanguage: language === 'es' ? 'es-ES' : 'en-US'
-        }
-      }
-    : post.id === 'cek-zaragoza' 
+    : post.id === 'cek-zaragoza'
     ? {
         title: language === 'es' 
           ? 'Campeonato España Karting (CEK) en Zaragoza: Clasificación para la Final'
@@ -773,20 +729,6 @@ Many thanks to all the people involved.`,
                   </div>
                 </div>
               </>
-            ) : post.id === 'netspy-emprendedores' ? (
-              // Contenido especial para NetSpy con enlace al formulario de contacto
-              <>
-                <p className="text-white/80 mb-6 leading-relaxed">
-                  {language === 'es' 
-                    ? 'Rubén Muñoz junto a Hugo Trébol han creado un grupo de acceso privado para jóvenes emprendedores; Si eres menor o un joven de menos de 25 años ya puedes rodearte de gente que te inspire y te ayude a crecer como emprendedor, cualquier pregunta me puedes enviar un mensaje por correo electrónico ;) (Grupo en telegram)'
-                    : 'Rubén Muñoz and Hugo Trébol have created a private access group for young entrepreneurs; If you are a minor or a young person under 25 years old, you can already surround yourself with people who inspire you and help you grow as an entrepreneur. For any questions, you can send me a message by email ;) (Telegram group)'}
-                </p>
-                <p className="text-white/80 mb-6 leading-relaxed">
-                  {language === 'es' 
-                    ? 'rubenmunooz2009@gmail.com'
-                    : 'rubenmunooz2009@gmail.com'}
-                </p>
-              </>
             ) : post.id === 'netpro-agency' ? (
               // Contenido para Netpro Agency con link formateado
               <>
@@ -1005,24 +947,6 @@ Many thanks to all the people involved.`,
                   })}
                 </p>
               ))
-            )}
-
-            {/* Links section for EcomScrape post */}
-            {post.id === 'ecomscrape-launch' && (
-              <div className="mt-8 pt-8 border-t border-white/10 space-y-3">
-                <p className="text-white/50 text-sm uppercase tracking-widest font-mono mb-4">Links</p>
-                <div className="flex flex-wrap gap-3">
-                  <a href="https://ecomscrape.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/15 text-white/80 text-sm hover:bg-white/5 hover:border-white/30 transition-all">
-                    🌐 ecomscrape.com
-                  </a>
-                  <a href="https://www.instagram.com/anaswalton/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/15 text-white/80 text-sm hover:bg-white/5 hover:border-white/30 transition-all">
-                    📸 @anaswalton
-                  </a>
-                  <a href="https://soyrage.es" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/15 text-white/80 text-sm hover:bg-white/5 hover:border-white/30 transition-all">
-                    🔗 soyrage.es
-                  </a>
-                </div>
-              </div>
             )}
           </motion.div>
 
