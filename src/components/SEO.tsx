@@ -108,12 +108,6 @@ export function SEO({
   };
 
   const seoContent = defaultSEO[language];
-  const pageMeta = pathMeta[location.pathname];
-  const pageTitle = title || (pageMeta
-    ? `${pageMeta.title} | Rubén Muñoz`
-    : seoContent.title);
-  const pageDescription = description || (pageMeta ? pageMeta.description[language] : seoContent.description);
-  const pageKeywords = keywords || seoContent.keywords;
   // Map alias routes to their primary/canonical route so social previews
   // and search engagement consolidate on a single URL per page.
   const aliasToPrimary: Record<string, string> = {
@@ -126,6 +120,14 @@ export function SEO({
     '/rdeoperators': '/rde',
   };
   const primaryPath = aliasToPrimary[location.pathname] ?? location.pathname;
+  // Use the primary route's metadata for aliases so title/description match
+  // the canonical URL (no duplicate content signals across alias routes).
+  const pageMeta = pathMeta[primaryPath];
+  const pageTitle = title || (pageMeta
+    ? `${pageMeta.title} | Rubén Muñoz`
+    : seoContent.title);
+  const pageDescription = description || (pageMeta ? pageMeta.description[language] : seoContent.description);
+  const pageKeywords = keywords || seoContent.keywords;
   const pageUrl = canonical || `https://rubenmunoz.com${primaryPath}`;
 
   useEffect(() => {
