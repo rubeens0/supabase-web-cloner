@@ -44,33 +44,20 @@ export function SEO({
       en: 'Official site of Rubén Muñoz: CEK karting driver and digital entrepreneur.'
     }},
     // '/inicio' and '/home' are aliases of '/' — resolved via aliasToPrimary below.
-    '/patrocinadores': { title: 'Patrocinadores', description: {
-      es: 'Únete como patrocinador en el CEK 2026: visibilidad nacional, dossier y planes.',
-      en: 'Join as a sponsor in the 2026 CEK: nationwide visibility, dossier and plans.'
-    }},
+    // Alias routes (/patrocinadores, /rdeoperators, /contact, /marketing, /cek2026)
+    // are resolved to their primary path via aliasToPrimary below — no separate
+    // entries so metadata stays unique per canonical URL.
     '/rde': { title: 'RDE', description: {
       es: 'Programa RDE de Rubén Muñoz: desarrollo deportivo y oportunidades de colaboración.',
       en: 'Rubén Muñoz RDE program: athletic development and partnership opportunities.'
     }},
-    '/rdeoperators': { title: 'RDE Operators', description: {
-      es: 'Acceso para operadores RDE: gestión y herramientas internas del programa.',
-      en: 'RDE operators access: program management and internal tooling.'
-    }},
     '/contacto': { title: 'Contacto', description: {
-      es: 'Contacta con Rubén Muñoz: formulario, redes y reserva de reuniones para patrocinios y colaboraciones.',
-      en: 'Get in touch with Rubén Muñoz: contact form, social channels and meeting booking for sponsors and collaborations.'
-    }},
-    '/contact': { title: 'Contact', description: {
       es: 'Contacta con Rubén Muñoz: formulario, redes y reserva de reuniones para patrocinios y colaboraciones.',
       en: 'Get in touch with Rubén Muñoz: contact form, social channels and meeting booking for sponsors and collaborations.'
     }},
     '/business': { title: 'Business', description: {
       es: 'Proyectos empresariales de Rubén Muñoz: marketing digital, agencia y colaboraciones con marcas.',
       en: 'Business projects by Rubén Muñoz: digital marketing, agency and brand collaborations.'
-    }},
-    '/marketing': { title: 'Marketing Digital', description: {
-      es: 'Servicios de marketing digital de Rubén Muñoz: estrategia, redes y crecimiento para marcas.',
-      en: 'Digital marketing services by Rubén Muñoz: strategy, social media and growth for brands.'
     }},
     '/sponsors': { title: language === 'es' ? 'Patrocinio' : 'Sponsorship', description: {
       es: 'Conviértete en patrocinador de Rubén Muñoz en el CEK 2026. Planes, beneficios y dossier.',
