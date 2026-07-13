@@ -20,11 +20,8 @@ import portadaExtremaduraImg from "@/assets/cek-2026-campillos-18.jpg";
 import testRecasImg from "@/assets/test-recas-2026.jpg";
 import albroksaImg from "@/assets/albroksa-patrocinio.jpeg";
 import netproImg from "@/assets/netpro-new-logo.jpg";
-import netspyImg from "@/assets/netspy-branding-new.jpg";
 import cekZaragozaImg from "@/assets/cek-zaragoza.jpg";
 import cajaRuralImg from "@/assets/caja-rural-extremadura.png";
-import webRedesignImg from "@/assets/website-redesign-2026.webp";
-import ecomscrapeImg from "@/assets/ecomscrape-post.webp";
 import motorlandImg from "@/assets/motorland-cek-r2.webp";
 import motorlandRaceImg from "@/assets/motorland-cek-r2-race.jpeg";
 import vlog1Img from "@/assets/vlog-1-motorland.jpg";
@@ -246,22 +243,6 @@ export function Home() {
       date: "2026-05-06",
     },
     {
-      id: "ecomscrape-launch",
-      title: t("blog.ecomscrape.title"),
-      excerpt: t("blog.ecomscrape.excerpt"),
-      tag: t("blog.category.marketing"),
-      image: ecomscrapeImg,
-      date: "2026-05-01",
-    },
-    {
-      id: "website-redesign-2026",
-      title: t("blog.webredesign.title"),
-      excerpt: t("blog.webredesign.excerpt"),
-      tag: t("blog.category.marketing"),
-      image: webRedesignImg,
-      date: "2026-04-29",
-    },
-    {
       id: "caja-rural-extremadura-patrocinio",
       title: t("blog.cajarural.title"),
       excerpt: t("blog.cajarural.excerpt"),
@@ -300,14 +281,6 @@ export function Home() {
       tag: t("blog.category.marketing"),
       image: netproImg,
       date: "2026-01-16",
-    },
-    {
-      id: "netspy-emprendedores",
-      title: t("blog.netspy.title"),
-      excerpt: t("blog.netspy.excerpt"),
-      tag: t("blog.category.marketing"),
-      image: netspyImg,
-      date: "2025-11-05",
     },
     {
       id: "cek-zaragoza",

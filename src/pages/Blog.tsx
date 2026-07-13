@@ -1,12 +1,9 @@
 import testRecasImg from '@/assets/test-recas-2026.jpg';
 import albroksaImg from '@/assets/albroksa-patrocinio.jpeg';
 import netproImg from '@/assets/netpro-new-logo.jpg';
-import netspyImg from '@/assets/netspy-branding-new.jpg';
 import cekZaragozaImg from '@/assets/cek-zaragoza.jpg';
 import portadaExtremaduraImg from '@/assets/cek-2026-campillos-18.jpg';
 import cajaRuralImg from '@/assets/caja-rural-extremadura.png';
-import webRedesignImg from '@/assets/website-redesign-2026.webp';
-import ecomscrapeImg from '@/assets/ecomscrape-post.webp';
 import motorlandImg from '@/assets/motorland-cek-r2.webp';
 import motorlandRaceImg from '@/assets/motorland-cek-r2-race.jpeg';
 import vlog1Img from '@/assets/vlog-1-motorland.jpg';
@@ -80,15 +77,6 @@ export function Blog() {
       image: netproImg,
     },
     {
-      id: 'netspy-emprendedores',
-      title: t('blog.netspy.title'),
-      excerpt: t('blog.netspy.excerpt'),
-      date: '2025-11-05',
-      readTime: '3 min',
-      category: t('blog.category.marketing'),
-      image: netspyImg,
-    },
-    {
       id: 'cek-zaragoza',
       title: t('blog.cek.title'),
       excerpt: t('blog.cek.excerpt'),
@@ -105,24 +93,6 @@ export function Blog() {
       readTime: '3 min',
       category: t('blog.category.karting'),
       image: cajaRuralImg,
-    },
-    {
-      id: 'website-redesign-2026',
-      title: t('blog.webredesign.title'),
-      excerpt: t('blog.webredesign.excerpt'),
-      date: '2026-04-29',
-      readTime: '4 min',
-      category: t('blog.category.marketing'),
-      image: webRedesignImg,
-    },
-    {
-      id: 'ecomscrape-launch',
-      title: t('blog.ecomscrape.title'),
-      excerpt: t('blog.ecomscrape.excerpt'),
-      date: '2026-05-01',
-      readTime: '4 min',
-      category: t('blog.category.marketing'),
-      image: ecomscrapeImg,
     },
     {
       id: 'motorland-cek-r2',

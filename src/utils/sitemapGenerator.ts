@@ -123,12 +123,6 @@ export const sitemapUrls: SitemapUrl[] = [
     priority: 0.8,
   },
   {
-    loc: '/blog/netspy-emprendedores',
-    lastmod: '2025-11-05',
-    changefreq: 'monthly',
-    priority: 0.8,
-  },
-  {
     loc: '/blog/cek-zaragoza',
     lastmod: '2025-09-20',
     changefreq: 'monthly',

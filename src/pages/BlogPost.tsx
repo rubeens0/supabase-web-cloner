@@ -1,12 +1,9 @@
 import cekZaragozaImg from '@/assets/cek-zaragoza.jpg';
-import netspyImg from '@/assets/netspy-branding-new.jpg';
 import netproImg from '@/assets/netpro-new-logo.jpg';
 import albroksaImg from '@/assets/albroksa-patrocinio.jpeg';
 import testRecasImg from '@/assets/test-recas-2026.jpg';
 import portadaExtremaduraImg from '@/assets/cek-2026-campillos-18.jpg';
 import cajaRuralImg from '@/assets/caja-rural-extremadura.png';
-import webRedesignImg from '@/assets/website-redesign-2026.webp';
-import ecomscrapeImg from '@/assets/ecomscrape-post.webp';
 import motorlandImg from '@/assets/motorland-cek-r2.webp';
 import motorlandRaceImg from '@/assets/motorland-cek-r2-race.jpeg';
 import vlog1Img from '@/assets/vlog-1-motorland.jpg';
@@ -126,22 +123,6 @@ export function BlogPost() {
       image: netproImg,
     },
     {
-      id: 'netspy-emprendedores',
-      title: t('blog.netspy.title'),
-      excerpt: t('blog.netspy.excerpt'),
-      content: language === 'es' 
-        ? `Rubén Muñoz junto a Hugo Trébol han creado un grupo de acceso privado para jóvenes emprendedores; Si eres menor o un joven de menos de 25 años ya puedes rodearte de gente que te inspire y te ayude a crecer como emprendedor, cualquier pregunta me puedes enviar un mensaje por correo electrónico ;) (Grupo en telegram)
-
-rubenmunooz2009@gmail.com`
-        : `Rubén Muñoz and Hugo Trébol have created a private access group for young entrepreneurs; If you are a minor or a young person under 25 years old, you can already surround yourself with people who inspire you and help you grow as an entrepreneur. For any questions, you can send me a message by email ;) (Telegram group)
-
-rubenmunooz2009@gmail.com`,
-      date: '2025-11-05',
-      readTime: '3 min',
-      category: t('blog.category.marketing'),
-      image: netspyImg,
-    },
-    {
       id: 'cek-zaragoza',
       title: t('blog.cek.title'),
       excerpt: t('blog.cek.excerpt'),
@@ -176,30 +157,6 @@ Many thanks to all the people involved.`,
       readTime: '3 min',
       category: t('blog.category.karting'),
       image: cajaRuralImg,
-    },
-    {
-      id: 'website-redesign-2026',
-      title: t('blog.webredesign.title'),
-      excerpt: t('blog.webredesign.excerpt'),
-      content: language === 'es'
-        ? `Hoy estrenamos una nueva etapa en rubenmunoz.com. La web ha sido rediseñada por completo, con una identidad visual más significativa, una experiencia pensada para acompañar el salto deportivo y profesional.\n\nMás que un lavado de cara, este rediseño marca un cambio de la manera de comunicar mi marca personal. Pasar de una simple web de piloto a una plataforma que reúne el proyecto deportivo, el valor para patrocinadores, los proyectos paralelos y un espacio privado  más cercano.\n\nNueva sección 2026 — Calendario del CEK\n\nUno de los grandes protagonistas del rediseño es la nueva sección dedicada a la temporada 2026 del Campeonato de España de Karting. En ella se incluye un mapa 3D interactivo de España donde se pueden ver, numerados cronológicamente, los cuatro circuitos del calendario: Campillos, MotorLand Aragón, Kartódromo Lucas Guerrero (Chiva) y Aspar Circuit (Guadassuar). Cada cita aparece con su fecha, ubicación y enlace directo a la información de la carrera.\n\nAcceso al paddock\n\nUna de las novedades más importantes es la creación del Acceso al Paddock, un área privada pensada para patrocinadores, colaboradores y miembros seguidores. Desde ahí se podrá acceder a novedades, contenido exclusivo de carreras, mucho valor y comunicaciones directas. Es un paso para profesionalizar al máximo la relación con quienes siguen el proyecto de cerca.\n\nNuevos proyectos\n\nEl rediseño también deja espacio a los proyectos paralelos que han ido tomando forma durante el último año: Netpro Agency. el grupo de jóvenes emprendedores Netspy  y nuevas colaboraciones con marcas como Albroksa y Caja Rural de Extremadura. Todo conectado bajo una misma identidad, dejando claro que no se trata solo de competir, sino de construir una marca personal sólida y a largo plazo.\n\nDetalles técnicos y experiencia\n\n- Nueva paleta y tipografía editorial.\n- Animaciones suaves, transiciones cuidadas y modo oscuro como base.\n- Mapa 3D del calendario del CEK.\n- Sección de blog renovada.\n- Optimización SEO, metadatos por artículo y carga acelerada en móvil.\n\nEsto es solo el principio. La idea es que la web evolucione cada temporada, sumando datos en directo, contenido audiovisual y nuevas formas de conectar con el público y los patrocinadores. Gracias a quienes ya forman parte de este proyecto y bienvenidos a rubenmunoz.com`
-        : `Today we kick off a new chapter at rubenmunoz.com. The website has been completely redesigned, with a more editorial visual identity, refined typography and an experience built to support the sporting and professional leap of this 2026 season.\n\nMore than a facelift, this redesign marks a change of mindset: moving from a simple driver website to a platform that brings together the racing project, the sponsor dossier, side projects and a private space for the inner circle.\n\nNew 2026 section — Interactive CEK calendar\n\nOne of the highlights of the redesign is the new section dedicated to the 2026 Spanish Karting Championship. It features an interactive 3D map of Spain showing, numbered chronologically, the four circuits of the calendar: Campillos, MotorLand Aragón, Kartódromo Lucas Guerrero (Chiva) and Aspar Circuit (Guadassuar). Each round includes its date, location and a direct link to race information.\n\nPaddock Access\n\nOne of the most important additions is the new Paddock Access, a private area designed for sponsors, partners and close collaborators. From there it will be possible to access the full dossier, brand materials, internal calendar, exclusive race content and direct communications. A step to professionalize the relationship with everyone who believes in the project.\n\nNew projects\n\nThe redesign also makes room for the side projects that have been taking shape over the last year: Netpro Agency (a motorsport-focused design and marketing studio), the young entrepreneurs group Netspy ES and new collaborations with brands such as Albroksa and Caja Rural de Extremadura. Everything connected under a single identity, making it clear that this is not only about racing, but about building a solid, long-term personal brand.\n\nTechnical details and experience\n\n- New color palette and editorial typography.\n- Smooth animations, refined transitions and a dark-mode-first design.\n- 3D CEK calendar map built with WebGL.\n- Redesigned blog with a featured article and chronological archive.\n- SEO optimization, per-article metadata and faster mobile loading.\n\nThis is just the beginning. The idea is for the website to evolve every season, adding live data, audiovisual content and new ways to connect with the audience and sponsors. Thanks to everyone already part of this project — and welcome to this new chapter.`,
-      date: '2026-04-29',
-      readTime: '4 min',
-      category: t('blog.category.marketing'),
-      image: webRedesignImg,
-    },
-    {
-      id: 'ecomscrape-launch',
-      title: t('blog.ecomscrape.title'),
-      excerpt: t('blog.ecomscrape.excerpt'),
-      content: language === 'es'
-        ? `EcomScrape es una herramienta profesional de extracción de catálogos e inteligencia competitiva para e-commerce. Permite obtener el catálogo completo de cualquier tienda Shopify, WooCommerce o PrestaShop en cuestión de segundos, con bypass anti-bot integrado, exportación a CSV/JSON y analítica de tráfico.\n\nEl proyecto nace de la colaboración entre Rubén Muñoz, Anas Walton y https://soyrage.es, uniendo experiencia en marketing digital, desarrollo de producto y análisis competitivo de e-commerce.\n\n¿Qué hace EcomScrape?\n\n• Extracción instantánea de catálogos completos (productos, precios, variantes, stock).\n• Store DNA: perfil completo de cualquier tienda — antigüedad del dominio, gasto en ads, ingresos estimados, tech stack, tema, pasarelas de pago, presencia en redes y señal de dropshipping.\n• Inteligencia de producto: bestsellers, productos nuevos, eliminados y cambios de precio en tiempo real.\n• Analítica de tráfico: visitas mensuales, países top, distribución por edad/género, dispositivo y tasa de rebote.\n• API REST lista para desarrolladores con endpoints limpios en JSON.\n• Extensión de navegador: instala, visita cualquier tienda y extrae con un clic.\n\nEcomScrape sustituye horas de investigación manual, scripts frágiles y herramientas caras por una solución todo-en-uno con créditos de pago por uso y sin compromisos mensuales.\n\nMás información en https://ecomscrape.com`
-        : `EcomScrape is a professional catalog extraction and competitive intelligence tool for e-commerce. It lets you pull the full catalog from any Shopify, WooCommerce or PrestaShop store in seconds, with built-in anti-bot bypass, CSV/JSON export and traffic analytics.\n\nThe project is a collaboration between Rubén Muñoz, Anas Walton and https://soyrage.es, combining experience in digital marketing, product development and competitive e-commerce analysis.\n\nWhat does EcomScrape do?\n\n• Instant extraction of full catalogs (products, prices, variants, stock).\n• Store DNA: complete profile of any store — domain age, ad spend, estimated revenue, tech stack, theme, payment processors, social presence and dropshipper signal.\n• Product Intelligence: bestsellers, new items, deleted products and real-time price changes.\n• Traffic Analytics: monthly visits, top countries, age/gender distribution, device and bounce rate.\n• Developer-ready REST API with clean JSON endpoints.\n• Browser extension: install, visit any store and extract with one click.\n\nEcomScrape replaces hours of manual research, brittle scripts and expensive tools with an all-in-one solution featuring pay-as-you-go credits and no monthly commitment.\n\nLearn more at https://ecomscrape.com`,
-      date: '2026-05-01',
-      readTime: '4 min',
-      category: t('blog.category.marketing'),
-      image: ecomscrapeImg,
     },
     {
       id: 'motorland-cek-r2',
@@ -433,51 +390,7 @@ Many thanks to all the people involved.`,
           inLanguage: language === 'es' ? 'es-ES' : 'en-US'
         }
       }
-    : post.id === 'netspy-emprendedores' 
-    ? {
-        title: language === 'es' 
-          ? 'Netspy: Grupo de Acceso Privado para Jóvenes Emprendedores'
-          : 'Netspy: Private Access Group for Young Entrepreneurs',
-        description: language === 'es'
-          ? 'Rubén Muñoz junto a Hugo Trébol han creado un grupo de acceso privado para jóvenes emprendedores; Si eres menor o un joven de menos de 25 años ya puedes rodearte de gente que te inspire y te ayude a crecer como emprendedor.'
-          : 'Rubén Muñoz and Hugo Trébol have created a private access group for young entrepreneurs; If you are a minor or a young person under 25 years old, you can already surround yourself with people who inspire you and help you grow as an entrepreneur.',
-        keywords: language === 'es'
-          ? 'Netspy, grupo de acceso privado, jóvenes emprendedores, inspiración, crecimiento'
-          : 'Netspy, private access group, young entrepreneurs, inspiration, growth',
-        ogImage: post.image,
-        ogType: 'article',
-        structuredData: {
-          '@context': 'https://schema.org',
-          '@type': 'BlogPosting',
-          headline: language === 'es' 
-            ? 'Netspy: Grupo de Acceso Privado para Jóvenes Emprendedores'
-            : 'Netspy: Private Access Group for Young Entrepreneurs',
-          description: language === 'es'
-            ? 'Rubén Muñoz junto a Hugo Trébol han creado un grupo de acceso privado para jóvenes emprendedores; Si eres menor o un joven de menos de 25 años ya puedes rodearte de gente que te inspire y te ayude a crecer como emprendedor.'
-            : 'Rubén Muñoz and Hugo Trébol have created a private access group for young entrepreneurs; If you are a minor or a young person under 25 years old, you can already surround yourself with people who inspire you and help you grow as an entrepreneur.',
-          image: post.image,
-          datePublished: '2025-11-05',
-          dateModified: '2025-11-05',
-          author: {
-            '@type': 'Person',
-            name: 'Rubén Muñoz',
-            url: 'https://rubenmunoz.com',
-            jobTitle: language === 'es' ? 'Piloto de Karting' : 'Karting Driver'
-          },
-          publisher: {
-            '@type': 'Person',
-            name: 'Rubén Muñoz',
-            url: 'https://rubenmunoz.com'
-          },
-          mainEntityOfPage: {
-            '@type': 'WebPage',
-            '@id': 'https://rubenmunoz.com/blog/netspy-emprendedores'
-          },
-          articleSection: language === 'es' ? 'Karting' : 'Karting',
-          inLanguage: language === 'es' ? 'es-ES' : 'en-US'
-        }
-      }
-    : post.id === 'cek-zaragoza' 
+    : post.id === 'cek-zaragoza'
     ? {
         title: language === 'es' 
           ? 'Campeonato España Karting (CEK) en Zaragoza: Clasificación para la Final'
@@ -816,20 +729,6 @@ Many thanks to all the people involved.`,
                   </div>
                 </div>
               </>
-            ) : post.id === 'netspy-emprendedores' ? (
-              // Contenido especial para NetSpy con enlace al formulario de contacto
-              <>
-                <p className="text-white/80 mb-6 leading-relaxed">
-                  {language === 'es' 
-                    ? 'Rubén Muñoz junto a Hugo Trébol han creado un grupo de acceso privado para jóvenes emprendedores; Si eres menor o un joven de menos de 25 años ya puedes rodearte de gente que te inspire y te ayude a crecer como emprendedor, cualquier pregunta me puedes enviar un mensaje por correo electrónico ;) (Grupo en telegram)'
-                    : 'Rubén Muñoz and Hugo Trébol have created a private access group for young entrepreneurs; If you are a minor or a young person under 25 years old, you can already surround yourself with people who inspire you and help you grow as an entrepreneur. For any questions, you can send me a message by email ;) (Telegram group)'}
-                </p>
-                <p className="text-white/80 mb-6 leading-relaxed">
-                  {language === 'es' 
-                    ? 'rubenmunooz2009@gmail.com'
-                    : 'rubenmunooz2009@gmail.com'}
-                </p>
-              </>
             ) : post.id === 'netpro-agency' ? (
               // Contenido para Netpro Agency con link formateado
               <>
@@ -1048,24 +947,6 @@ Many thanks to all the people involved.`,
                   })}
                 </p>
               ))
-            )}
-
-            {/* Links section for EcomScrape post */}
-            {post.id === 'ecomscrape-launch' && (
-              <div className="mt-8 pt-8 border-t border-white/10 space-y-3">
-                <p className="text-white/50 text-sm uppercase tracking-widest font-mono mb-4">Links</p>
-                <div className="flex flex-wrap gap-3">
-                  <a href="https://ecomscrape.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/15 text-white/80 text-sm hover:bg-white/5 hover:border-white/30 transition-all">
-                    🌐 ecomscrape.com
-                  </a>
-                  <a href="https://www.instagram.com/anaswalton/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/15 text-white/80 text-sm hover:bg-white/5 hover:border-white/30 transition-all">
-                    📸 @anaswalton
-                  </a>
-                  <a href="https://soyrage.es" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/15 text-white/80 text-sm hover:bg-white/5 hover:border-white/30 transition-all">
-                    🔗 soyrage.es
-                  </a>
-                </div>
-              </div>
             )}
           </motion.div>
 
