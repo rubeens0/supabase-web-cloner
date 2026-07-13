@@ -398,9 +398,6 @@ const translations = {
     'blog.backToBlog': 'Volver al blog',
     'blog.notFound': 'Artículo no encontrado',
 
-    'blog.netspy.title': 'Grupo de Jóvenes Emprendedores Netspy ES 🇪🇸',
-    'blog.netspy.excerpt':
-      'Rubén Muñoz y Hugo Trébol han creado un grupo privado para jóvenes emprendedores. Si tienes menos de 25 años, ya puedes rodearte de gente que te inspire y te ayude a crecer.',
     'blog.netpro.title': 'Netpro Agency — diseño, marketing & consultoría',
     'blog.netpro.excerpt':
       'Netpro Agency es un estudio profesional de diseño y marketing digital. Nacimos enfocados al motorsport, pero hoy también trabajamos con empresas de distintos sectores.',
@@ -418,12 +415,6 @@ const translations = {
       'Caja Rural de Extremadura apoya el talento joven en el deporte y patrocina al piloto cacereño Rubén Muñoz',
     'blog.cajarural.excerpt':
       'La entidad apuesta por el deporte base y el talento emergente extremeño. Caja Rural de Extremadura ha formalizado un acuerdo de colaboración deportiva con el joven piloto cacereño de karting Rubén Muñoz.',
-    'blog.webredesign.title': 'Rediseño completo de la web y acceso al "paddock".',
-    'blog.webredesign.excerpt':
-      'Estrenamos un rediseño íntegro de rubenmunoz.com con una identidad más editorial, una nueva sección 2026 con mapa interactivo del calendario CEK, acceso privado al paddock y nuevos proyectos en marcha.',
-    'blog.ecomscrape.title': 'EcomScrape: Inteligencia e-commerce al alcance de un clic',
-    'blog.ecomscrape.excerpt':
-      'Rubén Muñoz, Anas Walton y soyrage.es lanzan EcomScrape, una herramienta profesional de extracción de catálogos e inteligencia competitiva para Shopify, WooCommerce y PrestaShop.',
     'blog.motorland.title': 'Segunda ronda del CEK: De vuelta en Motorland',
     'blog.motorland.excerpt':
       'Rubén Muñoz afronta la segunda prueba del Campeonato de España de Karting en MotorLand Aragón (15-17 mayo), precedida de tres días de entrenamientos completos en el mismo circuito.',
@@ -912,9 +903,6 @@ const translations = {
     'blog.backToBlog': 'Back to journal',
     'blog.notFound': 'Article not found',
 
-    'blog.netspy.title': 'Young Entrepreneurs Group — Netspy ES 🇪🇸',
-    'blog.netspy.excerpt':
-      'Rubén Muñoz and Hugo Trébol founded a private group for young entrepreneurs. If you are under 25, you can finally surround yourself with people who inspire you to grow.',
     'blog.netpro.title': 'Netpro Agency — design, marketing & consulting',
     'blog.netpro.excerpt':
       'Netpro Agency is a professional design and digital marketing studio. Born inside motorsport, today we also work with companies across sectors.',
@@ -930,13 +918,7 @@ const translations = {
     'blog.cajarural.title':
       'Caja Rural de Extremadura backs young sporting talent and sponsors Cáceres karting driver Rubén Muñoz',
     'blog.cajarural.excerpt':
-      'The institution doubles down on grassroots sport and emerging Extremaduran talent. Caja Rural de Extremadura has signed a sports collaboration agreement with young karting driver Rubén Muñoz from Cáceres.',
-    'blog.webredesign.title': 'A new digital era: full website redesign and paddock access',
-    'blog.webredesign.excerpt':
-      'We are launching a complete redesign of rubenmunoz.com with a more editorial identity, a new 2026 section with an interactive CEK calendar map, private paddock access and several new projects under way.',
-    'blog.ecomscrape.title': 'EcomScrape: e-commerce intelligence at the click of a button',
-    'blog.ecomscrape.excerpt':
-      'Rubén Muñoz, Anas Walton and soyrage.es launch EcomScrape, a professional catalog extraction and competitive intelligence tool for Shopify, WooCommerce and PrestaShop.',
+      'The institution doubles down on grassroots sport and emerging Extremaduran talent. Caja Rural of Extremadura has signed a sports collaboration agreement with young karting driver Rubén Muñoz from Cáceres.',
     'blog.motorland.title': 'CEK Round 2: Back at Motorland',
     'blog.motorland.excerpt':
       'Rubén Muñoz takes on the second round of the Spanish Karting Championship at MotorLand Aragón (May 15-17), preceded by three full days of testing at the same circuit.',
