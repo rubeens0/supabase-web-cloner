@@ -391,9 +391,11 @@ export function Home() {
           <motion.img
             src={logoWhiteMark}
             alt="Rubén Muñoz"
+            width={352}
+            height={352}
             initial={{ opacity: 0, scale: 0.92, filter: "blur(6px)" }}
             animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-            transition={{ duration: 1.4, delay: 3.8, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 1.1, delay: 2.0, ease: [0.22, 1, 0.36, 1] }}
             className="w-48 sm:w-64 md:w-80 lg:w-[22rem] h-auto drop-shadow-[0_10px_40px_rgba(0,0,0,0.6)]"
           />
 
@@ -401,7 +403,7 @@ export function Home() {
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 4.2, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.8, delay: 2.4, ease: [0.22, 1, 0.36, 1] }}
             className="mt-12 sm:mt-14"
           >
             <button
