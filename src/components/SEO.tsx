@@ -114,7 +114,19 @@ export function SEO({
     : seoContent.title);
   const pageDescription = description || (pageMeta ? pageMeta.description[language] : seoContent.description);
   const pageKeywords = keywords || seoContent.keywords;
-  const pageUrl = canonical || `https://rubenmunoz.com${location.pathname}`;
+  // Map alias routes to their primary/canonical route so social previews
+  // and search engagement consolidate on a single URL per page.
+  const aliasToPrimary: Record<string, string> = {
+    '/inicio': '/',
+    '/home': '/',
+    '/contact': '/contacto',
+    '/marketing': '/business',
+    '/patrocinadores': '/sponsors',
+    '/cek2026': '/2026',
+    '/rdeoperators': '/rde',
+  };
+  const primaryPath = aliasToPrimary[location.pathname] ?? location.pathname;
+  const pageUrl = canonical || `https://rubenmunoz.com${primaryPath}`;
 
   useEffect(() => {
     // Update document title
@@ -188,8 +200,8 @@ export function SEO({
       link.href = href;
     };
 
-    updateAlternate('es', `https://rubenmunoz.com${location.pathname}`);
-    updateAlternate('en', `https://rubenmunoz.com${location.pathname}`);
+    updateAlternate('es', `https://rubenmunoz.com${primaryPath}`);
+    updateAlternate('en', `https://rubenmunoz.com${primaryPath}`);
     updateAlternate('x-default', 'https://rubenmunoz.com/');
 
     // Structured data (JSON-LD)
