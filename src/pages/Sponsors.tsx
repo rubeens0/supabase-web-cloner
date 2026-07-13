@@ -21,55 +21,6 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 
 export function Sponsors() {
   const { t, language, getRoute } = useLanguage();
-  const [showSponsorsLightbox, setShowSponsorsLightbox] = useState(false);
-  const [zoom, setZoom] = useState(1);
-  const [offset, setOffset] = useState({ x: 0, y: 0 });
-  const dragRef = useRef<{ x: number; y: number } | null>(null);
-
-  const resetView = () => {
-    setZoom(1);
-    setOffset({ x: 0, y: 0 });
-  };
-
-  const closeLightbox = () => {
-    setShowSponsorsLightbox(false);
-    resetView();
-  };
-
-  useEffect(() => {
-    if (!showSponsorsLightbox) return;
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') closeLightbox();
-      if (e.key === '+' || e.key === '=') setZoom((z) => Math.min(z + 0.25, 4));
-      if (e.key === '-') setZoom((z) => Math.max(z - 0.25, 1));
-      if (e.key === '0') resetView();
-    };
-    document.body.style.overflow = 'hidden';
-    window.addEventListener('keydown', onKey);
-    return () => {
-      document.body.style.overflow = '';
-      window.removeEventListener('keydown', onKey);
-    };
-  }, [showSponsorsLightbox]);
-
-  const handleWheel = (e: React.WheelEvent) => {
-    e.preventDefault();
-    const delta = e.deltaY > 0 ? -0.15 : 0.15;
-    setZoom((z) => Math.min(Math.max(z + delta, 1), 4));
-  };
-
-  const handlePointerDown = (e: React.PointerEvent) => {
-    if (zoom <= 1) return;
-    (e.target as HTMLElement).setPointerCapture(e.pointerId);
-    dragRef.current = { x: e.clientX - offset.x, y: e.clientY - offset.y };
-  };
-  const handlePointerMove = (e: React.PointerEvent) => {
-    if (!dragRef.current) return;
-    setOffset({ x: e.clientX - dragRef.current.x, y: e.clientY - dragRef.current.y });
-  };
-  const handlePointerUp = () => {
-    dragRef.current = null;
-  };
 
   const fadeIn = (delay = 0) => ({
     initial: { opacity: 0, y: 16 },
