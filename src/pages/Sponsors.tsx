@@ -456,13 +456,6 @@ export function Sponsors() {
               className="w-full h-auto"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
-            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/40">
-              <div className="bg-white/95 px-4 py-2 rounded-full">
-                <p className="text-black text-sm font-medium">
-                  {language === 'es' ? 'Click para ampliar' : 'Click to enlarge'}
-                </p>
-              </div>
-            </div>
           </motion.div>
         </div>
       </section>
