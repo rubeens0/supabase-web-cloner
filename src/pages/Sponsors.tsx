@@ -317,18 +317,6 @@ export function Sponsors() {
                   </div>
                 </div>
               </div>
-
-              {/* Floating stat */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                className="absolute -bottom-6 -left-6 sm:-bottom-8 sm:-left-8 bg-black border border-white/15 rounded-2xl p-5 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.9)]"
-              >
-                <p className="font-display text-3xl sm:text-4xl text-white">{t('sponsors.netpro.statValue')}</p>
-                <p className="text-white/70 text-xs uppercase tracking-[0.15em] mt-1">{t('sponsors.netpro.statLabel')}</p>
-              </motion.div>
             </motion.div>
           </div>
         </div>
