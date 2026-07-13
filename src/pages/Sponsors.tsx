@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 import { useLanguage } from '../contexts/LanguageContext';
-import { Trophy, Users, Sparkles, Mail, X, ArrowUpRight, ArrowRight, ZoomIn, ZoomOut, RotateCcw, Download, Maximize2, Rocket, Target, BarChart3 } from 'lucide-react';
+import { Trophy, Users, Sparkles, Mail, ArrowUpRight, ArrowRight, Rocket, Target, BarChart3 } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Link } from 'react-router-dom';
 import { SEO } from '../components/SEO';
