@@ -123,22 +123,6 @@ export function BlogPost() {
       image: netproImg,
     },
     {
-      id: 'netspy-emprendedores',
-      title: t('blog.netspy.title'),
-      excerpt: t('blog.netspy.excerpt'),
-      content: language === 'es' 
-        ? `Rubén Muñoz junto a Hugo Trébol han creado un grupo de acceso privado para jóvenes emprendedores; Si eres menor o un joven de menos de 25 años ya puedes rodearte de gente que te inspire y te ayude a crecer como emprendedor, cualquier pregunta me puedes enviar un mensaje por correo electrónico ;) (Grupo en telegram)
-
-rubenmunooz2009@gmail.com`
-        : `Rubén Muñoz and Hugo Trébol have created a private access group for young entrepreneurs; If you are a minor or a young person under 25 years old, you can already surround yourself with people who inspire you and help you grow as an entrepreneur. For any questions, you can send me a message by email ;) (Telegram group)
-
-rubenmunooz2009@gmail.com`,
-      date: '2025-11-05',
-      readTime: '3 min',
-      category: t('blog.category.marketing'),
-      image: netspyImg,
-    },
-    {
       id: 'cek-zaragoza',
       title: t('blog.cek.title'),
       excerpt: t('blog.cek.excerpt'),
