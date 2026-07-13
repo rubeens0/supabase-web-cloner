@@ -425,40 +425,6 @@ export function Sponsors() {
         </div>
       </section>
 
-      {/* ============== SPONSORS IMAGE ============== */}
-      <section id="sponsors-section" className="border-b border-white/[0.08] px-5 sm:px-10 md:px-16 py-20 sm:py-28">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex items-end justify-between mb-10">
-            <div>
-              <SectionLabel>{language === 'es' ? 'Patrocinadores' : 'Sponsors'}</SectionLabel>
-              <h2 className="mt-6 font-display text-4xl sm:text-5xl md:text-6xl text-white tracking-tight leading-tight">
-                {language === 'es' ? (
-                  <>
-                    Patrocinadores <span className="font-display-italic text-gradient-mono-italic">2026</span>
-                  </>
-                ) : (
-                  <>
-                    Sponsors <span className="font-display-italic text-gradient-mono-italic">2026</span>
-                  </>
-                )}
-              </h2>
-            </div>
-          </div>
-
-          <motion.div
-            {...fadeIn(0.1)}
-            onClick={() => setShowSponsorsLightbox(true)}
-            className="relative rounded-3xl overflow-hidden border border-white/10 hover:border-white/25 transition-colors cursor-pointer group"
-          >
-            <img
-              src={sponsorsImage}
-              alt={language === 'es' ? 'Patrocinadores 2026 - Rubén Muñoz' : 'Sponsors 2026 - Rubén Muñoz'}
-              className="w-full h-auto"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
-          </motion.div>
-        </div>
-      </section>
 
       {/* ============== CTA ============== */}
       <section className="px-5 sm:px-10 md:px-16 py-24 sm:py-40">
