@@ -43,14 +43,7 @@ export function SEO({
       es: 'Web oficial de Rubén Muñoz: piloto del CEK y emprendedor digital.',
       en: 'Official site of Rubén Muñoz: CEK karting driver and digital entrepreneur.'
     }},
-    '/inicio': { title: 'Inicio', description: {
-      es: 'Piloto del CEK y emprendedor digital de Cáceres. Calendario, patrocinios y blog.',
-      en: 'CEK karting driver and digital entrepreneur from Cáceres. Schedule, sponsors and blog.'
-    }},
-    '/home': { title: 'Home', description: {
-      es: 'Piloto del CEK y emprendedor digital de Cáceres. Calendario, patrocinios y blog.',
-      en: 'CEK karting driver and digital entrepreneur from Cáceres. Schedule, sponsors and blog.'
-    }},
+    // '/inicio' and '/home' are aliases of '/' — resolved via aliasToPrimary below.
     '/patrocinadores': { title: 'Patrocinadores', description: {
       es: 'Únete como patrocinador en el CEK 2026: visibilidad nacional, dossier y planes.',
       en: 'Join as a sponsor in the 2026 CEK: nationwide visibility, dossier and plans.'
