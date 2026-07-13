@@ -8,7 +8,6 @@ import { YoutubeRecent } from "../components/YoutubeRecent";
 import { useLanguage } from "../contexts/LanguageContext";
 import { useRef } from "react";
 import { LIVE_RACE_ACTIVE, CURRENT_RACE } from "@/config/liveRace";
-import heroImage from "@/assets/ruben-motorland-sunday.jpg";
 import logoWhiteMark from "@/assets/x-logo-white.png";
 import aboutImage from "@/assets/about-image.webp";
 import aboutImageAlt from "@/assets/ruben-portrait-grid.jpg";
@@ -308,7 +307,7 @@ export function Home() {
       <motion.div
         initial={{ opacity: 1 }}
         animate={{ opacity: 0 }}
-        transition={{ duration: 1.1, delay: 2.6, ease: [0.65, 0, 0.35, 1] }}
+        transition={{ duration: 0.8, delay: 1.4, ease: [0.65, 0, 0.35, 1] }}
         onAnimationComplete={() => {
           const el = document.getElementById("home-intro-overlay");
           if (el) el.style.display = "none";
@@ -320,7 +319,7 @@ export function Home() {
         <motion.div
           initial={{ opacity: 0, scale: 0.6 }}
           animate={{ opacity: [0, 0.6, 0.35], scale: [0.6, 1.1, 1.2] }}
-          transition={{ duration: 3.2, times: [0, 0.5, 1], ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 1.8, times: [0, 0.5, 1], ease: [0.22, 1, 0.36, 1] }}
           className="absolute w-[60vmin] h-[60vmin] rounded-full"
           style={{ background: "radial-gradient(circle, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0) 65%)" }}
         />
@@ -330,20 +329,22 @@ export function Home() {
           <motion.img
             src={logoWhiteMark}
             alt="Rubén Muñoz"
+            width={288}
+            height={288}
             initial={{ opacity: 0, scale: 0.7, filter: "blur(14px)" }}
             animate={{
               opacity: [0, 1, 1, 1],
               scale: [0.7, 1, 1, 1.04],
               filter: ["blur(14px)", "blur(0px)", "blur(0px)", "blur(0px)"],
             }}
-            transition={{ duration: 3.2, times: [0, 0.45, 0.85, 1], ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 1.8, times: [0, 0.45, 0.85, 1], ease: [0.22, 1, 0.36, 1] }}
             className="w-44 sm:w-56 md:w-72 h-auto drop-shadow-[0_0_60px_rgba(255,255,255,0.25)]"
           />
           {/* Thin line sweep under the mark */}
           <motion.div
             initial={{ scaleX: 0, opacity: 0 }}
             animate={{ scaleX: [0, 1, 1], opacity: [0, 0.7, 0] }}
-            transition={{ duration: 2.6, delay: 0.8, times: [0, 0.5, 1], ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 1.4, delay: 0.4, times: [0, 0.5, 1], ease: [0.22, 1, 0.36, 1] }}
             className="mt-6 sm:mt-8 h-px w-40 sm:w-56 bg-white/60 origin-center"
           />
         </div>
@@ -353,15 +354,15 @@ export function Home() {
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         {/* Background image */}
         <motion.div
-          initial={{ opacity: 0, scale: 1.08 }}
+          initial={{ opacity: 0, scale: 1.04 }}
           animate={{ opacity: 0.55, scale: 1 }}
-          transition={{ duration: 2.8, delay: 2.4, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 1.6, delay: 1.2, ease: [0.22, 1, 0.36, 1] }}
           className="absolute inset-0"
           style={perfSettings.simplifyAnimations ? {} : { willChange: "transform, opacity" }}
         >
           <ImageWithFallback
-            src={heroImage}
-            alt="Karting"
+            src="/hero-home.webp"
+            alt="Rubén Muñoz en el karting"
             className="w-full h-full object-cover"
             loading="eager"
             fetchPriority="high"
@@ -390,9 +391,11 @@ export function Home() {
           <motion.img
             src={logoWhiteMark}
             alt="Rubén Muñoz"
+            width={352}
+            height={352}
             initial={{ opacity: 0, scale: 0.92, filter: "blur(6px)" }}
             animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-            transition={{ duration: 1.4, delay: 3.8, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 1.1, delay: 2.0, ease: [0.22, 1, 0.36, 1] }}
             className="w-48 sm:w-64 md:w-80 lg:w-[22rem] h-auto drop-shadow-[0_10px_40px_rgba(0,0,0,0.6)]"
           />
 
@@ -400,7 +403,7 @@ export function Home() {
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 4.2, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.8, delay: 2.4, ease: [0.22, 1, 0.36, 1] }}
             className="mt-12 sm:mt-14"
           >
             <button
@@ -420,7 +423,7 @@ export function Home() {
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 4.5, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.8, delay: 2.7, ease: [0.22, 1, 0.36, 1] }}
             className="mt-10 flex flex-wrap justify-center gap-x-6 gap-y-2 text-[13px] text-white/50"
           >
             {LIVE_RACE_ACTIVE && (
