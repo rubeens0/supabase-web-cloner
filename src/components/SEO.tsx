@@ -200,8 +200,8 @@ export function SEO({
       link.href = href;
     };
 
-    updateAlternate('es', `https://rubenmunoz.com${location.pathname}`);
-    updateAlternate('en', `https://rubenmunoz.com${location.pathname}`);
+    updateAlternate('es', `https://rubenmunoz.com${primaryPath}`);
+    updateAlternate('en', `https://rubenmunoz.com${primaryPath}`);
     updateAlternate('x-default', 'https://rubenmunoz.com/');
 
     // Structured data (JSON-LD)
