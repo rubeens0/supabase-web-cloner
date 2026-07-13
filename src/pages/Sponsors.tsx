@@ -1,13 +1,11 @@
 import { motion } from 'motion/react';
 import { useLanguage } from '../contexts/LanguageContext';
-import { Trophy, Users, Sparkles, Mail, X, ArrowUpRight, ArrowRight, ZoomIn, ZoomOut, RotateCcw, Download, Maximize2, Rocket, Target, BarChart3 } from 'lucide-react';
+import { Trophy, Users, Sparkles, Mail, ArrowUpRight, ArrowRight, Rocket, Target, BarChart3 } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Link } from 'react-router-dom';
 import { SEO } from '../components/SEO';
-import { useState, useEffect, useRef } from 'react';
-import { AnimatePresence } from 'motion/react';
 import heroImage from '@/assets/sponsors-event.png';
-import sponsorsImage from '@/assets/banner-patrocinadores-2026.png';
+
 import netproLogo from '@/assets/netpro-branding.jpg';
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
@@ -21,55 +19,6 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 
 export function Sponsors() {
   const { t, language, getRoute } = useLanguage();
-  const [showSponsorsLightbox, setShowSponsorsLightbox] = useState(false);
-  const [zoom, setZoom] = useState(1);
-  const [offset, setOffset] = useState({ x: 0, y: 0 });
-  const dragRef = useRef<{ x: number; y: number } | null>(null);
-
-  const resetView = () => {
-    setZoom(1);
-    setOffset({ x: 0, y: 0 });
-  };
-
-  const closeLightbox = () => {
-    setShowSponsorsLightbox(false);
-    resetView();
-  };
-
-  useEffect(() => {
-    if (!showSponsorsLightbox) return;
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') closeLightbox();
-      if (e.key === '+' || e.key === '=') setZoom((z) => Math.min(z + 0.25, 4));
-      if (e.key === '-') setZoom((z) => Math.max(z - 0.25, 1));
-      if (e.key === '0') resetView();
-    };
-    document.body.style.overflow = 'hidden';
-    window.addEventListener('keydown', onKey);
-    return () => {
-      document.body.style.overflow = '';
-      window.removeEventListener('keydown', onKey);
-    };
-  }, [showSponsorsLightbox]);
-
-  const handleWheel = (e: React.WheelEvent) => {
-    e.preventDefault();
-    const delta = e.deltaY > 0 ? -0.15 : 0.15;
-    setZoom((z) => Math.min(Math.max(z + delta, 1), 4));
-  };
-
-  const handlePointerDown = (e: React.PointerEvent) => {
-    if (zoom <= 1) return;
-    (e.target as HTMLElement).setPointerCapture(e.pointerId);
-    dragRef.current = { x: e.clientX - offset.x, y: e.clientY - offset.y };
-  };
-  const handlePointerMove = (e: React.PointerEvent) => {
-    if (!dragRef.current) return;
-    setOffset({ x: e.clientX - dragRef.current.x, y: e.clientY - dragRef.current.y });
-  };
-  const handlePointerUp = () => {
-    dragRef.current = null;
-  };
 
   const fadeIn = (delay = 0) => ({
     initial: { opacity: 0, y: 16 },
@@ -425,40 +374,6 @@ export function Sponsors() {
         </div>
       </section>
 
-      {/* ============== SPONSORS IMAGE ============== */}
-      <section id="sponsors-section" className="border-b border-white/[0.08] px-5 sm:px-10 md:px-16 py-20 sm:py-28">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex items-end justify-between mb-10">
-            <div>
-              <SectionLabel>{language === 'es' ? 'Patrocinadores' : 'Sponsors'}</SectionLabel>
-              <h2 className="mt-6 font-display text-4xl sm:text-5xl md:text-6xl text-white tracking-tight leading-tight">
-                {language === 'es' ? (
-                  <>
-                    Patrocinadores <span className="font-display-italic text-gradient-mono-italic">2026</span>
-                  </>
-                ) : (
-                  <>
-                    Sponsors <span className="font-display-italic text-gradient-mono-italic">2026</span>
-                  </>
-                )}
-              </h2>
-            </div>
-          </div>
-
-          <motion.div
-            {...fadeIn(0.1)}
-            onClick={() => setShowSponsorsLightbox(true)}
-            className="relative rounded-3xl overflow-hidden border border-white/10 hover:border-white/25 transition-colors cursor-pointer group"
-          >
-            <img
-              src={sponsorsImage}
-              alt={language === 'es' ? 'Patrocinadores 2026 - Rubén Muñoz' : 'Sponsors 2026 - Rubén Muñoz'}
-              className="w-full h-auto"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
-          </motion.div>
-        </div>
-      </section>
 
       {/* ============== CTA ============== */}
       <section className="px-5 sm:px-10 md:px-16 py-24 sm:py-40">
@@ -493,120 +408,6 @@ export function Sponsors() {
         </div>
       </section>
 
-      {/* Lightbox */}
-      <AnimatePresence>
-        {showSponsorsLightbox && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-xl flex flex-col"
-            style={{
-              backgroundImage:
-                'radial-gradient(circle at 1px 1px, rgba(255,255,255,0.06) 1px, transparent 0)',
-              backgroundSize: '24px 24px',
-            }}
-          >
-            <div className="relative z-10 flex items-center justify-between px-4 sm:px-8 py-4 border-b border-white/10 bg-black/40 backdrop-blur-md">
-              <div className="flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-white/50">
-                <span className="h-px w-8 bg-white/20" />
-                <span className="hidden sm:inline">{language === 'es' ? 'Patrocinadores · 2026' : 'Sponsors · 2026'}</span>
-              </div>
-              <button
-                onClick={closeLightbox}
-                aria-label="Close"
-                className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/15 hover:border-white/40 hover:bg-white/5 transition-colors text-white/80 text-xs"
-              >
-                <span className="hidden sm:inline">ESC</span>
-                <X className="w-4 h-4" />
-              </button>
-            </div>
-
-            <div
-              className="relative flex-1 overflow-hidden flex items-center justify-center select-none"
-              onClick={closeLightbox}
-              onWheel={handleWheel}
-            >
-              <motion.img
-                key="sponsors-img"
-                src={sponsorsImage}
-                alt={language === 'es' ? 'Patrocinadores 2026 - Rubén Muñoz' : 'Sponsors 2026 - Rubén Muñoz'}
-                draggable={false}
-                onClick={(e) => e.stopPropagation()}
-                onPointerDown={handlePointerDown}
-                onPointerMove={handlePointerMove}
-                onPointerUp={handlePointerUp}
-                onPointerCancel={handlePointerUp}
-                initial={{ scale: 0.96, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                exit={{ scale: 0.96, opacity: 0 }}
-                transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                style={{
-                  transform: `translate(${offset.x}px, ${offset.y}px) scale(${zoom})`,
-                  transition: dragRef.current ? 'none' : 'transform 0.2s ease-out',
-                  cursor: zoom > 1 ? (dragRef.current ? 'grabbing' : 'grab') : 'zoom-in',
-                  maxWidth: '92vw',
-                  maxHeight: 'calc(100vh - 180px)',
-                }}
-                className="object-contain rounded-xl shadow-[0_30px_120px_-20px_rgba(0,0,0,0.9)]"
-              />
-            </div>
-
-            <div className="relative z-10 flex items-center justify-center gap-2 px-4 py-4 border-t border-white/10 bg-black/40 backdrop-blur-md">
-              <div className="flex items-center gap-1 p-1 bg-white/5 border border-white/10 rounded-full">
-                <button
-                  onClick={() => setZoom((z) => Math.max(z - 0.25, 1))}
-                  disabled={zoom <= 1}
-                  className="p-2.5 rounded-full hover:bg-white/10 text-white/80 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
-                  aria-label="Zoom out"
-                >
-                  <ZoomOut className="w-4 h-4" />
-                </button>
-                <div className="px-3 font-mono text-[11px] text-white/70 tabular-nums min-w-[52px] text-center">
-                  {Math.round(zoom * 100)}%
-                </div>
-                <button
-                  onClick={() => setZoom((z) => Math.min(z + 0.25, 4))}
-                  disabled={zoom >= 4}
-                  className="p-2.5 rounded-full hover:bg-white/10 text-white/80 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
-                  aria-label="Zoom in"
-                >
-                  <ZoomIn className="w-4 h-4" />
-                </button>
-              </div>
-
-              <button
-                onClick={resetView}
-                className="p-2.5 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 text-white/80 transition-colors"
-                aria-label="Reset"
-                title={language === 'es' ? 'Restablecer' : 'Reset'}
-              >
-                <RotateCcw className="w-4 h-4" />
-              </button>
-
-              <button
-                onClick={() => setZoom((z) => (z >= 2 ? 1 : 2))}
-                className="p-2.5 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 text-white/80 transition-colors"
-                aria-label="Fit"
-                title={language === 'es' ? 'Ajustar' : 'Fit'}
-              >
-                <Maximize2 className="w-4 h-4" />
-              </button>
-
-              <a
-                href={sponsorsImage}
-                download="patrocinadores-2026.png"
-                className="p-2.5 rounded-full bg-white text-black hover:brightness-110 transition-all border border-white/20"
-                aria-label="Download"
-                title={language === 'es' ? 'Descargar' : 'Download'}
-              >
-                <Download className="w-4 h-4" />
-              </a>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </div>
   );
 }
