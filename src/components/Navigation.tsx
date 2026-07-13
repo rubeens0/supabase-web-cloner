@@ -78,7 +78,7 @@ export function Navigation() {
               <button
                 onClick={() => setBannerVisible(false)}
                 aria-label="Close banner"
-                className="text-white/40 hover:text-white transition-colors shrink-0"
+                className="text-white/70 hover:text-white transition-colors shrink-0"
               >
                 <X className="w-3.5 h-3.5" />
               </button>
@@ -136,8 +136,8 @@ export function Navigation() {
               className="hidden sm:inline-flex items-center gap-1.5 text-[12px] text-white/60 hover:text-white transition-colors uppercase tracking-wider px-2 py-1"
             >
               {language}
-              <span className="text-white/30">/</span>
-              <span className="text-white/30">{language === 'es' ? 'en' : 'es'}</span>
+              <span className="text-white/70">/</span>
+              <span className="text-white/70">{language === 'es' ? 'en' : 'es'}</span>
             </button>
 
             <Link
@@ -193,7 +193,7 @@ export function Navigation() {
                       <Link
                         to={item.to}
                         className={`block py-4 border-b border-white/[0.06] font-display text-4xl tracking-tight transition-colors ${
-                          active ? 'text-white' : 'text-white/40'
+                          active ? 'text-white' : 'text-white/70'
                         }`}
                       >
                         {item.label}

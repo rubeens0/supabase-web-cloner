@@ -27,7 +27,7 @@ interface BlogPost {
 
 function SectionLabel({ index, children }: { index: string; children: React.ReactNode }) {
   return (
-    <div className="flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-white/40">
+    <div className="flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-white/70">
       <span className="font-mono text-white">{index}</span>
       <span className="h-px w-8 bg-white/15" />
       <span>{children}</span>
@@ -201,7 +201,7 @@ export function Blog() {
                     <span className="inline-block font-mono text-[10px] uppercase tracking-[0.22em] text-white border border-white/30 rounded-full px-2.5 py-1">
                       {feature.category}
                     </span>
-                    <span className="font-mono text-[10px] text-white/40">
+                    <span className="font-mono text-[10px] text-white/70">
                       {new Date(feature.date)
                         .toLocaleDateString(t('blog.locale'), {
                           year: 'numeric',
@@ -209,7 +209,7 @@ export function Blog() {
                           day: 'numeric',
                         })}
                     </span>
-                    <span className="font-mono text-[10px] text-white/40">· {feature.readTime}</span>
+                    <span className="font-mono text-[10px] text-white/70">· {feature.readTime}</span>
                   </div>
                   <h2 className="font-display text-3xl sm:text-5xl lg:text-5xl xl:text-6xl text-white leading-[1.05] tracking-tight mb-4 sm:mb-5 break-words">
                     {feature.title}
@@ -249,7 +249,7 @@ export function Blog() {
                   </div>
                 </div>
                 {/* Date column hidden on mobile, shown on sm+ */}
-                <div className="hidden sm:block sm:col-span-2 font-mono text-[11px] text-white/40 uppercase tracking-[0.18em]">
+                <div className="hidden sm:block sm:col-span-2 font-mono text-[11px] text-white/70 uppercase tracking-[0.18em]">
                   {new Date(post.date).toLocaleDateString(t('blog.locale'), {
                     year: 'numeric',
                     month: 'short',
@@ -259,7 +259,7 @@ export function Blog() {
                 </div>
                 {/* Title + meta */}
                 <div className="flex-1 min-w-0 sm:col-span-7">
-                  <div className="flex sm:hidden items-center gap-2 mb-1.5 font-mono text-[10px] text-white/40 uppercase tracking-[0.16em]">
+                  <div className="flex sm:hidden items-center gap-2 mb-1.5 font-mono text-[10px] text-white/70 uppercase tracking-[0.16em]">
                     <span>{new Date(post.date).toLocaleDateString(t('blog.locale'), { month: 'short', day: 'numeric' })}</span>
                     <span className="w-1 h-1 rounded-full bg-white/25" />
                     <span className="truncate">{post.category}</span>
@@ -272,7 +272,7 @@ export function Blog() {
                   </p>
                 </div>
                 <div className="shrink-0 sm:col-span-1 flex justify-end">
-                  <ArrowUpRight className="w-4 h-4 sm:w-5 sm:h-5 text-white/40 group-hover:text-white transition-colors" />
+                  <ArrowUpRight className="w-4 h-4 sm:w-5 sm:h-5 text-white/70 group-hover:text-white transition-colors" />
                 </div>
               </Link>
             ))}

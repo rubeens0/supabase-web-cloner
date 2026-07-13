@@ -10,7 +10,7 @@ import netproLogo from '@/assets/netpro-branding.jpg';
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
-    <div className="flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-white/40">
+    <div className="flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-white/70">
       <span className="h-px w-8 bg-white/15" />
       <span>{children}</span>
     </div>
@@ -84,7 +84,7 @@ export function Sponsors() {
                 <span key={i}>{word} </span>
               )
             )}
-            <span className="text-white/40">.</span>
+            <span className="text-white/70">.</span>
           </motion.h1>
 
           <motion.p
@@ -146,7 +146,7 @@ export function Sponsors() {
                 <img src={netproLogo} alt="Netpro Agency" className="w-8 h-8 object-contain" />
               </div>
               <div>
-                <p className="text-[11px] uppercase tracking-[0.22em] text-white/40">{t('sponsors.netpro.badge')}</p>
+                <p className="text-[11px] uppercase tracking-[0.22em] text-white/70">{t('sponsors.netpro.badge')}</p>
                 <p className="mt-1 font-display text-xl sm:text-2xl text-white">Netpro Agency</p>
               </div>
             </div>
@@ -164,7 +164,7 @@ export function Sponsors() {
 
           <h2 className="mt-6 font-display text-5xl sm:text-6xl md:text-7xl text-white leading-[1.05] tracking-tight max-w-4xl mb-14">
             {t('sponsors.intro.title')}
-            <span className="text-white/40">.</span>
+            <span className="text-white/70">.</span>
           </h2>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -174,7 +174,7 @@ export function Sponsors() {
                 {...fadeIn(i * 0.1)}
                 className="border-t border-white/[0.12] pt-8"
               >
-                <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-white/40">
+                <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-white/70">
                   0{i + 1}
                 </span>
                 <p className="mt-5 text-white/70 leading-relaxed text-[15px]">{p}</p>
@@ -206,7 +206,7 @@ export function Sponsors() {
                     <span key={i}>{word} </span>
                   )
                 )}
-                <span className="text-white/40">.</span>
+                <span className="text-white/70">.</span>
               </h2>
               <p className="mt-8 text-white/60 text-base sm:text-lg leading-relaxed max-w-xl">
                 {t('sponsors.netpro.description')}
@@ -347,7 +347,7 @@ export function Sponsors() {
             <SectionLabel>{t('sponsors.why.title')}</SectionLabel>
             <h2 className="mt-6 font-display text-5xl sm:text-6xl md:text-7xl text-white leading-[1.05] tracking-tight">
               {t('sponsors.why.title')}
-              <span className="text-white/40">.</span>
+              <span className="text-white/70">.</span>
             </h2>
           </div>
 
@@ -362,7 +362,7 @@ export function Sponsors() {
                   <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-white">
                     0{i + 1}
                   </span>
-                  <card.icon className="w-5 h-5 text-white/40 group-hover:text-white transition-colors" />
+                  <card.icon className="w-5 h-5 text-white/70 group-hover:text-white transition-colors" />
                 </div>
                 <h3 className="font-display text-3xl sm:text-4xl text-white mb-4 leading-tight">
                   {card.title}

@@ -84,7 +84,7 @@ export function DossierAccess({ onAccess }: DossierAccessProps) {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          className="flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-white/40 mb-8"
+          className="flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-white/70 mb-8"
         >
           <span className="font-mono text-white">N° 00</span>
           <span className="h-px w-10 bg-white/20" />
@@ -128,7 +128,7 @@ export function DossierAccess({ onAccess }: DossierAccessProps) {
                     }`}
                   >
                     <div className="flex items-center gap-4 min-w-0">
-                      <span className="font-mono text-[11px] text-white/40 w-8">
+                      <span className="font-mono text-[11px] text-white/70 w-8">
                         0{idx + 1}
                       </span>
                       <div className="p-2 rounded-full border border-white/15 bg-white/[0.04]">
@@ -145,7 +145,7 @@ export function DossierAccess({ onAccess }: DossierAccessProps) {
                       className={`text-[10px] font-mono uppercase tracking-[0.2em] px-2.5 py-1 rounded-full border ${
                         active
                           ? 'border-white/60 text-white bg-white/10'
-                          : 'border-white/15 text-white/40'
+                          : 'border-white/15 text-white/70'
                       }`}
                     >
                       {active
@@ -173,7 +173,7 @@ export function DossierAccess({ onAccess }: DossierAccessProps) {
                   <FileText className="w-5 h-5 text-white" />
                 </div>
                 <div>
-                  <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-white/40">
+                  <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-white/70">
                     {language === 'es' ? 'Acceso seguro' : 'Secure access'}
                   </p>
                   <p className="text-white text-sm font-medium">
@@ -184,7 +184,7 @@ export function DossierAccess({ onAccess }: DossierAccessProps) {
 
               <form onSubmit={handleSubmit} className="space-y-4 relative">
                 <div className="relative">
-                  <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/40 pointer-events-none" />
+                  <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/70 pointer-events-none" />
                   <input
                     type="password"
                     value={password}
@@ -238,7 +238,7 @@ export function DossierAccess({ onAccess }: DossierAccessProps) {
                 </button>
               </form>
 
-              <div className="mt-6 pt-5 border-t border-white/10 flex items-center gap-2 text-[11px] text-white/40">
+              <div className="mt-6 pt-5 border-t border-white/10 flex items-center gap-2 text-[11px] text-white/70">
                 <ShieldCheck className="w-3.5 h-3.5" />
                 <span>
                   {language === 'es'

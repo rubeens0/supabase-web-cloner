@@ -22,7 +22,7 @@ const CHANNEL_URL = "https://www.youtube.com/@rubenmunooz._";
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
-    <div className="flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-white/40">
+    <div className="flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-white/70">
       <span className="h-px w-8 bg-white/15" />
       <span>{children}</span>
     </div>
@@ -162,7 +162,7 @@ export function YoutubeRecent() {
                     <span className="inline-block font-mono text-[10px] uppercase tracking-[0.22em] text-secondary border border-secondary/30 rounded-full px-2.5 py-1">
                       {v.isShort ? "Short" : "Vídeo"}
                     </span>
-                    <span className="font-mono text-[10px] text-white/40">
+                    <span className="font-mono text-[10px] text-white/70">
                       {formatDate(v.published)}
                     </span>
                   </div>

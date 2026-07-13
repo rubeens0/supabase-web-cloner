@@ -8,7 +8,7 @@ import netproLogo from '@/assets/netpro-branding.jpg';
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
-    <div className="flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-white/40">
+    <div className="flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-white/70">
       <span className="h-px w-8 bg-white/15" />
       <span>{children}</span>
     </div>
@@ -40,7 +40,7 @@ export function Business() {
           >
             Business{' '}
             <span className="font-display-italic text-gradient-mono-italic">Lines</span>
-            <span className="text-white/40">.</span>
+            <span className="text-white/70">.</span>
           </motion.h1>
         </div>
       </section>
@@ -152,7 +152,7 @@ function BusinessSection({
           <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-xl">
             {features.map((feature, i) => (
               <div key={i} className="flex items-center gap-3 border-t border-white/[0.06] pt-3">
-                <span className="font-mono text-[10px] text-white/40">0{i + 1}</span>
+                <span className="font-mono text-[10px] text-white/70">0{i + 1}</span>
                 <span className="text-white/70 text-sm">{feature}</span>
               </div>
             ))}
