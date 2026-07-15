@@ -40,7 +40,15 @@ Deno.serve(async (req) => {
       );
     }
 
-    const { name, phone, email, address, offer } = parsed.data;
+    const { name, phone, email, offer } = parsed.data;
+    let { address } = parsed.data;
+
+    // Strip "(Cáceres)" or trailing ", Cáceres" from address before forwarding
+    address = address
+      .replace(/\s*\(\s*c[áa]ceres\s*\)\s*/gi, ' ')
+      .replace(/[,\s-]+c[áa]ceres\s*$/gi, '')
+      .replace(/\s{2,}/g, ' ')
+      .trim();
 
     // Parse offer string "Title (price suffix)" into structured fields
     let offerTitle: string | null = null;
