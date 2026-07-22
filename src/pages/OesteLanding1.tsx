@@ -137,8 +137,9 @@ export default function OesteLanding1() {
       {/* Stylized kart background with opacity fade */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-0 h-[110vh] z-0"
+        className="pointer-events-none absolute inset-x-0 top-0 z-0"
         style={{
+          height: '110lvh',
           backgroundImage: `url(${KART_BG})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center top',
@@ -150,13 +151,16 @@ export default function OesteLanding1() {
             'linear-gradient(180deg, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.75) 35%, rgba(0,0,0,0.35) 65%, rgba(0,0,0,0) 92%)',
           maskImage:
             'linear-gradient(180deg, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.75) 35%, rgba(0,0,0,0.35) 65%, rgba(0,0,0,0) 92%)',
+          transform: 'translateZ(0)',
+          willChange: 'transform',
         }}
       />
       {/* Color wash to keep brand gradient dominant */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-0 h-[110vh] z-0"
+        className="pointer-events-none absolute inset-x-0 top-0 z-0"
         style={{
+          height: '110lvh',
           background:
             'linear-gradient(135deg, rgba(227,120,25,0.55) 0%, rgba(190,45,112,0.55) 50%, rgba(112,36,121,0.6) 100%)',
           mixBlendMode: 'multiply',
