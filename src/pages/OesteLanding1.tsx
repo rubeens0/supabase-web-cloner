@@ -137,9 +137,8 @@ export default function OesteLanding1() {
       {/* Stylized kart background with opacity fade */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-0 z-0"
+        className="pointer-events-none fixed inset-0 z-0"
         style={{
-          height: '110lvh',
           backgroundImage: `url(${KART_BG})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center top',
@@ -148,9 +147,9 @@ export default function OesteLanding1() {
           opacity: 0.45,
           mixBlendMode: 'luminosity',
           WebkitMaskImage:
-            'linear-gradient(180deg, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.75) 35%, rgba(0,0,0,0.35) 65%, rgba(0,0,0,0) 92%)',
+            'linear-gradient(180deg, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.75) 45%, rgba(0,0,0,0.25) 80%, rgba(0,0,0,0) 100%)',
           maskImage:
-            'linear-gradient(180deg, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.75) 35%, rgba(0,0,0,0.35) 65%, rgba(0,0,0,0) 92%)',
+            'linear-gradient(180deg, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.75) 45%, rgba(0,0,0,0.25) 80%, rgba(0,0,0,0) 100%)',
           transform: 'translateZ(0)',
           willChange: 'transform',
         }}
@@ -158,9 +157,8 @@ export default function OesteLanding1() {
       {/* Color wash to keep brand gradient dominant */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-0 z-0"
+        className="pointer-events-none fixed inset-0 z-0"
         style={{
-          height: '110lvh',
           background:
             'linear-gradient(135deg, rgba(227,120,25,0.55) 0%, rgba(190,45,112,0.55) 50%, rgba(112,36,121,0.6) 100%)',
           mixBlendMode: 'multiply',
