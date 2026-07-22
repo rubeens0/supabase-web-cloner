@@ -298,10 +298,12 @@ export default function OesteLanding1() {
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
             className="lg:col-span-5 min-w-0 w-full space-y-4 lg:sticky lg:top-6"
           >
-            <OesteOffers
-              selectedId={selectedOffer?.id ?? null}
-              onSelect={handleSelectOffer}
-            />
+            <div id="oeste-offers-section">
+              <OesteOffers
+                selectedId={selectedOffer?.id ?? null}
+                onSelect={handleSelectOffer}
+              />
+            </div>
             <div className="rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm p-4 text-xs text-white/70 leading-relaxed space-y-2">
               <p>
                 <strong className="text-white/90">FibraX 1Gb</strong> tiene un coste de <strong className="text-white/90">21€/mes IVA incluido</strong> si no se añade una línea móvil.
@@ -309,15 +311,17 @@ export default function OesteLanding1() {
               <p>Disfruta de llamadas nacionales ilimitadas con una política de uso razonable de 6.000 minutos al mes.</p>
               <p className="text-white/60">* Oferta válida hasta el 15 de septiembre de 2026.</p>
             </div>
-            <OesteLeadForm
-              selectedOffer={selectedOffer ? {
-                id: selectedOffer.id,
-                title: selectedOffer.title,
-                price: selectedOffer.price,
-                priceSuffix: selectedOffer.priceSuffix,
-              } : null}
-              onClearOffer={() => setSelectedOffer(null)}
-            />
+            <div id="oeste-form-section">
+              <OesteLeadForm
+                selectedOffer={selectedOffer ? {
+                  id: selectedOffer.id,
+                  title: selectedOffer.title,
+                  price: selectedOffer.price,
+                  priceSuffix: selectedOffer.priceSuffix,
+                } : null}
+                onClearOffer={() => setSelectedOffer(null)}
+              />
+            </div>
 
             {/* Video: Máxima velocidad */}
             <div className="rounded-2xl overflow-hidden border border-white/15 bg-black/30 backdrop-blur-sm">
