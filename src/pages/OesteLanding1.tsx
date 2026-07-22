@@ -242,7 +242,7 @@ export default function OesteLanding1() {
             </h1>
 
             <p className="mt-7 text-lg sm:text-xl lg:text-[1.35rem] text-white/85 max-w-2xl leading-relaxed">
-              Velocidad real de 1 y 2 Gb simétricos, sin cortes y con atención cercana. <span className="font-semibold text-white">La fibra X de Oeste</span> en Cáceres.
+              Velocidad real de 1 y 2 Gb simétricos, sin cortes y con atención cercana. <span className="font-semibold text-white">La fibra X de Oeste</span> en Cáceres y en Extremadura.
             </p>
 
             <div className="mt-9 flex flex-col sm:flex-row gap-3 sm:items-center">
