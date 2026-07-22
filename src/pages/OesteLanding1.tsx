@@ -221,7 +221,7 @@ export default function OesteLanding1() {
             <div className="flex flex-wrap items-center gap-2">
               <span className="inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/20 backdrop-blur px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-white/90">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-300 animate-pulse" />
-                Disponible en Cáceres
+                DISPONIBLE EN EXTREMADURA
               </span>
               <span className="inline-flex items-center gap-2 rounded-full bg-yellow-300/15 border border-yellow-200/40 px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.18em] text-yellow-100">
                 ⚡ Oferta hasta 15-sep · plazas limitadas
