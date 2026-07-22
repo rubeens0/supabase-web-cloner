@@ -89,7 +89,7 @@ export function OesteLeadForm({ selectedOffer, onClearOffer }: Props = {}) {
         setSubmitted(true);
         const [firstName, ...rest] = values.name.trim().split(/\s+/);
         const lastName = rest.join(' ') || undefined;
-        const offerValue = parsePrice(selectedOffer?.price);
+        const offerValue = parsePrice(selectedOffer?.price) ?? DEFAULT_LEAD_VALUE;
         const sharedUserData = {
           email: values.email,
           phone: values.phone,
