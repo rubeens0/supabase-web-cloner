@@ -44,12 +44,21 @@ export function OesteLeadForm({ selectedOffer, onClearOffer }: Props = {}) {
     defaultValues: { name: '', phone: '', email: '', address: '', consent: false as unknown as true },
   });
 
+  const DEFAULT_LEAD_VALUE = 27; // fallback EUR value when no offer is selected (avg ticket)
+
   const handleFirstInteraction = () => {
     if (checkoutStartedRef.current) return;
     checkoutStartedRef.current = true;
     const key = `oeste-initiateCheckout-${selectedOffer?.id ?? 'none'}`;
+    const value = parsePrice(selectedOffer?.price) ?? DEFAULT_LEAD_VALUE;
     // Keep the once-guard on pixel side, mirror via CAPI with same event_id
-    trackMetaEventOnce(key, 'InitiateCheckout', { eventID: key });
+    trackMetaEventOnce(key, 'InitiateCheckout', {
+      eventID: key,
+      content_name: selectedOffer?.title ?? 'Sin oferta',
+      content_category: 'oeste-lead-form',
+      value,
+      currency: 'EUR',
+    });
     void sendMetaEvent({
       eventName: 'InitiateCheckout',
       eventId: key,
@@ -57,11 +66,12 @@ export function OesteLeadForm({ selectedOffer, onClearOffer }: Props = {}) {
       customData: {
         content_name: selectedOffer?.title ?? 'Sin oferta',
         content_category: 'oeste-lead-form',
-        value: parsePrice(selectedOffer?.price),
+        value,
         currency: 'EUR',
       },
     });
   };
+
 
   const onSubmit = async (values: FormValues) => {
     setServerError(null);
