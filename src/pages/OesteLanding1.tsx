@@ -43,7 +43,7 @@ const benefits = [
   },
   {
     icon: MapPin,
-    title: 'Soporte local en Cáceres',
+    title: 'SOPORTE LOCAL EN EXTREMADURA',
     desc: 'Atención cercana, en persona y por teléfono cuando lo necesites.',
   },
 ];
