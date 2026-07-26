@@ -7,6 +7,7 @@ import { SEO } from '../components/SEO';
 import heroImage from '@/assets/sponsors-event.png';
 
 import netproLogo from '@/assets/netpro-branding.jpg';
+import oesteLogo from '@/assets/oeste-white.png';
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
