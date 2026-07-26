@@ -7,7 +7,8 @@ import { SEO } from '../components/SEO';
 import heroImage from '@/assets/sponsors-event.png';
 
 import netproLogo from '@/assets/netpro-branding.jpg';
-import oesteLogo from '@/assets/oeste-white.png';
+import oesteLogoAsset from '@/assets/oeste-white.png.asset.json';
+const oesteLogo = oesteLogoAsset.url;
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
