@@ -467,8 +467,8 @@ export function Sponsors() {
                 </div>
                 <p className="font-display-italic text-2xl sm:text-3xl text-white leading-tight">
                   {language === 'es'
-                    ? '“La conexión que mantiene al equipo a toda velocidad, dentro y fuera del circuito.”'
-                    : '"The connection that keeps the team at full speed, on and off the track."'}
+                    ? '“La conexión que mantiene a Rubén dentro y fuera del circuito.”'
+                    : '"The connection that keeps Rubén going on and off the track."'}
                 </p>
                 <div className="mt-8 flex items-center gap-4">
                   <div className="h-px flex-1 bg-white/15" />
