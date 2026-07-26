@@ -1,12 +1,13 @@
 import { motion } from 'motion/react';
 import { useLanguage } from '../contexts/LanguageContext';
-import { Trophy, Users, Sparkles, Mail, ArrowUpRight, ArrowRight, Rocket, Target, BarChart3 } from 'lucide-react';
+import { Trophy, Users, Sparkles, Mail, ArrowUpRight, ArrowRight, Rocket, Target, BarChart3, Wifi } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Link } from 'react-router-dom';
 import { SEO } from '../components/SEO';
 import heroImage from '@/assets/sponsors-event.png';
 
 import netproLogo from '@/assets/netpro-branding.jpg';
+import oesteLogo from '@/assets/oeste-white.png';
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
@@ -374,6 +375,112 @@ export function Sponsors() {
         </div>
       </section>
 
+
+      {/* ============== OESTE PARTNER ============== */}
+      <section className="relative border-y border-white/[0.08] overflow-hidden">
+        <div
+          aria-hidden
+          className="absolute inset-0"
+          style={{
+            background: 'linear-gradient(135deg, rgba(227,120,25,0.18) 0%, rgba(190,45,112,0.14) 50%, rgba(112,36,121,0.18) 100%)',
+          }}
+        />
+        <div
+          aria-hidden
+          className="absolute -top-24 -right-24 w-[24rem] h-[24rem] rounded-full opacity-30 blur-[100px]"
+          style={{ background: 'radial-gradient(circle, rgba(227,120,25,0.6), transparent 70%)' }}
+        />
+        <div
+          aria-hidden
+          className="absolute -bottom-24 -left-24 w-[24rem] h-[24rem] rounded-full opacity-25 blur-[100px]"
+          style={{ background: 'radial-gradient(circle, rgba(112,36,121,0.6), transparent 70%)' }}
+        />
+
+        <div className="relative max-w-7xl mx-auto px-5 sm:px-10 md:px-16 py-24 sm:py-32">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <motion.div {...fadeIn(0.1)}>
+              <div className="flex items-center gap-3 mb-6">
+                <span className="inline-flex h-2 w-2 rounded-full bg-[#E37819] animate-pulse" />
+                <span className="text-[11px] uppercase tracking-[0.22em] text-white/70">
+                  {language === 'es' ? 'Partner Oficial' : 'Official Partner'}
+                </span>
+              </div>
+
+              <div className="mb-8">
+                <img
+                  src={oesteLogo}
+                  alt="Oeste"
+                  className="h-12 w-auto object-contain"
+                />
+              </div>
+
+              <h2 className="font-display text-4xl sm:text-5xl md:text-6xl text-white leading-[1.05] tracking-tight mb-6">
+                {language === 'es' ? 'Fibra X de Oeste' : 'Oeste Fiber X'}
+                <span className="font-display-italic text-gradient-mono-italic">.</span>
+              </h2>
+
+              <p className="text-white/70 text-base sm:text-lg leading-relaxed max-w-xl mb-8">
+                {language === 'es'
+                  ? 'Conexión de alta velocidad para seguir cada carrera, directo y contenido del equipo sin cortes. Velocidad real de 1 y 2 Gb simétricos en Cáceres y Extremadura.'
+                  : 'High-speed connection to follow every race, live stream and team content without interruptions. Real symmetric speeds of 1 and 2 Gb in Cáceres and Extremadura.'}
+              </p>
+
+              <div className="flex flex-wrap gap-3">
+                <Link to="/oeste-landing1">
+                  <Button
+                    className="rounded-full h-12 px-7 gap-2 text-white border-0"
+                    style={{
+                      background: 'linear-gradient(135deg, #E37819 0%, #BE2D70 50%, #702479 100%)',
+                    }}
+                  >
+                    <Wifi className="w-4 h-4" />
+                    {language === 'es' ? 'Ver ofertas de Oeste' : 'View Oeste offers'}
+                    <ArrowUpRight className="w-4 h-4" />
+                  </Button>
+                </Link>
+                <Link to={getRoute('contact')}>
+                  <Button
+                    variant="outline"
+                    className="rounded-full h-12 px-7 border-white/20 bg-transparent text-white hover:bg-white hover:text-black hover:border-white gap-2"
+                  >
+                    {language === 'es' ? 'Hablar con el equipo' : 'Talk to the team'}
+                    <ArrowRight className="w-4 h-4" />
+                  </Button>
+                </Link>
+              </div>
+            </motion.div>
+
+            <motion.div
+              {...fadeIn(0.2)}
+              className="relative"
+            >
+              <div
+                className="relative rounded-3xl p-8 sm:p-10 border border-white/10 overflow-hidden"
+                style={{
+                  background: 'linear-gradient(135deg, rgba(227,120,25,0.12) 0%, rgba(190,45,112,0.10) 50%, rgba(112,36,121,0.12) 100%)',
+                }}
+              >
+                <div className="absolute top-0 right-0 p-6">
+                  <Wifi className="w-8 h-8 text-white/20" />
+                </div>
+                <p className="font-display-italic text-2xl sm:text-3xl text-white leading-tight">
+                  {language === 'es'
+                    ? '“La conexión que mantiene al equipo a toda velocidad, dentro y fuera del circuito.”'
+                    : '"The connection that keeps the team at full speed, on and off the track."'}
+                </p>
+                <div className="mt-8 flex items-center gap-4">
+                  <div className="h-px flex-1 bg-white/15" />
+                  <img
+                    src={oesteLogo}
+                    alt="Oeste"
+                    className="h-6 w-auto object-contain opacity-80"
+                  />
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
 
       {/* ============== CTA ============== */}
       <section className="px-5 sm:px-10 md:px-16 py-24 sm:py-40">
