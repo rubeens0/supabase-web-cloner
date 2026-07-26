@@ -403,7 +403,7 @@ export function Sponsors() {
               <div className="flex items-center gap-3 mb-6">
                 <span className="inline-flex h-2 w-2 rounded-full bg-[#E37819] animate-pulse" />
                 <span className="text-[11px] uppercase tracking-[0.22em] text-white/70">
-                  {language === 'es' ? 'Partner Oficial' : 'Official Partner'}
+                  {language === 'es' ? 'Caso de colaboración' : 'Collaboration case'}
                 </span>
               </div>
 
@@ -416,14 +416,14 @@ export function Sponsors() {
               </div>
 
               <h2 className="font-display text-4xl sm:text-5xl md:text-6xl text-white leading-[1.05] tracking-tight mb-6">
-                {language === 'es' ? 'Fibra X de Oeste' : 'Oeste Fiber X'}
+                {language === 'es' ? 'La conexión que mantiene a Rubén' : 'The connection that keeps Rubén going'}
                 <span className="font-display-italic text-gradient-mono-italic">.</span>
               </h2>
 
               <p className="text-white/70 text-base sm:text-lg leading-relaxed max-w-xl mb-8">
                 {language === 'es'
-                  ? 'Conexión de alta velocidad para seguir cada carrera, directo y contenido del equipo sin cortes. Velocidad real de 1 y 2 Gb simétricos en Cáceres y Extremadura.'
-                  : 'High-speed connection to follow every race, live stream and team content without interruptions. Real symmetric speeds of 1 and 2 Gb in Cáceres and Extremadura.'}
+                  ? 'Un ejemplo real de cómo una colaboración con Rubén cobra vida: landing dedicada, campaña de captación, tracking de conversiones y gestión integral desde Netpro Agency. Entra y ve la campaña en vivo.'
+                  : 'A real example of how a collaboration with Rubén comes to life: dedicated landing, lead campaign, conversion tracking and end-to-end management by Netpro Agency. Step in and see the live campaign.'}
               </p>
 
               <div className="flex flex-wrap gap-3">
@@ -435,7 +435,7 @@ export function Sponsors() {
                     }}
                   >
                     <Wifi className="w-4 h-4" />
-                    {language === 'es' ? 'Ver ofertas de Oeste' : 'View Oeste offers'}
+                    {language === 'es' ? 'Ver la campaña' : 'See the campaign'}
                     <ArrowUpRight className="w-4 h-4" />
                   </Button>
                 </Link>
@@ -444,11 +444,12 @@ export function Sponsors() {
                     variant="outline"
                     className="rounded-full h-12 px-7 border-white/20 bg-transparent text-white hover:bg-white hover:text-black hover:border-white gap-2"
                   >
-                    {language === 'es' ? 'Hablar con el equipo' : 'Talk to the team'}
+                    {language === 'es' ? 'Quiero algo así' : 'I want something like this'}
                     <ArrowRight className="w-4 h-4" />
                   </Button>
                 </Link>
               </div>
+
             </motion.div>
 
             <motion.div
