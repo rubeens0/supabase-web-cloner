@@ -53,6 +53,8 @@ export default function OesteLanding2() {
   const [enviado, setEnviado] = useState(false);
   const [serverError, setServerError] = useState<string | null>(null);
   const [errorMunicipio, setErrorMunicipio] = useState(false);
+  const [busqueda, setBusqueda] = useState('');
+  const [mostrarSugerencias, setMostrarSugerencias] = useState(false);
 
   const todosMunicipios = useMemo(
     () => [...MUNICIPIOS_CON_COBERTURA, ...MUNICIPIOS_SIN_COBERTURA].sort((a, b) => a.localeCompare(b, 'es')),
