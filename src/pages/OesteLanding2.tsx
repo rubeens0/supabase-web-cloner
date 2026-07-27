@@ -387,16 +387,22 @@ export default function OesteLanding2() {
 
       {/* Cita Rubén */}
       <div className="my-11 py-10 text-white" style={{ background: 'linear-gradient(135deg,#E37819 0%,#BE2D70 55%,#702479 100%)' }}>
-        <div className="max-w-[660px] mx-auto px-5">
-          <blockquote className="font-extrabold mb-4" style={{ fontFamily: '"Archivo"', fontSize: 'clamp(1.5rem,6vw,2rem)', lineHeight: 1.25, letterSpacing: '-0.02em' }}>
-            «Apostar por lo de casa también está en cómo nos conectamos. Por eso confío en Oeste.»
-          </blockquote>
-          <p className="font-bold text-[17px]">
-            Rubén Muñoz
-            <span className="block font-normal opacity-90 text-base" style={{ fontFamily: '"Atkinson Hyperlegible"' }}>Piloto de karting · Campeonato de España</span>
-          </p>
+        <div className="max-w-[660px] mx-auto px-5 grid gap-6 sm:grid-cols-[160px_1fr] sm:items-center">
+          <div className="mx-auto sm:mx-0 w-[160px] h-[200px] rounded-xl overflow-hidden border-2 border-white/30 shadow-xl shrink-0">
+            <img src={RUBEN_PHOTO} alt="Rubén Muñoz en la parrilla con su kart Parolin" className="w-full h-full object-cover" loading="lazy" />
+          </div>
+          <div>
+            <blockquote className="font-extrabold mb-4" style={{ fontFamily: '"Archivo"', fontSize: 'clamp(1.35rem,5vw,1.85rem)', lineHeight: 1.25, letterSpacing: '-0.02em' }}>
+              «Apostar por lo de casa también está en cómo nos conectamos. Por eso confío en Oeste.»
+            </blockquote>
+            <p className="font-bold text-[17px]">
+              Rubén Muñoz
+              <span className="block font-normal opacity-90 text-base" style={{ fontFamily: '"Atkinson Hyperlegible"' }}>Piloto de karting · Campeonato de España</span>
+            </p>
+          </div>
         </div>
       </div>
+
 
       {/* FAQ */}
       <section className="max-w-[660px] mx-auto px-5 my-11">
