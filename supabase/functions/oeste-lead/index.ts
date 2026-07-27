@@ -8,6 +8,7 @@ const LeadSchema = z.object({
   address: z.string().trim().min(5).max(255),
   consent: z.boolean().refine((v) => v === true),
   offer: z.string().trim().max(255).optional(),
+  landing: z.enum(['oeste-landing1', 'oeste-landing2']).optional(),
 });
 
 Deno.serve(async (req) => {
@@ -40,7 +41,7 @@ Deno.serve(async (req) => {
       );
     }
 
-    const { name, phone, email, offer } = parsed.data;
+    const { name, phone, email, offer, landing } = parsed.data;
     let { address } = parsed.data;
 
     // Strip "(Cáceres)" or trailing ", Cáceres" from address before forwarding
@@ -78,8 +79,8 @@ Deno.serve(async (req) => {
           }
         : null,
       meta: {
-        source: 'meta-ads',
-        landing: 'oeste-landing1',
+        source: landing ?? 'oeste-landing1',
+        landing: landing ?? 'oeste-landing1',
         submitted_at: new Date().toISOString(),
         user_agent: req.headers.get('user-agent') ?? null,
       },

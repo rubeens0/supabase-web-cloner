@@ -142,6 +142,7 @@ export default function OesteLanding2() {
           ...values,
           address: municipioConfirmado ?? '',
           offer: `${tarifa.nom} (${tarifa.precio}€/mes)`,
+          landing: 'oeste-landing2',
         },
       });
       if (error) throw error;

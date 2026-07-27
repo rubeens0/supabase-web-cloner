@@ -82,6 +82,7 @@ export function OesteLeadForm({ selectedOffer, onClearOffer }: Props = {}) {
           offer: selectedOffer
             ? `${selectedOffer.title} (${selectedOffer.price}${selectedOffer.priceSuffix})`
             : undefined,
+          landing: 'oeste-landing1',
         },
       });
       if (error) throw error;
