@@ -338,7 +338,7 @@ export default function OesteLanding2() {
 
               <div className="px-5 pt-6 border-t-2 border-[#DCD5E2]">
                 <p className="uppercase tracking-[0.14em] text-[#702479] font-bold text-sm" style={{ fontFamily: '"Archivo"' }}>Paso 3 de 3</p>
-                <h2 className="text-[26px] font-extrabold mt-2" style={{ fontFamily: '"Archivo"' }}>Te contactaremos tras tu solicitud.</h2>
+                <h2 className="text-[26px] font-extrabold mt-2" style={{ fontFamily: '"Archivo"' }}>Te contactaremos tras su solicitud.</h2>
                 <p className="text-[17px] text-[#4A4353] mt-1.5 mb-4">Recibimos tu solicitud y te contactamos en menos de 24 h en horario de atención.</p>
               </div>
               <form onSubmit={handleSubmit(onSubmit)} onFocus={onFirstFocus} noValidate className="px-5 pb-6 space-y-5">
