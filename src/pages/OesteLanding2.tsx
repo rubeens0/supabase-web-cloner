@@ -229,17 +229,57 @@ export default function OesteLanding2() {
               <div className="px-5 pb-6">
                 <label className="block font-bold text-[17px] mb-2" htmlFor="municipio">Tu municipio</label>
                 <div className="relative">
-                  <select
+                  <input
                     id="municipio"
-                    value={municipio}
-                    onChange={(e) => setMunicipio(e.target.value)}
-                    className="w-full appearance-none bg-white border-2 border-[#4A4353] rounded-[10px] px-4 pr-12 text-[19px] text-[#181320]"
+                    type="text"
+                    autoComplete="off"
+                    value={busqueda}
+                    onChange={(e) => {
+                      setBusqueda(e.target.value);
+                      setMunicipio('');
+                      setMostrarSugerencias(true);
+                    }}
+                    onFocus={() => setMostrarSugerencias(true)}
+                    onBlur={() => setTimeout(() => setMostrarSugerencias(false), 150)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' && sugerencias[0]) {
+                        e.preventDefault();
+                        setMunicipio(sugerencias[0]);
+                        setBusqueda(sugerencias[0]);
+                        setMostrarSugerencias(false);
+                      }
+                    }}
+                    placeholder="Escribe tu pueblo o ciudad…"
+                    className="w-full bg-white border-2 border-[#4A4353] rounded-[10px] px-4 pr-12 text-[19px] text-[#181320] placeholder:text-[#8A8394] focus:outline-none focus:ring-4 focus:ring-[#702479]/30"
                     style={{ minHeight: 60 }}
-                  >
-                    <option value="">Elige en la lista…</option>
-                    {todosMunicipios.map((m) => <option key={m} value={m}>{m}</option>)}
-                  </select>
+                  />
                   <ChevronDown className="w-5 h-5 absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-[#181320]" strokeWidth={3} />
+                  {mostrarSugerencias && sugerencias.length > 0 && (
+                    <ul className="absolute left-0 right-0 top-full mt-1 bg-white border-2 border-[#4A4353] rounded-[10px] shadow-lg z-20 max-h-64 overflow-y-auto">
+                      {sugerencias.map((m) => (
+                        <li key={m}>
+                          <button
+                            type="button"
+                            onMouseDown={(e) => {
+                              e.preventDefault();
+                              setMunicipio(m);
+                              setBusqueda(m);
+                              setMostrarSugerencias(false);
+                              setErrorMunicipio(false);
+                            }}
+                            className="w-full text-left px-4 py-3 text-[17px] text-[#181320] hover:bg-[#F3F0F5]"
+                          >
+                            {m}
+                          </button>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                  {mostrarSugerencias && busqueda.trim() && sugerencias.length === 0 && (
+                    <div className="absolute left-0 right-0 top-full mt-1 bg-white border-2 border-[#4A4353] rounded-[10px] shadow-lg z-20 px-4 py-3 text-[17px] text-[#4A4353]">
+                      No encontramos ese municipio.
+                    </div>
+                  )}
                 </div>
                 {errorMunicipio && <p className="text-[#A61B1B] font-bold text-base mt-1.5">Elige tu municipio para continuar.</p>}
                 <button
