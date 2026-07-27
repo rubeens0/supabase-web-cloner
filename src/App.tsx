@@ -94,6 +94,7 @@ function AppContent() {
               <Route path="/auth" element={<PageTransition><Auth /></PageTransition>} />
               <Route path="/booking" element={<PageTransition><Booking /></PageTransition>} />
               <Route path="/oeste-landing1" element={<PageTransition><OesteLanding1 /></PageTransition>} />
+              <Route path="/oeste-landing2" element={<PageTransition><OesteLanding2 /></PageTransition>} />
               
               
               <Route path="*" element={<PageTransition><Home /></PageTransition>} />
