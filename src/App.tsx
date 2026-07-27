@@ -30,6 +30,7 @@ const RDE = lazy(() => import("@/pages/RDE").then(m => ({ default: m.RDE })));
 const Auth = lazy(() => import("@/pages/Auth").then(m => ({ default: m.Auth })));
 const Booking = lazy(() => import("@/pages/Booking").then(m => ({ default: m.Booking })));
 const OesteLanding1 = lazy(() => import("@/pages/OesteLanding1"));
+const OesteLanding2 = lazy(() => import("@/pages/OesteLanding2"));
 
 
 
@@ -93,6 +94,7 @@ function AppContent() {
               <Route path="/auth" element={<PageTransition><Auth /></PageTransition>} />
               <Route path="/booking" element={<PageTransition><Booking /></PageTransition>} />
               <Route path="/oeste-landing1" element={<PageTransition><OesteLanding1 /></PageTransition>} />
+              <Route path="/oeste-landing2" element={<PageTransition><OesteLanding2 /></PageTransition>} />
               
               
               <Route path="*" element={<PageTransition><Home /></PageTransition>} />
