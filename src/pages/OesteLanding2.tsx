@@ -460,8 +460,7 @@ function FormField({ label, error, children }: { label: string; error?: string; 
   return (
     <div>
       <label className="block font-bold text-[17px] mb-2">{label}</label>
-      <div style={{ minHeight: 60 }} className="flex">{children as any}</div>
-      <style>{`.oeste-landing input[type=text],.oeste-landing input[type=tel],.oeste-landing input[type=email]{min-height:60px}`}</style>
+      {children}
       {error && <p className="text-[#A61B1B] font-bold text-base mt-1.5">{error}</p>}
     </div>
   );
