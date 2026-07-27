@@ -131,7 +131,7 @@ export default function OesteLanding2() {
       const { data, error } = await supabase.functions.invoke('oeste-lead', {
         body: {
           ...values,
-          address: municipioConfirmado ? `${values.address} · ${municipioConfirmado}` : values.address,
+          address: municipioConfirmado ?? '',
           offer: `${tarifa.nom} (${tarifa.precio}€/mes)`,
         },
       });
