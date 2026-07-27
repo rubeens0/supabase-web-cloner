@@ -7,10 +7,12 @@ import { supabase } from '@/integrations/supabase/client';
 import { initMetaPixel } from '@/lib/metaPixel';
 import { sendMetaEvent } from '@/lib/metaCapi';
 import rubenLogoAsset from '@/assets/ruben-x-white.png.asset.json';
-import oesteLogoAsset from '@/assets/oeste-white.png.asset.json';
+import oesteLogoAsset from '@/assets/oeste-color.png.asset.json';
+import rubenPhotoAsset from '@/assets/ruben-parolin-grid.webp.asset.json';
 
 const OESTE_LOGO = oesteLogoAsset.url;
 const RUBEN_LOGO = rubenLogoAsset.url;
+const RUBEN_PHOTO = rubenPhotoAsset.url;
 
 const MUNICIPIOS_CON_COBERTURA = [
   'Cáceres', 'Plasencia', 'Coria', 'Navalmoral de la Mata', 'Trujillo', 'Miajadas',
