@@ -301,9 +301,6 @@ export default function OesteLanding2() {
                 <FormField label="Tu email" error={errors.email?.message}>
                   <input type="email" inputMode="email" autoComplete="email" autoCapitalize="off" placeholder="tu@email.com" className={inputCls} {...register('email')} />
                 </FormField>
-                <FormField label="Tu dirección" error={errors.address?.message}>
-                  <input type="text" autoComplete="street-address" placeholder="Calle, número, piso" className={inputCls} {...register('address')} />
-                </FormField>
                 <label className="flex items-start gap-3 text-base text-[#4A4353] cursor-pointer">
                   <input type="checkbox" className="w-6 h-6 mt-0.5 accent-[#702479] shrink-0" {...register('consent')} />
                   <span>
