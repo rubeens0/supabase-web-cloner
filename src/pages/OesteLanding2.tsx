@@ -424,7 +424,7 @@ export default function OesteLanding2() {
       <footer className="bg-white border-t-2 border-[#DCD5E2] py-8 mt-11">
         <div className="max-w-[660px] mx-auto px-5">
           <div className="flex items-center gap-2.5 mb-2 font-bold text-base">
-            <img src={OESTE_LOGO} alt="Oeste" className="h-5 w-auto" style={{ filter: 'invert(15%) sepia(60%) saturate(1200%) hue-rotate(260deg)' }} />
+            <img src={OESTE_LOGO} alt="Oeste" className="h-6 w-auto" />
             <span className="text-[#DCD5E2]">×</span>
             <a href="https://rubenmunoz.com/inicio?from=oeste-landing2" target="_blank" rel="noopener noreferrer">
               <img src={RUBEN_LOGO} alt="Rubén Muñoz" className="h-5 w-auto" style={{ filter: 'invert(1)' }} />
