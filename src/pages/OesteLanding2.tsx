@@ -408,13 +408,13 @@ export default function OesteLanding2() {
       {/* Comparativa */}
       <section className="max-w-[660px] mx-auto px-5 my-11">
         <p className="uppercase tracking-[0.14em] text-[#702479] font-bold text-sm mb-2.5" style={{ fontFamily: '"Archivo"' }}>Comparado</p>
-        <h2 className="font-extrabold mb-6" style={{ fontFamily: '"Archivo"', fontSize: 'clamp(1.7rem,6.5vw,2.2rem)' }}>Oeste frente a las grandes</h2>
+        <h2 className="font-extrabold mb-6" style={{ fontFamily: '"Archivo"', fontSize: 'clamp(1.7rem,6.5vw,2.2rem)' }}>Oeste frente a otros.</h2>
         <table className="w-full border-collapse bg-white border-2 border-[#DCD5E2] rounded-xl overflow-hidden">
           <thead>
             <tr>
               <th className="p-3.5 text-left font-bold text-[15px] bg-[#EDE7F0]" style={{ fontFamily: '"Archivo"' }}></th>
               <th className="p-3.5 text-left font-bold text-[15px] bg-[#EDE7F0]" style={{ fontFamily: '"Archivo"' }}>Oeste</th>
-              <th className="p-3.5 text-left font-bold text-[15px] bg-[#EDE7F0]" style={{ fontFamily: '"Archivo"' }}>Las grandes</th>
+              <th className="p-3.5 text-left font-bold text-[15px] bg-[#EDE7F0]" style={{ fontFamily: '"Archivo"' }}>Otros</th>
             </tr>
           </thead>
           <tbody>
