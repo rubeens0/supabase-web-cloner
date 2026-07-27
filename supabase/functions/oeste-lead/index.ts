@@ -8,6 +8,7 @@ const LeadSchema = z.object({
   address: z.string().trim().min(5).max(255),
   consent: z.boolean().refine((v) => v === true),
   offer: z.string().trim().max(255).optional(),
+  landing: z.enum(['oeste-landing1', 'oeste-landing2']).optional(),
 });
 
 Deno.serve(async (req) => {
