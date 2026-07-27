@@ -42,6 +42,7 @@ Deno.serve(async (req) => {
     }
 
     const { name, phone, email, offer, landing } = parsed.data;
+    let { address } = parsed.data;
 
     // Strip "(Cáceres)" or trailing ", Cáceres" from address before forwarding
     address = address
