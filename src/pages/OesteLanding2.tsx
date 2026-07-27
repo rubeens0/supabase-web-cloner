@@ -454,7 +454,7 @@ export default function OesteLanding2() {
   );
 }
 
-const inputCls = 'w-full bg-white border-2 border-[#4A4353] rounded-[10px] px-4 text-[19px] text-[#181320] placeholder:text-[#8A8394] focus:outline-none focus:ring-4 focus:ring-[#702479]/30';
+const inputCls = 'w-full h-[60px] bg-white border-2 border-[#4A4353] rounded-[10px] px-4 text-[19px] text-[#181320] placeholder:text-[#8A8394] focus:outline-none focus:ring-4 focus:ring-[#702479]/30';
 
 function FormField({ label, error, children }: { label: string; error?: string; children: React.ReactNode }) {
   return (
