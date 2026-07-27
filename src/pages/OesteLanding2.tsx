@@ -112,7 +112,7 @@ export default function OesteLanding2() {
 
   const { register, handleSubmit, formState: { errors, isSubmitting }, reset } = useForm<LeadValues>({
     resolver: zodResolver(leadSchema),
-    defaultValues: { name: '', phone: '', email: '', address: '', consent: false as unknown as true },
+    defaultValues: { name: '', phone: '', email: '', consent: false as unknown as true },
   });
 
   const [checkoutFired, setCheckoutFired] = useState(false);
