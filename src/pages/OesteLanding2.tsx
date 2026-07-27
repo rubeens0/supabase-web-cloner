@@ -7,10 +7,12 @@ import { supabase } from '@/integrations/supabase/client';
 import { initMetaPixel } from '@/lib/metaPixel';
 import { sendMetaEvent } from '@/lib/metaCapi';
 import rubenLogoAsset from '@/assets/ruben-x-white.png.asset.json';
-import oesteLogoAsset from '@/assets/oeste-white.png.asset.json';
+import oesteLogoAsset from '@/assets/oeste-color.png.asset.json';
+import rubenPhotoAsset from '@/assets/ruben-parolin-grid.webp.asset.json';
 
 const OESTE_LOGO = oesteLogoAsset.url;
 const RUBEN_LOGO = rubenLogoAsset.url;
+const RUBEN_PHOTO = rubenPhotoAsset.url;
 
 const MUNICIPIOS_CON_COBERTURA = [
   'Cáceres', 'Plasencia', 'Coria', 'Navalmoral de la Mata', 'Trujillo', 'Miajadas',
@@ -163,7 +165,7 @@ export default function OesteLanding2() {
       <div className="sticky top-0 z-40 bg-white border-b-2 border-[#DCD5E2]">
         <div className="max-w-[660px] mx-auto px-5 py-3 flex items-center justify-between gap-4">
           <div className="flex items-center gap-3">
-            <img src={OESTE_LOGO} alt="Oeste" className="h-6 w-auto" style={{ filter: 'invert(15%) sepia(60%) saturate(1200%) hue-rotate(260deg)' }} />
+            <img src={OESTE_LOGO} alt="Oeste" className="h-7 w-auto" />
             <span className="text-[#DCD5E2] text-base">×</span>
             <a href="https://rubenmunoz.com/inicio?from=oeste-landing2" target="_blank" rel="noopener noreferrer" className="hover:opacity-80">
               <img src={RUBEN_LOGO} alt="Rubén Muñoz" className="h-6 w-auto" style={{ filter: 'invert(1)' }} />
@@ -385,16 +387,22 @@ export default function OesteLanding2() {
 
       {/* Cita Rubén */}
       <div className="my-11 py-10 text-white" style={{ background: 'linear-gradient(135deg,#E37819 0%,#BE2D70 55%,#702479 100%)' }}>
-        <div className="max-w-[660px] mx-auto px-5">
-          <blockquote className="font-extrabold mb-4" style={{ fontFamily: '"Archivo"', fontSize: 'clamp(1.5rem,6vw,2rem)', lineHeight: 1.25, letterSpacing: '-0.02em' }}>
-            «Apostar por lo de casa también está en cómo nos conectamos. Por eso confío en Oeste.»
-          </blockquote>
-          <p className="font-bold text-[17px]">
-            Rubén Muñoz
-            <span className="block font-normal opacity-90 text-base" style={{ fontFamily: '"Atkinson Hyperlegible"' }}>Piloto de karting · Campeonato de España</span>
-          </p>
+        <div className="max-w-[660px] mx-auto px-5 grid gap-6 sm:grid-cols-[160px_1fr] sm:items-center">
+          <div className="mx-auto sm:mx-0 w-[160px] h-[200px] rounded-xl overflow-hidden border-2 border-white/30 shadow-xl shrink-0">
+            <img src={RUBEN_PHOTO} alt="Rubén Muñoz en la parrilla con su kart Parolin" className="w-full h-full object-cover" loading="lazy" />
+          </div>
+          <div>
+            <blockquote className="font-extrabold mb-4" style={{ fontFamily: '"Archivo"', fontSize: 'clamp(1.35rem,5vw,1.85rem)', lineHeight: 1.25, letterSpacing: '-0.02em' }}>
+              «Apostar por lo de casa también está en cómo nos conectamos. Por eso confío en Oeste.»
+            </blockquote>
+            <p className="font-bold text-[17px]">
+              Rubén Muñoz
+              <span className="block font-normal opacity-90 text-base" style={{ fontFamily: '"Atkinson Hyperlegible"' }}>Piloto de karting · Campeonato de España</span>
+            </p>
+          </div>
         </div>
       </div>
+
 
       {/* FAQ */}
       <section className="max-w-[660px] mx-auto px-5 my-11">
@@ -422,7 +430,7 @@ export default function OesteLanding2() {
       <footer className="bg-white border-t-2 border-[#DCD5E2] py-8 mt-11">
         <div className="max-w-[660px] mx-auto px-5">
           <div className="flex items-center gap-2.5 mb-2 font-bold text-base">
-            <img src={OESTE_LOGO} alt="Oeste" className="h-5 w-auto" style={{ filter: 'invert(15%) sepia(60%) saturate(1200%) hue-rotate(260deg)' }} />
+            <img src={OESTE_LOGO} alt="Oeste" className="h-6 w-auto" />
             <span className="text-[#DCD5E2]">×</span>
             <a href="https://rubenmunoz.com/inicio?from=oeste-landing2" target="_blank" rel="noopener noreferrer">
               <img src={RUBEN_LOGO} alt="Rubén Muñoz" className="h-5 w-auto" style={{ filter: 'invert(1)' }} />
