@@ -196,8 +196,8 @@ export default function OesteLanding2() {
         <div className="max-w-[660px] mx-auto px-5">
           <p className="inline-block bg-[#E37819] text-[#181320] font-bold text-[15px] px-3.5 py-2 rounded-lg mb-5">Oferta hasta el 15 de septiembre</p>
           <h1 className="font-extrabold" style={{ fontFamily: '"Archivo",system-ui,sans-serif', letterSpacing: '-0.02em', lineHeight: 1.05, fontSize: 'clamp(2.3rem,8.5vw,3.6rem)' }}>
-            Fibra de 1 Gb y móvil por
-            <span className="block bg-clip-text text-transparent" style={{ backgroundImage: 'linear-gradient(135deg,#E37819 0%,#BE2D70 55%,#702479 100%)', fontSize: 'clamp(3rem,13vw,5.2rem)' }}>27 € al mes</span>
+            La fibra más rapida de<br />
+            <span className="block bg-clip-text text-transparent" style={{ backgroundImage: 'linear-gradient(135deg,#E37819 0%,#BE2D70 55%,#702479 100%)', fontSize: 'clamp(3rem,13vw,5.2rem)' }}>Extremadura...</span>
           </h1>
           <p className="mt-4 text-[20px] text-[#4A4353] max-w-[34ch]">
             Sin permanencia. Instalación en 3 a 7 días. <strong className="text-[#181320]">Te atiende gente de aquí</strong>, no un locutorio a mil kilómetros.
