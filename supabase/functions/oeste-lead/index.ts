@@ -79,9 +79,8 @@ Deno.serve(async (req) => {
           }
         : null,
       meta: {
-        source: 'meta-ads',
+        source: landing ?? 'oeste-landing1',
         landing: landing ?? 'oeste-landing1',
-        source: landing === 'oeste-landing2' ? 'oeste-landing2' : 'oeste-landing1',
         submitted_at: new Date().toISOString(),
         user_agent: req.headers.get('user-agent') ?? null,
       },
