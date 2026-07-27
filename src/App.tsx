@@ -30,6 +30,7 @@ const RDE = lazy(() => import("@/pages/RDE").then(m => ({ default: m.RDE })));
 const Auth = lazy(() => import("@/pages/Auth").then(m => ({ default: m.Auth })));
 const Booking = lazy(() => import("@/pages/Booking").then(m => ({ default: m.Booking })));
 const OesteLanding1 = lazy(() => import("@/pages/OesteLanding1"));
+const OesteLanding2 = lazy(() => import("@/pages/OesteLanding2"));
 
 
 
