@@ -389,12 +389,15 @@ export default function OesteLanding2() {
         <h2 className="font-extrabold mb-6" style={{ fontFamily: '"Archivo"', fontSize: 'clamp(1.7rem,6.5vw,2.2rem)', letterSpacing: '-0.02em' }}>Una fibra hecha para tu zona</h2>
         <div className="grid gap-3 sm:grid-cols-2">
           {[
-            { t: 'Velocidad de verdad', d: '1 Gb o 2 Gb reales, tanto para bajar como para subir. Sin cortes cuando toda la casa está conectada.' },
-            { t: 'Sin permanencia', d: 'Te vas cuando quieras. Sin penalización y sin letra pequeña.' },
-            { t: 'Instalación rápida', d: 'Entre 3 y 7 días. Te lo monta un técnico de la zona y te explica cómo funciona.' },
-            { t: 'Atención cercana', d: 'Si hay una avería, hablas con alguien de aquí y viene alguien de aquí.' },
+            { t: 'Velocidad de verdad', d: '1 Gb o 2 Gb reales, tanto para bajar como para subir. Sin cortes cuando toda la casa está conectada.', icon: Zap },
+            { t: 'Sin permanencia', d: 'Te vas cuando quieras. Sin penalización y sin letra pequeña.', icon: Unlock },
+            { t: 'Instalación rápida', d: 'Entre 3 y 7 días. Te lo monta un técnico de la zona y te explica cómo funciona.', icon: Wrench },
+            { t: 'Atención cercana', d: 'Si hay una avería, hablas con alguien de aquí y viene alguien de aquí.', icon: HeartHandshake },
           ].map((v) => (
             <div key={v.t} className="bg-white border-2 border-[#DCD5E2] rounded-xl p-4.5" style={{ padding: 18 }}>
+              <div className="w-10 h-10 rounded-lg flex items-center justify-center mb-3" style={{ background: 'linear-gradient(135deg,#E37819 0%,#BE2D70 55%,#702479 100%)' }}>
+                <v.icon className="w-5 h-5 text-white" strokeWidth={2.5} />
+              </div>
               <h3 className="text-[19px] font-bold mb-1">{v.t}</h3>
               <p className="text-base text-[#4A4353]">{v.d}</p>
             </div>
