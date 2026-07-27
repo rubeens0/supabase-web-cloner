@@ -15,13 +15,13 @@ const RUBEN_LOGO = rubenLogoAsset.url;
 const RUBEN_PHOTO = rubenPhotoAsset.url;
 
 const MUNICIPIOS_CON_COBERTURA = [
-  'Cáceres', 'Plasencia', 'Coria', 'Navalmoral de la Mata', 'Trujillo', 'Miajadas',
-  'Moraleja', 'Jaraíz de la Vera', 'Arroyo de la Luz', 'Valencia de Alcántara',
-  'Montehermoso', 'Casar de Cáceres', 'Talayuela', 'Malpartida de Cáceres', 'Hervás',
+  'Abadía', 'Ahigal', 'Aldeanueva del Camino', 'Baños de Montemayor', 'Barrado',
+  'Cabezabellosa', 'Cabezuela del Valle', 'Cáceres', 'Casas del Castañar',
+  'Casas del Monte', 'El Torno', 'Garrovillas de Alconétar', 'Hervás', 'Jerte',
+  'Montánchez', 'Navaconcejo', 'Piornal', 'Rebollar', 'Sierra de Fuentes',
+  'Torreorgaz', 'Torrequemada', 'Valdastillas', 'Zarza de Granadilla',
 ];
-const MUNICIPIOS_SIN_COBERTURA = [
-  'Alcántara', 'Garrovillas de Alconétar', 'Ceclavín', 'Torrejoncillo', 'Zorita',
-];
+const MUNICIPIOS_SIN_COBERTURA: string[] = [];
 
 type Tarifa = { id: string; nom: string; desc: string; precio: number; destacada?: boolean };
 const TARIFAS_PRINCIPALES: Tarifa[] = [
