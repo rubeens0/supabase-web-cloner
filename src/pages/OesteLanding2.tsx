@@ -206,7 +206,7 @@ export default function OesteLanding2() {
 
       {/* Proceso 3 pasos */}
       <div className="max-w-[660px] mx-auto px-5">
-        <div className="bg-white border-2 border-[#DCD5E2] rounded-[14px] my-6 overflow-hidden">
+        <div className="bg-white border-2 border-[#DCD5E2] rounded-[14px] my-6 overflow-visible">
           {municipioConfirmado && tieneCobertura && (
             <div id="resultado-cobertura" className="flex items-start gap-3.5 px-5 py-5 bg-[#E4F3EA] border-b-2 border-[#BFE0CD]">
               <div className="w-11 h-11 rounded-full bg-[#1A6E45] text-white flex items-center justify-center text-xl font-bold shrink-0">✓</div>
