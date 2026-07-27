@@ -61,6 +61,13 @@ export default function OesteLanding2() {
     [],
   );
 
+  const normalizar = (s: string) => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+  const sugerencias = useMemo(() => {
+    const q = normalizar(busqueda.trim());
+    if (!q) return todosMunicipios.slice(0, 8);
+    return todosMunicipios.filter((m) => normalizar(m).includes(q)).slice(0, 8);
+  }, [busqueda, todosMunicipios]);
+
   useEffect(() => {
     initMetaPixel('877944112021448');
     void sendMetaEvent({ eventName: 'PageView', capiOnly: true });
