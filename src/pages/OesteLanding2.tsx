@@ -40,7 +40,6 @@ const leadSchema = z.object({
   name: z.string().trim().min(2, 'Escribe tu nombre'),
   phone: z.string().trim().regex(/^(\+34)?[\s]?[6-9]\d{2}[\s]?\d{3}[\s]?\d{3}$/, 'Escribe un teléfono de 9 cifras'),
   email: z.string().trim().email('Email no válido'),
-  address: z.string().trim().min(5, 'Indica tu dirección'),
   consent: z.literal(true, { errorMap: () => ({ message: 'Tienes que aceptarlo para continuar' }) }),
 });
 type LeadValues = z.infer<typeof leadSchema>;
@@ -54,11 +53,20 @@ export default function OesteLanding2() {
   const [enviado, setEnviado] = useState(false);
   const [serverError, setServerError] = useState<string | null>(null);
   const [errorMunicipio, setErrorMunicipio] = useState(false);
+  const [busqueda, setBusqueda] = useState('');
+  const [mostrarSugerencias, setMostrarSugerencias] = useState(false);
 
   const todosMunicipios = useMemo(
     () => [...MUNICIPIOS_CON_COBERTURA, ...MUNICIPIOS_SIN_COBERTURA].sort((a, b) => a.localeCompare(b, 'es')),
     [],
   );
+
+  const normalizar = (s: string) => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+  const sugerencias = useMemo(() => {
+    const q = normalizar(busqueda.trim());
+    if (!q) return todosMunicipios.slice(0, 8);
+    return todosMunicipios.filter((m) => normalizar(m).includes(q)).slice(0, 8);
+  }, [busqueda, todosMunicipios]);
 
   useEffect(() => {
     initMetaPixel('877944112021448');
@@ -113,7 +121,7 @@ export default function OesteLanding2() {
 
   const { register, handleSubmit, formState: { errors, isSubmitting }, reset } = useForm<LeadValues>({
     resolver: zodResolver(leadSchema),
-    defaultValues: { name: '', phone: '', email: '', address: '', consent: false as unknown as true },
+    defaultValues: { name: '', phone: '', email: '', consent: false as unknown as true },
   });
 
   const [checkoutFired, setCheckoutFired] = useState(false);
@@ -132,7 +140,7 @@ export default function OesteLanding2() {
       const { data, error } = await supabase.functions.invoke('oeste-lead', {
         body: {
           ...values,
-          address: municipioConfirmado ? `${values.address} · ${municipioConfirmado}` : values.address,
+          address: municipioConfirmado ?? '',
           offer: `${tarifa.nom} (${tarifa.precio}€/mes)`,
         },
       });
@@ -221,17 +229,57 @@ export default function OesteLanding2() {
               <div className="px-5 pb-6">
                 <label className="block font-bold text-[17px] mb-2" htmlFor="municipio">Tu municipio</label>
                 <div className="relative">
-                  <select
+                  <input
                     id="municipio"
-                    value={municipio}
-                    onChange={(e) => setMunicipio(e.target.value)}
-                    className="w-full appearance-none bg-white border-2 border-[#4A4353] rounded-[10px] px-4 pr-12 text-[19px] text-[#181320]"
+                    type="text"
+                    autoComplete="off"
+                    value={busqueda}
+                    onChange={(e) => {
+                      setBusqueda(e.target.value);
+                      setMunicipio('');
+                      setMostrarSugerencias(true);
+                    }}
+                    onFocus={() => setMostrarSugerencias(true)}
+                    onBlur={() => setTimeout(() => setMostrarSugerencias(false), 150)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' && sugerencias[0]) {
+                        e.preventDefault();
+                        setMunicipio(sugerencias[0]);
+                        setBusqueda(sugerencias[0]);
+                        setMostrarSugerencias(false);
+                      }
+                    }}
+                    placeholder="Escribe tu pueblo o ciudad…"
+                    className="w-full bg-white border-2 border-[#4A4353] rounded-[10px] px-4 pr-12 text-[19px] text-[#181320] placeholder:text-[#8A8394] focus:outline-none focus:ring-4 focus:ring-[#702479]/30"
                     style={{ minHeight: 60 }}
-                  >
-                    <option value="">Elige en la lista…</option>
-                    {todosMunicipios.map((m) => <option key={m} value={m}>{m}</option>)}
-                  </select>
+                  />
                   <ChevronDown className="w-5 h-5 absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-[#181320]" strokeWidth={3} />
+                  {mostrarSugerencias && sugerencias.length > 0 && (
+                    <ul className="absolute left-0 right-0 top-full mt-1 bg-white border-2 border-[#4A4353] rounded-[10px] shadow-lg z-20 max-h-64 overflow-y-auto">
+                      {sugerencias.map((m) => (
+                        <li key={m}>
+                          <button
+                            type="button"
+                            onMouseDown={(e) => {
+                              e.preventDefault();
+                              setMunicipio(m);
+                              setBusqueda(m);
+                              setMostrarSugerencias(false);
+                              setErrorMunicipio(false);
+                            }}
+                            className="w-full text-left px-4 py-3 text-[17px] text-[#181320] hover:bg-[#F3F0F5]"
+                          >
+                            {m}
+                          </button>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                  {mostrarSugerencias && busqueda.trim() && sugerencias.length === 0 && (
+                    <div className="absolute left-0 right-0 top-full mt-1 bg-white border-2 border-[#4A4353] rounded-[10px] shadow-lg z-20 px-4 py-3 text-[17px] text-[#4A4353]">
+                      No encontramos ese municipio.
+                    </div>
+                  )}
                 </div>
                 {errorMunicipio && <p className="text-[#A61B1B] font-bold text-base mt-1.5">Elige tu municipio para continuar.</p>}
                 <button
@@ -301,9 +349,6 @@ export default function OesteLanding2() {
                 </FormField>
                 <FormField label="Tu email" error={errors.email?.message}>
                   <input type="email" inputMode="email" autoComplete="email" autoCapitalize="off" placeholder="tu@email.com" className={inputCls} {...register('email')} />
-                </FormField>
-                <FormField label="Tu dirección" error={errors.address?.message}>
-                  <input type="text" autoComplete="street-address" placeholder="Calle, número, piso" className={inputCls} {...register('address')} />
                 </FormField>
                 <label className="flex items-start gap-3 text-base text-[#4A4353] cursor-pointer">
                   <input type="checkbox" className="w-6 h-6 mt-0.5 accent-[#702479] shrink-0" {...register('consent')} />
