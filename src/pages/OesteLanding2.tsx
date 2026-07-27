@@ -40,7 +40,6 @@ const leadSchema = z.object({
   name: z.string().trim().min(2, 'Escribe tu nombre'),
   phone: z.string().trim().regex(/^(\+34)?[\s]?[6-9]\d{2}[\s]?\d{3}[\s]?\d{3}$/, 'Escribe un teléfono de 9 cifras'),
   email: z.string().trim().email('Email no válido'),
-  address: z.string().trim().min(5, 'Indica tu dirección'),
   consent: z.literal(true, { errorMap: () => ({ message: 'Tienes que aceptarlo para continuar' }) }),
 });
 type LeadValues = z.infer<typeof leadSchema>;
