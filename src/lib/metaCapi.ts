@@ -7,6 +7,11 @@ import { trackMetaEvent, trackMetaCustom } from '@/lib/metaPixel';
  * Fires both the browser Pixel and the server-side CAPI event with the same
  * `event_id` so Meta deduplicates them. See:
  * https://developers.facebook.com/docs/marketing-api/conversions-api/deduplicate-pixel-and-server-events
+ *
+ * Enriches every server event with the recommended `user_data` parameters
+ * (fbp, fbc, client_user_agent, external_id) to improve Event Match Quality.
+ * See:
+ * https://developers.facebook.com/docs/marketing-api/conversions-api/parameters/customer-information-parameters
  */
 
 const STANDARD_EVENTS = new Set([
@@ -47,14 +52,62 @@ function uuid(): string {
   });
 }
 
+/**
+ * Persistent, first-party visitor id used as Meta `external_id`.
+ * Stored in localStorage so a returning visitor keeps the same id, boosting
+ * Event Match Quality without any PII.
+ */
+function getOrCreateExternalId(): string | undefined {
+  if (typeof window === 'undefined') return undefined;
+  const key = '_rm_ext_id';
+  try {
+    let id = window.localStorage.getItem(key);
+    if (!id) {
+      id = uuid();
+      window.localStorage.setItem(key, id);
+    }
+    return id;
+  } catch {
+    return undefined;
+  }
+}
+
+/**
+ * Meta encodes the click-id as `fb.1.<timestamp_ms>.<fbclid>`.
+ * If the visitor arrived from a Meta ad and the `_fbc` cookie is not present
+ * yet, we build the value from the URL so CAPI can still attribute the event.
+ * Also persists it for the session.
+ */
+function getFbcFromUrl(): string | undefined {
+  if (typeof window === 'undefined') return undefined;
+  try {
+    const url = new URL(window.location.href);
+    const fbclid = url.searchParams.get('fbclid');
+    if (!fbclid) return undefined;
+    const stored = window.sessionStorage.getItem('_rm_fbc');
+    if (stored) return stored;
+    const value = `fb.1.${Date.now()}.${fbclid}`;
+    window.sessionStorage.setItem('_rm_fbc', value);
+    return value;
+  } catch {
+    return undefined;
+  }
+}
+
 export type MetaUserData = {
   email?: string;
   phone?: string;
   first_name?: string;
   last_name?: string;
   city?: string;
+  state?: string;
+  zip?: string;
   country?: string;
+  gender?: 'm' | 'f';
+  /** YYYYMMDD */
+  dob?: string;
   external_id?: string;
+  subscription_id?: string;
 };
 
 export type SendMetaEventOptions = {
@@ -92,14 +145,16 @@ export async function sendMetaEvent(opts: SendMetaEventOptions): Promise<string>
     }
   }
 
-  // 2) Server-side via edge function
+  // 2) Server-side via edge function — enrich with recommended user_data
   if (!opts.pixelOnly) {
     const fbp = getCookie('_fbp');
-    const fbc = getCookie('_fbc');
+    const fbc = getCookie('_fbc') ?? getFbcFromUrl();
     const ua = typeof navigator !== 'undefined' ? navigator.userAgent : undefined;
     const url = typeof window !== 'undefined' ? window.location.href : undefined;
+    const externalId = opts.userData?.external_id ?? getOrCreateExternalId();
 
     const user_data: Record<string, unknown> = { ...(opts.userData ?? {}) };
+    if (externalId) user_data.external_id = externalId;
     if (fbp) user_data.fbp = fbp;
     if (fbc) user_data.fbc = fbc;
     if (ua) user_data.client_user_agent = ua;
@@ -125,4 +180,3 @@ export async function sendMetaEvent(opts: SendMetaEventOptions): Promise<string>
 
   return eventId;
 }
-

@@ -43,31 +43,34 @@ function getLanding2PageViewId(): string {
   return landing2PageViewId;
 }
 
-const MUNICIPIOS_CON_COBERTURA = [
-  "Abadía",
-  "Ahigal",
-  "Aldeanueva del Camino",
-  "Baños de Montemayor",
-  "Barrado",
-  "Cabezabellosa",
-  "Cabezuela del Valle",
-  "Cáceres",
-  "Casas del Castañar",
-  "Casas del Monte",
-  "El Torno",
-  "Garrovillas de Alconétar",
-  "Hervás",
-  "Jerte",
-  "Montánchez",
-  "Navaconcejo",
-  "Piornal",
-  "Rebollar",
-  "Sierra de Fuentes",
-  "Torreorgaz",
-  "Torrequemada",
-  "Valdastillas",
-  "Zarza de Granadilla",
-];
+// Municipality → postal code (Cáceres province). Used to enrich Meta CAPI
+// user_data (`zp`) and boost Event Match Quality.
+const MUNICIPIOS_COBERTURA: Record<string, string> = {
+  "Abadía": "10739",
+  "Ahigal": "10680",
+  "Aldeanueva del Camino": "10740",
+  "Baños de Montemayor": "10750",
+  "Barrado": "10614",
+  "Cabezabellosa": "10610",
+  "Cabezuela del Valle": "10610",
+  "Cáceres": "10001",
+  "Casas del Castañar": "10613",
+  "Casas del Monte": "10617",
+  "El Torno": "10613",
+  "Garrovillas de Alconétar": "10940",
+  "Hervás": "10700",
+  "Jerte": "10612",
+  "Montánchez": "10170",
+  "Navaconcejo": "10613",
+  "Piornal": "10615",
+  "Rebollar": "10613",
+  "Sierra de Fuentes": "10181",
+  "Torreorgaz": "10184",
+  "Torrequemada": "10187",
+  "Valdastillas": "10614",
+  "Zarza de Granadilla": "10710",
+};
+const MUNICIPIOS_CON_COBERTURA = Object.keys(MUNICIPIOS_COBERTURA);
 const MUNICIPIOS_SIN_COBERTURA: string[] = [];
 
 type Tarifa = { id: string; nom: string; desc: string; precio: number; destacada?: boolean };
@@ -261,12 +264,15 @@ export default function OesteLanding2() {
       if (!data?.ok) throw new Error("Respuesta inesperada");
       setEnviado(true);
       const [firstName, ...rest] = values.name.trim().split(/\s+/);
+      const zip = municipioConfirmado ? MUNICIPIOS_COBERTURA[municipioConfirmado] : undefined;
       const userData = {
         email: values.email,
         phone: values.phone,
         first_name: firstName,
         last_name: rest.join(" ") || undefined,
         city: municipioConfirmado ?? undefined,
+        state: "cc", // ISO 3166-2:ES-CC (Cáceres)
+        zip,
         country: "ES",
       };
       const customData = {
