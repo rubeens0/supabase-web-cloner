@@ -15,10 +15,38 @@ export type GoogleReview = {
   text: string;
 };
 
-export const GOOGLE_PROFILE_URL = "https://maps.app.goo.gl/rSwNNkDH61NxKa8QA";
 export const GOOGLE_RATING = 4.4;
 
-export const GOOGLE_REVIEWS: GoogleReview[] = [];
+export const GOOGLE_REVIEWS: GoogleReview[] = [
+  {
+    author: "La novelera",
+    initials: "LN",
+    rating: 5,
+    date: "Reseña real de Google",
+    text: "Tengo unos alojamientos turísticos y necesitaba cambiar de comercializadora, ya que el precio era excesivo. Mi experiencia con OESTE fue muy positiva, con un gran trato personalizado. Gracias especialmente a Montaña, preocupada y atenta en todo momento. Al final me decidí, tras comparar con otras comercializadoras, por OESTE. Totalmente recomendables.",
+  },
+  {
+    author: "Ignacio Polo Rojo",
+    initials: "IP",
+    rating: 5,
+    date: "Reseña real de Google",
+    text: "Muy contento con el cambio. Contraté el pack de fibra de 2GB más las 3 líneas de móvil y la factura se ajusta mucho a lo que ofrecen. Es difícil encontrar esa velocidad a este precio. La instalación fue rápida y de momento todo funciona estable y sin cortes. Buen servicio además, muy cercano.",
+  },
+  {
+    author: "Loly Buenadicha",
+    initials: "LB",
+    rating: 5,
+    date: "Reseña real de Google",
+    text: "Lo contraté después de estar 23 años en la misma compañía. Estoy muy contenta con la fibra de oeste digital. Es una empresa regional que tanto comerciales, técnicos y atención al cliente son extraordinarios. Va de maravilla y lo recomiendo al 100 %. Todo fue rápido y eficaz y cualquier duda la resuelven rapidísimo. Ha sido una experiencia muy buena estar con Oeste digital. Amabilidad y muy profesionales y lo más importante que va de maravilla. Muchas gracias a la empresa Oeste Digital, estoy encantadísima con el servicio. Áyer 6 de Septiembre del 2024 hubo una incidencia masiva y por WhatsApp hablé con un comercial y enseguida estaba resuelto. Son muy amables y eficaces. Estoy encantada! Recomendable 100x100. Muchas gracias a todo el equipo comerciales y atención al cliente.",
+  },
+  {
+    author: "Angel Solano",
+    initials: "AS",
+    rating: 5,
+    date: "Reseña real de Google",
+    text: "Excelente servicio. Contraté por recomendación de un amigo, y estamos encantados. Tenemos que dejar de buscar fuera, cuidar a las empresas regionales y valorar más lo que tenemos en Extremadura.",
+  },
+];
 
 function Stars({ rating, size = 16 }: { rating: number; size?: number }) {
   return (
@@ -88,15 +116,9 @@ export function GoogleReviews() {
             </div>
           </div>
         </div>
-        <a
-          href={GOOGLE_PROFILE_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 rounded-lg px-4 py-2.5 font-bold text-[15px] text-white"
-          style={{ fontFamily: '"Archivo"', background: "linear-gradient(135deg,#BE2D70 0%,#702479 100%)" }}
-        >
-          Ver reseñas en Google
-        </a>
+        <span className="text-[#4A4353] text-sm font-medium">
+          Todas las reseñas son reales
+        </span>
       </div>
 
       {GOOGLE_REVIEWS.length > 0 && (
