@@ -319,14 +319,7 @@ export default function OesteLanding2() {
       {/* Sticky top bar — sin llamar */}
       <div className="sticky top-0 z-40 bg-white border-b-2 border-[#DCD5E2]">
         <div className="max-w-[660px] mx-auto px-5 py-3 flex items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <img src={OESTE_LOGO} alt="Oeste" className="h-7 w-auto" />
-            <span className="text-[#DCD5E2] text-base">×</span>
-            <a
-              href="https://rubenmunoz.com/inicio?from=oeste-landing2"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:opacity-80"
+        
             >
               <img src={RUBEN_LOGO} alt="Rubén Muñoz" className="h-6 w-auto" style={{ filter: "invert(1)" }} />
             </a>
