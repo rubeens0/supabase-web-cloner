@@ -16,6 +16,8 @@ import { z } from "zod";
 import { supabase } from "@/integrations/supabase/client";
 import { initAdditionalPixel, firePageViewOnce } from "@/lib/metaPixel";
 import { sendMetaEvent } from "@/lib/metaCapi";
+import { GoogleReviews } from "@/components/oeste/GoogleReviews";
+
 
 import rubenLogoAsset from "@/assets/ruben-x-white.png.asset.json";
 import oesteLogoAsset from "@/assets/oeste-color.png.asset.json";
@@ -1027,6 +1029,11 @@ export default function OesteLanding2() {
           </div>
         </div>
       </div>
+
+      {/* Reseñas verificadas de Google */}
+      <GoogleReviews />
+
+
 
       {/* FAQ */}
       <section className="max-w-[660px] mx-auto px-5 my-11">
