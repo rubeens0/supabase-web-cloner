@@ -54,14 +54,19 @@ export default function OesteLanding1() {
   const viewContentFiredRef = useRef(false);
 
   useEffect(() => {
-    initMetaPixel('877944112021448');
-    // Mirror PageView via CAPI reusing the same event_id set in index.html
-    // so Meta deduplicates the browser Pixel and the server event.
-    void sendMetaEvent({
-      eventName: 'PageView',
-      capiOnly: true,
-      eventId: window.__fbPageViewId,
-    });
+    // Base pixel (877944112021448) is already inited and fired PageView from
+    // index.html with `window.__fbPageViewId`. Mark it as fired so we do NOT
+    // re-fire the browser PageView, and mirror the SAME event_id via CAPI
+    // exactly once per page load for Pixel<->CAPI dedup.
+    markPageViewFired(BASE_PIXEL_ID);
+    if (!landing1PageViewSent) {
+      landing1PageViewSent = true;
+      void sendMetaEvent({
+        eventName: 'PageView',
+        capiOnly: true,
+        eventId: window.__fbPageViewId,
+      });
+    }
 
     const prevTitle = document.title;
     document.title = 'Fibra Oeste en Cáceres · La más rápida del oeste';
