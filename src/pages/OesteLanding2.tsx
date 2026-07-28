@@ -525,14 +525,8 @@ export default function OesteLanding2() {
           <div className="flex items-center gap-3">
             <img src={OESTE_LOGO} alt="Oeste" className="h-7 w-auto" />
             <span className="text-[#DCD5E2] text-base">×</span>
-            <a
-              href="https://rubenmunoz.com/inicio?from=oeste-landing2"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:opacity-80"
-            >
-              <img src={RUBEN_LOGO} alt="Rubén Muñoz" className="h-6 w-auto" style={{ filter: "invert(1)" }} />
-            </a>
+            <img src={RUBEN_LOGO} alt="Rubén Muñoz" className="h-6 w-auto" style={{ filter: "invert(1)" }} />
+
           </div>
           <a
             href="#paso1"
