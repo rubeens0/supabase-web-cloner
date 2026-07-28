@@ -4,8 +4,9 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { supabase } from '@/integrations/supabase/client';
-import { initMetaPixel } from '@/lib/metaPixel';
+import { initAdditionalPixel } from '@/lib/metaPixel';
 import { sendMetaEvent } from '@/lib/metaCapi';
+
 import rubenLogoAsset from '@/assets/ruben-x-white.png.asset.json';
 import oesteLogoAsset from '@/assets/oeste-color.png.asset.json';
 import rubenPhotoAsset from '@/assets/ruben-parolin-grid.webp.asset.json';
@@ -13,6 +14,8 @@ import rubenPhotoAsset from '@/assets/ruben-parolin-grid.webp.asset.json';
 const OESTE_LOGO = oesteLogoAsset.url;
 const RUBEN_LOGO = rubenLogoAsset.url;
 const RUBEN_PHOTO = rubenPhotoAsset.url;
+const LANDING2_PIXEL_ID = '838460842553957';
+
 
 const MUNICIPIOS_CON_COBERTURA = [
   'Abadía', 'Ahigal', 'Aldeanueva del Camino', 'Baños de Montemayor', 'Barrado',
@@ -69,12 +72,15 @@ export default function OesteLanding2() {
   }, [busqueda, todosMunicipios]);
 
   useEffect(() => {
-    initMetaPixel('877944112021448');
+    // Landing2 usa un pixel Meta dedicado (distinto al sitewide).
+    initAdditionalPixel(LANDING2_PIXEL_ID, window.__fbPageViewId);
     void sendMetaEvent({
       eventName: 'PageView',
       capiOnly: true,
       eventId: window.__fbPageViewId,
+      pixelId: LANDING2_PIXEL_ID,
     });
+
 
     const prev = document.title;
     document.title = 'Fibra y móvil de Oeste en Extremadura · 27 € al mes';
