@@ -1028,6 +1028,11 @@ export default function OesteLanding2() {
         </div>
       </div>
 
+      {/* Reseñas verificadas de Google */}
+      <GoogleReviews />
+
+
+
       {/* FAQ */}
       <section className="max-w-[660px] mx-auto px-5 my-11">
         <p
