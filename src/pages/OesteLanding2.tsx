@@ -154,6 +154,7 @@ export default function OesteLanding2() {
         currency: 'EUR',
       },
       pixelId: LANDING2_PIXEL_ID,
+      testEventCode: LANDING2_TEST_EVENT_CODE,
     });
   };
 
