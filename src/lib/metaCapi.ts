@@ -70,6 +70,8 @@ export type SendMetaEventOptions = {
   /** Route the event to a specific pixel (browser + CAPI). Defaults to the
    *  sitewide pixel configured in the edge function. */
   pixelId?: string;
+  /** Meta Test Event code (Events Manager → Test Events). CAPI-only. */
+  testEventCode?: string;
 };
 
 /**
