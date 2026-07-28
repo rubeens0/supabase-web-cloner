@@ -15,6 +15,8 @@ const OESTE_LOGO = oesteLogoAsset.url;
 const RUBEN_LOGO = rubenLogoAsset.url;
 const RUBEN_PHOTO = rubenPhotoAsset.url;
 const LANDING2_PIXEL_ID = '838460842553957';
+// Meta Test Events code — Events Manager → Test Events. Set to undefined to disable.
+const LANDING2_TEST_EVENT_CODE: string | undefined = 'TEST51029';
 
 
 const MUNICIPIOS_CON_COBERTURA = [
@@ -79,6 +81,7 @@ export default function OesteLanding2() {
       capiOnly: true,
       eventId: window.__fbPageViewId,
       pixelId: LANDING2_PIXEL_ID,
+      testEventCode: LANDING2_TEST_EVENT_CODE,
     });
 
 
@@ -117,12 +120,13 @@ export default function OesteLanding2() {
     const cubierto = MUNICIPIOS_CON_COBERTURA.includes(municipio);
     setTieneCobertura(cubierto);
     setMunicipioConfirmado(municipio);
-    void sendMetaEvent({ eventName: 'CheckCoverage', customData: { municipality: municipio, covered: cubierto }, pixelId: LANDING2_PIXEL_ID });
+    void sendMetaEvent({ eventName: 'CheckCoverage', customData: { municipality: municipio, covered: cubierto }, pixelId: LANDING2_PIXEL_ID, testEventCode: LANDING2_TEST_EVENT_CODE });
     if (cubierto) {
       void sendMetaEvent({
         eventName: 'ViewContent',
         customData: { content_name: 'Tarifas Oeste', content_category: 'oeste-landing2', content_type: 'product_group' },
         pixelId: LANDING2_PIXEL_ID,
+        testEventCode: LANDING2_TEST_EVENT_CODE,
       });
     }
 
@@ -150,6 +154,7 @@ export default function OesteLanding2() {
         currency: 'EUR',
       },
       pixelId: LANDING2_PIXEL_ID,
+      testEventCode: LANDING2_TEST_EVENT_CODE,
     });
   };
 
@@ -167,6 +172,7 @@ export default function OesteLanding2() {
       eventName: 'InitiateCheckout',
       customData: { content_name: tarifa.nom, value: tarifa.precio, currency: 'EUR' },
       pixelId: LANDING2_PIXEL_ID,
+      testEventCode: LANDING2_TEST_EVENT_CODE,
     });
   };
 
@@ -196,8 +202,8 @@ export default function OesteLanding2() {
         value: tarifa.precio, currency: 'EUR', predicted_ltv: tarifa.precio,
         lead_event_source: 'oeste-landing2', municipality: municipioConfirmado ?? undefined,
       };
-      void sendMetaEvent({ eventName: 'Lead', customData, userData, pixelId: LANDING2_PIXEL_ID });
-      void sendMetaEvent({ eventName: 'CompleteRegistration', customData: { ...customData, registration_method: 'lead-form' }, userData, pixelId: LANDING2_PIXEL_ID });
+      void sendMetaEvent({ eventName: 'Lead', customData, userData, pixelId: LANDING2_PIXEL_ID, testEventCode: LANDING2_TEST_EVENT_CODE });
+      void sendMetaEvent({ eventName: 'CompleteRegistration', customData: { ...customData, registration_method: 'lead-form' }, userData, pixelId: LANDING2_PIXEL_ID, testEventCode: LANDING2_TEST_EVENT_CODE });
 
       reset();
       setTimeout(() => document.getElementById('exito')?.scrollIntoView({ behavior: 'smooth', block: 'center' }), 60);

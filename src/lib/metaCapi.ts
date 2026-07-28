@@ -70,6 +70,8 @@ export type SendMetaEventOptions = {
   /** Route the event to a specific pixel (browser + CAPI). Defaults to the
    *  sitewide pixel configured in the edge function. */
   pixelId?: string;
+  /** Meta Test Event code (Events Manager → Test Events). CAPI-only. */
+  testEventCode?: string;
 };
 
 /**
@@ -112,6 +114,7 @@ export async function sendMetaEvent(opts: SendMetaEventOptions): Promise<string>
           custom_data: opts.customData,
           user_data,
           pixel_id: opts.pixelId,
+          test_event_code: opts.testEventCode,
         },
       });
       if (error) console.warn('[meta-capi] invoke error', error.message);
