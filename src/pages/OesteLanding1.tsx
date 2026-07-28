@@ -4,13 +4,17 @@ import { Zap, Wifi, ShieldCheck, MapPin, ArrowRight, Star } from 'lucide-react';
 import { OesteLeadForm } from '@/components/oeste/OesteLeadForm';
 import { OesteOffers, type Offer } from '@/components/oeste/OesteOffers';
 import { OesteStickyCTA } from '@/components/oeste/OesteStickyCTA';
-import { initMetaPixel, parsePrice } from '@/lib/metaPixel';
+import { markPageViewFired, parsePrice } from '@/lib/metaPixel';
 import { sendMetaEvent } from '@/lib/metaCapi';
 import rubenLogoAsset from '@/assets/ruben-x-white.png.asset.json';
 import oesteLogoAsset from '@/assets/oeste-white.png.asset.json';
 import kartBgAsset from '@/assets/kart-oeste.jpg.asset.json';
 import maximaVelocidadAsset from '@/assets/maxima-velocidad.mp4.asset.json';
 
+const BASE_PIXEL_ID = '877944112021448';
+// Module-level guard so CAPI PageView fires at most once per full page load,
+// even across React StrictMode double-invokes or SPA re-mounts.
+let landing1PageViewSent = false;
 
 const OESTE_LOGO = oesteLogoAsset.url;
 const RUBEN_LOGO = rubenLogoAsset.url;
