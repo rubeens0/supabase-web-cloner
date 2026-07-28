@@ -81,6 +81,7 @@ export default function OesteLanding2() {
       capiOnly: true,
       eventId: window.__fbPageViewId,
       pixelId: LANDING2_PIXEL_ID,
+      testEventCode: LANDING2_TEST_EVENT_CODE,
     });
 
 
