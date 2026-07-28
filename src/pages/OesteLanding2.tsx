@@ -202,8 +202,8 @@ export default function OesteLanding2() {
         value: tarifa.precio, currency: 'EUR', predicted_ltv: tarifa.precio,
         lead_event_source: 'oeste-landing2', municipality: municipioConfirmado ?? undefined,
       };
-      void sendMetaEvent({ eventName: 'Lead', customData, userData, pixelId: LANDING2_PIXEL_ID });
-      void sendMetaEvent({ eventName: 'CompleteRegistration', customData: { ...customData, registration_method: 'lead-form' }, userData, pixelId: LANDING2_PIXEL_ID });
+      void sendMetaEvent({ eventName: 'Lead', customData, userData, pixelId: LANDING2_PIXEL_ID, testEventCode: LANDING2_TEST_EVENT_CODE });
+      void sendMetaEvent({ eventName: 'CompleteRegistration', customData: { ...customData, registration_method: 'lead-form' }, userData, pixelId: LANDING2_PIXEL_ID, testEventCode: LANDING2_TEST_EVENT_CODE });
 
       reset();
       setTimeout(() => document.getElementById('exito')?.scrollIntoView({ behavior: 'smooth', block: 'center' }), 60);
