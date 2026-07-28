@@ -13,7 +13,7 @@ interface FbqFunction {
   callMethod?: (...args: unknown[]) => void;
 }
 
-export function initMetaPixel(pixelId: string): void {
+function ensureFbqLoaded(): void {
   if (typeof window === 'undefined') return;
   if (window.fbq) return;
 
@@ -42,41 +42,75 @@ export function initMetaPixel(pixelId: string): void {
   t.src = v;
   const s = b.getElementsByTagName(e)[0];
   if (s && s.parentNode) s.parentNode.insertBefore(t, s);
+}
 
-  fbqFn('init', pixelId);
-  fbqFn('track', 'PageView');
+const initedPixels = new Set<string>();
+
+export function initMetaPixel(pixelId: string): void {
+  if (typeof window === 'undefined') return;
+  ensureFbqLoaded();
+  if (initedPixels.has(pixelId)) return;
+  initedPixels.add(pixelId);
+  window.fbq!('init', pixelId);
+  window.fbq!('track', 'PageView');
+}
+
+/**
+ * Initialize an ADDITIONAL Meta Pixel alongside any already-loaded pixels
+ * (e.g. the sitewide one in `index.html`). Fires PageView ONLY on that new
+ * pixel using `trackSingle`, so it does not double-count on the base pixel.
+ * Pass an `eventId` (typically `window.__fbPageViewId`) to dedupe with CAPI.
+ */
+export function initAdditionalPixel(pixelId: string, eventId?: string): void {
+  if (typeof window === 'undefined') return;
+  ensureFbqLoaded();
+  if (initedPixels.has(pixelId)) return;
+  initedPixels.add(pixelId);
+  window.fbq!('init', pixelId);
+  const opts = eventId ? { eventID: eventId } : undefined;
+  if (opts) {
+    window.fbq!('trackSingle', pixelId, 'PageView', {}, opts);
+  } else {
+    window.fbq!('trackSingle', pixelId, 'PageView');
+  }
 }
 
 export function trackMetaEvent(
   event: string,
-  params?: Record<string, unknown>
+  params?: Record<string, unknown>,
+  pixelId?: string
 ): void {
   if (typeof window === 'undefined') return;
   const fbq = window.fbq;
   if (!fbq) return;
-  if (params) {
-    fbq('track', event, params);
-  } else {
-    fbq('track', event);
+  if (pixelId) {
+    if (params) fbq('trackSingle', pixelId, event, params);
+    else fbq('trackSingle', pixelId, event);
+    return;
   }
+  if (params) fbq('track', event, params);
+  else fbq('track', event);
 }
 
 /**
- * Custom (non-standard) event. Uses `trackCustom` per Meta Pixel API.
- * https://developers.facebook.com/docs/meta-pixel/reference#events
+ * Custom (non-standard) event. Uses `trackCustom` / `trackSingleCustom` per
+ * Meta Pixel API. https://developers.facebook.com/docs/meta-pixel/reference#events
  */
 export function trackMetaCustom(
   event: string,
-  params?: Record<string, unknown>
+  params?: Record<string, unknown>,
+  pixelId?: string
 ): void {
   if (typeof window === 'undefined') return;
   const fbq = window.fbq;
   if (!fbq) return;
-  if (params) {
-    fbq('trackCustom', event, params);
-  } else {
-    fbq('trackCustom', event);
+  if (pixelId) {
+    if (params) fbq('trackSingleCustom', pixelId, event, params);
+    else fbq('trackSingleCustom', pixelId, event);
+    return;
   }
+  if (params) fbq('trackCustom', event, params);
+  else fbq('trackCustom', event);
 }
 
 /** Parses prices like "27" or "6,95" into a number. */
@@ -93,11 +127,12 @@ const throttleMap = new Map<string, number>();
 export function trackMetaEventOnce(
   key: string,
   event: string,
-  params?: Record<string, unknown>
+  params?: Record<string, unknown>,
+  pixelId?: string
 ): void {
   if (onceKeys.has(key)) return;
   onceKeys.add(key);
-  trackMetaEvent(event, params);
+  trackMetaEvent(event, params, pixelId);
 }
 
 /** Fire a Meta event with a cooldown per key (default 5 s). */
@@ -105,11 +140,12 @@ export function trackMetaEventThrottled(
   key: string,
   event: string,
   params?: Record<string, unknown>,
-  cooldownMs = 5000
+  cooldownMs = 5000,
+  pixelId?: string
 ): void {
   const now = Date.now();
   const last = throttleMap.get(key);
   if (last && now - last < cooldownMs) return;
   throttleMap.set(key, now);
-  trackMetaEvent(event, params);
+  trackMetaEvent(event, params, pixelId);
 }

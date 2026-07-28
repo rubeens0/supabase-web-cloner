@@ -67,6 +67,9 @@ export type SendMetaEventOptions = {
   pixelOnly?: boolean;
   /** CAPI-only — skip the browser pixel. */
   capiOnly?: boolean;
+  /** Route the event to a specific pixel (browser + CAPI). Defaults to the
+   *  sitewide pixel configured in the edge function. */
+  pixelId?: string;
 };
 
 /**
@@ -81,9 +84,9 @@ export async function sendMetaEvent(opts: SendMetaEventOptions): Promise<string>
   if (!opts.capiOnly) {
     const params = { ...(opts.customData ?? {}), eventID: eventId } as Record<string, unknown>;
     if (isStandard) {
-      trackMetaEvent(opts.eventName, params);
+      trackMetaEvent(opts.eventName, params, opts.pixelId);
     } else {
-      trackMetaCustom(opts.eventName, params);
+      trackMetaCustom(opts.eventName, params, opts.pixelId);
     }
   }
 
@@ -108,6 +111,7 @@ export async function sendMetaEvent(opts: SendMetaEventOptions): Promise<string>
           action_source: 'website',
           custom_data: opts.customData,
           user_data,
+          pixel_id: opts.pixelId,
         },
       });
       if (error) console.warn('[meta-capi] invoke error', error.message);
@@ -118,3 +122,4 @@ export async function sendMetaEvent(opts: SendMetaEventOptions): Promise<string>
 
   return eventId;
 }
+
