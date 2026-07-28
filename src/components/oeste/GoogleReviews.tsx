@@ -88,6 +88,67 @@ function GoogleG({ size = 20 }: { size?: number }) {
   );
 }
 
+function ReviewCard({ review }: { review: GoogleReview }) {
+  const [expanded, setExpanded] = useState(false);
+  const reviewId = `${review.author}-${review.date}`;
+
+  return (
+    <article className="bg-[#FAF8FB] border border-[#DCD5E2] rounded-xl p-3.5 flex flex-col">
+      <div className="flex items-center gap-3 mb-2">
+        <span
+          className="w-9 h-9 rounded-full flex items-center justify-center text-white font-bold text-sm shrink-0"
+          style={{ fontFamily: '"Archivo"', background: "linear-gradient(135deg,#E37819 0%,#BE2D70 100%)" }}
+          aria-hidden="true"
+        >
+          {review.initials}
+        </span>
+        <div className="min-w-0">
+          <p className="font-bold text-[15px] truncate" style={{ fontFamily: '"Archivo"' }}>
+            {review.author}
+          </p>
+          <p className="text-[#4A4353] text-xs">{review.date}</p>
+        </div>
+        <span className="ml-auto shrink-0">
+          <GoogleG size={16} />
+        </span>
+      </div>
+      <Stars rating={review.rating} size={14} />
+
+      <div className="relative mt-2">
+        <AnimatePresence initial={false}>
+          <motion.div
+            key={expanded ? "full" : "clamped"}
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.25, ease: "easeInOut" }}
+            className="overflow-hidden"
+          >
+            <p
+              id={reviewId}
+              className={`text-[15px] text-[#2A2431] leading-relaxed ${
+                expanded ? "" : "line-clamp-4"
+              }`}
+            >
+              {review.text}
+            </p>
+          </motion.div>
+        </AnimatePresence>
+      </div>
+
+      <button
+        type="button"
+        onClick={() => setExpanded((s) => !s)}
+        aria-expanded={expanded}
+        aria-controls={reviewId}
+        className="mt-2 self-start text-[#702479] font-bold text-sm hover:underline focus:outline-none focus:ring-2 focus:ring-[#702479]/30 rounded"
+      >
+        {expanded ? "Leer menos" : "Leer más"}
+      </button>
+    </article>
+  );
+}
+
 export function GoogleReviews() {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -151,33 +212,12 @@ export function GoogleReviews() {
             >
               <div className="border-t-2 border-[#DCD5E2] p-4 grid gap-3 sm:grid-cols-2">
                 {GOOGLE_REVIEWS.map((r) => (
-                  <article key={`${r.author}-${r.date}`} className="bg-[#FAF8FB] border border-[#DCD5E2] rounded-xl p-3.5">
-                    <div className="flex items-center gap-3 mb-2">
-                      <span
-                        className="w-9 h-9 rounded-full flex items-center justify-center text-white font-bold text-sm shrink-0"
-                        style={{ fontFamily: '"Archivo"', background: "linear-gradient(135deg,#E37819 0%,#BE2D70 100%)" }}
-                        aria-hidden="true"
-                      >
-                        {r.initials}
-                      </span>
-                      <div className="min-w-0">
-                        <p className="font-bold text-[15px] truncate" style={{ fontFamily: '"Archivo"' }}>
-                          {r.author}
-                        </p>
-                        <p className="text-[#4A4353] text-xs">{r.date}</p>
-                      </div>
-                      <span className="ml-auto shrink-0">
-                        <GoogleG size={16} />
-                      </span>
-                    </div>
-                    <Stars rating={r.rating} size={14} />
-                    <p className="mt-2 text-[15px] text-[#2A2431] leading-relaxed line-clamp-5">{r.text}</p>
-                  </article>
+                  <ReviewCard key={`${r.author}-${r.date}`} review={r} />
                 ))}
               </div>
 
               <p className="px-4 pb-4 text-[#4A4353] text-sm font-medium">
-                Todas las reseñas son reales
+                Todas las reseñas 100% verificadas.
               </p>
             </motion.div>
           )}
@@ -186,7 +226,7 @@ export function GoogleReviews() {
 
       {!isOpen && (
         <p className="mt-2 text-[#4A4353] text-sm font-medium">
-          Todas las reseñas son reales
+          Todas las reseñas 100% verificadas.
         </p>
       )}
     </section>
