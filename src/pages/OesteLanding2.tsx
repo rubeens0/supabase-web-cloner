@@ -14,7 +14,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { supabase } from "@/integrations/supabase/client";
-import { initAdditionalPixel } from "@/lib/metaPixel";
+import { initAdditionalPixel, firePageViewOnce } from "@/lib/metaPixel";
 import { sendMetaEvent } from "@/lib/metaCapi";
 
 import rubenLogoAsset from "@/assets/ruben-x-white.png.asset.json";
@@ -27,6 +27,21 @@ const RUBEN_PHOTO = rubenPhotoAsset.url;
 const LANDING2_PIXEL_ID = "838460842553957";
 // Meta Test Events code — Events Manager → Test Events. Set to undefined to disable.
 const LANDING2_TEST_EVENT_CODE: string | undefined = "TEST22889";
+
+// Per-load PageView event_id dedicated to the landing2 pixel. Generated once
+// per full page load and reused for both browser Pixel and CAPI so they
+// deduplicate. NOT reused across page loads/mounts (that would cause Meta to
+// merge unrelated PageViews into a single event).
+let landing2PageViewId: string | null = null;
+let landing2PageViewSent = false;
+function getLanding2PageViewId(): string {
+  if (landing2PageViewId) return landing2PageViewId;
+  landing2PageViewId =
+    typeof crypto !== "undefined" && "randomUUID" in crypto
+      ? crypto.randomUUID()
+      : `${Date.now()}-${Math.random().toString(36).slice(2)}`;
+  return landing2PageViewId;
+}
 
 const MUNICIPIOS_CON_COBERTURA = [
   "Abadía",
