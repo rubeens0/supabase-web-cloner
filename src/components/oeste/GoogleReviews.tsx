@@ -1,4 +1,6 @@
-import { Star } from "lucide-react";
+import { useState } from "react";
+import { Star, ChevronDown } from "lucide-react";
+import { motion, AnimatePresence } from "motion/react";
 
 /**
  * Reseñas verificadas del perfil de Google de
@@ -87,67 +89,105 @@ function GoogleG({ size = 20 }: { size?: number }) {
 }
 
 export function GoogleReviews() {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <section className="max-w-[660px] mx-auto px-5 my-11">
+    <section className="max-w-[660px] mx-auto px-5 my-8">
       <p
-        className="uppercase tracking-[0.14em] text-[#702479] font-bold text-sm mb-2.5"
+        className="uppercase tracking-[0.14em] text-[#702479] font-bold text-sm mb-2"
         style={{ fontFamily: '"Archivo"' }}
       >
         Reseñas verificadas
       </p>
       <h2
-        className="font-extrabold mb-6"
-        style={{ fontFamily: '"Archivo"', fontSize: "clamp(1.7rem,6.5vw,2.2rem)" }}
+        className="font-extrabold mb-4"
+        style={{ fontFamily: '"Archivo"', fontSize: "clamp(1.5rem,5.5vw,2rem)" }}
       >
         Lo que dicen los clientes en Google
       </h2>
 
-      <div className="bg-white border-2 border-[#DCD5E2] rounded-xl p-5 flex flex-wrap items-center gap-4 justify-between">
-        <div className="flex items-center gap-3">
-          <GoogleG size={28} />
-          <div>
-            <p className="font-extrabold text-[22px] leading-none" style={{ fontFamily: '"Archivo"' }}>
-              {GOOGLE_RATING.toString().replace(".", ",")}
-              <span className="text-[#4A4353] font-normal text-base"> / 5</span>
-            </p>
-            <div className="mt-1.5 flex items-center gap-2">
-              <Stars rating={GOOGLE_RATING} />
-              <span className="text-[#4A4353] text-sm">Oeste Cáceres</span>
+      <div className="bg-white border-2 border-[#DCD5E2] rounded-xl overflow-hidden">
+        {/* Accordion header / pestaña */}
+        <button
+          type="button"
+          onClick={() => setIsOpen((s) => !s)}
+          aria-expanded={isOpen}
+          className="w-full p-4 flex flex-wrap items-center gap-4 justify-between text-left hover:bg-[#FAF8FB] transition-colors"
+        >
+          <div className="flex items-center gap-3">
+            <GoogleG size={28} />
+            <div>
+              <p className="font-extrabold text-[22px] leading-none" style={{ fontFamily: '"Archivo"' }}>
+                {GOOGLE_RATING.toString().replace(".", ",")}
+                <span className="text-[#4A4353] font-normal text-base"> / 5</span>
+              </p>
+              <div className="mt-1.5 flex items-center gap-2">
+                <Stars rating={GOOGLE_RATING} />
+                <span className="text-[#4A4353] text-sm">Oeste Cáceres</span>
+              </div>
             </div>
           </div>
-        </div>
-        <span className="text-[#4A4353] text-sm font-medium">
-          Todas las reseñas son reales
-        </span>
+
+          <span className="inline-flex items-center gap-1.5 text-[#702479] font-bold text-sm">
+            {isOpen ? "Ocultar reseñas" : `Ver ${GOOGLE_REVIEWS.length} reseñas`}
+            <motion.span
+              animate={{ rotate: isOpen ? 180 : 0 }}
+              transition={{ duration: 0.2 }}
+            >
+              <ChevronDown size={18} />
+            </motion.span>
+          </span>
+        </button>
+
+        <AnimatePresence initial={false}>
+          {isOpen && GOOGLE_REVIEWS.length > 0 && (
+            <motion.div
+              key="reviews-panel"
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+              className="overflow-hidden"
+            >
+              <div className="border-t-2 border-[#DCD5E2] p-4 grid gap-3 sm:grid-cols-2">
+                {GOOGLE_REVIEWS.map((r) => (
+                  <article key={`${r.author}-${r.date}`} className="bg-[#FAF8FB] border border-[#DCD5E2] rounded-xl p-3.5">
+                    <div className="flex items-center gap-3 mb-2">
+                      <span
+                        className="w-9 h-9 rounded-full flex items-center justify-center text-white font-bold text-sm shrink-0"
+                        style={{ fontFamily: '"Archivo"', background: "linear-gradient(135deg,#E37819 0%,#BE2D70 100%)" }}
+                        aria-hidden="true"
+                      >
+                        {r.initials}
+                      </span>
+                      <div className="min-w-0">
+                        <p className="font-bold text-[15px] truncate" style={{ fontFamily: '"Archivo"' }}>
+                          {r.author}
+                        </p>
+                        <p className="text-[#4A4353] text-xs">{r.date}</p>
+                      </div>
+                      <span className="ml-auto shrink-0">
+                        <GoogleG size={16} />
+                      </span>
+                    </div>
+                    <Stars rating={r.rating} size={14} />
+                    <p className="mt-2 text-[15px] text-[#2A2431] leading-relaxed line-clamp-5">{r.text}</p>
+                  </article>
+                ))}
+              </div>
+
+              <p className="px-4 pb-4 text-[#4A4353] text-sm font-medium">
+                Todas las reseñas son reales
+              </p>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
 
-      {GOOGLE_REVIEWS.length > 0 && (
-        <div className="mt-4 grid gap-4 sm:grid-cols-2">
-          {GOOGLE_REVIEWS.map((r) => (
-            <article key={`${r.author}-${r.date}`} className="bg-white border-2 border-[#DCD5E2] rounded-xl p-4">
-              <div className="flex items-center gap-3 mb-2">
-                <span
-                  className="w-9 h-9 rounded-full flex items-center justify-center text-white font-bold text-sm shrink-0"
-                  style={{ fontFamily: '"Archivo"', background: "linear-gradient(135deg,#E37819 0%,#BE2D70 100%)" }}
-                  aria-hidden="true"
-                >
-                  {r.initials}
-                </span>
-                <div className="min-w-0">
-                  <p className="font-bold text-[15px] truncate" style={{ fontFamily: '"Archivo"' }}>
-                    {r.author}
-                  </p>
-                  <p className="text-[#4A4353] text-xs">{r.date}</p>
-                </div>
-                <span className="ml-auto shrink-0">
-                  <GoogleG size={16} />
-                </span>
-              </div>
-              <Stars rating={r.rating} size={14} />
-              <p className="mt-2 text-[15px] text-[#2A2431] leading-relaxed">{r.text}</p>
-            </article>
-          ))}
-        </div>
+      {!isOpen && (
+        <p className="mt-2 text-[#4A4353] text-sm font-medium">
+          Todas las reseñas son reales
+        </p>
       )}
     </section>
   );
