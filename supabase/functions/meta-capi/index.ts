@@ -11,6 +11,7 @@ const PIXEL_TOKEN_ENV: Record<string, string> = {
 
 const GRAPH_VERSION = 'v21.0';
 
+// Recommended user_data parameters — https://developers.facebook.com/docs/marketing-api/conversions-api/parameters/customer-information-parameters
 const UserDataSchema = z
   .object({
     email: z.string().trim().email().max(255).optional(),
@@ -18,11 +19,17 @@ const UserDataSchema = z
     first_name: z.string().trim().max(100).optional(),
     last_name: z.string().trim().max(100).optional(),
     city: z.string().trim().max(100).optional(),
+    state: z.string().trim().max(100).optional(),
+    zip: z.string().trim().max(20).optional(),
     country: z.string().trim().max(2).optional(),
-    external_id: z.string().trim().max(100).optional(),
+    gender: z.enum(['m', 'f']).optional(),
+    dob: z.string().trim().max(20).optional(), // YYYYMMDD
+    external_id: z.string().trim().max(200).optional(),
+    subscription_id: z.string().trim().max(200).optional(),
     fbp: z.string().trim().max(200).optional(),
     fbc: z.string().trim().max(400).optional(),
     client_user_agent: z.string().trim().max(500).optional(),
+    client_ip_address: z.string().trim().max(64).optional(),
   })
   .partial();
 
@@ -54,31 +61,61 @@ async function sha256(value: string): Promise<string> {
     .join('');
 }
 
+// Meta normalization rules — strip accents, lowercase, remove punctuation/spaces
+function stripAccents(v: string) {
+  return v.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+}
 function normalizeEmail(v: string) {
   return v.trim().toLowerCase();
 }
 function normalizePhone(v: string) {
-  // E.164 digits only
-  return v.replace(/[^\d]/g, '');
+  // Digits only. If it looks like a Spanish national number (9 digits starting
+  // with 6/7/8/9), prepend country code 34 so Meta can match it to a country.
+  let d = v.replace(/[^\d]/g, '');
+  if (d.length === 9 && /^[6789]/.test(d)) d = '34' + d;
+  return d;
 }
 function normalizeName(v: string) {
-  return v.trim().toLowerCase();
+  return stripAccents(v).trim().toLowerCase().replace(/[^a-z]/g, '');
+}
+function normalizeCity(v: string) {
+  return stripAccents(v).trim().toLowerCase().replace(/[^a-z]/g, '');
+}
+function normalizeState(v: string) {
+  // 2-letter ISO subdivision code preferred; fallback to lowercased alpha
+  return stripAccents(v).trim().toLowerCase().replace(/[^a-z]/g, '');
+}
+function normalizeZip(v: string) {
+  return v.trim().toLowerCase().replace(/\s+/g, '');
+}
+function normalizeCountry(v: string) {
+  return v.trim().toLowerCase().slice(0, 2);
+}
+function normalizeDob(v: string) {
+  // Expected YYYYMMDD, strip non-digits
+  return v.replace(/[^\d]/g, '');
 }
 
 async function hashUserData(ud?: z.infer<typeof UserDataSchema>) {
-  if (!ud) return {};
+  if (!ud) return {} as Record<string, unknown>;
   const out: Record<string, unknown> = {};
   if (ud.email) out.em = [await sha256(normalizeEmail(ud.email))];
   if (ud.phone) out.ph = [await sha256(normalizePhone(ud.phone))];
   if (ud.first_name) out.fn = [await sha256(normalizeName(ud.first_name))];
   if (ud.last_name) out.ln = [await sha256(normalizeName(ud.last_name))];
-  if (ud.city) out.ct = [await sha256(normalizeName(ud.city))];
-  if (ud.country) out.country = [await sha256(ud.country.trim().toLowerCase())];
+  if (ud.city) out.ct = [await sha256(normalizeCity(ud.city))];
+  if (ud.state) out.st = [await sha256(normalizeState(ud.state))];
+  if (ud.zip) out.zp = [await sha256(normalizeZip(ud.zip))];
+  if (ud.country) out.country = [await sha256(normalizeCountry(ud.country))];
+  if (ud.gender) out.ge = [await sha256(ud.gender)];
+  if (ud.dob) out.db = [await sha256(normalizeDob(ud.dob))];
   if (ud.external_id) out.external_id = [await sha256(ud.external_id.trim().toLowerCase())];
+  if (ud.subscription_id) out.subscription_id = ud.subscription_id; // not hashed
   // Non-hashed identifiers
   if (ud.fbp) out.fbp = ud.fbp;
   if (ud.fbc) out.fbc = ud.fbc;
   if (ud.client_user_agent) out.client_user_agent = ud.client_user_agent;
+  if (ud.client_ip_address) out.client_ip_address = ud.client_ip_address;
   return out;
 }
 
@@ -200,4 +237,3 @@ Deno.serve(async (req) => {
     headers: { ...corsHeaders, 'Content-Type': 'application/json' },
   });
 });
-
