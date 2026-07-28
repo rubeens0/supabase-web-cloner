@@ -45,6 +45,17 @@ function ensureFbqLoaded(): void {
 }
 
 const initedPixels = new Set<string>();
+const pageViewFiredPixels = new Set<string>();
+
+/**
+ * Mark a pixel as already having fired PageView in this page load.
+ * Use this when PageView was fired outside this module (e.g. inline script
+ * in `index.html`) to prevent duplicate PageViews from `firePageViewOnce`.
+ */
+export function markPageViewFired(pixelId: string): void {
+  pageViewFiredPixels.add(pixelId);
+  initedPixels.add(pixelId);
+}
 
 export function initMetaPixel(pixelId: string): void {
   if (typeof window === 'undefined') return;
@@ -52,27 +63,37 @@ export function initMetaPixel(pixelId: string): void {
   if (initedPixels.has(pixelId)) return;
   initedPixels.add(pixelId);
   window.fbq!('init', pixelId);
-  window.fbq!('track', 'PageView');
 }
 
 /**
  * Initialize an ADDITIONAL Meta Pixel alongside any already-loaded pixels
- * (e.g. the sitewide one in `index.html`). Fires PageView ONLY on that new
- * pixel using `trackSingle`, so it does not double-count on the base pixel.
- * Pass an `eventId` (typically `window.__fbPageViewId`) to dedupe with CAPI.
+ * (e.g. the sitewide one in `index.html`). Does NOT fire PageView; call
+ * `firePageViewOnce(pixelId, eventId)` explicitly so the browser PageView
+ * shares an event_id with the CAPI PageView.
  */
-export function initAdditionalPixel(pixelId: string, eventId?: string): void {
+export function initAdditionalPixel(pixelId: string): void {
   if (typeof window === 'undefined') return;
   ensureFbqLoaded();
   if (initedPixels.has(pixelId)) return;
   initedPixels.add(pixelId);
   window.fbq!('init', pixelId);
-  const opts = eventId ? { eventID: eventId } : undefined;
-  if (opts) {
-    window.fbq!('trackSingle', pixelId, 'PageView', {}, opts);
-  } else {
-    window.fbq!('trackSingle', pixelId, 'PageView');
+}
+
+/**
+ * Fires a browser PageView for a specific pixel exactly once per page load,
+ * with the provided `eventId` so it deduplicates against the server-side
+ * CAPI PageView. Safe to call from React effects (StrictMode, remounts).
+ */
+export function firePageViewOnce(pixelId: string, eventId: string): void {
+  if (typeof window === 'undefined') return;
+  if (pageViewFiredPixels.has(pixelId)) return;
+  pageViewFiredPixels.add(pixelId);
+  ensureFbqLoaded();
+  if (!initedPixels.has(pixelId)) {
+    initedPixels.add(pixelId);
+    window.fbq!('init', pixelId);
   }
+  window.fbq!('trackSingle', pixelId, 'PageView', {}, { eventID: eventId });
 }
 
 export function trackMetaEvent(
