@@ -36,6 +36,11 @@
 
     <!-- Meta Pixel Code -->
     <script>
+      window.__fbPageViewId = (window.crypto && crypto.randomUUID)
+        ? crypto.randomUUID()
+        : (Date.now() + '-' + Math.random().toString(36).slice(2));
+    </script>
+    <script>
       !function(f,b,e,v,n,t,s)
       {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
       n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -45,9 +50,9 @@
       s.parentNode.insertBefore(t,s)}(window, document,'script',
       'https://connect.facebook.net/en_US/fbevents.js');
       fbq('init', '877944112021448');
-      fbq('track', 'PageView');
+      fbq('track', 'PageView', {}, { eventID: window.__fbPageViewId });
     </script>
-    <!-- End Meta Pixel Code -->
+
   </head>
 
   <body>
