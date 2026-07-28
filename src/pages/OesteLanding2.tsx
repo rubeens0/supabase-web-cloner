@@ -15,6 +15,8 @@ const OESTE_LOGO = oesteLogoAsset.url;
 const RUBEN_LOGO = rubenLogoAsset.url;
 const RUBEN_PHOTO = rubenPhotoAsset.url;
 const LANDING2_PIXEL_ID = '838460842553957';
+// Meta Test Events code — Events Manager → Test Events. Set to undefined to disable.
+const LANDING2_TEST_EVENT_CODE: string | undefined = 'TEST51029';
 
 
 const MUNICIPIOS_CON_COBERTURA = [
