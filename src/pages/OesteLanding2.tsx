@@ -120,12 +120,13 @@ export default function OesteLanding2() {
     const cubierto = MUNICIPIOS_CON_COBERTURA.includes(municipio);
     setTieneCobertura(cubierto);
     setMunicipioConfirmado(municipio);
-    void sendMetaEvent({ eventName: 'CheckCoverage', customData: { municipality: municipio, covered: cubierto }, pixelId: LANDING2_PIXEL_ID });
+    void sendMetaEvent({ eventName: 'CheckCoverage', customData: { municipality: municipio, covered: cubierto }, pixelId: LANDING2_PIXEL_ID, testEventCode: LANDING2_TEST_EVENT_CODE });
     if (cubierto) {
       void sendMetaEvent({
         eventName: 'ViewContent',
         customData: { content_name: 'Tarifas Oeste', content_category: 'oeste-landing2', content_type: 'product_group' },
         pixelId: LANDING2_PIXEL_ID,
+        testEventCode: LANDING2_TEST_EVENT_CODE,
       });
     }
 
