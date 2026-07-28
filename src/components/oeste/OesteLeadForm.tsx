@@ -97,6 +97,8 @@ export function OesteLeadForm({ selectedOffer, onClearOffer }: Props = {}) {
           first_name: firstName,
           last_name: lastName,
           city: 'Cáceres',
+          state: 'cc', // ISO 3166-2:ES-CC
+          zip: '10001',
           country: 'ES',
         };
         const sharedCustom = {
