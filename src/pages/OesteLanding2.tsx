@@ -4,8 +4,9 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { supabase } from '@/integrations/supabase/client';
-import { initMetaPixel } from '@/lib/metaPixel';
+import { initAdditionalPixel } from '@/lib/metaPixel';
 import { sendMetaEvent } from '@/lib/metaCapi';
+
 import rubenLogoAsset from '@/assets/ruben-x-white.png.asset.json';
 import oesteLogoAsset from '@/assets/oeste-color.png.asset.json';
 import rubenPhotoAsset from '@/assets/ruben-parolin-grid.webp.asset.json';
@@ -13,6 +14,8 @@ import rubenPhotoAsset from '@/assets/ruben-parolin-grid.webp.asset.json';
 const OESTE_LOGO = oesteLogoAsset.url;
 const RUBEN_LOGO = rubenLogoAsset.url;
 const RUBEN_PHOTO = rubenPhotoAsset.url;
+const LANDING2_PIXEL_ID = '838460842553957';
+
 
 const MUNICIPIOS_CON_COBERTURA = [
   'Abadía', 'Ahigal', 'Aldeanueva del Camino', 'Baños de Montemayor', 'Barrado',
@@ -69,12 +72,15 @@ export default function OesteLanding2() {
   }, [busqueda, todosMunicipios]);
 
   useEffect(() => {
-    initMetaPixel('877944112021448');
+    // Landing2 usa un pixel Meta dedicado (distinto al sitewide).
+    initAdditionalPixel(LANDING2_PIXEL_ID, window.__fbPageViewId);
     void sendMetaEvent({
       eventName: 'PageView',
       capiOnly: true,
       eventId: window.__fbPageViewId,
+      pixelId: LANDING2_PIXEL_ID,
     });
+
 
     const prev = document.title;
     document.title = 'Fibra y móvil de Oeste en Extremadura · 27 € al mes';
@@ -111,13 +117,15 @@ export default function OesteLanding2() {
     const cubierto = MUNICIPIOS_CON_COBERTURA.includes(municipio);
     setTieneCobertura(cubierto);
     setMunicipioConfirmado(municipio);
-    void sendMetaEvent({ eventName: 'CheckCoverage', customData: { municipality: municipio, covered: cubierto } });
+    void sendMetaEvent({ eventName: 'CheckCoverage', customData: { municipality: municipio, covered: cubierto }, pixelId: LANDING2_PIXEL_ID });
     if (cubierto) {
       void sendMetaEvent({
         eventName: 'ViewContent',
         customData: { content_name: 'Tarifas Oeste', content_category: 'oeste-landing2', content_type: 'product_group' },
+        pixelId: LANDING2_PIXEL_ID,
       });
     }
+
     setTimeout(() => {
       document.getElementById('resultado-cobertura')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }, 60);
@@ -141,8 +149,10 @@ export default function OesteLanding2() {
         value: t.precio,
         currency: 'EUR',
       },
+      pixelId: LANDING2_PIXEL_ID,
     });
   };
+
 
   const { register, handleSubmit, formState: { errors, isSubmitting }, reset } = useForm<LeadValues>({
     resolver: zodResolver(leadSchema),
@@ -156,8 +166,10 @@ export default function OesteLanding2() {
     void sendMetaEvent({
       eventName: 'InitiateCheckout',
       customData: { content_name: tarifa.nom, value: tarifa.precio, currency: 'EUR' },
+      pixelId: LANDING2_PIXEL_ID,
     });
   };
+
 
   const onSubmit = async (values: LeadValues) => {
     setServerError(null);
@@ -184,8 +196,9 @@ export default function OesteLanding2() {
         value: tarifa.precio, currency: 'EUR', predicted_ltv: tarifa.precio,
         lead_event_source: 'oeste-landing2', municipality: municipioConfirmado ?? undefined,
       };
-      void sendMetaEvent({ eventName: 'Lead', customData, userData });
-      void sendMetaEvent({ eventName: 'CompleteRegistration', customData: { ...customData, registration_method: 'lead-form' }, userData });
+      void sendMetaEvent({ eventName: 'Lead', customData, userData, pixelId: LANDING2_PIXEL_ID });
+      void sendMetaEvent({ eventName: 'CompleteRegistration', customData: { ...customData, registration_method: 'lead-form' }, userData, pixelId: LANDING2_PIXEL_ID });
+
       reset();
       setTimeout(() => document.getElementById('exito')?.scrollIntoView({ behavior: 'smooth', block: 'center' }), 60);
     } catch {
@@ -530,7 +543,7 @@ export default function OesteLanding2() {
 
       {/* Meta Pixel noscript */}
       <noscript>
-        <img height="1" width="1" style={{ display: 'none' }} src="https://www.facebook.com/tr?id=877944112021448&ev=PageView&noscript=1" alt="" />
+        <img height="1" width="1" style={{ display: 'none' }} src="https://www.facebook.com/tr?id=838460842553957&ev=PageView&noscript=1" alt="" />
       </noscript>
     </div>
   );

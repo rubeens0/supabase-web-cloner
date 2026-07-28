@@ -1,7 +1,9 @@
 import { corsHeaders } from 'npm:@supabase/supabase-js@2/cors';
 import { z } from 'npm:zod@3.23.8';
 
-const PIXEL_ID = '877944112021448';
+const DEFAULT_PIXEL_ID = '877944112021448';
+const ALLOWED_PIXEL_IDS = new Set(['877944112021448', '838460842553957']);
+
 const GRAPH_VERSION = 'v21.0';
 
 const UserDataSchema = z
@@ -30,7 +32,9 @@ const EventSchema = z.object({
   user_data: UserDataSchema.optional(),
   event_time: z.number().int().positive().optional(),
   test_event_code: z.string().max(40).optional(),
+  pixel_id: z.string().regex(/^\d{6,20}$/).optional(),
 });
+
 
 const BodySchema = z.union([
   EventSchema,
@@ -110,58 +114,81 @@ Deno.serve(async (req) => {
 
   const now = Math.floor(Date.now() / 1000);
 
-  const data = await Promise.all(
+  const enriched = await Promise.all(
     incoming.map(async (e) => {
       const user_data = await hashUserData(e.user_data);
       if (clientIp && !('client_ip_address' in user_data)) user_data.client_ip_address = clientIp;
       if (ua && !('client_user_agent' in user_data)) user_data.client_user_agent = ua;
+      const pixel_id = e.pixel_id && ALLOWED_PIXEL_IDS.has(e.pixel_id) ? e.pixel_id : DEFAULT_PIXEL_ID;
       return {
-        event_name: e.event_name,
-        event_time: e.event_time ?? now,
-        event_id: e.event_id,
-        event_source_url: e.event_source_url,
-        action_source: e.action_source,
-        user_data,
-        custom_data: e.custom_data ?? {},
+        pixel_id,
+        payload: {
+          event_name: e.event_name,
+          event_time: e.event_time ?? now,
+          event_id: e.event_id,
+          event_source_url: e.event_source_url,
+          action_source: e.action_source,
+          user_data,
+          custom_data: e.custom_data ?? {},
+        },
       };
     }),
   );
+
+  // Group events per destination pixel so each Graph call carries only events
+  // for that pixel.
+  const byPixel = new Map<string, typeof enriched[number]['payload'][]>();
+  for (const item of enriched) {
+    const list = byPixel.get(item.pixel_id) ?? [];
+    list.push(item.payload);
+    byPixel.set(item.pixel_id, list);
+  }
 
   const envTestCode = Deno.env.get('META_TEST_EVENT_CODE')?.trim() || undefined;
   const testCode =
     topLevelTestCode ?? incoming.find((e) => e.test_event_code)?.test_event_code ?? envTestCode;
 
-  const payload: Record<string, unknown> = { data };
-  if (testCode) payload.test_event_code = testCode;
+  const results: Array<{ pixel_id: string; ok: boolean; status: number; response: unknown }> = [];
+  let anyError = false;
 
-  const url = `https://graph.facebook.com/${GRAPH_VERSION}/${PIXEL_ID}/events?access_token=${encodeURIComponent(token)}`;
+  for (const [pixelId, data] of byPixel) {
+    const payload: Record<string, unknown> = { data };
+    if (testCode) payload.test_event_code = testCode;
 
-  const upstream = await fetch(url, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload),
-  });
+    const url = `https://graph.facebook.com/${GRAPH_VERSION}/${pixelId}/events?access_token=${encodeURIComponent(token)}`;
 
-  const text = await upstream.text().catch(() => '');
-  let parsedResponse: unknown = text;
-  try {
-    parsedResponse = JSON.parse(text);
-  } catch {
-    /* keep raw text */
+    const upstream = await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+
+    const text = await upstream.text().catch(() => '');
+    let parsedResponse: unknown = text;
+    try {
+      parsedResponse = JSON.parse(text);
+    } catch {
+      /* keep raw text */
+    }
+
+    if (!upstream.ok) {
+      anyError = true;
+      console.error('[meta-capi] upstream error', pixelId, upstream.status, text);
+    } else {
+      console.log(
+        '[meta-capi] sent',
+        data.length,
+        `event(s) to pixel ${pixelId}:`,
+        data.map((d) => `${d.event_name}#${d.event_id}`).join(', '),
+      );
+    }
+
+    results.push({ pixel_id: pixelId, ok: upstream.ok, status: upstream.status, response: parsedResponse });
   }
 
-  if (!upstream.ok) {
-    console.error('[meta-capi] upstream error', upstream.status, text);
-    return new Response(
-      JSON.stringify({ ok: false, status: upstream.status, response: parsedResponse }),
-      { status: 502, headers: { ...corsHeaders, 'Content-Type': 'application/json' } },
-    );
-  }
-
-  console.log('[meta-capi] sent', data.length, 'event(s):', data.map((d) => `${d.event_name}#${d.event_id}`).join(', '));
-
-  return new Response(JSON.stringify({ ok: true, response: parsedResponse }), {
-    status: 200,
+  return new Response(JSON.stringify({ ok: !anyError, results }), {
+    status: anyError ? 502 : 200,
     headers: { ...corsHeaders, 'Content-Type': 'application/json' },
   });
 });
+
