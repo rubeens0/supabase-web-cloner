@@ -161,7 +161,10 @@ Deno.serve(async (req) => {
     const payload: Record<string, unknown> = { data };
     if (testCode) payload.test_event_code = testCode;
 
+    const tokenEnv = PIXEL_TOKEN_ENV[pixelId];
+    const token = (tokenEnv && Deno.env.get(tokenEnv)) || defaultToken;
     const url = `https://graph.facebook.com/${GRAPH_VERSION}/${pixelId}/events?access_token=${encodeURIComponent(token)}`;
+
 
     const upstream = await fetch(url, {
       method: 'POST',
