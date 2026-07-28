@@ -55,20 +55,44 @@ export default function OesteLanding1() {
 
   useEffect(() => {
     initMetaPixel('877944112021448');
-    // Mirror PageView via CAPI (pixel already fired by initMetaPixel)
-    void sendMetaEvent({ eventName: 'PageView', capiOnly: true });
+    // Mirror PageView via CAPI reusing the same event_id set in index.html
+    // so Meta deduplicates the browser Pixel and the server event.
+    void sendMetaEvent({
+      eventName: 'PageView',
+      capiOnly: true,
+      eventId: window.__fbPageViewId,
+    });
 
     const prevTitle = document.title;
     document.title = 'Fibra Oeste en Cáceres · La más rápida del oeste';
-    const meta = document.createElement('meta');
-    meta.name = 'robots';
-    meta.content = 'noindex, nofollow';
-    document.head.appendChild(meta);
+
+    // Robots: overwrite the existing meta instead of appending a duplicate.
+    const robotsEl = document.querySelector<HTMLMetaElement>('meta[name="robots"]');
+    const createdRobots = !robotsEl;
+    const prevRobots = robotsEl?.content ?? null;
+    const robots = robotsEl ?? document.createElement('meta');
+    if (createdRobots) robots.setAttribute('name', 'robots');
+    robots.setAttribute('content', 'noindex, nofollow');
+    if (createdRobots) document.head.appendChild(robots);
+
+    // Canonical: own URL for this landing.
+    const canonicalEl = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
+    const createdCanonical = !canonicalEl;
+    const prevCanonical = canonicalEl?.href ?? null;
+    const canonical = canonicalEl ?? document.createElement('link');
+    if (createdCanonical) canonical.setAttribute('rel', 'canonical');
+    canonical.setAttribute('href', 'https://rubenmunoz.com/oeste-landing1');
+    if (createdCanonical) document.head.appendChild(canonical);
+
     return () => {
       document.title = prevTitle;
-      meta.remove();
+      if (createdRobots) robots.remove();
+      else if (prevRobots !== null) robots.setAttribute('content', prevRobots);
+      if (createdCanonical) canonical.remove();
+      else if (prevCanonical !== null) canonical.setAttribute('href', prevCanonical);
     };
   }, []);
+
 
   // Fire `ViewContent` once when the offers/form block becomes visible
   useEffect(() => {
