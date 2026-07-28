@@ -26,7 +26,7 @@ const RUBEN_LOGO = rubenLogoAsset.url;
 const RUBEN_PHOTO = rubenPhotoAsset.url;
 const LANDING2_PIXEL_ID = "838460842553957";
 // Meta Test Events code — Events Manager → Test Events. Set to undefined to disable.
-const LANDING2_TEST_EVENT_CODE: string | undefined = "TEST22889";
+const LANDING2_TEST_EVENT_CODE: string | undefined = undefined;
 
 // Per-load PageView event_id dedicated to the landing2 pixel. Generated once
 // per full page load and reused for both browser Pixel and CAPI so they
@@ -46,28 +46,28 @@ function getLanding2PageViewId(): string {
 // Municipality → postal code (Cáceres province). Used to enrich Meta CAPI
 // user_data (`zp`) and boost Event Match Quality.
 const MUNICIPIOS_COBERTURA: Record<string, string> = {
-  "Abadía": "10739",
-  "Ahigal": "10680",
+  Abadía: "10739",
+  Ahigal: "10680",
   "Aldeanueva del Camino": "10740",
   "Baños de Montemayor": "10750",
-  "Barrado": "10614",
-  "Cabezabellosa": "10610",
+  Barrado: "10614",
+  Cabezabellosa: "10610",
   "Cabezuela del Valle": "10610",
-  "Cáceres": "10001",
+  Cáceres: "10001",
   "Casas del Castañar": "10613",
   "Casas del Monte": "10617",
   "El Torno": "10613",
   "Garrovillas de Alconétar": "10940",
-  "Hervás": "10700",
-  "Jerte": "10612",
-  "Montánchez": "10170",
-  "Navaconcejo": "10613",
-  "Piornal": "10615",
-  "Rebollar": "10613",
+  Hervás: "10700",
+  Jerte: "10612",
+  Montánchez: "10170",
+  Navaconcejo: "10613",
+  Piornal: "10615",
+  Rebollar: "10613",
   "Sierra de Fuentes": "10181",
-  "Torreorgaz": "10184",
-  "Torrequemada": "10187",
-  "Valdastillas": "10614",
+  Torreorgaz: "10184",
+  Torrequemada: "10187",
+  Valdastillas: "10614",
   "Zarza de Granadilla": "10710",
 };
 const MUNICIPIOS_CON_COBERTURA = Object.keys(MUNICIPIOS_COBERTURA);
