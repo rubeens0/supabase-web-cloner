@@ -4,13 +4,17 @@ import { Zap, Wifi, ShieldCheck, MapPin, ArrowRight, Star } from 'lucide-react';
 import { OesteLeadForm } from '@/components/oeste/OesteLeadForm';
 import { OesteOffers, type Offer } from '@/components/oeste/OesteOffers';
 import { OesteStickyCTA } from '@/components/oeste/OesteStickyCTA';
-import { initMetaPixel, parsePrice } from '@/lib/metaPixel';
+import { markPageViewFired, parsePrice } from '@/lib/metaPixel';
 import { sendMetaEvent } from '@/lib/metaCapi';
 import rubenLogoAsset from '@/assets/ruben-x-white.png.asset.json';
 import oesteLogoAsset from '@/assets/oeste-white.png.asset.json';
 import kartBgAsset from '@/assets/kart-oeste.jpg.asset.json';
 import maximaVelocidadAsset from '@/assets/maxima-velocidad.mp4.asset.json';
 
+const BASE_PIXEL_ID = '877944112021448';
+// Module-level guard so CAPI PageView fires at most once per full page load,
+// even across React StrictMode double-invokes or SPA re-mounts.
+let landing1PageViewSent = false;
 
 const OESTE_LOGO = oesteLogoAsset.url;
 const RUBEN_LOGO = rubenLogoAsset.url;
@@ -54,14 +58,19 @@ export default function OesteLanding1() {
   const viewContentFiredRef = useRef(false);
 
   useEffect(() => {
-    initMetaPixel('877944112021448');
-    // Mirror PageView via CAPI reusing the same event_id set in index.html
-    // so Meta deduplicates the browser Pixel and the server event.
-    void sendMetaEvent({
-      eventName: 'PageView',
-      capiOnly: true,
-      eventId: window.__fbPageViewId,
-    });
+    // Base pixel (877944112021448) is already inited and fired PageView from
+    // index.html with `window.__fbPageViewId`. Mark it as fired so we do NOT
+    // re-fire the browser PageView, and mirror the SAME event_id via CAPI
+    // exactly once per page load for Pixel<->CAPI dedup.
+    markPageViewFired(BASE_PIXEL_ID);
+    if (!landing1PageViewSent) {
+      landing1PageViewSent = true;
+      void sendMetaEvent({
+        eventName: 'PageView',
+        capiOnly: true,
+        eventId: window.__fbPageViewId,
+      });
+    }
 
     const prevTitle = document.title;
     document.title = 'Fibra Oeste en Cáceres · La más rápida del oeste';

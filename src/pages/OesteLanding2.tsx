@@ -14,7 +14,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { supabase } from "@/integrations/supabase/client";
-import { initAdditionalPixel } from "@/lib/metaPixel";
+import { initAdditionalPixel, firePageViewOnce } from "@/lib/metaPixel";
 import { sendMetaEvent } from "@/lib/metaCapi";
 
 import rubenLogoAsset from "@/assets/ruben-x-white.png.asset.json";
@@ -27,6 +27,21 @@ const RUBEN_PHOTO = rubenPhotoAsset.url;
 const LANDING2_PIXEL_ID = "838460842553957";
 // Meta Test Events code — Events Manager → Test Events. Set to undefined to disable.
 const LANDING2_TEST_EVENT_CODE: string | undefined = "TEST22889";
+
+// Per-load PageView event_id dedicated to the landing2 pixel. Generated once
+// per full page load and reused for both browser Pixel and CAPI so they
+// deduplicate. NOT reused across page loads/mounts (that would cause Meta to
+// merge unrelated PageViews into a single event).
+let landing2PageViewId: string | null = null;
+let landing2PageViewSent = false;
+function getLanding2PageViewId(): string {
+  if (landing2PageViewId) return landing2PageViewId;
+  landing2PageViewId =
+    typeof crypto !== "undefined" && "randomUUID" in crypto
+      ? crypto.randomUUID()
+      : `${Date.now()}-${Math.random().toString(36).slice(2)}`;
+  return landing2PageViewId;
+}
 
 const MUNICIPIOS_CON_COBERTURA = [
   "Abadía",
@@ -108,15 +123,22 @@ export default function OesteLanding2() {
   }, [busqueda, todosMunicipios]);
 
   useEffect(() => {
-    // Landing2 usa un pixel Meta dedicado (distinto al sitewide).
-    initAdditionalPixel(LANDING2_PIXEL_ID, window.__fbPageViewId);
-    void sendMetaEvent({
-      eventName: "PageView",
-      capiOnly: true,
-      eventId: window.__fbPageViewId,
-      pixelId: LANDING2_PIXEL_ID,
-      testEventCode: LANDING2_TEST_EVENT_CODE,
-    });
+    // Landing2 uses a dedicated Meta pixel (separate from the sitewide one).
+    // Use a per-load event_id shared by Pixel + CAPI for dedup, and guard so
+    // PageView fires at most once per full page load.
+    const pvId = getLanding2PageViewId();
+    initAdditionalPixel(LANDING2_PIXEL_ID);
+    firePageViewOnce(LANDING2_PIXEL_ID, pvId);
+    if (!landing2PageViewSent) {
+      landing2PageViewSent = true;
+      void sendMetaEvent({
+        eventName: "PageView",
+        capiOnly: true,
+        eventId: pvId,
+        pixelId: LANDING2_PIXEL_ID,
+        testEventCode: LANDING2_TEST_EVENT_CODE,
+      });
+    }
 
     const prev = document.title;
     document.title = "Fibra y móvil de Oeste en Extremadura · 27 € al mes";
