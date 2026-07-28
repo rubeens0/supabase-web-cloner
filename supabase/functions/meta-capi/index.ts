@@ -1,7 +1,9 @@
 import { corsHeaders } from 'npm:@supabase/supabase-js@2/cors';
 import { z } from 'npm:zod@3.23.8';
 
-const PIXEL_ID = '877944112021448';
+const DEFAULT_PIXEL_ID = '877944112021448';
+const ALLOWED_PIXEL_IDS = new Set(['877944112021448', '838460842553957']);
+
 const GRAPH_VERSION = 'v21.0';
 
 const UserDataSchema = z
@@ -30,7 +32,9 @@ const EventSchema = z.object({
   user_data: UserDataSchema.optional(),
   event_time: z.number().int().positive().optional(),
   test_event_code: z.string().max(40).optional(),
+  pixel_id: z.string().regex(/^\d{6,20}$/).optional(),
 });
+
 
 const BodySchema = z.union([
   EventSchema,
