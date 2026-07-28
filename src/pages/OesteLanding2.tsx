@@ -70,15 +70,40 @@ export default function OesteLanding2() {
 
   useEffect(() => {
     initMetaPixel('877944112021448');
-    void sendMetaEvent({ eventName: 'PageView', capiOnly: true });
+    void sendMetaEvent({
+      eventName: 'PageView',
+      capiOnly: true,
+      eventId: window.__fbPageViewId,
+    });
+
     const prev = document.title;
     document.title = 'Fibra y móvil de Oeste en Extremadura · 27 € al mes';
-    const meta = document.createElement('meta');
-    meta.name = 'robots';
-    meta.content = 'noindex, nofollow';
-    document.head.appendChild(meta);
-    return () => { document.title = prev; meta.remove(); };
+
+    const robotsEl = document.querySelector<HTMLMetaElement>('meta[name="robots"]');
+    const createdRobots = !robotsEl;
+    const prevRobots = robotsEl?.content ?? null;
+    const robots = robotsEl ?? document.createElement('meta');
+    if (createdRobots) robots.setAttribute('name', 'robots');
+    robots.setAttribute('content', 'noindex, nofollow');
+    if (createdRobots) document.head.appendChild(robots);
+
+    const canonicalEl = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
+    const createdCanonical = !canonicalEl;
+    const prevCanonical = canonicalEl?.href ?? null;
+    const canonical = canonicalEl ?? document.createElement('link');
+    if (createdCanonical) canonical.setAttribute('rel', 'canonical');
+    canonical.setAttribute('href', 'https://rubenmunoz.com/oeste-landing2');
+    if (createdCanonical) document.head.appendChild(canonical);
+
+    return () => {
+      document.title = prev;
+      if (createdRobots) robots.remove();
+      else if (prevRobots !== null) robots.setAttribute('content', prevRobots);
+      if (createdCanonical) canonical.remove();
+      else if (prevCanonical !== null) canonical.setAttribute('href', prevCanonical);
+    };
   }, []);
+
 
   const comprobarCobertura = () => {
     if (!municipio) { setErrorMunicipio(true); return; }
