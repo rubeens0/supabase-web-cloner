@@ -3,6 +3,11 @@ import { z } from 'npm:zod@3.23.8';
 
 const DEFAULT_PIXEL_ID = '877944112021448';
 const ALLOWED_PIXEL_IDS = new Set(['877944112021448', '838460842553957']);
+const PIXEL_TOKEN_ENV: Record<string, string> = {
+  '877944112021448': 'META_PIXEL_ACCESS_TOKEN',
+  '838460842553957': 'META_PIXEL_ACCESS_TOKEN_LANDING2',
+};
+
 
 const GRAPH_VERSION = 'v21.0';
 
@@ -86,13 +91,14 @@ Deno.serve(async (req) => {
     });
   }
 
-  const token = Deno.env.get('META_PIXEL_ACCESS_TOKEN');
-  if (!token) {
+  const defaultToken = Deno.env.get('META_PIXEL_ACCESS_TOKEN');
+  if (!defaultToken) {
     return new Response(JSON.stringify({ error: 'META_PIXEL_ACCESS_TOKEN not configured' }), {
       status: 503,
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     });
   }
+
 
   const json = await req.json().catch(() => null);
   const parsed = BodySchema.safeParse(json);
@@ -155,7 +161,10 @@ Deno.serve(async (req) => {
     const payload: Record<string, unknown> = { data };
     if (testCode) payload.test_event_code = testCode;
 
+    const tokenEnv = PIXEL_TOKEN_ENV[pixelId];
+    const token = (tokenEnv && Deno.env.get(tokenEnv)) || defaultToken;
     const url = `https://graph.facebook.com/${GRAPH_VERSION}/${pixelId}/events?access_token=${encodeURIComponent(token)}`;
+
 
     const upstream = await fetch(url, {
       method: 'POST',
