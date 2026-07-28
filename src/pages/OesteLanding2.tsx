@@ -123,15 +123,22 @@ export default function OesteLanding2() {
   }, [busqueda, todosMunicipios]);
 
   useEffect(() => {
-    // Landing2 usa un pixel Meta dedicado (distinto al sitewide).
-    initAdditionalPixel(LANDING2_PIXEL_ID, window.__fbPageViewId);
-    void sendMetaEvent({
-      eventName: "PageView",
-      capiOnly: true,
-      eventId: window.__fbPageViewId,
-      pixelId: LANDING2_PIXEL_ID,
-      testEventCode: LANDING2_TEST_EVENT_CODE,
-    });
+    // Landing2 uses a dedicated Meta pixel (separate from the sitewide one).
+    // Use a per-load event_id shared by Pixel + CAPI for dedup, and guard so
+    // PageView fires at most once per full page load.
+    const pvId = getLanding2PageViewId();
+    initAdditionalPixel(LANDING2_PIXEL_ID);
+    firePageViewOnce(LANDING2_PIXEL_ID, pvId);
+    if (!landing2PageViewSent) {
+      landing2PageViewSent = true;
+      void sendMetaEvent({
+        eventName: "PageView",
+        capiOnly: true,
+        eventId: pvId,
+        pixelId: LANDING2_PIXEL_ID,
+        testEventCode: LANDING2_TEST_EVENT_CODE,
+      });
+    }
 
     const prev = document.title;
     document.title = "Fibra y móvil de Oeste en Extremadura · 27 € al mes";
