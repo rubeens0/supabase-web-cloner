@@ -91,13 +91,14 @@ Deno.serve(async (req) => {
     });
   }
 
-  const token = Deno.env.get('META_PIXEL_ACCESS_TOKEN');
-  if (!token) {
+  const defaultToken = Deno.env.get('META_PIXEL_ACCESS_TOKEN');
+  if (!defaultToken) {
     return new Response(JSON.stringify({ error: 'META_PIXEL_ACCESS_TOKEN not configured' }), {
       status: 503,
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     });
   }
+
 
   const json = await req.json().catch(() => null);
   const parsed = BodySchema.safeParse(json);
