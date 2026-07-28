@@ -114,6 +114,7 @@ export async function sendMetaEvent(opts: SendMetaEventOptions): Promise<string>
           custom_data: opts.customData,
           user_data,
           pixel_id: opts.pixelId,
+          test_event_code: opts.testEventCode,
         },
       });
       if (error) console.warn('[meta-capi] invoke error', error.message);
