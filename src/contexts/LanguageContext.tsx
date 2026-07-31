@@ -163,10 +163,10 @@ const translations = {
     'business.services.social': 'Redes Sociales',
     'business.services.social.desc':
       'Gestión estratégica de comunidades y creación de contenido de alto impacto.',
-    'business.services.growth': 'Paid media',
+    'business.services.growth': 'Motorsport Marketing',
     'business.services.growth.desc':
       'Campañas en Meta Ads (Facebook e Instagram) orientadas a resultados.',
-    'business.services.web': 'Paid media',
+    'business.services.web': 'Desarrollo Web',
     'business.services.web.desc':
       'Sitios web modernos, rápidos y optimizados para convertir visitantes en clientes.',
 
@@ -664,10 +664,10 @@ const translations = {
     'business.services.social': 'Social Media',
     'business.services.social.desc':
       'Strategic community management and high-impact content creation.',
-    'business.services.growth': 'Paid media',
+    'business.services.growth': 'Motorsport Marketing',
     'business.services.growth.desc':
       'Meta Ads campaigns (Facebook & Instagram) built around results.',
-    'business.services.web': 'Paid media',
+    'business.services.web': 'Web Development',
     'business.services.web.desc':
       'Modern, fast, optimized websites that turn visitors into customers.',
 
