@@ -9,6 +9,7 @@ import {
   Unlock,
   Wrench,
   HeartHandshake,
+  Phone,
 } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -577,6 +578,51 @@ export default function OesteLanding2() {
           </p>
         </div>
       </header>
+
+      {/* Llamada 24h */}
+      <section className="max-w-[660px] mx-auto px-5 mt-2 mb-6">
+        <a
+          href="tel:927092092"
+          onClick={() => {
+            void sendMetaEvent({
+              eventName: "Contact",
+              customData: {
+                content_name: "Llamada 24h",
+                content_category: "oeste-landing2",
+                value: 0,
+                currency: "EUR",
+                contact_type: "phone",
+                phone_number: "927092092",
+              },
+              pixelId: LANDING2_PIXEL_ID,
+              testEventCode: LANDING2_TEST_EVENT_CODE,
+            });
+          }}
+          className="group block w-full rounded-[14px] text-white overflow-hidden"
+          style={{ background: "linear-gradient(135deg,#1A6E45 0%,#0F4A2E 100%)" }}
+        >
+          <div className="flex items-center gap-4 sm:gap-5 px-5 py-4 sm:py-5">
+            <div className="shrink-0 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-white/15 flex items-center justify-center group-hover:scale-105 transition-transform">
+              <Phone className="w-6 h-6 sm:w-7 sm:h-7 text-white" strokeWidth={2.5} />
+            </div>
+            <div className="flex-1 min-w-0">
+              <p className="text-[13px] sm:text-sm font-bold uppercase tracking-[0.14em] opacity-90">
+                Atención 24 horas
+              </p>
+              <p
+                className="font-extrabold text-[28px] sm:text-[34px] leading-none mt-1 tracking-tight"
+                style={{ fontFamily: '"Archivo"' }}
+              >
+                927 092 092
+              </p>
+              <p className="text-[15px] sm:text-base opacity-90 mt-1 truncate">
+                Pulsa para llamar · te atiende un equipo local
+              </p>
+            </div>
+            <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6 text-white/80 shrink-0 group-hover:translate-x-1 transition-transform" />
+          </div>
+        </a>
+      </section>
 
       {/* Proceso 3 pasos */}
       <div className="max-w-[660px] mx-auto px-5">
