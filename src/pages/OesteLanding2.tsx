@@ -29,7 +29,7 @@ const RUBEN_LOGO = rubenLogoAsset.url;
 const RUBEN_PHOTO = rubenPhotoAsset.url;
 const LANDING2_PIXEL_ID = "838460842553957";
 // Meta Test Events code — Events Manager → Test Events. Set to undefined to disable.
-const LANDING2_TEST_EVENT_CODE: string | undefined = "TEST96726";
+const LANDING2_TEST_EVENT_CODE: string | undefined = undefined;
 
 // Per-load PageView event_id dedicated to the landing2 pixel. Generated once
 // per full page load and reused for both browser Pixel and CAPI so they
