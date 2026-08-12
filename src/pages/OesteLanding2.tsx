@@ -333,9 +333,17 @@ export default function OesteLanding2() {
     // Landing2 uses a dedicated Meta pixel (separate from the sitewide one).
     // Use a per-load event_id shared by Pixel + CAPI for dedup, and guard so
     // PageView fires at most once per full page load.
-    const pvId = getLanding2PageViewId();
-    initAdditionalPixel(LANDING2_PIXEL_ID);
-    firePageViewOnce(LANDING2_PIXEL_ID, pvId);
+    const inlineId = (window as unknown as { __fbLanding2PageViewId?: string })
+      .__fbLanding2PageViewId;
+    const pvId = inlineId ?? getLanding2PageViewId();
+    if (inlineId) {
+      // The inline script in index.html already inited the pixel and fired PageView.
+      markPageViewFired(LANDING2_PIXEL_ID);
+    } else {
+      initAdditionalPixel(LANDING2_PIXEL_ID);
+      firePageViewOnce(LANDING2_PIXEL_ID, pvId);
+    }
+
     if (!landing2PageViewSent) {
       landing2PageViewSent = true;
       void sendMetaEvent({
