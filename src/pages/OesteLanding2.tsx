@@ -37,6 +37,7 @@ const LANDING2_TEST_EVENT_CODE: string | undefined = undefined;
 // merge unrelated PageViews into a single event).
 let landing2PageViewId: string | null = null;
 let landing2PageViewSent = false;
+const checkCoverageSent = new Set<string>();
 function getLanding2PageViewId(): string {
   if (landing2PageViewId) return landing2PageViewId;
   landing2PageViewId =
