@@ -583,7 +583,7 @@ export default function OesteLanding2() {
                 fontSize: "clamp(3rem,13vw,5.2rem)",
               }}
             >
-              Extremadura...
+              la cobertura...
             </span>
           </h1>
           <p className="mt-4 text-[20px] text-[#4A4353] max-w-[34ch]">
