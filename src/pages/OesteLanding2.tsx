@@ -15,7 +15,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { supabase } from "@/integrations/supabase/client";
-import { initAdditionalPixel, firePageViewOnce } from "@/lib/metaPixel";
+import { initAdditionalPixel, firePageViewOnce, markPageViewFired } from "@/lib/metaPixel";
 import { sendMetaEvent } from "@/lib/metaCapi";
 import { GoogleReviews } from "@/components/oeste/GoogleReviews";
 
