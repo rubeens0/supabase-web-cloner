@@ -37,6 +37,7 @@ const LANDING2_TEST_EVENT_CODE: string | undefined = undefined;
 // merge unrelated PageViews into a single event).
 let landing2PageViewId: string | null = null;
 let landing2PageViewSent = false;
+const checkCoverageSent = new Set<string>();
 function getLanding2PageViewId(): string {
   if (landing2PageViewId) return landing2PageViewId;
   landing2PageViewId =
@@ -393,28 +394,33 @@ export default function OesteLanding2() {
     const coverageLabel = cubierto ? "yes" : "no";
     setTieneCobertura(cubierto);
     setMunicipioConfirmado(municipio);
-    void sendMetaEvent({
-      eventName: "CheckCoverage",
-      customData: {
-        municipality: municipio,
-        covered: coverageLabel,
-        content_category: `coverage-${coverageLabel}`,
-        content_name: municipio,
-      },
-      pixelId: LANDING2_PIXEL_ID,
-      testEventCode: LANDING2_TEST_EVENT_CODE,
-    });
-    if (cubierto) {
+
+    // Evita eventos duplicados si se vuelve a comprobar el mismo municipio
+    if (!checkCoverageSent.has(municipio)) {
+      checkCoverageSent.add(municipio);
       void sendMetaEvent({
-        eventName: "ViewContent",
+        eventName: "CheckCoverage",
         customData: {
-          content_name: "Tarifas Oeste",
-          content_category: "oeste-landing2",
-          content_type: "product_group",
+          municipality: municipio,
+          covered: coverageLabel,
+          content_category: `coverage-${coverageLabel}`,
+          content_name: municipio,
         },
         pixelId: LANDING2_PIXEL_ID,
         testEventCode: LANDING2_TEST_EVENT_CODE,
       });
+      if (cubierto) {
+        void sendMetaEvent({
+          eventName: "ViewContent",
+          customData: {
+            content_name: "Tarifas Oeste",
+            content_category: "oeste-landing2",
+            content_type: "product_group",
+          },
+          pixelId: LANDING2_PIXEL_ID,
+          testEventCode: LANDING2_TEST_EVENT_CODE,
+        });
+      }
     }
 
     setTimeout(() => {
