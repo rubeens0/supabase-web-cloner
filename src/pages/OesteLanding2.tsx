@@ -574,7 +574,7 @@ export default function OesteLanding2() {
               fontSize: "clamp(2.3rem,8.5vw,3.6rem)",
             }}
           >
-            La fibra más rapida de
+            Comprueba
             <br />
             <span
               className="block bg-clip-text text-transparent"
