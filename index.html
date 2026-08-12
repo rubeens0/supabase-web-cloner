@@ -52,6 +52,20 @@
       fbq('init', '877944112021448');
       fbq('track', 'PageView', {}, { eventID: window.__fbPageViewId });
     </script>
+    <script>
+      // Landing 2 dedicated pixel: initialise at page load so custom events
+      // (CheckCoverage, SelectOffer...) always have an active pixel.
+      (function () {
+        if (location.pathname.indexOf('/oeste-landing2') !== 0) return;
+        window.__fbLanding2PixelId = '838460842553957';
+        window.__fbLanding2PageViewId = (window.crypto && crypto.randomUUID)
+          ? crypto.randomUUID()
+          : (Date.now() + '-' + Math.random().toString(36).slice(2));
+        fbq('init', window.__fbLanding2PixelId);
+        fbq('trackSingle', window.__fbLanding2PixelId, 'PageView', {}, { eventID: window.__fbLanding2PageViewId });
+      })();
+    </script>
+
 
   </head>
 
