@@ -348,7 +348,7 @@ export default function OesteLanding2() {
     }
 
     const prev = document.title;
-    document.title = "Fibra y móvil de Oeste en Extremadura · 27 € al mes";
+    document.title = "Fibra y móvil de Oeste en Extremadura · 27 € al mes | oeste-landing2";
 
     const robotsEl = document.querySelector<HTMLMetaElement>('meta[name="robots"]');
     const createdRobots = !robotsEl;
@@ -382,11 +382,17 @@ export default function OesteLanding2() {
     }
     setErrorMunicipio(false);
     const cubierto = MUNICIPIOS_CON_COBERTURA.includes(municipio);
+    const coverageLabel = cubierto ? "yes" : "no";
     setTieneCobertura(cubierto);
     setMunicipioConfirmado(municipio);
     void sendMetaEvent({
       eventName: "CheckCoverage",
-      customData: { municipality: municipio, covered: cubierto },
+      customData: {
+        municipality: municipio,
+        covered: coverageLabel,
+        content_category: `coverage-${coverageLabel}`,
+        content_name: municipio,
+      },
       pixelId: LANDING2_PIXEL_ID,
       testEventCode: LANDING2_TEST_EVENT_CODE,
     });
