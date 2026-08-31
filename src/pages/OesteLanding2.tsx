@@ -784,10 +784,12 @@ export default function OesteLanding2() {
                   Paso 2 de 3
                 </p>
                 <h2 className="text-[26px] font-extrabold mt-2" style={{ fontFamily: '"Archivo"' }}>
-                  Elige tu tarifa
+                  {esTarifaPersonalizada(municipioConfirmado) ? "Tarifa personalizada" : "Elige tu tarifa"}
                 </h2>
                 <p className="text-[17px] text-[#4A4353] mt-1.5 mb-4">
-                  Todas incluyen router, instalación y llamadas ilimitadas.
+                  {esTarifaPersonalizada(municipioConfirmado)
+                    ? "Te llamamos para confirmar tu código postal y ofrecerte la mejor opción."
+                    : "Todas incluyen router, instalación y llamadas ilimitadas."}
                 </p>
               </div>
               <div className="px-5 pb-4">
