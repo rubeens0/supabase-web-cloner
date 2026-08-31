@@ -788,26 +788,46 @@ export default function OesteLanding2() {
                 </p>
               </div>
               <div className="px-5 pb-4">
-                {TARIFAS_PRINCIPALES.map((t) => (
-                  <TarifaBtn key={t.id} t={t} selected={tarifa.id === t.id} onClick={() => seleccionarTarifa(t)} />
-                ))}
-
-                <button
-                  type="button"
-                  onClick={() => setMostrarExtra((v) => !v)}
-                  className="flex items-center gap-2 py-3.5 font-bold text-[17px] text-[#702479]"
-                >
-                  <span className="font-extrabold text-[22px] leading-none" style={{ fontFamily: '"Archivo"' }}>
-                    {mostrarExtra ? "−" : "+"}
-                  </span>
-                  Ver todas las tarifas
-                </button>
-                {mostrarExtra && (
-                  <div className="pt-2">
-                    {TARIFAS_EXTRA.map((t) => (
+                {esTarifaPersonalizada(municipioConfirmado) ? (
+                  <div className="bg-[#FBF6FD] border-2 border-[#702479] rounded-xl p-5">
+                    <div className="flex items-start gap-3.5">
+                      <div className="w-10 h-10 rounded-lg bg-[#702479] text-white flex items-center justify-center shrink-0">
+                        <Unlock className="w-5 h-5" strokeWidth={2.5} />
+                      </div>
+                      <div>
+                        <h3 className="text-[19px] font-extrabold text-[#181320]" style={{ fontFamily: '"Archivo"' }}>
+                          Consigue tu tarifa personalizada
+                        </h3>
+                        <p className="text-[17px] text-[#4A4353] mt-1">
+                          En {municipioConfirmado} la oferta de 21 € solo está disponible en algunos códigos postales. Déjanos tus datos y te llamamos para confirmar la tuya.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <>
+                    {TARIFAS_PRINCIPALES.map((t) => (
                       <TarifaBtn key={t.id} t={t} selected={tarifa.id === t.id} onClick={() => seleccionarTarifa(t)} />
                     ))}
-                  </div>
+
+                    <button
+                      type="button"
+                      onClick={() => setMostrarExtra((v) => !v)}
+                      className="flex items-center gap-2 py-3.5 font-bold text-[17px] text-[#702479]"
+                    >
+                      <span className="font-extrabold text-[22px] leading-none" style={{ fontFamily: '"Archivo"' }}>
+                        {mostrarExtra ? "−" : "+"}
+                      </span>
+                      Ver todas las tarifas
+                    </button>
+                    {mostrarExtra && (
+                      <div className="pt-2">
+                        {TARIFAS_EXTRA.map((t) => (
+                          <TarifaBtn key={t.id} t={t} selected={tarifa.id === t.id} onClick={() => seleccionarTarifa(t)} />
+                        ))}
+                      </div>
+                    )}
+                  </>
                 )}
               </div>
 
