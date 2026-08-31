@@ -403,6 +403,9 @@ export default function OesteLanding2() {
     const coverageLabel = cubierto ? "yes" : "no";
     setTieneCobertura(cubierto);
     setMunicipioConfirmado(municipio);
+    if (cubierto && esTarifaPersonalizada(municipio)) {
+      setTarifa(TARIFA_PERSONALIZADA);
+    }
 
     // Evita eventos duplicados si se vuelve a comprobar el mismo municipio
     if (!checkCoverageSent.has(municipio)) {
@@ -422,7 +425,7 @@ export default function OesteLanding2() {
         void sendMetaEvent({
           eventName: "ViewContent",
           customData: {
-            content_name: "Tarifas Oeste",
+            content_name: esTarifaPersonalizada(municipio) ? "Tarifa personalizada" : "Tarifas Oeste",
             content_category: "oeste-landing2",
             content_type: "product_group",
           },
