@@ -291,6 +291,15 @@ const TARIFAS_EXTRA: Tarifa[] = [
   { id: "f-2", nom: "Fibra 2 Gb", desc: "Solo internet", precio: 35 },
 ];
 
+const TARIFA_PERSONALIZADA: Tarifa = {
+  id: "personalizada",
+  nom: "Tarifa personalizada",
+  desc: "Verificamos tu código postal para ofrecerte la mejor opción",
+  precio: 0,
+};
+const MUNICIPIOS_TARIFA_PERSONALIZADA = ["Cáceres", "Plasencia"];
+const esTarifaPersonalizada = (m: string | null) => !!m && MUNICIPIOS_TARIFA_PERSONALIZADA.includes(m);
+
 const leadSchema = z.object({
   name: z.string().trim().min(2, "Escribe tu nombre"),
   phone: z
