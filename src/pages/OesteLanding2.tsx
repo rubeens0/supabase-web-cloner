@@ -291,6 +291,15 @@ const TARIFAS_EXTRA: Tarifa[] = [
   { id: "f-2", nom: "Fibra 2 Gb", desc: "Solo internet", precio: 35 },
 ];
 
+const TARIFA_PERSONALIZADA: Tarifa = {
+  id: "personalizada",
+  nom: "Tarifa personalizada",
+  desc: "Verificamos tu código postal para ofrecerte la mejor opción",
+  precio: 0,
+};
+const MUNICIPIOS_TARIFA_PERSONALIZADA = ["Cáceres", "Plasencia"];
+const esTarifaPersonalizada = (m: string | null) => !!m && MUNICIPIOS_TARIFA_PERSONALIZADA.includes(m);
+
 const leadSchema = z.object({
   name: z.string().trim().min(2, "Escribe tu nombre"),
   phone: z
@@ -394,6 +403,9 @@ export default function OesteLanding2() {
     const coverageLabel = cubierto ? "yes" : "no";
     setTieneCobertura(cubierto);
     setMunicipioConfirmado(municipio);
+    if (cubierto && esTarifaPersonalizada(municipio)) {
+      setTarifa(TARIFA_PERSONALIZADA);
+    }
 
     // Evita eventos duplicados si se vuelve a comprobar el mismo municipio
     if (!checkCoverageSent.has(municipio)) {
@@ -413,7 +425,7 @@ export default function OesteLanding2() {
         void sendMetaEvent({
           eventName: "ViewContent",
           customData: {
-            content_name: "Tarifas Oeste",
+            content_name: esTarifaPersonalizada(municipio) ? "Tarifa personalizada" : "Tarifas Oeste",
             content_category: "oeste-landing2",
             content_type: "product_group",
           },
@@ -465,9 +477,13 @@ export default function OesteLanding2() {
   const onFirstFocus = () => {
     if (checkoutFired) return;
     setCheckoutFired(true);
+    const personalizada = esTarifaPersonalizada(municipioConfirmado);
     void sendMetaEvent({
       eventName: "InitiateCheckout",
-      customData: { content_name: tarifa.nom, value: tarifa.precio, currency: "EUR" },
+      customData: {
+        content_name: tarifa.nom,
+        ...(personalizada ? {} : { value: tarifa.precio, currency: "EUR" }),
+      },
       pixelId: LANDING2_PIXEL_ID,
       testEventCode: LANDING2_TEST_EVENT_CODE,
     });
@@ -475,12 +491,13 @@ export default function OesteLanding2() {
 
   const onSubmit = async (values: LeadValues) => {
     setServerError(null);
+    const personalizada = esTarifaPersonalizada(municipioConfirmado);
     try {
       const { data, error } = await supabase.functions.invoke("oeste-lead", {
         body: {
           ...values,
           address: municipioConfirmado ?? "",
-          offer: `${tarifa.nom} (${tarifa.precio}€/mes)`,
+          offer: personalizada ? "Tarifa personalizada (consultar)" : `${tarifa.nom} (${tarifa.precio}€/mes)`,
           landing: "oeste-landing2",
         },
       });
@@ -502,11 +519,9 @@ export default function OesteLanding2() {
       const customData = {
         content_name: tarifa.nom,
         content_category: tarifa.id,
-        value: tarifa.precio,
-        currency: "EUR",
-        predicted_ltv: tarifa.precio,
         lead_event_source: "oeste-landing2",
         municipality: municipioConfirmado ?? undefined,
+        ...(personalizada ? {} : { value: tarifa.precio, currency: "EUR", predicted_ltv: tarifa.precio }),
       };
       void sendMetaEvent({
         eventName: "Lead",
@@ -593,7 +608,7 @@ export default function OesteLanding2() {
             </span>
           </h1>
           <p className="mt-4 text-[20px] text-[#4A4353] max-w-[34ch]">
-            Sin permanencia. Instalación en 3 a 7 días.{" "}
+            Instalación en 3 a 7 días.{" "}
             <strong className="text-[#181320]">Te atiende gente de aquí</strong>, no un locutorio a mil kilómetros.
           </p>
         </div>
@@ -769,33 +784,55 @@ export default function OesteLanding2() {
                   Paso 2 de 3
                 </p>
                 <h2 className="text-[26px] font-extrabold mt-2" style={{ fontFamily: '"Archivo"' }}>
-                  Elige tu tarifa
+                  {esTarifaPersonalizada(municipioConfirmado) ? "Tarifa personalizada" : "Elige tu tarifa"}
                 </h2>
                 <p className="text-[17px] text-[#4A4353] mt-1.5 mb-4">
-                  Todas incluyen router, instalación y llamadas ilimitadas.
+                  {esTarifaPersonalizada(municipioConfirmado)
+                    ? "Te llamamos para confirmar tu código postal y ofrecerte la mejor opción."
+                    : "Todas incluyen router, instalación y llamadas ilimitadas."}
                 </p>
               </div>
               <div className="px-5 pb-4">
-                {TARIFAS_PRINCIPALES.map((t) => (
-                  <TarifaBtn key={t.id} t={t} selected={tarifa.id === t.id} onClick={() => seleccionarTarifa(t)} />
-                ))}
-
-                <button
-                  type="button"
-                  onClick={() => setMostrarExtra((v) => !v)}
-                  className="flex items-center gap-2 py-3.5 font-bold text-[17px] text-[#702479]"
-                >
-                  <span className="font-extrabold text-[22px] leading-none" style={{ fontFamily: '"Archivo"' }}>
-                    {mostrarExtra ? "−" : "+"}
-                  </span>
-                  Ver todas las tarifas
-                </button>
-                {mostrarExtra && (
-                  <div className="pt-2">
-                    {TARIFAS_EXTRA.map((t) => (
+                {esTarifaPersonalizada(municipioConfirmado) ? (
+                  <div className="bg-[#FBF6FD] border-2 border-[#702479] rounded-xl p-5">
+                    <div className="flex items-start gap-3.5">
+                      <div className="w-10 h-10 rounded-lg bg-[#702479] text-white flex items-center justify-center shrink-0">
+                        <Unlock className="w-5 h-5" strokeWidth={2.5} />
+                      </div>
+                      <div>
+                        <h3 className="text-[19px] font-extrabold text-[#181320]" style={{ fontFamily: '"Archivo"' }}>
+                          Consigue tu tarifa personalizada
+                        </h3>
+                        <p className="text-[17px] text-[#4A4353] mt-1">
+                          En {municipioConfirmado} la oferta de 21 € solo está disponible en algunos códigos postales. Déjanos tus datos y te llamamos para confirmar la tuya.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <>
+                    {TARIFAS_PRINCIPALES.map((t) => (
                       <TarifaBtn key={t.id} t={t} selected={tarifa.id === t.id} onClick={() => seleccionarTarifa(t)} />
                     ))}
-                  </div>
+
+                    <button
+                      type="button"
+                      onClick={() => setMostrarExtra((v) => !v)}
+                      className="flex items-center gap-2 py-3.5 font-bold text-[17px] text-[#702479]"
+                    >
+                      <span className="font-extrabold text-[22px] leading-none" style={{ fontFamily: '"Archivo"' }}>
+                        {mostrarExtra ? "−" : "+"}
+                      </span>
+                      Ver todas las tarifas
+                    </button>
+                    {mostrarExtra && (
+                      <div className="pt-2">
+                        {TARIFAS_EXTRA.map((t) => (
+                          <TarifaBtn key={t.id} t={t} selected={tarifa.id === t.id} onClick={() => seleccionarTarifa(t)} />
+                        ))}
+                      </div>
+                    )}
+                  </>
                 )}
               </div>
 
@@ -893,7 +930,6 @@ export default function OesteLanding2() {
                 </button>
                 <div className="flex flex-wrap gap-x-5 gap-y-2 justify-center text-base text-[#4A4353]">
                   <span>✓ Sin compromiso</span>
-                  <span>✓ Sin permanencia</span>
                   <span>✓ Atención local</span>
                 </div>
               </form>
@@ -938,7 +974,7 @@ export default function OesteLanding2() {
               d: "1 Gb o 2 Gb reales, tanto para bajar como para subir. Sin cortes cuando toda la casa está conectada.",
               icon: Zap,
             },
-            { t: "Sin permanencia", d: "Te vas cuando quieras. Sin penalización y sin letra pequeña.", icon: Unlock },
+            { t: "Permanencia 12 meses", d: "Contrato con permanencia de 12 meses. Precio cerrado y condiciones claras.", icon: Unlock },
             {
               t: "Instalación rápida",
               d: "Entre 3 y 7 días. Te lo monta un técnico de la zona y te explica cómo funciona.",
@@ -992,7 +1028,7 @@ export default function OesteLanding2() {
           </thead>
           <tbody>
             {[
-              ["Permanencia", "Ninguna", "12 a 24 meses"],
+              ["Permanencia", "12 meses", "12 a 24 meses"],
               ["Quién te atiende", "Personas de aquí", "Centro de llamadas"],
               ["Subida de precio", "Precio cerrado", "Sube al año"],
               ["Instalación", "3 a 7 días", "2 a 4 semanas"],
@@ -1112,7 +1148,7 @@ export default function OesteLanding2() {
             "¿Cuánto tarda la instalación?",
             "Entre 3 y 7 días desde que hablamos contigo. Acordamos día y franja horaria contigo, y el técnico te avisa antes de ir.",
           ],
-          ["¿Tiene permanencia?", "No. Puedes darte de baja cuando quieras sin pagar penalización."],
+          ["¿Tiene permanencia?", "Sí, la tarifa incluye una permanencia de 12 meses. Te lo explicamos todo antes de contratar."],
           [
             "¿Puedo quedarme con mi número de móvil?",
             "Sí. Nos encargamos nosotros de la portabilidad y no te quedas sin línea en ningún momento.",
