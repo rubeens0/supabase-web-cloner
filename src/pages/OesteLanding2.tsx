@@ -593,7 +593,7 @@ export default function OesteLanding2() {
             </span>
           </h1>
           <p className="mt-4 text-[20px] text-[#4A4353] max-w-[34ch]">
-            Sin permanencia. Instalación en 3 a 7 días.{" "}
+            Instalación en 3 a 7 días.{" "}
             <strong className="text-[#181320]">Te atiende gente de aquí</strong>, no un locutorio a mil kilómetros.
           </p>
         </div>
@@ -893,7 +893,6 @@ export default function OesteLanding2() {
                 </button>
                 <div className="flex flex-wrap gap-x-5 gap-y-2 justify-center text-base text-[#4A4353]">
                   <span>✓ Sin compromiso</span>
-                  <span>✓ Sin permanencia</span>
                   <span>✓ Atención local</span>
                 </div>
               </form>
@@ -938,7 +937,7 @@ export default function OesteLanding2() {
               d: "1 Gb o 2 Gb reales, tanto para bajar como para subir. Sin cortes cuando toda la casa está conectada.",
               icon: Zap,
             },
-            { t: "Sin permanencia", d: "Te vas cuando quieras. Sin penalización y sin letra pequeña.", icon: Unlock },
+            { t: "Permanencia 12 meses", d: "Contrato con permanencia de 12 meses. Precio cerrado y condiciones claras.", icon: Unlock },
             {
               t: "Instalación rápida",
               d: "Entre 3 y 7 días. Te lo monta un técnico de la zona y te explica cómo funciona.",
@@ -992,7 +991,7 @@ export default function OesteLanding2() {
           </thead>
           <tbody>
             {[
-              ["Permanencia", "Ninguna", "12 a 24 meses"],
+              ["Permanencia", "12 meses", "12 a 24 meses"],
               ["Quién te atiende", "Personas de aquí", "Centro de llamadas"],
               ["Subida de precio", "Precio cerrado", "Sube al año"],
               ["Instalación", "3 a 7 días", "2 a 4 semanas"],
@@ -1112,7 +1111,7 @@ export default function OesteLanding2() {
             "¿Cuánto tarda la instalación?",
             "Entre 3 y 7 días desde que hablamos contigo. Acordamos día y franja horaria contigo, y el técnico te avisa antes de ir.",
           ],
-          ["¿Tiene permanencia?", "No. Puedes darte de baja cuando quieras sin pagar penalización."],
+          ["¿Tiene permanencia?", "Sí, la tarifa incluye una permanencia de 12 meses. Te lo explicamos todo antes de contratar."],
           [
             "¿Puedo quedarme con mi número de móvil?",
             "Sí. Nos encargamos nosotros de la portabilidad y no te quedas sin línea en ningún momento.",
