@@ -804,7 +804,7 @@ export default function OesteLanding2() {
                           Consigue tu tarifa personalizada
                         </h3>
                         <p className="text-[17px] text-[#4A4353] mt-1">
-                          En {municipioConfirmado} la oferta de 21 € solo está disponible en algunos códigos postales. Déjanos tus datos y te llamamos para confirmar la tuya.
+                          En {municipioConfirmado} tenemos distintas ofertas disponibles para distintos códigos postales. Rellena el formulario y te contactamos sin compromiso para comprobar.
                         </p>
                       </div>
                     </div>
