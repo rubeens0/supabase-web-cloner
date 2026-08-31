@@ -491,12 +491,13 @@ export default function OesteLanding2() {
 
   const onSubmit = async (values: LeadValues) => {
     setServerError(null);
+    const personalizada = esTarifaPersonalizada(municipioConfirmado);
     try {
       const { data, error } = await supabase.functions.invoke("oeste-lead", {
         body: {
           ...values,
           address: municipioConfirmado ?? "",
-          offer: `${tarifa.nom} (${tarifa.precio}€/mes)`,
+          offer: personalizada ? "Tarifa personalizada (consultar)" : `${tarifa.nom} (${tarifa.precio}€/mes)`,
           landing: "oeste-landing2",
         },
       });
@@ -518,11 +519,9 @@ export default function OesteLanding2() {
       const customData = {
         content_name: tarifa.nom,
         content_category: tarifa.id,
-        value: tarifa.precio,
-        currency: "EUR",
-        predicted_ltv: tarifa.precio,
         lead_event_source: "oeste-landing2",
         municipality: municipioConfirmado ?? undefined,
+        ...(personalizada ? {} : { value: tarifa.precio, currency: "EUR", predicted_ltv: tarifa.precio }),
       };
       void sendMetaEvent({
         eventName: "Lead",
