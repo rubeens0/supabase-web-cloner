@@ -477,9 +477,13 @@ export default function OesteLanding2() {
   const onFirstFocus = () => {
     if (checkoutFired) return;
     setCheckoutFired(true);
+    const personalizada = esTarifaPersonalizada(municipioConfirmado);
     void sendMetaEvent({
       eventName: "InitiateCheckout",
-      customData: { content_name: tarifa.nom, value: tarifa.precio, currency: "EUR" },
+      customData: {
+        content_name: tarifa.nom,
+        ...(personalizada ? {} : { value: tarifa.precio, currency: "EUR" }),
+      },
       pixelId: LANDING2_PIXEL_ID,
       testEventCode: LANDING2_TEST_EVENT_CODE,
     });
