@@ -14,6 +14,39 @@ export type Database = {
   }
   public: {
     Tables: {
+      coverage_checks: {
+        Row: {
+          covered: boolean
+          created_at: string
+          form_submitted: boolean
+          id: string
+          landing: string
+          municipality: string
+          submitted_at: string | null
+          visit_id: string
+        }
+        Insert: {
+          covered?: boolean
+          created_at?: string
+          form_submitted?: boolean
+          id?: string
+          landing?: string
+          municipality: string
+          submitted_at?: string | null
+          visit_id: string
+        }
+        Update: {
+          covered?: boolean
+          created_at?: string
+          form_submitted?: boolean
+          id?: string
+          landing?: string
+          municipality?: string
+          submitted_at?: string | null
+          visit_id?: string
+        }
+        Relationships: []
+      }
       email_send_log: {
         Row: {
           created_at: string
