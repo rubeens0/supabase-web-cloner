@@ -157,6 +157,9 @@ Deno.serve(async (req) => {
 
   const now = Math.floor(Date.now() / 1000);
 
+  const supabaseUrl = Deno.env.get('SUPABASE_URL');
+  const serviceKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY');
+
   const enriched = await Promise.all(
     incoming.map(async (e) => {
       const user_data = await hashUserData(e.user_data);
