@@ -38,6 +38,13 @@ const LANDING2_TEST_EVENT_CODE: string | undefined = undefined;
 let landing2PageViewId: string | null = null;
 let landing2PageViewSent = false;
 const checkCoverageSent = new Set<string>();
+
+// Identificador anónimo de visita (no contiene datos personales) usado para
+// enlazar la comprobación de cobertura con el envío del formulario.
+const visitId =
+  typeof crypto !== "undefined" && "randomUUID" in crypto
+    ? crypto.randomUUID()
+    : `v-${Date.now()}-${Math.random().toString(36).slice(2)}`;
 function getLanding2PageViewId(): string {
   if (landing2PageViewId) return landing2PageViewId;
   landing2PageViewId =
@@ -410,6 +417,17 @@ export default function OesteLanding2() {
     // Evita eventos duplicados si se vuelve a comprobar el mismo municipio
     if (!checkCoverageSent.has(municipio)) {
       checkCoverageSent.add(municipio);
+      void supabase
+        .from("coverage_checks")
+        .insert({
+          municipality: municipio,
+          covered: cubierto,
+          landing: "oeste-landing2",
+          visit_id: visitId,
+        })
+        .then(({ error }) => {
+          if (error) console.warn("[coverage_checks] insert failed", error.message);
+        });
       void sendMetaEvent({
         eventName: "CheckCoverage",
         customData: {
@@ -504,6 +522,13 @@ export default function OesteLanding2() {
       if (error) throw error;
       if (!data?.ok) throw new Error("Respuesta inesperada");
       setEnviado(true);
+      void supabase
+        .from("coverage_checks")
+        .update({ form_submitted: true, submitted_at: new Date().toISOString() })
+        .eq("visit_id", visitId)
+        .then(({ error: updErr }) => {
+          if (updErr) console.warn("[coverage_checks] update failed", updErr.message);
+        });
       const [firstName, ...rest] = values.name.trim().split(/\s+/);
       const zip = municipioConfirmado ? MUNICIPIOS_COBERTURA[municipioConfirmado] : undefined;
       const userData = {
