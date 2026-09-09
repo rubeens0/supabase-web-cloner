@@ -522,6 +522,13 @@ export default function OesteLanding2() {
       if (error) throw error;
       if (!data?.ok) throw new Error("Respuesta inesperada");
       setEnviado(true);
+      void supabase
+        .from("coverage_checks")
+        .update({ form_submitted: true, submitted_at: new Date().toISOString() })
+        .eq("visit_id", visitId)
+        .then(({ error: updErr }) => {
+          if (updErr) console.warn("[coverage_checks] update failed", updErr.message);
+        });
       const [firstName, ...rest] = values.name.trim().split(/\s+/);
       const zip = municipioConfirmado ? MUNICIPIOS_COBERTURA[municipioConfirmado] : undefined;
       const userData = {
