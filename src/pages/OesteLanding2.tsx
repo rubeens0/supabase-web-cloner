@@ -38,6 +38,13 @@ const LANDING2_TEST_EVENT_CODE: string | undefined = undefined;
 let landing2PageViewId: string | null = null;
 let landing2PageViewSent = false;
 const checkCoverageSent = new Set<string>();
+
+// Identificador anónimo de visita (no contiene datos personales) usado para
+// enlazar la comprobación de cobertura con el envío del formulario.
+const visitId =
+  typeof crypto !== "undefined" && "randomUUID" in crypto
+    ? crypto.randomUUID()
+    : `v-${Date.now()}-${Math.random().toString(36).slice(2)}`;
 function getLanding2PageViewId(): string {
   if (landing2PageViewId) return landing2PageViewId;
   landing2PageViewId =
