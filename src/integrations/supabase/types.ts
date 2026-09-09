@@ -149,6 +149,60 @@ export type Database = {
         }
         Relationships: []
       }
+      meta_event_log: {
+        Row: {
+          action_source: string | null
+          created_at: string
+          custom_data: Json
+          error_message: string | null
+          event_id: string
+          event_name: string
+          event_source_url: string | null
+          event_time: string | null
+          http_status: number | null
+          id: string
+          landing: string | null
+          pixel_id: string
+          success: boolean
+          test_event_code: string | null
+          user_data_fields: string[]
+        }
+        Insert: {
+          action_source?: string | null
+          created_at?: string
+          custom_data?: Json
+          error_message?: string | null
+          event_id: string
+          event_name: string
+          event_source_url?: string | null
+          event_time?: string | null
+          http_status?: number | null
+          id?: string
+          landing?: string | null
+          pixel_id: string
+          success?: boolean
+          test_event_code?: string | null
+          user_data_fields?: string[]
+        }
+        Update: {
+          action_source?: string | null
+          created_at?: string
+          custom_data?: Json
+          error_message?: string | null
+          event_id?: string
+          event_name?: string
+          event_source_url?: string | null
+          event_time?: string | null
+          http_status?: number | null
+          id?: string
+          landing?: string | null
+          pixel_id?: string
+          success?: boolean
+          test_event_code?: string | null
+          user_data_fields?: string[]
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           created_at: string
