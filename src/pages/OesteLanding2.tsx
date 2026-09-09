@@ -417,6 +417,17 @@ export default function OesteLanding2() {
     // Evita eventos duplicados si se vuelve a comprobar el mismo municipio
     if (!checkCoverageSent.has(municipio)) {
       checkCoverageSent.add(municipio);
+      void supabase
+        .from("coverage_checks")
+        .insert({
+          municipality: municipio,
+          covered: cubierto,
+          landing: "oeste-landing2",
+          visit_id: visitId,
+        })
+        .then(({ error }) => {
+          if (error) console.warn("[coverage_checks] insert failed", error.message);
+        });
       void sendMetaEvent({
         eventName: "CheckCoverage",
         customData: {
