@@ -230,6 +230,35 @@ Deno.serve(async (req) => {
     }
 
     results.push({ pixel_id: pixelId, ok: upstream.ok, status: upstream.status, response: parsedResponse });
+
+    // Audit trail (no PII: only which user_data fields were sent)
+    if (supabaseUrl && serviceKey) {
+      const rows = data.map((d) => ({
+        pixel_id: pixelId,
+        event_name: d.event_name,
+        event_id: d.event_id,
+        event_time: new Date((d.event_time as number) * 1000).toISOString(),
+        event_source_url: d.event_source_url ?? null,
+        action_source: d.action_source ?? null,
+        landing: (d.custom_data as Record<string, unknown> | undefined)?.landing ?? null,
+        test_event_code: testCode ?? null,
+        custom_data: d.custom_data ?? {},
+        user_data_fields: Object.keys((d.user_data ?? {}) as Record<string, unknown>),
+        http_status: upstream.status,
+        success: upstream.ok,
+        error_message: upstream.ok ? null : text.slice(0, 1000),
+      }));
+      await fetch(`${supabaseUrl}/rest/v1/meta_event_log`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          apikey: serviceKey,
+          Authorization: `Bearer ${serviceKey}`,
+          Prefer: 'return=minimal',
+        },
+        body: JSON.stringify(rows),
+      }).catch((err) => console.error('[meta-capi] audit log failed', err));
+    }
   }
 
   return new Response(JSON.stringify({ ok: !anyError, results }), {
