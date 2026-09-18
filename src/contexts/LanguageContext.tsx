@@ -138,7 +138,7 @@ const translations = {
     'business.headlineB': 'negocio',
     'business.hero.label': 'Marketing Digital',
     'business.hero.description':
-      'Estrategia, diseño y marketing digital para construir marcas preparadas para crecer.',
+      'Estrategia, diseño y marketing digital para marcas y negocios que crecen.',
     'business.contact': 'Contactar',
     'business.schedule': 'Agendar reunión',
 
