@@ -44,18 +44,6 @@ export function SEO({
        en: 'Business, strategy, design and digital marketing with Rubén Muñoz.'
     }},
     // Language aliases resolve to these four primary pages.
-    '/contacto': { title: 'Contacto', description: {
-       es: 'Contacta con Rubén Muñoz para hablar sobre tu negocio o proyecto digital.',
-       en: 'Contact Rubén Muñoz to discuss your business or digital project.'
-    }},
-    '/business': { title: 'Business', description: {
-       es: 'Servicios de estrategia, diseño, desarrollo web y marketing digital de Rubén Muñoz y Netpro Agency.',
-       en: 'Strategy, design, web development and digital marketing by Rubén Muñoz and Netpro Agency.'
-    }},
-    '/booking': { title: 'Booking', description: {
-       es: 'Reserva una reunión con Rubén Muñoz para hablar sobre tu negocio o proyecto digital.',
-       en: 'Book a meeting with Rubén Muñoz to discuss your business or digital project.'
-    }},
   };
 
   const seoContent = defaultSEO[language];
@@ -64,8 +52,11 @@ export function SEO({
   const aliasToPrimary: Record<string, string> = {
     '/inicio': '/',
     '/home': '/',
-    '/contact': '/contacto',
-    '/marketing': '/business',
+    '/contacto': '/',
+    '/contact': '/',
+    '/business': '/',
+    '/marketing': '/',
+    '/booking': '/',
   };
   const primaryPath = aliasToPrimary[location.pathname] ?? location.pathname;
   // Use the primary route's metadata for aliases so title/description match
@@ -107,8 +98,8 @@ export function SEO({
     updateMeta('robots', 'noindex, nofollow, noarchive');
     updateMeta('googlebot', 'noindex, nofollow, noarchive');
     updateMeta('language', language === 'es' ? 'Spanish' : 'English');
-    updateMeta('geo.region', 'ES-EX');
-    updateMeta('geo.placename', 'Cáceres, Extremadura, España');
+    document.querySelector('meta[name="geo.region"]')?.remove();
+    document.querySelector('meta[name="geo.placename"]')?.remove();
 
     // Open Graph meta tags
     updateMeta('', pageTitle, 'og:title');
