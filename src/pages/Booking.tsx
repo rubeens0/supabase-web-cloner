@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
-import { ArrowUpRight, Briefcase, Trophy, BookOpen } from 'lucide-react';
+import { ArrowUpRight, Briefcase, Mail } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
 
@@ -28,17 +28,12 @@ export function Booking() {
     {
       to: '/business',
       icon: Briefcase,
-      label: language === 'es' ? 'Business & Marketing' : 'Business & Marketing',
+      label: language === 'es' ? 'Negocio y marketing' : 'Business & marketing',
     },
     {
-      to: language === 'es' ? '/patrocinadores' : '/sponsors',
-      icon: Trophy,
-      label: language === 'es' ? 'Patrocinio Deportivo' : 'Sports Sponsorship',
-    },
-    {
-      to: '/blog',
-      icon: BookOpen,
-      label: 'Blog',
+      to: language === 'es' ? '/contacto' : '/contact',
+      icon: Mail,
+      label: language === 'es' ? 'Contacto' : 'Contact',
     },
   ];
 
@@ -66,7 +61,7 @@ export function Booking() {
           />
         </motion.div>
 
-        {/* Navigation Buttons */}
+        {/* Related links */}
         <motion.div {...fadeIn(0.2)} className="flex flex-col sm:flex-row items-center justify-center gap-4">
           {links.map((link) => (
             <Link key={link.to} to={link.to}>

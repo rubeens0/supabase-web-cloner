@@ -1,16 +1,4 @@
 # robots.txt — rubenmunoz.com
 
 User-agent: *
-Allow: /
-
-# Áreas privadas
-Disallow: /dossier
-Disallow: /auth
-Disallow: /oeste-landing1
-
-
-
-# Sitemap
-Sitemap: https://rubenmunoz.com/sitemap.xml
-
-Crawl-delay: 1
+Disallow: /
