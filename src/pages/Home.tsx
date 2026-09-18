@@ -165,9 +165,9 @@ export function Home() {
           </motion.div>
           <div className="mt-14 grid gap-10 lg:grid-cols-12 lg:gap-16">
             <motion.aside {...reveal(0.08)} className="lg:col-span-4">
-              <p className="max-w-md text-base leading-relaxed text-muted-foreground sm:text-lg">{isSpanish ? "Treinta minutos para entender tu contexto, ordenar prioridades y descubrir si podemos construir algo con sentido." : "Thirty minutes to understand your context, clarify priorities and discover whether we can build something meaningful."}</p>
+              <p className="max-w-md text-base leading-relaxed text-muted-foreground sm:text-lg">{isSpanish ? "Cuarenta y cinco minutos para entender tu contexto, ordenar prioridades y descubrir si podemos construir algo con sentido." : "Forty-five minutes to understand your context, clarify priorities and discover whether we can build something meaningful."}</p>
               <div className="mt-8 border-y border-border/15">
-                <div className="flex items-center gap-4 border-b border-border/15 py-5 text-sm text-muted-foreground"><Clock className="h-4 w-4 text-foreground" /> {isSpanish ? "30 minutos" : "30 minutes"}</div>
+                <div className="flex items-center gap-4 border-b border-border/15 py-5 text-sm text-muted-foreground"><Clock className="h-4 w-4 text-foreground" /> {isSpanish ? "45 minutos" : "45 minutes"}</div>
                 <div className="flex items-center gap-4 py-5 text-sm text-muted-foreground"><Video className="h-4 w-4 text-foreground" /> Google Meet</div>
               </div>
             </motion.aside>

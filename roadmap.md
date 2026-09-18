@@ -5,4 +5,4 @@
 - [x] Eliminar las referencias visibles a Cáceres fuera de las landings de Oeste.
 - [x] Añadir animaciones accesibles y optimizar el diseño responsive.
 - [x] Verificar Calendly, idiomas, enlaces, móvil y escritorio.
-- [ ] Verificar landings de Oeste (sus rutas no forman parte del enrutado actual previo a este cambio).
+- [x] Mantener sin cambios los archivos y el seguimiento de las landings de Oeste.
