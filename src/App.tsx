@@ -33,8 +33,8 @@ function AppContent() {
               <Route path="/home" element={<Navigate to="/" replace />} />
               <Route path="/contacto" element={<Navigate to="/#contact" replace />} />
               <Route path="/contact" element={<Navigate to="/#contact" replace />} />
-              <Route path="/business" element={<Navigate to="/#business" replace />} />
-              <Route path="/marketing" element={<Navigate to="/#services" replace />} />
+              <Route path="/business" element={<Navigate to="/#work" replace />} />
+              <Route path="/marketing" element={<Navigate to="/#work" replace />} />
               <Route path="/booking" element={<Navigate to="/#booking" replace />} />
               <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
