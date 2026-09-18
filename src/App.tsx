@@ -43,12 +43,12 @@ function AppContent() {
           <AnimatePresence mode="wait">
             <Routes location={location} key={location.pathname}>
               <Route path="/" element={<PageTransition><Home /></PageTransition>} />
-              <Route path="/inicio" element={<PageTransition><Home /></PageTransition>} />
-              <Route path="/home" element={<PageTransition><Home /></PageTransition>} />
+              <Route path="/inicio" element={<Navigate to="/" replace />} />
+              <Route path="/home" element={<Navigate to="/" replace />} />
               <Route path="/contacto" element={<PageTransition><Contact /></PageTransition>} />
-              <Route path="/contact" element={<PageTransition><Contact /></PageTransition>} />
+              <Route path="/contact" element={<Navigate to="/contacto" replace />} />
               <Route path="/business" element={<PageTransition><Business /></PageTransition>} />
-              <Route path="/marketing" element={<PageTransition><Business /></PageTransition>} />
+              <Route path="/marketing" element={<Navigate to="/business" replace />} />
               <Route path="/booking" element={<PageTransition><Booking /></PageTransition>} />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>

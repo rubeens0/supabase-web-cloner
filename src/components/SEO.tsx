@@ -43,14 +43,7 @@ export function SEO({
        es: 'Negocio, estrategia, diseño y marketing digital con Rubén Muñoz.',
        en: 'Business, strategy, design and digital marketing with Rubén Muñoz.'
     }},
-    // '/inicio' and '/home' are aliases of '/' — resolved via aliasToPrimary below.
-    // Alias routes (/patrocinadores, /rdeoperators, /contact, /marketing, /cek2026)
-    // are resolved to their primary path via aliasToPrimary below — no separate
-    // entries so metadata stays unique per canonical URL.
-    '/rde': { title: 'RDE', description: {
-      es: 'Programa RDE de Rubén Muñoz: desarrollo deportivo y oportunidades de colaboración.',
-      en: 'Rubén Muñoz RDE program: athletic development and partnership opportunities.'
-    }},
+    // Language aliases resolve to these four primary pages.
     '/contacto': { title: 'Contacto', description: {
        es: 'Contacta con Rubén Muñoz para hablar sobre tu negocio o proyecto digital.',
        en: 'Contact Rubén Muñoz to discuss your business or digital project.'

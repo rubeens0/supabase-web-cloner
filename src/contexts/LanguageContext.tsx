@@ -13,18 +13,14 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 
 const routes = {
   es: {
-    home: '/inicio',
+    home: '/',
     contact: '/contacto',
     business: '/business',
-    sponsors: '/patrocinadores',
-    blog: '/blog',
   },
   en: {
-    home: '/home',
+    home: '/',
     contact: '/contact',
     business: '/business',
-    sponsors: '/sponsors',
-    blog: '/blog',
   },
 };
 
@@ -142,16 +138,16 @@ const translations = {
     'business.headlineB': 'negocio',
     'business.hero.label': 'Marketing Digital',
     'business.hero.description':
-      'Agencia profesional de diseño y marketing digital. Impulsando marcas y pilotos hacia el siguiente nivel.',
+      'Estrategia, diseño y marketing digital para construir marcas preparadas para crecer.',
     'business.contact': 'Contactar',
     'business.schedule': 'Agendar reunión',
 
     'business.about.p1':
-      'Netpro Agency es una agencia profesional de diseño y marketing digital. Nacimos enfocados al motorsport —pilotos, equipos y proyectos del automovilismo— Trabajamos para crear marcas de pilotos y equipos rentables a través de las redes sociales. Visita la pagina web y descubre la agencia.',
+      'Netpro Agency es una agencia de estrategia, diseño y marketing digital orientada a construir marcas claras y negocios que crecen.',
     'business.about.p2':
-      'Construimos y gestionamos la imagen de marca: diseñamos la identidad visual, creamos todo el contenido gráfico (carteles, creatividades, anuncios, material corporativo), desarrollamos webs y gestionamos de forma profesional las redes sociales y la publicidad en Meta (Facebook e Instagram) para aumentar visibilidad, generar comunidad y atraer clientes o patrocinadores.',
+      'Construimos y gestionamos la imagen de marca, desarrollamos webs y trabajamos redes sociales y publicidad digital para aumentar la visibilidad y atraer clientes.',
     'business.about.p3':
-      'Además, ofrecemos gestión de patrocinios y campañas específicas para dar valor a los sponsors, así como servicios complementarios ligados al rendimiento y la proyección del piloto o la marca.',
+      'Cada servicio se integra en una estrategia coherente, medible y adaptada a los objetivos de cada negocio.',
 
     'business.goal.title': 'Mi objetivo',
     'business.goal.description':
@@ -163,7 +159,7 @@ const translations = {
     'business.services.social': 'Redes Sociales',
     'business.services.social.desc':
       'Gestión estratégica de comunidades y creación de contenido de alto impacto.',
-    'business.services.growth': 'Motorsport Marketing',
+    'business.services.growth': 'Marketing Digital',
     'business.services.growth.desc':
       'Campañas en Meta Ads (Facebook e Instagram) orientadas a resultados.',
     'business.services.web': 'Desarrollo Web',
@@ -182,7 +178,7 @@ const translations = {
     'business.rde.feat3': 'Ejecución',
     'business.rde.feat4': 'Optimización',
 
-    'business.netpro.subtitle': 'Motorsport',
+    'business.netpro.subtitle': 'Digital & Growth',
 
     'business.netspy.title': 'Netspy: Comunidad de Emprendedores',
     'business.netspy.subtitle': 'Comunidad & Networking',
