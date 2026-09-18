@@ -1,27 +1,14 @@
 import { useEffect } from "react";
-import { ArrowDown, ArrowUpRight, Clock, Instagram, Mail, Video } from "lucide-react";
-import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
+import { ArrowDown, ArrowUpRight, Instagram, Mail } from "lucide-react";
+import { motion, useReducedMotion } from "motion/react";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
-import backgroundImage from "@/assets/home-editorial-background.jpg";
-import businessEditorial from "@/assets/business-editorial.jpg";
-import contactEditorial from "@/assets/contact-editorial.jpg";
 import netproNIcon from "@/assets/netpro-n-icon.png";
 import logoMark from "@/assets/logo-white-optimized.png";
 
 const services = {
-  es: [
-    ["01", "Estrategia digital", "Dirección, prioridades y una hoja de ruta conectada con los objetivos del negocio."],
-    ["02", "Identidad visual", "Sistemas de marca sólidos, reconocibles y preparados para crecer."],
-    ["03", "Desarrollo web", "Experiencias digitales rápidas que convierten atención en oportunidades."],
-    ["04", "Paid media", "Campañas con criterio creativo, datos y un foco comercial claro."],
-  ],
-  en: [
-    ["01", "Digital strategy", "Direction, priorities and a roadmap connected to business goals."],
-    ["02", "Visual identity", "Strong, recognisable brand systems designed to grow."],
-    ["03", "Web development", "Fast digital experiences that turn attention into opportunity."],
-    ["04", "Paid media", "Campaigns driven by creative judgement, data and commercial focus."],
-  ],
+  es: ["Estrategia", "Identidad", "Web", "Paid media"],
+  en: ["Strategy", "Identity", "Web", "Paid media"],
 };
 
 const sectionLink = (id: string) => `/#${id}`;
@@ -30,8 +17,6 @@ export function Home() {
   const { language, setLanguage } = useLanguage();
   const isSpanish = language === "es";
   const reduceMotion = useReducedMotion();
-  const { scrollYProgress } = useScroll();
-  const heroImageY = useTransform(scrollYProgress, [0, 0.2], ["0%", reduceMotion ? "0%" : "12%"]);
 
   useEffect(() => {
     const existing = document.querySelector<HTMLScriptElement>('script[src="https://assets.calendly.com/assets/external/widget.js"]');
@@ -47,15 +32,14 @@ export function Home() {
   }, []);
 
   const reveal = (delay = 0) => ({
-    initial: reduceMotion ? false : { opacity: 0, y: 30 },
+    initial: reduceMotion ? false : { opacity: 0, y: 24 },
     whileInView: { opacity: 1, y: 0 },
     viewport: { once: true, margin: "-8%" },
-    transition: { duration: reduceMotion ? 0 : 0.85, delay: reduceMotion ? 0 : delay, ease: [0.22, 1, 0.36, 1] as const },
+    transition: { duration: reduceMotion ? 0 : 0.8, delay: reduceMotion ? 0 : delay, ease: [0.22, 1, 0.36, 1] as const },
   });
 
   const nav = [
-    ["business", isSpanish ? "Negocio" : "Business"],
-    ["services", isSpanish ? "Servicios" : "Services"],
+    ["work", isSpanish ? "Trabajo" : "Work"],
     ["booking", isSpanish ? "Agenda" : "Booking"],
     ["contact", isSpanish ? "Contacto" : "Contact"],
   ];
@@ -84,83 +68,43 @@ export function Home() {
         </div>
       </header>
 
-      <section id="top" className="relative flex min-h-[92svh] flex-col items-center justify-center overflow-hidden border-b border-border/10 px-5 pb-12 pt-28 text-center sm:px-10 sm:pb-16 lg:px-16 lg:pb-20">
-        <motion.img style={{ y: heroImageY }} initial={{ opacity: 0, scale: reduceMotion ? 1 : 1.04 }} animate={{ opacity: 0.52, scale: 1 }} transition={{ duration: reduceMotion ? 0 : 1.6, ease: [0.22, 1, 0.36, 1] }} src={backgroundImage} alt="Vista nocturna desde un estudio creativo" className="absolute inset-0 h-[110%] w-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/65 via-background/20 to-background" aria-hidden="true" />
-        <div className="relative mx-auto flex max-w-5xl flex-col items-center">
-          <motion.p initial={{ opacity: 0, y: reduceMotion ? 0 : 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: reduceMotion ? 0 : 1, delay: 0.15 }} className="text-[9px] uppercase tracking-[0.32em] text-foreground/65 sm:text-[10px]">
-            {isSpanish ? "Emprendedor digital / Estrategia / Marketing" : "Digital entrepreneur / Strategy / Marketing"}
+      <section id="top" className="relative flex min-h-[92svh] flex-col items-center justify-center border-b border-border/10 px-5 pb-14 pt-28 text-center sm:px-10 lg:px-16">
+        <div className="mx-auto flex max-w-5xl flex-col items-center">
+          <motion.p initial={{ opacity: 0, y: reduceMotion ? 0 : 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: reduceMotion ? 0 : 1, delay: 0.1 }} className="text-[9px] uppercase tracking-[0.32em] text-muted-foreground sm:text-[10px]">
+            Rubén Muñoz — {isSpanish ? "Negocio y marketing digital" : "Business and digital marketing"}
           </motion.p>
-          <motion.h1 initial={{ opacity: 0, y: reduceMotion ? 0 : 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: reduceMotion ? 0 : 1, delay: 0.25 }} className="mt-7 font-display text-[clamp(4.2rem,13vw,10rem)] leading-[0.78]">
-            Rubén<br /><span className="font-display-italic text-foreground/60">Muñoz.</span>
-          </motion.h1>
-          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: reduceMotion ? 0 : 1, delay: 0.55 }} className="mt-8 max-w-md font-display text-2xl leading-tight text-muted-foreground sm:text-3xl lg:text-4xl">
-            {isSpanish ? "Ideas con intención. Ejecución que avanza." : "Ideas with intent. Execution that moves."}
-          </motion.p>
-          <motion.a initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: reduceMotion ? 0 : 1, delay: 0.75 }} href={sectionLink("business")} className="mt-10 inline-flex h-12 w-12 shrink-0 items-center justify-center border border-border/25 transition-colors hover:bg-foreground hover:text-background" aria-label={isSpanish ? "Descubrir más" : "Discover more"}><ArrowDown className="h-4 w-4" /></motion.a>
+          <motion.blockquote initial={{ opacity: 0, y: reduceMotion ? 0 : 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: reduceMotion ? 0 : 1.1, delay: 0.25 }} className="mt-10 font-display text-[clamp(2.4rem,6.4vw,5.5rem)] leading-[0.95]">
+            Persistence is very important.<br />
+            <span className="font-display-italic text-muted-foreground">You should not give up unless you are forced to give up.</span>
+          </motion.blockquote>
+          <motion.a initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: reduceMotion ? 0 : 1, delay: 0.6 }} href={sectionLink("work")} className="mt-14 inline-flex h-12 w-12 shrink-0 items-center justify-center border border-border/25 transition-colors hover:bg-foreground hover:text-background" aria-label={isSpanish ? "Descubrir más" : "Discover more"}><ArrowDown className="h-4 w-4" /></motion.a>
         </div>
       </section>
 
-      <section className="border-b border-border/10 px-5 py-5 sm:px-10 lg:px-16">
-        <div className="mx-auto flex max-w-3xl flex-wrap justify-center gap-x-8 gap-y-3 text-center text-[9px] uppercase tracking-[0.26em] text-muted-foreground sm:gap-x-12">
-          <span>{isSpanish ? "Estrategia" : "Strategy"}</span><span>{isSpanish ? "Identidad" : "Identity"}</span><span>{isSpanish ? "Tecnología" : "Technology"}</span><span>{isSpanish ? "Adquisición" : "Acquisition"}</span>
-        </div>
-      </section>
-
-      <section id="business" className="scroll-mt-16 border-b border-border/10 px-5 py-20 text-center sm:scroll-mt-20 sm:px-10 sm:py-28 lg:px-16 lg:py-36">
-        <div className="mx-auto max-w-4xl">
-          <motion.div {...reveal()} className="flex flex-col items-center">
-            <p className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground">01 / {isSpanish ? "Negocio y visión" : "Business and vision"}</p>
-            <h2 className="mt-7 font-display text-5xl leading-[0.92] sm:text-7xl lg:text-8xl">
-              {isSpanish ? "Convertir claridad en " : "Turning clarity into "}<span className="font-display-italic text-muted-foreground">{isSpanish ? "movimiento." : "momentum."}</span>
-            </h2>
-          </motion.div>
-          <motion.div {...reveal(0.1)} className="relative mx-auto mt-14 max-w-md">
-            <div className="border border-border/15 p-2">
-              <img src={businessEditorial} alt="Dirección creativa de Netpro Agency" loading="lazy" className="aspect-[4/5] w-full object-cover" />
-            </div>
-            <div className="absolute -bottom-7 left-1/2 -translate-x-1/2 border border-border/15 bg-background px-6 py-5 sm:px-8">
-              <p className="font-display-italic text-4xl">01</p><p className="mt-2 text-[9px] uppercase tracking-[0.26em] text-muted-foreground">Netpro Agency</p>
-            </div>
-          </motion.div>
-          <motion.p {...reveal(0.14)} className="mx-auto mt-16 max-w-2xl text-base font-light leading-relaxed text-muted-foreground sm:text-xl">
-            {isSpanish ? "Ideas, diseño y marketing unidos para construir marcas más claras y negocios preparados para crecer." : "Ideas, design and marketing working together to build clearer brands and businesses ready to grow."}
-          </motion.p>
-        </div>
-      </section>
-
-      <section id="services" className="scroll-mt-16 border-b border-border/10 px-5 py-20 text-center sm:scroll-mt-20 sm:px-10 sm:py-28 lg:px-16 lg:py-36">
+      <section id="work" className="scroll-mt-16 border-b border-border/10 px-5 py-24 text-center sm:scroll-mt-20 sm:px-10 sm:py-32 lg:px-16">
         <div className="mx-auto max-w-3xl">
           <motion.div {...reveal()} className="flex flex-col items-center">
-            <img src={netproNIcon} alt="Netpro Agency" loading="lazy" className="mb-8 h-24 w-auto object-contain sm:h-32" />
-            <p className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground">02 / Netpro Agency</p>
-            <h2 className="mt-7 font-display text-5xl leading-[0.95] sm:text-7xl">{isSpanish ? "Una dirección. " : "One direction. "}<span className="font-display-italic text-muted-foreground">{isSpanish ? "Cuatro capacidades." : "Four capabilities."}</span></h2>
+            <img src={netproNIcon} alt="Netpro Agency" loading="lazy" className="h-20 w-auto object-contain sm:h-28" />
+            <h2 className="mt-10 font-display text-4xl leading-[1] sm:text-6xl">
+              {isSpanish ? "No me rindo con las " : "I don't give up on "}<span className="font-display-italic text-muted-foreground">{isSpanish ? "ideas." : "ideas."}</span>
+            </h2>
+            <p className="mt-8 max-w-lg text-base leading-relaxed text-muted-foreground">
+              {isSpanish ? "Desde Netpro Agency construyo marcas y negocios digitales que insisten hasta funcionar." : "Through Netpro Agency I build brands and digital businesses that keep pushing until they work."}
+            </p>
           </motion.div>
-          <div className="mt-14 border-t border-border/15">
-            {services[language].map(([index, title, description], i) => (
-              <motion.div key={index} {...reveal(i * 0.05)} className="border-b border-border/15 py-8">
-                <span className="font-mono text-[10px] text-muted-foreground">{index}</span>
-                <h3 className="mt-3 text-sm uppercase tracking-[0.14em]">{title}</h3>
-                <p className="mx-auto mt-3 max-w-lg text-sm leading-relaxed text-muted-foreground">{description}</p>
-              </motion.div>
-            ))}
-          </div>
-          <motion.a href="https://netpro.agency" target="_blank" rel="noopener noreferrer" {...reveal(0.1)} className="mt-10 inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.24em] text-muted-foreground transition-colors hover:text-foreground">netpro.agency <ArrowUpRight className="h-4 w-4" /></motion.a>
+          <motion.div {...reveal(0.1)} className="mt-12 flex flex-wrap justify-center gap-x-8 gap-y-3 text-[10px] uppercase tracking-[0.26em] text-muted-foreground sm:gap-x-12">
+            {services[language].map((service) => <span key={service}>{service}</span>)}
+          </motion.div>
+          <motion.a href="https://netpro.agency" target="_blank" rel="noopener noreferrer" {...reveal(0.16)} className="mt-12 inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.24em] text-muted-foreground transition-colors hover:text-foreground">netpro.agency <ArrowUpRight className="h-4 w-4" /></motion.a>
         </div>
       </section>
 
-      <section id="booking" className="scroll-mt-16 border-b border-border/10 px-5 py-20 text-center sm:scroll-mt-20 sm:px-10 sm:py-28 lg:px-16 lg:py-36">
-        <div className="mx-auto max-w-4xl">
+      <section id="booking" className="scroll-mt-16 border-b border-border/10 px-5 py-24 text-center sm:scroll-mt-20 sm:px-10 sm:py-32 lg:px-16">
+        <div className="mx-auto max-w-3xl">
           <motion.div {...reveal()}>
-            <p className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground">03 / Booking</p>
-            <h2 className="mt-7 font-display text-5xl leading-[0.92] sm:text-7xl lg:text-8xl">{isSpanish ? "Una conversación " : "A conversation "}<span className="font-display-italic text-muted-foreground">{isSpanish ? "con intención." : "with purpose."}</span></h2>
+            <h2 className="font-display text-4xl leading-[1] sm:text-6xl">{isSpanish ? "Hablemos " : "Let's talk "}<span className="font-display-italic text-muted-foreground">{isSpanish ? "45 minutos." : "for 45 minutes."}</span></h2>
           </motion.div>
-          <motion.p {...reveal(0.08)} className="mx-auto mt-8 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">{isSpanish ? "Cuarenta y cinco minutos para entender tu contexto, ordenar prioridades y descubrir si podemos construir algo con sentido." : "Forty-five minutes to understand your context, clarify priorities and discover whether we can build something meaningful."}</motion.p>
-          <motion.div {...reveal(0.1)} className="mx-auto mt-8 inline-flex flex-wrap justify-center gap-x-8 gap-y-2 border-y border-border/15 py-5 text-sm text-muted-foreground">
-            <div className="flex items-center gap-3"><Clock className="h-4 w-4 text-foreground" /> {isSpanish ? "45 minutos" : "45 minutes"}</div>
-            <div className="flex items-center gap-3"><Video className="h-4 w-4 text-foreground" /> Google Meet</div>
-          </motion.div>
-          <motion.div {...reveal(0.14)} className="mx-auto mt-12 min-w-0 max-w-3xl">
+          <motion.div {...reveal(0.1)} className="mx-auto mt-12 min-w-0">
             <div className="border border-border/15 bg-card p-1 sm:p-1.5">
               <div className="calendly-inline-widget min-w-0" data-url="https://calendly.com/rubenmunooz/30min?hide_gdpr_banner=1&background_color=0a0a0a&text_color=ffffff&primary_color=ffffff" style={{ height: "min(760px, 90svh)" }} />
             </div>
@@ -168,28 +112,19 @@ export function Home() {
         </div>
       </section>
 
-      <section id="contact" className="scroll-mt-16 px-5 py-20 text-center sm:scroll-mt-20 sm:px-10 sm:py-28 lg:px-16 lg:py-36">
-        <div className="mx-auto max-w-4xl">
-          <motion.div {...reveal()} className="flex flex-col items-center">
-            <p className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground">04 / Contact</p>
-            <h2 className="mt-7 font-display text-6xl leading-[0.88] sm:text-8xl lg:text-9xl">{isSpanish ? "Hablemos " : "Let's talk "}<span className="font-display-italic text-muted-foreground">{isSpanish ? "de tu idea." : "about your idea."}</span></h2>
-            <p className="mx-auto mt-8 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">{isSpanish ? "Si tienes un proyecto, una oportunidad o una idea que merece avanzar, este es el punto de partida." : "If you have a project, an opportunity or an idea worth moving forward, this is the starting point."}</p>
-          </motion.div>
-          <motion.div {...reveal(0.1)} className="relative mx-auto mt-14 max-w-md">
-            <div className="border border-border/15 p-2"><img src={contactEditorial} alt="Espacio creativo de Rubén Muñoz" loading="lazy" className="aspect-[4/5] w-full object-cover" /></div>
-            <div className="absolute -bottom-7 left-1/2 -translate-x-1/2 border border-border/15 bg-background px-7 py-6"><p className="font-display-italic text-4xl">04</p><p className="mt-2 text-[9px] uppercase tracking-[0.26em] text-muted-foreground">Digital / Strategy</p></div>
-          </motion.div>
-          <motion.div {...reveal(0.14)} className="mx-auto mt-16 max-w-xl border-t border-border/15">
-            <a href="mailto:contacto@rubenmunoz.com" className="group flex items-center justify-center gap-3 border-b border-border/15 py-6"><Mail className="h-4 w-4 text-muted-foreground" /><span className="break-all font-display text-2xl sm:break-normal sm:text-3xl">contacto@rubenmunoz.com</span><ArrowUpRight className="h-4 w-4 text-muted-foreground transition-colors group-hover:text-foreground" /></a>
-            <a href="https://www.instagram.com/rubenmunooz._" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center gap-3 border-b border-border/15 py-6"><Instagram className="h-4 w-4 text-muted-foreground" /><span className="font-display text-2xl sm:text-3xl">@rubenmunooz._</span><ArrowUpRight className="h-4 w-4 text-muted-foreground transition-colors group-hover:text-foreground" /></a>
+      <section id="contact" className="scroll-mt-16 px-5 py-24 text-center sm:scroll-mt-20 sm:px-10 sm:py-32 lg:px-16">
+        <div className="mx-auto max-w-xl">
+          <motion.h2 {...reveal()} className="font-display text-4xl leading-[1] sm:text-6xl">{isSpanish ? "Escríbeme." : "Write to me."}</motion.h2>
+          <motion.div {...reveal(0.1)} className="mt-12 border-t border-border/15">
+            <a href="mailto:contacto@rubenmunoz.com" className="group flex items-center justify-center gap-3 border-b border-border/15 py-6"><Mail className="h-4 w-4 text-muted-foreground" /><span className="break-all font-display text-xl sm:break-normal sm:text-3xl">contacto@rubenmunoz.com</span><ArrowUpRight className="h-4 w-4 text-muted-foreground transition-colors group-hover:text-foreground" /></a>
+            <a href="https://www.instagram.com/rubenmunooz._" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center gap-3 border-b border-border/15 py-6"><Instagram className="h-4 w-4 text-muted-foreground" /><span className="font-display text-xl sm:text-3xl">@rubenmunooz._</span><ArrowUpRight className="h-4 w-4 text-muted-foreground transition-colors group-hover:text-foreground" /></a>
           </motion.div>
         </div>
       </section>
 
       <footer className="border-t border-border/10 px-5 py-10 text-center sm:px-10 lg:px-16">
-        <div className="mx-auto flex max-w-7xl flex-col items-center gap-5 text-[9px] uppercase tracking-[0.2em] text-muted-foreground">
+        <div className="mx-auto flex max-w-7xl flex-col items-center gap-4 text-[9px] uppercase tracking-[0.2em] text-muted-foreground">
           <p>© 2026 Rubén Muñoz</p>
-          <div className="flex flex-wrap justify-center gap-5">{nav.map(([id, label]) => <a key={id} href={sectionLink(id)} className="transition-colors hover:text-foreground">{label}</a>)}</div>
         </div>
       </footer>
     </main>
