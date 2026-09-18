@@ -26,6 +26,7 @@ const queryClient = new QueryClient();
 
 function AppContent() {
   const location = useLocation();
+  const isHome = location.pathname === "/";
 
   useEffect(() => {
     setupPerformanceOptimizations();
@@ -38,7 +39,7 @@ function AppContent() {
       <CustomCursor />
       <div className="min-h-screen bg-background">
         <Toaster theme="dark" />
-        <Navigation />
+        {!isHome && <Navigation />}
         <Suspense fallback={<div className="min-h-screen bg-background" />}>
           <AnimatePresence mode="wait">
             <Routes location={location} key={location.pathname}>
@@ -54,7 +55,7 @@ function AppContent() {
             </Routes>
           </AnimatePresence>
         </Suspense>
-        <Footer />
+        {!isHome && <Footer />}
       </div>
     </>
   );
