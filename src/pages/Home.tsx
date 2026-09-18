@@ -6,7 +6,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import backgroundImage from "@/assets/home-editorial-background.jpg";
 import businessEditorial from "@/assets/business-editorial.jpg";
 import contactEditorial from "@/assets/contact-editorial.jpg";
-import netproLogo from "@/assets/netpro-branding.jpg";
+import netproNIcon from "@/assets/netpro-n-icon.png";
 import logoMark from "@/assets/logo-white-optimized.png";
 
 const services = {
