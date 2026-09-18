@@ -6,7 +6,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import backgroundImage from "@/assets/home-editorial-background.jpg";
 import businessEditorial from "@/assets/business-editorial.jpg";
 import contactEditorial from "@/assets/contact-editorial.jpg";
-import netproLogo from "@/assets/netpro-branding.jpg";
+import netproNIcon from "@/assets/netpro-n-icon.png";
 import logoMark from "@/assets/logo-white-optimized.png";
 
 const services = {
@@ -133,27 +133,23 @@ export function Home() {
         </div>
       </section>
 
-      <section id="services" className="scroll-mt-16 border-b border-border/10 px-5 py-20 sm:scroll-mt-20 sm:px-10 sm:py-28 lg:px-16 lg:py-36">
-        <div className="mx-auto grid max-w-7xl gap-14 lg:grid-cols-12 lg:gap-20">
-          <motion.div {...reveal()} className="lg:col-span-4">
-            <div className="max-w-xs border border-border/15 p-2"><img src={netproLogo} alt="Netpro Agency" loading="lazy" className="aspect-square w-full object-cover" /></div>
-            <a href="https://netpro.agency" target="_blank" rel="noopener noreferrer" className="mt-5 flex max-w-xs items-center justify-between border-b border-border/15 pb-4 text-[10px] uppercase tracking-[0.24em] text-muted-foreground transition-colors hover:text-foreground">netpro.agency <ArrowUpRight className="h-4 w-4" /></a>
+      <section id="services" className="scroll-mt-16 border-b border-border/10 px-5 py-20 text-center sm:scroll-mt-20 sm:px-10 sm:py-28 lg:px-16 lg:py-36">
+        <div className="mx-auto max-w-3xl">
+          <motion.div {...reveal()} className="flex flex-col items-center">
+            <img src={netproNIcon} alt="Netpro Agency" loading="lazy" className="mb-8 h-24 w-auto object-contain sm:h-32" />
+            <p className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground">02 / Netpro Agency</p>
+            <h2 className="mt-7 font-display text-5xl leading-[0.95] sm:text-7xl">{isSpanish ? "Una dirección. " : "One direction. "}<span className="font-display-italic text-muted-foreground">{isSpanish ? "Cuatro capacidades." : "Four capabilities."}</span></h2>
           </motion.div>
-          <div className="lg:col-span-8">
-            <motion.div {...reveal(0.06)}>
-              <p className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground">02 / Netpro Agency</p>
-              <h2 className="mt-7 font-display text-5xl leading-[0.95] sm:text-7xl">{isSpanish ? "Una dirección. " : "One direction. "}<span className="font-display-italic text-muted-foreground">{isSpanish ? "Cuatro capacidades." : "Four capabilities."}</span></h2>
-            </motion.div>
-            <div className="mt-14 border-t border-border/15">
-              {services[language].map(([index, title, description], i) => (
-                <motion.div key={index} {...reveal(i * 0.05)} className="group grid gap-3 border-b border-border/15 py-7 sm:grid-cols-[44px_1fr_1.35fr] sm:gap-6">
-                  <span className="font-mono text-[10px] text-muted-foreground">{index}</span>
-                  <h3 className="text-sm uppercase tracking-[0.14em] transition-transform duration-500 group-hover:translate-x-1">{title}</h3>
-                  <p className="text-sm leading-relaxed text-muted-foreground">{description}</p>
-                </motion.div>
-              ))}
-            </div>
+          <div className="mt-14 border-t border-border/15">
+            {services[language].map(([index, title, description], i) => (
+              <motion.div key={index} {...reveal(i * 0.05)} className="border-b border-border/15 py-8">
+                <span className="font-mono text-[10px] text-muted-foreground">{index}</span>
+                <h3 className="mt-3 text-sm uppercase tracking-[0.14em]">{title}</h3>
+                <p className="mx-auto mt-3 max-w-lg text-sm leading-relaxed text-muted-foreground">{description}</p>
+              </motion.div>
+            ))}
           </div>
+          <motion.a href="https://netpro.agency" target="_blank" rel="noopener noreferrer" {...reveal(0.1)} className="mt-10 inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.24em] text-muted-foreground transition-colors hover:text-foreground">netpro.agency <ArrowUpRight className="h-4 w-4" /></motion.a>
         </div>
       </section>
 
