@@ -4,4 +4,5 @@
 - [x] Convertir la navegación en anclas y redirigir las rutas antiguas.
 - [x] Eliminar las referencias visibles a Cáceres fuera de las landings de Oeste.
 - [x] Añadir animaciones accesibles y optimizar el diseño responsive.
-- [ ] Verificar Calendly, idiomas, enlaces, móvil, escritorio y landings de Oeste.
+- [x] Verificar Calendly, idiomas, enlaces, móvil y escritorio.
+- [ ] Verificar landings de Oeste (sus rutas no forman parte del enrutado actual previo a este cambio).

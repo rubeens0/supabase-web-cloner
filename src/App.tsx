@@ -1,7 +1,6 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { useEffect } from "react";
-import { AnimatePresence } from "motion/react";
 import { Toaster } from "sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { LanguageProvider } from "@/contexts/LanguageContext";
@@ -28,8 +27,7 @@ function AppContent() {
       <CustomCursor />
       <div className="min-h-screen bg-background">
         <Toaster theme="dark" />
-          <AnimatePresence mode="wait">
-            <Routes location={location} key={location.pathname}>
+          <Routes location={location} key={location.pathname}>
               <Route path="/" element={<PageTransition><Home /></PageTransition>} />
               <Route path="/inicio" element={<Navigate to="/" replace />} />
               <Route path="/home" element={<Navigate to="/" replace />} />
@@ -39,8 +37,7 @@ function AppContent() {
               <Route path="/marketing" element={<Navigate to="/#services" replace />} />
               <Route path="/booking" element={<Navigate to="/#booking" replace />} />
               <Route path="*" element={<Navigate to="/" replace />} />
-            </Routes>
-          </AnimatePresence>
+          </Routes>
       </div>
     </>
   );
