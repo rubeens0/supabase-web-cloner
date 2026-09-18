@@ -28,12 +28,12 @@ export function SEO({
   const defaultSEO = {
     es: {
       title: 'Rubén Muñoz | Negocio y Marketing Digital',
-      description: 'Estrategia, diseño y marketing digital para construir marcas y negocios preparados para crecer.',
+      description: 'Estrategia, diseño y marketing digital para marcas y negocios que crecen.',
       keywords: 'Rubén Muñoz, marketing digital, Netpro Agency, diseño web, identidad visual, redes sociales'
     },
     en: {
       title: 'Rubén Muñoz | Business & Digital Marketing',
-      description: 'Strategy, design and digital marketing for brands and businesses ready to grow.',
+      description: 'Strategy, design and digital marketing for brands and businesses that grow.',
       keywords: 'Rubén Muñoz, digital marketing, Netpro Agency, web design, visual identity, social media'
     }
   };
