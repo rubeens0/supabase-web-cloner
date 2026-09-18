@@ -2,7 +2,6 @@ import { Mail, MapPin, Instagram, ArrowUpRight, CalendarCheck } from 'lucide-rea
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
-import backgroundImage from '@/assets/contact-bg.jpg';
 
 function SectionLabel({ index, children }: { index: string; children: React.ReactNode }) {
   return (
@@ -52,14 +51,7 @@ export function Contact() {
 
   return (
     <div className="min-h-screen bg-black text-white relative overflow-hidden">
-      {/* Background */}
-      <div className="fixed inset-0 z-0 pointer-events-none">
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-15"
-          style={{ backgroundImage: `url(${backgroundImage})` }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black" />
-      </div>
+      <div className="fixed inset-0 z-0 bg-[linear-gradient(to_right,hsl(var(--foreground)/0.04)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--foreground)/0.04)_1px,transparent_1px)] bg-[size:72px_72px] pointer-events-none" />
 
       <div className="relative z-10">
         {/* ============== 01 · HERO ============== */}

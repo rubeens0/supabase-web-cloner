@@ -52,8 +52,8 @@ export function Business() {
             index="01"
             title="Netpro Agency"
             subtitle="Digital & Growth"
-            description={t('business.hero.description')}
-            extendedDescription={t('business.about.p1')}
+            description="Estrategia, diseño y marketing digital para construir marcas claras, relevantes y preparadas para crecer."
+            extendedDescription="En Netpro Agency conectamos identidad visual, desarrollo web, contenido, redes sociales y publicidad digital en una estrategia coherente y orientada a resultados."
             image={netproLogo}
             imageAlt="Netpro Agency Branding"
             href="https://netpro.agency"
@@ -61,7 +61,7 @@ export function Business() {
             features={[
               t('business.services.branding'),
               t('business.services.web'),
-              t('business.services.growth'),
+              'Marketing digital',
               t('business.services.social'),
             ]}
             reverse

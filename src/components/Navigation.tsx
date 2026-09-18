@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from 'motion/react';
 import { useState, useEffect, useCallback } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { Menu, X, ArrowRight } from 'lucide-react';
-import { LIVE_RACE_ACTIVE } from '@/config/liveRace';
 
 export function Navigation() {
   const location = useLocation();
@@ -11,7 +10,6 @@ export function Navigation() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [introDone, setIntroDone] = useState(!isHome);
-  const [bannerVisible, setBannerVisible] = useState(LIVE_RACE_ACTIVE);
   const { language, setLanguage, t, getRoute } = useLanguage();
 
   useEffect(() => {
@@ -23,7 +21,7 @@ export function Navigation() {
   useEffect(() => {
     if (!isHome) { setIntroDone(true); return; }
     setIntroDone(false);
-    const t = window.setTimeout(() => setIntroDone(true), 3700);
+    const t = window.setTimeout(() => setIntroDone(true), 350);
     return () => window.clearTimeout(t);
   }, [isHome]);
 
@@ -43,50 +41,13 @@ export function Navigation() {
 
   const navItems = [
     { to: getRoute('home'), label: t('nav.home'), match: [getRoute('home'), '/'] },
-    { to: getRoute('blog'), label: t('nav.blog'), match: [getRoute('blog')] },
     { to: getRoute('business'), label: t('nav.business'), match: [getRoute('business')] },
-    { to: '/2026', label: '2026', match: ['/2026'] },
-    { to: getRoute('sponsors'), label: t('nav.sponsors'), match: [getRoute('sponsors'), '/sponsors', '/patrocinadores'] },
+    { to: '/booking', label: 'Booking', match: ['/booking'] },
     { to: getRoute('contact'), label: t('nav.contact'), match: [getRoute('contact')] },
   ];
 
   return (
     <>
-      {/* Top announcement bar (Slash style) */}
-      <AnimatePresence>
-        {bannerVisible && introDone && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed top-0 left-0 right-0 z-[60] bg-gradient-to-r from-neutral-900 via-neutral-800 to-neutral-900 border-b border-white/5 overflow-hidden"
-          >
-            <div className="max-w-7xl mx-auto px-4 sm:px-8 py-2.5 flex items-center justify-between gap-4 text-[12px] sm:text-[13px]">
-              <div className="flex items-center gap-3 min-w-0 flex-1">
-                <span className="inline-flex h-1.5 w-1.5 rounded-full bg-red-500 animate-pulse shrink-0" />
-                <span className="text-white/80 truncate">
-                  {language === 'es' ? 'Directo CEK R3' : 'CEK R3 Live'} — <span className="text-white/50">{language === 'es' ? 'Valencia' : 'Valencia'}</span>
-                </span>
-              </div>
-              <Link
-                to="/live-timing-streaming"
-                className="hidden sm:inline-flex items-center gap-1.5 text-white hover:text-secondary transition-colors whitespace-nowrap shrink-0"
-              >
-                {language === 'es' ? 'Ver directo' : 'Watch live'} <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
-              <button
-                onClick={() => setBannerVisible(false)}
-                aria-label="Close banner"
-                className="text-white/70 hover:text-white transition-colors shrink-0"
-              >
-                <X className="w-3.5 h-3.5" />
-              </button>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
       {/* Main navigation */}
       <motion.nav
         initial={false}
@@ -96,9 +57,7 @@ export function Navigation() {
           ease: [0.22, 1, 0.36, 1],
         }}
         style={{ pointerEvents: introDone ? 'auto' : 'none' }}
-        className={`fixed left-0 right-0 z-50 transition-all duration-300 ${
-          bannerVisible ? 'top-[40px] sm:top-[42px]' : 'top-0'
-        } ${
+        className={`fixed left-0 right-0 top-0 z-50 transition-all duration-300 ${
           scrolled
             ? 'bg-black/85 backdrop-blur-xl border-b border-white/[0.06]'
             : 'bg-transparent border-b border-transparent'

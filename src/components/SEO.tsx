@@ -27,21 +27,21 @@ export function SEO({
   // SEO content based on language
   const defaultSEO = {
     es: {
-      title: 'Rubén Muñoz | Piloto de Karting y Emprendedor',
-      description: 'Piloto de karting de Cáceres en el Campeonato de España (CEK) y emprendedor digital. Patrocinios, calendario y blog.',
-      keywords: 'Rubén Muñoz, piloto karting, piloto karting Extremadura, piloto karting España, piloto karting Cáceres, emprendedor joven extremeño, marketing digital, patrocinar piloto karting, karting Extremadura, karting España, Rubén Muñoz Cáceres, piloto karting extremeño, patrocinio deportivo, Campeonato España Karting'
+      title: 'Rubén Muñoz | Negocio y Marketing Digital',
+      description: 'Estrategia, diseño y marketing digital para construir marcas y negocios preparados para crecer.',
+      keywords: 'Rubén Muñoz, marketing digital, Netpro Agency, diseño web, identidad visual, redes sociales'
     },
     en: {
-      title: 'Rubén Muñoz | Karting Driver & Entrepreneur',
-      description: 'Karting driver from Cáceres competing in the Spanish Karting Championship (CEK) and digital entrepreneur. Sponsors, schedule and blog.',
-      keywords: 'Rubén Muñoz, karting driver Spain, karting driver Extremadura, Spanish karting, Cáceres karting, young entrepreneur Spain, digital marketing, sponsor karting driver, Spanish Karting Championship, motorsport sponsorship'
+      title: 'Rubén Muñoz | Business & Digital Marketing',
+      description: 'Strategy, design and digital marketing for brands and businesses ready to grow.',
+      keywords: 'Rubén Muñoz, digital marketing, Netpro Agency, web design, visual identity, social media'
     }
   };
 
   const pathMeta: Record<string, { title: string; description: { es: string; en: string } }> = {
     '/': { title: language === 'es' ? 'Inicio' : 'Home', description: {
-      es: 'Web oficial de Rubén Muñoz: piloto del CEK y emprendedor digital.',
-      en: 'Official site of Rubén Muñoz: CEK karting driver and digital entrepreneur.'
+       es: 'Negocio, estrategia, diseño y marketing digital con Rubén Muñoz.',
+       en: 'Business, strategy, design and digital marketing with Rubén Muñoz.'
     }},
     // '/inicio' and '/home' are aliases of '/' — resolved via aliasToPrimary below.
     // Alias routes (/patrocinadores, /rdeoperators, /contact, /marketing, /cek2026)
@@ -52,38 +52,16 @@ export function SEO({
       en: 'Rubén Muñoz RDE program: athletic development and partnership opportunities.'
     }},
     '/contacto': { title: 'Contacto', description: {
-      es: 'Contacta con Rubén Muñoz: formulario, redes y reserva de reuniones para patrocinios y colaboraciones.',
-      en: 'Get in touch with Rubén Muñoz: contact form, social channels and meeting booking for sponsors and collaborations.'
+       es: 'Contacta con Rubén Muñoz para hablar sobre tu negocio o proyecto digital.',
+       en: 'Contact Rubén Muñoz to discuss your business or digital project.'
     }},
     '/business': { title: 'Business', description: {
-      es: 'Proyectos empresariales de Rubén Muñoz: marketing digital, agencia y colaboraciones con marcas.',
-      en: 'Business projects by Rubén Muñoz: digital marketing, agency and brand collaborations.'
-    }},
-    '/sponsors': { title: language === 'es' ? 'Patrocinio' : 'Sponsorship', description: {
-      es: 'Conviértete en patrocinador de Rubén Muñoz en el CEK 2026. Planes, beneficios y dossier.',
-      en: 'Become a sponsor of Rubén Muñoz in the 2026 CEK. Plans, benefits and dossier.'
-    }},
-
-
-    '/2026': { title: language === 'es' ? 'Temporada 2026' : '2026 Season', description: {
-      es: 'Temporada 2026 del CEK: calendario, circuitos y seguimiento de Rubén Muñoz en el campeonato.',
-      en: '2026 CEK season: calendar, circuits and live updates from Rubén Muñoz in the championship.'
-    }},
-    '/cek2026': { title: language === 'es' ? 'CEK 2026' : 'CEK 2026', description: {
-      es: 'Toda la información del CEK 2026 con Rubén Muñoz: calendario, equipo y resultados.',
-      en: 'Everything about CEK 2026 with Rubén Muñoz: calendar, team and results.'
-    }},
-    '/blog': { title: 'Blog', description: {
-      es: 'Blog de Rubén Muñoz: crónicas de carreras del CEK, anuncios de patrocinadores y novedades.',
-      en: 'Rubén Muñoz blog: CEK race reports, sponsor announcements and project updates.'
-    }},
-    '/live-timing-streaming': { title: language === 'es' ? 'Live Timing y Streaming' : 'Live Timing & Streaming', description: {
-      es: 'Cronometraje en vivo y retransmisiones de las pruebas del CEK con Rubén Muñoz.',
-      en: 'Live timing and streaming of CEK rounds featuring Rubén Muñoz.'
+       es: 'Servicios de estrategia, diseño, desarrollo web y marketing digital de Rubén Muñoz y Netpro Agency.',
+       en: 'Strategy, design, web development and digital marketing by Rubén Muñoz and Netpro Agency.'
     }},
     '/booking': { title: 'Booking', description: {
-      es: 'Reserva una reunión con Rubén Muñoz para hablar de patrocinios o colaboraciones.',
-      en: 'Book a meeting with Rubén Muñoz to discuss sponsorships or collaborations.'
+       es: 'Reserva una reunión con Rubén Muñoz para hablar sobre tu negocio o proyecto digital.',
+       en: 'Book a meeting with Rubén Muñoz to discuss your business or digital project.'
     }},
   };
 
@@ -95,9 +73,6 @@ export function SEO({
     '/home': '/',
     '/contact': '/contacto',
     '/marketing': '/business',
-    '/patrocinadores': '/sponsors',
-    '/cek2026': '/2026',
-    '/rdeoperators': '/rde',
   };
   const primaryPath = aliasToPrimary[location.pathname] ?? location.pathname;
   // Use the primary route's metadata for aliases so title/description match
@@ -136,7 +111,8 @@ export function SEO({
     updateMeta('description', pageDescription);
     updateMeta('keywords', pageKeywords);
     updateMeta('author', 'Rubén Muñoz');
-    updateMeta('robots', 'index, follow');
+    updateMeta('robots', 'noindex, nofollow, noarchive');
+    updateMeta('googlebot', 'noindex, nofollow, noarchive');
     updateMeta('language', language === 'es' ? 'Spanish' : 'English');
     updateMeta('geo.region', 'ES-EX');
     updateMeta('geo.placename', 'Cáceres, Extremadura, España');
@@ -189,54 +165,16 @@ export function SEO({
     // Structured data (JSON-LD)
     const defaultStructuredData = {
       '@context': 'https://schema.org',
-      '@type': 'Person',
+      '@type': 'ProfessionalService',
       name: 'Rubén Muñoz',
-      birthDate: '2009-02-27',
-      birthPlace: {
-        '@type': 'Place',
-        address: {
-          '@type': 'PostalAddress',
-          addressLocality: 'Cáceres',
-          addressRegion: 'Extremadura',
-          addressCountry: 'ES'
-        }
-      },
-      jobTitle: language === 'es' 
-        ? 'Piloto de Karting y Emprendedor Digital' 
-        : 'Karting Driver and Digital Entrepreneur',
+      alternateName: 'Netpro Agency',
       description: pageDescription,
       url: 'https://rubenmunoz.com',
       image: ogImage,
       sameAs: [
         'https://www.instagram.com/rubenmunooz._'
       ],
-      knowsAbout: [
-        'Karting',
-        'Motorsports',
-        'Digital Marketing',
-        'Entrepreneurship',
-        'Spanish Karting Championship'
-      ],
-      nationality: {
-        '@type': 'Country',
-        name: 'Spain'
-      },
-      homeLocation: {
-        '@type': 'Place',
-        address: {
-          '@type': 'PostalAddress',
-          addressLocality: 'Cáceres',
-          addressRegion: 'Extremadura',
-          addressCountry: 'ES'
-        }
-      },
-      award: language === 'es' 
-        ? 'Competidor del Campeonato de España de Karting'
-        : 'Spanish Karting Championship Competitor',
-      sponsor: {
-        '@type': 'Organization',
-        name: language === 'es' ? 'Buscando patrocinadores' : 'Seeking sponsors'
-      }
+      knowsAbout: ['Digital Marketing', 'Brand Strategy', 'Web Development', 'Social Media']
     };
 
     const finalStructuredData = structuredData || defaultStructuredData;
