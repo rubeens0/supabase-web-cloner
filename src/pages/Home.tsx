@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { ArrowDown, ArrowRight, ArrowUpRight, Clock, Instagram, Mail, Video } from "lucide-react";
+import { ArrowDown, ArrowUpRight, Clock, Instagram, Mail, Video } from "lucide-react";
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -84,52 +84,48 @@ export function Home() {
         </div>
       </header>
 
-      <section id="top" className="relative flex min-h-[92svh] items-end overflow-hidden border-b border-border/10 px-5 pb-12 pt-28 sm:px-10 sm:pb-16 lg:px-16 lg:pb-20">
+      <section id="top" className="relative flex min-h-[92svh] flex-col items-center justify-center overflow-hidden border-b border-border/10 px-5 pb-12 pt-28 text-center sm:px-10 sm:pb-16 lg:px-16 lg:pb-20">
         <motion.img style={{ y: heroImageY }} initial={{ opacity: 0, scale: reduceMotion ? 1 : 1.04 }} animate={{ opacity: 0.52, scale: 1 }} transition={{ duration: reduceMotion ? 0 : 1.6, ease: [0.22, 1, 0.36, 1] }} src={backgroundImage} alt="Vista nocturna desde un estudio creativo" className="absolute inset-0 h-[110%] w-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-b from-background/65 via-background/20 to-background" aria-hidden="true" />
-        <div className="relative mx-auto grid w-full max-w-7xl items-end gap-10 lg:grid-cols-12">
-          <motion.div initial={{ opacity: 0, y: reduceMotion ? 0 : 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: reduceMotion ? 0 : 1, delay: 0.15 }} className="lg:col-span-9">
-            <p className="border-l border-border/35 pl-4 text-[9px] uppercase tracking-[0.32em] text-foreground/65 sm:text-[10px]">
-              {isSpanish ? "Emprendedor digital / Estrategia / Marketing" : "Digital entrepreneur / Strategy / Marketing"}
-            </p>
-            <h1 className="mt-7 max-w-5xl font-display text-[clamp(4.2rem,13vw,10rem)] leading-[0.78]">
-              Rubén<br /><span className="font-display-italic text-foreground/60">Muñoz.</span>
-            </h1>
-          </motion.div>
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: reduceMotion ? 0 : 1, delay: 0.55 }} className="flex items-end justify-between gap-8 lg:col-span-3 lg:block">
-            <p className="max-w-xs font-display text-2xl leading-tight sm:text-3xl lg:text-4xl">
-              {isSpanish ? "Ideas con intención. Ejecución que avanza." : "Ideas with intent. Execution that moves."}
-            </p>
-            <a href={sectionLink("business")} className="mt-8 inline-flex h-12 w-12 shrink-0 items-center justify-center border border-border/25 transition-colors hover:bg-foreground hover:text-background" aria-label={isSpanish ? "Descubrir más" : "Discover more"}><ArrowDown className="h-4 w-4" /></a>
-          </motion.div>
+        <div className="relative mx-auto flex max-w-5xl flex-col items-center">
+          <motion.p initial={{ opacity: 0, y: reduceMotion ? 0 : 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: reduceMotion ? 0 : 1, delay: 0.15 }} className="text-[9px] uppercase tracking-[0.32em] text-foreground/65 sm:text-[10px]">
+            {isSpanish ? "Emprendedor digital / Estrategia / Marketing" : "Digital entrepreneur / Strategy / Marketing"}
+          </motion.p>
+          <motion.h1 initial={{ opacity: 0, y: reduceMotion ? 0 : 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: reduceMotion ? 0 : 1, delay: 0.25 }} className="mt-7 font-display text-[clamp(4.2rem,13vw,10rem)] leading-[0.78]">
+            Rubén<br /><span className="font-display-italic text-foreground/60">Muñoz.</span>
+          </motion.h1>
+          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: reduceMotion ? 0 : 1, delay: 0.55 }} className="mt-8 max-w-md font-display text-2xl leading-tight text-muted-foreground sm:text-3xl lg:text-4xl">
+            {isSpanish ? "Ideas con intención. Ejecución que avanza." : "Ideas with intent. Execution that moves."}
+          </motion.p>
+          <motion.a initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: reduceMotion ? 0 : 1, delay: 0.75 }} href={sectionLink("business")} className="mt-10 inline-flex h-12 w-12 shrink-0 items-center justify-center border border-border/25 transition-colors hover:bg-foreground hover:text-background" aria-label={isSpanish ? "Descubrir más" : "Discover more"}><ArrowDown className="h-4 w-4" /></motion.a>
         </div>
       </section>
 
       <section className="border-b border-border/10 px-5 py-5 sm:px-10 lg:px-16">
-        <div className="mx-auto flex max-w-7xl flex-wrap justify-between gap-x-8 gap-y-3 text-[9px] uppercase tracking-[0.26em] text-muted-foreground">
+        <div className="mx-auto flex max-w-3xl flex-wrap justify-center gap-x-8 gap-y-3 text-center text-[9px] uppercase tracking-[0.26em] text-muted-foreground sm:gap-x-12">
           <span>{isSpanish ? "Estrategia" : "Strategy"}</span><span>{isSpanish ? "Identidad" : "Identity"}</span><span>{isSpanish ? "Tecnología" : "Technology"}</span><span>{isSpanish ? "Adquisición" : "Acquisition"}</span>
         </div>
       </section>
 
-      <section id="business" className="scroll-mt-16 border-b border-border/10 px-5 py-20 sm:scroll-mt-20 sm:px-10 sm:py-28 lg:px-16 lg:py-36">
-        <div className="mx-auto grid max-w-7xl gap-14 lg:grid-cols-12 lg:gap-20">
-          <motion.div {...reveal()} className="lg:col-span-7">
+      <section id="business" className="scroll-mt-16 border-b border-border/10 px-5 py-20 text-center sm:scroll-mt-20 sm:px-10 sm:py-28 lg:px-16 lg:py-36">
+        <div className="mx-auto max-w-4xl">
+          <motion.div {...reveal()} className="flex flex-col items-center">
             <p className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground">01 / {isSpanish ? "Negocio y visión" : "Business and vision"}</p>
-            <h2 className="mt-7 max-w-4xl font-display text-5xl leading-[0.92] sm:text-7xl lg:text-8xl">
+            <h2 className="mt-7 font-display text-5xl leading-[0.92] sm:text-7xl lg:text-8xl">
               {isSpanish ? "Convertir claridad en " : "Turning clarity into "}<span className="font-display-italic text-muted-foreground">{isSpanish ? "movimiento." : "momentum."}</span>
             </h2>
-            <p className="mt-8 max-w-2xl text-base font-light leading-relaxed text-muted-foreground sm:text-xl">
-              {isSpanish ? "Ideas, diseño y marketing unidos para construir marcas más claras y negocios preparados para crecer." : "Ideas, design and marketing working together to build clearer brands and businesses ready to grow."}
-            </p>
           </motion.div>
-          <motion.div {...reveal(0.12)} className="relative lg:col-span-5">
-            <div className="ml-auto max-w-md border border-border/15 p-2">
+          <motion.div {...reveal(0.1)} className="relative mx-auto mt-14 max-w-md">
+            <div className="border border-border/15 p-2">
               <img src={businessEditorial} alt="Dirección creativa de Netpro Agency" loading="lazy" className="aspect-[4/5] w-full object-cover" />
             </div>
-            <div className="absolute -bottom-7 left-0 border border-border/15 bg-background px-6 py-5 sm:px-8">
+            <div className="absolute -bottom-7 left-1/2 -translate-x-1/2 border border-border/15 bg-background px-6 py-5 sm:px-8">
               <p className="font-display-italic text-4xl">01</p><p className="mt-2 text-[9px] uppercase tracking-[0.26em] text-muted-foreground">Netpro Agency</p>
             </div>
           </motion.div>
+          <motion.p {...reveal(0.14)} className="mx-auto mt-16 max-w-2xl text-base font-light leading-relaxed text-muted-foreground sm:text-xl">
+            {isSpanish ? "Ideas, diseño y marketing unidos para construir marcas más claras y negocios preparados para crecer." : "Ideas, design and marketing working together to build clearer brands and businesses ready to grow."}
+          </motion.p>
         </div>
       </section>
 
@@ -153,51 +149,47 @@ export function Home() {
         </div>
       </section>
 
-      <section id="booking" className="scroll-mt-16 border-b border-border/10 px-5 py-20 sm:scroll-mt-20 sm:px-10 sm:py-28 lg:px-16 lg:py-36">
-        <div className="mx-auto max-w-7xl">
-          <motion.div {...reveal()} className="grid gap-7 lg:grid-cols-12">
-            <p className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground lg:col-span-4">03 / Booking</p>
-            <h2 className="font-display text-5xl leading-[0.92] sm:text-7xl lg:col-span-8 lg:text-8xl">{isSpanish ? "Una conversación " : "A conversation "}<span className="font-display-italic text-muted-foreground">{isSpanish ? "con intención." : "with purpose."}</span></h2>
+      <section id="booking" className="scroll-mt-16 border-b border-border/10 px-5 py-20 text-center sm:scroll-mt-20 sm:px-10 sm:py-28 lg:px-16 lg:py-36">
+        <div className="mx-auto max-w-4xl">
+          <motion.div {...reveal()}>
+            <p className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground">03 / Booking</p>
+            <h2 className="mt-7 font-display text-5xl leading-[0.92] sm:text-7xl lg:text-8xl">{isSpanish ? "Una conversación " : "A conversation "}<span className="font-display-italic text-muted-foreground">{isSpanish ? "con intención." : "with purpose."}</span></h2>
           </motion.div>
-          <div className="mt-14 grid gap-10 lg:grid-cols-12 lg:gap-16">
-            <motion.aside {...reveal(0.08)} className="lg:col-span-4">
-              <p className="max-w-md text-base leading-relaxed text-muted-foreground sm:text-lg">{isSpanish ? "Cuarenta y cinco minutos para entender tu contexto, ordenar prioridades y descubrir si podemos construir algo con sentido." : "Forty-five minutes to understand your context, clarify priorities and discover whether we can build something meaningful."}</p>
-              <div className="mt-8 border-y border-border/15">
-                <div className="flex items-center gap-4 border-b border-border/15 py-5 text-sm text-muted-foreground"><Clock className="h-4 w-4 text-foreground" /> {isSpanish ? "45 minutos" : "45 minutes"}</div>
-                <div className="flex items-center gap-4 py-5 text-sm text-muted-foreground"><Video className="h-4 w-4 text-foreground" /> Google Meet</div>
-              </div>
-            </motion.aside>
-            <motion.div {...reveal(0.14)} className="min-w-0 lg:col-span-8">
-              <div className="border border-border/15 bg-card p-1 sm:p-1.5">
-                <div className="calendly-inline-widget min-w-0" data-url="https://calendly.com/rubenmunooz/30min?hide_gdpr_banner=1&background_color=0a0a0a&text_color=ffffff&primary_color=ffffff" style={{ height: "min(760px, 90svh)" }} />
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      <section id="contact" className="scroll-mt-16 px-5 py-20 sm:scroll-mt-20 sm:px-10 sm:py-28 lg:px-16 lg:py-36">
-        <div className="mx-auto grid max-w-7xl items-center gap-14 lg:grid-cols-12 lg:gap-20">
-          <motion.div {...reveal()} className="lg:col-span-7">
-            <p className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground">04 / Contact</p>
-            <h2 className="mt-7 font-display text-6xl leading-[0.88] sm:text-8xl lg:text-9xl">{isSpanish ? "Hablemos " : "Let's talk "}<span className="font-display-italic text-muted-foreground">{isSpanish ? "de tu idea." : "about your idea."}</span></h2>
-            <p className="mt-8 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">{isSpanish ? "Si tienes un proyecto, una oportunidad o una idea que merece avanzar, este es el punto de partida." : "If you have a project, an opportunity or an idea worth moving forward, this is the starting point."}</p>
-            <div className="mt-10 border-t border-border/15">
-              <a href="mailto:contacto@rubenmunoz.com" className="group grid gap-2 border-b border-border/15 py-6 sm:grid-cols-[40px_1fr_24px] sm:items-center"><Mail className="h-4 w-4 text-muted-foreground" /><span className="break-all font-display text-2xl sm:break-normal sm:text-3xl">contacto@rubenmunoz.com</span><ArrowUpRight className="h-4 w-4 text-muted-foreground transition-colors group-hover:text-foreground" /></a>
-              <a href="https://www.instagram.com/rubenmunooz._" target="_blank" rel="noopener noreferrer" className="group grid gap-2 border-b border-border/15 py-6 sm:grid-cols-[40px_1fr_24px] sm:items-center"><Instagram className="h-4 w-4 text-muted-foreground" /><span className="font-display text-2xl sm:text-3xl">@rubenmunooz._</span><ArrowUpRight className="h-4 w-4 text-muted-foreground transition-colors group-hover:text-foreground" /></a>
+          <motion.p {...reveal(0.08)} className="mx-auto mt-8 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">{isSpanish ? "Cuarenta y cinco minutos para entender tu contexto, ordenar prioridades y descubrir si podemos construir algo con sentido." : "Forty-five minutes to understand your context, clarify priorities and discover whether we can build something meaningful."}</motion.p>
+          <motion.div {...reveal(0.1)} className="mx-auto mt-8 inline-flex flex-wrap justify-center gap-x-8 gap-y-2 border-y border-border/15 py-5 text-sm text-muted-foreground">
+            <div className="flex items-center gap-3"><Clock className="h-4 w-4 text-foreground" /> {isSpanish ? "45 minutos" : "45 minutes"}</div>
+            <div className="flex items-center gap-3"><Video className="h-4 w-4 text-foreground" /> Google Meet</div>
+          </motion.div>
+          <motion.div {...reveal(0.14)} className="mx-auto mt-12 min-w-0 max-w-3xl">
+            <div className="border border-border/15 bg-card p-1 sm:p-1.5">
+              <div className="calendly-inline-widget min-w-0" data-url="https://calendly.com/rubenmunooz/30min?hide_gdpr_banner=1&background_color=0a0a0a&text_color=ffffff&primary_color=ffffff" style={{ height: "min(760px, 90svh)" }} />
             </div>
           </motion.div>
-          <motion.div {...reveal(0.12)} className="relative lg:col-span-5">
-            <div className="ml-auto max-w-md border border-border/15 p-2"><img src={contactEditorial} alt="Espacio creativo de Rubén Muñoz" loading="lazy" className="aspect-[4/5] w-full object-cover" /></div>
-            <div className="absolute -bottom-7 left-0 border border-border/15 bg-background px-7 py-6"><p className="font-display-italic text-4xl">04</p><p className="mt-2 text-[9px] uppercase tracking-[0.26em] text-muted-foreground">Digital / Strategy</p></div>
+        </div>
+      </section>
+
+      <section id="contact" className="scroll-mt-16 px-5 py-20 text-center sm:scroll-mt-20 sm:px-10 sm:py-28 lg:px-16 lg:py-36">
+        <div className="mx-auto max-w-4xl">
+          <motion.div {...reveal()} className="flex flex-col items-center">
+            <p className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground">04 / Contact</p>
+            <h2 className="mt-7 font-display text-6xl leading-[0.88] sm:text-8xl lg:text-9xl">{isSpanish ? "Hablemos " : "Let's talk "}<span className="font-display-italic text-muted-foreground">{isSpanish ? "de tu idea." : "about your idea."}</span></h2>
+            <p className="mx-auto mt-8 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">{isSpanish ? "Si tienes un proyecto, una oportunidad o una idea que merece avanzar, este es el punto de partida." : "If you have a project, an opportunity or an idea worth moving forward, this is the starting point."}</p>
+          </motion.div>
+          <motion.div {...reveal(0.1)} className="relative mx-auto mt-14 max-w-md">
+            <div className="border border-border/15 p-2"><img src={contactEditorial} alt="Espacio creativo de Rubén Muñoz" loading="lazy" className="aspect-[4/5] w-full object-cover" /></div>
+            <div className="absolute -bottom-7 left-1/2 -translate-x-1/2 border border-border/15 bg-background px-7 py-6"><p className="font-display-italic text-4xl">04</p><p className="mt-2 text-[9px] uppercase tracking-[0.26em] text-muted-foreground">Digital / Strategy</p></div>
+          </motion.div>
+          <motion.div {...reveal(0.14)} className="mx-auto mt-16 max-w-xl border-t border-border/15">
+            <a href="mailto:contacto@rubenmunoz.com" className="group flex items-center justify-center gap-3 border-b border-border/15 py-6"><Mail className="h-4 w-4 text-muted-foreground" /><span className="break-all font-display text-2xl sm:break-normal sm:text-3xl">contacto@rubenmunoz.com</span><ArrowUpRight className="h-4 w-4 text-muted-foreground transition-colors group-hover:text-foreground" /></a>
+            <a href="https://www.instagram.com/rubenmunooz._" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center gap-3 border-b border-border/15 py-6"><Instagram className="h-4 w-4 text-muted-foreground" /><span className="font-display text-2xl sm:text-3xl">@rubenmunooz._</span><ArrowUpRight className="h-4 w-4 text-muted-foreground transition-colors group-hover:text-foreground" /></a>
           </motion.div>
         </div>
       </section>
 
-      <footer className="border-t border-border/10 px-5 py-8 sm:px-10 lg:px-16">
-        <div className="mx-auto flex max-w-7xl flex-col gap-5 text-[9px] uppercase tracking-[0.2em] text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
+      <footer className="border-t border-border/10 px-5 py-10 text-center sm:px-10 lg:px-16">
+        <div className="mx-auto flex max-w-7xl flex-col items-center gap-5 text-[9px] uppercase tracking-[0.2em] text-muted-foreground">
           <p>© 2026 Rubén Muñoz</p>
-          <div className="flex flex-wrap gap-5">{nav.map(([id, label]) => <a key={id} href={sectionLink(id)} className="transition-colors hover:text-foreground">{label}</a>)}</div>
+          <div className="flex flex-wrap justify-center gap-5">{nav.map(([id, label]) => <a key={id} href={sectionLink(id)} className="transition-colors hover:text-foreground">{label}</a>)}</div>
         </div>
       </footer>
     </main>
