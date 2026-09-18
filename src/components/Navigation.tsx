@@ -57,22 +57,22 @@ export function Navigation() {
           ease: [0.22, 1, 0.36, 1],
         }}
         style={{ pointerEvents: introDone ? 'auto' : 'none' }}
-        className={`fixed left-0 right-0 top-0 z-50 transition-all duration-300 ${
+        className={`fixed left-0 right-0 top-0 z-50 transition-all duration-500 ${
           scrolled
             ? 'bg-black/85 backdrop-blur-xl border-b border-white/[0.06]'
             : 'bg-transparent border-b border-transparent'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-8 py-4 sm:py-5 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-5 sm:px-10 lg:px-16 py-5 flex items-center justify-between">
           {/* Desktop nav links — minimal underline */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-9">
             {navItems.map((item) => {
               const active = item.match.some((p) => isActive(p));
               return (
                 <Link
                   key={item.to}
                   to={item.to}
-                  className={`relative text-[14px] transition-colors ${
+                  className={`relative text-[10px] uppercase tracking-[0.2em] transition-colors ${
                     active ? 'text-white' : 'text-white/55 hover:text-white'
                   }`}
                 >
@@ -101,7 +101,7 @@ export function Navigation() {
 
             <Link
               to={getRoute('contact')}
-              className="hidden md:inline-flex items-center gap-2 bg-white text-black text-[13px] font-medium rounded-full px-4 py-2 hover:bg-secondary hover:text-white transition-colors"
+              className="hidden md:inline-flex items-center gap-2 border border-border/25 bg-transparent px-4 py-2 text-[10px] uppercase tracking-[0.16em] text-foreground transition-colors hover:bg-foreground hover:text-background"
             >
               {t('nav.contact')}
               <ArrowRight className="w-3.5 h-3.5" />
