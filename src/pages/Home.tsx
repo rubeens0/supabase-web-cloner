@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { motion, useReducedMotion, useScroll, useSpring, useTransform } from "motion/react";
 import { Button } from "@/components/ui/button";
@@ -53,13 +53,12 @@ export function Home() {
   const isSpanish = language === "es";
   const t = isSpanish ? copy.es : copy.en;
   const reduceMotion = useReducedMotion();
-  const pageRef = useRef<HTMLElement>(null);
 
   const { scrollYProgress } = useScroll();
   const progress = useSpring(scrollYProgress, { stiffness: 120, damping: 30, mass: 0.4 });
   const bgY = useTransform(progress, [0, 1], ["0%", "12%"]);
   const bgScale = useTransform(progress, [0, 1], [1.08, 1.22]);
-  const bgFade = useTransform(scrollYProgress, [0, 0.45, 1], [0.55, 0.22, 0.4]);
+  const bgFade = useTransform(scrollYProgress, [0, 0.45, 1], [0.8, 0.4, 0.65]);
   const heroFade = useTransform(scrollYProgress, [0, 0.12], [1, 0]);
   const heroLift = useTransform(scrollYProgress, [0, 0.15], [0, -60]);
 
@@ -95,7 +94,6 @@ export function Home() {
 
   return (
     <main
-      ref={pageRef}
       className="relative overflow-clip bg-background text-foreground antialiased selection:bg-foreground selection:text-background"
     >
       {/* Continuous atmospheric backdrop */}
@@ -113,10 +111,10 @@ export function Home() {
           />
         </motion.div>
         <div
-          className="absolute inset-0 mix-blend-screen opacity-30 bg-cover bg-center"
+          className="absolute inset-0 mix-blend-screen opacity-40 bg-cover bg-center"
           style={{ backgroundImage: `url(${bgAtmos})` }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/90 via-background/80 to-background" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/85 to-background/95" />
       </div>
 
       {/* Scroll progress */}
