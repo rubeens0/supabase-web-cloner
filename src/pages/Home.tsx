@@ -125,12 +125,12 @@ export function Home() {
       />
 
       <header className="fixed inset-x-0 top-0 z-50 backdrop-blur-sm">
-        <div className="flex items-center justify-between px-5 py-5 sm:px-10 sm:py-7">
-          <a href={sectionLink("top")} aria-label={t.backToTop} className="flex items-center">
+        <div className="grid grid-cols-[1fr_auto_1fr] items-center px-5 py-5 sm:px-10 sm:py-7">
+          <a href={sectionLink("top")} aria-label={t.backToTop} className="flex items-center justify-self-start">
             <img src={logoMark} alt="Rubén Muñoz" className="h-6 w-6 object-contain transition-transform duration-500 hover:rotate-90 sm:h-7 sm:w-7" />
           </a>
           <nav
-            className="hidden items-center gap-10 text-[10px] font-medium uppercase tracking-[0.3em] text-muted-foreground lg:flex"
+            className="hidden items-center justify-center gap-10 text-[10px] font-medium uppercase tracking-[0.3em] text-muted-foreground lg:flex"
             aria-label={isSpanish ? "Navegación principal" : "Main navigation"}
           >
             {t.nav.map(([id, label]) => (
@@ -139,7 +139,7 @@ export function Home() {
               </a>
             ))}
           </nav>
-          <div className="flex items-center gap-3 sm:gap-5">
+          <div className="flex items-center justify-self-end gap-3 sm:gap-5">
             <button
               type="button"
               onClick={() => setLanguage(isSpanish ? "en" : "es")}
