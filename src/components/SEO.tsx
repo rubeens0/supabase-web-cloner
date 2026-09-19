@@ -156,7 +156,7 @@ export function SEO({
       url: 'https://rubenmunoz.com',
       image: ogImage,
       sameAs: [
-        'https://www.instagram.com/rubenmunooz._'
+        'https://www.instagram.com/rrxxczzz'
       ],
       knowsAbout: ['Digital Marketing', 'Brand Strategy', 'Web Development', 'Social Media']
     };

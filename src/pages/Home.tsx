@@ -266,7 +266,7 @@ export function Home() {
           </motion.a>
           <motion.div {...reveal(0.16)} className="mt-10 flex justify-center">
             <a
-              href="https://www.instagram.com/rubenmunooz._"
+              href="https://www.instagram.com/rrxxczzz"
               target="_blank"
               rel="noopener noreferrer"
               className="border-b border-border/30 pb-1 text-[10px] uppercase tracking-[0.25em] text-muted-foreground transition-colors hover:border-foreground hover:text-foreground"
